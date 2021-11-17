@@ -1,0 +1,85 @@
+Starting Nmap 7.92 ( https://nmap.org ) at 2021-10-24 02:38 WAT
+NSE: Loaded 155 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 02:38
+Completed NSE at 02:38, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 02:38
+Completed NSE at 02:38, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 02:38
+Completed NSE at 02:38, 0.00s elapsed
+Initiating Ping Scan at 02:38
+Scanning 10.10.228.200 [2 ports]
+Completed Ping Scan at 02:38, 0.16s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 02:38
+Completed Parallel DNS resolution of 1 host. at 02:38, 0.03s elapsed
+Initiating Connect Scan at 02:38
+Scanning 10.10.228.200 [1000 ports]
+Discovered open port 80/tcp on 10.10.228.200
+Discovered open port 443/tcp on 10.10.228.200
+Completed Connect Scan at 02:38, 12.46s elapsed (1000 total ports)
+Initiating Service scan at 02:38
+Scanning 2 services on 10.10.228.200
+Completed Service scan at 02:38, 13.81s elapsed (2 services on 1 host)
+NSE: Script scanning 10.10.228.200.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 02:38
+Completed NSE at 02:39, 23.29s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 02:39
+Completed NSE at 02:39, 2.50s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 02:39
+Completed NSE at 02:39, 0.00s elapsed
+Nmap scan report for 10.10.228.200
+Host is up, received syn-ack (0.18s latency).
+Scanned at 2021-10-24 02:38:15 WAT for 52s
+Not shown: 998 filtered tcp ports (no-response)
+PORT    STATE SERVICE  REASON  VERSION
+80/tcp  open  http     syn-ack Apache httpd
+|_http-server-header: Apache
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-title: Site doesn't have a title (text/html).
+443/tcp open  ssl/http syn-ack Apache httpd
+|_http-server-header: Apache
+|_http-title: Site doesn't have a title (text/html).
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+| ssl-cert: Subject: commonName=www.example.com
+| Issuer: commonName=www.example.com
+| Public Key type: rsa
+| Public Key bits: 1024
+| Signature Algorithm: sha1WithRSAEncryption
+| Not valid before: 2015-09-16T10:45:03
+| Not valid after:  2025-09-13T10:45:03
+| MD5:   3c16 3b19 87c3 42ad 6634 c1c9 d0aa fb97
+| SHA-1: ef0c 5fa5 931a 09a5 687c a2c2 80c4 c792 07ce f71b
+| -----BEGIN CERTIFICATE-----
+| MIIBqzCCARQCCQCgSfELirADCzANBgkqhkiG9w0BAQUFADAaMRgwFgYDVQQDDA93
+| d3cuZXhhbXBsZS5jb20wHhcNMTUwOTE2MTA0NTAzWhcNMjUwOTEzMTA0NTAzWjAa
+| MRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0A
+| MIGJAoGBANlxG/38e8Dy/mxwZzBboYF64tu1n8c2zsWOw8FFU0azQFxv7RPKcGwt
+| sALkdAMkNcWS7J930xGamdCZPdoRY4hhfesLIshZxpyk6NoYBkmtx+GfwrrLh6mU
+| yvsyno29GAlqYWfffzXRoibdDtGTn9NeMqXobVTTKTaR0BGspOS5AgMBAAEwDQYJ
+| KoZIhvcNAQEFBQADgYEASfG0dH3x4/XaN6IWwaKo8XeRStjYTy/uBJEBUERlP17X
+| 1TooZOYbvgFAqK8DPOl7EkzASVeu0mS5orfptWjOZ/UWVZujSNj7uu7QR4vbNERx
+| ncZrydr7FklpkIN5Bj8SYc94JI9GsrHip4mpbystXkxncoOVESjRBES/iatbkl0=
+|_-----END CERTIFICATE-----
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 02:39
+Completed NSE at 02:39, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 02:39
+Completed NSE at 02:39, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 02:39
+Completed NSE at 02:39, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 52.89 seconds
+

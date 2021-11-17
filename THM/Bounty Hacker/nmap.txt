@@ -1,0 +1,76 @@
+nmap -sV -sC -vv 10.10.160.230
+Starting Nmap 7.92 ( https://nmap.org ) at 2021-11-07 19:33 WAT
+NSE: Loaded 155 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 19:33
+Completed NSE at 19:33, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 19:33
+Completed NSE at 19:33, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 19:33
+Completed NSE at 19:33, 0.00s elapsed
+Initiating Ping Scan at 19:33
+Scanning 10.10.160.230 [2 ports]
+Completed Ping Scan at 19:33, 0.17s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 19:33
+Completed Parallel DNS resolution of 1 host. at 19:33, 0.04s elapsed
+Initiating Connect Scan at 19:33
+Scanning 10.10.160.230 [1000 ports]
+Discovered open port 21/tcp on 10.10.160.230
+Discovered open port 80/tcp on 10.10.160.230
+Discovered open port 22/tcp on 10.10.160.230
+Completed Connect Scan at 19:33, 15.76s elapsed (1000 total ports)
+Initiating Service scan at 19:33
+Scanning 3 services on 10.10.160.230
+Completed Service scan at 19:33, 13.56s elapsed (3 services on 1 host)
+NSE: Script scanning 10.10.160.230.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 19:33
+NSE: [ftp-bounce 10.10.160.230:21] PORT response: 500 Illegal PORT command.
+NSE Timing: About 99.76% done; ETC: 19:34 (0:00:00 remaining)
+Completed NSE at 19:34, 31.17s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 19:34
+Completed NSE at 19:34, 1.19s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 19:34
+Completed NSE at 19:34, 0.00s elapsed
+Nmap scan report for 10.10.160.230
+Host is up, received syn-ack (0.18s latency).
+Scanned at 2021-11-07 19:33:12 WAT for 62s
+Not shown: 997 filtered tcp ports (no-response)
+PORT   STATE SERVICE REASON  VERSION
+21/tcp open  ftp     syn-ack vsftpd 3.0.3
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_Can't get directory listing: TIMEOUT
+22/tcp open  ssh     syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 dc:f8:df:a7:a6:00:6d:18:b0:70:2b:a5:aa:a6:14:3e (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCgcwCtWTBLYfcPeyDkCNmq6mXb/qZExzWud7PuaWL38rUCUpDu6kvqKMLQRHX4H3vmnPE/YMkQIvmz4KUX4H/aXdw0sX5n9jrennTzkKb/zvqWNlT6zvJBWDDwjv5g9d34cMkE9fUlnn2gbczsmaK6Zo337F40ez1iwU0B39e5XOqhC37vJuqfej6c/C4o5FcYgRqktS/kdcbcm7FJ+fHH9xmUkiGIpvcJu+E4ZMtMQm4bFMTJ58bexLszN0rUn17d2K4+lHsITPVnIxdn9hSc3UomDrWWg+hWknWDcGpzXrQjCajO395PlZ0SBNDdN+B14E0m6lRY9GlyCD9hvwwB
+|   256 ec:c0:f2:d9:1e:6f:48:7d:38:9a:e3:bb:08:c4:0c:c9 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMCu8L8U5da2RnlmmnGLtYtOy0Km3tMKLqm4dDG+CraYh7kgzgSVNdAjCOSfh3lIq9zdwajW+1q9kbbICVb07ZQ=
+|   256 a4:1a:15:a5:d4:b1:cf:8f:16:50:3a:7d:d0:d8:13:c2 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICqmJn+c7Fx6s0k8SCxAJAoJB7pS/RRtWjkaeDftreFw
+80/tcp open  http    syn-ack Apache httpd 2.4.18 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html).
+| http-methods: 
+|_  Supported Methods: POST OPTIONS GET HEAD
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 19:34
+Completed NSE at 19:34, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 19:34
+Completed NSE at 19:34, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 19:34
+Completed NSE at 19:34, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 62.65 seconds
+

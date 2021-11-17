@@ -1,0 +1,29 @@
+Gobuster v3.1.0
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.129.148.64/
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/dirb/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.1.0
+[+] Timeout:                 10s
+===============================================================
+2021/10/28 18:29:54 Starting gobuster in directory enumeration mode
+===============================================================
+/.hta                 (Status: 403) [Size: 278]
+/.htaccess            (Status: 403) [Size: 278]
+/.htpasswd            (Status: 403) [Size: 278]
+/css                  (Status: 301) [Size: 312] [--> http://10.129.148.64/css/]
+/fonts                (Status: 301) [Size: 314] [--> http://10.129.148.64/fonts/]
+/images               (Status: 301) [Size: 315] [--> http://10.129.148.64/images/]
+/index.php            (Status: 200) [Size: 10932]                                 
+/js                   (Status: 301) [Size: 311] [--> http://10.129.148.64/js/]    
+/server-status        (Status: 403) [Size: 278]                                   
+/themes               (Status: 301) [Size: 315] [--> http://10.129.148.64/themes/]
+/uploads              (Status: 301) [Size: 316] [--> http://10.129.148.64/uploads/]
+Progress: 4614 / 4615 (99.98%)                                                    [ERROR] 2021/10/28 18:30:59 [!] Get "http://10.129.148.64/testing": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+
+===============================================================
+2021/10/28 18:30:59 Finished
+=============================================================== 

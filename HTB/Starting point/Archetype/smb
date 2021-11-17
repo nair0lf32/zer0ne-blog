@@ -1,0 +1,11 @@
+$smbclient -L \\\\10.129.95.187
+Enter WORKGROUP\nair0lf32's password: 
+
+Sharename       Type      Comment
+---------       ----      -------
+ADMIN$          Disk      Remote Admin
+backups         Disk      
+C$              Disk      Default share
+IPC$            IPC       Remote IPC
+SMB1 disabled -- no workgroup available
+

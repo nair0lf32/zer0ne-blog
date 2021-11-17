@@ -1,0 +1,50 @@
+ffuf  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ -u http://10.10.11.104/FUZZ.php
+
+/'___\  /'___\           /'___\       
+/\ \__/ /\ \__/  __  __  /\ \__/       
+\ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+\ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+\ \_\   \ \_\  \ \____/  \ \_\       
+\/_/    \/_/   \/___/    \/_/       
+
+v1.3.1-dev
+________________________________________________
+
+:: Method           : GET
+:: URL              : http://10.10.11.104/FUZZ.php
+:: Wordlist         : FUZZ: /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+:: Follow redirects : false
+:: Calibration      : false
+:: Timeout          : 10
+:: Threads          : 40
+:: Matcher          : Response status: 200,204,301,302,307,401,403,405
+________________________________________________
+
+# license, visit http://creativecommons.org/licenses/by-sa/3.0/ [Status: 302, Size: 2801, Words: 737, Lines: 72]
+# directory-list-2.3-small.txt [Status: 302, Size: 2801, Words: 737, Lines: 72]
+# or send a letter to Creative Commons, 171 Second Street, [Status: 302, Size: 2801, Words: 737, Lines: 72]
+#                       [Status: 302, Size: 2801, Words: 737, Lines: 72]
+# Copyright 2007 James Fisher [Status: 302, Size: 2801, Words: 737, Lines: 72]
+#                       [Status: 302, Size: 2801, Words: 737, Lines: 72]
+# This work is licensed under the Creative Commons [Status: 302, Size: 2801, Words: 737, Lines: 72]
+# Attribution-Share Alike 3.0 License. To view a copy of this [Status: 302, Size: 2801, Words: 737, Lines: 72]
+# Suite 300, San Francisco, California, 94105, USA. [Status: 302, Size: 2801, Words: 737, Lines: 72]
+login                   [Status: 200, Size: 2224, Words: 486, Lines: 54]
+files                   [Status: 302, Size: 4914, Words: 1531, Lines: 113]
+#                       [Status: 302, Size: 2801, Words: 737, Lines: 72]
+# Priority-ordered case-sensitive list, where entries were found [Status: 302, Size: 2801, Words: 737, Lines: 72]
+header                  [Status: 200, Size: 980, Words: 183, Lines: 21]
+nav                     [Status: 200, Size: 1248, Words: 462, Lines: 32]
+[Status: 403, Size: 277, Words: 20, Lines: 10]
+download                [Status: 302, Size: 0, Words: 1, Lines: 1]
+footer                  [Status: 200, Size: 217, Words: 10, Lines: 6]
+# on at least 3 different hosts [Status: 302, Size: 2801, Words: 737, Lines: 72]
+index                   [Status: 302, Size: 2801, Words: 737, Lines: 72]
+#                       [Status: 302, Size: 2801, Words: 737, Lines: 72]
+status                  [Status: 302, Size: 2968, Words: 749, Lines: 75]
+logout                  [Status: 302, Size: 0, Words: 1, Lines: 1]
+config                  [Status: 200, Size: 0, Words: 1, Lines: 1]
+logs                    [Status: 302, Size: 0, Words: 1, Lines: 1]
+[Status: 403, Size: 277, Words: 20, Lines: 10]
+:: Progress: [87664/87664] :: Job [1/1] :: 51 req/sec :: Duration: [0:13:50] :: Errors: 93 ::
+

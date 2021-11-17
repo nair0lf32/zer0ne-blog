@@ -1,0 +1,21 @@
+$showmount -e 172.31.1.7
+
+Export list for 172.31.1.7:
+/home/amir *.*.*.*
+
+
+
+//remote mount trough NFS:
+mount -t nfs 172.31.1.7:home/amir /mnt/TempNFS
+
+drwxrwxr-x 5 nair0lf32 docker 4096  2 avril  2020 .
+drwxr-xr-x 1 root      root     14 27 oct.  11:41 ..
+-rw-r--r-- 1 nair0lf32 docker    0  2 avril  2020 .bash_history
+-rw-r--r-- 1 nair0lf32 docker  220  4 avril  2018 .bash_logout
+-rw-r--r-- 1 nair0lf32 docker 3786  2 avril  2020 .bashrc
+drw-r--r-- 2 nair0lf32 docker 4096  2 avril  2020 .cache
+drw-r--r-- 3 nair0lf32 docker 4096  2 avril  2020 .gnupg
+-rw-r--r-- 1 nair0lf32 docker  807  4 avril  2018 .profile
+drwxrwxr-x 2 nair0lf32 docker 4096  2 avril  2020 .ssh
+-rw-r--r-- 1 nair0lf32 docker    0  2 avril  2020 .sudo_as_admin_successful
+-rw-r--r-- 1 nair0lf32 docker 7713  2 avril  2020 .viminfo

@@ -1,0 +1,5 @@
+login.php after gobuster enum
+login as admin with credentials from ftp lists
+
+admin flag is:
+c7110277ac44d78b6a9fff2232434d16

@@ -1,0 +1,20 @@
+john -w=/usr/share/wordlists/rockyou.txt id_rsa.john
+Using default input encoding: UTF-8
+Loaded 1 password hash (SSH [RSA/DSA/EC/OPENSSH (SSH private keys) 32/64])
+Cost 1 (KDF/cipher [0=MD5/AES 1=MD5/3DES 2=Bcrypt/AES]) is 0 for all loaded hashes
+Cost 2 (iteration count) is 1 for all loaded hashes
+Will run 2 OpenMP threads
+Note: This format may emit false positives, so it will keep trying even after
+finding a possible candidate.
+Press 'q' or Ctrl-C to abort, almost any other key for status
+hello6           (id_rsa)
+1g 0:00:00:08 DONE (2021-10-27 11:52) 0.1213g/s 1740Kp/s 1740Kc/s 1740KC/sa6_123..*7¡Vamos!
+Session completed
+
+
+ssh creds:
+amir:hello6
+
+
+//IMPORTANT:
+SSH not on port 22 but 27853 (use -p 27853)

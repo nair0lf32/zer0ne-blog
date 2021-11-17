@@ -1,0 +1,17 @@
+Congratulations! You've completed this challenge. There are two ways (that I'm aware of) to gain 
+a shell, and two ways to privesc. I encourage you to find them all!
+
+If you're in the target audience (newcomers to pentesting), I hope you learned something. A few
+takeaways from this challenge should be that every little bit of information you can find can be
+valuable, but sometimes you'll need to find several different pieces of information and combine
+them to make them useful. Enumeration is key! Also, sometimes it's not as easy as just finding
+an obviously outdated, vulnerable service right away with a port scan (unlike the first entry
+in this series). Usually you'll have to dig deeper to find things that aren't as obvious, and
+therefore might've been overlooked by administrators.
+
+Thanks for taking the time to solve this VM. If you choose to create a writeup, I hope you'll send 
+me a link! I can be reached at josiah@vt.edu. If you've got questions or feedback, please reach
+out to me.
+
+Happy hacking!
+

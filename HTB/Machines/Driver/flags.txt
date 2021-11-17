@@ -1,0 +1,6 @@
+//basically a windows machine with a web server...visiting it require admin creds
+
+//samba open tho
+
+
+The site says: “MFP Firmware Update Center. Please enter password for admin”

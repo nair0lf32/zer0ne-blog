@@ -1,0 +1,11 @@
+.htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10]
+[Status: 200, Size: 1332, Words: 629, Lines: 29]
+.hta                    [Status: 403, Size: 277, Words: 20, Lines: 10]
+.htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10]
+cgi-bin/                [Status: 403, Size: 277, Words: 20, Lines: 10]
+index.html              [Status: 200, Size: 1332, Words: 629, Lines: 29]
+javascript              [Status: 301, Size: 317, Words: 20, Lines: 10]
+index.php               [Status: 200, Size: 2968, Words: 766, Lines: 72]
+nagios                  [Status: 401, Size: 459, Words: 42, Lines: 15]
+server-status           [Status: 403, Size: 277, Words: 20, Lines: 10]
+:: Progress: [4614/4614] :: Job [1/1] :: 116 req/sec :: Duration: [0:01:01] :: Errors: 10 :: 
