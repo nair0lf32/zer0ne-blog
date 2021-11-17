@@ -1,0 +1,172 @@
+[
+  {
+    "metadata": {
+      "id": "a6a0c5b2-d078-4bf5-a9ee-4e37054414b3",
+      "publisherId": "formulahendry.code-runner",
+      "publisherDisplayName": "formulahendry"
+    },
+    "name": "code-runner",
+    "publisher": "formulahendry",
+    "version": "0.11.2"
+  },
+  {
+    "metadata": {
+      "id": "e337c67b-55c2-4fef-8949-eb260e7fb7fd",
+      "publisherId": "Shan.code-settings-sync",
+      "publisherDisplayName": "Shan"
+    },
+    "name": "code-settings-sync",
+    "publisher": "Shan",
+    "version": "3.4.3"
+  },
+  {
+    "metadata": {
+      "id": "690b692e-e8a9-493f-b802-8089d50ac1b2",
+      "publisherId": "ms-vscode.cpptools",
+      "publisherDisplayName": "ms-vscode"
+    },
+    "name": "cpptools",
+    "publisher": "ms-vscode",
+    "version": "1.5.1"
+  },
+  {
+    "metadata": {
+      "id": "d0bfc4ab-1d3a-4487-8782-7cf6027b4fff",
+      "publisherId": "ms-dotnettools.csharp",
+      "publisherDisplayName": "ms-dotnettools"
+    },
+    "name": "csharp",
+    "publisher": "ms-dotnettools",
+    "version": "1.23.12"
+  },
+  {
+    "metadata": {
+      "id": "2bbe1392-1ad3-4f59-82bc-fccaa3afc3a5",
+      "publisherId": "icrawl.discord-vscode",
+      "publisherDisplayName": "icrawl"
+    },
+    "name": "discord-vscode",
+    "publisher": "icrawl",
+    "version": "5.4.0"
+  },
+  {
+    "metadata": {
+      "id": "b4b6f023-bc31-4050-bb3d-f419aae20eeb",
+      "publisherId": "p1c2u.docker-compose",
+      "publisherDisplayName": "p1c2u"
+    },
+    "name": "docker-compose",
+    "publisher": "p1c2u",
+    "version": "0.3.5"
+  },
+  {
+    "metadata": {
+      "id": "17baf027-6531-408d-9dc4-d16f5c80fa1b",
+      "publisherId": "formulahendry.dotnet",
+      "publisherDisplayName": "formulahendry"
+    },
+    "name": "dotnet",
+    "publisher": "formulahendry",
+    "version": "0.0.4"
+  },
+  {
+    "metadata": {
+      "id": "6c2f1801-1e7f-45b2-9b5c-7782f1e076e8",
+      "publisherId": "ms-toolsai.jupyter",
+      "publisherDisplayName": "ms-toolsai"
+    },
+    "name": "jupyter",
+    "publisher": "ms-toolsai",
+    "version": "2021.2.603412351"
+  },
+  {
+    "metadata": {
+      "id": "e4176bbc-17eb-479b-8d37-3669684ad2b6",
+      "publisherId": "kostasx.live-html-previewer-v2",
+      "publisherDisplayName": "kostasx"
+    },
+    "name": "live-html-previewer-v2",
+    "publisher": "kostasx",
+    "version": "0.1.9"
+  },
+  {
+    "metadata": {
+      "id": "3b1db1fc-c7f7-4bd6-9fa4-b499dfa99a8a",
+      "publisherId": "shd101wyy.markdown-preview-enhanced",
+      "publisherDisplayName": "shd101wyy"
+    },
+    "name": "markdown-preview-enhanced",
+    "publisher": "shd101wyy",
+    "version": "0.5.22"
+  },
+  {
+    "metadata": {
+      "id": "5db78037-f674-459f-a236-db622c427c5b",
+      "publisherId": "PKief.material-icon-theme",
+      "publisherDisplayName": "PKief"
+    },
+    "name": "material-icon-theme",
+    "publisher": "PKief",
+    "version": "4.9.0"
+  },
+  {
+    "metadata": {
+      "id": "f797dacd-4e80-4f33-8b63-d665c0956013",
+      "publisherId": "PKief.material-product-icons",
+      "publisherDisplayName": "PKief"
+    },
+    "name": "material-product-icons",
+    "publisher": "PKief",
+    "version": "1.0.4"
+  },
+  {
+    "metadata": {
+      "id": "26a529c9-2654-4b95-a63f-02f6a52429e6",
+      "publisherId": "zhuangtongfa.material-theme",
+      "publisherDisplayName": "zhuangtongfa"
+    },
+    "name": "material-theme",
+    "publisher": "zhuangtongfa",
+    "version": "3.9.15"
+  },
+  {
+    "metadata": {
+      "id": "f1f59ae4-9318-4f3c-a9b5-81b2eaa5f8a5",
+      "publisherId": "ms-python.python",
+      "publisherDisplayName": "ms-python"
+    },
+    "name": "python",
+    "publisher": "ms-python",
+    "version": "2021.2.633441544"
+  },
+  {
+    "metadata": {
+      "id": "f0c5397b-d357-4197-99f0-cb4202f22818",
+      "publisherId": "ms-vscode-remote.remote-wsl",
+      "publisherDisplayName": "ms-vscode-remote"
+    },
+    "name": "remote-wsl",
+    "publisher": "ms-vscode-remote",
+    "version": "0.53.4"
+  },
+  {
+    "metadata": {
+      "id": "0479fc1c-3d67-49f9-b087-fb9069afe48f",
+      "publisherId": "ms-azuretools.vscode-docker",
+      "publisherDisplayName": "ms-azuretools"
+    },
+    "name": "vscode-docker",
+    "publisher": "ms-azuretools",
+    "version": "1.11.0"
+  },
+  {
+    "metadata": {
+      "id": "9172d3e6-db1d-40b1-8d16-c744e5369a42",
+      "publisherId": "infosec-intern.yara",
+      "publisherDisplayName": "infosec-intern"
+    },
+    "name": "yara",
+    "publisher": "infosec-intern",
+    "version": "1.6.6"
+  }
+]

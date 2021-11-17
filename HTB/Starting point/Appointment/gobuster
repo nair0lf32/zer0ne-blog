@@ -1,0 +1,25 @@
+===============================================================
+Gobuster v3.1.0
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.129.143.40/
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.1.0
+[+] Timeout:                 10s
+===============================================================
+2021/10/27 16:43:05 Starting gobuster in directory enumeration mode
+===============================================================
+/.hta                 (Status: 403) [Size: 278]
+/.htaccess            (Status: 403) [Size: 278]
+/.htpasswd            (Status: 403) [Size: 278]
+/css                  (Status: 301) [Size: 312] [--> http://10.129.143.40/css/]
+/fonts                (Status: 301) [Size: 314] [--> http://10.129.143.40/fonts/]
+/images               (Status: 301) [Size: 315] [--> http://10.129.143.40/images/]
+/index.php            (Status: 200) [Size: 4896]                                  
+/js                   (Status: 301) [Size: 311] [--> http://10.129.143.40/js/]  
+/server-status        (Status: 403) [Size: 278]                                   
+/vendor               (Status: 301) [Size: 315] [--> http://10.129.143.40/vendor/]
+

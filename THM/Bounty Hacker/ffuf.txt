@@ -1,0 +1,31 @@
+
+        /'___\  /'___\           /'___\       
+        /\ \__/ /\ \__/  __  __  /\ \__/       
+        \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+        \ \_\   \ \_\  \ \____/  \ \_\       
+        \/_/    \/_/   \/___/    \/_/       
+        
+        v1.3.1-dev
+        ________________________________________________
+        
+        :: Method           : GET
+        :: URL              : http://10.10.160.230/FUZZ
+        :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+        :: Follow redirects : false
+        :: Calibration      : false
+        :: Timeout          : 10
+        :: Threads          : 40
+        :: Matcher          : Response status: 200,204,301,302,307,401,403,405
+        ________________________________________________
+        
+        .htpasswd               [Status: 403, Size: 278, Words: 20, Lines: 10]
+        .hta                    [Status: 403, Size: 278, Words: 20, Lines: 10]
+        .htaccess               [Status: 403, Size: 278, Words: 20, Lines: 10]
+        [Status: 200, Size: 969, Words: 135, Lines: 31]
+        images                  [Status: 301, Size: 315, Words: 20, Lines: 10]
+        index.html              [Status: 200, Size: 969, Words: 135, Lines: 31]
+        server-status           [Status: 403, Size: 278, Words: 20, Lines: 10]
+        :: Progress: [4614/4614] :: Job [1/1] :: 115 req/sec :: Duration: [0:01:02] :: Errors: 1 ::
+        
+		

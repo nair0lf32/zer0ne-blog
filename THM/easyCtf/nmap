@@ -1,0 +1,90 @@
+nmap -sV -sC -vv 10.10.11.6
+Starting Nmap 7.92 ( https://nmap.org ) at 2021-11-03 17:15 WAT
+NSE: Loaded 155 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 17:15
+Completed NSE at 17:15, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 17:15
+Completed NSE at 17:15, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 17:15
+Completed NSE at 17:15, 0.00s elapsed
+Initiating Ping Scan at 17:15
+Scanning 10.10.11.6 [2 ports]
+Completed Ping Scan at 17:15, 0.14s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 17:15
+Completed Parallel DNS resolution of 1 host. at 17:15, 0.03s elapsed
+Initiating Connect Scan at 17:15
+Scanning 10.10.11.6 [1000 ports]
+Discovered open port 21/tcp on 10.10.11.6
+Discovered open port 80/tcp on 10.10.11.6
+Discovered open port 2222/tcp on 10.10.11.6
+Completed Connect Scan at 17:15, 10.39s elapsed (1000 total ports)
+Initiating Service scan at 17:15
+Scanning 3 services on 10.10.11.6
+Completed Service scan at 17:15, 8.30s elapsed (3 services on 1 host)
+NSE: Script scanning 10.10.11.6.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 17:15
+NSE: [ftp-bounce 10.10.11.6:21] PORT response: 500 Illegal PORT command.
+NSE Timing: About 99.76% done; ETC: 17:16 (0:00:00 remaining)
+Completed NSE at 17:16, 31.30s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 17:16
+Completed NSE at 17:16, 0.99s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 17:16
+Completed NSE at 17:16, 0.00s elapsed
+Nmap scan report for 10.10.11.6
+Host is up, received syn-ack (0.14s latency).
+Scanned at 2021-11-03 17:15:35 WAT for 52s
+Not shown: 997 filtered tcp ports (no-response)
+PORT     STATE SERVICE REASON  VERSION
+21/tcp   open  ftp     syn-ack vsftpd 3.0.3
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_Can't get directory listing: TIMEOUT
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:10.8.226.203
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 2
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+80/tcp   open  http    syn-ack Apache httpd 2.4.18 ((Ubuntu))
+| http-robots.txt: 2 disallowed entries 
+|_/ /openemr-5_0_1_3 
+|_http-title: Apache2 Ubuntu Default Page: It works
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+2222/tcp open  ssh     syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 29:42:69:14:9e:ca:d9:17:98:8c:27:72:3a:cd:a9:23 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCj5RwZ5K4QU12jUD81IxGPdEmWFigjRwFNM2pVBCiIPWiMb+R82pdw5dQPFY0JjjicSysFN3pl8ea2L8acocd/7zWke6ce50tpHaDs8OdBYLfpkh+OzAsDwVWSslgKQ7rbi/ck1FF1LIgY7UQdo5FWiTMap7vFnsT/WHL3HcG5Q+el4glnO4xfMMvbRar5WZd4N0ZmcwORyXrEKvulWTOBLcoMGui95Xy7XKCkvpS9RCpJgsuNZ/oau9cdRs0gDoDLTW4S7OI9Nl5obm433k+7YwFeoLnuZnCzegEhgq/bpMo+fXTb/4ILI5bJHJQItH2Ae26iMhJjlFsMqQw0FzLf
+|   256 9b:d1:65:07:51:08:00:61:98:de:95:ed:3a:e3:81:1c (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBM6Q8K/lDR5QuGRzgfrQSDPYBEBcJ+/2YolisuiGuNIF+1FPOweJy9esTtstZkG3LPhwRDggCp4BP+Gmc92I3eY=
+|   256 12:65:1b:61:cf:4d:e5:75:fe:f4:e8:d4:6e:10:2a:f6 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ2I73yryK/Q6UFyvBBMUJEfznlIdBXfnrEqQ3lWdymK
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 17:16
+Completed NSE at 17:16, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 17:16
+Completed NSE at 17:16, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 17:16
+Completed NSE at 17:16, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 51.84 seconds 

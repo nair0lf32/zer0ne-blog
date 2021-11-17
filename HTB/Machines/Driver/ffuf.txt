@@ -1,0 +1,5 @@
+                        [Status: 401, Size: 20, Words: 2, Lines: 2]
+images                  [Status: 301, Size: 150, Words: 9, Lines: 2]
+Images                  [Status: 301, Size: 150, Words: 9, Lines: 2]
+index.php               [Status: 401, Size: 20, Words: 2, Lines: 2]
+ 

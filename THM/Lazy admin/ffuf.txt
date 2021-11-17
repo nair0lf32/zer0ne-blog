@@ -1,0 +1,24 @@
+                        [Status: 200, Size: 11321, Words: 3503, Lines: 376]
+.hta                    [Status: 403, Size: 277, Words: 20, Lines: 10]
+.htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10]
+.htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10]
+content                 [Status: 301, Size: 314, Words: 20, Lines: 10]
+index.html              [Status: 200, Size: 11321, Words: 3503, Lines: 376]
+server-status           [Status: 403, Size: 277, Words: 20, Lines: 10
+
+
+
+/content
+
+[Status: 200, Size: 2199, Words: 109, Lines: 36]
+_themes                 [Status: 301, Size: 324, Words: 20, Lines: 10]
+.hta                    [Status: 403, Size: 278, Words: 20, Lines: 10]
+.htaccess               [Status: 403, Size: 278, Words: 20, Lines: 10]
+.htpasswd               [Status: 403, Size: 278, Words: 20, Lines: 10]
+as                      [Status: 301, Size: 319, Words: 20, Lines: 10]
+attachment              [Status: 301, Size: 327, Words: 20, Lines: 10]
+images                  [Status: 301, Size: 323, Words: 20, Lines: 10]
+inc                     [Status: 301, Size: 320, Words: 20, Lines: 10]
+index.php               [Status: 200, Size: 2199, Words: 109, Lines: 36]
+js                      [Status: 301, Size: 319, Words: 20, Lines: 10]
+

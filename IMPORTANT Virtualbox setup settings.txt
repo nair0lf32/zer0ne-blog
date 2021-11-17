@@ -1,0 +1,15 @@
+- FOR ENCRYPTED GUEST OS REMEMBER GRUB KEYBOARD IS MAPPED TO QWERTY
+- SHARED FOLDERS
+- SUPER USER (SU) for linux
+- NAT network with Paravirtualization enabled for VPN (if OpenVPN not installable on guest)
+- PORT FORWARD in Virtualbox (host/guest same ports for remote shells...)
+- port forward can be tested with netstat -a | more (guest port should be listenning)
+- using a dyn DNS (NOIP : renew hostname every 30 days)
+- tryhackme/hackthebox....
+- SSH and FTP ports +++
+- Backup (save) Virtualbox reularly - no sht sherlock -
+- vitrualbox specificities (VBoxManage)
+
+
+-For NFS mounting shares access (remote++) execute on host (windows + vitrualbox in path)
+VBoxManage modifyvm "name of your VM" --nataliasmode1 sameports

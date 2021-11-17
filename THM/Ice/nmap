@@ -1,0 +1,158 @@
+Starting Nmap 7.92 ( https://nmap.org ) at 2021-11-10 02:06 WAT
+NSE: Loaded 155 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 02:06
+Completed NSE at 02:06, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 02:06
+Completed NSE at 02:06, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 02:06
+Completed NSE at 02:06, 0.00s elapsed
+Initiating Ping Scan at 02:06
+Scanning 10.10.20.151 [2 ports]
+Completed Ping Scan at 02:06, 1.47s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 02:06
+Completed Parallel DNS resolution of 1 host. at 02:06, 0.05s elapsed
+Initiating Connect Scan at 02:06
+Scanning 10.10.20.151 [1000 ports]
+Discovered open port 445/tcp on 10.10.20.151
+Discovered open port 3389/tcp on 10.10.20.151
+Discovered open port 139/tcp on 10.10.20.151
+Discovered open port 135/tcp on 10.10.20.151
+Discovered open port 49158/tcp on 10.10.20.151
+Discovered open port 49159/tcp on 10.10.20.151
+Discovered open port 49153/tcp on 10.10.20.151
+Discovered open port 8000/tcp on 10.10.20.151
+Discovered open port 49160/tcp on 10.10.20.151
+Connect Scan Timing: About 47.52% done; ETC: 02:08 (0:00:34 remaining)
+Discovered open port 5357/tcp on 10.10.20.151
+Connect Scan Timing: About 65.38% done; ETC: 02:08 (0:00:35 remaining)
+Connect Scan Timing: About 75.06% done; ETC: 02:09 (0:00:35 remaining)
+Increasing send delay for 10.10.20.151 from 0 to 5 due to max_successful_tryno increase to 4
+Increasing send delay for 10.10.20.151 from 5 to 10 due to max_successful_tryno increase to 5
+Connect Scan Timing: About 80.09% done; ETC: 02:09 (0:00:35 remaining)
+Discovered open port 49154/tcp on 10.10.20.151
+Discovered open port 49152/tcp on 10.10.20.151
+Completed Connect Scan at 02:10, 209.45s elapsed (1000 total ports)
+Initiating Service scan at 02:10
+Scanning 12 services on 10.10.20.151
+Service scan Timing: About 58.33% done; ETC: 02:12 (0:00:40 remaining)
+Completed Service scan at 02:11, 61.42s elapsed (12 services on 1 host)
+NSE: Script scanning 10.10.20.151.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 02:11
+Completed NSE at 02:11, 13.54s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 02:11
+Completed NSE at 02:11, 3.37s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 02:11
+Completed NSE at 02:11, 0.00s elapsed
+Nmap scan report for 10.10.20.151
+Host is up, received conn-refused (1.4s latency).
+Scanned at 2021-11-10 02:06:58 WAT for 288s
+Not shown: 988 closed tcp ports (conn-refused)
+PORT      STATE SERVICE            REASON  VERSION
+135/tcp   open  msrpc              syn-ack Microsoft Windows RPC
+139/tcp   open  netbios-ssn        syn-ack Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds       syn-ack Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
+3389/tcp  open  ssl/ms-wbt-server? syn-ack
+| ssl-cert: Subject: commonName=Dark-PC
+| Issuer: commonName=Dark-PC
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha1WithRSAEncryption
+| Not valid before: 2021-11-09T01:04:38
+| Not valid after:  2022-05-11T01:04:38
+| MD5:   c2cb 143b f9c6 ac54 b425 0a60 8906 c4dc
+| SHA-1: 5009 f1e1 6c50 e160 5b08 ec91 138f 3001 e1ab ebd4
+| -----BEGIN CERTIFICATE-----
+| MIIC0jCCAbqgAwIBAgIQWdotJunPLqZKUeGBMEa/cTANBgkqhkiG9w0BAQUFADAS
+| MRAwDgYDVQQDEwdEYXJrLVBDMB4XDTIxMTEwOTAxMDQzOFoXDTIyMDUxMTAxMDQz
+| OFowEjEQMA4GA1UEAxMHRGFyay1QQzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC
+| AQoCggEBAK3iiROzM2/JhP5ZlTbpLF4bDHwtqGtikJZQiYl9YlQyunXYd7g9wuyr
+| q40+LqPhGhL/9AYoICA3bioFTMG+qtwUFcxHD9iiQf/O6esz8oOeP1RJkD0CzD5u
+| kZtt6ZUzFDvYViMreE+xjKl1R3NN4paZX8ItkjSPRuFMbWKEcmTK5ueAS0ydRl5k
+| Xt43+NN/mxk7hkzif41nS/a6kdiSK2dAf/aeUUccbNMx9ln5neZvjX1aiUBZR9FG
+| x7KrnpwllTF33F7LLxbmuZAmQO30IletT2Y5cJ7up3Kikmb+ZOpa+ulhovayZI+E
+| R+jKTWn/eCrZ1ayuLaGjxDIag4LOp40CAwEAAaMkMCIwEwYDVR0lBAwwCgYIKwYB
+| BQUHAwEwCwYDVR0PBAQDAgQwMA0GCSqGSIb3DQEBBQUAA4IBAQAGkB+WbnS3JDae
+| w8aoKztZjvhN9vEvcqS/8ovSZfTiO9NvhoKs2cM2UqYoWfH/TU+vrH3tuE524S3+
+| gVwpTHKNzoo1N/WUC8TMsZvvYX2VoJdZTfMLSR7j0PLjAqD7RjQhWjFTPPYmy1hz
+| NaON+TdKHxxyl79STd+WV8V42OzKwPkk1seHzTwu4s42rOrpactHH/3QGSj0UD4J
+| yTZv79XFEOV9HYKkaBNvOMLgd1tJ8ajQQ8cwq5F1+qpQ6iyozowb/uF/TX2YLE+7
+| fXmhE1d51W8iByjscywdbzxWZEqb2SFCXVdNTRXWQkM3I5YxT3Eg9ti43c75iDaH
+| RvDzv+fG
+|_-----END CERTIFICATE-----
+|_ssl-date: 2021-11-10T01:14:13+00:00; +2m30s from scanner time.
+5357/tcp  open  http               syn-ack Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Service Unavailable
+8000/tcp  open  http               syn-ack Icecast streaming media server
+| http-methods: 
+|_  Supported Methods: GET
+|_http-title: Site doesn't have a title (text/html).
+49152/tcp open  msrpc              syn-ack Microsoft Windows RPC
+49153/tcp open  msrpc              syn-ack Microsoft Windows RPC
+49154/tcp open  msrpc              syn-ack Microsoft Windows RPC
+49158/tcp open  msrpc              syn-ack Microsoft Windows RPC
+49159/tcp open  msrpc              syn-ack Microsoft Windows RPC
+49160/tcp open  msrpc              syn-ack Microsoft Windows RPC
+Service Info: Host: DARK-PC; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 26444/tcp): CLEAN (Couldn't connect)
+|   Check 2 (port 14833/tcp): CLEAN (Couldn't connect)
+|   Check 3 (port 36762/udp): CLEAN (Timeout)
+|   Check 4 (port 17683/udp): CLEAN (Timeout)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+| nbstat: NetBIOS name: DARK-PC, NetBIOS user: <unknown>, NetBIOS MAC: 02:01:ea:57:15:c7 (unknown)
+| Names:
+|   DARK-PC<00>          Flags: <unique><active>
+|   WORKGROUP<00>        Flags: <group><active>
+|   DARK-PC<20>          Flags: <unique><active>
+|   WORKGROUP<1e>        Flags: <group><active>
+|   WORKGROUP<1d>        Flags: <unique><active>
+|   \x01\x02__MSBROWSE__\x02<01>  Flags: <group><active>
+| Statistics:
+|   02 01 ea 57 15 c7 00 00 00 00 00 00 00 00 00 00 00
+|   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+|_  00 00 00 00 00 00 00 00 00 00 00 00 00 00
+| smb2-security-mode: 
+|   2.1: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2021-11-10T01:14:00
+|_  start_date: 2021-11-10T01:04:22
+| smb-os-discovery: 
+|   OS: Windows 7 Professional 7601 Service Pack 1 (Windows 7 Professional 6.1)
+|   OS CPE: cpe:/o:microsoft:windows_7::sp1:professional
+|   Computer name: Dark-PC
+|   NetBIOS computer name: DARK-PC\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2021-11-09T19:14:00-06:00
+|_clock-skew: mean: 1h32m29s, deviation: 3h00m00s, median: 2m29s
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 02:11
+Completed NSE at 02:11, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 02:11
+Completed NSE at 02:11, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 02:11
+Completed NSE at 02:11, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 290.85 seconds
+

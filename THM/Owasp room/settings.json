@@ -1,0 +1,28 @@
+{
+    "workbench.colorTheme": "Monokai",
+    "window.zoomLevel": 0,
+    "editor.fontSize": 15,
+    "[json]": {
+
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace"
+    },
+    "[dockerfile]": {
+        "editor.parameterHints.enabled": false,
+        "editor.quickSuggestions": {
+            "other": false,
+            "comments": false,
+            "strings": false
+        }
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.productIconTheme": "material-product-icons",
+    "sync.autoUpload": true,
+    "sync.forceUpload": true,
+    "sync.gist": "af5c19a8d77b4f5d8171340b9c560fc3",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    }
+}
