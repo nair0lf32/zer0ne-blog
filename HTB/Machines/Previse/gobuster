@@ -1,9 +1,0 @@
-/.hta                 (Status: 403) [Size: 277]
-/.htaccess            (Status: 403) [Size: 277]
-/.htpasswd            (Status: 403) [Size: 277]
-/css                  (Status: 301) [Size: 310] [--> http://10.10.11.104/css/]
-/favicon.ico          (Status: 200) [Size: 15406]                             
-/index.php            (Status: 302) [Size: 2801] [--> login.php]              
-/js                   (Status: 301) [Size: 309] [--> http://10.10.11.104/js/] 
-/server-status        (Status: 403) [Size: 277]                               
-
