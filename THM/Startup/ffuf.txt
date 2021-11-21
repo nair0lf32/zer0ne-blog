@@ -1,9 +1,0 @@
-
-.htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10]
-.htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10]
-.hta                    [Status: 403, Size: 277, Words: 20, Lines: 10]
-[Status: 200, Size: 808, Words: 136, Lines: 21]
-files                   [Status: 301, Size: 312, Words: 20, Lines: 10]
-index.html              [Status: 200, Size: 808, Words: 136, Lines: 21]
-server-status           [Status: 403, Size: 277, Words: 20, Lines: 10]
-
