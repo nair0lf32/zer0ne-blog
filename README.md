@@ -1,5 +1,9 @@
 # CTF's Writeups
 
+###### credits: this logo is inspired from Genegoldstein's work for
+
+###### izzy deluxe in the living tombstone's hunter song
+
 <img src="pictures/dark_logo.png" alt="logo" width="250" height="250">
 
 Hello friend 🤖, welcome to my simple writeups repo. I am nairolf32.  
