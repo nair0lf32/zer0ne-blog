@@ -1,11 +1,2 @@
-.hta                    [Status: 403, Size: 277, Words: 20, Lines: 10]
-.htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10]
-.htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10]
-[Status: 200, Size: 616, Words: 115, Lines: 26]
-css                     [Status: 301, Size: 310, Words: 20, Lines: 10]
-index.php               [Status: 200, Size: 616, Words: 115, Lines: 26]
-js                      [Status: 301, Size: 309, Words: 20, Lines: 10]
-panel                   [Status: 301, Size: 312, Words: 20, Lines: 10]
-server-status           [Status: 403, Size: 277, Words: 20, Lines: 10]
-uploads                 [Status: 301, Size: 314, Words: 20, Lines: 10]
+
 
