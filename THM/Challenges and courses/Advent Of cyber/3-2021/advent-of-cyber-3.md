@@ -12,5 +12,9 @@ I wish i could get the big prizes...but hey as long as we have fun
 ## The story
 <img src="story3.png" alt="story3" width=450/>
 
-## Day 1 - The Aftermath
+## Day 1 - Save the gifts
+
+hehe that was an easy warmup about `IDOR`. answers are to not be shared...yet!
+I can't wait to see what they gve us tomorrow
+
 
