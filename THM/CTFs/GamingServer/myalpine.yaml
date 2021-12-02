@@ -1,0 +1,14 @@
+image:
+    description: My Alpine Linux
+    distribution: minimalalpine
+    release: 3.8.1
+
+source:
+    downloader: alpinelinux-http
+    url: http://dl-cdn.alpinelinux.org/alpine/
+    keys:
+        - 0482D84022F52DF1C4E7CD43293ACD0907D9495A
+    keyserver: keyserver.ubuntu.com
+
+packages:
+    manager: apk
