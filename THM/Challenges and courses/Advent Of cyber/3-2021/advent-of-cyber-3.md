@@ -14,7 +14,9 @@ I wish i could get the big prizes...but hey as long as we have fun
 
 ## Day 1 - Save the gifts
 
-hehe that was an easy warmup about `IDOR`. answers are to not be shared...yet!
+Hehe that was an easy warmup about `IDOR`. answers are to not be shared...yet!
 I can't wait to see what they gve us tomorrow
 
-
+## Day 2 - Elf HR problems
+Today was easy-peasy too...just cookie manipulation with some decoding...they also said
+the difficulty would increase day to day and now I am starting to worry a bit XD
