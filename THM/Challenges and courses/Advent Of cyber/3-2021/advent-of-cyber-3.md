@@ -20,3 +20,6 @@ I can't wait to see what they gve us tomorrow
 ## Day 2 - Elf HR problems
 Today was easy-peasy too...just cookie manipulation with some decoding...they also said
 the difficulty would increase day to day and now I am starting to worry a bit XD
+
+## Day 3 - Christmas blackout
+simple directory discovery with password guessing
