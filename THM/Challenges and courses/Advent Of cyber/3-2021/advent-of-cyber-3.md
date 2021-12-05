@@ -23,3 +23,9 @@ the difficulty would increase day to day and now I am starting to worry a bit XD
 
 ## Day 3 - Christmas blackout
 simple directory discovery with password guessing
+
+## Day 4 - Santa's running Behind
+fuzzing credentials with password.txt and burpsuite sniper 
+
+## Day 3 - Christmas blackout
+reflected xss
