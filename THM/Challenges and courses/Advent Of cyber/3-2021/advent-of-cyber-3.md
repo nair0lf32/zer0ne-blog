@@ -27,5 +27,13 @@ simple directory discovery with password guessing
 ## Day 4 - Santa's running Behind
 fuzzing credentials with password.txt and burpsuite sniper 
 
-## Day 3 - Christmas blackout
+## Day 5 - Christmas blackout
 reflected xss
+
+
+## Day 6 - Patch Management is hard
+The warmup started with LFI...this is getting more and more interresting
+
+
+
+
