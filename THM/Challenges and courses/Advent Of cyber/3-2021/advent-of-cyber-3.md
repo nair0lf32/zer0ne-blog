@@ -34,6 +34,8 @@ reflected xss
 ## Day 6 - Patch Management is hard
 The warmup started with LFI...this is getting more and more interresting
 
+## Day 7 - Migration without Security
+Nosql injection on a mongodb database. 
 
 
 
