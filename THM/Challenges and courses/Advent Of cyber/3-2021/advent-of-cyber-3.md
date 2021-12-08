@@ -37,5 +37,7 @@ The warmup started with LFI...this is getting more and more interresting
 ## Day 7 - Migration without Security
 Nosql injection on a mongodb database. 
 
+## Day 8 - Santa's Bag of Toys
+windows registry logs, base64 decoding, shellBagsExplorer
 
 
