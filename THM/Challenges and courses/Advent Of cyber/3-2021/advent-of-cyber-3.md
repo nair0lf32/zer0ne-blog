@@ -40,4 +40,7 @@ Nosql injection on a mongodb database.
 ## Day 8 - Santa's Bag of Toys
 windows registry logs, base64 decoding, shellBagsExplorer
 
+## Day 9 - Where is all this data going?
+Pcap file analysis with wireshark
+
 
