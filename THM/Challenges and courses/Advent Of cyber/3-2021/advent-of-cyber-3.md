@@ -30,7 +30,6 @@ fuzzing credentials with password.txt and burpsuite sniper
 ## Day 5 - Christmas blackout
 reflected xss
 
-
 ## Day 6 - Patch Management is hard
 The warmup started with LFI...this is getting more and more interresting
 
@@ -42,5 +41,13 @@ windows registry logs, base64 decoding, shellBagsExplorer
 
 ## Day 9 - Where is all this data going?
 Pcap file analysis with wireshark
+
+## Day 10 - Offensive is the best Defence
+enumeration and analysis with nmap
+
+## Day 11 - Where are the Reindeers
+microsoft sql server (MSSQL) with `sqsh` tool
+
+
 
 
