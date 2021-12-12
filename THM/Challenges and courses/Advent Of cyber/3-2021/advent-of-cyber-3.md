@@ -48,6 +48,7 @@ enumeration and analysis with nmap
 ## Day 11 - Where are the Reindeers
 microsoft sql server (MSSQL) with `sqsh` tool
 
-
+## Day 12 - Sharing without caring
+Like the name suggests its about mounting an nfs share
 
 
