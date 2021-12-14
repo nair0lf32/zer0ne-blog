@@ -51,4 +51,11 @@ microsoft sql server (MSSQL) with `sqsh` tool
 ## Day 12 - Sharing without caring
 Like the name suggests its about mounting an nfs share
 
+## Day 13 - They lost the plan!
+Windows privesc through Iperius backup service
+
+## Day 14 - Dev(insecure)Ops
+Or how automation doesnt always come with automatic security 
+
+
 
