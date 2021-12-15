@@ -57,5 +57,7 @@ Windows privesc through Iperius backup service
 ## Day 14 - Dev(insecure)Ops
 Or how automation doesnt always come with automatic security 
 
-
+## Day 15 - The grinchs day off
+this is a quizz about cybersecurity careers...took it twice same result
+"pentester" Damn right! fun stuff!
 
