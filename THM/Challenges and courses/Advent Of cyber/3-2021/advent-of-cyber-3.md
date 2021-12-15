@@ -59,5 +59,5 @@ Or how automation doesnt always come with automatic security
 
 ## Day 15 - The grinchs day off
 this is a quizz about cybersecurity careers...took it twice same result
-"pentester" Damn right! fun stuff!
-
+"penetration tester" Damn right! fun stuff! My favorite part was the success stories shared about people getting into cybersecurity from 
+different carrer paths
