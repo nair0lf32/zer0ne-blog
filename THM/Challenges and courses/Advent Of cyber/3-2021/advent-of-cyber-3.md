@@ -61,3 +61,8 @@ Or how automation doesnt always come with automatic security
 this is a quizz about cybersecurity careers...took it twice same result
 "penetration tester" Damn right! fun stuff! My favorite part was the success stories shared about people getting into cybersecurity from 
 different carrer paths
+
+## Day 16 - Ransomware Madness
+pure OSINT
+
+
