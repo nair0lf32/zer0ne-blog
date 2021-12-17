@@ -65,4 +65,6 @@ different carrer paths
 ## Day 16 - Ransomware Madness
 pure OSINT
 
+## Day 17 - Elf leaks
+aws cloud investigation
 
