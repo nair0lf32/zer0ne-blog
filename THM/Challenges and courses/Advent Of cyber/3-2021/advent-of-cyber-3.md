@@ -68,3 +68,5 @@ pure OSINT
 ## Day 17 - Elf leaks
 aws cloud investigation
 
+## Day 18 - Playing with containers
+docker (you guessed it) container investigation
