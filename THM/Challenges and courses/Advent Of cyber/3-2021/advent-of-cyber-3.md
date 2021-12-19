@@ -70,3 +70,7 @@ aws cloud investigation
 
 ## Day 18 - Playing with containers
 docker (you guessed it) container investigation
+
+## Day 19 - Something fishy is going on
+Phishing email analysis
+
