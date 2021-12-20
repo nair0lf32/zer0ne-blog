@@ -74,3 +74,5 @@ docker (you guessed it) container investigation
 ## Day 19 - Something fishy is going on
 Phishing email analysis
 
+## Day 20 - What's the worst that could happen
+malicious file analysis (file, strings, md5sum, virustotal)
