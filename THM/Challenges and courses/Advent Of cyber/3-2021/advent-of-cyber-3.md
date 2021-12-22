@@ -76,3 +76,9 @@ Phishing email analysis
 
 ## Day 20 - What's the worst that could happen
 malicious file analysis (file, strings, md5sum, virustotal)
+
+## Day 21 - Needles in computer stacks
+writing `yara` rules like a boss
+
+## Day 22 - How it happened
+using `oledump.py` and good ol' `cyberchef` to analyse malicious OLE files
