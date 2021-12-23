@@ -82,3 +82,6 @@ writing `yara` rules like a boss
 
 ## Day 22 - How it happened
 using `oledump.py` and good ol' `cyberchef` to analyse malicious OLE files
+
+## Day 23 - Powershellf magic
+analysing powershell execution through the windows event logs
