@@ -85,3 +85,7 @@ using `oledump.py` and good ol' `cyberchef` to analyse malicious OLE files
 
 ## Day 23 - Powershellf magic
 analysing powershell execution through the windows event logs
+
+## Day 24 - Learning from the grinch
+dump hashes with mimikatz and crack them (classic post-exploitation)
+
