@@ -89,3 +89,7 @@ analysing powershell execution through the windows event logs
 ## Day 24 - Learning from the grinch
 dump hashes with mimikatz and crack them (classic post-exploitation)
 
+## Day 25 - feedback
+thank you tryhackme!
+
+# Merry 🎅 🎄christmas!
