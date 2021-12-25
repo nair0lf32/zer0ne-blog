@@ -93,3 +93,6 @@ dump hashes with mimikatz and crack them (classic post-exploitation)
 thank you tryhackme!
 
 # Merry 🎅 🎄christmas!
+
+<img src="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-VJTIS3AQJY.png" alt="my_certificate" width=500/>
+
