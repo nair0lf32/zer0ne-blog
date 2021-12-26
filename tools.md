@@ -4,10 +4,15 @@ Just a list of my favorites tools, the ones I use the most and the one I discove
 By categories
 
 ## Enumeration
+
+### Reconnaissance
+- recon-ng
+
 ### Scanning
 - nmap (the old timer)
 - rustscan 
-
+- enum4linux
+- 
 ### Directories/Fuzzers
 - ffuf
 - gobuster
@@ -31,5 +36,8 @@ By categories
 - steghide
 - stegseek
 
+## Android
+- mobsf
+- adb
 
 
