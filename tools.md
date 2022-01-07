@@ -43,3 +43,6 @@ By categories
 ## Wifi
 - wifite 2
 
+## Windows Dc
+- kerbrute
+- impacket tools
