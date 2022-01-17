@@ -43,3 +43,10 @@ looking forward bigger CTF's and maybe a carreer in cyber? Hackerlab.bj, Oscp, H
 those are some of my potential objectives and I working toward them :)
 
 Good luck and Have fun!
+
+<!--
+TODO:
+- fix all thm ctf images
+- redo rooms with missing writeups
+- add more ctfs
+-->
