@@ -1,5 +1,7 @@
 # IDE
 
+<img src="ide.png" width=200 height=200 alt="ide">
+
 ## Enmeration
 
 ### nmap

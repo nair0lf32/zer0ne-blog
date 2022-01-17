@@ -1,5 +1,7 @@
 # Root Me
 
+<img src="root.png" width=200 height=200 alt="root">
+
 ## Enumeration
 
 ### nmap

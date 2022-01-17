@@ -1,5 +1,7 @@
 # Bounty hacker
 
+<img src="bounty.jpeg" width=200 height=200 alt="bounty">
+
 Cool a ctf in the theme of cowboy bebop
 
 ## Enumeration

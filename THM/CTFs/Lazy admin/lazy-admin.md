@@ -1,5 +1,7 @@
 # Lazy Admin
 
+<img src="lazy.jpeg" width=200 height=200 alt="lazy">
+
 ## Enumeration
 
 ### nmap

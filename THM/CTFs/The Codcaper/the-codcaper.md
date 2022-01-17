@@ -1,5 +1,7 @@
 # The CodCaper
 
+<img src="pingu.jpeg" width=200 height=200 alt="pingu">
+
 ## Enumeration
 
 ### nmap

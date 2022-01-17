@@ -1,5 +1,7 @@
 # easyCTF
 
+<img src="simple.png" width=200 height=200 alt="simple">
+
 ## Enumeraion
 
 ### nmap

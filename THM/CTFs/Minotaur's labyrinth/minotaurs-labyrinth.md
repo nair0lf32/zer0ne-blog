@@ -1,7 +1,5 @@
 # Minotaur's labyrinth
 
-![minotaur](login.jpg)
-
 ## Enumeration
 
 ### nmap
@@ -137,6 +135,8 @@ email=Daedalus&password=g2e55kh4ck5r
 Alternativel there is a riddle in the source code of login page
 
 you can reconstitute daedalus password solving it, but me I just found them in logs
+
+![minotaur](login.jpg)
 
 Now we can login...and there is a search bar...
 

