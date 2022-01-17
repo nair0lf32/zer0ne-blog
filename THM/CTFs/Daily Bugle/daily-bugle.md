@@ -1,5 +1,7 @@
 # Daily Bugle
 
+<img src="bugle.png" width=200 height=200 alt="bugle">
+
 ## Enumeration
 
 ### Nmap

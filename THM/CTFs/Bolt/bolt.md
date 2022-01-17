@@ -1,13 +1,15 @@
 # Bolt
-<img src="bolt.png" alt="bolt" width=200/>
+
+<img src="bolt.png" alt="bolt" width=200 height=200/>
 
 ## Enumeration
 
 ### nmap
+
 ```
 PORT     STATE SERVICE REASON  VERSION
 22/tcp   open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 f3:85:ec:54:f2:01:b1:94:40:de:42:e8:21:97:20:80 (RSA)
 | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDaKxKph/4I3YG+2GjzPjOevcQldxrIll8wZ8SZyy2fMg3S5tl5G6PBFbF9GvlLt1X/gadOlBc99EG3hGxvAyoujfdSuXfxVznPcVuy0acAahC0ohdGp3fZaPGJMl7lW0wkPTHO19DtSsVPniBFdrWEq9vfSODxqdot8ij2PnEWfnCsj2Vf8hI8TRUBcPcQK12IsAbvBOcXOEZoxof/IQU/rSeiuYCvtQaJh+gmL7xTfDmX1Uh2+oK6yfCn87RpN2kDp3YpEHVRJ4NFNPe8lgQzekGCq0GUZxjUfFg1JNSWe1DdvnaWnz8J8dTbVZiyNG3NAVAwP1+iFARVOkiH1hi1
 |   256 77:c7:c1:ae:31:41:21:e4:93:0e:9a:dd:0b:29:e1:ff (ECDSA)
@@ -16,15 +18,15 @@ PORT     STATE SERVICE REASON  VERSION
 |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINZwq5mZftBwFP7wDFt5kinK8mM+Gk2MaPebZ4I0ukZ+
 
 80/tcp   open  http    syn-ack Apache httpd 2.4.29 ((Ubuntu))
-| http-methods: 
+| http-methods:
 |_  Supported Methods: POST OPTIONS HEAD GET
 |_http-title: Apache2 Ubuntu Default Page: It works
 |_http-server-header: Apache/2.4.29 (Ubuntu)
 
 8000/tcp open  http    syn-ack (PHP 7.2.32-1)
 |_http-title: Bolt | A hero is unleashed
-| fingerprint-strings: 
-|   FourOhFourRequest: 
+| fingerprint-strings:
+|   FourOhFourRequest:
 |     HTTP/1.0 404 Not Found
 |     Date: Wed, 24 Nov 2021 20:18:31 GMT
 |     Connection: close
@@ -48,7 +50,7 @@ PORT     STATE SERVICE REASON  VERSION
 |     </head>
 |     <body>
 |     href="#main-content" class="vis
-|   GetRequest: 
+|   GetRequest:
 |     HTTP/1.0 200 OK
 |     Date: Wed, 24 Nov 2021 20:18:31 GMT
 |     Connection: close
@@ -71,7 +73,7 @@ PORT     STATE SERVICE REASON  VERSION
 |     </head>
 |_    <body class="front">
 |_http-generator: Bolt
-| http-methods: 
+| http-methods:
 |_  Supported Methods: GET HEAD POST OPTIONS
 1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
 SF-Port8000-TCP:V=7.92%I=7%D=11/24%Time=619E9D82%P=x86_64-pc-linux-gnu%r(G
@@ -118,7 +120,8 @@ SF:vis");
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ```
-### ffuf 
+
+### ffuf
 
 ```
 .htaccess               [Status: 200, Size: 2956, Words: 411, Lines: 85]
@@ -145,6 +148,7 @@ Jake (Admin)
 ```
 
 Fiddling around in page `sub1` we find this
+
 ```
 
 
@@ -158,6 +162,7 @@ Jake (Admin)
 ```
 
 Reading the documentation a bit get us the directory of login page
+
 ```
 Finally, open the new installation in a browser. If you've used one of the commands above, you'll find the frontpage at http://127.0.0.1:8000/
 
@@ -168,7 +173,7 @@ Log in using the credentials you created when setting up the first user.
 
 We login at `bolt/login` page and get the version `3.7.1` on dashboard
 
-Now we can look for known vulnerabilities 
+Now we can look for known vulnerabilities
 
 we found exploit `48296` on exploitdb
 
@@ -182,11 +187,9 @@ And we are directl root bro
 id
 uid=0(root) gid=0(root) groups=0(root)
 ```
+
 But the flag is not in root folder it's in home
 
 `THM{lightning_bolt}`
 
 that was fast though
-
-
-

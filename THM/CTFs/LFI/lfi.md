@@ -1,5 +1,7 @@
 # LFI
 
+<img src="lfi.png" width=200 height=200 alt="lfi">
+
 ## Enumeration
 
 ### nmap
