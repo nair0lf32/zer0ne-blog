@@ -1,5 +1,7 @@
 # Linux Strenht Training
 
+<img src="lst.png" width=200 height=200 alt="lst">
+
 > Welcome to the gym! you think you master linux? well...you don't.
 > No one does! you think you master those find and grep commands you use everyday? ha! amateur! here are some tiny challenges to show you a glimpse of how you can flex with simple linux commands!
 > Just ssh and read those files!

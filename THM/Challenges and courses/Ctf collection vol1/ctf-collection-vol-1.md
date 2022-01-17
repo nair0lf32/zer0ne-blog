@@ -1,5 +1,7 @@
 # CTF Collection Vol 1
 
+<img src="holida.png" width=200 height=200 alt="holida">
+
 ## what does the base said?
 
 Yeah this one is just base 64, please do not make a fool of yourself and just decode it
@@ -30,14 +32,13 @@ Espace des couleurs |Non calibré
 
 <img src="Extinction.jpg" alt="extinct" width=400/>
 
-
 ```
 └──╼ $steghide --info Extinction.jpg
 "Extinction.jpg":
   format: jpeg
   capacit�: 1,3 KB
 Essayer d'obtenir des informations � propos des donn�es incorpor�es ? (o/n) o
-Entrez la passphrase: 
+Entrez la passphrase:
   fichier � inclure "Final_message.txt":
     taille: 79,0 Byte
     cryptage: rijndael-128, cbc
@@ -45,12 +46,12 @@ Entrez la passphrase:
 
 
 └──╼ $steghide --extract -sf Extinction.jpg
-Entrez la passphrase: 
+Entrez la passphrase:
 �criture des donn�es extraites dans "Final_message.txt".
 
 ```
-Now just read `Final_message.txt` for your flag
 
+Now just read `Final_message.txt` for your flag
 
 ## Erm...Magick
 
@@ -76,9 +77,10 @@ QR-Code:THM{qr_code_can_hide_stuff}
 scanned 1 barcode symbols from 1 images in 0,03 seconds
 ```
 
-##  Reverse it or read it? 
+## Reverse it or read it?
 
 I will just read it thanks
+
 ```
 └──╼ $strings hello.hello
 /lib64/ld-linux-x86-64.so.2
@@ -110,24 +112,23 @@ Or if you are a crypto expert...anyway just decode it
 
 ## Left or Right?
 
-The author is right its not ROT 13 but its still ceasar 
+The author is right its not ROT 13 but its still ceasar
 
 More like 19 rotations...he said the flags would always be in THM{flag} format
 
 well...decode it
 
-## Make a comment 
+## Make a comment
 
 Always check he code folks
 
 ```
-            <div class="room-task-desc-data"> <p>No downloadable file, no ciphered or encoded text. Huh .......<br></p> 
+            <div class="room-task-desc-data"> <p>No downloadable file, no ciphered or encoded text. Huh .......<br></p>
 <p style="display:none;"> THM{always_check_the_code} </p></div>
         </div>
 ```
 
 ## Can you fix it?
-
 
 ```
 └──╼ $file spoil.png
@@ -171,7 +172,6 @@ I wont bother blurring this one so have a free flag (I seriously recommand doing
 
 <img src="spoil.png" alt="spoil" width=200/>
 
-
 ## Read it
 
 Haha Reddit
@@ -182,7 +182,7 @@ that would kill the fun of using google
 
 ## Spin my head
 
-AAHHH brainf*ck!! quick decode it!
+AAHHH brainf\*ck!! quick decode it!
 
 ## An exclusive!
 
@@ -192,7 +192,7 @@ Or you use an online tool like a baby
 
 Or again the third alternative, you steal the code online like I do sometimes
 
-I don't know what that make me 
+I don't know what that make me
 
 As long as you understand it...
 
@@ -226,11 +226,12 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 266099        0x40F73         End of Zip archive, footer length: 22
 
 ```
+
 just check the extracted folder
 
 ## Darkness
-<img src="dark.png" alt="dark" width=300/>
 
+<img src="dark.png" alt="dark" width=300/>
 
 grab stegsolve from a google search (github)
 
@@ -247,15 +248,15 @@ move in created bin folder and do `java -jar stegsolve.jar`
 
 then its a java GUI tool you have to fiddle with
 
-just look around a bit and use the arrows at the bottom 
+just look around a bit and use the arrows at the bottom
 
 `Blue plane 1` is where you want to go
 
 typing the flag by hand is where i felt pain
 
 ## A soundng QR
-<img src="QRCTF.png" alt="sound_qr" width=200/>
 
+<img src="QRCTF.png" alt="sound_qr" width=200/>
 
 zbar-tools didnt work this time so I just used an online QR scanner
 
@@ -299,7 +300,7 @@ It was already kinda obvious but the hint make it clearer
 
 dec -> hex -> ascii
 
-just do that 
+just do that
 
 ## Read the packet
 
@@ -340,8 +341,4 @@ Hypertext Transfer Protocol
 
 Just follow the stream of that request and you get the final flag!
 
-
 Ok this challenge was long but fun to do.
-
-
-

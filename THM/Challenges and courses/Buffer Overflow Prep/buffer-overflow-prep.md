@@ -1,14 +1,14 @@
 # Buffer Overflow Prep
 
+<img src="bofprep.png" width=200 height=200 alt="bofprep">
+
 # Overflow 1
 
 xfreerdp /u:admin /p:password /cert:ignore /v:10.10.16.170 /workarea
 
 immunity debugger: oscp.exe
 
-
 nc 10.10.16.170 1337
-
 
 ```
 └──╼ $/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 600

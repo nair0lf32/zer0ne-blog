@@ -1,5 +1,7 @@
 # Crack the hash
 
+<img src="cth.jpeg" width=200 height=200 alt="cth">
+
 Anoher challenges room
 
 Just hashes to crack
