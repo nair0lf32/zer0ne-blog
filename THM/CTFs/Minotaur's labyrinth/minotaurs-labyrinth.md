@@ -1,5 +1,7 @@
 # Minotaur's labyrinth
 
+<img src="minotaur.png" alt="minotaur" width=200 height=200>
+
 ## Enumeration
 
 ### nmap
@@ -136,7 +138,7 @@ Alternativel there is a riddle in the source code of login page
 
 you can reconstitute daedalus password solving it, but me I just found them in logs
 
-![minotaur](login.jpg)
+![labyrinth](login.jpg)
 
 Now we can login...and there is a search bar...
 
