@@ -2,14 +2,12 @@
 
 <img src="pictures/dark_logo.png" alt="logo" width="200" height="200">
 
-###### credits: this logo is inspired from Genegoldstein's work for
-
-###### izzy deluxe in the living tombstone's hunter song
+###### credits: this logo is inspired from Genegoldstein's work for izzy deluxe in the living tombstone's hunter song
 
 Hello friend 🤖, welcome to my simple writeups repo. I am nairolf32.  
-I recently became a big fan of cyberecurity and currently getting stronger,  
-now playing ctfs on various websites. I am no expert yet, merely a beginner  
-but I am getting there...someday.
+I am learning a bit of cyberecurity and slowly getting stronger,  
+I Played some ctfs on various websites ( I am no expert yet, merely a beginner  
+but I am getting there someday )
 
 I decided to keep a track of what I already know/did/learnt by writing it down  
 Here is a good place for that. In this repository you can find all my ctf stuff.  
@@ -35,18 +33,11 @@ others (I got stuck sometimes...)
 
 I also provide in the writeup subfolder files needed and used for the ctfs.
 
-But for the sake of effort I won't show flags. I give everything needed...credentials, exploits, keys...But No flags. with what is given you can get the flag anyway if you
-want to use my writeups.
+But for the sake of effort I won't show flags. I give everything needed...credentials, exploits, keys...But No flags. with what is given you can get the flag anyway if you want to use my writeups.
 
 looking forward bigger CTF's and maybe a carreer in cyber? Hackerlab.bj, Oscp, Hackerone bounty hunts, Google ctf...
 
-those are some of my potential objectives and I working toward them :)
+those are potential objectives and I am working toward them :)
 
 Good luck and Have fun!
 
-<!--
-TODO:
-- fix all thm ctf images
-- redo rooms with missing writeups
-- add more ctfs
--->
