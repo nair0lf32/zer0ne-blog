@@ -43,7 +43,7 @@ those are potential objectives and I am working toward them :)
 
 Other places I fool around (not writing writeups yet but playing challenges):
 
-- [Cybertalents](https://cybertalents.com/account/profile/Nairolf32)
+- [Cybertalents](https://cybertalents.com/members/nairolf32/profile)
 
 
 
