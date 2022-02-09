@@ -39,5 +39,14 @@ looking forward bigger CTF's and maybe a carreer in cyber? Hackerlab.bj, Oscp, H
 
 those are potential objectives and I am working toward them :)
 
+
+
+Other places I fool around (not writing writeups yet but playing challenges):
+
+- [Cybertalents](https://cybertalents.com/account/profile/Nairolf32)
+
+
+
+
 Good luck and Have fun!
 
