@@ -33,18 +33,20 @@ others (I got stuck sometimes...)
 
 I also provide in the writeup subfolder files needed and used for the ctfs.
 
-But for the sake of effort I won't show flags. I give everything needed...credentials, exploits, keys...But No flags. with what is given you can get the flag anyway if you want to use my writeups.
+But for the sake of effort I won't show flags. I give everything needed...credentials, exploits, keys...But No flags. with what is given you can get the flag anyway if you ever decide to use my writeups.
 
-looking forward bigger CTF's and maybe a carreer in cyber? Hackerlab.bj, Oscp, Hackerone bounty hunts, Google ctf...
+looking forward bigger CTF's and maybe a carreer in cyber? 
 
-those are potential objectives and I am working toward them :)
+Hackerlab.bj, Oscp, Hackerone bounty hunts, Google ctf...
 
+Potential objectives I am working toward :)
 
 
 Other places I fool around (not writing writeups yet but playing challenges):
 
 - [Cybertalents](https://cybertalents.com/members/nairolf32/profile)
-
+- [hacker101](https://ctf.hacker101.com/) (hackerone prep)
+- [otw wargames](https://overthewire.org/wargames/)
 
 
 
