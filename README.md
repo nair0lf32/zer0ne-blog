@@ -23,7 +23,7 @@ The writeups are from many platforms. My favorites ones are:
 [ ![nairolf](https://tryhackme-badges.s3.amazonaws.com/nairolf.png)](https://tryhackme.com/p/nairolf)
 
 - ### Cyberseclabs:
-  [check my cyberseclabs profile ](https://www.cyberseclabs.co.uk/profile)
+  [cyberseclabs profile ](https://www.cyberseclabs.co.uk/profile)
 
 There is a folder for each platform/website, and subfolders for every machine/box/ctf  
 the writeups are named after every ctf machine/room in markdown format.
