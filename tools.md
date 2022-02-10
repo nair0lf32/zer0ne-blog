@@ -62,3 +62,9 @@ Ordered by categories
 
 - kerbrute
 - impacket tools
+
+# post-exploitation
+- pwncat
+- mimikatz
+- Empire+Starkiller
+
