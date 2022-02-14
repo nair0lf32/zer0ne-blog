@@ -1,8 +1,8 @@
 # Tools
 
-Just a list of my favorites tools!
+Just a list of my favorites tools! The ones I use the most 
 
-The ones I use the most and the one I discovered during my journey
+and the one I discovered during my journey
 
 Ordered by categories
 
@@ -22,6 +22,9 @@ Ordered by categories
 
 - ffuf
 - gobuster
+
+
+
 
 ## exploitation
 
@@ -63,8 +66,18 @@ Ordered by categories
 - kerbrute
 - impacket tools
 
+
+## privilege escalation
+- Linenum
+- PEASS tools
+- gtfobins
+- JAWS
+
+
 # post-exploitation
 - pwncat
 - mimikatz
 - Empire+Starkiller
 
+# Rootkits
+- Reptile
