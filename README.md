@@ -46,8 +46,11 @@ Other places I fool around (not writing writeups yet but playing challenges):
 
 - [Cybertalents](https://cybertalents.com/members/nairolf32/profile)
 - [hacker101](https://ctf.hacker101.com/) (hackerone prep)
-- [otw wargames](https://overthewire.org/wargames/)
-
+- [Overthewire wargames](https://overthewire.org/wargames/)
+- [googleCTF](https://capturetheflag.withgoogle.com/beginners-quest)
+- [hellbound hackers](https://hbh.sh/user/nairolf32)
+- [pentesterlab](https://pentesterlab.com)
+- [hackthisite?](https://www.hackthissite.org)
 
 
 Good luck and Have fun!
