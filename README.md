@@ -50,7 +50,7 @@ Other places I fool around (not writing writeups yet but playing challenges):
 - [googleCTF](https://capturetheflag.withgoogle.com/beginners-quest)
 - [hellbound hackers](https://hbh.sh/user/nairolf32)
 - [pentesterlab](https://pentesterlab.com)
-- [hackthisite?](https://www.hackthissite.org)
+- [hackthisite?](https://www.hackthissite.org/user/view/nairolf32/)
 - [vulnhub](https://www.vulnhub.com/)
 
 
