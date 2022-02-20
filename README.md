@@ -45,7 +45,7 @@ Potential objectives I am working toward :)
 Other places I fool around (not writing writeups yet but playing challenges):
 
 - [Cybertalents](https://cybertalents.com/members/nairolf32/profile)
-- [hacker101](https://ctf.hacker101.com/) (hackerone prep)
+- [hacker101](https://ctf.hacker101.com/) ([hackerone](https://hackerone.com/nairolf?type=user) prep)
 - [Overthewire wargames](https://overthewire.org/wargames/)
 - [googleCTF](https://capturetheflag.withgoogle.com/beginners-quest)
 - [hellbound hackers](https://hbh.sh/user/nairolf32)
