@@ -6,46 +6,38 @@ and the one I discovered during my journey
 
 Ordered by categories
 
-## Enumeration
+## Reconnaissance & Enumeration 
 
-### Reconnaissance
+| Scanning                                         |  Footprint                                             | Discovery
+| --------                                         |  ---------                                             | ---------
+| [Nmap](https://nmap.org/) (good ol')             | [Recon-ng](https://github.com/lanmaster53/recon-ng)    | [Gobuster](https://github.com/OJ/gobuster) 
+| [Rustscan](https://github.com/RustScan/RustScan) |                                                        | [Ffuf](https://github.com/ffuf/ffuf)
 
-- recon-ng
 
-### Scanning
-
-- nmap (the old timer)
-- rustscan
-- enum4linux
-
-### Directories/Fuzzers
-
-- ffuf
-- gobuster
-
+[Enum4linux](https://www.kali.org/tools/enum4linux/)
 
 
 
 ## exploitation
 
-### payload generators/sources
+| Frameworks                                                  | Common exploits
+| ----------                                                  | ---------------
+| [Metasploit](https://www.metasploit.com/) (the unmatched)   | [Exploitdb](https://www.metasploit.com/) (searchsploit)
 
-- metasploit framework (the unmatched)
 
-## Password cracking
 
-### offline
 
-- john (the ripper)
+## Cryptography
 
-### online
+| Crackers                                                  | Hashes                                                      | Decoders
+| --------                                                  | --------------                                              | ---------
+| [John](https://www.kali.org/tools/john/) (the ripper)     | [Hashcat](https://hashcat.net/hashcat/)                     | [Dcode](https://www.dcode.fr/)
+| [Hydra](https://www.kali.org/tools/hydra/) (the legacy)   | [crackstation](https://crackstation.net/)                   | [Cyberchef](https://gchq.github.io/CyberChef/)                             
+|                                                           | [Hashcrack](https://hashcrack.com/)                         | 
+|                                                           | [Hashes.com](https://hashes.com/en/decrypt/hash)            |
+|                                                           | [Hash analyzer](https://www.tunnelsup.com/hash-analyzer/)   |
 
-- hydra
 
-## Hashes
-
-- hashcrack
-- haiti
 
 ## Steganography
 
@@ -68,6 +60,7 @@ Ordered by categories
 
 
 ## privilege escalation
+
 - Linenum
 - PEASS tools
 - gtfobins
