@@ -13,7 +13,6 @@ Ordered by categories
 | [Nmap](https://nmap.org/) (good ol')             | [Recon-ng](https://github.com/lanmaster53/recon-ng)    | [Gobuster](https://github.com/OJ/gobuster) 
 | [Rustscan](https://github.com/RustScan/RustScan) |                                                        | [Ffuf](https://github.com/ffuf/ffuf)
 
-
 ### Vulnerabilty scanners ( For either professionals, lazy people, or both)
 
 |  Free (for you and me)                                                 | Paid (If you got money)
@@ -29,7 +28,6 @@ Ordered by categories
 | -----                                                 | ----------------                                                | -------------
 | [Enum4linux](https://www.kali.org/tools/enum4linux/)  | [Kerbrute](https://github.com/ropnop/kerbrute)                  | [Mimikatz](https://www.kali.org/tools/mimikatz/) (the looter)
 |                                                       | [Impacket tools](https://github.com/SecureAuthCorp/impacket)    |
-
 
 
 
@@ -139,12 +137,16 @@ Ordered by categories
 
 ## OSINT
 
+| Utilities
+| ----------
+| [Osint Framework](https://osintframework.com/) (its a framework)
+| [Maltego](https://www.maltego.com/) (Feel like a Professional)
 
 
 
 ## Anonimity
 
-
-
-
+| Cloaking                  | (De)Obfuscation                                   | Evasion
+| ----------                | ----------------                                  | ---------- 
+|                           | [Obfuscator.io](https://obfuscator.io/)           |
 
