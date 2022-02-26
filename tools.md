@@ -14,6 +14,14 @@ Ordered by categories
 | [Rustscan](https://github.com/RustScan/RustScan) |                                                        | [Ffuf](https://github.com/ffuf/ffuf)
 
 
+### Vulnerabilty scanners ( For either professionals, lazy people, or both)
+
+|  Free (for you and me)                                                 | Paid (If you got money)
+|  ---------------------                                                 | ----------------------
+|  [Nikto](https://github.com/sullo/nikto) (technically correct)         | [Acunetix](https://www.acunetix.com/)
+|  [OpenVas](https://www.openvas.org/)                                   | [Nessus](https://www.tenable.com/products/nessus) (technically it's not free)
+
+
 
 ### Windows (specials)
 
@@ -32,6 +40,12 @@ Ordered by categories
 | [Metasploit](https://www.metasploit.com/) (the unmatched)   | [Exploitdb](https://www.metasploit.com/) (searchsploit)
 
 
+### Web (specials)
+
+| Proxies
+| -------
+| [burpsuite](https://portswigger.net/burp/communitydownload) (community edition)
+| [Owasp ZAP](https://www.zaproxy.org/) (It's from OWASP)
 
 
 ## Cryptography
@@ -47,6 +61,11 @@ Ordered by categories
 
 ## Reverse Engeneering
 
+| Disassembler Frameworks                                            | Debuggers and Decompilers
+| -------------                                                      | ---------
+| [IDA Pro](https://hex-rays.com/ida-pro/) (industry standard)       | [GDB](https://www.sourceware.org/gdb/) (check PwnGdb and olly gdb)
+| [Ghidra](https://ghidra-sre.org/) (pride of the NSA)               | [Cutter](https://cutter.re/)
+| [Radare2](https://github.com/radareorg/radare2)                    |
 
 
 
@@ -63,6 +82,10 @@ Ordered by categories
 
 ## Malware Analysis
 
+| Online
+| -------
+| [virustotal](https://www.virustotal.com/gui/) (too famous)
+|
 
 
 ### Android (specials)
@@ -72,6 +95,7 @@ Ordered by categories
 | [Mobsf](https://github.com/MobSF/Mobile-Security-Framework-MobSF)
 | [Apktool](https://ibotpeaches.github.io/Apktool/)
 | [Adb](https://developer.android.com/studio/command-line/adb)
+| [Zimperium tools](https://www.zimperium.com/) (yeah...kinda)
 
 
 
@@ -85,12 +109,11 @@ Ordered by categories
 
 ## privilege escalation
 
-| Scripts
-| -------
-| [Linenum](https://github.com/rebootuser/LinEnum)
-| [PEASS tools](https://github.com/carlospolop/PEASS-ng)
-| [GTFObins](https://gtfobins.github.io/) (the ultimate)
-| [JAWS](https://github.com/411Hall/JAWS)
+| Scripts                                                 | References
+| -------                                                 | ----------
+| [Linenum](https://github.com/rebootuser/LinEnum)        | [GTFObins](https://gtfobins.github.io/) (the ultimate)
+| [PEASS tools](https://github.com/carlospolop/PEASS-ng)  |
+| [JAWS](https://github.com/411Hall/JAWS)                 |
 
 
 
@@ -102,17 +125,26 @@ Ordered by categories
 | [pwncat](https://github.com/calebstewart/pwncat) (another cat)                         |
 | [Empire](https://www.powershellempire.com/) ([deprecated] check Starkiller)            |
 | [Metasploit](https://www.metasploit.com/) (yes, again!)                                |
-
+| [Covenant](https://github.com/cobbr/Covenant/)                                                                           |
 
 
 
 ## Social Engeneering
 
+| Frameworks
+| ----------
+| [SET](https://www.trustedsec.com/tools/the-social-engineer-toolkit-set/)
+
+
+
+## OSINT
 
 
 
 
-## Evasion
+## Anonimity
+
+
 
 
 
