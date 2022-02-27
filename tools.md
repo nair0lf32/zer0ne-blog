@@ -208,6 +208,8 @@ Here is a list of places to find more tools:
 
 - [Kitploit](https://www.kitploit.com/)
 
+- [Blackarch tools](https://blackarch.org/tools.html) (Or any pentest linux distro tools)
+
 - Also Google. 
 
 There are also some shady places (mostly onion links) with mad awesome tools, but we are not going there ( know what youre doing)
