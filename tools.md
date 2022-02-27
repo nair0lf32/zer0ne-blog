@@ -1,6 +1,6 @@
 # Tools
 
-Just a list of cool tools! The ones I use the most ( or not )
+Just a list of cool cybersec tools! The ones I use the most ( or not )
 
 and the one I discovered during my journey
 
@@ -35,18 +35,21 @@ Ordered by categories (kinda)
 
 ### Windows (specials)
 
-| Samba                                                 | Active Directory                                                | Post-exploit
-| -----                                                 | ----------------                                                | -------------
-| [Enum4linux](https://www.kali.org/tools/enum4linux/)  | [Kerbrute](https://github.com/ropnop/kerbrute)                  | [Mimikatz](https://www.kali.org/tools/mimikatz/) (the looter)
-|                                                       | [Impacket tools](https://github.com/SecureAuthCorp/impacket)    |
+| Specific services                                       | Active Directory                                                  | Post-exploit
+| -----                                                   | ----------------                                                  | -------------
+| [Enum4linux](https://www.kali.org/tools/enum4linux/)    | [Kerbrute](https://github.com/ropnop/kerbrute)                    | [Mimikatz](https://www.kali.org/tools/mimikatz/) (the looter)
+| [Evilwinrm](https://github.com/Hackplayers/evil-winrm)  | [Impacket tools](https://github.com/SecureAuthCorp/impacket)      |
 
 
 
 ## exploitation
 
-| Frameworks                                                  | Common exploits
-| ----------                                                  | ---------------
-| [Metasploit](https://www.metasploit.com/) (the unmatched)   | [Exploitdb](https://www.metasploit.com/) (searchsploit)
+| Frameworks and payload generators                             | Common exploits                                          | Targetted
+| ----------                                                    | ---------------                                          | ------
+| [Metasploit](https://www.metasploit.com/) (The unmatched)     | [Exploitdb](https://www.metasploit.com/) (searchsploit)  | [Camover](https://github.com/EntySec/CamOver)
+| [Hatsploit](https://github.com/EntySec/HatSploit) (Hatvenom)  | [Sqlmap](https://sqlmap.org/)                            | [Slowloris](https://github.com/gkbrk/slowloris) (Don't)
+|                                                               | [Nosqlmap](https://github.com/codingo/NoSQLMap)          | [GmailHack](https://github.com/adrijano/Gmail-Hack) (Idk either)
+|                                                               |                                                          |
 
 
 ### Web (specials)
@@ -99,7 +102,6 @@ Ordered by categories (kinda)
 
 
 
-
 ### Android (specials)
 
 | Analysis                                                                        | Attacks
@@ -108,7 +110,7 @@ Ordered by categories (kinda)
 | [Apktool](https://ibotpeaches.github.io/Apktool/)  (uses jadx)                  | [backdoor-apk](https://github.com/dana-at-cp/backdoor-apk)
 | [Adb](https://developer.android.com/studio/command-line/adb)                    | [TheFatRat](https://github.com/Screetsec/TheFatRat) (obese rodent)             
 | [Zimperium tools](https://www.zimperium.com/) (yeah...kinda)                    | [Msfvenom](https://www.offensive-security.com/metasploit-unleashed/msfvenom/)
-| [Apkleaks](https://github.com/dwisiswant0/apkleaks)                             |
+| [Apkleaks](https://github.com/dwisiswant0/apkleaks)                             | []()
 | [MARA](https://github.com/xtiankisutsa/MARA_Framework)                          |
 | [Drozer](https://github.com/FSecureLABS/drozer)                                 |
 | [Inspeckage](https://github.com/ac-pm/Inspeckage)                               |
@@ -121,7 +123,6 @@ Ordered by categories (kinda)
 | Audit tools
 | -----------
 | [wifite 2](https://github.com/derv82/wifite2)
-
 
 
 ## privilege escalation
@@ -145,6 +146,12 @@ Ordered by categories (kinda)
 | [Covenant](https://github.com/cobbr/Covenant/)                                                                           |
 
 
+## Forensics
+
+| Frameworks/suites 
+| ----------
+| [Volatility](https://www.volatilityfoundation.org/)
+
 
 ## Social Engeneering
 
@@ -156,7 +163,7 @@ Ordered by categories (kinda)
 
 ## OSINT
 
-| Utilities
+| Frameworks/suites
 | ----------
 | [Osint Framework](https://osintframework.com/) (its a framework)
 | [Maltego](https://www.maltego.com/) (Feel like a Professional)
@@ -165,27 +172,45 @@ Ordered by categories (kinda)
 
 ## Anonimity
 
-| Cloaking                  | (De)Obfuscation                                   | Evasion
-| ----------                | ----------------                                  | ---------- 
-|                           | [Obfuscator.io](https://obfuscator.io/)           |
+| Cloaking                                                             | (De)Obfuscation                                   | Evasion
+| ----------                                                           | ----------------                                  | ---------- 
+| [Anonsurf](https://linuxhint.com/anonsurf/)                          | [Obfuscator.io](https://obfuscator.io/)           |
 
 
 
 
 # My favorites ( kek )
 
-- nmap
-- Meta(fcking)sploit
-- ...
+My most used tools, mostly defines my typical process 
+- Utilities:
+  - Google (your best friend)
+- Enumeration:
+  - Rustscan
+  - Nmap
+- Access (exploitation):
+  - Meta(fcking)sploit
+  - Sqlmap
+- Post-Exploitation:
+  - Gtfobins
+
+For Other challenges:
+- Crypto: dcode, crackstation...
+- Forensics: volatility
+
+
 
 
 # More tools (Moarrrr!)
 
-Do not feed the script kiddy in you. Tools are cool but knoweledge is better!
+Here is a list of places to find more tools:
 
-Now that I said this, here is a list of places to find more tools:
+- [Github](https://github.com) ( alot in here! )
 
-- TODO
+- [Kitploit](https://www.kitploit.com/)
 
-- TODO
+- Also Google. 
+
+There are also some shady places (mostly onion links) with mad awesome tools, but we are not going there ( know what youre doing)
+
+** Do not feed the script kiddy in you. Tools are cool but knoweledge is better! ( But tools are cool though )
 
