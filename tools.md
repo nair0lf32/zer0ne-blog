@@ -1,10 +1,10 @@
 # Tools
 
-Just a list of my favorites tools! The ones I use the most 
+Just a list of cool tools! The ones I use the most ( or not )
 
 and the one I discovered during my journey
 
-Ordered by categories
+Ordered by categories (kinda)
 
 ## Reconnaissance & Enumeration 
 
@@ -12,19 +12,25 @@ Ordered by categories
 | --------                                                  |  ---------                                                     | ---------
 | [Nmap](https://nmap.org/) (good old)                      | [Recon-ng](https://github.com/lanmaster53/recon-ng)            | [Gobuster](https://github.com/OJ/gobuster) 
 | [Rustscan](https://github.com/RustScan/RustScan)          | [Blackwidow](https://github.com/1N3/BlackWidow)                | [Ffuf](https://github.com/ffuf/ffuf)
-| [NmapAutomator](https://github.com/21y4d/nmapAutomator)   | [Cmseek](https://github.com/Tuhinshubhra/CMSeeK)               | 
-| [onesixtyone](https://github.com/trailofbits/onesixtyone) | [Eyewitness](https://github.com/FortyNorthSecurity/EyeWitness) |
+| [NmapAutomator](https://github.com/21y4d/nmapAutomator)   | [Cmseek](https://github.com/Tuhinshubhra/CMSeeK)               | [Sublist3r](https://github.com/aboul3la/Sublist3r)
+| [onesixtyone](https://github.com/trailofbits/onesixtyone) | [Eyewitness](https://github.com/FortyNorthSecurity/EyeWitness) | [VhostScan](https://github.com/codingo/VHostScan/)
 |                                                           | [Recon](https://github.com/dirsoooo/Recon) (All in one)        |
+|                                                           | [Shodan eye](https://github.com/BullsEye0/shodan-eye)          |
+|                                                           | [VulnX](https://github.com/anouarbensaad/VulnX)                |
+
 
 
 
 ### Vulnerabilty scanners ( For either professionals, lazy people, or both)
 
-|  Free (for you and me)                                                 | Paid (If you got money)
-|  ---------------------                                                 | ----------------------
-|  [Nikto](https://github.com/sullo/nikto) (technically correct)         | [Acunetix](https://www.acunetix.com/)
-|  [Rapidscan](https://github.com/skavngr/rapidscan) (Try it!)           | [Nessus](https://www.tenable.com/products/nessus) (technically it's not free)
-|  [OpenVas](https://www.openvas.org/)                                   | 
+| Free (for you and me)                                                 | Paid (If you got money)
+| ---------------------                                                 | ----------------------
+| [Nikto](https://github.com/sullo/nikto) (technically correct)         | [Acunetix](https://www.acunetix.com/)
+| [Rapidscan](https://github.com/skavngr/rapidscan) (Try it!)           | [Nessus](https://www.tenable.com/products/nessus) (technically it's not free)
+| [OpenVas](https://www.openvas.org/)                                   | 
+| [Vega](https://subgraph.com/vega/)                                    |
+| Vulnnr (DEAD?)                                                           |
+
 
 
 ### Windows (specials)
@@ -162,4 +168,24 @@ Ordered by categories
 | Cloaking                  | (De)Obfuscation                                   | Evasion
 | ----------                | ----------------                                  | ---------- 
 |                           | [Obfuscator.io](https://obfuscator.io/)           |
+
+
+
+
+# My favorites ( kek )
+
+- nmap
+- Meta(fcking)sploit
+- ...
+
+
+# More tools (Moarrrr!)
+
+Do not feed the script kiddy in you. Tools are cool but knoweledge is better!
+
+Now that I said this, here is a list of places to find more tools:
+
+- TODO
+
+- TODO
 
