@@ -8,18 +8,23 @@ Ordered by categories
 
 ## Reconnaissance & Enumeration 
 
-| Scanning                                         |  Footprint                                             | Discovery
-| --------                                         |  ---------                                             | ---------
-| [Nmap](https://nmap.org/) (good ol')             | [Recon-ng](https://github.com/lanmaster53/recon-ng)    | [Gobuster](https://github.com/OJ/gobuster) 
-| [Rustscan](https://github.com/RustScan/RustScan) |                                                        | [Ffuf](https://github.com/ffuf/ffuf)
+| Scanning                                                  |  Footprint                                                     | Discovery
+| --------                                                  |  ---------                                                     | ---------
+| [Nmap](https://nmap.org/) (good old)                      | [Recon-ng](https://github.com/lanmaster53/recon-ng)            | [Gobuster](https://github.com/OJ/gobuster) 
+| [Rustscan](https://github.com/RustScan/RustScan)          | [Blackwidow](https://github.com/1N3/BlackWidow)                | [Ffuf](https://github.com/ffuf/ffuf)
+| [NmapAutomator](https://github.com/21y4d/nmapAutomator)   | [Cmseek](https://github.com/Tuhinshubhra/CMSeeK)               | 
+| [onesixtyone](https://github.com/trailofbits/onesixtyone) | [Eyewitness](https://github.com/FortyNorthSecurity/EyeWitness) |
+|                                                           | [Recon](https://github.com/dirsoooo/Recon) (All in one)        |
+
+
 
 ### Vulnerabilty scanners ( For either professionals, lazy people, or both)
 
 |  Free (for you and me)                                                 | Paid (If you got money)
 |  ---------------------                                                 | ----------------------
 |  [Nikto](https://github.com/sullo/nikto) (technically correct)         | [Acunetix](https://www.acunetix.com/)
-|  [OpenVas](https://www.openvas.org/)                                   | [Nessus](https://www.tenable.com/products/nessus) (technically it's not free)
-
+|  [Rapidscan](https://github.com/skavngr/rapidscan) (Try it!)           | [Nessus](https://www.tenable.com/products/nessus) (technically it's not free)
+|  [OpenVas](https://www.openvas.org/)                                   | 
 
 
 ### Windows (specials)
@@ -40,10 +45,12 @@ Ordered by categories
 
 ### Web (specials)
 
-| Proxies
-| -------
-| [burpsuite](https://portswigger.net/burp/communitydownload) (community edition)
-| [Owasp ZAP](https://www.zaproxy.org/) (It's from OWASP)
+| Proxies                                                                               | Frameworks
+| -------                                                                               | -----------
+| [burpsuite](https://portswigger.net/burp/communitydownload) (community edition)       | [Arachni](https://github.com/Arachni/arachni)
+| [Owasp ZAP](https://www.zaproxy.org/) (It's from OWASP)                               | [Golismero](https://github.com/golismero/golismero)
+|                                                                                       | [Leviathan](https://github.com/utkusen/leviathan) ( sadly DEPRECATED )
+
 
 
 ## Cryptography
@@ -83,17 +90,23 @@ Ordered by categories
 | Online
 | -------
 | [virustotal](https://www.virustotal.com/gui/) (too famous)
-|
+
+
 
 
 ### Android (specials)
 
-| Analysis
-| --------
-| [Mobsf](https://github.com/MobSF/Mobile-Security-Framework-MobSF)
-| [Apktool](https://ibotpeaches.github.io/Apktool/)
-| [Adb](https://developer.android.com/studio/command-line/adb)
-| [Zimperium tools](https://www.zimperium.com/) (yeah...kinda)
+| Analysis                                                                        | Attacks
+| --------                                                                        | ---------
+| [Mobsf](https://github.com/MobSF/Mobile-Security-Framework-MobSF)               | [§ARA](https://github.com/termuxhackers-id/SARA) (careful with this one)
+| [Apktool](https://ibotpeaches.github.io/Apktool/)  (uses jadx)                  | [backdoor-apk](https://github.com/dana-at-cp/backdoor-apk)
+| [Adb](https://developer.android.com/studio/command-line/adb)                    | [TheFatRat](https://github.com/Screetsec/TheFatRat) (obese rodent)             
+| [Zimperium tools](https://www.zimperium.com/) (yeah...kinda)                    | [Msfvenom](https://www.offensive-security.com/metasploit-unleashed/msfvenom/)
+| [Apkleaks](https://github.com/dwisiswant0/apkleaks)                             |
+| [MARA](https://github.com/xtiankisutsa/MARA_Framework)                          |
+| [Drozer](https://github.com/FSecureLABS/drozer)                                 |
+| [Inspeckage](https://github.com/ac-pm/Inspeckage)                               |
+| [Quark](https://github.com/quark-engine/quark-engine)                           |
 
 
 
