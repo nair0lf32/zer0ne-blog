@@ -125,9 +125,7 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 
 Listen to that audio..its morse! you can decode it [here](https://morsecode.world/international/decoder/audio-decoder-adaptive.html)
 
-Then you can free this guy right here:
-
-<img src="helpme/_Table.jpg.extracted/Joseph_Oda.jpg" alt="joseph_oda" width=200>
+Then you can free joseph oda
 
 as he is polite, he say `thankyou.txt`
 
