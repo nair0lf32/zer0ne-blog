@@ -427,7 +427,7 @@ SUCESS - ebqattle
 
 creds = `james:vuimaxcullings`
 
-Ah! priilege escalation
+Ah! privilege escalation
 
 ## Priviledge escalation
 
@@ -457,9 +457,5 @@ NOW YOU ARE LINUX STRONGER!!!
 ```
 
 wow...just...wow...
-
-I deleted 2020-08-13.zip.gpg because it was too big for github too
-
-you can get that yourself if needed anyway
 
 G'night folks!

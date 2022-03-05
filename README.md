@@ -13,34 +13,32 @@ I decided to keep a track of what I already know/did/learnt by writing it down
 Here is a good place for that. In this repository you can find all my ctf stuff.  
 The writeups are from many platforms. My favorites ones are:
 
-- ### Hackthebox:
+- ### Hackthebox
 
-[ ![nairolf32](https://www.hackthebox.eu/badge/image/607474)](https://app.hackthebox.com/profile/607474)  
+[![nairolf32](https://www.hackthebox.eu/badge/image/607474)](https://app.hackthebox.com/profile/607474)  
  well I am just beginning there and still learning in the academy
 
-- ### Tryhackme:
+- ### Tryhackme
 
-[ ![nairolf](https://tryhackme-badges.s3.amazonaws.com/nairolf.png)](https://tryhackme.com/p/nairolf)
+[![nairolf](https://tryhackme-badges.s3.amazonaws.com/nairolf.png)](https://tryhackme.com/p/nairolf)
 
-- ### Cyberseclabs:
-  [cyberseclabs profile ](https://www.cyberseclabs.co.uk/profile)
+- ### Cyberseclabs
+
+[My cyberseclabs profile](https://www.cyberseclabs.co.uk/profile)
 
 There is a folder for each platform/website, and subfolders for every machine/box/ctf  
 the writeups are named after every ctf machine/room in markdown format.
 
 Most are walktrough with detailled steps of how I did them...some are "inspired" from
-others (I got stuck sometimes...)
+others (I get stuck sometimes)
 
-I also provide in the writeup subfolder files needed and used for the ctfs.
+For the sake of effort I won't share flags. I give everything needed...credentials, exploits, keys...smetimes, But No flags.
 
-But for the sake of effort I won't show flags. I give everything needed...credentials, exploits, keys...But No flags. with what is given you can get the flag anyway if you ever decide to use my writeups.
+with what is given you can get the flag anyway if you ever decide to use my writeups.
 
-looking forward bigger CTF's and maybe a carreer in cyber? 
+Looking forward bigger CTF's and maybe a carreer in cyber?
 
-Hackerlab.bj, Oscp, Hackerone bounty hunts, Google ctf...
-
-Potential objectives I am working toward :)
-
+Hackerlab.bj, Oscp, Hackerone bounty hunts, and more.
 
 Other places I fool around (not writing writeups yet but playing challenges):
 
@@ -53,6 +51,12 @@ Other places I fool around (not writing writeups yet but playing challenges):
 - [hackthisite?](https://www.hackthissite.org/user/view/nairolf32/)
 - [vulnhub](https://www.vulnhub.com/)
 
+Also I am planning to remove the old writeups and guided challenges to keep the repo light and clean
+
+The platforms/websites are already there to teach/guide so no need to keep them here.
+
+So If I judge a challenge/ctf too basic or easy (I mean the solution is easily available) it may not appear here.
+
+I might keep some for the moment (Mostly those that quickly wrap important concepts)
 
 Good luck and Have fun!
-
