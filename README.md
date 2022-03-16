@@ -1,6 +1,6 @@
 # CTF's Writeups
 
-<img src="pictures/dark_logo.png" alt="logo" width="200" height="200" style="border-radius: 50%;">
+<img src="pictures/dark_logo.png" alt="logo" width="200" height="200">
 
 ###### *credits: this logo is inspired from Genegoldstein's work for izzy deluxe in the living tombstone's hunter song*
 
