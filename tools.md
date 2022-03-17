@@ -52,10 +52,8 @@ Ordered by categories (kinda)
 | ----------                                                    | ---------------                                               | ------
 | [Metasploit](https://www.metasploit.com/) (The unmatched)     | [Exploitdb](https://www.metasploit.com/) (searchsploit)       | [Camover](https://github.com/EntySec/CamOver)
 | [Hatsploit](https://github.com/EntySec/HatSploit) (Hatvenom)  | [Sqlmap](https://sqlmap.org/)                                 | [Slowloris](https://github.com/gkbrk/slowloris) (Don't)
-|                                                               | [Nosqlmap](https://github.com/codingo/NoSQLMap)               | [GmailHack](https://github.com/adrijano/Gmail-Hack) (Idk either)
-|                                                               | [AttackerKB](https://attackerkb.com/) (information is power)  |
-| [Pentestmonkey](https://pentestmonkey.net/) (instant shell)   |                                                               | 
-| [Revshells](https://www.revshells.com/) (shells of quality)   |                                                               |
+| [Pentestmonkey](https://pentestmonkey.net/) (instant shell)   | [Nosqlmap](https://github.com/codingo/NoSQLMap)               | [GmailHack](https://github.com/adrijano/Gmail-Hack) (Idk either)
+| [Revshells](https://www.revshells.com/) (shells of quality)   | [AttackerKB](https://attackerkb.com/) (information is power)  |                       
 
 
 ### Web (specials)
