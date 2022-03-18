@@ -52,6 +52,7 @@ Looking forward bigger CTF's (and maybe a carreer in cyber?)
 
 Other places I fool around (not writing writeups yet but playing challenges):
 
+- [PicoCTF](https://play.picoctf.org/users/nairolf32)
 - [Cybertalents](https://cybertalents.com/members/nairolf32/profile)
 - [hacker101](https://ctf.hacker101.com/) ([hackerone](https://hackerone.com/nairolf?type=user) prep)
 - [Overthewire wargames](https://overthewire.org/wargames/)
@@ -60,6 +61,7 @@ Other places I fool around (not writing writeups yet but playing challenges):
 - [pentesterlab](https://pentesterlab.com)
 - [hackthisite?](https://www.hackthissite.org/user/view/nairolf32/)
 - [vulnhub](https://www.vulnhub.com/)
+
 
 Also I am planning to remove the old writeups and guided challenges to keep the repo light and clean
 
@@ -76,5 +78,7 @@ And as I like linking and sharing stuff (curation is my passion lol) here is sim
 Note that I won't include those who give flags away (this is a fine selection sir)
 
 - [0xdf hack stuff](https://0xdf.gitlab.io/): mostly htb machines but this guy is still active (searching a box is not available though)
+- [infosecwriteups](https://infosecwriteups.com/): many people post writeups there, but remember it is part of medium (not free)
+- [awesomectf](https://c4pr1c3.github.io/awesome-ctf/) they have writeups too. That and...well, everything about ctfs
 
 Good luck and Have fun!
