@@ -52,7 +52,7 @@ Ordered by categories (kinda)
 | ----------                                                    | ---------------                                               | ------
 | [Metasploit](https://www.metasploit.com/) (The unmatched)     | [Exploitdb](https://www.metasploit.com/) (searchsploit)       | [Camover](https://github.com/EntySec/CamOver)
 | [Hatsploit](https://github.com/EntySec/HatSploit) (Hatvenom)  | [Sqlmap](https://sqlmap.org/)                                 | [Slowloris](https://github.com/gkbrk/slowloris) (Don't)
-| [Pentestmonkey](https://pentestmonkey.net/) (instant shell)   | [Nosqlmap](https://github.com/codingo/NoSQLMap)               | [GmailHack](https://github.com/adrijano/Gmail-Hack) (Idk either)
+| [Pentestmonkey](https://pentestmonkey.net/) (instant shell)   | [Nosqlmap](https://github.com/codingo/NoSQLMap)               | 
 | [Revshells](https://www.revshells.com/) (shells of quality)   | [AttackerKB](https://attackerkb.com/) (information is power)  |                       
 
 
@@ -139,13 +139,13 @@ Ordered by categories (kinda)
 
 ## post-exploitation
 
-| Command and control (C2)                                                               | Persistance (Roorkits +++) pivot and more                     
+| Command and control (C2)                                                               | Persistance (Rootkits +++) pivot and more                     
 | ---------                                                                              | ------------
 | [Cobalt strike](https://cobalt-strike.github.io/community_kit/) (industry standard)    | [Reptile](https://github.com/f0rb1dd3n/Reptile)
 | [pwncat](https://github.com/calebstewart/pwncat) (another cat)                         |
 | [Empire](https://www.powershellempire.com/) ([deprecated] check Starkiller)            |
 | [Metasploit](https://www.metasploit.com/) (yes, again!)                                |
-| [Covenant](https://github.com/cobbr/Covenant/)                                                                           |
+| [Covenant](https://github.com/cobbr/Covenant/)                                         |
 
 
 ## Forensics
@@ -179,10 +179,11 @@ Ordered by categories (kinda)
 
 ## Anonimity
 
-| Cloaking                                                             | (De)Obfuscation                                   | Evasion
+| Cloaking                                                             | (De)Obfuscation                                   | Evasion/Bypass
 | ----------                                                           | ----------------                                  | ---------- 
-| [Anonsurf](https://linuxhint.com/anonsurf/)                          | [Obfuscator.io](https://obfuscator.io/)           |
-|                                                                      | [de4js](https://lelinhtinh.github.io/de4js/)           |
+| [Anonsurf](https://linuxhint.com/anonsurf/)                          | [Obfuscator.io](https://obfuscator.io/)           | [UACME](https://github.com/hfiref0x/UACME)
+|                                                                      | [de4js](https://lelinhtinh.github.io/de4js/)      |
+
 
 ## Utilities
 | Browser extensions                                                                                    | Others
