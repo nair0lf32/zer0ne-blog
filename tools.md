@@ -76,13 +76,13 @@ Ordered by categories (kinda)
 |                                                                   | [Hash analyzer](https://www.tunnelsup.com/hash-analyzer/)   |
 
 
-## Reverse Engeneering
+## Reverse Engeneering/Binary exploitation
 
 | Disassembler Frameworks                                            | Debuggers and Decompilers
 | -------------                                                      | ---------
 | [IDA Pro](https://hex-rays.com/ida-pro/) (industry standard)       | [GDB](https://www.sourceware.org/gdb/) (check PwnGdb and olly gdb)
 | [Ghidra](https://ghidra-sre.org/) (pride of the NSA)               | [Cutter](https://cutter.re/)
-| [Radare2](https://github.com/radareorg/radare2)                    |
+| [Radare2](https://github.com/radareorg/radare2)                    | [pwntools](https://pypi.org/project/pwntools/) (technically...)
 
 
 
@@ -102,7 +102,6 @@ Ordered by categories (kinda)
 | -------
 | [virustotal](https://www.virustotal.com/gui/) (too famous)
 | [Pithus](https://beta.pithus.org/) (for android)
-
 
 
 ### Android (specials)
@@ -194,6 +193,11 @@ Ordered by categories (kinda)
 | [search by image](https://addons.mozilla.org/fr/firefox/addon/search_by_image/)                       | [busybox](https://busybox.net/) (unix binaries for everyone)
 |                                                                                                       | [lolbas](https://lolbas-project.github.io/#)
 
+
+## Threat detection, analysis and remediation
+| Frameworks/suites                                                                                     | Information/Utilities
+| ------------------                                                                                    | -------
+| [Splunk](https://www.splunk.com/) (If you understand it)                                              | [MITRE](https://attack.mitre.org/)
 
 
 
