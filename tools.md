@@ -14,7 +14,7 @@ Ordered by categories (kinda)
 | [Rustscan](https://github.com/RustScan/RustScan)          | [Blackwidow](https://github.com/1N3/BlackWidow)                   | [Ffuf](https://github.com/ffuf/ffuf)
 | [NmapAutomator](https://github.com/21y4d/nmapAutomator)   | [Cmseek](https://github.com/Tuhinshubhra/CMSeeK)                  | [Sublist3r](https://github.com/aboul3la/Sublist3r)
 | [onesixtyone](https://github.com/trailofbits/onesixtyone) | [Eyewitness](https://github.com/FortyNorthSecurity/EyeWitness)    | [VhostScan](https://github.com/codingo/VHostScan/)
-|                                                           | [Recon](https://github.com/dirsoooo/Recon) (All in one)           | 
+| [angryIP](https://github.com/angryip/ipscan)(angry scan)  | [Recon](https://github.com/dirsoooo/Recon) (All in one)           | 
 |                                                           | [shodan](https://www.shodan.io/dashboard) (the iot scanner)       |
 |                                                           | [Shodan eye](https://github.com/BullsEye0/shodan-eye) (sodan-cli) |
 |                                                           | [VulnX](https://github.com/anouarbensaad/VulnX)                   |
@@ -125,6 +125,8 @@ Ordered by categories (kinda)
 | Audit tools
 | -----------
 | [wifite 2](https://github.com/derv82/wifite2)
+| [kismet](https://www.kismetwireless.net/)
+| [aircrack suite](https://www.aircrack-ng.org/) (the OG)
 
 
 ## privilege escalation
@@ -194,11 +196,11 @@ Ordered by categories (kinda)
 |                                                                                                       | [lolbas](https://lolbas-project.github.io/#)
 
 
-## Threat detection, analysis and remediation
-| Frameworks/suites                                                                                     | Information/Utilities
+## Threat detection, network monitoring and remediation
+| Frameworks/suites/network tools                                                                       | Information/Utilities
 | ------------------                                                                                    | -------
-| [Splunk](https://www.splunk.com/) (If you understand it)                                              | [MITRE](https://attack.mitre.org/)
-
+| [Splunk](https://www.splunk.com/) (If you understand it)                                              | [MITRE ATT&CK](https://attack.mitre.org/)
+| [Wireshark](https://www.wireshark.org/download.html) (the shark)                                      |
 
 
 # My favorites ( kek )
@@ -235,5 +237,5 @@ Here is a list of places to find more tools:
 
 There are also some shady places (mostly onion links) with mad awesome tools, but we are not going there ( know what youre doing)
 
-** Do not feed the script kiddy in you. Tools are cool but knoweledge is better! ( But tools are cool though )
+*Do not feed the script kiddy in you. Tools are cool but knoweledge is better! ( But tools are cool though )
 
