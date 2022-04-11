@@ -7,7 +7,7 @@ difficulty: Medium
 
 Hello friend!
 
-## <u>Enumeration</u>
+## Enumeration
 
 ### nmap:
 
@@ -171,7 +171,7 @@ So In conclusion the creds are:
 `Elliot:[REDACTED]`
 
 Login with those And get to the admin dashboard!
-## <u>Exploitation</u>
+## Exploitation
 
 Now getting access is classic stuff
 
@@ -257,7 +257,7 @@ cat key-2-of-3.txt
 ...
 ```
 
-## <u>privilege escalation</u>
+## privilege escalation
 
 First step failed
 
