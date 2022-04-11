@@ -264,7 +264,7 @@ First step failed
 ```
 robot@linux:~$ sudo -l
 sudo -l
-[sudo] password for robot: abcdefghijklmnopqrstuvwxyz
+[sudo] password for robot: [REDACTED]
 
 Sorry, user robot may not run sudo on linux
 
