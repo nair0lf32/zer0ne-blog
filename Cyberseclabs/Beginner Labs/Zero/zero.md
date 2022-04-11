@@ -83,7 +83,7 @@ Host script results:
 |_clock-skew: mean: 2m26s, deviation: 0s, median: 2m26s
 ```
 
-No website (even though there is a web server). It's a windows machine with RPC open on port 135.
+It's a windows machine with RPC open on port 135.
 Enumeration with rpcdump.py gives no endpoint, but the nmap script says DC so we are facing a domain controller.
 
 A simple google search for 'domain controller vulnerabilities' tell us about [Zerologon](https://nvd.nist.gov/vuln/detail/CVE-2020-1472)
