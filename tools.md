@@ -176,7 +176,7 @@ Ordered by categories (kinda)
 | [Maltego](https://www.maltego.com/) (Feel like a Professional)
 | [wayback machine](https://archive.org/web/) (wayback)
 | [intelX](https://intelx.io/tools?tab=facebook)
-
+| [Spiderfoot](https://www.spiderfoot.net/)
 
 ## Anonimity
 
