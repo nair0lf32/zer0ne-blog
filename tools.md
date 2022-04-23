@@ -207,19 +207,23 @@ Ordered by categories (kinda)
 
 My most used tools, mostly defines my typical process 
 - Utilities:
-  - Google (your best friend)
+  - Google (your best friend! I google alot)
 - Enumeration:
-  - Rustscan
-  - Nmap
+  - [Rustscan](https://github.com/RustScan/RustScan) + [Nmap](https://nmap.org/) (Fast combo when configured correctly)
+  - [Gobuster](https://github.com/OJ/gobuster) or [Ffuf](https://github.com/ffuf/ffuf) (both are fast! one fuzz faster! guess which one)
 - Access (exploitation):
-  - Meta(fcking)sploit
-  - Sqlmap
+  - [Meta(fcking)sploit]((https://www.metasploit.com/) (expect it again)
+  - [Sqlmap](https://sqlmap.org/) (will sql injection be obsolete in the future?)
 - Post-Exploitation:
-  - Gtfobins
+  - [GTFObins](https://gtfobins.github.io/) (useful hindsights)
 
 For Other challenges:
 - Crypto: dcode, crackstation, rapidtables converter...
 - Forensics: volatility
+
+For when I am lazy (all-in-one frameworks):
+- [Rapidscan](https://github.com/skavngr/rapidscan) (still in development but looks promising)
+- [Hackingtool](https://github.com/Z4nzu/hackingtool) (this thing is a big bundle)
 
 # More tools (Moarrrr!)
 
