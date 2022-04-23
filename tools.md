@@ -14,7 +14,7 @@ Ordered by categories (kinda)
 | [Rustscan](https://github.com/RustScan/RustScan)          | [Blackwidow](https://github.com/1N3/BlackWidow)                   | [Ffuf](https://github.com/ffuf/ffuf)
 | [NmapAutomator](https://github.com/21y4d/nmapAutomator)   | [Cmseek](https://github.com/Tuhinshubhra/CMSeeK)                  | [Sublist3r](https://github.com/aboul3la/Sublist3r)
 | [onesixtyone](https://github.com/trailofbits/onesixtyone) | [Eyewitness](https://github.com/FortyNorthSecurity/EyeWitness)    | [VhostScan](https://github.com/codingo/VHostScan/)
-| [angryIP](https://github.com/angryip/ipscan)(angry scan)  | [Recon](https://github.com/dirsoooo/Recon) (All in one)           | 
+| [angryIP](https://github.com/angryip/ipscan)(angry scan)  | [Recon](https://github.com/dirsoooo/Recon) (All in one)           | [Subfinder](https://github.com/projectdiscovery/subfinder)
 |                                                           | [shodan](https://www.shodan.io/dashboard) (the iot scanner)       |
 |                                                           | [Shodan eye](https://github.com/BullsEye0/shodan-eye) (sodan-cli) |
 |                                                           | [VulnX](https://github.com/anouarbensaad/VulnX)                   |
@@ -54,7 +54,7 @@ Ordered by categories (kinda)
 | [Hatsploit](https://github.com/EntySec/HatSploit) (Hatvenom)  | [Sqlmap](https://sqlmap.org/)                                 | [Slowloris](https://github.com/gkbrk/slowloris) (Don't)
 | [Pentestmonkey](https://pentestmonkey.net/) (instant shell)   | [Nosqlmap](https://github.com/codingo/NoSQLMap)               | 
 | [Revshells](https://www.revshells.com/) (shells of quality)   | [AttackerKB](https://attackerkb.com/) (information is power)  |                       
-
+|                                                               | [commix](https://www.kali.org/tools/commix/)                  |
 
 ### Web (specials)
 
@@ -75,6 +75,10 @@ Ordered by categories (kinda)
 | [Hatch](https://github.com/nsgodshall/Hatch) (will test more)     | [Hashes.com](https://hashes.com/en/decrypt/hash)            |
 |                                                                   | [Hash analyzer](https://www.tunnelsup.com/hash-analyzer/)   |
 
+## wordlist generators
+- [Mentalist](https://github.com/sc0tfree/mentalist) (It got a GUI)
+- [cupp](https://github.com/Mebus/cupp) (old reliable)
+- [cewl](https://www.kali.org/tools/cewl/) (if you like spiders)
 
 ## Reverse Engeneering/Binary exploitation
 
@@ -177,6 +181,7 @@ Ordered by categories (kinda)
 | [wayback machine](https://archive.org/web/) (wayback)
 | [intelX](https://intelx.io/tools?tab=facebook)
 | [Spiderfoot](https://www.spiderfoot.net/)
+| [sherlock](https://github.com/sherlock-project/sherlock) (elementary)
 
 ## Anonimity
 
@@ -221,9 +226,10 @@ For Other challenges:
 - Crypto: dcode, crackstation, rapidtables converter...
 - Forensics: volatility
 
-For when I am lazy (all-in-one frameworks):
+For when I am lazy (all-in-one and frameworks):
 - [Rapidscan](https://github.com/skavngr/rapidscan) (still in development but looks promising)
 - [Hackingtool](https://github.com/Z4nzu/hackingtool) (this thing is a big bundle)
+- [fsociety](https://github.com/Manisso/fsociety) (to feel like mr robot)
 
 # More tools (Moarrrr!)
 
