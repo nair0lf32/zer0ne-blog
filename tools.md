@@ -236,7 +236,7 @@ For when I am lazy (all-in-one and frameworks):
 
 Here is a list of places to find more tools:
 
-- [Github](https://github.com) ( alot in here! )
+- [Github](https://github.com) ( alot in here! ) also check [this repository](https://github.com/Hack-with-Github/Awesome-Hacking)
 
 - [Kitploit](https://www.kitploit.com/)
 
