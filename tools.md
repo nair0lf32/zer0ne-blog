@@ -74,6 +74,7 @@ Ordered by categories (kinda)
 | [sshtrix](https://nullsecurity.net/tools/cracker.html) (for ssh)  | [Hashcrack](https://hashcrack.com/)                         | 
 | [Hatch](https://github.com/nsgodshall/Hatch) (will test more)     | [Hashes.com](https://hashes.com/en/decrypt/hash)            |
 |                                                                   | [Hash analyzer](https://www.tunnelsup.com/hash-analyzer/)   |
+|                                                                   | [md5hashing](https://md5hashing.net/)                       |
 
 ## wordlist generators
 - [Mentalist](https://github.com/sc0tfree/mentalist) (It got a GUI)
