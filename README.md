@@ -52,7 +52,7 @@ Looking forward bigger CTF's (and maybe a carreer in cyber?)
 
 Other places I fool around (not writing writeups yet but playing challenges):
 
-- [portswigger](https://portswigger.net/) (they made burp)
+- [portswigger](https://portswigger.net/web-security/dashboard) (they made burp)
 - [PicoCTF](https://play.picoctf.org/users/nairolf32) (great one)
 - [Cybertalents](https://cybertalents.com/members/nairolf32/profile)
 - [hacker101](https://ctf.hacker101.com/) ( [hackerone](https://hackerone.com/nairolf?type=user) prep )
