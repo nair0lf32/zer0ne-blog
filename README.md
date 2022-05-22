@@ -55,14 +55,14 @@ Other places I fool around (not writing writeups yet but playing challenges):
 - [portswigger](https://portswigger.net/) (they made burp)
 - [PicoCTF](https://play.picoctf.org/users/nairolf32) (great one)
 - [Cybertalents](https://cybertalents.com/members/nairolf32/profile)
-- [hacker101](https://ctf.hacker101.com/) ([hackerone](https://hackerone.com/nairolf?type=user) prep)
+- [hacker101](https://ctf.hacker101.com/) ( [hackerone](https://hackerone.com/nairolf?type=user) prep )
 - [Overthewire wargames](https://overthewire.org/wargames/)
 - [googleCTF](https://capturetheflag.withgoogle.com/beginners-quest)
 - [hellbound hackers](https://hbh.sh/user/nairolf32)
 - [pentesterlab](https://pentesterlab.com)
 - [hackthisite?](https://www.hackthissite.org/user/view/nairolf32/)
 - [vulnhub](https://www.vulnhub.com/)
-- [root-me](https://www.root-me.org/nairolf32)
+- [root-me](https://www.root-me.org/nairolf32) (french platform)
 
 
 Also I am planning to remove the old writeups and guided challenges to keep the repo light and clean
