@@ -31,7 +31,7 @@ Ordered by categories (kinda)
 | ---------------------                                                 | ----------------------
 | [Nikto](https://github.com/sullo/nikto) (technically correct)         | [Acunetix](https://www.acunetix.com/)
 | [Rapidscan](https://github.com/skavngr/rapidscan) (Try it!)           | [Nessus](https://www.tenable.com/products/nessus) (technically it's not free)
-| [OpenVas](https://www.openvas.org/)                                   | 
+| [OpenVas](https://www.openvas.org/)                                   | [Nexpose](https://www.rapid7.com/products/nexpose/) (free trial)
 | [Vega](https://subgraph.com/vega/)                                    |
 | Vulnnr (DEAD?)                                                        |
 
