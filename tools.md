@@ -48,13 +48,13 @@ Ordered by categories (kinda)
 
 ## exploitation
 
-| Frameworks and payload generators                             | Common exploits                                               | Targetted
-| ----------                                                    | ---------------                                               | ------
-| [Metasploit](https://www.metasploit.com/) (The unmatched)     | [Exploitdb](https://www.metasploit.com/) (searchsploit)       | [Camover](https://github.com/EntySec/CamOver)
-| [Hatsploit](https://github.com/EntySec/HatSploit) (Hatvenom)  | [Sqlmap](https://sqlmap.org/)                                 | [Slowloris](https://github.com/gkbrk/slowloris) (Don't)
-| [Pentestmonkey](https://pentestmonkey.net/) (instant shell)   | [Nosqlmap](https://github.com/codingo/NoSQLMap)               | 
-| [Revshells](https://www.revshells.com/) (shells of quality)   | [AttackerKB](https://attackerkb.com/) (information is power)  |                       
-| [getsploit](https://github.com/vulnersCom/getsploit)          | [commix](https://www.kali.org/tools/commix/)                  |
+| Frameworks and payload generators                              | Common exploits                                               | Targetted
+| ----------                                                     | ---------------                                               | ------
+| [Metasploit](https://www.metasploit.com/) (The unmatched)      | [Exploitdb](https://www.metasploit.com/) (searchsploit)       | [Camover](https://github.com/EntySec/CamOver)
+| [Hatsploit](https://github.com/EntySec/HatSploit) (Hatvenom)   | [Sqlmap](https://sqlmap.org/)                                 | [Slowloris](https://github.com/gkbrk/slowloris) (Don't)
+| [Pentestmonkey](https://pentestmonkey.net/) (instant shell)    | [Nosqlmap](https://github.com/codingo/NoSQLMap)               | 
+| [Revshells](https://www.revshells.com/) (shells of quality)    | [AttackerKB](https://attackerkb.com/) (information is power)  |                       
+| [getsploit](https://github.com/vulnersCom/getsploit) (vulners) | [commix](https://www.kali.org/tools/commix/)                  |
 
 ### Web (specials)
 
