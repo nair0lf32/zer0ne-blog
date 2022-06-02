@@ -54,7 +54,7 @@ Ordered by categories (kinda)
 | [Hatsploit](https://github.com/EntySec/HatSploit) (Hatvenom)  | [Sqlmap](https://sqlmap.org/)                                 | [Slowloris](https://github.com/gkbrk/slowloris) (Don't)
 | [Pentestmonkey](https://pentestmonkey.net/) (instant shell)   | [Nosqlmap](https://github.com/codingo/NoSQLMap)               | 
 | [Revshells](https://www.revshells.com/) (shells of quality)   | [AttackerKB](https://attackerkb.com/) (information is power)  |                       
-|                                                               | [commix](https://www.kali.org/tools/commix/)                  |
+| [getsploit](https://github.com/vulnersCom/getsploit)          | [commix](https://www.kali.org/tools/commix/)                  |
 
 ### Web (specials)
 
