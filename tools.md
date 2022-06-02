@@ -8,21 +8,21 @@ Ordered by categories (kinda)
 
 ## Reconnaissance & Enumeration 
 
-| Scanning                                                  |  Footprint                                                        | Discovery
-| --------                                                  |  ---------                                                        | ---------
-| [Nmap](https://nmap.org/) (good old)                      | [Recon-ng](https://github.com/lanmaster53/recon-ng)               | [Gobuster](https://github.com/OJ/gobuster) 
-| [Rustscan](https://github.com/RustScan/RustScan)          | [Blackwidow](https://github.com/1N3/BlackWidow)                   | [Ffuf](https://github.com/ffuf/ffuf)
-| [NmapAutomator](https://github.com/21y4d/nmapAutomator)   | [Cmseek](https://github.com/Tuhinshubhra/CMSeeK)                  | [Sublist3r](https://github.com/aboul3la/Sublist3r)
-| [onesixtyone](https://github.com/trailofbits/onesixtyone) | [Eyewitness](https://github.com/FortyNorthSecurity/EyeWitness)    | [VhostScan](https://github.com/codingo/VHostScan/)
-| [angryIP](https://github.com/angryip/ipscan)(angry scan)  | [Recon](https://github.com/dirsoooo/Recon) (All in one)           | [Subfinder](https://github.com/projectdiscovery/subfinder)
-|                                                           | [shodan](https://www.shodan.io/dashboard) (the iot scanner)       |
-|                                                           | [Shodan eye](https://github.com/BullsEye0/shodan-eye) (sodan-cli) |
-|                                                           | [VulnX](https://github.com/anouarbensaad/VulnX)                   |
-|                                                           | [wpscan](https://wpscan.com/) (Wordpress favorite)
-|                                                           | [Dnsdumpster](https://dnsdumpster.com/) (dig on steroids!)        |
-|                                                           | [ahmia](https://ahmia.fi/)  (dark web search)                     |
-|                                                           | [WHOIS](https://who.is/) (nothing beat basics)                    |
-|                                                           | [viewdns](https://viewdns.info/) (whois++)                        |
+| Scanning                                                   |  Footprint                                                        | Discovery
+| --------                                                   |  ---------                                                        | ---------
+| [Nmap](https://nmap.org/) (good old)                       | [Recon-ng](https://github.com/lanmaster53/recon-ng)               | [Gobuster](https://github.com/OJ/gobuster) 
+| [Rustscan](https://github.com/RustScan/RustScan)           | [Blackwidow](https://github.com/1N3/BlackWidow)                   | [Ffuf](https://github.com/ffuf/ffuf)
+| [NmapAutomator](https://github.com/21y4d/nmapAutomator)    | [Cmseek](https://github.com/Tuhinshubhra/CMSeeK)                  | [Sublist3r](https://github.com/aboul3la/Sublist3r)
+| [onesixtyone](https://github.com/trailofbits/onesixtyone)  | [Eyewitness](https://github.com/FortyNorthSecurity/EyeWitness)    | [VhostScan](https://github.com/codingo/VHostScan/)
+| [angryIP](https://github.com/angryip/ipscan) (angry scan)  | [Recon](https://github.com/dirsoooo/Recon) (All in one)           | [Subfinder](https://github.com/projectdiscovery/subfinder)
+|                                                            | [shodan](https://www.shodan.io/dashboard) (the iot scanner)       |
+|                                                            | [Shodan eye](https://github.com/BullsEye0/shodan-eye) (sodan-cli) |
+|                                                            | [VulnX](https://github.com/anouarbensaad/VulnX)                   |
+|                                                            | [wpscan](https://wpscan.com/) (Wordpress favorite)
+|                                                            | [Dnsdumpster](https://dnsdumpster.com/) (dig on steroids!)        |
+|                                                            | [ahmia](https://ahmia.fi/)  (dark web search)                     |
+|                                                            | [WHOIS](https://who.is/) (nothing beat basics)                    |
+|                                                            | [viewdns](https://viewdns.info/) (whois++)                        |
 
 
 ### Vulnerabilty scanners ( For either professionals, lazy people, or both)
