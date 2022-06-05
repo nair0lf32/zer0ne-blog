@@ -50,28 +50,17 @@ Looking forward bigger CTF's (and maybe a carreer in cyber?)
 
 (Hackerlab.bj, Oscp, Hackerone bounty hunts...)
 
-Other places I fool around (not writing writeups yet but playing challenges):
+Other places I play/learn (not writing writeups yet but playing challenges):
 
-- [portswigger](https://portswigger.net/web-security/dashboard) (they made burp)
-- [PicoCTF](https://play.picoctf.org/users/nairolf32) (great one)
-- [Cybertalents](https://cybertalents.com/members/nairolf32/profile)
-- [hacker101](https://ctf.hacker101.com/) ( [hackerone](https://hackerone.com/nairolf?type=user) prep )
-- [Overthewire wargames](https://overthewire.org/wargames/)
-- [googleCTF](https://capturetheflag.withgoogle.com/beginners-quest)
-- [hellbound hackers](https://hbh.sh/user/nairolf32)
-- [pentesterlab](https://pentesterlab.com)
-- [hackthisite?](https://www.hackthissite.org/user/view/nairolf32/)
-- [vulnhub](https://www.vulnhub.com/)
-- [root-me](https://www.root-me.org/nairolf32) (french platform)
+[Root-me](https://www.root-me.org/nairolf32) (french platform), [Portswigger](https://portswigger.net/web-security/dashboard) (they made burp), [PicoCTF](https://play.picoctf.org/users/nairolf32) (great one), [hellbound hackers](https://hbh.sh/user/nairolf32), [hacker101](https://ctf.hacker101.com/) ( [hackerone](https://hackerone.com/nairolf?type=user) playground ), [pentesterlab](https://pentesterlab.com) (not free), [hackthisite?](https://www.hackthissite.org/user/view/nairolf32/), [Cybertalents](https://cybertalents.com/members/nairolf32/profile), [googleCTF](https://capturetheflag.withgoogle.com/beginners-quest), [Overthewire wargames](https://overthewire.org/wargames/), [vulnhub](https://www.vulnhub.com/)
 
+Also I removed some of the old writeups and guided challenges to keep the repo light and clean
 
-Also I am planning to remove the old writeups and guided challenges to keep the repo light and clean
+The platforms/websites are already there to teach/guide so no need to keep that here.
 
-The platforms/websites are already there to teach/guide so no need to keep them here.
+If I judge a challenge/ctf too basic or easy (solution easily available) it may not appear here.
 
-So If I judge a challenge/ctf too basic or easy (I mean the solution is easily available) it may not appear here.
-
-I might keep some for the moment (Mostly those that quickly wrap important concepts)
+I might keep those that quickly wrap important concepts or specific vulnerabilities
 
 ## Similar projects
 
