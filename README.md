@@ -52,7 +52,7 @@ Looking forward bigger CTF's (and maybe a carreer in cyber?)
 
 Other places I play/learn (not writing writeups yet but playing challenges):
 
-[Root-me](https://www.root-me.org/nairolf32) (french platform), [Portswigger](https://portswigger.net/web-security/dashboard) (they made burp), [PicoCTF](https://play.picoctf.org/users/nairolf32) (great one), [hellbound hackers](https://hbh.sh/user/nairolf32), [hacker101](https://ctf.hacker101.com/) ( [hackerone](https://hackerone.com/nairolf?type=user) playground ), [pentesterlab](https://pentesterlab.com) (not free), [hackthisite?](https://www.hackthissite.org/user/view/nairolf32/), [Cybertalents](https://cybertalents.com/members/nairolf32/profile), [googleCTF](https://capturetheflag.withgoogle.com/beginners-quest), [Overthewire wargames](https://overthewire.org/wargames/), [vulnhub](https://www.vulnhub.com/)
+[Root-me](https://www.root-me.org/nairolf32) (french platform), [Portswigger](https://portswigger.net/web-security/dashboard) (they made burp), [PicoCTF](https://play.picoctf.org/users/nairolf32) (great one), [hellbound hackers](https://hbh.sh/user/nairolf32), [hacker101](https://ctf.hacker101.com/) ( [hackerone](https://hackerone.com/nairolf?type=user) playground ), [pentesterlab](https://pentesterlab.com) (not free), [hackthisite?](https://www.hackthissite.org/user/view/nairolf32/), [Cybertalents](https://cybertalents.com/members/nairolf32/profile), [googleCTF](https://capturetheflag.withgoogle.com/beginners-quest), [Overthewire wargames](https://overthewire.org/wargames/), [vulnhub](https://www.vulnhub.com/) (vulnerable machines to go)
 
 Also I removed some of the old writeups and guided challenges to keep the repo light and clean
 
