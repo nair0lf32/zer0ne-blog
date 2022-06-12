@@ -15,21 +15,27 @@ I decided to keep a track of what I already know/did/learnt by writing it down
 
 Here is a good place for that. In this repository you can find all my ctf stuff. 
 
-The writeups are from many platforms. My favorites ones are:
+The writeups are from many platforms. My favorites ones are Tryhackme and Hackthebox and the writeups are mostly for those.
 
-- ### Hackthebox
-
-[![nairolf32](https://www.hackthebox.eu/badge/image/607474)](https://app.hackthebox.com/profile/607474)
-
- well I am just beginning there and still learning in the academy
-
-- ### Tryhackme
+You can click on the badges below to check my profiles
 
 [![nairolf](https://tryhackme-badges.s3.amazonaws.com/nairolf.png)](https://tryhackme.com/p/nairolf)
+[![nairolf32](https://www.hackthebox.eu/badge/image/607474)](https://app.hackthebox.com/profile/607474)
 
-- ### Cyberseclabs
+There are also Other places I Learn/play challenges (not really writing writeups for those):
 
-[My cyberseclabs profile](https://www.cyberseclabs.co.uk/profile)
+- [cyberseclabs](https://www.cyberseclabs.co.uk/profile) (I wish it was free)
+- [Root-me](https://www.root-me.org/nairolf32) (french platform)
+- [Portswigger](https://portswigger.net/web-security/dashboard) (they made burp)
+- [PicoCTF](https://play.picoctf.org/users/nairolf32) (great one)
+- [hellbound hackers](https://hbh.sh/user/nairolf32)
+- [hacker101](https://ctf.hacker101.com/) ( [hackerone](https://hackerone.com/nairolf?type=user) playground )
+- [pentesterlab](https://pentesterlab.com) (not free)
+- [hackthisite?](https://www.hackthissite.org/user/view/nairolf32/)
+- [Cybertalents](https://cybertalents.com/members/nairolf32/profile)
+- [googleCTF](https://capturetheflag.withgoogle.com/beginners-quest)
+- [Overthewire wargames](https://overthewire.org/wargames/)
+- [vulnhub](https://www.vulnhub.com/) (vulnerable machines to go)
 
 ## Usage:
 
@@ -49,10 +55,6 @@ with what is given you can get the flag anyway if you ever decide to use my writ
 Looking forward bigger CTF's (and maybe a carreer in cyber?)
 
 (Hackerlab.bj, Oscp, Hackerone bounty hunts...)
-
-Other places I play/learn (not writing writeups yet but playing challenges):
-
-[Root-me](https://www.root-me.org/nairolf32) (french platform), [Portswigger](https://portswigger.net/web-security/dashboard) (they made burp), [PicoCTF](https://play.picoctf.org/users/nairolf32) (great one), [hellbound hackers](https://hbh.sh/user/nairolf32), [hacker101](https://ctf.hacker101.com/) ( [hackerone](https://hackerone.com/nairolf?type=user) playground ), [pentesterlab](https://pentesterlab.com) (not free), [hackthisite?](https://www.hackthissite.org/user/view/nairolf32/), [Cybertalents](https://cybertalents.com/members/nairolf32/profile), [googleCTF](https://capturetheflag.withgoogle.com/beginners-quest), [Overthewire wargames](https://overthewire.org/wargames/), [vulnhub](https://www.vulnhub.com/) (vulnerable machines to go)
 
 Also I removed some of the old writeups and guided challenges to keep the repo light and clean
 
