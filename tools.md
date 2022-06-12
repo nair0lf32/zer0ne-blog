@@ -214,6 +214,7 @@ Ordered by categories (kinda)
 My most used tools, mostly defines my typical process 
 - Utilities:
   - Google (your best friend! I google alot)
+  - [ngrok](https://ngrok.com/) (Because IRL network setup is painful)
 - Enumeration:
   - [Rustscan](https://github.com/RustScan/RustScan) + [Nmap](https://nmap.org/) (Fast combo when configured correctly)
   - [Gobuster](https://github.com/OJ/gobuster) or [Ffuf](https://github.com/ffuf/ffuf) (both are fast! one fuzz faster! guess which one)
