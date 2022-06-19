@@ -43,7 +43,7 @@ Ordered by categories (kinda)
 | -----                                                   | ----------------                                                  | -------------
 | [Enum4linux](https://www.kali.org/tools/enum4linux/)    | [Kerbrute](https://github.com/ropnop/kerbrute)                    | [Mimikatz](https://www.kali.org/tools/mimikatz/) (the looter)
 | [Evilwinrm](https://github.com/Hackplayers/evil-winrm)  | [Impacket tools](https://github.com/SecureAuthCorp/impacket)      |
-
+|                                                         | [CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)       |
 
 
 ## exploitation
