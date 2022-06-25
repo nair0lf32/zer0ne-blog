@@ -116,7 +116,7 @@ Ordered by categories (kinda)
 | [Mobsf](https://github.com/MobSF/Mobile-Security-Framework-MobSF)                           | [SARA](https://github.com/termuxhackers-id/SARA) (careful with this one)
 | [Apktool](https://ibotpeaches.github.io/Apktool/)  (uses jadx)                              | [backdoor-apk](https://github.com/dana-at-cp/backdoor-apk)
 | [Adb](https://developer.android.com/studio/command-line/adb)                                | [TheFatRat](https://github.com/Screetsec/TheFatRat) (obese rodent)   
-| [anbox](https://docs.anbox.io/userguide/install.html) (or any emulator for dynamic testing) |  [Msfvenom](https://www.offensive-security.com/metasploit-unleashed/msfvenom/)       
+| [anbox](https://docs.anbox.io/userguide/install.html) (or any emulator for dynamic testing) | [Msfvenom](https://www.offensive-security.com/metasploit-unleashed/msfvenom/)       
 | [Zimperium tools](https://www.zimperium.com/) (yeah...kinda)                                | 
 | [Apkleaks](https://github.com/dwisiswant0/apkleaks)                                         | 
 | [MARA](https://github.com/xtiankisutsa/MARA_Framework)                                      |
@@ -206,7 +206,8 @@ Ordered by categories (kinda)
 | Frameworks/suites/network tools                                                                       | Information/Utilities
 | ------------------                                                                                    | -------
 | [Splunk](https://www.splunk.com/) (If you understand it)                                              | [MITRE ATT&CK](https://attack.mitre.org/)
-| [Wireshark](https://www.wireshark.org/download.html) (the shark)                                      |
+| [Wireshark](https://www.wireshark.org/download.html) (the shark)                                      | [Greynoise](https://viz.greynoise.io/)
+|                                                                                                       | [AttackerKB](https://attackerkb.com/contributors/nair0lf32)
 
 
 # My favorites ( kek )
