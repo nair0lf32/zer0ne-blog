@@ -4,15 +4,12 @@
 
 ###### *credits: this logo is inspired from Genegoldstein's work for izzy deluxe in the living tombstone's hunter song*
 
-Hello friend 🤖, welcome to my simple writeups repo. I am nairolf32. 
+Hello friend 🤖, 
 
-I am learning a bit of cyberecurity and slowly getting stronger 
-
-I Played some ctfs on various websites ( I am no expert yet, merely a beginner  
-but I am getting there someday )
-
+welcome to my simple writeups repo. I am nairolf32. 
+I am learning a bit of cyberecurity and slowly getting stronger. 
+I Play ctfs and challenges on various websites ( I am no expert yet but I am getting there someday )
 I decided to keep a track of what I already know/did/learnt by writing it down 
-
 Here is a good place for that. In this repository you can find all my ctf stuff. 
 
 The writeups are from many platforms. My favorites ones are Tryhackme and Hackthebox and the writeups are mostly for those.
@@ -54,7 +51,7 @@ with what is given you can get the flag anyway if you ever decide to use my writ
 
 Looking forward bigger CTF's (and maybe a carreer in cyber?)
 
-(Hackerlab.bj, Oscp, Hackerone bounty hunts...)
+([Hackerlab.bj](http://hackerlab.bj/), [OSCP](https://www.offensive-security.com/pwk-oscp/), [Hackerone](https://hackerone.com/nairolf?type=user) and [Bugcrowd](https://bugcrowd.com/nairolf32) bug bounties...)
 
 Also I removed some of the old writeups and guided challenges to keep the repo light and clean
 
