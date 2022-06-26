@@ -71,7 +71,7 @@ Ordered by categories (kinda)
 | --------                                                          | --------------                                              | ---------
 | [John](https://www.kali.org/tools/john/) (the ripper)             | [Hashcat](https://hashcat.net/hashcat/) (a cat)             | [Dcode](https://www.dcode.fr/)
 | [Hydra](https://www.kali.org/tools/hydra/) (the legacy)           | [crackstation](https://crackstation.net/)                   | [Cyberchef](https://gchq.github.io/CyberChef/)                             
-| [sshtrix](https://nullsecurity.net/tools/cracker.html) (for ssh)  | [Hashcrack](https://hashcrack.com/)                         | 
+| [sshtrix](https://nullsecurity.net/tools/cracker.html) (for ssh)  | [Hashcrack](https://hashcrack.com/)                         | [jwt](https://jwt.io/)
 | [Hatch](https://github.com/nsgodshall/Hatch) (will test more)     | [Hashes.com](https://hashes.com/en/decrypt/hash)            |
 |                                                                   | [Hash analyzer](https://www.tunnelsup.com/hash-analyzer/)   |
 |                                                                   | [md5hashing](https://md5hashing.net/)                       |
