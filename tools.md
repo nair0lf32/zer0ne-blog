@@ -248,7 +248,7 @@ Here is a list of places to find more tools:
 
 - Also Google. 
 
-There are also some shady places (mostly onion links) with mad awesome tools, but we are not going there ( know what youre doing)
+There are also some shady places (mostly onion links) with mad awesome tools, but we are not going there
 
 *Do not feed the script kiddy in you. Tools are cool but knoweledge is better! ( But tools are cool though )
 
