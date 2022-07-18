@@ -19,15 +19,16 @@ You can click on the badges below to check my profiles
 [![nairolf](https://tryhackme-badges.s3.amazonaws.com/nairolf.png)](https://tryhackme.com/p/nairolf)
 [![nairolf32](https://www.hackthebox.eu/badge/image/607474)](https://app.hackthebox.com/profile/607474)
 
-There are also Other places I Learn/play challenges (not really writing writeups for those):
+Other places I Learn or just play challenges (not really writing writeups for those):
 
-- [cyberseclabs](https://www.cyberseclabs.co.uk/profile) (I wish it was free)
+- [cyberseclabs](https://www.cyberseclabs.co.uk/profile)
 - [Root-me](https://www.root-me.org/nairolf32) (french platform)
 - [Portswigger](https://portswigger.net/web-security/dashboard) (they made burp)
+- [EC-council](https://codered.eccouncil.org/)
 - [PicoCTF](https://play.picoctf.org/users/nairolf32) (great one)
 - [hellbound hackers](https://hbh.sh/user/nairolf32)
-- [hacker101](https://ctf.hacker101.com/) ( [hackerone](https://hackerone.com/nairolf?type=user) playground )
-- [pentesterlab](https://pentesterlab.com) (not free)
+- [hacker101](https://ctf.hacker101.com/) ( the [hackerone](https://hackerone.com/nairolf?type=user) playground )
+- [pentesterlab](https://pentesterlab.com)
 - [hackthisite?](https://www.hackthissite.org/user/view/nairolf32/)
 - [Cybertalents](https://cybertalents.com/members/nairolf32/profile)
 - [googleCTF](https://capturetheflag.withgoogle.com/beginners-quest)
