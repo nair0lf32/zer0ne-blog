@@ -31,7 +31,7 @@ Other places I Learn or just play challenges (not really writing writeups for th
 - [pentesterlab](https://pentesterlab.com)
 - [hackthisite?](https://www.hackthissite.org/user/view/nairolf32/)
 - [Cybertalents](https://cybertalents.com/members/nairolf32/profile)
-- [googleCTF](https://capturetheflag.withgoogle.com/beginners-quest)
+- [googleCTF](https://capturetheflag.withgoogle.com/team/nair0lf32)
 - [Overthewire wargames](https://overthewire.org/wargames/)
 - [vulnhub](https://www.vulnhub.com/) (vulnerable machines to go)
 
