@@ -200,6 +200,7 @@ Ordered by categories (kinda)
 | [ua-switcher](https://addons.mozilla.org/fr/firefox/addon/user-agent-string-switcher/) (custom ua)    | [code beautify](https://codebeautify.org/) (does alot more than that)
 | [search by image](https://addons.mozilla.org/fr/firefox/addon/search_by_image/)                       | [busybox](https://busybox.net/) (unix binaries for everyone)
 |                                                                                                       | [lolbas](https://lolbas-project.github.io/#)
+|                                                                                                       | [nirsoft](http://www.nirsoft.net/) (don't ruin it's reputation)
 
 
 ## Threat detection, network monitoring and remediation
