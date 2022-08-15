@@ -1,10 +1,6 @@
 # Tools
 
-Just a list of cool cybersec tools! The ones I use the most ( or not )
-
-and the one I discovered during my journey
-
-Ordered by categories (kinda)
+Just a list of cool cybersec tools! The ones I use the most ( or not ) and the one I discovered during my journey. Ordered by categories (kinda)
 
 ## Reconnaissance & Enumeration 
 
@@ -249,7 +245,9 @@ Here is a list of places to find more tools:
 
 - Also Google. 
 
-There are also some shady places (mostly onion links) with mad awesome tools, but we are not going there
+There are also some shady places (mostly onion links) with mad awesome tools, but we are not going there. Also if for any reason you want to do pentesting from a windows machine (for whatever reason) you should look into [pentestbox](https://pentestbox.org/) instead of downloading tools separately. But this is a bit old (2016) and tools are not updated regularly.
+
+
 
 *Do not feed the script kiddy in you. Tools are cool but knoweledge is better! ( But tools are cool though )
 
