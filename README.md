@@ -16,16 +16,18 @@ The writeups are from many platforms. My favorites ones are Tryhackme and Hackth
 
 You can click on the badges below to check my profiles
 
-[![nairolf](https://tryhackme-badges.s3.amazonaws.com/nairolf.png)](https://tryhackme.com/p/nairolf)
-[![nairolf32](https://www.hackthebox.eu/badge/image/607474)](https://app.hackthebox.com/profile/607474)
+[![nairolf-tryhackme](https://tryhackme-badges.s3.amazonaws.com/nairolf.png)](https://tryhackme.com/p/nairolf)
+[![nairolf32-hackthebox](https://www.hackthebox.eu/badge/image/607474)](https://app.hackthebox.com/profile/607474)
+<a href="https://www.cyberseclabs.co.uk/profile"><img src="https://cyberseclabs-static.s3.amazonaws.com/img/logo.png" alt="nairol32-cyberseclbas" width=150/></a>
 
 Other places I Learn or just play challenges (not really writing writeups for those):
 
-- [cyberseclabs](https://www.cyberseclabs.co.uk/profile)
-- [Root-me](https://www.root-me.org/nairolf32) (french platform)
+<a href="https://play.picoctf.org/users/nairolf32"><img src="https://play.picoctf.org/static/media/picoctf-logo-horizontal-white.17fdf0dcdef08dc3396a195b95e3bc29.svg" alt="nairol32-pico" width=180/></a>
+<a href="https://www.root-me.org/nairolf32"><img src="https://www.root-me.org/IMG/logo/siteon0.svg?1637496509" alt="nairol32-root-me" width=100/></a>
+
+
 - [Portswigger](https://portswigger.net/web-security/dashboard) (they made burp)
 - [EC-council](https://codered.eccouncil.org/)
-- [PicoCTF](https://play.picoctf.org/users/nairolf32) (great one)
 - [hellbound hackers](https://hbh.sh/user/nairolf32)
 - [hacker101](https://ctf.hacker101.com/) ( the [hackerone](https://hackerone.com/nairolf?type=user) playground )
 - [pentesterlab](https://pentesterlab.com)
