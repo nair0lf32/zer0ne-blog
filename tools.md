@@ -11,7 +11,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [NmapAutomator](https://github.com/21y4d/nmapAutomator)    | [Cmseek](https://github.com/Tuhinshubhra/CMSeeK)                  | [Sublist3r](https://github.com/aboul3la/Sublist3r)
 | [onesixtyone](https://github.com/trailofbits/onesixtyone)  | [Eyewitness](https://github.com/FortyNorthSecurity/EyeWitness)    | [VhostScan](https://github.com/codingo/VHostScan/)
 | [angryIP](https://github.com/angryip/ipscan) (angry scan)  | [Recon](https://github.com/dirsoooo/Recon) (All in one)           | [Subfinder](https://github.com/projectdiscovery/subfinder)
-|                                                            | [shodan](https://www.shodan.io/dashboard) (the iot scanner)       |
+|  [Massscan](https://www.kali.org/tools/masscan/)           | [shodan](https://www.shodan.io/dashboard) (the iot scanner)       |
 |                                                            | [Shodan eye](https://github.com/BullsEye0/shodan-eye) (sodan-cli) |
 |                                                            | [VulnX](https://github.com/anouarbensaad/VulnX)                   |
 |                                                            | [wpscan](https://wpscan.com/) (Wordpress favorite)
@@ -58,7 +58,8 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | -------                                                                             | -----------
 | [burpsuite](https://portswigger.net/burp/communitydownload) (community edition)     | [Arachni](https://github.com/Arachni/arachni)
 | [Owasp ZAP](https://www.zaproxy.org/) (It's from OWASP)                             | [Golismero](https://github.com/golismero/golismero)
-|                                                                                     | [Leviathan](https://github.com/utkusen/leviathan) ( sadly DEPRECATED )
+| [dnstwist](https://github.com/elceef/dnstwist)                                      | [Leviathan](https://github.com/utkusen/leviathan) ( sadly DEPRECATED )
+|                                                                                     |
 
 
 ## Cryptography
@@ -197,7 +198,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [search by image](https://addons.mozilla.org/fr/firefox/addon/search_by_image/)                       | [busybox](https://busybox.net/) (unix binaries for everyone)
 |                                                                                                       | [lolbas](https://lolbas-project.github.io/#)
 |                                                                                                       | [nirsoft](http://www.nirsoft.net/) (don't ruin it's reputation)
-
+|                                                                                                       | [freeformatter](https://www.freeformatter.com/)
 
 ## Threat detection, network monitoring and remediation
 | Frameworks/suites/network tools                                                                       | Information/Utilities
