@@ -42,7 +42,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 |                                                         | [CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)       |
 
 
-## exploitation
+## Exploitation
 
 | Frameworks and payload generators                              | Common exploits                                               | Targetted
 | ----------                                                     | ---------------                                               | ------
@@ -132,7 +132,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [aircrack suite](https://www.aircrack-ng.org/) (the OG)
 
 
-## privilege escalation
+## Privilege escalation
 
 | Scripts                                                 | References
 | -------                                                 | ----------
@@ -141,7 +141,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [JAWS](https://github.com/411Hall/JAWS)                 |
 
 
-## post-exploitation
+## Post-exploitation
 
 | Command and control (C2)                                                               | Persistance (Rootkits +++) pivot and more                     
 | ---------                                                                              | ------------
@@ -241,7 +241,7 @@ For when I am lazy (all-in-one and frameworks):
 
 Here is a list of places to find more tools:
 
-- [Github](https://github.com) ( alot in here! ) also check [this repository](https://github.com/Hack-with-Github/Awesome-Hacking)
+- [Github](https://github.com) ( alot in here! ) also check [this repository](https://github.com/Hack-with-Github/Awesome-Hacking) and [this guy](https://github.com/mgeeky) 
 
 - [Kitploit](https://www.kitploit.com/)
 
