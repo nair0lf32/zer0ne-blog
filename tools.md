@@ -11,7 +11,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [NmapAutomator](https://github.com/21y4d/nmapAutomator)    | [Cmseek](https://github.com/Tuhinshubhra/CMSeeK)                  | [Sublist3r](https://github.com/aboul3la/Sublist3r)
 | [onesixtyone](https://github.com/trailofbits/onesixtyone)  | [Eyewitness](https://github.com/FortyNorthSecurity/EyeWitness)    | [VhostScan](https://github.com/codingo/VHostScan/)
 | [angryIP](https://github.com/angryip/ipscan) (angry scan)  | [Recon](https://github.com/dirsoooo/Recon) (All in one)           | [Subfinder](https://github.com/projectdiscovery/subfinder)
-|  [Massscan](https://www.kali.org/tools/masscan/)           | [shodan](https://www.shodan.io/dashboard) (the iot scanner)       |
+| [Massscan](https://www.kali.org/tools/masscan/)            | [shodan](https://www.shodan.io/dashboard) (the iot scanner)       |
 |                                                            | [Shodan eye](https://github.com/BullsEye0/shodan-eye) (sodan-cli) |
 |                                                            | [VulnX](https://github.com/anouarbensaad/VulnX)                   |
 |                                                            | [wpscan](https://wpscan.com/) (Wordpress favorite)
@@ -74,6 +74,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 |                                                                   | [md5hashing](https://md5hashing.net/)                       |
 
 ## wordlist generators
+
 - [Mentalist](https://github.com/sc0tfree/mentalist) (It got a GUI)
 - [cupp](https://github.com/Mebus/cupp) (old reliable)
 - [cewl](https://www.kali.org/tools/cewl/) (if you like spiders)
@@ -190,6 +191,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 
 
 ## Utilities
+
 | Browser extensions                                                                                    | Others
 | ------------------                                                                                    | -------
 | [Foxyproxy](https://addons.mozilla.org/fr/firefox/addon/foxyproxy-standard/) (you know this one)      | [Onecompiler](https://onecompiler.com/) (underrated online compiler)
@@ -199,14 +201,17 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 |                                                                                                       | [lolbas](https://lolbas-project.github.io/#)
 |                                                                                                       | [nirsoft](http://www.nirsoft.net/) (don't ruin it's reputation)
 |                                                                                                       | [freeformatter](https://www.freeformatter.com/)
+|                                                                                                       | [whatportis](https://github.com/ncrocfer/whatportis)
 
 ## Threat detection, network monitoring and remediation
+
 | Frameworks/suites/network tools                                                                       | Information/Utilities
 | ------------------                                                                                    | -------
 | [Splunk](https://www.splunk.com/) (If you understand it)                                              | [MITRE ATT&CK](https://attack.mitre.org/)
 | [Wireshark](https://www.wireshark.org/download.html) (the shark)                                      | [Greynoise](https://viz.greynoise.io/)
 | [sysinternals](https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite)            | [AttackerKB](https://attackerkb.com/contributors/nair0lf32)
 |                                                                                                       |
+
 
 # My favorites ( kek )
 
@@ -248,7 +253,4 @@ Here is a list of places to find more tools:
 
 There are also some shady places (mostly onion links) with mad awesome tools, but we are not going there. Also if for any reason you want to do pentesting from a windows machine (for whatever reason) you should look into [pentestbox](https://pentestbox.org/) instead of downloading tools separately. But this is a bit old (2016) and tools are not updated regularly.
 
-
-
 *Do not feed the script kiddy in you. Tools are cool but knoweledge is better! ( But tools are cool though )
-
