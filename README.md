@@ -35,7 +35,8 @@ Other places I Learn or just play challenges (not really writing writeups for th
 - [Cybertalents](https://cybertalents.com/members/nairolf32/profile)
 - [googleCTF](https://capturetheflag.withgoogle.com/team/nair0lf32)
 - [Overthewire wargames](https://overthewire.org/wargames/)
-- [vulnhub](https://www.vulnhub.com/) (vulnerable machines to go)
+
+Also, [wherever I feel like getting the fun and knoweledge](https://ctfsites.github.io/)
 
 ## Usage:
 
