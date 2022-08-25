@@ -53,9 +53,11 @@ with what is given you can get the flag anyway if you ever decide to use my writ
 
 ## Miscellaneous
 
-Looking forward bigger CTF's (and maybe a carreer in cyber?)
+Currently I am:
 
-([Hackerlab.bj](http://hackerlab.bj/), [OSCP](https://www.offensive-security.com/pwk-oscp/), [Hackerone](https://hackerone.com/nairolf?type=user) and [Bugcrowd](https://bugcrowd.com/nairolf32) bug bounties...)
+- Having a blast at [hackerlab](https://qualif.hackerlab.africa/challenges)
+- foolin' around
+- Training for bug bounties: [OSCP](https://www.offensive-security.com/pwk-oscp/), [Hackerone](https://hackerone.com/nairolf?type=user) and [Bugcrowd](https://bugcrowd.com/nairolf32)...)
 
 Also I removed some of the old writeups and guided challenges to keep the repo light and clean
 
