@@ -180,6 +180,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [intelX](https://intelx.io/tools?tab=facebook)
 | [Spiderfoot](https://www.spiderfoot.net/)
 | [sherlock](https://github.com/sherlock-project/sherlock) (elementary)
+| [Bbot](https://github.com/blacklanternsecurity/bbot)
 
 ## Anonimity
 
