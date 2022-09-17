@@ -1,0 +1,21 @@
+POST /minotaur/minotaur-box/login.php HTTP/1.1
+Host: 127.0.0.1
+Content-Length: 36
+sec-ch-ua: "Chromium";v="93", " Not;A Brand";v="99"
+Accept: */*
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36
+sec-ch-ua-platform: "Windows"
+Origin: http://127.0.0.1
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://127.0.0.1/minotaur/minotaur-box/login.html
+Accept-Encoding: gzip, deflate
+Accept-Language: de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: PHPSESSID=8co2rbqdli7itj8f566c61nkhv
+Connection: close
+
+email=Daedalus&password=g2e55kh4ck5r
