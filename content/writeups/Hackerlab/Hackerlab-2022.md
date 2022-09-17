@@ -5,6 +5,7 @@ draft: false
 ---
 
 <img src="2022/hacklab.png" alt="hacklab">
+{{< image src="2022/hacklab.png" alt="Hello Friend" position="center" style="border-radius: 8px;" >}}
 
 Ok so I was part of the hackerlab, a CTF (the only one?) hosted by my country.
 And this year they extended it to all the (16) countries of ECOWAS.
