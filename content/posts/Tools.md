@@ -1,4 +1,8 @@
-# Tools
+---
+title: "Tools"
+date: 2022-09-17T18:33:31+01:00
+draft: false
+---
 
 Just a list of cool cybersec tools! The ones I use the most ( or not ) and the one I discovered during my journey. Ordered by categories (kinda)
 

@@ -1,4 +1,8 @@
-# office
+---
+title: "Office"
+date: 2022-09-16T18:33:31+01:00
+draft: false
+---
 
 ## Enumeration
 

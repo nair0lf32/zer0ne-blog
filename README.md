@@ -1,6 +1,6 @@
 # Zer0ne
 
-<img src="pictures/dark_logo.png" alt="logo" width="200" height="200">
+<img src="static/pictures/dark_logo.png" alt="logo" width="200" height="200">
 *credits: this logo is inspired from Genegoldstein's work for izzy deluxe in the living tombstone's hunter song*
 
 Hello friend 🤖,

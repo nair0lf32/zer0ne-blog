@@ -73,7 +73,7 @@ disableHugoGeneratorInject = false
     topText = []
     bottomText = [
       "Powered by <a href=\"http://gohugo.io\">Hugo</a>",
-      "Made with &#10084; by <a href=\"https://github.com/rhazdon\">Djordje Atlialp</a>",
+      "Made with &#10084; by <a href=\"https://github.com/nair0lf32\">nair0lf32</a>",
       "Theme used: <a href=\"https://github.com/rhazdon/hugo-theme-hello-friend-ng\">Hello-friend-ng</a>"
     ]
 
@@ -85,14 +85,11 @@ disableHugoGeneratorInject = false
 
   [params.logo]
     logoMark     = ">"
-    logoText     = "# cd /home/"
-    logoHomeLink = "/"
-    # Set true to remove the logo cursor entirely.
-    # logoCursorDisabled = false
-    # Set to a valid CSS color to change the cursor in the logo.
-    # logoCursorColor    = "#67a2c9"
-    # Set to a valid CSS time value to change the animation duration, "0s" to disable.
-    # logoCursorAnimate  = "2s"
+    logoText     = "$ cd /home/"
+    logoHomeLink = "{{ baseurl }}"
+    logoCursorDisabled = false
+    logoCursorColor    = "#FEEEDD"
+    logoCursorAnimate  = "2s"
 
   # Commento is more than just a comments widget you can embed — 
   # it’s a return to the roots of the internet. 
@@ -105,12 +102,10 @@ disableHugoGeneratorInject = false
   # [params.commento]
   #   url = ""
 
-  # Uncomment this if you want a portrait on your start page
-  #
-  # [params.portrait]
-  #   path     = "/img/image.jpg"
-  #   alt      = "Portrait"
-  #   maxWidth = "50px"
+  [params.portrait]
+   path     = "/pictures/dark_logo.png"
+   alt      = "Portrait"
+   maxWidth = "200px"
 
   # Social icons
   [[params.social]]
@@ -127,7 +122,7 @@ disableHugoGeneratorInject = false
 
   [[params.social]]
     name = "linkedin"
-    url  = "https://www.linkedin.com/florian-edemessi"
+    url  = "https://www.linkedin.com/in/florian-edemessi/"
 
   [[params.social]]
     name = "stackoverflow"
@@ -150,6 +145,10 @@ disableHugoGeneratorInject = false
     # alt = "Your example logo alt text"
 
     # And you can even create generic menu
+    [[menu.main]]
+      identifier = "about"
+      name       = "About"
+      url        = "/about"
     [[menu.main]]
       identifier = "blog"
       name       = "Blog"
