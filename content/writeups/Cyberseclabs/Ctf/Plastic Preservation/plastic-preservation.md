@@ -1,4 +1,10 @@
-# Plastic Preservation
+---
+title: "Plastic Preservation"
+date: 2022-09-18T18:33:31+01:00
+draft: false
+categories:
+  - Cyberseclabs
+---
 
 ```
 

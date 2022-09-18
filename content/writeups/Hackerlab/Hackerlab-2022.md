@@ -178,7 +178,7 @@ But if you are not a clever scripter (no judging) just go to the [kitchen](https
 - points = 50
 - status = unsolved
 
-{{< image src="/hackerlab2022/Amazone.jpeg" alt="amazone" position="center" style="width: 200;" >}}
+{{< image src="/hackerlab2022/Amazone.jpeg" alt="amazone" position="center" style="width: 300px;" >}}
 
 Ok This one is steganography and my favorite one. But I didnt solve it!
 
@@ -569,7 +569,7 @@ You just get the flag after this one
 
 ## END OF THE LINE!
 
-{{< image src="/hackerlab2022/scores.png" alt="my-scores" position="center" style="width: 200;" >}}
+{{< image src="/hackerlab2022/scores.png" alt="my-scores" position="center" style="width: 300px;" >}}
 
 
 That was an awesome experience, even though I joined late, I had alot of fun and most importantly learnt alot!

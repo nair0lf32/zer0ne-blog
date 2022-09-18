@@ -1,4 +1,10 @@
-# Hackerman 
+---
+title: "Hackerman"
+date: 2022-09-18T18:33:31+01:00
+draft: false
+categories:
+  - Cyberseclabs
+---
 
 <img src="HACKERMAN/hackerman.jpg" alt="hackerman" width=200>
 
