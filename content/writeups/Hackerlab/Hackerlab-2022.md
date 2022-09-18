@@ -2,6 +2,8 @@
 title: "Hackerlab 2022"
 date: 2022-09-16T18:33:31+01:00
 draft: false
+categories:
+  - Hackerlab
 ---
 
 {{< image src="/hackerlab2022/hacklab.png" alt="Hackerlab" position="left" >}}
