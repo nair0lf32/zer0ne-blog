@@ -4,8 +4,7 @@ date: 2022-09-16T18:33:31+01:00
 draft: false
 ---
 
-<img src="2022/hacklab.png" alt="hacklab">
-{{< image src="2022/hacklab.png" alt="Hello Friend" position="center" style="border-radius: 8px;" >}}
+{{< image src="/hackerlab2022/hacklab.png" alt="Hackerlab" position="left" >}}
 
 Ok so I was part of the hackerlab, a CTF (the only one?) hosted by my country.
 And this year they extended it to all the (16) countries of ECOWAS.
@@ -40,7 +39,7 @@ I just went to the [kitchen](https://gchq.github.io/) and added some ROT13 sauce
 - status = solved
 
 Same value as "Discord" challenge.
-In the details of their annoucement video (on youtube) you can see some very obvious binary.
+In the details of their announcement video (on youtube) you can see some very obvious binary.
 
 ```
 00100001 00100001 00100001 00110010 00110011 00110110 00110001 00110001 00110010 00110110 00110010 00110111 01101001 01110100 00110000 01000111 00110001 01011111 01000110 01010100 01000011
@@ -80,7 +79,7 @@ Decimal ascii code salsa aaaaand f*ck 'em!!
 - points = 20
 - status = solved
 
-You get an [encrypted pdf](2022/secret.pdf)
+You get an [encrypted pdf](/hackerlab2022/secret.pdf)
 
 john (the ripper)? hashcat? well whatever suits your needs!
 
@@ -126,7 +125,7 @@ back to the [kitchen](https://gchq.github.io/) to decode the hidden text. Big hi
 
 That's where I started to be stupid. The thing is...I was on the right track most of the times.
 
-I tried to bruteforce the [encrypted docx file](2022/secret.docx)
+I tried to bruteforce the [encrypted docx file](/hackerlab2022/secret.docx)
 
 ```
 └──╼ $python2 /usr/share/john/office2john.py secret.docx > secret.txt
@@ -177,9 +176,9 @@ But if you are not a clever scripter (no judging) just go to the [kitchen](https
 - points = 50
 - status = unsolved
 
-<img src="2022/Amazone.jpeg" alt="amazone" width=250>
+{{< image src="/hackerlab2022/Amazone.jpeg" alt="amazone" position="center" style="width: 200;" >}}
 
-Ok This one is steganography and my favoriite one. But I didnt solve it!
+Ok This one is steganography and my favorite one. But I didnt solve it!
 
 Again I was so close...I was mislead by the "Let me talk!"
 
@@ -568,7 +567,7 @@ You just get the flag after this one
 
 ## END OF THE LINE!
 
-<img src="2022/scores.png" alt="my-scores" width=650>
+{{< image src="/hackerlab2022/scores.png" alt="my-scores" position="center" style="width: 200;" >}}
 
 
 That was an awesome experience, even though I joined late, I had alot of fun and most importantly learnt alot!
