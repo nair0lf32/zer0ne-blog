@@ -6,7 +6,7 @@ categories:
   - Cyberseclabs
 ---
 
-<img src="HACKERMAN/hackerman.jpg" alt="hackerman" width=200>
+{{< image src="/csl/hackerman.jpg" alt="hackerman" position="center" style="width: 400px;" >}}
 
 ```
 └──╼ $exif hackerman.jpg
@@ -23,9 +23,9 @@ Essayer d'obtenir des informations � propos des donn�es incorpor�es ? (o/n
 Entrez la passphrase: 
 steghide: impossible d'extraire des donn�es avec cette passphrase!
 ```
-When there is a passphrase there is cracking involved
+passphrase? so cracking involved...
 
-stegcracker is one of the best...uhm I mean stegseek
+friendship with `stegcracker` is over now `stegseek` is my best friend
 
 ```
 └──╼ $stegseek  hackerman.jpg /usr/share/wordlists/rockyou.txt
@@ -34,22 +34,10 @@ StegSeek 0.6 - https://github.com/RickdeJager/StegSeek
 [i] Progress: 99.98% (133.4 MB)           
 [!] error: Could not find a valid passphrase.
 ```
-wait! am I stupid? the passphrase was in plain sight!!!
 
-`HACKERMAN`
+Actually no cracking was needed I am a bit stupid, because the passphrase was in plain sight all this time: `HACKERMAN`
 
 ```
-└──╼ $steghide --info hackerman.jpg
-"hackerman.jpg":
-  format: jpeg
-  capacit�: 7,0 KB
-Essayer d'obtenir des informations � propos des donn�es incorpor�es ? (o/n) o
-Entrez la passphrase: 
-  fichier � inclure "secret.txt":
-    taille: 14,0 Byte
-    cryptage: rijndael-128, cbc
-    compression: oui
-
 
 └──╼ $steghide --extract -sf hackerman.jpg
 Entrez la passphrase: 
@@ -57,11 +45,13 @@ Entrez la passphrase:
 ```
 The `secret.txt` file introduce us to `Jake Bellagot`
 
-We finally got a name...you know what to do...and we got a twitter account
+We finally got a name...you know what to do...
+
+we got a twitter account
 
 `@JBellagot` talks about `NoobCon2020` and that picture with a QR code
 
-<img src="EWda8qmXgAMdaR7.jpeg" alt="JBQR">
+{{< image src="/csl/EWda8qmXgAMdaR7.jpeg" alt="JBQR" position="center" >}}
 
 Reading the qr code take us to `https://jakeyboybellagot.github.io/ubiquitous-waffle/`
 

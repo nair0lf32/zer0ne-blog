@@ -52,19 +52,15 @@ disableHugoGeneratorInject = false
   # backgroundImage = "assets/images/background.jpg"
   # gitUrl = ""
   disableReadOtherPosts = false
-  # Enable theme toggle 
   enableThemeToggle = true
-  # Sharing buttons
   enableSharingButtons = true
-  # Global language menu
   enableGlobalLanguageMenu = false
   # Integrate Javascript files or stylesheets by adding the url to the external assets or by
   # linking local files with their path relative to the static folder, e.g. "css/styles.css"
-  customCSS = []
-  customJS  = []
+  # customCSS = []
+  # customJS  = []
   justifyContent = false  # Set "text-align: justify" to .post-content.
-  # Custom footer 
-  # If you want, you can easily override the default footer with your own content. 
+ 
   [params.footer]
     trademark = true
     rss = true
@@ -77,19 +73,20 @@ disableHugoGeneratorInject = false
       "Theme used: <a href=\"https://github.com/rhazdon/hugo-theme-hello-friend-ng\">Hello-friend-ng</a>"
     ]
 
+    [params.logo]
+      logoMark     = ">"
+      logoText     = "$ cd /home/"
+      logoHomeLink = "/"
+      logoCursorDisabled = false
+      logoCursorColor    = "#FEEEDD"
+      logoCursorAnimate  = "2s"
+
   # Colors for favicons
   [params.favicon.color]
     mask = "#1b1c1d"
     msapplication = "#1b1c1d"
     theme = "#1b1c1d"
 
-  [params.logo]
-    logoMark     = ">"
-    logoText     = "$ cd /home/"
-    logoHomeLink = "{{ baseurl }}"
-    logoCursorDisabled = false
-    logoCursorColor    = "#FEEEDD"
-    logoCursorAnimate  = "2s"
 
   # Commento is more than just a comments widget you can embed — 
   # it’s a return to the roots of the internet. 
@@ -137,10 +134,14 @@ disableHugoGeneratorInject = false
     readOtherPosts = "Read other posts"
 
     [languages.en.params.logo]
-      logoText = "Zer0ne"
+      logoMark = ">"
+      logoText = "Zer0ne #"
       logoHomeLink = "/"
+      logoCursorDisabled = false
+      logoCursorColor    = "#0FF00D"
+      logoCursorAnimate  = "2s"
+
     # or
-    #
     # path = "/img/your-example-logo.svg"
     # alt = "Your example logo alt text"
 

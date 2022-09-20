@@ -286,9 +286,11 @@ and we get `dwight : cowboys1`
 
 we use `dwight@office.csl` with that password to get to the wordpress dashboard
 
-upload a php shell in the WP file manager and get access on a netcat listenner
+## Exploitation
 
-(we could use the plugins too but we would have to format or php file as a wp plugin and zip it...choose any way)
+Upload a PHP shell in the WP file manager and get access on a netcat listenner
+
+(maybe we could use the plugins too but we would have to format our php file as a wp plugin and zip it...tedious...choose any way)
 
 Visit `http://office.csl/shell.php` to get inside..."the office"
 

