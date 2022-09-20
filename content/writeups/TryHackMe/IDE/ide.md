@@ -1,5 +1,10 @@
-# IDE
-
+---
+title: "IDE"
+date: 2022-09-20T16:00:31+01:00
+draft: false
+categories:
+  - TryHackMe
+---
 <img src="ide.png" width=200 height=200 alt="ide">
 
 ## Enmeration

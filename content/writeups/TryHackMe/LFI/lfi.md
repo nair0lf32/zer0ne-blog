@@ -1,4 +1,10 @@
-# LFI
+---
+title: "LFI"
+date: 2022-09-20T16:00:31+01:00
+draft: false
+categories:
+  - TryHackMe
+---
 
 <img src="lfi.png" width=200 height=200 alt="lfi">
 

@@ -1,4 +1,10 @@
-# Brooklyn nine nine
+---
+title: "Brooklin nine nine"
+date: 2022-09-20T16:00:31+01:00
+draft: false
+categories:
+  - TryHackMe
+---
 
 <img src="bnn.jpeg" alt="bnn" width=200/>
 

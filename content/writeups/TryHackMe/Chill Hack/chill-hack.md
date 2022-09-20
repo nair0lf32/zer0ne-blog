@@ -1,4 +1,10 @@
-# Chill Hack
+---
+title: "Chill Hack"
+date: 2022-09-20T16:00:31+01:00
+draft: false
+categories:
+  - TryHackMe
+---
 
 <img src="chillhack.png" alt="chillhack" width=200/>
 

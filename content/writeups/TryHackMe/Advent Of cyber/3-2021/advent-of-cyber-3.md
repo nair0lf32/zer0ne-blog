@@ -1,3 +1,11 @@
+---
+title: "Advent of cyber 3 (2021)"
+date: 2022-09-20T16:00:31+01:00
+draft: false
+categories:
+  - TryHackMe
+---
+
  # Advent of cyber 3 (2021)
 <img src="aoc3.png" alt="aoc3" width=200/>
 

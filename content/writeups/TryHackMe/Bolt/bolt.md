@@ -1,4 +1,10 @@
-# Bolt
+---
+title: "Bolt"
+date: 2022-09-20T16:00:31+01:00
+draft: false
+categories:
+  - TryHackMe
+---
 
 <img src="bolt.png" alt="bolt" width=200 height=200/>
 

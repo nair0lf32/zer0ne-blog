@@ -1,4 +1,10 @@
-# Sakura room
+---
+title: "Sakura room"
+date: 2022-09-20T16:00:31+01:00
+draft: false
+categories:
+  - TryHackMe
+---
 
 <img src="sakura.png" alt="sakura" width=200/>
 

@@ -1,4 +1,10 @@
-# c4pur3 th3 fl4g
+---
+title: "c4pur3 th3 fl4g"
+date: 2022-09-20T16:00:31+01:00
+draft: false
+categories:
+  - TryHackMe
+---
 
 This room says capture the flag but its actually more a challenges room.
 

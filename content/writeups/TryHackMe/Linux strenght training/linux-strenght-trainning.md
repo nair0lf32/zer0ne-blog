@@ -1,4 +1,10 @@
-# Linux Strenht Training
+---
+title: "Linux Strength training"
+date: 2022-09-20T16:00:31+01:00
+draft: false
+categories:
+  - TryHackMe
+---
 
 <img src="lst.png" width=200 height=200 alt="lst">
 

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="nair0lf32 ">
-<meta name="description" content="Reversing Elf crackme1 just chmod and run the binary
+<meta name="description" content="crackme1 just chmod and run the binary
 crackme2 the password is in the &amp;ldquo;strings&amp;rdquo; (you know what to do)
 crackme3 strings with base64 in them
 crackme4 I chose radare2 (IDA is good too)
@@ -19,7 +19,7 @@ we start with the basics
 
     <title>
         
-             :: Zer0ne  — welcome friend
+            Reversing elf :: Zer0ne  — welcome friend
         
     </title>
 
@@ -43,21 +43,21 @@ we start with the basics
     <meta name="msapplication-TileColor" content="">
 
 
-<meta itemprop="name" content="">
-<meta itemprop="description" content="Reversing Elf crackme1 just chmod and run the binary
+<meta itemprop="name" content="Reversing elf">
+<meta itemprop="description" content="crackme1 just chmod and run the binary
 crackme2 the password is in the &ldquo;strings&rdquo; (you know what to do)
 crackme3 strings with base64 in them
 crackme4 I chose radare2 (IDA is good too)
 we start with the basics
-└──╼ $r2 -d ./crackme4Process with PID 10508 started...= attach 10508 10508bin.baddr 0x00400000Using 0x400000asm.bits 64[0x7fc191002090]&gt; aaa[x] Analyze all flags starting with sym. and entry0 (aa)[x] Analyze function calls (aac)[x] Analyze len bytes of instructions for references (aar)[x] Check for vtables[TOFIX: aaft can&#39;t run in debugger mode.">
-
-<meta itemprop="wordCount" content="2238"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+└──╼ $r2 -d ./crackme4Process with PID 10508 started...= attach 10508 10508bin.baddr 0x00400000Using 0x400000asm.bits 64[0x7fc191002090]&gt; aaa[x] Analyze all flags starting with sym. and entry0 (aa)[x] Analyze function calls (aac)[x] Analyze len bytes of instructions for references (aar)[x] Check for vtables[TOFIX: aaft can&#39;t run in debugger mode."><meta itemprop="datePublished" content="2022-09-20T16:00:31+01:00" />
+<meta itemprop="dateModified" content="2022-09-20T16:00:31+01:00" />
+<meta itemprop="wordCount" content="2236"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
 
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="Reversing Elf crackme1 just chmod and run the binary
+<meta name="twitter:title" content="Reversing elf"/>
+<meta name="twitter:description" content="crackme1 just chmod and run the binary
 crackme2 the password is in the &ldquo;strings&rdquo; (you know what to do)
 crackme3 strings with base64 in them
 crackme4 I chose radare2 (IDA is good too)
@@ -66,8 +66,8 @@ we start with the basics
 
 
 
-    <meta property="og:title" content="" />
-<meta property="og:description" content="Reversing Elf crackme1 just chmod and run the binary
+    <meta property="og:title" content="Reversing elf" />
+<meta property="og:description" content="crackme1 just chmod and run the binary
 crackme2 the password is in the &ldquo;strings&rdquo; (you know what to do)
 crackme3 strings with base64 in them
 crackme4 I chose radare2 (IDA is good too)
@@ -75,14 +75,18 @@ we start with the basics
 └──╼ $r2 -d ./crackme4Process with PID 10508 started...= attach 10508 10508bin.baddr 0x00400000Using 0x400000asm.bits 64[0x7fc191002090]&gt; aaa[x] Analyze all flags starting with sym. and entry0 (aa)[x] Analyze function calls (aac)[x] Analyze len bytes of instructions for references (aar)[x] Check for vtables[TOFIX: aaft can&#39;t run in debugger mode." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/reversing-elf/reversing-elf/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
-
-<meta property="og:site_name" content="Zer0ne" />
-
-
+<meta property="article:published_time" content="2022-09-20T16:00:31+01:00" />
+<meta property="article:modified_time" content="2022-09-20T16:00:31+01:00" /><meta property="og:site_name" content="Zer0ne" />
 
 
 
 
+
+    <meta property="article:section" content="TryHackMe" />
+
+
+
+    <meta property="article:published_time" content="2022-09-20 16:00:31 &#43;0100 WAT" />
 
 
 
@@ -151,15 +155,14 @@ we start with the basics
         </div>
 
         <article>
-            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/reversing-elf/reversing-elf/"></a></h2>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/reversing-elf/reversing-elf/">Reversing elf</a></h2>
 
             
             
             
 
             <div class="post-content">
-                <h1 id="reversing-elf">Reversing Elf</h1>
-<!-- raw HTML omitted -->
+                <!-- raw HTML omitted -->
 <h2 id="crackme1">crackme1</h2>
 <p>just chmod and run the binary</p>
 <h2 id="crackme2">crackme2</h2>
@@ -486,6 +489,13 @@ puts(&#34;Always dig deeper&#34;Always dig deeper
         <div class="post-info">
             
             
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="https://nair0lf32.github.io/zer0ne/categories/tryhackme/">TryHackMe</a></span>
+        
+    </p>
+
   		</div>
     </main>
 

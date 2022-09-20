@@ -1,4 +1,10 @@
-# Rick and Morty
+---
+title: "Rick and Morty"
+date: 2022-09-20T16:00:31+01:00
+draft: false
+categories:
+  - TryHackMe
+---
 
 <img src="rm.jpeg" width=200 height=200 alt="rm">
 

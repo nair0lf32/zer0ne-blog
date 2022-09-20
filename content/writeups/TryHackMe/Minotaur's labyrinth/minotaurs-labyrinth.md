@@ -1,4 +1,10 @@
-# Minotaur's labyrinth
+---
+title: "Minotaur's Labyrinth"
+date: 2022-09-20T16:00:31+01:00
+draft: false
+categories:
+  - TryHackMe
+---
 
 <img src="minotaur.png" alt="minotaur" width=200 height=200>
 
