@@ -18,8 +18,6 @@ You can click [here](https://nair0lf32.github.io/zer0ne/about/) to learn more ab
 
 This repository is not really open for external contributions but feel free to open an issue for anything you want to share
 
-(WILL ADD LICENSE LATER)
-
 Deployed with `github pages + actions`
 
 `hugo server` for local development
