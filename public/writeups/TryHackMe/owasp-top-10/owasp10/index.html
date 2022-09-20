@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="OWASP top 10 If you started to learn web exploitation recently you might have heard about them
+If you are already a computer wizard&amp;hellip;well you definitelly heard about them
+Here comes the TOP 10:
+1 - (command) Injection Command Injection occurs when server-side code (like PHP) in a web application makes a system call on the hosting machine. It is a web vulnerability that allows an attacker to take advantage of that made system call to execute operating system commands on the server" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/owasp-top-10/owasp10/" />
+
+
+    <title>
+        
+             :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="OWASP top 10 If you started to learn web exploitation recently you might have heard about them
+If you are already a computer wizard&hellip;well you definitelly heard about them
+Here comes the TOP 10:
+1 - (command) Injection Command Injection occurs when server-side code (like PHP) in a web application makes a system call on the hosting machine. It is a web vulnerability that allows an attacker to take advantage of that made system call to execute operating system commands on the server">
+
+<meta itemprop="wordCount" content="1004"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="OWASP top 10 If you started to learn web exploitation recently you might have heard about them
+If you are already a computer wizard&hellip;well you definitelly heard about them
+Here comes the TOP 10:
+1 - (command) Injection Command Injection occurs when server-side code (like PHP) in a web application makes a system call on the hosting machine. It is a web vulnerability that allows an attacker to take advantage of that made system call to execute operating system commands on the server"/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="OWASP top 10 If you started to learn web exploitation recently you might have heard about them
+If you are already a computer wizard&hellip;well you definitelly heard about them
+Here comes the TOP 10:
+1 - (command) Injection Command Injection occurs when server-side code (like PHP) in a web application makes a system call on the hosting machine. It is a web vulnerability that allows an attacker to take advantage of that made system call to execute operating system commands on the server" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/owasp-top-10/owasp10/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+
+<meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/owasp-top-10/owasp10/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h1 id="owasp-top-10">OWASP top 10</h1>
+<!-- raw HTML omitted -->
+<p>If you started to learn web exploitation recently you might have heard about them</p>
+<p>If you are already a computer wizard&hellip;well you definitelly heard about them</p>
+<p>Here comes the TOP 10:</p>
+<h2 id="1---command-injection">1 - (command) Injection</h2>
+<blockquote>
+<p>Command Injection occurs when server-side code (like PHP) in a web application makes a system call on the hosting machine.  It is a web vulnerability that allows an attacker to take advantage of that made system call to execute operating system commands on the server</p>
+</blockquote>
+<ul>
+<li>
+<p>blind command injection (you don&rsquo;t see the output directly)</p>
+</li>
+<li>
+<p>active command injection</p>
+</li>
+</ul>
+<p>well&hellip;for the practical part it&rsquo;s pretty easy as there is almost no command filter</p>
+<p>Just use your <code>linux</code> basics knoweledge to answer the questions</p>
+<h2 id="2---broken-authentication">2 - Broken Authentication</h2>
+<blockquote>
+<p>If an attacker is able to find flaws in an authentication mechanism, they would then successfully gain access to other users accounts. This would allow the attacker to access sensitive data (depending on the purpose of the application)</p>
+</blockquote>
+<ul>
+<li>
+<p>Bruteforce credentials / weak credentials</p>
+</li>
+<li>
+<p>Weak session cookies</p>
+</li>
+</ul>
+<p>Here also the task is trivial&hellip;not very realistic but hey&hellip;Just do as they say</p>
+<h2 id="3---sensitive-data-exposure">3 - Sensitive data exposure</h2>
+<blockquote>
+<p>When a webapp accidentally divulges sensitive data, we refer to it as &ldquo;Sensitive Data Exposure&rdquo;</p>
+</blockquote>
+<ul>
+<li>
+<p>Names, dates-of-birth, financial information</p>
+</li>
+<li>
+<p>Usernames, Passwords</p>
+</li>
+<li>
+<p>Man-in-the-middle (MITM) attacks&hellip;</p>
+</li>
+</ul>
+<p>Start the new machine to access the webapp and ALWAYS check the source code of the page</p>
+<p>(you could also discover the directory with gobuster or ffuf)</p>
+<p>the rest of the task is already explained</p>
+<h2 id="4---xml-external-entity-xxe">4 - XML External Entity (XXE)</h2>
+<blockquote>
+<p>An XML External Entity (XXE) attack is a vulnerability that abuses features of XML parsers/data. It often allows an attacker to interact with any backend or external systems that the application itself can access and can allow the attacker to read the file on that system. They can also cause Denial of Service (DoS) attack or could use XXE to perform Server-Side Request Forgery (SSRF) inducing the web application to make requests to other applications. XXE may even enable port scanning and lead to remote code execution.</p>
+</blockquote>
+<p>Another cool one! you need to understand <code>XML</code> a bit for this one</p>
+<ul>
+<li>
+<p>In-band XXE</p>
+</li>
+<li>
+<p>Out-of-band XXE</p>
+</li>
+</ul>
+<p>Once again you are guided for the exploitation so&hellip;yeah!</p>
+<p>Note that this vulnerability doesnt directly grant you machine access but with the sensitive files you can read like <code>/etc/passwd</code> and user&rsquo;s <code>ssh keys</code> (not very probable)
+you can get further access</p>
+<h2 id="5---broken-access-control">5 - Broken access control</h2>
+<blockquote>
+<p>To put simply, broken access control allows attackers to bypass authorization which can allow them to view sensitive data or perform tasks as if they were a privileged user.</p>
+</blockquote>
+<p>It&rsquo;s like&hellip;privilege escalation but for web apps users (lol kind of)</p>
+<ul>
+<li>Insecure Direct Object Reference (IDOR) (I like this one alot)</li>
+</ul>
+<h2 id="6---security-misconfiguration">6 - Security Misconfiguration</h2>
+<blockquote>
+<p>Security Misconfigurations are distinct from the other Top 10 vulnerabilities, because they occur when security could have been configured properly but was not</p>
+</blockquote>
+<p>Another one on the dev team! here is the bingo for this one:</p>
+<ul>
+<li>Poorly configured permissions on cloud services, like S3 buckets</li>
+<li>Having unnecessary features enabled, like services, pages, accounts or privileges</li>
+<li>Default accounts with unchanged passwords</li>
+<li>Error messages that are overly detailed and allow an attacker to find out more about the system</li>
+<li>Not using HTTP security headers, or revealing too much detail in the Server: HTTP header</li>
+</ul>
+<p>Wich ones did your website got?</p>
+<h2 id="7---cross-site-scripting-xss">7 - Cross-site scripting (XSS)</h2>
+<blockquote>
+<p>Cross-site scripting, also known as XSS is a security vulnerability typically found in web applications. It&rsquo;s a type of injection which can allow an attacker to execute malicious scripts and have it execute on a victim&rsquo;s machine</p>
+</blockquote>
+<ul>
+<li>
+<p>Stored xss (most dangerous)</p>
+</li>
+<li>
+<p>Reflected Xss</p>
+</li>
+<li>
+<p>Dom-based Xss</p>
+</li>
+</ul>
+<p>This one is a real star in the industry.</p>
+<p>Mostly because it&rsquo;s very common and sometimes not taken seriously (&ldquo;it&rsquo;s not server-side duh&rdquo; shut up and check your code betty!)</p>
+<p><code>Javascript</code> is all you need sometimes&hellip;like for instance the next task</p>
+<h2 id="8---insecure-deserialisation">8 - Insecure Deserialisation</h2>
+<blockquote>
+<p>&ldquo;Insecure Deserialization is a vulnerability which occurs when untrusted data is used to abuse the logic of an application&rdquo; (Acunetix., 2017)</p>
+</blockquote>
+<blockquote>
+<p>This definition is still quite broad to say the least. Simply, insecure deserialization is replacing data processed by an application with malicious code; allowing anything from DoS (Denial of Service) to RCE (Remote Code Execution) that the attacker can use to gain a foothold in a pentesting scenario.</p>
+</blockquote>
+<p>Well&hellip;this one is not simple</p>
+<p>And you need to have good understanding of <code>object-oriented programming (OOP)</code></p>
+<p>The task is guided so just follow to get RCE!</p>
+<h2 id="9----known-vulnerabilities">9 -  Known Vulnerabilities</h2>
+<blockquote>
+<p>Occasionally, you may find that the company/entity that you&rsquo;re pen-testing is using a program that already has a well documented vulnerability.</p>
+</blockquote>
+<p>If it&rsquo;s known it should be patched! (else exploit-db got your back)</p>
+<p>This one is ultra-easy to exploit (ask &rsquo;em script kiddies)</p>
+<p>But nowadays most of the serious companies tend to patch their zero-day vulnerabilities very quickly (like&hellip;very very quickly)</p>
+<h2 id="10---insufficient-logging-and-monitoring">10 - Insufficient Logging and Monitoring</h2>
+<blockquote>
+<p>When web applications are set up, every action performed by the user should be logged. Logging is important because in the event of an incident, the attackers actions can be traced. Once their actions are traced, their risk and impact can be determined. Without logging, there would be no way to tell what actions an attacker performed if they gain access to particular web applications</p>
+</blockquote>
+<p>You got the point! this one is on the defensive side*</p>
+<p>But what should be logged you ask? at least&hellip;</p>
+<ul>
+<li>HTTP status codes</li>
+<li>Time Stamps</li>
+<li>Usernames</li>
+<li>API endpoints/page locations</li>
+<li>IP addresses</li>
+</ul>
+<p>But note that logging should be sanitized too</p>
+<p>Recent events show that it can also be exploited for access</p>
+<p><code>log4j</code> patched it&rsquo;s biggest CVE already</p>
+<p>But not everyone updated it already (as it seems it&rsquo;s hard to even know if you are using it for logging XD)</p>
+<p>This was not really a ctf writeup but a quick recap</p>
+<p>Those are the most common web vulnerabilities according to OWASP (good guys)</p>
+<p>I suggest you visit their website, as they update it very often :</p>
+<p><a href="https://owasp.org/www-project-top-ten/">OWASP Top 10 website</a></p>
+<p>Good luck and have fun!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>

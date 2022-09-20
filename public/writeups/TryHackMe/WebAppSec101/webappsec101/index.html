@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="WebAppSec 101 First, Why I liked this room?
+This room is a small vulnerable web application. In the OWASP Juice shop, we looked at how some basic vulnerabilities worked. In this room, we&amp;rsquo;ll walk though the methodology and approach of testing a web application. As an ethical hacker, you need to test the web application from the perspective of an attacker. We&amp;rsquo;ll be using this mindset to establish a strategy to look for weaknesses in the web application." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/webappsec101/webappsec101/" />
+
+
+    <title>
+        
+             :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="WebAppSec 101 First, Why I liked this room?
+This room is a small vulnerable web application. In the OWASP Juice shop, we looked at how some basic vulnerabilities worked. In this room, we&rsquo;ll walk though the methodology and approach of testing a web application. As an ethical hacker, you need to test the web application from the perspective of an attacker. We&rsquo;ll be using this mindset to establish a strategy to look for weaknesses in the web application.">
+
+<meta itemprop="wordCount" content="700"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="WebAppSec 101 First, Why I liked this room?
+This room is a small vulnerable web application. In the OWASP Juice shop, we looked at how some basic vulnerabilities worked. In this room, we&rsquo;ll walk though the methodology and approach of testing a web application. As an ethical hacker, you need to test the web application from the perspective of an attacker. We&rsquo;ll be using this mindset to establish a strategy to look for weaknesses in the web application."/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="WebAppSec 101 First, Why I liked this room?
+This room is a small vulnerable web application. In the OWASP Juice shop, we looked at how some basic vulnerabilities worked. In this room, we&rsquo;ll walk though the methodology and approach of testing a web application. As an ethical hacker, you need to test the web application from the perspective of an attacker. We&rsquo;ll be using this mindset to establish a strategy to look for weaknesses in the web application." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/webappsec101/webappsec101/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+
+<meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/webappsec101/webappsec101/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h1 id="webappsec-101">WebAppSec 101</h1>
+<!-- raw HTML omitted -->
+<p>First, Why I liked this room?</p>
+<blockquote>
+<p>This room is a small vulnerable web application. In the OWASP Juice shop, we looked at how some basic vulnerabilities worked. In this room, we&rsquo;ll walk though the methodology and approach of testing a web application. As an ethical hacker, you need to test the web application from the perspective of an attacker. We&rsquo;ll be using this mindset to establish a strategy to look for weaknesses in the web application.</p>
+</blockquote>
+<p>It is guided so We wont talk much</p>
+<h2 id="enumeration">Enumeration</h2>
+<h3 id="rustscan--nmap">rustscan + nmap</h3>
+<pre tabindex="0"><code>PORT    STATE SERVICE REASON  VERSION
+22/tcp  open  ssh     syn-ack OpenSSH 7.4 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 ab:58:43:31:39:5d:3a:f5:21:e4:7c:b9:e2:7b:7c:df (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/RPuU6en8LmHkp1goxuWoXOobuO5rKcZ27iN2yfQtobt78rXgOP92+pPqIxpUro4haHSyj+cZO+KO7UE8Bm1uOSgjDG3grfwx7I131qTa/n2gZjMsH9LG1VF4q8MDgZQCJz5sbu87xrNSGgIcFPXuH43uUEBMpYkPypW43cRuoowloEwm1IRZNE2TzQVVfWRkTXXg0fQKKeplekaZZmXdKM/bo9+xYniWQ02XGvaY1/sZHo9g42QP04y2iOOtXUjBKQIYqBD04L8GIY/LafbT9/xdKnld4zvXfJy3O3VQ+jCk7X1ZBSQw8GoUN1NwLucvy/mvGyzZ6ViKsV084I3p
+|   256 54:81:c0:a6:a6:c2:71:2a:07:22:45:98:e9:11:16:10 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFMXVQplwlZXDt5r1CXLlXeU+7RGeSeLHYs7/os/l/d24s6Vqz41w756VpJfvHIeZLil4Ka9EjT5nJ+u3MZLeI0=
+|   256 6c:69:52:9a:76:91:98:a6:f1:d4:e9:7e:9e:71:2e:82 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIkT1IxbagEaJXC5rIvPEECtlIQS+P1/Av8r7k8Th4HD
+
+80/tcp  open  http    syn-ack Apache httpd 2.4.7 ((Ubuntu))
+|_http-title: WackoPicko.com
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.4.7 (Ubuntu)
+
+111/tcp open  rpcbind syn-ack 2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  3,4          111/tcp6  rpcbind
+|   100000  3,4          111/udp6  rpcbind
+|   100024  1          34337/tcp   status
+|   100024  1          37222/udp6  status
+|   100024  1          50341/tcp6  status
+|_  100024  1          58249/udp   status
+</code></pre><p>PHP version in http headers. I used <code>httpie</code></p>
+<p>Its <code>curl</code> on steroids (you can use whatever you want)</p>
+<pre tabindex="0"><code>└──╼ $http 10.10.249.216       
+HTTP/1.1 200 OK
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Connection: Keep-Alive
+Content-Encoding: gzip
+Content-Length: 1249
+Content-Type: text/html
+Date: Thu, 24 Mar 2022 16:53:51 GMT
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Keep-Alive: timeout=5, max=100
+Pragma: no-cache
+Server: Apache/2.4.7 (Ubuntu)
+Set-Cookie: PHPSESSID=s4mck41b91f7l6rqmlrffta1d6; path=/
+Vary: Accept-Encoding
+X-Powered-By: PHP/5.5.9-1ubuntu4.24
+</code></pre><h2 id="methodology">Methodology</h2>
+<blockquote>
+<p>The first way is by going through every page and testing all the functionality. This would involve going through every page on the application, and depending on the functionality, testing for all the bugs/vulnerabilities that apply to the page. In this case, if we start off at the home page, we would try see what functionality we can exploit on the home page, and then move on to every page.</p>
+</blockquote>
+<blockquote>
+<p>The second way is by breaking down the testing into different stages(including but not limited to):</p>
+<ul>
+<li>Authorization</li>
+<li>Authentication</li>
+<li>Injection</li>
+<li>Client Side Controls</li>
+<li>Application Logic</li>
+</ul>
+</blockquote>
+<h3 id="authentication">Authentication</h3>
+<ul>
+<li>
+<p>Brute Forcing/Weak Credentials</p>
+</li>
+<li>
+<p>Session Management</p>
+</li>
+</ul>
+<p>Login with the classics of unrealistically stupid credentials and check the cookies</p>
+<p>Then register on &ldquo;wackopicko.com&rdquo; to get user access</p>
+<p>When you try to see your pictures you see this in the url</p>
+<p><code>http://10.10.249.216/users/view.php?userid=13</code></p>
+<p>The <code>userid</code> parameter is what you wanna mess with</p>
+<p>You can do it manually like a savage or use automation (I am a savage lol)</p>
+<p>You will get other&rsquo;s usernames on their picture page</p>
+<p>There is also the bruteforce method (hydra mostly, I had issues filtering burp intruder and ZAP fuzzer )</p>
+<p>But the first way is easier</p>
+<h3 id="cross-site-scripting-xss">Cross-site scripting (XSS)</h3>
+<p>Xss is a star in the web pentesting vulnerability industry</p>
+<blockquote>
+<p>XSS is a vulnerability that involves injecting malicious javascript in trusted websites. Once an attacker has injected malicious javascript, sometimes a browser will not know whether to trust it, and it will run the script. Using this exploit an attacker can:</p>
+</blockquote>
+<ul>
+<li>steal session information through cookies</li>
+<li>arbitrarily redirect users to their own pages(for phishing)</li>
+</ul>
+<blockquote>
+<p>There are a few different types of XSS attacks:</p>
+</blockquote>
+<ul>
+<li>
+<p>Persistent/Non-Reflected - Here the XSS payload has been stored in the database, and once the server/framework passes the data from the database into the webpage, the script/payload is executed</p>
+</li>
+<li>
+<p>Non Persistent/Reflected - Here the XSS payload is usually crafted using a malicious link. It is not stored.</p>
+</li>
+</ul>
+<h3 id="injection">Injection</h3>
+<p>When you have an &lsquo;injection&rsquo; vulnerability, RCE or access is not far away</p>
+<p>It&rsquo;s a great way in! So obviously those are hard to spot IRL</p>
+<ul>
+<li>
+<p>SQL Injection</p>
+</li>
+<li>
+<p>Command Injection</p>
+</li>
+</ul>
+<h3 id="miscellaneous--logic-flaws">Miscellaneous &amp; Logic Flaws</h3>
+<p>a.k.a the rest!</p>
+<ul>
+<li>
+<p>Parameter Manipulation (we did that)</p>
+</li>
+<li>
+<p>Directory Traversal (Another famous one!)</p>
+</li>
+<li>
+<p>Forceful Browsing (The basics)</p>
+</li>
+</ul>
+<p>That room was cool as an introduction to &ldquo;common web vulnerabilities&rdquo;</p>
+<p>It was rated medium but it was not that difficult actually</p>
+<p>To wrap it up let&rsquo;s simply say that now you know what to look for when testing a web app</p>
+<p>But in a real context this might not be that simple</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>

@@ -1,4 +1,10 @@
- # Debugging Interface
+---
+title: "Debugging Interface"
+date: 2022-09-20T14:03:31+01:00
+draft: false
+categories:
+  - HackTheBox
+---
 
  First after unzipping the initial archive my stupid head thought it was another archive in it and I extracted that too...because the GUI fooled me
  

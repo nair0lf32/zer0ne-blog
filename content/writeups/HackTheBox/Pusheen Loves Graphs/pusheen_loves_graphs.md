@@ -1,4 +1,11 @@
-# Pusheen Loves Graphs
+---
+title: "Pusheen Loves Graphs"
+date: 2022-09-20T15:03:31+01:00
+draft: false
+categories:
+  - HackTheBox
+---
+
 
 okay then...
 

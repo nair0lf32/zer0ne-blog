@@ -1,4 +1,10 @@
-# Horizontall
+---
+title: "Horizontall"
+date: 2022-09-20T14:03:31+01:00
+draft: false
+categories:
+  - HackTheBox
+---
 
 first add `horizontall.htb` to `/etc/hosts`
 

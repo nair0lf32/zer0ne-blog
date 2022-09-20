@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="CTF Collection Vol 1 what does the base said? Yeah this one is just base 64, please do not make a fool of yourself and just decode it
+Meta meta └──╼ $exif Findme.jpgMarqueurs EXIF dans « Findme.jpg » (ordre des octets « Motorola ») :--------------------&#43;----------------------------------------------------------Marqueur |Valeur--------------------&#43;----------------------------------------------------------Unité de la résoluti|poucesPositionnement YCbCr|CentréRésolution X |72Résolution Y |72Version d&amp;#39;exif |Version d&amp;#39;Exif inconnueConfiguration des co|Y Cb Cr -FlashPixVersion |FlashPix version 1." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/ctf-collection-vol1/ctf-collection-vol-1/" />
+
+
+    <title>
+        
+             :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="CTF Collection Vol 1 what does the base said? Yeah this one is just base 64, please do not make a fool of yourself and just decode it
+Meta meta └──╼ $exif Findme.jpgMarqueurs EXIF dans « Findme.jpg » (ordre des octets « Motorola ») :--------------------&#43;----------------------------------------------------------Marqueur |Valeur--------------------&#43;----------------------------------------------------------Unité de la résoluti|poucesPositionnement YCbCr|CentréRésolution X |72Résolution Y |72Version d&#39;exif |Version d&#39;Exif inconnueConfiguration des co|Y Cb Cr -FlashPixVersion |FlashPix version 1.">
+
+<meta itemprop="wordCount" content="1052"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="CTF Collection Vol 1 what does the base said? Yeah this one is just base 64, please do not make a fool of yourself and just decode it
+Meta meta └──╼ $exif Findme.jpgMarqueurs EXIF dans « Findme.jpg » (ordre des octets « Motorola ») :--------------------&#43;----------------------------------------------------------Marqueur |Valeur--------------------&#43;----------------------------------------------------------Unité de la résoluti|poucesPositionnement YCbCr|CentréRésolution X |72Résolution Y |72Version d&#39;exif |Version d&#39;Exif inconnueConfiguration des co|Y Cb Cr -FlashPixVersion |FlashPix version 1."/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="CTF Collection Vol 1 what does the base said? Yeah this one is just base 64, please do not make a fool of yourself and just decode it
+Meta meta └──╼ $exif Findme.jpgMarqueurs EXIF dans « Findme.jpg » (ordre des octets « Motorola ») :--------------------&#43;----------------------------------------------------------Marqueur |Valeur--------------------&#43;----------------------------------------------------------Unité de la résoluti|poucesPositionnement YCbCr|CentréRésolution X |72Résolution Y |72Version d&#39;exif |Version d&#39;Exif inconnueConfiguration des co|Y Cb Cr -FlashPixVersion |FlashPix version 1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/ctf-collection-vol1/ctf-collection-vol-1/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+
+<meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/ctf-collection-vol1/ctf-collection-vol-1/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h1 id="ctf-collection-vol-1">CTF Collection Vol 1</h1>
+<!-- raw HTML omitted -->
+<h2 id="what-does-the-base-said">what does the base said?</h2>
+<p>Yeah this one is just base 64, please do not make a fool of yourself and just decode it</p>
+<h2 id="meta-meta">Meta meta</h2>
+<!-- raw HTML omitted -->
+<pre tabindex="0"><code>└──╼ $exif Findme.jpg
+Marqueurs EXIF dans « Findme.jpg » (ordre des octets « Motorola ») :
+--------------------+----------------------------------------------------------
+Marqueur            |Valeur
+--------------------+----------------------------------------------------------
+Unité de la résoluti|pouces
+Positionnement YCbCr|Centré
+Résolution X        |72
+Résolution Y        |72
+Version d&#39;exif      |Version d&#39;Exif inconnue
+Configuration des co|Y Cb Cr -
+FlashPixVersion     |FlashPix version 1.0
+Camera Owner Name   |THM{metaflagisnotreal}
+Espace des couleurs |Non calibré
+--------------------+----------------------------------------------------------
+</code></pre><h2 id="mon-are-we-going-to-be-okay">Mon, are we going to be okay?</h2>
+<!-- raw HTML omitted -->
+<pre tabindex="0"><code>└──╼ $steghide --info Extinction.jpg
+&#34;Extinction.jpg&#34;:
+  format: jpeg
+  capacit�: 1,3 KB
+Essayer d&#39;obtenir des informations � propos des donn�es incorpor�es ? (o/n) o
+Entrez la passphrase:
+  fichier � inclure &#34;Final_message.txt&#34;:
+    taille: 79,0 Byte
+    cryptage: rijndael-128, cbc
+    compression: oui
+
+
+└──╼ $steghide --extract -sf Extinction.jpg
+Entrez la passphrase:
+�criture des donn�es extraites dans &#34;Final_message.txt&#34;.
+</code></pre><p>Now just read <code>Final_message.txt</code> for your flag</p>
+<h2 id="ermmagick">Erm&hellip;Magick</h2>
+<p>haha I have seen this one before&hellip;white font on white background</p>
+<p>Always inspect code folks</p>
+<pre tabindex="0"><code>&lt;span style=&#34;background-color:rgb(255, 255, 255);&#34;&gt;THM{caucasian_flag}&lt;/span&gt;
+</code></pre><h2 id="qrrrrr">QRrrrr</h2>
+<!-- raw HTML omitted -->
+<p>I used zbar-tools (apt install)</p>
+<p>but you can use any qr decoder online too</p>
+<pre tabindex="0"><code>└──╼ $zbarimg -d QR.png
+QR-Code:THM{qr_code_can_hide_stuff}
+scanned 1 barcode symbols from 1 images in 0,03 seconds
+</code></pre><h2 id="reverse-it-or-read-it">Reverse it or read it?</h2>
+<p>I will just read it thanks</p>
+<pre tabindex="0"><code>└──╼ $strings hello.hello
+/lib64/ld-linux-x86-64.so.2
+libc.so.6
+puts
+printf
+__cxa_finalize
+__libc_start_main
+GLIBC_2.2.5
+_ITM_deregisterTMCloneTable
+__gmon_start__
+_ITM_registerTMCloneTable
+u/UH
+[]A\A]A^A_
+THM{Reverse_engineering_is_not_for_the_weak}
+Hello there, wish you have a nice day
+;*3$&#34;
+GCC: (Debian 9.2.1-21) 9.2.1 20191130
+crtstuff.c
+...
+</code></pre><h2 id="another-decoding-stuff">Another decoding stuff</h2>
+<p>Its base 58. you can use online identifiers or the hint and decoders</p>
+<p>Or if you are a crypto expert&hellip;anyway just decode it</p>
+<h2 id="left-or-right">Left or Right?</h2>
+<p>The author is right its not ROT 13 but its still ceasar</p>
+<p>More like 19 rotations&hellip;he said the flags would always be in THM{flag} format</p>
+<p>well&hellip;decode it</p>
+<h2 id="make-a-comment">Make a comment</h2>
+<p>Always check he code folks</p>
+<pre tabindex="0"><code>            &lt;div class=&#34;room-task-desc-data&#34;&gt; &lt;p&gt;No downloadable file, no ciphered or encoded text. Huh .......&lt;br&gt;&lt;/p&gt;
+&lt;p style=&#34;display:none;&#34;&gt; THM{always_check_the_code} &lt;/p&gt;&lt;/div&gt;
+        &lt;/div&gt;
+</code></pre><h2 id="can-you-fix-it">Can you fix it?</h2>
+<pre tabindex="0"><code>└──╼ $file spoil.png
+spoil.png: data
+
+└──╼ $strings spoil.png
+...
+iTXtXML:com.adobe.xmp
+&lt;?xpacket begin=&#39;
+&#39; id=&#39;W5M0MpCehiHzreSzNTczkc9d&#39;?&gt;
+&lt;x:xmpmeta xmlns:x=&#39;adobe:ns:meta/&#39; x:xmptk=&#39;Image::ExifTool 10.80&#39;&gt;
+&lt;rdf:RDF xmlns:rdf=&#39;http://www.w3.org/1999/02/22-rdf-syntax-ns#&#39;&gt;
+ &lt;rdf:Description rdf:about=&#39;&#39;
+  xmlns:pdf=&#39;http://ns.adobe.com/pdf/1.3/&#39;&gt;
+  &lt;pdf:Author&gt;enewground&lt;/pdf:Author&gt;
+ &lt;/rdf:Description&gt;
+ &lt;rdf:Description rdf:about=&#39;&#39;
+  xmlns:xmp=&#39;http://ns.adobe.com/xap/1.0/&#39;&gt;
+  &lt;xmp:CreatorTool&gt;Canva&lt;/xmp:CreatorTool&gt;
+ &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+&lt;/x:xmpmeta&gt;
+&lt;?xpacket end=&#39;r&#39;?&gt;
+IEND
+</code></pre><p>what is this? well&hellip;I googled about all this and this is close to RE but for png files</p>
+<p>I used <code>bless</code> hexeditor (apt install) to open the file (nano can do it to apparently)</p>
+<p>or use any hexeditor you like</p>
+<p>there was an error in the header hex <code>23 33 44 5F</code> wich translate in ascii to <code>#3D_</code></p>
+<p>its supposed to say <code>89 50 4E 47</code> or <code>.PNG</code></p>
+<p>I replaced those and fixed the png wich shows the flag</p>
+<p>I wont bother blurring this one so have a free flag (I seriously recommand doing the challenge though)</p>
+<!-- raw HTML omitted -->
+<h2 id="read-it">Read it</h2>
+<p>Haha Reddit</p>
+<p>I could provide the link here to help the normies but its about OSINT bro</p>
+<p>that would kill the fun of using google</p>
+<h2 id="spin-my-head">Spin my head</h2>
+<p>AAHHH brainf*ck!! quick decode it!</p>
+<h2 id="an-exclusive">An exclusive!</h2>
+<p>Either you write a script (bash or python mostly) like a real man</p>
+<p>Or you use an online tool like a baby</p>
+<p>Or again the third alternative, you steal the code online like I do sometimes</p>
+<p>I don&rsquo;t know what that make me</p>
+<p>As long as you understand it&hellip;</p>
+<p>hexstrings.py</p>
+<pre tabindex="0"><code>s1 = &#34;44585d6b2368737c65252166234f20626d&#34;
+s2 = &#34;1010101010101010101010101010101010&#34;
+
+a = hex(int(s1, 16) ^ int(s2, 16))[2:]
+print(bytes.fromhex(a).decode(&#39;utf-8&#39;))
+</code></pre><pre tabindex="0"><code>└──╼ $python hexstrings.py
+THM{excluded_inclusion}
+</code></pre><h2 id="binary-walk">Binary walk</h2>
+<!-- raw HTML omitted -->
+<pre tabindex="0"><code>└──╼ $binwalk -e hell.jpg
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             JPEG image data, JFIF standard 1.02
+30            0x1E            TIFF image data, big-endian, offset of first image directory: 8
+265845        0x40E75         Zip archive data, at least v2.0 to extract, uncompressed size: 69, name: hello_there.txt
+266099        0x40F73         End of Zip archive, footer length: 22
+</code></pre><p>just check the extracted folder</p>
+<h2 id="darkness">Darkness</h2>
+<!-- raw HTML omitted -->
+<p>grab stegsolve from a google search (github)</p>
+<pre tabindex="0"><code>#!/bin/bash -ex
+
+wget http://www.caesum.com/handbook/Stegsolve.jar -O stegsolve.jar
+chmod +x stegsolve.jar
+mkdir bin
+mv stegsolve.jar bin/
+</code></pre><p>move in created bin folder and do <code>java -jar stegsolve.jar</code></p>
+<p>then its a java GUI tool you have to fiddle with</p>
+<p>just look around a bit and use the arrows at the bottom</p>
+<p><code>Blue plane 1</code> is where you want to go</p>
+<p>typing the flag by hand is where i felt pain</p>
+<h2 id="a-soundng-qr">A soundng QR</h2>
+<!-- raw HTML omitted -->
+<p>zbar-tools didnt work this time so I just used an online QR scanner</p>
+<p>We get a soundclound link</p>
+<p><code>https://soundcloud.com/user-86667759/thm-ctf-vol1</code></p>
+<p>Now its about listenning&hellip;the speech bot is not on your side</p>
+<p>to help you&hellip;the letters actually form 2 words sticked together</p>
+<p>listen carrefully and just get each letter&hellip;then try to make a sense out of the words</p>
+<p>just paste that in capitals letters with no space or anythin else, between THM curly braces</p>
+<h2 id="dig-up-the-past">Dig up the past</h2>
+<p>the wayback machine <a href="https://web.archive.org/">web.archive</a></p>
+<p>if dinosaurs had websites they would be there</p>
+<p>Just use the search bar for the website and use date pickers to visit the right snapshot</p>
+<h2 id="uncrackable">Uncrackable!</h2>
+<p>If they say so&hellip;let&rsquo;s give up then lol</p>
+<p>First we know its vigenere but we need the key</p>
+<p>the sudden change of flag format was suspicious so I tried <code>tryhackme</code> as key</p>
+<p><code>THMTHMTHM{YEI_RVEWY_BHU_YQF}</code></p>
+<p>hmm now let&rsquo;s try <code>thmthmthm</code> as key</p>
+<p>yup! it worked! it was all aout finding the key!</p>
+<h2 id="small-bases">Small bases</h2>
+<p>It was already kinda obvious but the hint make it clearer</p>
+<p>dec -&gt; hex -&gt; ascii</p>
+<p>just do that</p>
+<h2 id="read-the-packet">Read the packet</h2>
+<p>Oh packet analysis&hellip;pro stuff</p>
+<p>Dont try to read the strings you will regret that</p>
+<p>open it with <code>wireshark</code>&hellip;its where it belongs</p>
+<p>filter by http and you find an http request to GET flag.txt</p>
+<pre tabindex="0"><code>Frame 1825: 506 bytes on wire (4048 bits), 506 bytes captured (4048 bits) on interface eth0, id 0
+Ethernet II, Src: VMware_2d:ec:c9 (00:0c:29:2d:ec:c9), Dst: VMware_fb:30:11 (00:0c:29:fb:30:11)
+Internet Protocol Version 4, Src: 192.168.247.130, Dst: 192.168.247.140
+Transmission Control Protocol, Src Port: 36654, Dst Port: 80, Seq: 1, Ack: 1, Len: 440
+Hypertext Transfer Protocol
+    GET /flag.txt HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): GET /flag.txt HTTP/1.1\r\n]
+        Request Method: GET
+        Request URI: /flag.txt
+        Request Version: HTTP/1.1
+    Host: 192.168.247.140\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0\r\n
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Connection: keep-alive\r\n
+    Upgrade-Insecure-Requests: 1\r\n
+    If-Modified-Since: Fri, 03 Jan 2020 04:36:45 GMT\r\n
+    If-None-Match: &#34;e1bb7-15-59b34db67925a&#34;\r\n
+    Cache-Control: max-age=0\r\n
+    \r\n
+    [Full request URI: http://192.168.247.140/flag.txt]
+    [HTTP request 1/1]
+    [Response in frame: 1827]
+</code></pre><p>Just follow the stream of that request and you get the final flag!</p>
+<p>Ok this challenge was long but fun to do.</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>

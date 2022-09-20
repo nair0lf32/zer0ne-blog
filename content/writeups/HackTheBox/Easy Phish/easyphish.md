@@ -1,4 +1,10 @@
-# Easy phish
+---
+title: "Easy Phish"
+date: 2022-09-20T14:03:31+01:00
+draft: false
+categories:
+  - HackTheBox
+---
 
 googling secure-startup.com gave nothing
 

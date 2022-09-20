@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Sakura room A cool Osint room, and we love osint
+time to join the dojo as a detective
+Tip-OFF we are looking for a vilain&amp;hellip;a cyberCRIMINAL!
+we are provided with an image hosted on github
+I could not first downlaod it&amp;hellip;its even an svg
+But analysing the source code get us this
+inkscape:version=&amp;#34;0.92.5 (2060ec1f9f, 2020-04-08)&amp;#34;sodipodi:docname=&amp;#34;pwnedletter.svg&amp;#34;inkscape:export-filename=&amp;#34;/home/SakuraSnowAngelAiko/Desktop/pwnedletter.png&amp;#34;inkscape:export-xdpi=&amp;#34;96&amp;#34;inkscape:export-ydpi=&amp;#34;96&amp;#34;&amp;gt;&amp;gt; I deduced that the username could be SakuraSnowAngelAiko
+Reconnaissance we do like any osint professional&amp;hellip;we google that username" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/sakura-room/sakura-room/" />
+
+
+    <title>
+        
+             :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Sakura room A cool Osint room, and we love osint
+time to join the dojo as a detective
+Tip-OFF we are looking for a vilain&hellip;a cyberCRIMINAL!
+we are provided with an image hosted on github
+I could not first downlaod it&hellip;its even an svg
+But analysing the source code get us this
+inkscape:version=&#34;0.92.5 (2060ec1f9f, 2020-04-08)&#34;sodipodi:docname=&#34;pwnedletter.svg&#34;inkscape:export-filename=&#34;/home/SakuraSnowAngelAiko/Desktop/pwnedletter.png&#34;inkscape:export-xdpi=&#34;96&#34;inkscape:export-ydpi=&#34;96&#34;&gt;&gt; I deduced that the username could be SakuraSnowAngelAiko
+Reconnaissance we do like any osint professional&hellip;we google that username">
+
+<meta itemprop="wordCount" content="493"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Sakura room A cool Osint room, and we love osint
+time to join the dojo as a detective
+Tip-OFF we are looking for a vilain&hellip;a cyberCRIMINAL!
+we are provided with an image hosted on github
+I could not first downlaod it&hellip;its even an svg
+But analysing the source code get us this
+inkscape:version=&#34;0.92.5 (2060ec1f9f, 2020-04-08)&#34;sodipodi:docname=&#34;pwnedletter.svg&#34;inkscape:export-filename=&#34;/home/SakuraSnowAngelAiko/Desktop/pwnedletter.png&#34;inkscape:export-xdpi=&#34;96&#34;inkscape:export-ydpi=&#34;96&#34;&gt;&gt; I deduced that the username could be SakuraSnowAngelAiko
+Reconnaissance we do like any osint professional&hellip;we google that username"/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Sakura room A cool Osint room, and we love osint
+time to join the dojo as a detective
+Tip-OFF we are looking for a vilain&hellip;a cyberCRIMINAL!
+we are provided with an image hosted on github
+I could not first downlaod it&hellip;its even an svg
+But analysing the source code get us this
+inkscape:version=&#34;0.92.5 (2060ec1f9f, 2020-04-08)&#34;sodipodi:docname=&#34;pwnedletter.svg&#34;inkscape:export-filename=&#34;/home/SakuraSnowAngelAiko/Desktop/pwnedletter.png&#34;inkscape:export-xdpi=&#34;96&#34;inkscape:export-ydpi=&#34;96&#34;&gt;&gt; I deduced that the username could be SakuraSnowAngelAiko
+Reconnaissance we do like any osint professional&hellip;we google that username" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/sakura-room/sakura-room/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+
+<meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/sakura-room/sakura-room/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h1 id="sakura-room">Sakura room</h1>
+<!-- raw HTML omitted -->
+<p>A cool Osint room, and we love osint</p>
+<p>time to join the dojo as a detective</p>
+<h2 id="tip-off">Tip-OFF</h2>
+<p>we are looking for a vilain&hellip;a cyberCRIMINAL!</p>
+<p>we are provided with an <a href="https://raw.githubusercontent.com/OsintDojo/public/3f178408909bc1aae7ea2f51126984a8813b0901/sakurapwnedletter.svg">image</a> hosted on github</p>
+<p>I could not first downlaod it&hellip;its even an svg</p>
+<p>But analysing the source code get us this</p>
+<pre tabindex="0"><code>   inkscape:version=&#34;0.92.5 (2060ec1f9f, 2020-04-08)&#34;
+   sodipodi:docname=&#34;pwnedletter.svg&#34;
+   inkscape:export-filename=&#34;/home/SakuraSnowAngelAiko/Desktop/pwnedletter.png&#34;
+   inkscape:export-xdpi=&#34;96&#34;
+   inkscape:export-ydpi=&#34;96&#34;&gt;&gt;
+</code></pre><p>I deduced that the username could be <code>SakuraSnowAngelAiko</code></p>
+<h2 id="reconnaissance">Reconnaissance</h2>
+<p>we do like any osint professional&hellip;we google that username</p>
+<p>we the name <code>Aiko Abe</code> from many sources like images and linkedin</p>
+<p>from the github account we get a <code>PGP</code> repo with a <code>publickey</code></p>
+<p>we import that</p>
+<pre tabindex="0"><code>└──╼ $gpg --import publickey
+gpg: clef ECDD0FD294110450 : clef publique « SakuraSnowAngel83@protonmail.com » importée
+gpg:       Quantité totale traitée : 1
+gpg:                     importées : 1
+</code></pre><p>And as expected we are provided with origin info, the mail :</p>
+<p><code>SakuraSnowAngel83@protonmail.com</code></p>
+<p>protonmail is a pretty solid and secure mail service though</p>
+<h2 id="unveil">Unveil</h2>
+<p>On github there is a <code>ETH</code> repository with a <code>miningscript</code> check the history for the person&rsquo;s <code>ethereum address</code></p>
+<pre tabindex="0"><code>stratum://0xa102397dbeeBeFD8cD2F73A89122fCdB53abB6ef.Aiko:pswd@eu1.ethermine.org:4444
+</code></pre><p>we visit <code>ethermine.org</code> and there we can search by wallet address</p>
+<p>go to <code>payouts</code> tab and ceck for <code>January 23, 2021 UTC</code> transaction</p>
+<p>exploring he transactions you can see in details one about <code>tether usd</code> too</p>
+<h2 id="taunt">Taunt</h2>
+<p>Now we go to twitter (that beloved place)</p>
+<p>the bold attacker sent a message that we are provided a screenshot of</p>
+<!-- raw HTML omitted -->
+<p>Google exactly <code>AikoAbe3</code> twitter to not be fooled by others fake accounts</p>
+<p>Once you get the handle with the sakura stuff&hellip;</p>
+<p>In one tweet that criminal says</p>
+<pre tabindex="0"><code>Not too concerned about someone else finding them on the Dark Web.
+
+Anyone who wants them will have to do a real DEEP search to find where I PASTEd them.
+</code></pre><p>All the hints were pointing us toward the dark web anyway (another charming place)</p>
+<p>Ever heard about <code>deeppaste</code> son? google it for onion links! you like onions?</p>
+<p>Too bad the website was down&hellip;and I am not feeling like waiting right now so I just use the hint</p>
+<p>your patience is gona be tested anyway, as typing all the long link by hand is no joke</p>
+<p>Now when it comes to wifi and osint I go to <code>wiggle.net</code></p>
+<p>used that website before and its pretty cool</p>
+<p>An advanced search there will give you the <code>BSSID</code></p>
+<h2 id="homebound">Homebound</h2>
+<p>Back to twitter, we analyse the tweet pictures</p>
+<p>The filthy criminal scum retweeted about <code>bethesda</code> cherryblossoms</p>
+<p>google that for a close airport code (in washington)</p>
+<p>Always from twitter pics we see <code>sakura lounge JAL</code> seems like its in <code>haneda</code> airport</p>
+<p>Google for the codes,</p>
+<p>Then Go to Google maps and look for a lake in the area</p>
+<p>This part was not easy for me&hellip;mostly focus to try and recognize the general shape</p>
+<p>then its trial and error, to help you its a lake close to fukushima, in the middle of the  japan map</p>
+<p>From wifi data the attacker might be heading to <code>hirosaki, japan</code>, their home</p>
+<p>Not we got&rsquo;em! Right to jail!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>

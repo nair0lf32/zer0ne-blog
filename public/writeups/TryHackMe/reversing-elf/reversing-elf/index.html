@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Reversing Elf crackme1 just chmod and run the binary
+crackme2 the password is in the &amp;ldquo;strings&amp;rdquo; (you know what to do)
+crackme3 strings with base64 in them
+crackme4 I chose radare2 (IDA is good too)
+we start with the basics
+└──╼ $r2 -d ./crackme4Process with PID 10508 started...= attach 10508 10508bin.baddr 0x00400000Using 0x400000asm.bits 64[0x7fc191002090]&amp;gt; aaa[x] Analyze all flags starting with sym. and entry0 (aa)[x] Analyze function calls (aac)[x] Analyze len bytes of instructions for references (aar)[x] Check for vtables[TOFIX: aaft can&amp;#39;t run in debugger mode." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/reversing-elf/reversing-elf/" />
+
+
+    <title>
+        
+             :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Reversing Elf crackme1 just chmod and run the binary
+crackme2 the password is in the &ldquo;strings&rdquo; (you know what to do)
+crackme3 strings with base64 in them
+crackme4 I chose radare2 (IDA is good too)
+we start with the basics
+└──╼ $r2 -d ./crackme4Process with PID 10508 started...= attach 10508 10508bin.baddr 0x00400000Using 0x400000asm.bits 64[0x7fc191002090]&gt; aaa[x] Analyze all flags starting with sym. and entry0 (aa)[x] Analyze function calls (aac)[x] Analyze len bytes of instructions for references (aar)[x] Check for vtables[TOFIX: aaft can&#39;t run in debugger mode.">
+
+<meta itemprop="wordCount" content="2238"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Reversing Elf crackme1 just chmod and run the binary
+crackme2 the password is in the &ldquo;strings&rdquo; (you know what to do)
+crackme3 strings with base64 in them
+crackme4 I chose radare2 (IDA is good too)
+we start with the basics
+└──╼ $r2 -d ./crackme4Process with PID 10508 started...= attach 10508 10508bin.baddr 0x00400000Using 0x400000asm.bits 64[0x7fc191002090]&gt; aaa[x] Analyze all flags starting with sym. and entry0 (aa)[x] Analyze function calls (aac)[x] Analyze len bytes of instructions for references (aar)[x] Check for vtables[TOFIX: aaft can&#39;t run in debugger mode."/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Reversing Elf crackme1 just chmod and run the binary
+crackme2 the password is in the &ldquo;strings&rdquo; (you know what to do)
+crackme3 strings with base64 in them
+crackme4 I chose radare2 (IDA is good too)
+we start with the basics
+└──╼ $r2 -d ./crackme4Process with PID 10508 started...= attach 10508 10508bin.baddr 0x00400000Using 0x400000asm.bits 64[0x7fc191002090]&gt; aaa[x] Analyze all flags starting with sym. and entry0 (aa)[x] Analyze function calls (aac)[x] Analyze len bytes of instructions for references (aar)[x] Check for vtables[TOFIX: aaft can&#39;t run in debugger mode." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/reversing-elf/reversing-elf/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+
+<meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/reversing-elf/reversing-elf/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h1 id="reversing-elf">Reversing Elf</h1>
+<!-- raw HTML omitted -->
+<h2 id="crackme1">crackme1</h2>
+<p>just chmod and run the binary</p>
+<h2 id="crackme2">crackme2</h2>
+<p>the password is in the &ldquo;strings&rdquo; (you know what to do)</p>
+<h2 id="crackme3">crackme3</h2>
+<p>strings with base64 in them</p>
+<h2 id="crackme4">crackme4</h2>
+<p>I chose radare2 (IDA is good too)</p>
+<p>we start with the basics</p>
+<pre tabindex="0"><code>└──╼ $r2 -d ./crackme4
+Process with PID 10508 started...
+= attach 10508 10508
+bin.baddr 0x00400000
+Using 0x400000
+asm.bits 64
+
+[0x7fc191002090]&gt; aaa
+[x] Analyze all flags starting with sym. and entry0 (aa)
+[x] Analyze function calls (aac)
+[x] Analyze len bytes of instructions for references (aar)
+[x] Check for vtables
+[TOFIX: aaft can&#39;t run in debugger mode.ions (aaft)
+[x] Type matching analysis for all functions (aaft)
+[x] Propagate noreturn information
+[x] Use -AA or aaaa to perform additional experimental analysis.
+
+[0x7fc191002090]&gt; afl
+0x00400540    1 41           entry0
+0x00400510    1 6            sym.imp.__libc_start_main
+0x00400570    4 41           sym.deregister_tm_clones
+0x004005a0    4 57           sym.register_tm_clones
+0x004005e0    3 28           sym.__do_global_dtors_aux
+0x00400600    4 45   -&gt; 42   entry.init0
+0x004007d0    1 2            sym.__libc_csu_fini
+0x0040062d    4 77           sym.get_pwd
+0x004007d4    1 9            sym._fini
+0x0040067a    6 156          sym.compare_pwd
+0x00400760    4 101          sym.__libc_csu_init
+0x00400716    4 74           main
+0x004004b0    3 26           sym._init
+0x00400530    1 6            loc.imp.__gmon_start__
+0x004004e0    1 6            sym.imp.puts
+0x004004f0    1 6            sym.imp.__stack_chk_fail
+0x00400500    1 6            sym.imp.printf
+0x00400520    1 6            sym.imp.strcmp
+</code></pre><p>The main function calls <code>sym.compare_pwd</code> to check the password so I check that one too</p>
+<pre tabindex="0"><code>[0x00400716]&gt; s 0x0040067a
+[0x0040067a]&gt; pdf
+; CALL XREF from main @ 0x400754
+┌ 156: sym.compare_pwd (int64_t arg1);
+│           ; var int64_t var_28h @ rbp-0x28
+│           ; var int64_t var_20h @ rbp-0x20
+│           ; var int64_t var_18h @ rbp-0x18
+│           ; var int64_t var_10h @ rbp-0x10
+│           ; var int64_t var_eh @ rbp-0xe
+│           ; var int64_t var_8h @ rbp-0x8
+│           ; arg int64_t arg1 @ rdi
+│           0x0040067a      55             push rbp
+│           0x0040067b      4889e5         mov rbp, rsp
+│           0x0040067e      4883ec30       sub rsp, 0x30
+│           0x00400682      48897dd8       mov qword [var_28h], rdi    ; arg1
+│           0x00400686      64488b042528.  mov rax, qword fs:[0x28]
+│           0x0040068f      488945f8       mov qword [var_8h], rax
+│           0x00400693      31c0           xor eax, eax
+│           0x00400695      48b8495d7b49.  movabs rax, 0x7b175614497b5d49
+│           0x0040069f      488945e0       mov qword [var_20h], rax
+│           0x004006a3      48b857414751.  movabs rax, 0x547b175651474157
+│           0x004006ad      488945e8       mov qword [var_18h], rax
+│           0x004006b1      66c745f05340   mov word [var_10h], 0x4053  ; &#39;S@&#39;
+│           0x004006b7      c645f200       mov byte [var_eh], 0
+│           0x004006bb      488d45e0       lea rax, [var_20h]
+│           0x004006bf      4889c7         mov rdi, rax
+│           0x004006c2      e866ffffff     call sym.get_pwd
+│           0x004006c7      488b55d8       mov rdx, qword [var_28h]
+│           0x004006cb      488d45e0       lea rax, [var_20h]
+│           0x004006cf      4889d6         mov rsi, rdx
+│           0x004006d2      4889c7         mov rdi, rax
+│           0x004006d5      e846feffff     call sym.imp.strcmp         ; int strcmp(const char *s1, const char *s2)
+│           0x004006da      85c0           test eax, eax
+│       ┌─&lt; 0x004006dc      750c           jne 0x4006ea
+│       │   0x004006de      bfe8074000     mov edi, str.password_OK    ; 0x4007e8 ; &#34;password OK&#34;
+│       │   0x004006e3      e8f8fdffff     call sym.imp.puts           ; int puts(const char *s)
+│      ┌──&lt; 0x004006e8      eb16           jmp 0x400700
+│      │└─&gt; 0x004006ea      488b45d8       mov rax, qword [var_28h]
+│      │    0x004006ee      4889c6         mov rsi, rax
+│      │    0x004006f1      bff4074000     mov edi, str.password___s__not_OK_n ; 0x4007f4 ; &#34;password \&#34;%s\&#34; not OK\n&#34;
+│      │    0x004006f6      b800000000     mov eax, 0
+│      │    0x004006fb      e800feffff     call sym.imp.printf         ; int printf(const char *format)
+│      │    ; CODE XREF from sym.compare_pwd @ 0x4006e8
+│      └──&gt; 0x00400700      488b45f8       mov rax, qword [var_8h]
+│           0x00400704      644833042528.  xor rax, qword fs:[0x28]
+│       ┌─&lt; 0x0040070d      7405           je 0x400714
+│       │   0x0040070f      e8dcfdffff     call sym.imp.__stack_chk_fail ; void __stack_chk_fail(void)
+│       └─&gt; 0x00400714      c9             leave
+└           0x00400715      c3             ret
+</code></pre><p>the call to <code>strcmp</code> is at address <code>0x004006d5</code></p>
+<p>We need to get the value stored in the <code>rdi</code> register</p>
+<p>I tried to debug with a breakpoint just before the call but I could not make it work</p>
+<p>Alternatively I used <code>ltrace</code></p>
+<p>it captures calls made to libraries like <code>strcmp</code> (similar to strace for system calls)</p>
+<pre tabindex="0"><code>└──╼ $ltrace ./crackme4 test
+__libc_start_main(0x400716, 2, 0x7ffcbb73c618, 0x400760 &lt;unfinished ...&gt;
+strcmp(&#34;n0_3asY_pa5sw0rd&#34;, &#34;test&#34;)                                                                                                              = -7
+printf(&#34;password &#34;%s&#34; not OK\n&#34;, &#34;test&#34;password &#34;test&#34; not OK
+)                                                                                                          = 23
++++ exited (status 0) +++
+</code></pre><p>There is also the good ol&rsquo; <code>gdb</code> method (even better IMO)</p>
+<h2 id="crackme5">crackme5</h2>
+<p>This is very similar to <code>crackme4</code> challenge</p>
+<p>instead of using an argument it takes input and still uses <code>strcmp</code></p>
+<pre tabindex="0"><code>│           0x00400801      bf54094000     mov edi, str.Enter_your_input: ; 0x400954 ; &#34;Enter your input:&#34;
+│           0x00400806      e865fdffff     call sym.imp.puts           ; int puts(const char *s)
+│           0x0040080b      488d45b0       lea rax, [var_50h]
+│           0x0040080f      4889c6         mov rsi, rax
+│           0x00400812      bf66094000     mov edi, 0x400966
+│           0x00400817      b800000000     mov eax, 0
+│           0x0040081c      e89ffdffff     call sym.imp.__isoc99_scanf ; int scanf(const char *format)
+│           0x00400821      488d55d0       lea rdx, [var_30h]
+│           0x00400825      488d45b0       lea rax, [var_50h]
+│           0x00400829      4889d6         mov rsi, rdx
+│           0x0040082c      4889c7         mov rdi, rax
+│           0x0040082f      e8a2feffff     call sym.strcmp_
+│           0x00400834      8945ac         mov dword [var_54h], eax
+│           0x00400837      837dac00       cmp dword [var_54h], 0
+│       ┌─&lt; 0x0040083b      750c           jne 0x400849
+│       │   0x0040083d      bf69094000     mov edi, str.Good_game      ; 0x400969 ; &#34;Good game&#34;
+│       │   0x00400842      e829fdffff     call sym.imp.puts           ; int puts(const char *s)
+│      ┌──&lt; 0x00400847      eb0a           jmp 0x400853
+│      │└─&gt; 0x00400849      bf73094000     mov edi, str.Always_dig_deeper ; 0x400973 ; &#34;Always dig deeper&#34;
+│      │    0x0040084e      e81dfdffff     call sym.imp.puts           ; int puts(const char *s)
+</code></pre><p>same process, but note how the variables declared in the main function also give you the answer</p>
+<p>I just used <code>ltrace</code> again with a random input</p>
+<pre tabindex="0"><code>└──╼ $ltrace ./crackme5
+__libc_start_main(0x400773, 1, 0x7ffdf90329d8, 0x4008d0 &lt;unfinished ...&gt;
+puts(&#34;Enter your input:&#34;Enter your input:
+)                                                                                                                         = 18
+__isoc99_scanf(0x400966, 0x7ffdf9032890, 0, 0x7f07de835f33 tester
+)                                                                                       = 1
+strlen(&#34;tester&#34;)                                                                                                                                  = 6
+strlen(&#34;tester&#34;)                                                                                                                                  = 6
+strlen(&#34;tester&#34;)                                                                                                                                  = 6
+strlen(&#34;tester&#34;)                                                                                                                                  = 6
+strlen(&#34;tester&#34;)                                                                                                                                  = 6
+strlen(&#34;tester&#34;)                                                                                                                                  = 6
+strlen(&#34;tester&#34;)                                                                                                                                  = 6
+strncmp(&#34;tester&#34;, &#34;answer_would_be_here&#34;, 28)                                                                                             = 37
+puts(&#34;Always dig deeper&#34;Always dig deeper
+)                                                                                                                         = 18
++++ exited (status 0) +++
+</code></pre><h2 id="crackme6">crackme6</h2>
+<p>Back to password as argument</p>
+<p>main calls <code>sym.compare_pwd</code> wich calls <code>sym.my_secure_test</code></p>
+<pre tabindex="0"><code>[0x7f6fdbd79090]&gt; pdf @sym.my_secure_test
+; CALL XREF from sym.compare_pwd @ 0x4006e4
+┌ 340: sym.my_secure_test (int64_t arg1);
+│           ; var int64_t var_8h @ rbp-0x8
+│           ; arg int64_t arg1 @ rdi
+│           0x0040057d      55             push rbp
+│           0x0040057e      4889e5         mov rbp, rsp
+│           0x00400581      48897df8       mov qword [var_8h], rdi     ; arg1
+│           0x00400585      488b45f8       mov rax, qword [var_8h]
+│           0x00400589      0fb600         movzx eax, byte [rax]
+│           0x0040058c      84c0           test al, al
+│       ┌─&lt; 0x0040058e      740b           je 0x40059b
+│       │   0x00400590      488b45f8       mov rax, qword [var_8h]
+│       │   0x00400594      0fb600         movzx eax, byte [rax]
+│       │   0x00400597      3c31           cmp al, 0x31                ; 49
+│      ┌──&lt; 0x00400599      740a           je 0x4005a5
+│      │└─&gt; 0x0040059b      b8ffffffff     mov eax, 0xffffffff         ; -1
+│      │┌─&lt; 0x004005a0      e92a010000     jmp 0x4006cf
+│      └──&gt; 0x004005a5      488b45f8       mov rax, qword [var_8h]
+│       │   0x004005a9      4883c001       add rax, 1
+│       │   0x004005ad      0fb600         movzx eax, byte [rax]
+│       │   0x004005b0      84c0           test al, al
+│      ┌──&lt; 0x004005b2      740f           je 0x4005c3
+│      ││   0x004005b4      488b45f8       mov rax, qword [var_8h]
+│      ││   0x004005b8      4883c001       add rax, 1
+│      ││   0x004005bc      0fb600         movzx eax, byte [rax]
+│      ││   0x004005bf      3c33           cmp al, 0x33                ; 51
+│     ┌───&lt; 0x004005c1      740a           je 0x4005cd
+│     │└──&gt; 0x004005c3      b8ffffffff     mov eax, 0xffffffff         ; -1
+│     │┌──&lt; 0x004005c8      e902010000     jmp 0x4006cf
+│     └───&gt; 0x004005cd      488b45f8       mov rax, qword [var_8h]
+│      ││   0x004005d1      4883c002       add rax, 2
+│      ││   0x004005d5      0fb600         movzx eax, byte [rax]
+│      ││   0x004005d8      84c0           test al, al
+│     ┌───&lt; 0x004005da      740f           je 0x4005eb
+│     │││   0x004005dc      488b45f8       mov rax, qword [var_8h]
+│     │││   0x004005e0      4883c002       add rax, 2
+│     │││   0x004005e4      0fb600         movzx eax, byte [rax]
+│     │││   0x004005e7      3c33           cmp al, 0x33                ; 51
+│    ┌────&lt; 0x004005e9      740a           je 0x4005f5
+│    │└───&gt; 0x004005eb      b8ffffffff     mov eax, 0xffffffff         ; -1
+│    │┌───&lt; 0x004005f0      e9da000000     jmp 0x4006cf
+│    └────&gt; 0x004005f5      488b45f8       mov rax, qword [var_8h]
+│     │││   0x004005f9      4883c003       add rax, 3
+│     │││   0x004005fd      0fb600         movzx eax, byte [rax]
+│     │││   0x00400600      84c0           test al, al
+│    ┌────&lt; 0x00400602      740f           je 0x400613
+│    ││││   0x00400604      488b45f8       mov rax, qword [var_8h]
+│    ││││   0x00400608      4883c003       add rax, 3
+│    ││││   0x0040060c      0fb600         movzx eax, byte [rax]
+│    ││││   0x0040060f      3c37           cmp al, 0x37                ; 55
+│   ┌─────&lt; 0x00400611      740a           je 0x40061d
+│   │└────&gt; 0x00400613      b8ffffffff     mov eax, 0xffffffff         ; -1
+│   │┌────&lt; 0x00400618      e9b2000000     jmp 0x4006cf
+│   └─────&gt; 0x0040061d      488b45f8       mov rax, qword [var_8h]
+│    ││││   0x00400621      4883c004       add rax, 4
+│    ││││   0x00400625      0fb600         movzx eax, byte [rax]
+│    ││││   0x00400628      84c0           test al, al
+│   ┌─────&lt; 0x0040062a      740f           je 0x40063b
+│   │││││   0x0040062c      488b45f8       mov rax, qword [var_8h]
+│   │││││   0x00400630      4883c004       add rax, 4
+│   │││││   0x00400634      0fb600         movzx eax, byte [rax]
+│   │││││   0x00400637      3c5f           cmp al, 0x5f                ; 95
+│  ┌──────&lt; 0x00400639      740a           je 0x400645
+│  │└─────&gt; 0x0040063b      b8ffffffff     mov eax, 0xffffffff         ; -1
+│  │┌─────&lt; 0x00400640      e98a000000     jmp 0x4006cf
+│  └──────&gt; 0x00400645      488b45f8       mov rax, qword [var_8h]
+│   │││││   0x00400649      4883c005       add rax, 5
+│   │││││   0x0040064d      0fb600         movzx eax, byte [rax]
+│   │││││   0x00400650      84c0           test al, al
+│  ┌──────&lt; 0x00400652      740f           je 0x400663
+│  ││││││   0x00400654      488b45f8       mov rax, qword [var_8h]
+│  ││││││   0x00400658      4883c005       add rax, 5
+│  ││││││   0x0040065c      0fb600         movzx eax, byte [rax]
+│  ││││││   0x0040065f      3c70           cmp al, 0x70                ; 112
+│ ┌───────&lt; 0x00400661      7407           je 0x40066a
+│ │└──────&gt; 0x00400663      b8ffffffff     mov eax, 0xffffffff         ; -1
+│ │┌──────&lt; 0x00400668      eb65           jmp 0x4006cf
+│ └───────&gt; 0x0040066a      488b45f8       mov rax, qword [var_8h]
+│  ││││││   0x0040066e      4883c006       add rax, 6
+│  ││││││   0x00400672      0fb600         movzx eax, byte [rax]
+│  ││││││   0x00400675      84c0           test al, al
+│ ┌───────&lt; 0x00400677      740f           je 0x400688
+│ │││││││   0x00400679      488b45f8       mov rax, qword [var_8h]
+│ │││││││   0x0040067d      4883c006       add rax, 6
+│ │││││││   0x00400681      0fb600         movzx eax, byte [rax]
+│ │││││││   0x00400684      3c77           cmp al, 0x77                ; 119
+│ ────────&lt; 0x00400686      7407           je 0x40068f
+│ └───────&gt; 0x00400688      b8ffffffff     mov eax, 0xffffffff         ; -1
+│ ┌───────&lt; 0x0040068d      eb40           jmp 0x4006cf
+│ ────────&gt; 0x0040068f      488b45f8       mov rax, qword [var_8h]
+│ │││││││   0x00400693      4883c007       add rax, 7
+│ │││││││   0x00400697      0fb600         movzx eax, byte [rax]
+│ │││││││   0x0040069a      84c0           test al, al
+│ ────────&lt; 0x0040069c      740f           je 0x4006ad
+│ │││││││   0x0040069e      488b45f8       mov rax, qword [var_8h]
+│ │││││││   0x004006a2      4883c007       add rax, 7
+│ │││││││   0x004006a6      0fb600         movzx eax, byte [rax]
+│ │││││││   0x004006a9      3c64           cmp al, 0x64                ; 100
+│ ────────&lt; 0x004006ab      7407           je 0x4006b4
+│ ────────&gt; 0x004006ad      b8ffffffff     mov eax, 0xffffffff         ; -1
+│ ────────&lt; 0x004006b2      eb1b           jmp 0x4006cf
+│ ────────&gt; 0x004006b4      488b45f8       mov rax, qword [var_8h]
+│ │││││││   0x004006b8      4883c008       add rax, 8
+│ │││││││   0x004006bc      0fb600         movzx eax, byte [rax]
+│ │││││││   0x004006bf      84c0           test al, al
+│ ────────&lt; 0x004006c1      7407           je 0x4006ca
+│ │││││││   0x004006c3      b8ffffffff     mov eax, 0xffffffff         ; -1
+│ ────────&lt; 0x004006c8      eb05           jmp 0x4006cf
+│ ────────&gt; 0x004006ca      b800000000     mov eax, 0
+│ │││││││   ; XREFS: CODE 0x004005a0  CODE 0x004005c8  CODE 0x004005f0  CODE 0x00400618  CODE 0x00400640  CODE 0x00400668  
+│ │││││││   ; XREFS: CODE 0x0040068d  CODE 0x004006b2  CODE 0x004006c8  
+│ └└└└└└└─&gt; 0x004006cf      5d             pop rbp
+└           0x004006d0      c3             ret
+</code></pre><p>well that&rsquo;s alot&hellip;I used the visual (vvv) to analyze it better</p>
+<p>basically it compares (<code>cmp al, &lt;value&gt;</code>) every character of our argument in <code>rax</code> register with a hex value</p>
+<p>from top to bottom you get : 0x31,0x33,0x33,0x37,0x5f,0x70,0x77,0x64</p>
+<p>Decode it from hex/to ascii (I used cyberchef)</p>
+<p>And that guy said it was an easy password lol</p>
+<h2 id="crackme7">crackme7</h2>
+<p>analysing the <code>main</code> function</p>
+<p>We can see it does another comparison:</p>
+<pre tabindex="0"><code>│ ││││ │    0x08048665      3d697a0000     cmp eax, 0x7a69
+</code></pre><p>Then gives you the flag</p>
+<pre tabindex="0"><code>│ ││││ ││   0x0804866f      68bc880408     push str.Wow_such_h4x0r_    ; 0x80488bc ; &#34;Wow such h4x0r!&#34;
+│ ││││ ││   0x08048674      e8f7fcffff     call sym.imp.puts           ; int puts(const char *s)
+│ ││││ ││   0x08048679      83c410         add esp, 0x10
+│ ││││ ││   0x0804867c      e825000000     call sym.giveFlag
+</code></pre><p>interresting part is the comparison of <code>eax</code> register with the hex value</p>
+<p>I decode it and try it as input for the menu!</p>
+<p>It works but remember the menu takes numbers so decode from hex to decimal (base 16 to base 10)</p>
+<p>nice flag lol (I didnt even use IDA)</p>
+<h2 id="crackme8">crackme8</h2>
+<p>Final one! must be the hardest!!!</p>
+<p>interresting part of <code>main</code> function</p>
+<pre tabindex="0"><code>│    0x080484db      50             push eax
+│      │    0x080484dc      e89ffeffff     call sym.imp.atoi           ; int atoi(const char *str)
+│      │    0x080484e1      83c410         add esp, 0x10
+│      │    0x080484e4      3d0df0feca     cmp eax, 0xcafef00d
+│      │┌─&lt; 0x080484e9      7417           je 0x8048502
+│      ││   0x080484eb      83ec0c         sub esp, 0xc
+│      ││   0x080484ee      6874860408     push str.Access_denied.     ; 0x8048674 ; &#34;Access denied.&#34;
+│      ││   0x080484f3      e858feffff     call sym.imp.puts           ; int puts(const char *s)
+│      ││   0x080484f8      83c410         add esp, 0x10
+│      ││   0x080484fb      b801000000     mov eax, 1
+│     ┌───&lt; 0x08048500      eb1a           jmp 0x804851c
+│     ││└─&gt; 0x08048502      83ec0c         sub esp, 0xc
+│     ││    0x08048505      6883860408     push str.Access_granted.    ; 0x8048683 ; &#34;Access granted.&#34;
+│     ││    0x0804850a      e841feffff     call sym.imp.puts           ; int puts(const char *s)
+│     ││    0x0804850f      83c410         add esp, 0x10
+│     ││    0x08048512      e80d000000     call sym.giveFlag
+</code></pre><p><code>atoi</code> converts a string to an integer</p>
+<p>and you know what this does already: <code>cmp eax, 0xcafef00d</code></p>
+<p>So I converted the hex to decimal again and tried it but got denied</p>
+<p>the result was a bit long for an integer anyway&hellip;</p>
+<p>I got stuck here a bit and went for help&hellip;I got this suggestion:</p>
+<p>&ldquo;trying to convert the hex to binary, you may notice the decimal number is actually negative&rdquo;</p>
+<p>that&rsquo;s how I learnt about signed 2&rsquo;s complement</p>
+<p>I used <a href="https://www.rapidtables.com/convert/number/hex-to-decimal.html">rapidtables</a> to decode the hex and used the negative value</p>
+<p>It worked!</p>
+<p>Alternatively you could use a breakpoint at the comparison, change eax to the hex value and continue to get the flag</p>
+<p>This one feels like a more &ldquo;hacky&rdquo; workaround&hellip;so cool!</p>
+<p>Anyway! fun room! RE is hard but I am slowly getting better at it!</p>
+<p>I could do this room faster with <code>ghidra</code> but I chose pain and spent hours!</p>
+<p>I think even IDA would be faster than r2.</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>

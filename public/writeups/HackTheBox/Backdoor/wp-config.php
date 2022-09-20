@@ -1,0 +1,1 @@
+../../../wp-config.php/../../../wp-config.php/../../../wp-config.php/<script>window.close()</script>

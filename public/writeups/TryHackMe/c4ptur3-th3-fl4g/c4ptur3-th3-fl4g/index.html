@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="c4pur3 th3 fl4g This room says capture the flag but its actually more a challenges room.
+Yes there are flags&amp;hellip;yes this is technically a ctf yes..
+anyway, first part:
+Translation and shifting c4n y0u c4p7u23 7h3 f149? : we all know the answer for the leet code so I wont type that
+01101100 01100101 01110100 01110011 00100000 01110100 01110010 01111001 00100000 01110011 01101111 01101101 01100101 00100000 01100010 01101001 01101110 01100001 01110010 01111001 00100000 01101111 01110101 01110100 00100001 : lets try some binary out!" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/c4ptur3-th3-fl4g/c4ptur3-th3-fl4g/" />
+
+
+    <title>
+        
+             :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="c4pur3 th3 fl4g This room says capture the flag but its actually more a challenges room.
+Yes there are flags&hellip;yes this is technically a ctf yes..
+anyway, first part:
+Translation and shifting c4n y0u c4p7u23 7h3 f149? : we all know the answer for the leet code so I wont type that
+01101100 01100101 01110100 01110011 00100000 01110100 01110010 01111001 00100000 01110011 01101111 01101101 01100101 00100000 01100010 01101001 01101110 01100001 01110010 01111001 00100000 01101111 01110101 01110100 00100001 : lets try some binary out!">
+
+<meta itemprop="wordCount" content="1589"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="c4pur3 th3 fl4g This room says capture the flag but its actually more a challenges room.
+Yes there are flags&hellip;yes this is technically a ctf yes..
+anyway, first part:
+Translation and shifting c4n y0u c4p7u23 7h3 f149? : we all know the answer for the leet code so I wont type that
+01101100 01100101 01110100 01110011 00100000 01110100 01110010 01111001 00100000 01110011 01101111 01101101 01100101 00100000 01100010 01101001 01101110 01100001 01110010 01111001 00100000 01101111 01110101 01110100 00100001 : lets try some binary out!"/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="c4pur3 th3 fl4g This room says capture the flag but its actually more a challenges room.
+Yes there are flags&hellip;yes this is technically a ctf yes..
+anyway, first part:
+Translation and shifting c4n y0u c4p7u23 7h3 f149? : we all know the answer for the leet code so I wont type that
+01101100 01100101 01110100 01110011 00100000 01110100 01110010 01111001 00100000 01110011 01101111 01101101 01100101 00100000 01100010 01101001 01101110 01100001 01110010 01111001 00100000 01101111 01110101 01110100 00100001 : lets try some binary out!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/c4ptur3-th3-fl4g/c4ptur3-th3-fl4g/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+
+<meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/c4ptur3-th3-fl4g/c4ptur3-th3-fl4g/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h1 id="c4pur3-th3-fl4g">c4pur3 th3 fl4g</h1>
+<p>This room says capture the flag but its actually more a challenges room.</p>
+<p>Yes there are flags&hellip;yes this is technically a ctf yes..</p>
+<p>anyway, first part:</p>
+<h2 id="translation-and-shifting">Translation and shifting</h2>
+<p><code>c4n y0u c4p7u23 7h3 f149?</code> : we all know the answer for the leet code so I wont type that</p>
+<p><code>01101100 01100101 01110100 01110011 00100000 01110100 01110010 01111001 00100000 01110011 01101111 01101101 01100101 00100000 01100010 01101001 01101110 01100001 01110010 01111001 00100000 01101111 01110101 01110100 00100001</code> : lets try some binary out!</p>
+<p><code>MJQXGZJTGIQGS4ZAON2XAZLSEBRW63LNN5XCA2LOEBBVIRRHOM======</code> : base32 is super common in CTF&rsquo;s</p>
+<p><code>RWFjaCBCYXNlNjQgZGlnaXQgcmVwcmVzZW50cyBleGFjdGx5IDYgYml0cyBvZiBkYXRhLg==</code> : Each Base64 digit represents exactly 6 bits of data.</p>
+<p><code>68 65 78 61 64 65 63 69 6d 61 6c 20 6f 72 20 62 61 73 65 31 36 3f</code> : hexadecimal or base16?</p>
+<p><code>Ebgngr zr 13 cynprf!</code> : Rotate me 13 places!</p>
+<p><code>\*@F DA:? &gt;6 C:89E C@F?5 323J C:89E C@F?5 Wcf E:&gt;6DX</code> : You spin me right round baby right round (47 times)</p>
+<p>and next we got morse code</p>
+<p><code>- . .-.. . -.-. --- -- -- ..- -. .. -.-. .- - .. --- -. . -. -.-. --- -.. .. -. --.</code> : TELECOMMUNICATION ENCODING</p>
+<p><code>85 110 112 97 99 107 32 116 104 105 115 32 66 67 68</code> : Unpack this BCD</p>
+<p>And the last one made me go like&hellip;yo wtf!?</p>
+<pre tabindex="0"><code>LS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLi0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLi0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLi0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLi0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLi0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0KLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLS0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLi0tLS0KLS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0=
+</code></pre><p>But it was just annoyingly long base64</p>
+<p>which is decoded is just morse</p>
+<pre tabindex="0"><code>----- .---- .---- ----- ----- .---- .---- -----
+----- .---- .---- ----- ----- .---- ----- .----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- ----- .---- .---- .---- .---- .----
+----- .---- .---- ----- ----- ----- ----- -----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- .---- ----- .----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- .---- -----
+----- .---- .---- ----- .---- ----- ----- -----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- .---- ----- -----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- .---- -----
+----- .---- .---- ----- ----- ----- ----- .----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- ----- .---- .---- .---- .---- .----
+----- .---- .---- ----- .---- ----- ----- -----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- .---- ----- ----- -----
+----- .---- .---- ----- ----- .---- .---- -----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- ----- .---- .---- .---- .---- .----
+----- .---- .---- ----- ----- .---- .---- -----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- ----- .---- .---- .---- .---- .----
+----- .---- .---- ----- ----- ----- ----- -----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- .---- -----
+----- .---- .---- ----- ----- ----- ----- .----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- .---- ----- .----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- ----- .---- .---- .---- .---- .----
+----- .---- .---- ----- ----- ----- .---- .----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- ----- .---- .---- .---- .---- .----
+----- .---- .---- ----- ----- .---- ----- -----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- .---- ----- -----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- .---- -----
+----- .---- .---- ----- ----- ----- ----- .----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- .---- ----- ----- -----
+----- .---- .---- ----- ----- .---- .---- -----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- .---- -----
+----- .---- .---- ----- ----- ----- ----- .----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- .---- ----- ----- -----
+----- .---- .---- ----- ----- .---- .---- .----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- ----- .---- .---- .---- .---- .----
+----- .---- .---- ----- ----- .---- ----- -----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- .---- ----- .----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- .---- -----
+----- .---- .---- ----- ----- ----- ----- .----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- .---- ----- .----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- .---- .----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- ----- .---- .---- .---- .---- .----
+----- .---- .---- ----- ----- .---- ----- -----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- .---- ----- ----- -----
+----- .---- .---- ----- .---- ----- ----- -----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- ----- .---- .---- .---- .---- .----
+----- .---- .---- ----- ----- .---- .---- -----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- ----- .---- .---- .---- .---- .----
+----- .---- .---- ----- ----- .---- ----- -----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- ----- .---- .---- .---- .---- .----
+----- .---- .---- ----- ----- ----- ----- -----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- .---- .----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- .---- .----
+----- .---- .---- ----- ----- .---- ----- .----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- .---- .----
+----- .---- .---- ----- ----- .---- ----- .----
+----- ----- .---- ----- ----- ----- ----- -----
+----- .---- .---- ----- ----- ----- .---- .----
+----- .---- .---- ----- ----- .---- ----- .----￀
+</code></pre><p>then binary</p>
+<pre tabindex="0"><code>  01100110011001010010000001100000010111110110000000100000011000000110000001100101001000000110001001101000001000000110000001100000011001000010000001100010011000010010000001100000010111110110100000100000011010000110011000100000011000000101111101100110001000000110000001011111011000000010000001100010011000010010000001100000011000000110010100100000011000000101111101100011001000000110000001011111011001000010000001100000011000000110010000100000011000100110000100100000011010000110011000100000011000100110000100100000011010000110011100100000011000000101111101100100001000000110000001100000011001010010000001100010011000010010000001100000011000000110010100100000011000000110000001100011001000000110000001011111011001000010000001101000011010000010000001100000010111110110011000100000011000000101111101100100001000000110000001011111011000000010000001100000011000000110001100100000011000110110010100100000011000110110010100100000011000110110010�
+</code></pre><p>ROT 47 again</p>
+<pre tabindex="0"><code>fe `_` `e bh `d ba `_h hf `_f `_` ba ``e `_c ` _d ``d ba hf ba hg  `\_d `e ba `e ``c `\_d hh `_f `\_d `_` ``c ce ce c
+</code></pre><p>ASCII plus plus (hehe)</p>
+<pre tabindex="0"><code>76 101 116 39 115 32 109 97 107 101 32 116 104 105 115 32 97 32 98 105 116 32 116 114 105 99 107 105 101 114 46 46 4
+</code></pre><p>Did you feel the levels of inception?</p>
+<p>Finally the answer is:<br>
+<code>Let's make this a bit trickier..</code></p>
+<p>yeah we all love tricks</p>
+<h2 id="spectograms">Spectograms</h2>
+<p>I dont know what those are so google might be helpful (I google alot)</p>
+<p>I downloaded the secretaudio.wav file and audacity to analyse the spectrograms</p>
+<p><code>super secret message!</code></p>
+<h2 id="steganography">Steganography</h2>
+<p>Image downloaded</p>
+<p><img src="stegosteg.jpg" alt="stegosteg"></p>
+<p>luckily there was no passphrase for steghide</p>
+<pre tabindex="0"><code>steghide --extract -sf stegosteg.jpg
+Entrez la passphrase:
+�criture des donn�es extraites dans &#34;steganopayload2248.txt&#34;.
+</code></pre><p>the extracted text says <code>SpaghettiSteg</code></p>
+<h2 id="security-trough-obscurity">security trough obscurity</h2>
+<p>we got a nice meme</p>
+<p><img src="meme.jpg" alt="meme"></p>
+<pre tabindex="0"><code>steghide --info meme.jpg
+&#34;meme.jpg&#34;:
+format: jpeg
+capacit�: 3,4 KB
+Essayer d&#39;obtenir des informations � propos des donn�es incorpor�es ? (o/n) o
+Entrez la passphrase:
+steghide: impossible d&#39;extraire des donn�es avec cette passphrase!
+</code></pre><p>ok now there is a passphrase? that&rsquo;s just extra steps</p>
+<pre tabindex="0"><code>binwalk meme.jpg
+
+## DECIMAL HEXADECIMAL DESCRIPTION
+
+0 0x0 JPEG image data, JFIF standard 1.01
+30 0x1E TIFF image data, big-endian, offset of first image directory: 8
+74407 0x122A7 RAR archive data, version 5.x
+74478 0x122EE PNG image, 147 x 37, 8-bit/color RGBA, non-interlaced
+74629 0x12385 Zlib compressed data, default compression
+</code></pre><p>unzip usally doesnt work we use 7zip</p>
+<pre tabindex="0"><code>7z x meme.jpg
+
+7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=fr_FR.UTF-8,Utf16=on,HugeFiles=on,64 bits,2 CPUs Intel(R) Core(TM) i5-6400T CPU @ 2.20GHz (506E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 80123 bytes (79 KiB)
+
+## Extracting archive: meme.jpg
+
+Path = meme.jpg
+Type = Rar5
+Offset = 74407
+Physical Size = 5716
+Solid = -
+Blocks = 1
+Encrypted = -
+Multivolume = -
+Volumes = 1
+
+Everything is Ok
+
+Size: 5562
+</code></pre><p>Now another image (another one)&hellip;hackerchat.png</p>
+<p><img src="hackerchat.png" alt="hackerchat"></p>
+<p>ok they said there was a secret &rsquo;text&rsquo; too&hellip;so lets open the meme as textfile</p>
+<p>or use strings command</p>
+<pre tabindex="0"><code>strings meme.jpg
+...
+J2!&#39;]
+.8P/
+&#39;[SQP
+S~j@6h
+vA}=
+\*s&amp;\_\_
+@9Xs
+{@84
+2$Es
+i2Mc
+IEND
+&#34;AHH_YOU_FOUND_ME!&#34;
+hackerchat.png
+</code></pre><p>Yeah I found you! what are you gonna do now?</p>
+<p>Notice how i didnt hide the answers for this room?</p>
+<p>for me those are challenges and If you are reading this before trying them</p>
+<p>yourself you already killed the fun anyway</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Rick and Morty My very first ctf in the theme of one of my favorites cartoon
+I was not bright enough to take notes doing it so I have to re-do it
+Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.6 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 1b:a2:55:2a:98:72:8b:b1:04:a2:92:04:71:e1:63:e8 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD1h54qxFjtSFt0u71oKQVr2fj0sna5xoDSQTcxNlW7467woiH/Ufj4/ccHN32iwsx6FIMJJPRrdy2LUd38DybkLKSnqn1B6UR0LQ8n3QwnKK54ad7PwdwqXsostLASIXSFdjXo25SttYwh4BUzaNjmjihF5o63Qj533Jx0y8Zbbw0vaqFNzBPBYt3&#43;JqkIF5IiBGfiR4zodHOpvi2g9g6AXAl32OhDvd5kqTRVIRDenk69SeR7awKZo&#43;v0WMdJvrUJIriXhlJ72QmAzJo&#43;D/dZba2lsuM8RR7RJnpfA4swwP&#43;t8x3XztlV4EcOmgdf2bA/bIstkTUF&#43;OcKTvaKFo3j| 256 33:a4:33:d9:d8:14:45:e5:52:be:f6:f7:ed:93:f4:f7 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCtRsw3waYPfZ8fzVb3nZb5CDEnzgzwDBIWyMoye7TIE1KWDrD3V3kkqCSyKNKA&#43;I0OGxd3Tcg7Ce3sEuj0gpXk=| 256 2f:9f:a8:14:a6:aa:72:5d:6c:47:5e:8d:30:63:8f:3d (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPtbWlf0LCQkWzV1oNlITISE9ack8cFh0hoaSH0SNGlC80/tcp open http syn-ack Apache httpd 2." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/rickandmorty/rick-and-morty/" />
+
+
+    <title>
+        
+             :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Rick and Morty My very first ctf in the theme of one of my favorites cartoon
+I was not bright enough to take notes doing it so I have to re-do it
+Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.6 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 1b:a2:55:2a:98:72:8b:b1:04:a2:92:04:71:e1:63:e8 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD1h54qxFjtSFt0u71oKQVr2fj0sna5xoDSQTcxNlW7467woiH/Ufj4/ccHN32iwsx6FIMJJPRrdy2LUd38DybkLKSnqn1B6UR0LQ8n3QwnKK54ad7PwdwqXsostLASIXSFdjXo25SttYwh4BUzaNjmjihF5o63Qj533Jx0y8Zbbw0vaqFNzBPBYt3&#43;JqkIF5IiBGfiR4zodHOpvi2g9g6AXAl32OhDvd5kqTRVIRDenk69SeR7awKZo&#43;v0WMdJvrUJIriXhlJ72QmAzJo&#43;D/dZba2lsuM8RR7RJnpfA4swwP&#43;t8x3XztlV4EcOmgdf2bA/bIstkTUF&#43;OcKTvaKFo3j| 256 33:a4:33:d9:d8:14:45:e5:52:be:f6:f7:ed:93:f4:f7 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCtRsw3waYPfZ8fzVb3nZb5CDEnzgzwDBIWyMoye7TIE1KWDrD3V3kkqCSyKNKA&#43;I0OGxd3Tcg7Ce3sEuj0gpXk=| 256 2f:9f:a8:14:a6:aa:72:5d:6c:47:5e:8d:30:63:8f:3d (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPtbWlf0LCQkWzV1oNlITISE9ack8cFh0hoaSH0SNGlC80/tcp open http syn-ack Apache httpd 2.">
+
+<meta itemprop="wordCount" content="489"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Rick and Morty My very first ctf in the theme of one of my favorites cartoon
+I was not bright enough to take notes doing it so I have to re-do it
+Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.6 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 1b:a2:55:2a:98:72:8b:b1:04:a2:92:04:71:e1:63:e8 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD1h54qxFjtSFt0u71oKQVr2fj0sna5xoDSQTcxNlW7467woiH/Ufj4/ccHN32iwsx6FIMJJPRrdy2LUd38DybkLKSnqn1B6UR0LQ8n3QwnKK54ad7PwdwqXsostLASIXSFdjXo25SttYwh4BUzaNjmjihF5o63Qj533Jx0y8Zbbw0vaqFNzBPBYt3&#43;JqkIF5IiBGfiR4zodHOpvi2g9g6AXAl32OhDvd5kqTRVIRDenk69SeR7awKZo&#43;v0WMdJvrUJIriXhlJ72QmAzJo&#43;D/dZba2lsuM8RR7RJnpfA4swwP&#43;t8x3XztlV4EcOmgdf2bA/bIstkTUF&#43;OcKTvaKFo3j| 256 33:a4:33:d9:d8:14:45:e5:52:be:f6:f7:ed:93:f4:f7 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCtRsw3waYPfZ8fzVb3nZb5CDEnzgzwDBIWyMoye7TIE1KWDrD3V3kkqCSyKNKA&#43;I0OGxd3Tcg7Ce3sEuj0gpXk=| 256 2f:9f:a8:14:a6:aa:72:5d:6c:47:5e:8d:30:63:8f:3d (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPtbWlf0LCQkWzV1oNlITISE9ack8cFh0hoaSH0SNGlC80/tcp open http syn-ack Apache httpd 2."/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Rick and Morty My very first ctf in the theme of one of my favorites cartoon
+I was not bright enough to take notes doing it so I have to re-do it
+Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.6 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 1b:a2:55:2a:98:72:8b:b1:04:a2:92:04:71:e1:63:e8 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD1h54qxFjtSFt0u71oKQVr2fj0sna5xoDSQTcxNlW7467woiH/Ufj4/ccHN32iwsx6FIMJJPRrdy2LUd38DybkLKSnqn1B6UR0LQ8n3QwnKK54ad7PwdwqXsostLASIXSFdjXo25SttYwh4BUzaNjmjihF5o63Qj533Jx0y8Zbbw0vaqFNzBPBYt3&#43;JqkIF5IiBGfiR4zodHOpvi2g9g6AXAl32OhDvd5kqTRVIRDenk69SeR7awKZo&#43;v0WMdJvrUJIriXhlJ72QmAzJo&#43;D/dZba2lsuM8RR7RJnpfA4swwP&#43;t8x3XztlV4EcOmgdf2bA/bIstkTUF&#43;OcKTvaKFo3j| 256 33:a4:33:d9:d8:14:45:e5:52:be:f6:f7:ed:93:f4:f7 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCtRsw3waYPfZ8fzVb3nZb5CDEnzgzwDBIWyMoye7TIE1KWDrD3V3kkqCSyKNKA&#43;I0OGxd3Tcg7Ce3sEuj0gpXk=| 256 2f:9f:a8:14:a6:aa:72:5d:6c:47:5e:8d:30:63:8f:3d (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPtbWlf0LCQkWzV1oNlITISE9ack8cFh0hoaSH0SNGlC80/tcp open http syn-ack Apache httpd 2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/rickandmorty/rick-and-morty/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+
+<meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/rickandmorty/rick-and-morty/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h1 id="rick-and-morty">Rick and Morty</h1>
+<!-- raw HTML omitted -->
+<p>My very first ctf in the theme of one of my favorites cartoon</p>
+<p>I was not bright enough to take notes doing it so I have to re-do it</p>
+<h2 id="enumeration">Enumeration</h2>
+<h3 id="nmap">nmap</h3>
+<pre tabindex="0"><code>PORT   STATE SERVICE REASON  VERSION
+22/tcp open  ssh     syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.6 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 1b:a2:55:2a:98:72:8b:b1:04:a2:92:04:71:e1:63:e8 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD1h54qxFjtSFt0u71oKQVr2fj0sna5xoDSQTcxNlW7467woiH/Ufj4/ccHN32iwsx6FIMJJPRrdy2LUd38DybkLKSnqn1B6UR0LQ8n3QwnKK54ad7PwdwqXsostLASIXSFdjXo25SttYwh4BUzaNjmjihF5o63Qj533Jx0y8Zbbw0vaqFNzBPBYt3+JqkIF5IiBGfiR4zodHOpvi2g9g6AXAl32OhDvd5kqTRVIRDenk69SeR7awKZo+v0WMdJvrUJIriXhlJ72QmAzJo+D/dZba2lsuM8RR7RJnpfA4swwP+t8x3XztlV4EcOmgdf2bA/bIstkTUF+OcKTvaKFo3j
+|   256 33:a4:33:d9:d8:14:45:e5:52:be:f6:f7:ed:93:f4:f7 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCtRsw3waYPfZ8fzVb3nZb5CDEnzgzwDBIWyMoye7TIE1KWDrD3V3kkqCSyKNKA+I0OGxd3Tcg7Ce3sEuj0gpXk=
+|   256 2f:9f:a8:14:a6:aa:72:5d:6c:47:5e:8d:30:63:8f:3d (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPtbWlf0LCQkWzV1oNlITISE9ack8cFh0hoaSH0SNGlC
+80/tcp open  http    syn-ack Apache httpd 2.4.18 ((Ubuntu))
+|_http-title: Rick is sup4r cool
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><h3 id="ffuf">ffuf</h3>
+<pre tabindex="0"><code>.htpasswd               [Status: 403, Size: 296, Words: 22, Lines: 12]
+.hta                    [Status: 403, Size: 291, Words: 22, Lines: 12]
+.htaccess               [Status: 403, Size: 296, Words: 22, Lines: 12]
+assets                  [Status: 301, Size: 313, Words: 20, Lines: 10]
+index.html              [Status: 200, Size: 1062, Words: 148, Lines: 38]
+robots.txt              [Status: 200, Size: 17, Words: 1, Lines: 2]
+server-status           [Status: 403, Size: 300, Words: 22, Lines: 12]
+</code></pre><p>lol <code>robots.txt</code> is litterally put under or nose</p>
+<p>On the website you can see rick turned into a pickle again</p>
+<p>haha&hellip;funniest thing I ever saw</p>
+<p>checking the source code (always)</p>
+<pre tabindex="0"><code>&lt;!--
+
+    Note to self, remember username!
+
+    Username: R1ckRul3s
+
+  --&gt;
+</code></pre><p><code>robots.txt</code> just contains <code>Wubbalubbadubdub</code></p>
+<p>might be the password! we try to ssh with those&hellip;permission denied!</p>
+<p>More website enumeration then&hellip;I fuzz for more dir or files</p>
+<pre tabindex="0"><code>.htpasswd               [Status: 403, Size: 300, Words: 22, Lines: 12]
+                        [Status: 403, Size: 291, Words: 22, Lines: 12]
+.hta                    [Status: 403, Size: 295, Words: 22, Lines: 12]
+.htaccess               [Status: 403, Size: 300, Words: 22, Lines: 12]
+denied                  [Status: 302, Size: 0, Words: 1, Lines: 1]
+login                   [Status: 200, Size: 882, Words: 89, Lines: 26]
+portal                  [Status: 302, Size: 0, Words: 1, Lines: 1]
+</code></pre><p><code>login.php</code> and <code>portal.php</code> look interresting!</p>
+<p>We login and reach portal&hellip;there we have command execution</p>
+<p>I immediatelly try <code>ls</code></p>
+<pre tabindex="0"><code>Sup3rS3cretPickl3Ingred.txt
+assets
+clue.txt
+denied.php
+index.html
+login.php
+portal.php
+robots.txt
+</code></pre><p>The first ingredient is there&hellip;so lets read it</p>
+<p>Denied! haha..poor meeseeks</p>
+<p>there is a filter for some commands <code>cat</code> doesnt work but you can use <code>less</code></p>
+<pre tabindex="0"><code>less Sup3rS3cretPickl3Ingred.txt
+...
+</code></pre><p><code>clue.txt</code> says <code>Look around the file system for the other ingredient.</code></p>
+<p>use commands to look around&hellip;always check home</p>
+<p>hehe this part was a bit tricky but I already completed the linux strenght room</p>
+<pre tabindex="0"><code>total 12
+drwxrwxrwx 2 root root 4096 Feb 10  2019 .
+drwxr-xr-x 4 root root 4096 Feb 10  2019 ..
+-rwxrwxrwx 1 root root   13 Feb 10  2019 second ingredients
+</code></pre><p>It was not two folders or files its just one file named &ldquo;second ingredients&rdquo;</p>
+<pre tabindex="0"><code>less &#34;/home/rick/second ingredients&#34;
+...
+</code></pre><p>so now there is only one ingredient left&hellip;looking around doesnt help</p>
+<p>hmm&hellip;wait a second&hellip;</p>
+<h2 id="privilege-escalation-">privilege escalation ?</h2>
+<pre tabindex="0"><code>sudo -l
+
+Matching Defaults entries for www-data on ip-10-10-153-33.eu-west-1.compute.internal:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User www-data may run the following commands on ip-10-10-153-33.eu-west-1.compute.internal:
+    (ALL) NOPASSWD: ALL
+</code></pre><p>LMAO! we are litterally root! yeah now we know where it is</p>
+<pre tabindex="0"><code>sudo less /root/3rd.txt
+...
+</code></pre><p>Done! Wubbalubbadubdub!!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>

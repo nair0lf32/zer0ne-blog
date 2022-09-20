@@ -1,4 +1,10 @@
-#  Gunship
+---
+title: "Gunship"
+date: 2022-09-20T14:03:31+01:00
+draft: false
+categories:
+  - HackTheBox
+---
 
 Its a "very easy" web challenge so lets speedrun it
 

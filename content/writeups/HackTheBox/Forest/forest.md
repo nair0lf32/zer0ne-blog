@@ -1,4 +1,10 @@
-# Forest
+---
+title: "Forest"
+date: 2022-09-20T14:03:31+01:00
+draft: false
+categories:
+  - HackTheBox
+---
 
 Look at this beautiful piece of art
 

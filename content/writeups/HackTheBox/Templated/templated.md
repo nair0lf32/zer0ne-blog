@@ -1,4 +1,11 @@
-# Templated
+---
+title: "Templated"
+date: 2022-09-20T15:03:31+01:00
+draft: false
+categories:
+  - HackTheBox
+---
+
 
 Another great web challenge.
 

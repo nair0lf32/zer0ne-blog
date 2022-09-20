@@ -1,4 +1,10 @@
-# Money Flows
+---
+title: "Money Flowz"
+date: 2022-09-20T14:03:31+01:00
+draft: false
+categories:
+  - HackTheBox
+---
 
 Another OSINT challenge
 

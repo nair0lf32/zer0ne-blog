@@ -1,4 +1,11 @@
-# Undetected
+---
+title: "Undetected"
+date: 2022-09-20T15:03:31+01:00
+draft: false
+categories:
+  - HackTheBox
+---
+
 
 ## enumeration
 

