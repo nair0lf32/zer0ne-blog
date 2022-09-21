@@ -42,6 +42,8 @@ Other places I Learn or just play challenges (not really writing writeups for th
 - [googleCTF](https://capturetheflag.withgoogle.com/team/nair0lf32)
 - [Overthewire wargames](https://overthewire.org/wargames/)
 - [hackerlab](https://qualif.hackerlab.africa/challenges)
+- [ringzer0](https://ringzer0ctf.com/)
+- [hackmyVM?](https://hackmyvm.eu)
 
 Also, [wherever I feel like getting the fun and knoweledge](https://ctfsites.github.io/)
 
