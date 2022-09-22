@@ -1,5 +1,10 @@
-# 0 day
-
+---
+title: "0 day"
+date: 2022-09-22T16:00:31+01:00
+draft: false
+categories:
+  - TryHackMe
+---
 <img src="0day.jpeg" alt="0day" width=200/>
 
 >"Exploit Ubuntu, like a Turtle in a Hurricane"
