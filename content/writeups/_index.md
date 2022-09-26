@@ -8,8 +8,8 @@ Welcome to my CTFs writeups! I talk about CTF [Here]({{< ref "/posts/CTFs" >}} "
 
 Below are Categories named after the CTF platforms where they are from:
 
-## - [TryHackMe]({{< ref "/categories/tryhackme" >}} "CTFs")
+- [TryHackMe]({{< ref "/categories/tryhackme" >}} "CTFs")
+- [Cyberseclabs]({{< ref "/categories/cyberseclabs" >}} "CTFs")
+- [HackTheBox]({{< ref "/categories/hackthebox" >}} "CTFs")
 
-## - [Cyberseclabs]({{< ref "/categories/cyberseclabs" >}} "CTFs")
-
-## - [HackTheBox]({{< ref "/categories/hackthebox" >}} "CTFs")
+And below you have all the writeups list

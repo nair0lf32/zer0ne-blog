@@ -55,18 +55,23 @@ My first CTF platform and oh boy...what a mistake it was! You read all I said ab
 
 I got lost and ended up there! I learnt a lot but when I started to enjoy it I realised it was expensive and I am still waiting for new free content
 
-## Others
+## [Root-me](https://www.root-me.org/)
+
+{{< figure src="https://www.root-me.org/IMG/logo/siteon0.svg?1637496509" alt="nairol32-root-me" link="https://www.root-me.org/nairolf32" position="center" width=100 >}}
+
+Amazing french platform. They have solid hardcore challenges and the platform is mostly ran by the community. This one is worth a shot
+
+## [Pico-Ctf](https://play.picoctf.org/)
+
+{{< figure src="https://play.picoctf.org/static/media/picoctf-logo-horizontal-white.17fdf0dcdef08dc3396a195b95e3bc29.svg" alt="nairol32-pico" link="https://play.picoctf.org/users/nairolf32" position="center" width=180 >}}
+
+This one is highly recommended for beginners too. They don't really teach you, but the challenges are very welcoming. What I loved the most there was their `web terminal`. A shell in the browser. A little personal space with some tools and storage to solve the challenges without using your own attack machine. Making it available even on the go!
+
+### Miscellanous
 
 Other places I Learn or just play challenges (not really writing writeups for those):
 
-<a href="https://play.picoctf.org/users/nairolf32"><img src="https://play.picoctf.org/static/media/picoctf-logo-horizontal-white.17fdf0dcdef08dc3396a195b95e3bc29.svg" alt="nairol32-pico" width=180/></a>
-<a href="https://www.root-me.org/nairolf32"><img src="https://www.root-me.org/IMG/logo/siteon0.svg?1637496509" alt="nairol32-root-me" width=100/></a>
-
-
-- [Portswigger](https://portswigger.net/web-security/dashboard) (they made burp)
-- [EC-council](https://codered.eccouncil.org/)
 - [hellbound hackers](https://hbh.sh/user/nairolf32)
-- [hacker101](https://ctf.hacker101.com/) ( the [hackerone](https://hackerone.com/nairolf?type=user) playground )
 - [pentesterlab](https://pentesterlab.com)
 - [hackthisite?](https://www.hackthissite.org/user/view/nairolf32/)
 - [Cybertalents](https://cybertalents.com/members/nairolf32/profile)
@@ -78,12 +83,20 @@ Other places I Learn or just play challenges (not really writing writeups for th
 
 Also, [wherever I feel like getting the fun and knowledge](https://ctfsites.github.io/)
 
-## Miscellaneous
+## Cybersecurity learning
 
- - [OSCP](https://www.offensive-security.com/pwk-oscp/)
- - [Hackerone](https://hackerone.com/nairolf?type=user)
- - [Bugcrowd](https://bugcrowd.com/nairolf32)...)
+Playing CTFs is cool and stuff but if you want to get real about cybersecurity you need more! The platforms below are not for CTFs but they teach you what you need to know and let you practice in CTF-like environments (labs). Some offer certificates but remember, It ain't cheap!
 
+- [Offensive-security](https://www.offensive-security.com/pwk-oscp/) (the G.O.A.T)
+- [Portswigger](https://portswigger.net/web-security/dashboard) (they made burp)
+- [EC-council](https://codered.eccouncil.org/) ([EHE](https://codered.eccouncil.org/certificate/3dba20b9-805a-4902-a235-57c4d7fc4bb0?logged=true), [NDE](https://codered.eccouncil.org/certificate/34d83454-2adb-43b7-bb3f-23f486918966?logged=true))
+
+## Bug Bounties platforms
+
+If you think you are good enough, prefer a freelance style and enjoy competition then bug bounties (Google it) are for you
+
+- [Hackerone](https://hackerone.com/nairolf?type=user) with [hacker101](https://ctf.hacker101.com/) as their playground for starters
+- [Bugcrowd](https://bugcrowd.com/nairolf32)
 
 And as I like linking and sharing stuff (curation is my passion lol) here is similar projects (other people making great writeups)
 
@@ -93,7 +106,6 @@ Note that I won't include those who give flags away (this is a fine selection si
 - [infosecwriteups](https://infosecwriteups.com/): many people post writeups there, but remember it is part of medium (not free)
 - [awesomectf](https://c4pr1c3.github.io/awesome-ctf/) they have writeups too. That and...well, everything about ctfs
 
-
-Now my writeups are right: [Here]({{< ref "/writeups" >}} "Writeups")
+Now if you are ever interested, my writeups are right [Here]({{< ref "/writeups" >}} "Writeups")
 
 Good luck and Have fun!
