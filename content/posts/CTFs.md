@@ -71,17 +71,20 @@ This one is highly recommended for beginners too. They don't really teach you, b
 
 Other places I Learn or just play challenges (not really writing writeups for those):
 
+- [Wechall](https://www.wechall.net/profile/nairolf32) (To manage some challenges sites)
+- [Defendtheweb](https://defendtheweb.net/)
+- [Parrot CTFs](https://parrot-ctfs.com/)
+- [attackdefense](https://attackdefense.com/)
 - [hellbound hackers](https://hbh.sh/user/nairolf32)
 - [pentesterlab](https://pentesterlab.com)
-- [hackthisite?](https://www.hackthissite.org/user/view/nairolf32/)
 - [Cybertalents](https://cybertalents.com/members/nairolf32/profile)
 - [googleCTF](https://capturetheflag.withgoogle.com/team/nair0lf32)
-- [Overthewire wargames](https://overthewire.org/wargames/)
 - [hackerlab](https://qualif.hackerlab.africa/challenges)
-- [ringzer0](https://ringzer0ctf.com/)
 - [hackmyVM?](https://hackmyvm.eu)
+- [Pentestit](https://lab.pentestit.ru/)
+- [ctflearn](https://ctflearn.com/)
 
-Also, [wherever I feel like getting the fun and knowledge](https://ctfsites.github.io/)
+Also, [wherever I feel like getting the fun and knowledge](https://ctfsites.github.io/), [and real events](https://ctftime.org/)
 
 ## Cybersecurity learning
 

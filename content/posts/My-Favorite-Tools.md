@@ -237,7 +237,7 @@ For Other challenges:
 - Forensics: volatility
 
 For when I am lazy (all-in-one and frameworks):
-- [Rapidscan](https://github.com/skavngr/rapidscan) (still in development but looks promising)
+- [Rapidscan](https://github.com/skavngr/rapidscan)
 - [Hackingtool](https://github.com/Z4nzu/hackingtool) (this thing is a big bundle)
 - [fsociety](https://github.com/Manisso/fsociety) (to feel like mr robot)
 
@@ -245,15 +245,17 @@ For when I am lazy (all-in-one and frameworks):
 
 Here is a list of places to find more tools:
 
-- [Github](https://github.com) ( alot in here! ) also check [this repository](https://github.com/Hack-with-Github/Awesome-Hacking) and [this guy](https://github.com/mgeeky) 
+- [Github](https://github.com) ( alot in here! ) also check [this repository](https://github.com/Hack-with-Github/Awesome-Hacking), [this one](https://github.com/apsdehal/awesome-ctf) and [this guy](https://github.com/mgeeky)
 
 - [Kitploit](https://www.kitploit.com/)
 
 - [Blackarch tools](https://blackarch.org/tools.html) (Or any pentest linux distro tools)
 
-- [kali tools](https://en.kali.tools/all/?category) 
+- [kali tools](https://en.kali.tools/all/?category)
 
-- Also Google. 
+- [random medium article](https://shamsher-khan-404.medium.com/100-most-vulnerable-apps-systems-platforms-to-practice-penetration-testing-2021-e76ca7235e74)
+
+- Also Google
 
 There are also some shady places (mostly onion links) with mad awesome tools, but we are not going there. Also if for any reason you want to do pentesting from a windows machine (for whatever reason) you should look into [pentestbox](https://pentestbox.org/) instead of downloading tools separately. But this is a bit old (2016) and tools are not updated regularly.
 
