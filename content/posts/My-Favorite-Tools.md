@@ -6,16 +6,16 @@ draft: false
 
 Just a list of cool cybersec tools! The ones I use the most ( or not ) and the one I discovered during my journey. Ordered by categories (kinda)
 
-## Reconnaissance & Enumeration 
+## Reconnaissance & Enumeration
 
 | Scanning                                                   |  Footprint                                                        | Discovery
 | --------                                                   |  ---------                                                        | ---------
-| [Nmap](https://nmap.org/) (good old)                       | [Recon-ng](https://github.com/lanmaster53/recon-ng)               | [Gobuster](https://github.com/OJ/gobuster) 
+| [Nmap](https://nmap.org/) (good old)                       | [Recon-ng](https://github.com/lanmaster53/recon-ng)               | [Gobuster](https://github.com/OJ/gobuster)
 | [Rustscan](https://github.com/RustScan/RustScan)           | [Blackwidow](https://github.com/1N3/BlackWidow)                   | [Ffuf](https://github.com/ffuf/ffuf)
 | [NmapAutomator](https://github.com/21y4d/nmapAutomator)    | [Cmseek](https://github.com/Tuhinshubhra/CMSeeK)                  | [Sublist3r](https://github.com/aboul3la/Sublist3r)
-| [onesixtyone](https://github.com/trailofbits/onesixtyone)  | [Eyewitness](https://github.com/FortyNorthSecurity/EyeWitness)    | [VhostScan](https://github.com/codingo/VHostScan/)
-| [angryIP](https://github.com/angryip/ipscan) (angry scan)  | [Recon](https://github.com/dirsoooo/Recon) (All in one)           | [Subfinder](https://github.com/projectdiscovery/subfinder)
-| [Massscan](https://www.kali.org/tools/masscan/)            | [shodan](https://www.shodan.io/dashboard) (the iot scanner)       |
+| [angryIP](https://github.com/angryip/ipscan) (angry scan)  | [Eyewitness](https://github.com/FortyNorthSecurity/EyeWitness)    | [VhostScan](https://github.com/codingo/VHostScan/)
+| [Massscan](https://www.kali.org/tools/masscan/)            | [Recon](https://github.com/dirsoooo/Recon) (All in one)           | [Subfinder](https://github.com/projectdiscovery/subfinder)
+|                                                            | [shodan](https://www.shodan.io/dashboard) (the iot scanner)       |
 |                                                            | [Shodan eye](https://github.com/BullsEye0/shodan-eye) (sodan-cli) |
 |                                                            | [VulnX](https://github.com/anouarbensaad/VulnX)                   |
 |                                                            | [wpscan](https://wpscan.com/) (Wordpress favorite)
@@ -23,7 +23,6 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 |                                                            | [ahmia](https://ahmia.fi/)  (dark web search)                     |
 |                                                            | [WHOIS](https://who.is/) (nothing beat basics)                    |
 |                                                            | [viewdns](https://viewdns.info/) (whois++)                        |
-
 
 ### Vulnerabilty scanners ( For either professionals, lazy people, or both)
 
@@ -35,8 +34,6 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [Vega](https://subgraph.com/vega/)                                    |
 | Vulnnr (DEAD?)                                                        |
 
-
-
 ### Windows (specials)
 
 | Specific services                                       | Active Directory                                                  | Post-exploit
@@ -45,15 +42,14 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [Evilwinrm](https://github.com/Hackplayers/evil-winrm)  | [Impacket tools](https://github.com/SecureAuthCorp/impacket)      |
 |                                                         | [CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)       |
 
-
 ## Exploitation
 
 | Frameworks and payload generators                              | Common exploits                                               | Targetted
 | ----------                                                     | ---------------                                               | ------
 | [Metasploit](https://www.metasploit.com/) (The unmatched)      | [Exploitdb](https://www.metasploit.com/) (searchsploit)       | [Camover](https://github.com/EntySec/CamOver)
 | [Hatsploit](https://github.com/EntySec/HatSploit) (Hatvenom)   | [Sqlmap](https://sqlmap.org/)                                 | [Slowloris](https://github.com/gkbrk/slowloris) (Don't)
-| [Pentestmonkey](https://pentestmonkey.net/) (instant shell)    | [Nosqlmap](https://github.com/codingo/NoSQLMap)               | 
-| [Revshells](https://www.revshells.com/) (shells of quality)    | [AttackerKB](https://attackerkb.com/) (information is power)  |                       
+| [Pentestmonkey](https://pentestmonkey.net/) (instant shell)    | [Nosqlmap](https://github.com/codingo/NoSQLMap)               |
+| [Revshells](https://www.revshells.com/) (shells of quality)    | [AttackerKB](https://attackerkb.com/) (information is power)  |
 | [getsploit](https://github.com/vulnersCom/getsploit) (vulners) | [commix](https://www.kali.org/tools/commix/)                  |
 
 ### Web (specials)
@@ -64,13 +60,12 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [Owasp ZAP](https://www.zaproxy.org/) (It's from OWASP)                             | [Golismero](https://github.com/golismero/golismero)
 | [dnstwist](https://github.com/elceef/dnstwist)                                      | [Leviathan](https://github.com/utkusen/leviathan) ( sadly DEPRECATED )
 
-
 ## Cryptography
 
 | Crackers                                                          | Hashes                                                      | Decoders
 | --------                                                          | --------------                                              | ---------
 | [John](https://www.kali.org/tools/john/) (the ripper)             | [Hashcat](https://hashcat.net/hashcat/) (a cat)             | [Dcode](https://www.dcode.fr/)
-| [Hydra](https://www.kali.org/tools/hydra/) (the legacy)           | [crackstation](https://crackstation.net/)                   | [Cyberchef](https://gchq.github.io/CyberChef/)                             
+| [Hydra](https://www.kali.org/tools/hydra/) (the legacy)           | [crackstation](https://crackstation.net/)                   | [Cyberchef](https://gchq.github.io/CyberChef/)
 | [sshtrix](https://nullsecurity.net/tools/cracker.html) (for ssh)  | [Hashcrack](https://hashcrack.com/)                         | [jwt](https://jwt.io/)
 | [Hatch](https://github.com/nsgodshall/Hatch) (will test more)     | [Hashes.com](https://hashes.com/en/decrypt/hash)            | [Boxentriq](https://www.boxentriq.com/)
 |                                                                   | [Hash analyzer](https://www.tunnelsup.com/hash-analyzer/)   |
@@ -82,7 +77,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 - [cupp](https://github.com/Mebus/cupp) (old reliable)
 - [cewl](https://www.kali.org/tools/cewl/) (if you like spiders)
 
-## Reverse Engeneering/Binary exploitation
+## Reverse Engeneering / Binary exploitation
 
 | Disassembler Frameworks                                            | Debuggers and Decompilers
 | -------------                                                      | ---------
@@ -90,7 +85,6 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [Ghidra](https://ghidra-sre.org/) (pride of the NSA)               | [Cutter](https://cutter.re/)
 | [Radare2](https://github.com/radareorg/radare2)                    | [pwntools](https://pypi.org/project/pwntools/) (technically...)
 | [dogbolt](https://dogbolt.org/)
-
 
 ## Steganography
 
@@ -100,7 +94,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [stegseek](https://github.com/RickdeJager/stegseek)      | [Stegosuite](https://installlion.com/kali/kali/main/s/stegosuite/install/index.html)     | [Audacity](https://www.audacityteam.org/)
 |                                                          | [Gimp](https://www.gimp.org/)                                                            | [Morse decoder](https://morsecode.world/)
 |                                                          | [Zbar-tools](http://zbar.sourceforge.net/)                                               |
-
+|                                                          | [fotoforensics](https://fotoforensics.com/)                                              |       
 
 ## Malware Analysis
 
@@ -109,17 +103,16 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [virustotal](https://www.virustotal.com/gui/) (too famous)
 | [Pithus](https://beta.pithus.org/) (for android)
 
-
 ### Android (specials)
 
 | Analysis                                                                                    | Attacks
 | --------                                                                                    | ---------
 | [Mobsf](https://github.com/MobSF/Mobile-Security-Framework-MobSF)                           | [SARA](https://github.com/termuxhackers-id/SARA) (careful with this one)
 | [Apktool](https://ibotpeaches.github.io/Apktool/)  (uses jadx)                              | [backdoor-apk](https://github.com/dana-at-cp/backdoor-apk)
-| [Adb](https://developer.android.com/studio/command-line/adb)                                | [TheFatRat](https://github.com/Screetsec/TheFatRat) (obese rodent)   
-| [anbox](https://docs.anbox.io/userguide/install.html) (or any emulator for dynamic testing) | [Msfvenom](https://www.offensive-security.com/metasploit-unleashed/msfvenom/)       
-| [Zimperium tools](https://www.zimperium.com/) (yeah...kinda)                                | 
-| [Apkleaks](https://github.com/dwisiswant0/apkleaks)                                         | 
+| [Adb](https://developer.android.com/studio/command-line/adb)                                | [TheFatRat](https://github.com/Screetsec/TheFatRat) (obese rodent)
+| [anbox](https://docs.anbox.io/userguide/install.html) (or any emulator for dynamic testing) | [Msfvenom](https://www.offensive-security.com/metasploit-unleashed/msfvenom/)
+| [Zimperium tools](https://www.zimperium.com/) (yeah...kinda)                                |
+| [Apkleaks](https://github.com/dwisiswant0/apkleaks)                                         |
 | [MARA](https://github.com/xtiankisutsa/MARA_Framework)                                      |
 | [Drozer](https://github.com/FSecureLABS/drozer)                                             |
 | [Inspeckage](https://github.com/ac-pm/Inspeckage)                                           |
@@ -134,7 +127,6 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [kismet](https://www.kismetwireless.net/)
 | [aircrack suite](https://www.aircrack-ng.org/) (the OG)
 
-
 ## Privilege escalation
 
 | Scripts                                                 | References
@@ -143,10 +135,9 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [PEASS tools](https://github.com/carlospolop/PEASS-ng)  |
 | [JAWS](https://github.com/411Hall/JAWS)                 |
 
-
 ## Post-exploitation
 
-| Command and control (C2)                                                               | Persistance (Rootkits +++) pivot and more                     
+| Command and control (C2)                                                               | Persistance (Rootkits +++) pivot and more
 | ---------                                                                              | ------------
 | [Cobalt strike](https://cobalt-strike.github.io/community_kit/) (industry standard)    | [Reptile](https://github.com/f0rb1dd3n/Reptile)
 | [pwncat](https://github.com/calebstewart/pwncat) (another cat)                         |
@@ -154,13 +145,13 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [Metasploit](https://www.metasploit.com/) (yes, again!)                                |
 | [Covenant](https://github.com/cobbr/Covenant/)                                         |
 
-
 ## Forensics
 
-| Frameworks/suites 
+| Frameworks/suites
 | ----------
 | [Volatility](https://www.volatilityfoundation.org/)
-
+| [Binwalk]() or [Foremost]()
+|
 
 ## Social Engeneering
 
@@ -169,8 +160,6 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [SET](https://www.trustedsec.com/tools/the-social-engineer-toolkit-set/) (number one)
 | [thispersondoesnotexist](https://thispersondoesnotexist.com/) (don't misuse this one)
 | [namefake](https://namefake.com/) (do not misuse it!)
-
-
 
 ## OSINT
 
@@ -189,10 +178,9 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 ## Anonimity
 
 | Cloaking                                                             | (De)Obfuscation                                   | Evasion/Bypass
-| ----------                                                           | ----------------                                  | ---------- 
+| ----------                                                           | ----------------                                  | ----------
 | [Anonsurf](https://linuxhint.com/anonsurf/)                          | [Obfuscator.io](https://obfuscator.io/)           | [UACME](https://github.com/hfiref0x/UACME)
 |                                                                      | [de4js](https://lelinhtinh.github.io/de4js/)      |
-
 
 ## Utilities
 
@@ -216,11 +204,10 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [sysinternals](https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite)            | [AttackerKB](https://attackerkb.com/contributors/nair0lf32)
 |                                                                                                       |
 
-
 # My favorites ( kek )
 
-My most used tools, mostly defines my typical process 
-- Utilities:
+My most used tools, mostly defines my typical process
+- Utilities
   - Google (your best friend! I google alot)
   - [ngrok](https://ngrok.com/) (Because IRL network setup is painful)
 - Enumeration:

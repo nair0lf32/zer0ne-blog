@@ -72,17 +72,16 @@ This one is highly recommended for beginners too. They don't really teach you, b
 Other places I Learn or just play challenges (not really writing writeups for those):
 
 - [Wechall](https://www.wechall.net/profile/nairolf32) (To manage some challenges sites)
+- [Ctflearn](https://ctflearn.com/user/nairolf32)
 - [Defendtheweb](https://defendtheweb.net/)
 - [Parrot CTFs](https://parrot-ctfs.com/)
-- [attackdefense](https://attackdefense.com/)
-- [hellbound hackers](https://hbh.sh/user/nairolf32)
-- [pentesterlab](https://pentesterlab.com)
+- [Attackdefense](https://attackdefense.com/)
+- [Hellbound hackers](https://hbh.sh/user/nairolf32)
+- [Pentesterlab](https://pentesterlab.com)
 - [Cybertalents](https://cybertalents.com/members/nairolf32/profile)
-- [googleCTF](https://capturetheflag.withgoogle.com/team/nair0lf32)
-- [hackerlab](https://qualif.hackerlab.africa/challenges)
-- [hackmyVM?](https://hackmyvm.eu)
-- [Pentestit](https://lab.pentestit.ru/)
-- [ctflearn](https://ctflearn.com/)
+- [GoogleCTF](https://capturetheflag.withgoogle.com/team/nair0lf32)
+- [Hackerlab](https://qualif.hackerlab.africa/challenges)
+- [HackmyVM?](https://hackmyvm.eu)
 
 Also, [wherever I feel like getting the fun and knowledge](https://ctfsites.github.io/), [and real events](https://ctftime.org/)
 
@@ -100,6 +99,7 @@ If you think you are good enough, prefer a freelance style and enjoy competition
 
 - [Hackerone](https://hackerone.com/nairolf?type=user) with [hacker101](https://ctf.hacker101.com/) as their playground for starters
 - [Bugcrowd](https://bugcrowd.com/nairolf32)
+- [Intigriti](https://www.intigriti.com/)
 
 And as I like linking and sharing stuff (curation is my passion lol) here is similar projects (other people making great writeups)
 
