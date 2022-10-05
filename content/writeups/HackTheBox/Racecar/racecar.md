@@ -21,7 +21,7 @@ racecar: ELF 32-bit LSB pie executable, Intel 80386, version 1 (SYSV), dynamical
         [update]
         interval=never
 [*] You have the latest version of Pwntools (4.7.0)
-[*] '/home/nair0lf32/Desktop/Stuff/HTB/challenges/Racecar/racecar'
+[*] '/Racecar/racecar'
     Arch:     i386-32-little
     RELRO:    Full RELRO
     Stack:    Canary found
@@ -57,7 +57,7 @@ Dump of assembler code for function main:
 ```
 There is a format string vulnerability in `printf()` in the `race_menu` function
 
-the flag is right in the stack![use this](/htb/racecar/exploit.py)
+the flag is right in the stack so [use this](/htb/racecar/exploit.py)
 
 ```
 └──╼ $python exploit.py
