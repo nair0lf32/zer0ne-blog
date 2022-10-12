@@ -89,12 +89,8 @@ b'HTB{'
 b'HTB{why_'
 b'HTB{why_d1d_'
 b'HTB{why_d1d_1_s4'
-b'HTB{why_d1d_1_s4v3_t'
-b'HTB{why_d1d_1_s4v3_th3_f'
-b'HTB{why_d1d_1_s4v3_th3_fl4g_'
-b'HTB{why_d1d_1_s4v3_th3_fl4g_0n_t'
-b'HTB{why_d1d_1_s4v3_th3_fl4g_0n_th3_5'
-b'HTB{why_d1d_1_s4v3_th3_fl4g_0n_th3_5t4ck'
-b'HTB{why_d1d_1_s4v3_th3_fl4g_0n_th3_5t4ck?!}\x00'
+...
+
+b'HTB{SIKE_REDACTED}\x00'
 ```
 How easy that was!

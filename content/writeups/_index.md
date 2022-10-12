@@ -11,5 +11,6 @@ Below are Categories named after the CTF platforms where they are from:
 - [TryHackMe]({{< ref "/categories/tryhackme" >}} "CTFs")
 - [Cyberseclabs]({{< ref "/categories/cyberseclabs" >}} "CTFs")
 - [HackTheBox]({{< ref "/categories/hackthebox" >}} "CTFs")
+- [Hackerlab]({{< ref "/categories/hackerlab" >}} "CTFs")
 
 And below you have all the writeups list

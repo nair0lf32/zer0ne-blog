@@ -109,6 +109,12 @@ Note that I won't include those who give flags away (this is a fine selection si
 - [infosecwriteups](https://infosecwriteups.com/): many people post writeups there, but remember it is part of medium (not free)
 - [awesomectf](https://c4pr1c3.github.io/awesome-ctf/) they have writeups too. That and...well, everything about ctfs
 
-Now if you are ever interested, my writeups are right [Here]({{< ref "/writeups" >}} "Writeups")
+Also for anything CTF related (non-writeups) there are some resources I recommend: 
+
+- [Hacktricks](https://book.hacktricks.xyz/welcome/readme)
+- [Pentestbook](https://pentestbook.six2dez.com/)
+
+
+Now if you are ever interested, my writeups they are right [Here]({{< ref "/writeups" >}} "Writeups")
 
 Good luck and Have fun!

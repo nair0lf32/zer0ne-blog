@@ -16,10 +16,8 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [angryIP](https://github.com/angryip/ipscan) (angry scan)  | [Eyewitness](https://github.com/FortyNorthSecurity/EyeWitness)    | [VhostScan](https://github.com/codingo/VHostScan/)
 | [Massscan](https://www.kali.org/tools/masscan/)            | [Recon](https://github.com/dirsoooo/Recon) (All in one)           | [Subfinder](https://github.com/projectdiscovery/subfinder)
 |                                                            | [shodan](https://www.shodan.io/dashboard) (the iot scanner)       |
-|                                                            | [Shodan eye](https://github.com/BullsEye0/shodan-eye) (sodan-cli) |
-|                                                            | [VulnX](https://github.com/anouarbensaad/VulnX)                   |
-|                                                            | [wpscan](https://wpscan.com/) (Wordpress favorite)
-|                                                            | [Dnsdumpster](https://dnsdumpster.com/) (dig on steroids!)        |
+|                                                            | [wpscan](https://wpscan.com/) (Wordpress favorite)                |
+|                                                            | [Dnsdumpster](https://dnsdumpster.com/) (dig on steroids!)        |                    
 |                                                            | [ahmia](https://ahmia.fi/)  (dark web search)                     |
 |                                                            | [WHOIS](https://who.is/) (nothing beat basics)                    |
 |                                                            | [viewdns](https://viewdns.info/) (whois++)                        |
@@ -32,7 +30,6 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [Rapidscan](https://github.com/skavngr/rapidscan) (Try it!)           | [Nessus](https://www.tenable.com/products/nessus) (technically it's not free)
 | [OpenVas](https://www.openvas.org/)                                   | [Nexpose](https://www.rapid7.com/products/nexpose/) (free trial)
 | [Vega](https://subgraph.com/vega/)                                    |
-| Vulnnr (DEAD?)                                                        |
 
 ### Windows (specials)
 
@@ -44,14 +41,14 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 
 ## Exploitation
 
-| Frameworks and payload generators                              | Common exploits                                               | Targetted
-| ----------                                                     | ---------------                                               | ------
-| [Metasploit](https://www.metasploit.com/) (The unmatched)      | [Exploitdb](https://www.metasploit.com/) (searchsploit)       | [Camover](https://github.com/EntySec/CamOver)
-| [Hatsploit](https://github.com/EntySec/HatSploit) (Hatvenom)   | [Sqlmap](https://sqlmap.org/)                                 | [Slowloris](https://github.com/gkbrk/slowloris) (Don't)
-| [Pentestmonkey](https://pentestmonkey.net/) (instant shell)    | [Nosqlmap](https://github.com/codingo/NoSQLMap)               |
-| [Revshells](https://www.revshells.com/) (shells of quality)    | [AttackerKB](https://attackerkb.com/) (information is power)  |
-| [getsploit](https://github.com/vulnersCom/getsploit) (vulners) | [commix](https://www.kali.org/tools/commix/)                  |
-
+| Frameworks and payload generators                              | Common exploits                                               
+| ----------                                                     | ---------------                                               
+| [Metasploit](https://www.metasploit.com/) (The unmatched)      | [Exploitdb](https://www.metasploit.com/) (searchsploit)       
+| [getsploit](https://github.com/vulnersCom/getsploit) (vulners) | [Sqlmap](https://sqlmap.org/)                                 
+| [Pentestmonkey](https://pentestmonkey.net/) (instant shell)    | [Nosqlmap](https://github.com/codingo/NoSQLMap)               
+| [Revshells](https://www.revshells.com/) (shells of quality)    | [AttackerKB](https://attackerkb.com/) (information is power)  
+|                                                                | [commix](https://www.kali.org/tools/commix/)                  
+|                                                                | [Slowloris](https://github.com/gkbrk/slowloris) (Don't)
 ### Web (specials)
 
 | Proxies                                                                             | Frameworks and other scanners
@@ -67,7 +64,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [John](https://www.kali.org/tools/john/) (the ripper)             | [Hashcat](https://hashcat.net/hashcat/) (a cat)             | [Dcode](https://www.dcode.fr/)
 | [Hydra](https://www.kali.org/tools/hydra/) (the legacy)           | [crackstation](https://crackstation.net/)                   | [Cyberchef](https://gchq.github.io/CyberChef/)
 | [sshtrix](https://nullsecurity.net/tools/cracker.html) (for ssh)  | [Hashcrack](https://hashcrack.com/)                         | [jwt](https://jwt.io/)
-| [Hatch](https://github.com/nsgodshall/Hatch) (will test more)     | [Hashes.com](https://hashes.com/en/decrypt/hash)            | [Boxentriq](https://www.boxentriq.com/)
+|                                                                   | [Hashes.com](https://hashes.com/en/decrypt/hash)            | [Boxentriq](https://www.boxentriq.com/)
 |                                                                   | [Hash analyzer](https://www.tunnelsup.com/hash-analyzer/)   |
 |                                                                   | [md5hashing](https://md5hashing.net/)                       |
 
@@ -77,24 +74,26 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 - [cupp](https://github.com/Mebus/cupp) (old reliable)
 - [cewl](https://www.kali.org/tools/cewl/) (if you like spiders)
 
-## Reverse Engeneering / Binary exploitation
+## Reverse Engineering / Binary exploitation
 
 | Disassembler Frameworks                                            | Debuggers and Decompilers
 | -------------                                                      | ---------
-| [IDA Pro](https://hex-rays.com/ida-pro/) (industry standard)       | [GDB](https://www.sourceware.org/gdb/) (check PwnGdb and olly gdb)
+| [IDA Pro](https://hex-rays.com/ida-pro/) (industry standard)       | [GDB](https://www.sourceware.org/gdb/) (check PwnGdb and ollygdb)
 | [Ghidra](https://ghidra-sre.org/) (pride of the NSA)               | [Cutter](https://cutter.re/)
 | [Radare2](https://github.com/radareorg/radare2)                    | [pwntools](https://pypi.org/project/pwntools/) (technically...)
 | [dogbolt](https://dogbolt.org/)
 
 ## Steganography
 
-| Embedded data                                            | Image Manipulation                                                                       | Audio
+| Embedded data and Text                                   | Image Manipulation                                                                       | Audio
 | -------------                                            | -------------------                                                                      | ------
 | [steghide](http://steghide.sourceforge.net/)             | [Stegsolve](https://en.kali.tools/all/?tool=1762)                                        | [Sonic vizualizer](https://www.sonicvisualiser.org/)
 | [stegseek](https://github.com/RickdeJager/stegseek)      | [Stegosuite](https://installlion.com/kali/kali/main/s/stegosuite/install/index.html)     | [Audacity](https://www.audacityteam.org/)
-|                                                          | [Gimp](https://www.gimp.org/)                                                            | [Morse decoder](https://morsecode.world/)
-|                                                          | [Zbar-tools](http://zbar.sourceforge.net/)                                               |
+| [exiftool](https://exiftool.org/) (might work)           | [Gimp](https://www.gimp.org/)  (photoshop or whatever)                                   | [Morse decoder](https://morsecode.world/)
+| [plainsight](https://github.com/rw/plainsight)           | [Zbar-tools](http://zbar.sourceforge.net/)                                               |
 |                                                          | [fotoforensics](https://fotoforensics.com/)                                              |       
+|                                                          | [Zsteg](https://github.com/zed-0xff/zsteg)                                               |
+
 
 ## Malware Analysis
 
@@ -150,10 +149,10 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | Frameworks/suites
 | ----------
 | [Volatility](https://www.volatilityfoundation.org/)
-| [Binwalk]() or [Foremost]()
+| [Binwalk](https://github.com/ReFirmLabs/binwalk) or [Foremost](https://www.kali.org/tools/foremost/)
 |
 
-## Social Engeneering
+## Social Engineering
 
 | Frameworks and tools
 | ----------
@@ -174,6 +173,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [Spiderfoot](https://www.spiderfoot.net/)
 | [sherlock](https://github.com/sherlock-project/sherlock) (elementary)
 | [Bbot](https://github.com/blacklanternsecurity/bbot)
+| [fbi](https://github.com/xHak9x/fbi) (might be dead)
 
 ## Anonimity
 
@@ -194,6 +194,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 |                                                                                                       | [nirsoft](http://www.nirsoft.net/) (don't ruin it's reputation)
 |                                                                                                       | [freeformatter](https://www.freeformatter.com/)
 |                                                                                                       | [whatportis](https://github.com/ncrocfer/whatportis)
+|                                                                                                       | [gittools](https://github.com/internetwache/GitTools)
 
 ## Threat detection, network monitoring and remediation
 
@@ -220,30 +221,35 @@ My most used tools, mostly defines my typical process
   - [GTFObins](https://gtfobins.github.io/) (useful hindsights)
 
 For Other challenges:
+
 - Crypto: dcode, crackstation, rapidtables converter...
 - Forensics: volatility
 
-For when I am lazy (all-in-one and frameworks):
+For when I am lazy: 
+
+All-in-one and frameworks/Auto-Exploiters:
+
 - [Rapidscan](https://github.com/skavngr/rapidscan)
+- [VulnX](https://github.com/anouarbensaad/VulnX)
 - [Hackingtool](https://github.com/Z4nzu/hackingtool) (this thing is a big bundle)
+- [Autosploit](https://github.com/NullArray/AutoSploit)
+- [Xattacker](https://github.com/Moham3dRiahi/XAttacker)
 - [fsociety](https://github.com/Manisso/fsociety) (to feel like mr robot)
+- [monkey](https://github.com/guardicore/monkey)
+- Vulnnr (DEAD?)
 
 # More tools (Moarrrr!)
 
 Here is a list of places to find more tools:
 
 - [Github](https://github.com) ( alot in here! ) also check [this repository](https://github.com/Hack-with-Github/Awesome-Hacking), [this one](https://github.com/apsdehal/awesome-ctf) and [this guy](https://github.com/mgeeky)
-
 - [Kitploit](https://www.kitploit.com/)
-
 - [Blackarch tools](https://blackarch.org/tools.html) (Or any pentest linux distro tools)
-
 - [kali tools](https://en.kali.tools/all/?category)
-
 - [random medium article](https://shamsher-khan-404.medium.com/100-most-vulnerable-apps-systems-platforms-to-practice-penetration-testing-2021-e76ca7235e74)
-
+- [linux security](https://linuxsecurity.expert/security-tools/)
 - Also Google
 
 There are also some shady places (mostly onion links) with mad awesome tools, but we are not going there. Also if for any reason you want to do pentesting from a windows machine (for whatever reason) you should look into [pentestbox](https://pentestbox.org/) instead of downloading tools separately. But this is a bit old (2016) and tools are not updated regularly.
 
-*Do not feed the script kiddy in you. Tools are cool but knoweledge is better! ( But tools are cool though )
+*Do not feed the script kiddy in you. Tools are cool but knowledge is better! ( But tools are cool though )
