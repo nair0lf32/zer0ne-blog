@@ -91,7 +91,7 @@ Playing CTFs is cool and stuff but if you want to get real about cybersecurity y
 - [Portswigger](https://portswigger.net/web-security/dashboard) (they made burp)
 - [EC-council](https://codered.eccouncil.org/) ([EHE](https://codered.eccouncil.org/certificate/3dba20b9-805a-4902-a235-57c4d7fc4bb0?logged=true), [NDE](https://codered.eccouncil.org/certificate/34d83454-2adb-43b7-bb3f-23f486918966?logged=true))
 - [Letsdefend](https://letsdefend.io/)
-- [Cyberdefenders](https://cyberdefenders.org/profile/nairolf32)
+- [practicalpentestlabs](https://practicalpentestlabs.com/dashboard/)
 - [Hacksplaining](https://www.hacksplaining.com/)
 - [CTFTech](https://portal.ctftech.io/ng/app/dashboard)
 - [cyberwarrior](https://ctf.cyberwarrior.com/)
