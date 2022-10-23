@@ -1,6 +1,12 @@
-# Wonderland
+---
+title: "Wonderland"
+date: 2022-10-24T16:00:10+01:00
+draft: false
+categories:
+  - TryHackMe
+---
 
-<img src="alice.jpeg" alt="alice" width="200">
+{{< image src="/thm/wonderland/alice.jpeg" alt="alice" position="left" style="width: 200px;" >}}
 
 Alice in wonderland...weirdest book I ever read as a kid and even more as an adult
 
@@ -159,7 +165,7 @@ Interresting behaviour...binary analysis it is
 rabbit@wonderland:/home/rabbit$ which r2
 rabbit@wonderland:/home/rabbit$ which gdb
 ```
-How can I work in these conditions?
+[How can I work in these conditions?](/thm/wonderland/teaParty)
 
 
 ```

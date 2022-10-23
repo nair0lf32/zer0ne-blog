@@ -6,6 +6,8 @@ categories:
   - Cyberseclabs
 ---
 
+Quick note: I have been way too generous in this writeup but hey...it's on me! I gave so many credentials (but no flags) making it easier than it should be. But it's okay. If you really wanna learn you will learn. Now let's get started
+
 ## Enumeration
 
 ### nmap
@@ -161,7 +163,7 @@ the chatlog page url looks like this
 
 Found it yet? yes LFI it is!!
 
-readinng `/etc/passwd` we get 2 users (except root of course)
+reading `/etc/passwd` we get 2 users (except root of course)
 
 ```
 ryan:x:1000:1000:ryan:/home/ryan:/bin/bash
@@ -288,9 +290,9 @@ we use `dwight@office.csl` with that password to get to the wordpress dashboard
 
 ## Exploitation
 
-Upload a PHP shell in the WP file manager and get access on a netcat listenner
+Upload a [PHP shell](/csl/office/shell.php) in the WP file manager and get access on a netcat listenner
 
-(maybe we could use the plugins too but we would have to format our php file as a wp plugin and zip it...tedious...choose any way)
+(maybe we could use the plugins too but we would have to format our php file as a wp plugin and zip it...tedious)
 
 Visit `http://office.csl/shell.php` to get inside..."the office"
 
@@ -370,7 +372,7 @@ dwight@office:~/.ssh$ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDPgHai3fDZqwsa
 <HMV7i1rEJ8OEX/AEot dwight@office" > authorized_keys
 ```
 
-Grab the `private key` and you got ssh access as dwight
+Grab the [`private key`](/csl/office/id_rsa) and you got ssh access as dwight
 
 Don't forget to fix the ssh key permissions
 

@@ -5,9 +5,10 @@ draft: false
 categories:
   - TryHackMe
 ---
-<img src="0day.jpeg" alt="0day" width=200/>
 
->"Exploit Ubuntu, like a Turtle in a Hurricane"
+{{< image src="/thm/0day/0day.jpeg" alt="0day" position="left" style="width: 200px;" >}}
+
+> "Exploit Ubuntu, like a Turtle in a Hurricane"
 
 ## Enumeration
 
@@ -103,7 +104,7 @@ Linux Kernel 3.13.0 < 3.19 (Ubuntu 12.04/14.04/14.10/15.04) - 'overlayfs' Local 
 Linux Kernel 3.13.0 < 3.19 (Ubuntu 12.04/14.04/14.10/15.04) - 'overlayfs' Local Privilege Escalation (Access /etc/shadow) 
 
 ```
-It's called `overlayfs` and it's beautiful
+It's called [`overlayfs`](/thm/0day/overlayfs-exploit.c) and it's beautiful
 
 ```
 └──╼ $gcc overlayfs-exploit.c -o exploit

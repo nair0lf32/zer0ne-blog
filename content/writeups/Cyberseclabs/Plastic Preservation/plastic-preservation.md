@@ -5,22 +5,17 @@ draft: false
 categories:
   - Cyberseclabs
 ---
+Here is the [challenge](/csl/plastic_preservation/password_encrypter.py) script
 
-```
+This one, "dey hard"! I was stuck on this for days so I just went for the solution writeup
 
-└──╼ $cat encrypted.txt | base64 -d
-c40d1f1b7bdd6012
+Found it [here](https://plasticuproject.com/posts/plastic-preservation-write-up/)
 
-```
-This one, "dey hard"! I was stuck on this for days so I just went for a writeup
+I then proceed to "fully" understand what the [decrypter.py](/csl/plastic_preservation/decrypter.py) script does
 
-Found a nice one [here](https://plasticuproject.com/posts/plastic-preservation-write-up/)
+I did not beat that challenge tbh...but I have to keep learning :(
 
-I then proceed to "fully understand" what the `decrypter.py` script does
-
-I did not beat that challenge tbh...but I got to keep learning :(
-
-Basically the encrypted script was obfuscated so first put some clarity in it
+Basically the encrypted script was obfuscated so first [put some clarity in it](/csl/plastic_preservation/deobuscated.py)
 
 The decrypter function should look like this:
 
@@ -39,3 +34,5 @@ def decrypt(passwd, debugs):
     print( 'PASSWORD: ' + ''.join(solve[::-1]))
     quit()
 ```
+
+Now I realise this was not even that hard (smh)
