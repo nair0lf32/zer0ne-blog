@@ -6,7 +6,7 @@ categories:
   - TryHackMe
 ---
 
-<img src ="blaster.jpeg" alt="blaster" width=200/>
+{{< image src="/thm/blaster/blaster.jpeg" alt="blaster" position="left" style="width: 200px;" >}}
 
 ## Enumeration
 
@@ -85,6 +85,7 @@ anyway we are looking for Wade Owen Watts avatar (OaSiS) name as password
 
 its `parzival`
 
+## Exploitation
 
 We RDP with those and read user.txt
 
