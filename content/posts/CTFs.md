@@ -65,6 +65,13 @@ Amazing french platform. They have solid hardcore challenges and the platform is
 
 This one is highly recommended for beginners too. They don't really teach you, but the challenges are very welcoming. What I loved the most there was their `web terminal`. A shell in the browser. A little personal space with some tools and storage to solve the challenges without using your own attack machine. Making it available even on the go!
 
+## [echoCTF](https://echoctf.red/profile/9757045/invite)
+
+{{< figure src="https://echoctf.red/profile/9757045/badge" alt="nairol32-echoctf" link="https://echoctf.red/profile/9757045" position="center" width=500 >}}
+
+Still throughout my learning journey, my wandering led me to echoCTF. The platform seem a bit newer than others but it looks like a fun place.
+
+
 ### Miscellanous
 
 Other places I Learn or just play challenges (not really writing writeups for those):
@@ -80,6 +87,7 @@ Other places I Learn or just play challenges (not really writing writeups for th
 - [Hackerlab](https://qualif.hackerlab.africa/challenges)
 - [HackmyVM?](https://hackmyvm.eu)
 - [Rootinjail??](https://rootinjail.com/)
+- [cryptopals?](https://cryptopals.com/)
 
 Also, [wherever I feel like getting the fun and knowledge](https://ctfsites.github.io/), [and real events](https://ctftime.org/)
 

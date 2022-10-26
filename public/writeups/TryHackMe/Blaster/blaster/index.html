@@ -41,7 +41,7 @@
 <meta itemprop="name" content="Blaster">
 <meta itemprop="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION80/tcp open http syn-ack Microsoft IIS httpd 10.0|_http-title: IIS Windows Server| http-methods: | Supported Methods: OPTIONS TRACE GET HEAD POST|_ Potentially risky methods: TRACE|_http-server-header: Microsoft-IIS/10.03389/tcp open ssl/ms-wbt-server? syn-ack| rdp-ntlm-info: | Target_Name: RETROWEB| NetBIOS_Domain_Name: RETROWEB| NetBIOS_Computer_Name: RETROWEB| DNS_Domain_Name: RetroWeb| DNS_Computer_Name: RetroWeb| Product_Version: 10.0.14393|_ System_Time: 2021-11-25T11:34:32&#43;00:00|_ssl-date: 2021-11-25T11:34:40&#43;00:00; &#43;2m29s from scanner time.| ssl-cert: Subject: commonName=RetroWeb| Issuer: commonName=RetroWeb| Public Key type: rsa| Public Key bits: 2048| Signature Algorithm: sha256WithRSAEncryption| Not valid before: 2021-11-24T11:29:28| Not valid after: 2022-05-26T11:29:28| MD5: 0151 0047 a3fc c5ce 222d 5b1c 06c4 22ca| SHA-1: bbe0 b822 09c4 19d6 f833 d955 ea5c 77b2 06a1 7655| -----BEGIN CERTIFICATE-----| MIIC1DCCAbygAwIBAgIQT11vH87CQaZJ1GVx/&#43;HWPTANBgkqhkiG9w0BAQsFADAT| MREwDwYDVQQDEwhSZXRyb1dlYjAeFw0yMTExMjQxMTI5MjhaFw0yMjA1MjYxMTI5| MjhaMBMxETAPBgNVBAMTCFJldHJvV2ViMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A| MIIBCgKCAQEAs5imJsXtygtq3EAJStpMJMHJKHYninyGcaoS8QGtzrcPCnL8o2Eh| ukCUsIBQKbFymcXT&#43;TEeLU&#43;q9&#43;R8xrmX&#43;8fVwckX3XA2seKOa4CQkYolEBtZ3kq5| bbR1Jzirf3KpwoO5el/TYlxFDvGJMKsDUZYftAfhkaTCS0L2tLbARHCHHmX9SKxH| D0G7CiBW708w3gAnqkSLLfD&#43;n1DXig6vP1hOQz3k/&#43;zWl9iHoKkl/TLl3umD1J0q| C5ympfGavD4dFwANWVf0ISmOZj4W3eYCWnaul6l3GQlKJN8cpIB0PRxwvpyfabn6| JBPuWtosjHAD9U9DTQ/HqzzkRCtWUIGlBwIDAQABoyQwIjATBgNVHSUEDDAKBggr| BgEFBQcDATALBgNVHQ8EBAMCBDAwDQYJKoZIhvcNAQELBQADggEBAHY6p9ZxWpMU| Stj2A8gJpTchEWzSYaHhP62BNOxLrNUSN/NKbHVewgF5QmxWDLr6wb&#43;DtT7Q9JmR| AhG72MzKkYf4BMuUbu37xkpxhlXDaQCYDpf8GzoTp9KnHy2w1CwYwaZ93lqzJqkt| B6i6IqNbolEZYi52gksnCAymGOtjXWtwwPK3HTYYXGWH5ImmUkoNEKJxQuVQdeMI| zWtXKhSkNwcfE7ct8ZmpPF9HX0ELRfAFNP2WQPl9R&#43;CZHQWrH9R1Z7B5sb4gEBKL| KGBsZwID6qVW1cXW5Mq9jjHwK8UcBzI&#43;7Wq72IzUf0Rge&#43;Vwxo/lqJeog&#43;mlgR4P| vhHE6Qv&#43;uW8=|_-----END CERTIFICATE-----Service Info: OS: Windows; CPE: cpe:/o:microsoft:windowsHost script results:|_clock-skew: mean: 2m29s, deviation: 0s, median: 2m28s ffuf (using big."><meta itemprop="datePublished" content="2022-09-20T16:00:31+01:00" />
 <meta itemprop="dateModified" content="2022-09-20T16:00:31+01:00" />
-<meta itemprop="wordCount" content="706"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="wordCount" content="707"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
@@ -142,7 +142,10 @@
             
 
             <div class="post-content">
-                <!-- raw HTML omitted -->
+                
+    <img src="https://nair0lf32.github.io/zer0ne/thm/blaster/blaster.jpeg"  alt="blaster"  class="left"  style="width: 200px;"  />
+
+
 <h2 id="enumeration">Enumeration</h2>
 <h3 id="nmap">nmap</h3>
 <pre tabindex="0"><code>PORT     STATE SERVICE            REASON  VERSION
@@ -203,6 +206,7 @@ Host script results:
 <p>yeah they actually made a movie of that</p>
 <p>anyway we are looking for Wade Owen Watts avatar (OaSiS) name as password</p>
 <p>its <code>parzival</code></p>
+<h2 id="exploitation">Exploitation</h2>
 <p>We RDP with those and read user.txt</p>
 <p>THM{ready_player_one}</p>
 <h2 id="privilege-escalation">Privilege Escalation</h2>
