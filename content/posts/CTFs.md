@@ -47,12 +47,6 @@ My favorite Learning platform! yeah I did not say "ctf platform" because tryhack
 
 My first CTF platform and oh boy...what a mistake it was! You read all I said about tryhackme? well Hackthebox is kind of the opposite. They throw some starting point modules at your stupid face and kick you into the field like: "fly! b*tch"! No seriously, It's not for beginners! They now have an academy where you can learn but it costs way more than tryhackme, where I went right before coming back, a bit stronger. BUT hear me out: They have the best boxes! I am serious here...If you want hardcore challenges hackthebox is still unmatched in my opinion. Now if they say a box is easy don't listen to them! hackthebox have no easy box!
 
-## [Cyberseclabs](https://www.cyberseclabs.co.uk)
-
-{{< figure src="https://cyberseclabs-static.s3.amazonaws.com/img/logo.png" alt="nairolf32-cyberseclabs" link="https://www.cyberseclabs.co.uk/profile" position="center" width=200 >}}
-
-I got lost and ended up there! I learnt a lot but when I started to enjoy it I realised it was expensive and I am still waiting for new free content
-
 ## [Root-me](https://www.root-me.org/)
 
 {{< figure src="https://www.root-me.org/IMG/logo/siteon0.svg?1637496509" alt="nairol32-root-me" link="https://www.root-me.org/nairolf32" position="center" width=100 >}}
@@ -74,36 +68,37 @@ Still throughout my learning journey, my wandering led me to echoCTF. The platfo
 
 ### Miscellanous
 
-Other places I Learn or just play challenges (not really writing writeups for those):
+Other places I Learn or just play challenges (not actively writing writeups for those):
 
 - [Wechall](https://www.wechall.net/profile/nairolf32) (To manage some challenges sites)
 - [Ctflearn](https://ctflearn.com/user/nairolf32)
 - [Parrot CTFs](https://parrot-ctfs.com/)
 - [Attackdefense](https://attackdefense.com/)
+- [cyberwarrior](https://ctf.cyberwarrior.com/)
 - [Hellbound hackers](https://hbh.sh/user/nairolf32)
 - [Pentesterlab](https://pentesterlab.com)
+- [cyberseclabs](https://www.cyberseclabs.co.uk)
 - [Cybertalents](https://cybertalents.com/members/nairolf32/profile)
 - [GoogleCTF](https://capturetheflag.withgoogle.com/team/nair0lf32)
 - [Hackerlab](https://qualif.hackerlab.africa/challenges)
 - [HackmyVM?](https://hackmyvm.eu)
-- [Rootinjail??](https://rootinjail.com/)
 - [cryptopals?](https://cryptopals.com/)
 - [zenk security](https://www.zenk-security.com/profil?uid=20722)
+- [practicalpentestlabs](https://practicalpentestlabs.com/dashboard/)
 
 Also, [wherever I feel like getting the fun and knowledge](https://ctfsites.github.io/), [and real events](https://ctftime.org/)
 
 ## Cybersecurity learning
 
-Playing CTFs is cool and stuff but if you want to get real about cybersecurity you need more! The platforms below are not for CTFs but they teach you what you need to know and let you practice in CTF-like environments (labs). Some offer certificates but remember, It ain't cheap!
+Playing CTFs is cool and stuff but if you want to get real about cybersecurity you need more! The platforms below are not for playing CTFs but mostly teach you what you need to know and let you practice in CTF-like environments (labs). Some offer certificates but remember, It ain't cheap!
 
 - [Offensive-security](https://www.offensive-security.com/pwk-oscp/) (the G.O.A.T)
 - [Portswigger](https://portswigger.net/web-security/dashboard) (they made burp)
 - [EC-council](https://codered.eccouncil.org/) ([EHE](https://codered.eccouncil.org/certificate/3dba20b9-805a-4902-a235-57c4d7fc4bb0?logged=true), [NDE](https://codered.eccouncil.org/certificate/34d83454-2adb-43b7-bb3f-23f486918966?logged=true))
 - [Letsdefend](https://letsdefend.io/)
-- [practicalpentestlabs](https://practicalpentestlabs.com/dashboard/)
 - [Hacksplaining](https://www.hacksplaining.com/)
-- [CTFTech](https://portal.ctftech.io/ng/app/dashboard)
-- [cyberwarrior](https://ctf.cyberwarrior.com/)
+- [rootinjail ??](https://rootinjail.com/)
+
 
 ## Bug Bounties platforms
 
