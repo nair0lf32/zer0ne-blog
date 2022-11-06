@@ -83,6 +83,7 @@ Other places I Learn or just play challenges (not actively writing writeups for 
 - [Hackerlab](https://qualif.hackerlab.africa/challenges)
 - [HackmyVM?](https://hackmyvm.eu)
 - [cryptopals?](https://cryptopals.com/)
+- [flaws.cloud](http://flaws.cloud/)
 - [zenk security](https://www.zenk-security.com/profil?uid=20722)
 - [practicalpentestlabs](https://practicalpentestlabs.com/dashboard/)
 
