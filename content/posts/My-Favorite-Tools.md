@@ -145,7 +145,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | Command and control (C2)                                                            | Persistance (Rootkits +++) pivot and more       |
 | ----------------------------------------------------------------------------------- | ----------------------------------------------- |
 | [Cobalt strike](https://cobalt-strike.github.io/community_kit/) (industry standard) | [Reptile](https://github.com/f0rb1dd3n/Reptile) |
-| [pwncat](https://github.com/calebstewart/pwncat) (another cat)                      |
+| [pwncat](https://github.com/calebstewart/pwncat) (another cat)                      | [chisel](https://github.com/jpillora/chisel)    |
 | [Empire](https://www.powershellempire.com/) ([deprecated] check Starkiller)         |
 | [Metasploit](https://www.metasploit.com/) (yes, again!)                             |
 | [Covenant](https://github.com/cobbr/Covenant/)                                      |
