@@ -39,7 +39,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [getsploit](https://github.com/vulnersCom/getsploit) (vulners) | [Sqlmap](https://sqlmap.org/)                                |
 | [Pentestmonkey](https://pentestmonkey.net/) (instant shell)    | [Nosqlmap](https://github.com/codingo/NoSQLMap)              |
 | [Revshells](https://www.revshells.com/) (shells of quality)    | [AttackerKB](https://attackerkb.com/) (information is power) |
-|                                                                | [commix](https://www.kali.org/tools/commix/)                 |
+| [P.A.T.T](https://github.com/swisskyrepo/PayloadsAllTheThings) | [commix](https://www.kali.org/tools/commix/)                 |
 |                                                                | [Slowloris](https://github.com/gkbrk/slowloris) (Don't)      |
 ### Web (specials)
 
