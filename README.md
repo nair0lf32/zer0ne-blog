@@ -18,7 +18,11 @@ You can click [here](https://nair0lf32.github.io/zer0ne/about/) to learn more ab
 
 This repository is not really open for external contributions but feel free to open an issue for anything you want to share
 
-Deployed with `github pages + actions`
+simply clone the repo with `git clone` and run `hugo` (it manages everything for you)
+
+This is deployed with `github pages + actions`
+
+To test it run below commands:
 
 `hugo server` for local development
 
