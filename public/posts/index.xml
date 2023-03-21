@@ -1,0 +1,963 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Zer0ne</title>
+        <link>https://nair0lf32.github.io/zer0ne/posts/</link>
+        <description>Recent content in Posts on Zer0ne</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+        <lastBuildDate>Sun, 09 Oct 2022 22:03:31 +0100</lastBuildDate>
+        <atom:link href="https://nair0lf32.github.io/zer0ne/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Scripting</title>
+            <link>https://nair0lf32.github.io/zer0ne/posts/2022/10/scripting/</link>
+            <pubDate>Sun, 09 Oct 2022 22:03:31 +0100</pubDate>
+            
+            <guid>https://nair0lf32.github.io/zer0ne/posts/2022/10/scripting/</guid>
+            <description>When it comes to hacking, people usually imagine a dangerous criminal lurking in his basement (black hoodie is a bonus), furiously smacking a keyboard, typing incomprehensible code directly in a terminal with green on black font. Well&amp;hellip;if media didn&amp;rsquo;t make a fool of you&amp;hellip;It&amp;rsquo;s not even close to reality. Ok maybe a little bit. A hacker is usually talented at coding. Not necessarily a criminal, but it is a person talented with computers.</description>
+            <content type="html"><![CDATA[<p>When it comes to hacking, people usually imagine a dangerous criminal lurking in his basement (black hoodie is a bonus), furiously smacking a keyboard, typing incomprehensible code directly in a terminal with green on black font. Well&hellip;if media didn&rsquo;t make a fool of you&hellip;It&rsquo;s not even close to reality. Ok maybe a little bit. A hacker is usually talented at coding. Not necessarily a criminal, but it is a person talented with computers. He knows so much about how they work he can spot malfunctions and well&hellip;abuse those malfunctions if he is the said criminal or fix them if he is a good guy. For the coding part, well&hellip;I said &ldquo;usually&rdquo;. Some so-called hackers can get into a system without typing a single line of code.</p>
+<p>So the usual question is &ldquo;Do I need to learn coding before being a hacker?&rdquo;</p>
+<p>Basically I&rsquo;d say it depends of your definition of a hacker. it&rsquo;s not a requirement, but if you want to be efficient, you need to learn it.</p>
+<p>&ldquo;But coding is a vast domain that can take years to master and there are dozens of programming languages. How would I learn all that?&rdquo;</p>
+<p>Then you better get started!</p>
+<p>I am actually not here to talk about how much coding you need to do some &ldquo;hacking&rdquo; or play a CTF. Instead I want to talk about how I do it! (yeah it&rsquo;s mostly about me here). I made a <a href="https://nair0lf32.github.io/zer0ne/posts/2022/10/hacking-methodology/" title="Hacking-methodology">post</a> about my hacking methodology, where I explain how I basically google my way out of everything. well there is one kind of problems you cannot always solve by using google alone. You need a functional brain for those. Programming problems require logic and good syntax knowledge (this one can be Googled). So for some tasks you need to write some scripts.</p>
+<p>What are the Scripting languages I use? It&rsquo;s the whole point of this article</p>
+<h2 id="pythonhttpswwwpythonorg"><a href="https://www.python.org/">Python</a></h2>
+<p>Obviously I start with python! If there is one thing this language is known for is HOW FAST IT IS&hellip;(*dodges rotten tomatoes)&hellip;TO DEVELOP WITH. Python with its dozen of libraries makes the development process way easier and faster. People already solved that problem for you, why reimplement the wheel? just <code>import this</code> &hellip;and face the problems of someone else. In hacking you have to be fast and quickly implement a Poc for your exploits so python fits perfectly. Here are my favorite libraries:</p>
+<ul>
+<li>
+<p><a href="https://pypi.org/project/requests/">requests</a>. You expected this one! obviously it&rsquo;s for http requests, and it makes that way too simple. This one is very often used in coding challenges to scrape data from a given website, so you usually add <a href="https://pypi.org/project/beautifulsoup4/">beautifulsoup</a> (or <a href="https://pypi.org/project/Scrapy/">scrapy</a>).</p>
+</li>
+<li>
+<p><a href="https://pypi.org/project/cryptography/">cryptography</a> does what it says. It&rsquo;s a cryptography swiss-knife. Just like <a href="https://pypi.org/project/pycryptodome/">pycryptodome</a>, you can make those work with other modules like <a href="https://docs.python.org/3/library/hashlib.html">hashlib</a>, <a href="https://docs.python.org/3/library/base64.html">base64</a>&hellip;</p>
+</li>
+<li>
+<p><a href="https://pypi.org/project/pwntools/">pwntools</a> describe itself as a CTF framework for exploit development. Do I need to add anything else? I just love how it makes remote socket connections easier than the <a href="https://docs.python.org/3/library/socket.html?highlight=socket#module-socket">socket</a> module itself. But I had to use the latter for an IRC challenge so it still rocks.</p>
+</li>
+<li>
+<p><a href="https://pypi.org/project/impacket/">Impacket</a> is another famous name in CTFs, for anything network-related. It allows easy connection using many protocols. I used it mostly against windows, for SMB connections. Also check <a href="https://pypi.org/project/rawsocketpy/">RawSocketpy</a> for connections relying mostly on MAC addresses (WIFI/ETHERNET).</p>
+</li>
+<li>
+<p><a href="https://pypi.org/project/scapy/">scapy</a> Is for network packets analysis. Its power is a bit underrated IMO. For packet injection you might as well look at <a href="https://pylibnet.sourceforge.net/">Pylibnet</a>. No need to install this one it comes with your python 3 installation.</p>
+</li>
+</ul>
+<p>There are many other libraries and even implementations of full-fledged hacking frameworks or tools in python, but those are the ones mostly used to quickly come up with a working solution. The tool used is not the most important thing. It&rsquo;s how you solve the problem (fast? efficient? re-usable?) that matters.</p>
+<h2 id="bashhttpswwwgnuorgsoftwarebash"><a href="https://www.gnu.org/software/bash/">bash</a></h2>
+<p>I do not write a lot of <code>bash</code> scripts yet but I think it is a language you definitely need to automate your linux tasks. I mostly use quick one liners to perform quick actions, like filtering a wordlist with <code>awk</code> and <code>sed</code>, find things with <code>find</code> and <code>grep</code>&hellip; But we all know bash is more powerful than that and I definitely recommend you getting familiar with it.</p>
+<h2 id="others">Others</h2>
+<p>well&hellip;It was a short list right? You are dead wrong! I just wanted it that way because there is a lot of scripting languages you could use. <a href="https://www.perl.org/">perl</a> and <a href="https://www.ruby-lang.org/en/">ruby</a> could fit too, but the two above are the ones I use so far. <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> is not a scripting language but I think it&rsquo;s another one you should know for CTFs! If you are interested in tools development and obviously you want those tools to be fast, there are new players in the arena: <a href="https://go.dev/">Golang</a> and <a href="https://www.rust-lang.org/">Rust</a>. You can also use Golang for scripts and PoCs.
+Anyway, those languages are mere tools that will automate your solutions to any problem. The most important thing will always be your ability to come up with the said solutions.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Vulnerabilities and Exploits</title>
+            <link>https://nair0lf32.github.io/zer0ne/posts/2022/10/vulnerabilities-and-exploits/</link>
+            <pubDate>Wed, 05 Oct 2022 17:13:41 +0100</pubDate>
+            
+            <guid>https://nair0lf32.github.io/zer0ne/posts/2022/10/vulnerabilities-and-exploits/</guid>
+            <description>I hope you Googled both concepts already because I won&amp;rsquo;t define them or give you the differences between them. I consider you know what vulnerabilities and exploits are, so I will just talk about my &amp;ldquo;favorite&amp;rdquo; ones. I wanna talk about my favorite cybersecurity mistakes, bugs vulnerabilities, payloads, viruses, data breaches&amp;hellip;The best epic fails, biggest wins or just some funny stuff from cybersecurity history.
+Blue (CVE-2017-0144)
+Do you know Eternalblue? I love everything about this vulnerability/exploit (there is some ambiguity in the name).</description>
+            <content type="html"><![CDATA[<p>I hope you Googled both concepts already because I won&rsquo;t define them or give you the differences between them. I consider you know what vulnerabilities and exploits are, so I will just talk about my &ldquo;favorite&rdquo; ones. I wanna talk about my favorite cybersecurity mistakes, bugs vulnerabilities, payloads, viruses, data breaches&hellip;The best epic fails, biggest wins or just some funny stuff from cybersecurity history.</p>
+<h2 id="bluehttpsenwikipediaorgwikieternalblue"><a href="%5D(https://en.wikipedia.org/wiki/EternalBlue)">Blue</a></h2>
+<p>(CVE-2017-0144)</p>
+
+    <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/7717bbc69c486931e503a74f3192a4d8.gif"  alt="blue-thm"  class="left"  style="width: 200px;"  />
+
+
+<p>Do you know <code>Eternalblue</code>? I love everything about this vulnerability/exploit (there is some ambiguity in the name). How it led to the <a href="https://en.wikipedia.org/wiki/WannaCry_ransomware_attack">wannacry</a> fiasco, how it is actually easy to use, and how it made microsoft look bad for a moment. 2017 was so wild! The exploit was developed by NSA and leaked by &ldquo;the shadow brokers&rdquo; hacking group in 2017. Eternalblue is actually a high/critical Arbitrary code execution vulnerability in Microsoft SMBv1 server (windows XP, Server 2008 and even windows 10) that usually run on port 445 (samba). To understand more how it works you can check <a href="https://research.checkpoint.com/2017/eternalblue-everything-know/">here</a>. There is a familly of similar names given to payloads used (EternalChampion, EternalSynergy, EternalRomance&hellip;). Microsoft released a security patch (MS17-010) to fix it but people didn&rsquo;t care much before their data got involved (wanna cry?). Then microsoft said: &ldquo;f*ck &rsquo;em! we gonna force them to update the whole OS&rdquo;, then relaesed a fix for all their old windows versions. The damage caused by this vulnerability is mostly due to it&rsquo;s exploitation by ransomwares (wannacry, adylkuzz, notpetya&hellip;). According to Avast wannacry spread at a rate of 10,000 devices per hour, infecting over 230,000 Windows PCs across 150 countries in a single day. Estimates put the cost of NotPetya at over $10 billion in damages and WannaCry at around $4 billion in damages. We can all agree this one was huge! And if you think We are done with eternalblue well you&rsquo;re wrong. The incident is mostly mitigated but the menace is still there. You better have a decent antivirus and keep your OS up to date.</p>
+<h2 id="like-a-turtle-in-a-hurricanehttpsenwikipediaorgwikishellshock_software_bug"><a href="https://en.wikipedia.org/wiki/Shellshock_(software_bug)">&ldquo;Like a turtle in a hurricane&rdquo;</a></h2>
+<p>(CVE-2014-6271)</p>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Shellshock-bug.svg/180px-Shellshock-bug.svg.png"  alt="shellshock-wiki"  class="left"  />
+
+
+<p><code>Shellshock</code> aka bashdoor, it&rsquo;s Also a familly of epic vulnerabilities. This time we go back to 2014, and the victim this time is good ol&rsquo; BASH itself. It was discovered by the security researcher Stephane Chazelas at Akamai firm. It&rsquo;s a critical Arbitrary code execution bug that affects GNU Bash versions from 1.14 to 4.3 (Unix, so Linux and MacOS mostly). Once again it is ridiculously easy to exploit thus very dangerous. Basically if characters  like <code>&quot;{:;};”</code> are included as function definition any code inserted at the end of that definition is processed. In even simpler words, if any special characters are added on a few shell commands at the end of that definition those commands are executed. You can learn more <a href="https://blog.cloudflare.com/inside-shellshock/">here</a>. Within an hour of the announcement of the vulnerability, there were reports of machines being compromised by it. By September 2014, botnets based on computers compromised with exploits based on the bug were used in denial-of-service (DDoS) attacks and vulnerability scanning. Billion of devices around the world were suspected to be affected. Multiples patches have been released to fix the bug. Note that this bug was unnoticed for 25 years. Now go update all your firmware and OS and install those annoying security updates.</p>
+<h2 id="does-it-have-a-pulsehttpsheartbleedcom"><a href="https://heartbleed.com/">&ldquo;Does it have a pulse?&rdquo;</a></h2>
+<p>(CVE-2014-0160)</p>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Heartbleed.svg/170px-Heartbleed.svg.png"  alt="heartbleed-wiki"  class="left"  />
+
+
+<p>First of all, the name <code>Heartbleed</code> is cool AF! This bug was compared to shellshock because of it&rsquo;s severity, but actually there are many differences. According to wikipedia this one affects the OpenSSL cryptography library, which is a widely used implementation of the Transport Layer Security (TLS) protocol. It was introduced into the software in 2012 and publicly disclosed in April 2014 by security engineers. Heartbleed could be exploited regardless of whether the vulnerable OpenSSL instance is running as a TLS server or client. It resulted from improper input validation (due to a missing bounds check) in the implementation of the TLS heartbeat extension. Thus, the bug&rsquo;s name derived from heartbeat. The vulnerability was classified as a buffer over-read, a situation where more data can be read than should be allowed. A fix was available the same day of disclosure (7 April 2014), but according to shodan  nearly 180,000 internet-connected devices were still vulnerable in July 2017. The data obtained by a Heartbleed attack may include unencrypted exchanges between TLS parties likely to be confidential, including any form post data in users&rsquo; requests. Moreover, the confidential data exposed could include authentication secrets such as session cookies and passwords, which might allow attackers to impersonate a user of the service. OpenSSL 1.0.1g has been released to address this vulnerability. Any keys generated with a vulnerable version of OpenSSL should be considered compromised and regenerated and deployed after the patch has been applied. US-CERT recommends system administrators consider implementing &ldquo;Perfect Forward Secrecy&rdquo; to mitigate the damage that may be caused by future private key disclosures.</p>
+<h2 id="countdown-to-zero-dayhttpsenwikipediaorgwikistuxnet"><a href="https://en.wikipedia.org/wiki/Stuxnet">&ldquo;Countdown to zero day&rdquo;</a></h2>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/StuxNet_1.png/220px-StuxNet_1.png"  alt="stuxnet-wiki"  class="left"  />
+
+
+<p>This one is a &ldquo;virus&rdquo; (ITS A WORM) called <code>stuxnet</code>. Wikipedia said that Stuxnet is a malicious computer worm first uncovered in 2010 and thought to have been in development since at least 2005. Stuxnet targets supervisory control and data acquisition (SCADA) systems and is believed to be responsible for causing substantial damage to the nuclear program of Iran. The worm is widely understood to be a cyberweapon built jointly by the United States and Israel in a collaborative effort known as Operation Olympic Games. Now I am not very interrested in the &ldquo;politics&rdquo; parts, so basically Stuxnet has three modules: a worm that executes all routines related to the main payload of the attack, a link file that automatically executes the propagated copies of the worm, and a rootkit component responsible for hiding all malicious files and processes, to prevent detection of Stuxnet. It is typically introduced to the target environment via an infected USB flash drive, thus crossing any air gap. The worm then propagates across the network, scanning for Siemens Step7 software on computers controlling a PLC. In the absence of either criterion, Stuxnet becomes dormant inside the computer. If both the conditions are fulfilled, Stuxnet introduces the infected rootkit onto the PLC and Step7 software, modifying the code and giving unexpected commands to the PLC while returning a loop of normal operation system values back to the users. This one was able to cause not only software infection but actual PHYSICAL damage too. There are many similar malware related to stuxnet (Duqu, Flame, Petya&hellip;), and stuxnet is also present in pop culture with many books, movies, videogames&hellip; about it. You can trust any decent antivirus to protect you today, but keep in mind that stuxnet is still alive!</p>
+<h2 id="jndildapipppldhttpsenwikipediaorgwikilog4shell"><a href="https://en.wikipedia.org/wiki/Log4Shell">&quot;${jndi:ldap://ip:p/pld}&quot;</a></h2>
+<p>(CVE-2021-44228)</p>
+
+    <img src="https://assets.tryhackme.com/room-banners/log4j-banner.png"  alt="stuxnet-wiki"  class="left"  />
+
+
+<p><code>Log4Shell</code> is a critical arbitrary code execution vulnerability in Log4j, a popular Java logging framework. The vulnerability had existed unnoticed since 2013 and was privately disclosed to the Apache Software Foundation on 24 November 2021. Before an official CVE identifier was made available on December 10th, 2021, the vulnerability circulated by the name &ldquo;Log4Shell&rdquo;. Apache gave Log4Shell a CVSS severity rating of 10, the highest available score. The exploit is simple to execute and is estimated to affect hundreds of millions of devices. The vulnerability takes advantage of Log4j&rsquo;s allowing requests to arbitrary LDAP and JNDI servers, allowing attackers to execute arbitrary Java code on a server or other computer, or leak sensitive information. Amazon Web Services,Cloudflare, iCloud, Minecraft: Java Edition,Steam, Tencent QQ and many others were affected. The vulnerability&rsquo;s disclosure received strong reactions from cybersecurity experts. Cybersecurity company Tenable said the exploit was &ldquo;the single biggest, most critical vulnerability ever&rdquo;, Ars Technica called it &ldquo;arguably the most severe vulnerability ever&rdquo; and The Washington Post said that descriptions by security professionals &ldquo;border on the apocalyptic&rdquo;. Fixes for this vulnerability were released on 6 December 2021, three days before the vulnerability was published, in Log4j version 2.15.0-rc1. The fix included restricting the servers and protocols that may be used for lookups. Researchers discovered a related bug, CVE-2021-45046, that allows local or remote code execution in certain non-default configurations and was fixed in version 2.16.0, which disabled all features using JNDI and support for message lookups. Two more vulnerabilities in the library were found. Also several methods and tools have been published that help detect vulnerable Log4j versions used in built Java packages.</p>
+<h2 id="others">Others</h2>
+<p>There are too many I discovered during my journey, and still discovering, so here are those I also like but could not talk about:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Brain_(computer_virus)">Brain</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Creeper_and_Reaper">The Creeper</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Pegasus_(spyware)">Pegasus</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-1472">Zerologon</a></li>
+</ul>
+<p>I might add more later</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Hacking methodology</title>
+            <link>https://nair0lf32.github.io/zer0ne/posts/2022/10/hacking-methodology/</link>
+            <pubDate>Sat, 01 Oct 2022 20:10:31 +0100</pubDate>
+            
+            <guid>https://nair0lf32.github.io/zer0ne/posts/2022/10/hacking-methodology/</guid>
+            <description>It&amp;rsquo;s not about the general methodology (you can easily get this one on google) but it&amp;rsquo;s about mine (quick reminder: I own this place!). In simpler words I will just talk about how I do my things, aka how I tackle CTFs challenges (and problems in general). I will also talk about my favorite categories of challenges so &amp;ldquo;buckle up buckaroos!&amp;rdquo;
+My Methodology Took me time to define my own hacking methodology and it might still change (improvements plz).</description>
+            <content type="html"><![CDATA[<p>It&rsquo;s not about the general methodology (you can easily get this one on google) but it&rsquo;s about mine (quick reminder: I own this place!). In simpler words I will just talk about how I do my things, aka how I tackle CTFs challenges (and problems in general). I will also talk about my favorite categories of challenges so &ldquo;buckle up buckaroos!&rdquo;</p>
+<h2 id="my-methodology">My Methodology</h2>
+<p>Took me time to define my own hacking methodology and it might still change (improvements plz). I was very confused as a beginner on my first CTF. Hacking communities are know to be very welcoming nowadays but for teh sake of effort no one will just serve you flags, answers or even hints sometimes. Don&rsquo;t get me wrong that&rsquo;s a very good thing because that&rsquo;s exactly what it&rsquo;s about so you know what to expect. They will instead point you toward general concepts or learning material. Got it already? First thing you need in the cyber is <code>curiosity</code>. Seriously, wanna &ldquo;hack&rdquo; anything you do not understand yourself? You better learn to <code>Google</code> real quick</p>
+<p>I won&rsquo;t tell you the generic things like &ldquo;you need to know this and that&hellip;&rdquo; to get into cybersecurity or play CTFs but there is a general methodology to know.</p>
+<p>What? you want me to give it to you? You better love to google things real real quick!</p>
+<p>Personally I follow three big steps and one general rule.</p>
+<h2 id="step-1-reconnaissance">Step 1: Reconnaissance</h2>
+<p>If you googled already you expected me to start here! You also already know it&rsquo;s about knowing what you are dealing with. You mostly need either <code>experience</code> (practice a lot), <code>big brain time</code> (analysis and deduction) or both.</p>
+<p>&ldquo;Oh this is an easy crypto challenge? oh I know this one it&rsquo;s ROT13!&rdquo; That&rsquo;s experience.</p>
+<p>But before you get there the second type of person would be like:</p>
+<p>&ldquo;Hmm! a cryptography challenge. I notice every letter is a shift of an alphabet letter&rdquo; That guy would probably grab a pen and paper and furiously manually decode it. That&rsquo;s analysis for you.</p>
+<p>But let&rsquo;s be honest such scenario is not very common. Now there is me:</p>
+<p>&ldquo;what the f*ck is that?&rdquo;</p>
+<p>*Copy pastes the encoded ROT13 on Google, reads some results, add cryptography to the search query and learn about ROT13</p>
+<p>&ldquo;Oh okay&rdquo; *Decodes it with the online tool I just found and added to my collection</p>
+<p>Basically, that&rsquo;s what I do! mostly Google! I have no shame!</p>
+<p>Be it a challenge, a lab, a machine&hellip;If I don&rsquo;t know it I Google it! Obviously it doesn&rsquo;t always work (Google-fu is an art)</p>
+<p>Now you already noticed I said this first step was about &ldquo;Reconnaissance&rdquo;&hellip;The mainstream thing to know is how to get <code>information</code> about your target. But as not every kind of information is on Google you still need your brain + automated tools. Brain first because you have to know what tool to use. I talk about my tools in <a href="https://nair0lf32.github.io/zer0ne/writeups/" title="Writeups">another post</a>. Also I won&rsquo;t teach enumeration or reconnaissance here (it&rsquo;s a huge subject). But how do I do it when Google isn&rsquo;t enough?</p>
+<p>Every machine starts with a <code>nmap</code> scan (or <code>rustscan</code> if you are not that patient). But once the scan is over and you see the open ports and available services that&rsquo;s where your &ldquo;analysis&rdquo; should kick in! The next steps is the funniest one</p>
+<h2 id="step-1-exploitation">Step 1: Exploitation</h2>
+<p>Here again I basically Google everything! It&rsquo;s the part where you take advantage of the information you got (step 1) to solve the problem. But there are many types of problems and solving methods are too specific to be debated here so I will just talk about my favorite ones</p>
+<ul>
+<li>Machines/Systems: So far I know about linux and windows. Those usually need the most enumeration. These types of challenges are usually to showcase a common vulnerabilty (<code>exploitdb</code> and <code>github</code> got your back) or you get access through a server (web,ssh,rdp&hellip;). Once again Google will save you</li>
+<li>Cryptography: Oh I love those! they go from &ldquo;<code>cyberchef</code>,<code>boxentriq</code> or <code>dcode</code> will do&rdquo; to &ldquo;you have to reverse engineer the whole cypher or encoding method to decode this one&rdquo; (you might need some <code>scripting</code> skills for the reverse engineering part&hellip;just&hellip;just learn <code>python</code>)</li>
+<li>OSINT: This one would go into reconnaissance but it takes more critical thinking than you think so add it to a LOT of Google searches</li>
+<li>Steganography: You need hints to even think about this one! sometimes the context helps&hellip;sometimes the author is just like &ldquo;f*ck you! here is a picture&rdquo; (with obviously no exif data). If they were nice you have to <code>stegseek</code> the <code>steghide</code> passphrase, else you have to deduce it from &ldquo;context&rdquo;. And if it&rsquo;s not a picture, well you know what to do!</li>
+<li>Pwn/Binary exploitation: input mad long characters sequences, Learn <code>C</code>, Learn some <code>Assembly</code>, cry a little, then just run any <code>decompiler</code>, <code>debugger</code> or <code>disassembler</code> you know and hope for the best</li>
+<li>Android: Install <code>android studio</code> first, Learn to decompile <code>apk</code> and get familiar with <code>proxies</code></li>
+<li>Web: Memorize <code>The OWASP top 10</code> vulnerabilities and how to exploit them, Fire up <code>Burpsuite</code> or your favorite proxy on every input field you ever see</li>
+</ul>
+<p>Now to those who expected step 3 to be about <code>privilege escalation</code>, SIKE! I put privilege escalation here because it&rsquo;s my methodology steps and not hacking steps!</p>
+<p>I consider privesc a form of exploitation (just local). You mostly have to learn about this one, because the common vectors are already known. Or use noisy scripts like <code>linpeas</code> or <code>winpeas</code></p>
+<h2 id="step-3-writeups">Step 3: Writeups</h2>
+<p>After you did everything (succeed or failed miserably) writeups are an important step (well, for me at least).</p>
+<p>If you solved the problem, it&rsquo;s time to write about how you did it! It will help you retain information better. I often re-read my old writeups to solve similar challenges. Also you can help others by doing so, and you should read other&rsquo;s writeups to learn alternative ways of solving the problem. They probably did it differently and you might wanna be aware of that.</p>
+<p>If you were just stuck for too long (This is very relative) and wanna move on you can read a writeup (YES you CAN). I personally think learning is the most important thing in all this, so whenever I admit the challenge was too hard for me I look for writeups. But it should usually be a last resort. Most platforms have forums and chatrooms where you can get hints before going for a whole &ldquo;tutorial&rdquo;. Also never EVER accept writeups that give flags or answers away. That&rsquo;s sh*tty learning material. Even after reading the writeup, close it and re-do the challenge yourself. You retain more by doing than just reading, so that&rsquo;s the whole point</p>
+<p>Now what if no writeup is available?</p>
+<p>well&hellip;either no one bothered writing one because it was too trivial (less probable) or the difficulty was so insane authors wanted to keep it challenging for people of such level and also strongly disallowed public writeups (more probable)</p>
+<p>Either way you just have to <code>try harder</code> or leave the challenge unsolved. You cannot solve everything and an unsolved challenge just mean you are not there yet so do something else and try again later&hellip;</p>
+<h2 id="rule-keep-it-simple">Rule: Keep it simple</h2>
+<p>I said I had a rule for any problem I face&hellip;well I like to <code>keep it simple</code>. I am not the &ldquo;very smart&rdquo; kind of person (more like a &ldquo;meh&rdquo;) so I easily get confused by complex situations. I also have a hard time focusing on them, so I am a big fan of <code>Divide-and-conquer algorithm</code> (Google it). I apply it on &ldquo;everything&rdquo;! Whenever the problem seems big <code>break it down</code>. Smaller problems still big? break them down again and solve separate trivial tasks! Assemble the smaller solutions and voilà, big problem solved!</p>
+<p>This is mostly used in computer science but I think this can be applied to many CTFs or real life problems as well&hellip;you just need to know how to &ldquo;break it down&rdquo;</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>CTFs</title>
+            <link>https://nair0lf32.github.io/zer0ne/posts/2022/09/ctfs/</link>
+            <pubDate>Thu, 22 Sep 2022 18:33:31 +0100</pubDate>
+            
+            <guid>https://nair0lf32.github.io/zer0ne/posts/2022/09/ctfs/</guid>
+            <description>Hello friend, (you should get used to that greeting real quick)
+I am a CTF player. &amp;ldquo;what is that you ask&amp;rdquo;? Here.you.go (You should google more)
+Now &amp;ldquo;why do I play those&amp;rdquo;? well&amp;hellip;Let&amp;rsquo;s just say I think It&amp;rsquo;s a great way to practice in the cybersecurity field. Don&amp;rsquo;t get me wrong you need way more than CTFs to be a cybersecurity professional, but you won&amp;rsquo;t go far without CTF either. May you wanna be a penetration tester or an incident responder you might mostly find yourself in situations CTFs can perfect emulate and prepare you for.</description>
+            <content type="html"><![CDATA[<p>Hello friend, (you should get used to that greeting real quick)</p>
+<p>I am a CTF player. &ldquo;what is that you ask&rdquo;? <a href="https://en.wikipedia.org/wiki/Capture_the_flag_(cybersecurity)">Here</a>.<a href="https://ctftime.org/ctf-wtf/">you</a>.<a href="https://dev.to/atan/what-is-ctf-and-how-to-get-started-3f04">go</a> (You should google more)</p>
+<p>Now &ldquo;why do I play those&rdquo;? well&hellip;Let&rsquo;s just say I think It&rsquo;s a great way to practice in the cybersecurity field. Don&rsquo;t get me wrong you need way more than CTFs to be a cybersecurity professional, but you won&rsquo;t go far without CTF either. May you wanna be a penetration tester or an incident responder you might mostly find yourself in situations CTFs can perfect emulate and prepare you for. You might even &ldquo;play&rdquo; a CTF without realising it!</p>
+<p>&ldquo;So..CTFs are games&rdquo;? In my opinion, well they are Gamified learning! having fun while learning? insane concept right? But here is the thing:</p>
+<blockquote>
+<p>CTFs are simulations and are mostly intended to be solved in a certain way chosen by the author. They can be very realistic or totally not. They mostly give you the &ldquo;big picture&rdquo; of what cybersecurity field is like. In real life things are a little different, and it&rsquo;s those differences that make you a professional</p>
+</blockquote>
+<p>Back to me now, I have always been a great computer science and IT enthusiast, and I went into many speciality fields (mostly web development)&hellip;But I could not &ldquo;focus&rdquo;
+On a single thing&hellip;I wanted to learn and know &ldquo;everything&rdquo;. we all know that&rsquo;s stupid but there is so much to learn. I was fiddling with &ldquo;hacking&rdquo; years ago in high school already, pretending to be a &ldquo;hacker&rdquo;, fooling my friends with scripts anyone could find over a google search (basic script kiddie stuff&hellip;we all went there don&rsquo;t shame me)</p>
+<p>But after discussing with a friend that went into security at university, I realised I knew nothing&hellip;I then did what I do mostly when I have a problem, A google search</p>
+<p>That&rsquo;s how I discovered CTFs. Since that day I learnt way more in months than I did in many years. And also I start considering focusing mostly on cybersecurity for many reasons:</p>
+<ul>
+<li>It suits my &ldquo;curiosity&rdquo;: As I said I want to learn many things from various CS and IT fields, in cybersec you need to know a certain amount of everything (scripting, networks, cryptography, web development&hellip;)</li>
+<li>It&rsquo;s fun! (We can all agree on this so I won&rsquo;t elaborate)</li>
+<li>It&rsquo;s not for everyone: It&rsquo;s not to be pretentious but I kind of like things that not everyone can do&hellip;You might say &ldquo;It might not be for you either&rdquo;, I say &ldquo;Well, let&rsquo;s find out&rdquo;! We might never find out because I will never stop trying or doing the thing&hellip;that&rsquo;s just..me I guess</li>
+</ul>
+<p>Now here is the downside if you want to move from &ldquo;just playing CTFs&rdquo; to &ldquo;I do it for money&rdquo; or &ldquo;It&rsquo;s my job&rdquo;:</p>
+<ul>
+<li>It&rsquo;s hella expensive: Boy! valuable cybersecurity certificates are not only difficult to get but they will cost you more than three fiddies</li>
+<li>Competition: Bug bounties you say? welcome to the playground&hellip;If you thought you were good, lemme introduce you to real good people. They find things you have no clue about, where you have no clue it could be found and if you had it they are faster than you. Good luck with that</li>
+<li>Keep the pace: Ok this one applies to any tech related field&hellip;Things go fast and you should be learning new things daily&hellip;sounds good? Try to do that in a pursuing a cybersec career</li>
+</ul>
+<p>That&rsquo;s mostly what you can get from me about CTFs and cybersecurity in general. Now About my CTF and learning platforms. I will talk about them below</p>
+<p>You can click on the badges below to check my profiles, or on the headings to visit the platforms</p>
+<h2 id="tryhackmehttpstryhackmecom"><a href="https://tryhackme.com">Tryhackme</a></h2>
+<p><a href="https://tryhackme.com/p/nairolf"><img src="https://tryhackme-badges.s3.amazonaws.com/nairolf.png" alt="nairolf-tryhackme"></a></p>
+<p>My favorite Learning platform! yeah I did not say &ldquo;ctf platform&rdquo; because tryhackme is way more than that! they take the clay of your security-clueless ignorant mind and mold it into a decent cybersecurity-aware one with vast potential for improvement. They literally hold your hand throughout your first steps in the cyber. Seriously they are probably the coolest and specially for beginners. I recommend it to anyone starting in the field. Now if you wanna get serious about this you could consider subscribing to their very accessible premium plan (it&rsquo;s definitely worth it)&hellip;Or if you are ultra pennyless (just like me) you learn from many free platforms to get the most (but hey I am really considering that premium)</p>
+<h2 id="hacktheboxhttpsapphacktheboxcom"><a href="https://app.hackthebox.com">HacktheBox</a></h2>
+<p><a href="https://app.hackthebox.com/profile/607474"><img src="https://www.hackthebox.eu/badge/image/607474" alt="nairolf32-hackthebox"></a></p>
+<p>My first CTF platform and oh boy&hellip;what a mistake it was! You read all I said about tryhackme? well Hackthebox is kind of the opposite. They throw some starting point modules at your stupid face and kick you into the field like: &ldquo;fly! b*tch&rdquo;! No seriously, It&rsquo;s not for beginners! They now have an academy where you can learn but it costs way more than tryhackme, where I went right before coming back, a bit stronger. BUT hear me out: They have the best boxes! I am serious here&hellip;If you want hardcore challenges hackthebox is still unmatched in my opinion. Now if they say a box is easy don&rsquo;t listen to them! hackthebox have no easy box!</p>
+<h2 id="root-mehttpswwwroot-meorg"><a href="https://www.root-me.org/">Root-me</a></h2>
+<figure><a href="https://www.root-me.org/nairolf32"><img src="https://www.root-me.org/IMG/logo/siteon0.svg?1637496509"
+         alt="nairol32-root-me" width="100"/></a>
+</figure>
+
+<p>Amazing french platform. They have solid hardcore challenges and the platform is mostly ran by the community. This one is worth a shot</p>
+<h2 id="pico-ctfhttpsplaypicoctforg"><a href="https://play.picoctf.org/">Pico-Ctf</a></h2>
+<figure><a href="https://play.picoctf.org/users/nairolf32"><img src="https://play.picoctf.org/static/media/picoctf-logo-horizontal-white.17fdf0dcdef08dc3396a195b95e3bc29.svg"
+         alt="nairol32-pico" width="180"/></a>
+</figure>
+
+<p>This one is highly recommended for beginners too. They don&rsquo;t really teach you, but the challenges are very welcoming. What I loved the most there was their <code>web terminal</code>. A shell in the browser. A little personal space with some tools and storage to solve the challenges without using your own attack machine. Making it available even on the go!</p>
+<h2 id="echoctfhttpsechoctfredprofile9757045invite"><a href="https://echoctf.red/profile/9757045/invite">echoCTF</a></h2>
+<figure><a href="https://echoctf.red/profile/9757045"><img src="https://echoctf.red/profile/9757045/badge"
+         alt="nairol32-echoctf" width="500"/></a>
+</figure>
+
+<p>Still throughout my learning journey, my wandering led me to echoCTF. The platform seem a bit newer than others but it looks like a fun place.</p>
+<h3 id="miscellanous">Miscellanous</h3>
+<p>Other places I Learn or just play challenges (not actively writing writeups for those):</p>
+<ul>
+<li><a href="https://www.wechall.net/profile/nairolf32">Wechall</a> (To manage some challenges sites)</li>
+<li><a href="https://ctflearn.com/user/nairolf32">Ctflearn</a></li>
+<li><a href="https://parrot-ctfs.com/">Parrot CTFs</a></li>
+<li><a href="https://attackdefense.com/">Attackdefense</a></li>
+<li><a href="https://ctf.cyberwarrior.com/">cyberwarrior</a></li>
+<li><a href="https://hbh.sh/user/nairolf32">Hellbound hackers</a></li>
+<li><a href="https://pentesterlab.com">Pentesterlab</a></li>
+<li><a href="https://www.cyberseclabs.co.uk">cyberseclabs</a></li>
+<li><a href="https://cybertalents.com/members/nairolf32/profile">Cybertalents</a></li>
+<li><a href="https://capturetheflag.withgoogle.com/team/nair0lf32">GoogleCTF</a></li>
+<li><a href="https://qualif.hackerlab.africa/challenges">Hackerlab</a></li>
+<li><a href="https://hackmyvm.eu">HackmyVM?</a></li>
+<li><a href="https://cryptopals.com/">cryptopals?</a></li>
+<li><a href="http://flaws.cloud/">flaws.cloud</a></li>
+<li><a href="https://www.zenk-security.com/profil?uid=20722">zenk security</a></li>
+<li><a href="https://practicalpentestlabs.com/dashboard/">practicalpentestlabs</a></li>
+</ul>
+<p>Also, <a href="https://ctfsites.github.io/">wherever I feel like getting the fun and knowledge</a>, <a href="https://ctftime.org/">and real events</a></p>
+<h2 id="cybersecurity-learning">Cybersecurity learning</h2>
+<p>Playing CTFs is cool and stuff but if you want to get real about cybersecurity you need more! The platforms below are not for playing CTFs but mostly teach you what you need to know and let you practice in CTF-like environments (labs). Some offer certificates but remember, It ain&rsquo;t cheap!</p>
+<ul>
+<li><a href="https://www.offensive-security.com/pwk-oscp/">Offensive-security</a> (the G.O.A.T)</li>
+<li><a href="https://portswigger.net/web-security/dashboard">Portswigger</a> (they made burp)</li>
+<li><a href="https://codered.eccouncil.org/">EC-council</a> (<a href="https://codered.eccouncil.org/certificate/3dba20b9-805a-4902-a235-57c4d7fc4bb0?logged=true">EHE</a>, <a href="https://codered.eccouncil.org/certificate/34d83454-2adb-43b7-bb3f-23f486918966?logged=true">NDE</a>)</li>
+<li><a href="https://letsdefend.io/">Letsdefend</a></li>
+<li><a href="https://www.hacksplaining.com/">Hacksplaining</a></li>
+<li><a href="https://rootinjail.com/">rootinjail ??</a></li>
+</ul>
+<h2 id="bug-bounties-platforms">Bug Bounties platforms</h2>
+<p>If you think you are good enough, prefer a freelance style and enjoy competition then bug bounties (Google it) are for you</p>
+<ul>
+<li><a href="https://hackerone.com/nairolf?type=user">Hackerone</a> with <a href="https://ctf.hacker101.com/">hacker101</a> as their playground for starters</li>
+<li><a href="https://bugcrowd.com/nairolf32">Bugcrowd</a></li>
+<li><a href="https://www.intigriti.com/">Intigriti</a></li>
+</ul>
+<p>And as I like linking and sharing stuff (curation is my passion lol) here is similar projects (other people making great writeups)</p>
+<p>Note that I won&rsquo;t include those who give flags away (this is a fine selection sir)</p>
+<ul>
+<li><a href="https://0xdf.gitlab.io/">0xdf hack stuff</a>: mostly htb machines but this guy is still active (searching a box is not available though)</li>
+<li><a href="https://infosecwriteups.com/">infosecwriteups</a>: many people post writeups there, but remember it is part of medium (not free)</li>
+<li><a href="https://c4pr1c3.github.io/awesome-ctf/">awesomectf</a> they have writeups too. That and&hellip;well, everything about ctfs</li>
+</ul>
+<p>Also for anything CTF related (non-writeups) there are some resources I recommend:</p>
+<ul>
+<li><a href="https://book.hacktricks.xyz/welcome/readme">Hacktricks</a></li>
+<li><a href="https://pentestbook.six2dez.com/">Pentestbook</a></li>
+</ul>
+<p>Now if you are ever interested, my writeups they are right <a href="https://nair0lf32.github.io/zer0ne/writeups/" title="Writeups">Here</a></p>
+<p>Good luck and Have fun!</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>My Favorite Tools</title>
+            <link>https://nair0lf32.github.io/zer0ne/posts/2022/09/my-favorite-tools/</link>
+            <pubDate>Sat, 17 Sep 2022 18:33:31 +0100</pubDate>
+            
+            <guid>https://nair0lf32.github.io/zer0ne/posts/2022/09/my-favorite-tools/</guid>
+            <description>Just a list of cool cybersec tools! The ones I use the most ( or not ) and the one I discovered during my journey. Ordered by categories (kinda)
+Reconnaissance &amp;amp; Enumeration Scanning Footprint Discovery Nmap (good old) Recon-ng Gobuster Rustscan Blackwidow Ffuf NmapAutomator Cmseek Sublist3r angryIP (angry scan) Eyewitness VhostScan Massscan Recon (All in one) Subfinder shodan (the iot scanner) wpscan (Wordpress favorite) Dnsdumpster (dig on steroids!) ahmia (dark web search) WHOIS (nothing beat basics) viewdns (whois++) Vulnerabilty scanners ( For either professionals, lazy people, or both) Free (for you and me) Paid (If you got money) Nikto (technically correct) Acunetix Rapidscan (Try it!</description>
+            <content type="html"><![CDATA[<p>Just a list of cool cybersec tools! The ones I use the most ( or not ) and the one I discovered during my journey. Ordered by categories (kinda)</p>
+<h2 id="reconnaissance--enumeration">Reconnaissance &amp; Enumeration</h2>
+<table>
+<thead>
+<tr>
+<th>Scanning</th>
+<th>Footprint</th>
+<th>Discovery</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://nmap.org/">Nmap</a> (good old)</td>
+<td><a href="https://github.com/lanmaster53/recon-ng">Recon-ng</a></td>
+<td><a href="https://github.com/OJ/gobuster">Gobuster</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/RustScan/RustScan">Rustscan</a></td>
+<td><a href="https://github.com/1N3/BlackWidow">Blackwidow</a></td>
+<td><a href="https://github.com/ffuf/ffuf">Ffuf</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/21y4d/nmapAutomator">NmapAutomator</a></td>
+<td><a href="https://github.com/Tuhinshubhra/CMSeeK">Cmseek</a></td>
+<td><a href="https://github.com/aboul3la/Sublist3r">Sublist3r</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/angryip/ipscan">angryIP</a> (angry scan)</td>
+<td><a href="https://github.com/FortyNorthSecurity/EyeWitness">Eyewitness</a></td>
+<td><a href="https://github.com/codingo/VHostScan/">VhostScan</a></td>
+</tr>
+<tr>
+<td><a href="https://www.kali.org/tools/masscan/">Massscan</a></td>
+<td><a href="https://github.com/dirsoooo/Recon">Recon</a> (All in one)</td>
+<td><a href="https://github.com/projectdiscovery/subfinder">Subfinder</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://www.shodan.io/dashboard">shodan</a> (the iot scanner)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://wpscan.com/">wpscan</a> (Wordpress favorite)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://dnsdumpster.com/">Dnsdumpster</a> (dig on steroids!)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://ahmia.fi/">ahmia</a>  (dark web search)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://who.is/">WHOIS</a> (nothing beat basics)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://viewdns.info/">viewdns</a> (whois++)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="vulnerabilty-scanners--for-either-professionals-lazy-people-or-both">Vulnerabilty scanners ( For either professionals, lazy people, or both)</h3>
+<table>
+<thead>
+<tr>
+<th>Free (for you and me)</th>
+<th>Paid (If you got money)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/sullo/nikto">Nikto</a> (technically correct)</td>
+<td><a href="https://www.acunetix.com/">Acunetix</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/skavngr/rapidscan">Rapidscan</a> (Try it!)</td>
+<td><a href="https://www.tenable.com/products/nessus">Nessus</a> (technically it&rsquo;s not free)</td>
+</tr>
+<tr>
+<td><a href="https://www.openvas.org/">OpenVas</a></td>
+<td><a href="https://www.rapid7.com/products/nexpose/">Nexpose</a> (free trial)</td>
+</tr>
+<tr>
+<td><a href="https://subgraph.com/vega/">Vega</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="exploitation">Exploitation</h2>
+<table>
+<thead>
+<tr>
+<th>Frameworks and payload generators</th>
+<th>Common exploits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.metasploit.com/">Metasploit</a> (The unmatched)</td>
+<td><a href="https://www.metasploit.com/">Exploitdb</a> (searchsploit)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/vulnersCom/getsploit">getsploit</a> (vulners)</td>
+<td><a href="https://sqlmap.org/">Sqlmap</a></td>
+</tr>
+<tr>
+<td><a href="https://pentestmonkey.net/">Pentestmonkey</a> (instant shell)</td>
+<td><a href="https://github.com/codingo/NoSQLMap">Nosqlmap</a></td>
+</tr>
+<tr>
+<td><a href="https://www.revshells.com/">Revshells</a> (shells of quality)</td>
+<td><a href="https://attackerkb.com/">AttackerKB</a> (information is power)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/swisskyrepo/PayloadsAllTheThings">P.A.T.T</a></td>
+<td><a href="https://www.kali.org/tools/commix/">commix</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://github.com/gkbrk/slowloris">Slowloris</a> (Don&rsquo;t)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="web-specials">Web (specials)</h3>
+<table>
+<thead>
+<tr>
+<th>Proxies</th>
+<th>Frameworks and other scanners</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://portswigger.net/burp/communitydownload">burpsuite</a> (community edition)</td>
+<td><a href="https://github.com/Arachni/arachni">Arachni</a></td>
+</tr>
+<tr>
+<td><a href="https://www.zaproxy.org/">Owasp ZAP</a> (It&rsquo;s from OWASP)</td>
+<td><a href="https://github.com/golismero/golismero">Golismero</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/elceef/dnstwist">dnstwist</a></td>
+<td><a href="https://github.com/utkusen/leviathan">Leviathan</a> ( sadly DEPRECATED )</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cloud-specials">cloud (specials)</h3>
+<ul>
+<li><a href="https://github.com/nccgroup/ScoutSuite">scoutsuite</a></li>
+</ul>
+<h3 id="windows-specials">Windows (specials)</h3>
+<table>
+<thead>
+<tr>
+<th>Specific services</th>
+<th>Active Directory</th>
+<th>Post-exploit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.kali.org/tools/enum4linux/">Enum4linux</a></td>
+<td><a href="https://github.com/ropnop/kerbrute">Kerbrute</a></td>
+<td><a href="https://www.kali.org/tools/mimikatz/">Mimikatz</a> (the looter)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Hackplayers/evil-winrm">Evilwinrm</a></td>
+<td><a href="https://github.com/SecureAuthCorp/impacket">Impacket tools</a></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://github.com/byt3bl33d3r/CrackMapExec">CrackMapExec</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="cryptography">Cryptography</h2>
+<table>
+<thead>
+<tr>
+<th>Crackers</th>
+<th>Hashes</th>
+<th>Decoders</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.kali.org/tools/john/">John</a> (the ripper)</td>
+<td><a href="https://hashcat.net/hashcat/">Hashcat</a> (a cat)</td>
+<td><a href="https://www.dcode.fr/">Dcode</a></td>
+</tr>
+<tr>
+<td><a href="https://www.kali.org/tools/hydra/">Hydra</a> (the legacy)</td>
+<td><a href="https://crackstation.net/">crackstation</a></td>
+<td><a href="https://gchq.github.io/CyberChef/">Cyberchef</a></td>
+</tr>
+<tr>
+<td><a href="https://nullsecurity.net/tools/cracker.html">sshtrix</a> (for ssh)</td>
+<td><a href="https://hashcrack.com/">Hashcrack</a></td>
+<td><a href="https://jwt.io/">jwt</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://hashes.com/en/decrypt/hash">Hashes.com</a></td>
+<td><a href="https://www.boxentriq.com/">Boxentriq</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://www.tunnelsup.com/hash-analyzer/">Hash analyzer</a></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://md5hashing.net/">md5hashing</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="wordlist-generators">wordlist generators</h2>
+<ul>
+<li><a href="https://github.com/sc0tfree/mentalist">Mentalist</a> (It got a GUI)</li>
+<li><a href="https://github.com/Mebus/cupp">cupp</a> (old reliable)</li>
+<li><a href="https://www.kali.org/tools/cewl/">cewl</a> (if you like spiders)</li>
+</ul>
+<h2 id="reverse-engineering--binary-exploitation">Reverse Engineering / Binary exploitation</h2>
+<table>
+<thead>
+<tr>
+<th>Disassembler Frameworks</th>
+<th>Debuggers and Decompilers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://hex-rays.com/ida-pro/">IDA Pro</a> (industry standard)</td>
+<td><a href="https://www.sourceware.org/gdb/">GDB</a> (check PwnGdb and ollygdb)</td>
+</tr>
+<tr>
+<td><a href="https://ghidra-sre.org/">Ghidra</a> (pride of the NSA)</td>
+<td><a href="https://cutter.re/">Cutter</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/radareorg/radare2">Radare2</a></td>
+<td><a href="https://pypi.org/project/pwntools/">pwntools</a> (technically&hellip;)</td>
+</tr>
+<tr>
+<td><a href="https://dogbolt.org/">dogbolt</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="steganography">Steganography</h2>
+<table>
+<thead>
+<tr>
+<th>Embedded data and Text</th>
+<th>Image Manipulation</th>
+<th>Audio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://steghide.sourceforge.net/">steghide</a></td>
+<td><a href="https://en.kali.tools/all/?tool=1762">Stegsolve</a></td>
+<td><a href="https://www.sonicvisualiser.org/">Sonic vizualizer</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/RickdeJager/stegseek">stegseek</a></td>
+<td><a href="https://installlion.com/kali/kali/main/s/stegosuite/install/index.html">Stegosuite</a></td>
+<td><a href="https://www.audacityteam.org/">Audacity</a></td>
+</tr>
+<tr>
+<td><a href="https://exiftool.org/">exiftool</a> (might work)</td>
+<td><a href="https://www.gimp.org/">Gimp</a>  (photoshop or whatever)</td>
+<td><a href="https://morsecode.world/">Morse decoder</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/rw/plainsight">plainsight</a></td>
+<td><a href="http://zbar.sourceforge.net/">Zbar-tools</a></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://fotoforensics.com/">fotoforensics</a></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://github.com/zed-0xff/zsteg">Zsteg</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="malware-analysis">Malware Analysis</h2>
+<table>
+<thead>
+<tr>
+<th>Online</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.virustotal.com/gui/">virustotal</a> (too famous)</td>
+</tr>
+<tr>
+<td><a href="https://beta.pithus.org/">Pithus</a> (for android)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="android-specials">Android (specials)</h3>
+<table>
+<thead>
+<tr>
+<th>Analysis</th>
+<th>Attacks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/MobSF/Mobile-Security-Framework-MobSF">Mobsf</a></td>
+<td><a href="https://github.com/termuxhackers-id/SARA">SARA</a> (careful with this one)</td>
+</tr>
+<tr>
+<td><a href="https://ibotpeaches.github.io/Apktool/">Apktool</a>  (uses jadx)</td>
+<td><a href="https://github.com/dana-at-cp/backdoor-apk">backdoor-apk</a></td>
+</tr>
+<tr>
+<td><a href="https://developer.android.com/studio/command-line/adb">Adb</a></td>
+<td><a href="https://github.com/Screetsec/TheFatRat">TheFatRat</a> (obese rodent)</td>
+</tr>
+<tr>
+<td><a href="https://docs.anbox.io/userguide/install.html">anbox</a> (or any emulator for dynamic testing)</td>
+<td><a href="https://www.offensive-security.com/metasploit-unleashed/msfvenom/">Msfvenom</a></td>
+</tr>
+<tr>
+<td><a href="https://www.zimperium.com/">Zimperium tools</a> (yeah&hellip;kinda)</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/dwisiswant0/apkleaks">Apkleaks</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/xtiankisutsa/MARA_Framework">MARA</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/FSecureLABS/drozer">Drozer</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/ac-pm/Inspeckage">Inspeckage</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/quark-engine/quark-engine">Quark</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://apk-deguard.com/">Deguard</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="wifi">Wifi</h2>
+<table>
+<thead>
+<tr>
+<th>Audit tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/derv82/wifite2">wifite 2</a></td>
+</tr>
+<tr>
+<td><a href="https://www.kismetwireless.net/">kismet</a></td>
+</tr>
+<tr>
+<td><a href="https://www.aircrack-ng.org/">aircrack suite</a> (the OG)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="privilege-escalation">Privilege escalation</h2>
+<table>
+<thead>
+<tr>
+<th>Scripts</th>
+<th>References</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/rebootuser/LinEnum">Linenum</a></td>
+<td><a href="https://gtfobins.github.io/">GTFObins</a> (the ultimate)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/carlospolop/PEASS-ng">PEASS tools</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/411Hall/JAWS">JAWS</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="post-exploitation">Post-exploitation</h2>
+<table>
+<thead>
+<tr>
+<th>Command and control (C2)</th>
+<th>Persistance (Rootkits +++) pivot and more</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://cobalt-strike.github.io/community_kit/">Cobalt strike</a> (industry standard)</td>
+<td><a href="https://github.com/f0rb1dd3n/Reptile">Reptile</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/calebstewart/pwncat">pwncat</a> (another cat)</td>
+<td><a href="https://github.com/jpillora/chisel">chisel</a></td>
+</tr>
+<tr>
+<td><a href="https://www.powershellempire.com/">Empire</a> ([deprecated] check Starkiller)</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.metasploit.com/">Metasploit</a> (yes, again!)</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/cobbr/Covenant/">Covenant</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="forensics">Forensics</h2>
+<table>
+<thead>
+<tr>
+<th>Frameworks/suites</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.volatilityfoundation.org/">Volatility</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/ReFirmLabs/binwalk">Binwalk</a> or <a href="https://www.kali.org/tools/foremost/">Foremost</a></td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="social-engineering">Social Engineering</h2>
+<table>
+<thead>
+<tr>
+<th>Frameworks and tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.trustedsec.com/tools/the-social-engineer-toolkit-set/">SET</a> (number one)</td>
+</tr>
+<tr>
+<td><a href="https://thispersondoesnotexist.com/">thispersondoesnotexist</a> (don&rsquo;t misuse this one)</td>
+</tr>
+<tr>
+<td><a href="https://namefake.com/">namefake</a> (do not misuse it!)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="osint">OSINT</h2>
+<table>
+<thead>
+<tr>
+<th>Frameworks/suites</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://osintframework.com/">Osint Framework</a> (its a framework)</td>
+</tr>
+<tr>
+<td><a href="https://www.osinttechniques.com/osint-tools.html">Osint techniques</a></td>
+</tr>
+<tr>
+<td><a href="https://wigle.net/">wigle</a> (google maps for networks)</td>
+</tr>
+<tr>
+<td><a href="https://www.maltego.com/">Maltego</a> (Feel like a Professional)</td>
+</tr>
+<tr>
+<td><a href="https://archive.org/web/">wayback machine</a> (wayback)</td>
+</tr>
+<tr>
+<td><a href="https://intelx.io/tools?tab=facebook">intelX</a></td>
+</tr>
+<tr>
+<td><a href="https://www.spiderfoot.net/">Spiderfoot</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/sherlock-project/sherlock">sherlock</a> (elementary)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/blacklanternsecurity/bbot">Bbot</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/xHak9x/fbi">fbi</a> (might be dead)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="anonimity">Anonimity</h2>
+<table>
+<thead>
+<tr>
+<th>Cloaking</th>
+<th>(De)Obfuscation</th>
+<th>Evasion/Bypass</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://linuxhint.com/anonsurf/">Anonsurf</a></td>
+<td><a href="https://obfuscator.io/">Obfuscator.io</a></td>
+<td><a href="https://github.com/hfiref0x/UACME">UACME</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://lelinhtinh.github.io/de4js/">de4js</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="utilities">Utilities</h2>
+<table>
+<thead>
+<tr>
+<th>Browser extensions</th>
+<th>Others</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://addons.mozilla.org/fr/firefox/addon/foxyproxy-standard/">Foxyproxy</a> (you know this one)</td>
+<td><a href="https://onecompiler.com/">Onecompiler</a> (underrated online compiler)</td>
+</tr>
+<tr>
+<td><a href="https://addons.mozilla.org/fr/firefox/addon/hacktools/">Hack-tools</a> (this one is cool)</td>
+<td><a href="https://coding.tools/">coding tools</a></td>
+</tr>
+<tr>
+<td><a href="https://addons.mozilla.org/fr/firefox/addon/user-agent-string-switcher/">ua-switcher</a> (custom ua)</td>
+<td><a href="https://codebeautify.org/">code beautify</a> (does alot more than that)</td>
+</tr>
+<tr>
+<td><a href="https://addons.mozilla.org/fr/firefox/addon/search_by_image/">search by image</a></td>
+<td><a href="https://busybox.net/">busybox</a> (unix binaries for everyone)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://lolbas-project.github.io/#">lolbas</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="http://www.nirsoft.net/">nirsoft</a> (don&rsquo;t ruin it&rsquo;s reputation)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://www.freeformatter.com/">freeformatter</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://github.com/ncrocfer/whatportis">whatportis</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://github.com/internetwache/GitTools">gittools</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="threat-detection-network-monitoring-and-remediation">Threat detection, network monitoring and remediation</h2>
+<table>
+<thead>
+<tr>
+<th>Frameworks/suites/network tools</th>
+<th>Information/Utilities</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.splunk.com/">Splunk</a> (If you understand it)</td>
+<td><a href="https://attack.mitre.org/">MITRE ATT&amp;CK</a></td>
+</tr>
+<tr>
+<td><a href="https://www.wireshark.org/download.html">Wireshark</a> (the shark)</td>
+<td><a href="https://viz.greynoise.io/">Greynoise</a></td>
+</tr>
+<tr>
+<td><a href="https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite">sysinternals</a></td>
+<td><a href="https://attackerkb.com/contributors/nair0lf32">AttackerKB</a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="my-favorites--kek-">My favorites ( kek )</h1>
+<p>My most used tools, mostly defines my typical process</p>
+<ul>
+<li>Utilities
+<ul>
+<li>Google (your best friend! I google alot)</li>
+<li><a href="https://ngrok.com/">ngrok</a> (Because IRL network setup is painful)</li>
+</ul>
+</li>
+<li>Enumeration:
+<ul>
+<li><a href="https://github.com/RustScan/RustScan">Rustscan</a> + <a href="https://nmap.org/">Nmap</a> (Fast combo when configured correctly)</li>
+<li><a href="https://github.com/OJ/gobuster">Gobuster</a> or <a href="https://github.com/ffuf/ffuf">Ffuf</a> (both are fast! one fuzz faster! guess which one)</li>
+</ul>
+</li>
+<li>Access (exploitation):
+<ul>
+<li>[Meta(fcking)sploit]((<a href="https://www.metasploit.com/">https://www.metasploit.com/</a>) (expect it again)</li>
+<li><a href="https://sqlmap.org/">Sqlmap</a> (will sql injection be obsolete in the future?)</li>
+</ul>
+</li>
+<li>Post-Exploitation:
+<ul>
+<li><a href="https://gtfobins.github.io/">GTFObins</a> (useful hindsights)</li>
+</ul>
+</li>
+</ul>
+<p>For Other challenges:</p>
+<ul>
+<li>Crypto: dcode, crackstation, rapidtables converter&hellip;</li>
+<li>Forensics: volatility</li>
+</ul>
+<p>For when I am lazy:</p>
+<p>All-in-one and frameworks/Auto-Exploiters:</p>
+<ul>
+<li><a href="https://github.com/skavngr/rapidscan">Rapidscan</a></li>
+<li><a href="https://github.com/anouarbensaad/VulnX">VulnX</a></li>
+<li><a href="https://github.com/Z4nzu/hackingtool">Hackingtool</a> (this thing is a big bundle)</li>
+<li><a href="https://github.com/NullArray/AutoSploit">Autosploit</a></li>
+<li><a href="https://github.com/Moham3dRiahi/XAttacker">Xattacker</a></li>
+<li><a href="https://github.com/Manisso/fsociety">fsociety</a> (to feel like mr robot)</li>
+<li><a href="https://github.com/guardicore/monkey">monkey</a></li>
+<li>Vulnnr (DEAD?)</li>
+</ul>
+<h1 id="more-tools-moarrrr">More tools (Moarrrr!)</h1>
+<p>Here is a list of places to find more tools:</p>
+<ul>
+<li><a href="https://github.com">Github</a> ( alot in here! ) also check <a href="https://github.com/Hack-with-Github/Awesome-Hacking">this repository</a>, <a href="https://github.com/apsdehal/awesome-ctf">this one</a> and <a href="https://github.com/mgeeky">this guy</a></li>
+<li><a href="https://www.kitploit.com/">Kitploit</a></li>
+<li><a href="https://blackarch.org/tools.html">Blackarch tools</a> (Or any pentest linux distro tools)</li>
+<li><a href="https://en.kali.tools/all/?category">kali tools</a></li>
+<li><a href="https://shamsher-khan-404.medium.com/100-most-vulnerable-apps-systems-platforms-to-practice-penetration-testing-2021-e76ca7235e74">random medium article</a></li>
+<li><a href="https://linuxsecurity.expert/security-tools/">linux security</a></li>
+<li>Also Google</li>
+</ul>
+<p>There are also some shady places (mostly onion links) with mad awesome tools, but we are not going there. Also if for any reason you want to do pentesting from a windows machine (for whatever reason) you should look into <a href="https://pentestbox.org/">pentestbox</a> instead of downloading tools separately. But this is a bit old (2016) and tools are not updated regularly.</p>
+<p>*Do not feed the script kiddy in you. Tools are cool but knowledge is better! ( But tools are cool though )</p>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

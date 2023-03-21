@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hackerlab on Zer0ne</title>
+    <link>https://nair0lf32.github.io/zer0ne/categories/hackerlab/</link>
+    <description>Recent content in Hackerlab on Zer0ne</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Fri, 16 Sep 2022 18:33:31 +0100</lastBuildDate><atom:link href="https://nair0lf32.github.io/zer0ne/categories/hackerlab/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hackerlab 2022</title>
+      <link>https://nair0lf32.github.io/zer0ne/writeups/hackerlab/hackerlab-2022/</link>
+      <pubDate>Fri, 16 Sep 2022 18:33:31 +0100</pubDate>
+      
+      <guid>https://nair0lf32.github.io/zer0ne/writeups/hackerlab/hackerlab-2022/</guid>
+      <description>Ok so I was part of the hackerlab, a CTF (the only one?) hosted by my country. And this year they extended it to all the (16) countries of ECOWAS. It was a great experience, even though I didnt make it to the finals.
+I decided to make some writeups.
+There were two types of challenges:
+Basics (like the name says&amp;hellip;) Stages: The real thing! you unlocked those one by one I wanted to make separate writeups but I got lazy, so I will do everything here, In this single file.</description>
+    </item>
+    
+  </channel>
+</rss>

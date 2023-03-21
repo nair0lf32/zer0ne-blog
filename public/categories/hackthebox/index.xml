@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HackTheBox on Zer0ne</title>
+    <link>https://nair0lf32.github.io/zer0ne/categories/hackthebox/</link>
+    <description>Recent content in HackTheBox on Zer0ne</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Tue, 20 Sep 2022 15:03:31 +0100</lastBuildDate><atom:link href="https://nair0lf32.github.io/zer0ne/categories/hackthebox/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pandora</title>
+      <link>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/pandora/pandora/</link>
+      <pubDate>Tue, 20 Sep 2022 15:03:31 +0100</pubDate>
+      
+      <guid>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/pandora/pandora/</guid>
+      <description>Enumeration nmap └──╼ $nmap -sC -sV 10.129.211.58 -vv PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 24:c2:95:a5:c3:0b:3f:f3:17:3c:68:d7:af:2b:53:38 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDPIYGoHvNFwTTboYexVGcZzbSLJQsxKopZqrHVTeF8oEIu0iqn7E5czwVkxRO/icqaDqM+AB3QQVcZSDaz//XoXsT/NzNIbb9SERrcK/n8n9or4IbXBEtXhRvltS8NABsOTuhiNo/2fdPYCVJ/HyF5YmbmtqUPols6F5y/MK2Yl3eLMOdQQeax4AWSKVAsR+issSZlN2rADIvpboV7YMoo3ktlHKz4hXlX6FWtfDN/ZyokDNNpgBbr7N8zJ87+QfmNuuGgmcZzxhnzJOzihBHIvdIM4oMm4IetfquYm1WKG3s5q70jMFrjp4wCyEVbxY+DcJ54xjqbaNHhVwiSWUZnAyWe4gQGziPdZH2ULY+n3iTze+8E4a6rxN3l38d1r4THoru88G56QESiy/jQ8m5+Ang77rSEaT3Fnr6rnAF5VG1+kiA36rMIwLabnxQbAWnApRX9CHBpMdBj7v8oLhCRn7ZEoPDcD1P2AASdaDJjRMuR52YPDlUSDd8TnI/DFFs= | 256 b1:41:77:99:46:9a:6c:5d:d2:98:2f:c0:32:9a:ce:03 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNNJGh4HcK3rlrsvCbu0kASt7NLMvAUwB51UnianAKyr9H0UBYZnOkVZhIjDea3F/CxfOQeqLpanqso/EqXcT9w= | 256 e7:36:43:3b:a9:47:8a:19:01:58:b2:bc:89:f6:51:08 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOCMYY9DMj/I+Rfosf+yMuevI7VFIeeQfZSxq67EGxsb 80/tcp open http syn-ack Apache httpd 2.4.41 ((Ubuntu)) |_http-favicon: Unknown favicon MD5: 115E49F9A03BB97DEB840A3FE185434C |_http-server-header: Apache/2.4.41 (Ubuntu) | http-methods: |_ Supported Methods: HEAD GET POST OPTIONS |_http-title: Play | Landing Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel └──╼ $sudo nmap -sV -sU -vv 10.</description>
+    </item>
+    
+    <item>
+      <title>Paper</title>
+      <link>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/paper/paper/</link>
+      <pubDate>Tue, 20 Sep 2022 15:03:31 +0100</pubDate>
+      
+      <guid>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/paper/paper/</guid>
+      <description>Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 8.0 (protocol 2.0) | ssh-hostkey: | 2048 10:05:ea:50:56:a6:00:cb:1c:9c:93:df:5f:83:e0:64 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcZzzauRoUMdyj6UcbrSejflBMRBeAdjYb2Fkpkn55uduA3qShJ5SP33uotPwllc3wESbYzlB9bGJVjeGA2l+G99r24cqvAsqBl0bLStal3RiXtjI/ws1E3bHW1+U35bzlInU7AVC9HUW6IbAq+VNlbXLrzBCbIO+l3281i3Q4Y2pzpHm5OlM2mZQ8EGMrWxD4dPFFK0D4jCAKUMMcoro3Z/U7Wpdy+xmDfui3iu9UqAxlu4XcdYJr7Iijfkl62jTNFiltbym1AxcIpgyS2QX1xjFlXId7UrJOJo3c7a0F+B3XaBK5iQjpUfPmh7RLlt6CZklzBZ8wsmHakWpysfXN | 256 58:8c:82:1c:c6:63:2a:83:87:5c:2f:2b:4f:4d:c3:79 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBE/Xwcq0Gc4YEeRtN3QLduvk/5lezmamLm9PNgrhWDyNfPwAXpHiu7H9urKOhtw9SghxtMM2vMIQAUh/RFYgrxg= | 256 31:78:af:d1:3b:c4:2e:9d:60:4e:eb:5d:03:ec:a0:22 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKdmmhk1vKOrAmcXMPh0XRA5zbzUHt1JBbbWwQpI4pEX 80/tcp open http syn-ack Apache httpd 2.4.37 ((centos) OpenSSL/1.1.1k mod_fcgid/2.3.9) |_http-server-header: Apache/2.4.37 (centos) OpenSSL/1.1.1k mod_fcgid/2.3.9 |_http-generator: HTML Tidy for HTML5 for Linux version 5.7.28 |_http-title: HTTP Server Test Page powered by CentOS | http-methods: | Supported Methods: GET POST OPTIONS HEAD TRACE |_ Potentially risky methods: TRACE 443/tcp open ssl/http syn-ack Apache httpd 2.</description>
+    </item>
+    
+    <item>
+      <title>Previse</title>
+      <link>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/previse/previse/</link>
+      <pubDate>Tue, 20 Sep 2022 15:03:31 +0100</pubDate>
+      
+      <guid>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/previse/previse/</guid>
+      <description>Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 53:ed:44:40:11:6e:8b:da:69:85:79:c0:81:f2:3a:12 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDbdbnxQupSPdfuEywpVV7Wp3dHqctX3U+bBa/UyMNxMjkPO+rL5E6ZTAcnoaOJ7SK8Mx1xWik7t78Q0e16QHaz3vk2AgtklyB+KtlH4RWMBEaZVEAfqXRG43FrvYgZe7WitZINAo6kegUbBZVxbCIcUM779/q+i+gXtBJiEdOOfZCaUtB0m6MlwE2H2SeID06g3DC54/VSvwHigQgQ1b7CNgQOslbQ78FbhI+k9kT2gYslacuTwQhacntIh2XFo0YtfY+dySOmi3CXFrNlbUc2puFqtlvBm3TxjzRTxAImBdspggrqXHoOPYf2DBQUMslV9prdyI6kfz9jUFu2P1Dd | 256 bc:54:20:ac:17:23:bb:50:20:f4:e1:6e:62:0f:01:b5 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCnDbkb4wzeF+aiHLOs5KNLPZhGOzgPwRSQ3VHK7vi4rH60g/RsecRusTkpq48Pln1iTYQt/turjw3lb0SfEK/4= | 256 33:c1:89:ea:59:73:b1:78:84:38:a4:21:10:0c:91:d8 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIICTOv+Redwjirw6cPpkc/d3Fzz4iRB3lCRfZpZ7irps 80/tcp open http syn-ack Apache httpd 2.4.29 ((Ubuntu)) | http-title: Previse Login |_Requested resource was login.php | http-cookie-flags: | /: | PHPSESSID: |_ httponly flag not set |_http-favicon: Unknown favicon MD5: B21DD667DF8D81CAE6DD1374DD548004 | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS |_http-server-header: Apache/2.</description>
+    </item>
+    
+    <item>
+      <title>Pusheen Loves Graphs</title>
+      <link>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/pusheen-loves-graphs/pusheen_loves_graphs/</link>
+      <pubDate>Tue, 20 Sep 2022 15:03:31 +0100</pubDate>
+      
+      <guid>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/pusheen-loves-graphs/pusheen_loves_graphs/</guid>
+      <description>okay then&amp;hellip;
+it says stego challenge but starts like elf RE
+└──╼ $binwalk Pusheen DECIMAL HEXADECIMAL DESCRIPTION -------------------------------------------------------------------------------- 0 0x0 ELF, 32-bit LSB executable, Intel 80386, version 1 (SYSV) I almost wanna run it to see what it does
+└──╼ $./Pusheen ▐▀▄ ▄▀▌ ▄▄▄▄▄▄▄ ▌▒▒▀▄▄▄▄▀▒▒▐▄▀▀▒██▒██▒▀▀▄ ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄ ▌▒▒▒▒▒▒▒▒▒▒▒▒▒▄▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄ ▀█▒▒█▌▒▒█▒▒▐█▒▒▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌ ▀▌▒▒▒▒▒▀▒▀▒▒▒▒▒▀▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐ ▄▄ ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌▄█▒█ ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐▒█▀ ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐▀ ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌ ▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐ ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌ ▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐ ▐▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▌ ▀▄▄▀▀▀▀▄▄▀▀▀▀▀▀▄▄▀▀▀▀▀▀▄▄▀ LMAO
+Ok lets open IDA (freeware version of course) then this file</description>
+    </item>
+    
+    <item>
+      <title>Racecar</title>
+      <link>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/racecar/racecar/</link>
+      <pubDate>Tue, 20 Sep 2022 15:03:31 +0100</pubDate>
+      
+      <guid>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/racecar/racecar/</guid>
+      <description>Simple pwn challenge they said
+└──╼ $file racecar racecar: ELF 32-bit LSB pie executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=c5631a370f7704c44312f6692e1da56c25c1863c, not stripped └──╼ $checksec racecar [*] Checking for new versions of pwntools To disable this functionality, set the contents of /home/nair0lf32/.cache/.pwntools-cache-3.9/update to &amp;#39;never&amp;#39; (old way). Or add the following lines to ~/.pwn.conf or ~/.config/pwn.conf (or /etc/pwn.conf system-wide): [update] interval=never [*] You have the latest version of Pwntools (4.</description>
+    </item>
+    
+    <item>
+      <title>Secret</title>
+      <link>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/secret/secret/</link>
+      <pubDate>Tue, 20 Sep 2022 15:03:31 +0100</pubDate>
+      
+      <guid>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/secret/secret/</guid>
+      <description>Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 97:af:61:44:10:89:b9:53:f0:80:3f:d7:19:b1:e2:9c (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDBjDFc+UtqNVYIrxJx+2Z9ZGi7LtoV6vkWkbALvRXmFzqStfJ3UM7TuOcZcPd82vk0gFVN2/wjA3LUlbUlr7oSlD15DdJkr/XjYrZLJnG4NCxcAnbB5CIRaWmrrdGy5pJ/KgKr4UEVGDK+oAgE7wbv++el2WeD1DF8gw+GIHhtjrK1s0nfyNGcmGOwx8crtHB4xLpopAxWDr2jzMFMdGcIzZMRVLbe+TsG/8O/GFgNXU1WqFYGe4xl+MCmomjh9mUspf1WP2SRZ7V0kndJJxtRBTw6V+NQ/7EJYJPMeugOtbputyZMH+jALhzxBs07JLbw8Bh9JX+ZJl/j6VcIDfFRXxB7ceSe/cp4UYWcLqN+AsoE7k+uMCV6vmXYPNC3g5xfMMrDfVmGmrPbop0oPZUB3kr8iz5CI/qM61WI07/MME1uyM352WZHAJmeBLPAOy05ZBY+DgpVElkr0vVa+3UyKsF1dC3Qm2jisx/qh3sGauv1R8oXGHvy0+oeMOlJN+k= | 256 95:ed:65:8d:cd:08:2b:55:dd:17:51:31:1e:3e:18:12 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOL9rRkuTBwrdKEa+8VrwUjloHdmUdDR87hBOczK1zpwrsV/lXE1L/bYvDMUDVD0jE/aqMhekqNfBimt8aX53O0= | 256 33:7b:c1:71:d3:33:0f:92:4e:83:5a:1f:52:02:93:5e (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINM1K8Yufj5FJnBjvDzcr+32BQ9R/2lS/Mu33ExJwsci 80/tcp open http syn-ack nginx 1.18.0 (Ubuntu) |_http-title: DUMB Docs | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS |_http-server-header: nginx/1.18.0 (Ubuntu) 3000/tcp open http syn-ack Node.js (Express middleware) |_http-title: DUMB Docs | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf api [Status: 200, Size: 93, Words: 12, Lines: 1] assets [Status: 301, Size: 179, Words: 7, Lines: 11] download [Status: 301, Size: 183, Words: 7, Lines: 11] docs [Status: 200, Size: 0, Words: 1, Lines: 1] Just a web and ssh server&amp;hellip;so let&amp;rsquo;s visit the website and see what we can find</description>
+    </item>
+    
+    <item>
+      <title>Templated</title>
+      <link>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/templated/templated/</link>
+      <pubDate>Tue, 20 Sep 2022 15:03:31 +0100</pubDate>
+      
+      <guid>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/templated/templated/</guid>
+      <description>Another great web challenge.
+the website could not make it more obvious
+google flask/jinja2 exploit or vulerability
+Seems like its template injection (SSTI)
+you can read this
+and also this one if you want!
+But where do i inject the code? Inspecting the source code gives nothing
+fiddling a bit with the url path we notice the 404 page renders whatever is added to path
+that&amp;rsquo;s it! we need to do it directly in the url path</description>
+    </item>
+    
+    <item>
+      <title>Undetected</title>
+      <link>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/undetected/undetected/</link>
+      <pubDate>Tue, 20 Sep 2022 15:03:31 +0100</pubDate>
+      
+      <guid>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/undetected/undetected/</guid>
+      <description>enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 8.2 (protocol 2.0) | ssh-hostkey: | 3072 be:66:06:dd:20:77:ef:98:7f:6e:73:4a:98:a5:d8:f0 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDeVJjvJKCD1dlTm7jo6sY5A6q2oWFakWfH/y6lkWB5eIeVxzQTT/XXyA2RW/Zegb7vbpculYjr6cPtbouTLqPkyi2Xzyk3Jz2jQHKi6qTcHIQL75tITJKPCag4tAAIvKpSCwT13B38TKd0KV2R8T59raCu83095p/GaLrdhwGUbuD0p+/GnN1jIsLs04V26rbPKLmMJLj7Dj/+yCo/CF88/4EQaFFC920sjln4FZ7FlVhv4mIwIb10nIsEgvsKBIGvvu4ZKKKU+Al6p8bYI50srY/plKu0RxZpKE6QGV17IC38q8CDsLWkmFr5emeIxHfvgUlYaAOruACcnru6azsJw69s2Kq/dKaz8K6PjRb9Ybf6/Ix8xGhfJ/gH6x0PhlxIKXD1M93XILJmgKRPJpzqrA6NZ+mtQwx0JFsgHHJno/TSrx00E6GPEtUPHcxOVZE0m0Y9rfd5Q8W6/eJN/Q3nMIywfHKZE1RUQOziGtud/jAOOApvrRHRO6l0riwQCK8= | 256 1f:a2:09:72:70:68:f4:58:ed:1f:6c:49:7d:e2:13:39 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBQjfhdRHFh+eC/2RtmQwDSGmf0psHnd2uqXFyN0zdiyxvF3WCQYaxOgerNZqC0RyQjm2hW0DN6/0oim3slS8dw= | 256 70:15:39:94:c2💿64:cb:b2:3b:d1:3e:f6:09:44:e8 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFdnC6v7My/dt23PaoX7MGbuZ8/8KZh1O+xt4dDFvFQK 80/tcp open http syn-ack Apache httpd 2.4.41 ((Ubuntu)) |_http-title: Diana&amp;#39;s Jewelry | http-methods: |_ Supported Methods: HEAD GET POST OPTIONS |_http-server-header: Apache/2.4.41 (Ubuntu) 8081/tcp open http syn-ack SimpleHTTPServer 0.6 (Python 3.8.10) |_http-title: Directory listing for / | http-methods: |_ Supported Methods: GET HEAD |_http-server-header: SimpleHTTP/0.</description>
+    </item>
+    
+    <item>
+      <title>0xdiablos</title>
+      <link>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/0xdiablos/0xdiablos/</link>
+      <pubDate>Tue, 20 Sep 2022 14:03:31 +0100</pubDate>
+      
+      <guid>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/0xdiablos/0xdiablos/</guid>
+      <description>First challenge on this platform!
+No nmap scan or gobuster&amp;hellip;I just had to download the vuln script in zip archive with a given password (hackthebox)
+After unzipping and executing it, the program just takes an input and echo it back in the console&amp;hellip;
+Seems like its about reverse engineering and buffer overflow
+I dont know reverse engineering tools alot so googling gave us radare2
+Installed radare2
+Tried to input long character strings we get a segmentation fault</description>
+    </item>
+    
+    <item>
+      <title>BabyEncryption</title>
+      <link>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/babyencryption/babyencryption/</link>
+      <pubDate>Tue, 20 Sep 2022 14:03:31 +0100</pubDate>
+      
+      <guid>https://nair0lf32.github.io/zer0ne/writeups/hackthebox/babyencryption/babyencryption/</guid>
+      <description>aka encryption for babies
+basically reverse engineer the chall.py
+It takes an empty list, and appends to that list a complex combination of characters
+(123 * char + 18) % 256) Then returns the bytes (ascii) of that list and write it as hex in msg.enc
+what decode.py script does:
+open the msg.enc file and read the ascii from the hex code reverse the mathematical operation (hardest part ngl) return the ascii characters its hard to reverse the modulus operation though&amp;hellip;you can google that&amp;hellip;or use excel (lol)</description>
+    </item>
+    
+  </channel>
+</rss>

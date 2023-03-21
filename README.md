@@ -20,12 +20,14 @@ This repository is not really open for external contributions but feel free to o
 
 simply clone the repo with `git clone` and run `hugo` (it manages everything for you)
 
+Most importantly, as I use a submodule theme you need to get it locally too using
+
+`git submodule init`then `git submodule update`
+
 This is deployed with `github pages + actions`
 
 To test it run below commands:
 
-`hugo server` for local development
-
-`hugo -D` for building
+`hugo server` for local development then `hugo -D` for building
 
 Check [hugo website](https://gohugo.io/) for more informations

