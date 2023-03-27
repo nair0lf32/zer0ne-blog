@@ -95,7 +95,7 @@ Playing CTFs is cool and stuff but if you want to get real about cybersecurity y
 
 - [Offensive-security](https://www.offensive-security.com/pwk-oscp/) (the G.O.A.T)
 - [Portswigger](https://portswigger.net/web-security/dashboard) (they made burp)
-- [EC-council](https://codered.eccouncil.org/) ([EHE](https://codered.eccouncil.org/certificate/3dba20b9-805a-4902-a235-57c4d7fc4bb0?logged=true), [NDE](https://codered.eccouncil.org/certificate/34d83454-2adb-43b7-bb3f-23f486918966?logged=true))
+- [EC-council](https://codered.eccouncil.org/)
 - [Letsdefend](https://letsdefend.io/)
 - [Hacksplaining](https://www.hacksplaining.com/)
 - [rootinjail ??](https://rootinjail.com/)

@@ -6,8 +6,49 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Sun, 09 Oct 2022 22:03:31 +0100</lastBuildDate>
+        <lastBuildDate>Sat, 25 Mar 2023 19:40:31 +0100</lastBuildDate>
         <atom:link href="https://nair0lf32.github.io/zer0ne/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Theory in Hacking</title>
+            <link>https://nair0lf32.github.io/zer0ne/posts/2023/03/theory-in-hacking/</link>
+            <pubDate>Sat, 25 Mar 2023 19:40:31 +0100</pubDate>
+            
+            <guid>https://nair0lf32.github.io/zer0ne/posts/2023/03/theory-in-hacking/</guid>
+            <description>This article is also about learning &amp;ldquo;hacking&amp;rdquo;, but in a controversial way, using BOOKS! Yes fellow uncultured manatees, books are still a thing!
+I used to read a lot of books. Not necessarily IT or Computer science related books, but before the internet reached me, those were my only source of information (and my greatest hobby). I recently got in touch with a nice guy on twitter who said he was following this blog (honestly, thank you @5PMGHOST!</description>
+            <content type="html"><![CDATA[<p>This article is also about learning &ldquo;hacking&rdquo;, but in a controversial way, using BOOKS!
+Yes fellow uncultured manatees, books are still a thing!</p>
+<p>I used to read a lot of books. Not necessarily IT or Computer science related books, but before the internet reached me, those were my only source of information (and my greatest hobby). I recently got in touch with a nice guy on twitter who said he was following this blog (honestly, thank you <a href="https://twitter.com/5PMGHOST">@5PMGHOST</a>!). He was a newcomer making his entry in the cybersecurity world and wanted some tips, and mostly books recommendations. At this very moment I realised&hellip;damn it&rsquo;s been a while I read a book about cybersecurity.</p>
+<p>As I said in my previous posts, my learning methodology in this field is mostly reading a bit of theory online (let&rsquo;s say 30%), mostly playing CTFs and googling my way out of things (a solid 70%), because i tend to believe that in cybersec practice over theory is better&hellip;BUT do not get me wrong! Theory is indeed VITAL!</p>
+<p>How would you know how to practice if you didn&rsquo;t read about the subject anyway? The thing is that with the way internet made quick information easily available, my attention span got so bad I could not sit through a whole book again (I might just be that lazy though). Also I personally don&rsquo;t really like the video format for learning (personally!)</p>
+<p>I want my information concise and precise, which is how a quick google search usually delivers it. But I do believe books give a deeper understanding of any subject, so let&rsquo;s talk about some books in cybersecurity</p>
+<h2 id="becoming-a-master-hacker---occupythewebhttpswwwhackers-arisecomonline-storegetting-started-becoming-a-master-hacker-pdf-p209328917"><a href="https://www.hackers-arise.com/online-store/Getting-Started-Becoming-a-Master-Hacker-PDF-p209328917">Becoming a master hacker - occupytheweb</a></h2>
+
+    <img src="https://d2j6dbq0eux0bg.cloudfront.net/images/16830616/3129486994.jpg"  alt="sbecoming-master-hacker"  class="left"  style="width: 300px;"  />
+
+
+<p>This one seems to be a top reknown hacking book for beginners. It&rsquo;s from <a href="https://www.hackers-arise.com/otw-in-the-news">occupytheweb</a> (big names in the industry) and available on his website <a href="https://www.hackers-arise.com">hacker-arise</a>. I didn&rsquo;t read this one (It&rsquo;s 20 bucks&hellip;I won&rsquo;t elaborate further) but this was recommended to me by my twitter friend so I might give it a shot very soon! From what I got from my basic google searches the book is really intended to teach beginners about general aspects of &ldquo;hacking&rdquo; with tutorials of the most common techniques.</p>
+<h2 id="linux-basics-for-hackers---occupythewebhttpswwwhackers-arisecomlinux-fundamentals"><a href="https://www.hackers-arise.com/linux-fundamentals">Linux basics for hackers - occupytheweb</a></h2>
+
+    <img src="https://static.wixstatic.com/media/6a4a49_b67673b0b7fb4bbbb9915efd7a1ec16c~mv2.png/v1/fill/w_204,h_264,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/linux4hackers.png"  alt="becoming-master-hacker"  class="left"  style="width: 300px;"  />
+
+
+<p>From the same author as the previous one, a great introduction to linux for beginners. It teaches you everything you need to know to get confortable with the most incontournable OS for hackers. Covering everything from the inportance of linux and installation steps to bash scripting. I definitelly recommend this one.</p>
+<h2 id="the-hackers-playbook---peter-kimhttpswwwamazoncomhacker-playbook-practical-penetration-testingdp1980901759"><a href="https://www.amazon.com/Hacker-Playbook-Practical-Penetration-Testing/dp/1980901759">The hacker&rsquo;s playbook - peter kim</a></h2>
+
+    <img src="https://m.media-amazon.com/images/I/81qcFkBYCjL.jpg"  alt="hacker-playbook"  class="left"  style="width: 300px;"  />
+
+
+<p>This one is less famous but is one of my favorite one because it&rsquo;s about a more &ldquo;practical&rdquo; approach of learning pentesting. It&rsquo;s actually a series of 3 books and the 3rd one is my favorite. There is a version for both red and blue teams. I would not say this one is for beginners as it requires some background knowledge, but it teaches you advanced techniques in the field, so you might grow faster. The author is a security researcher named <a href="https://www.amazon.com/stores/author/B00J12259C/about">peter kim</a>.</p>
+<p>Let&rsquo;s say this was my top three recommended &ldquo;hacking&rdquo; books, but the title of this article is &ldquo;theory in hacking&rdquo;. As I said, I think it&rsquo;s very controversial because no matter how many books you read, if you do not follow up, trying yourself, a.k.a PRACTICE, you might never get good at it.</p>
+<p>I could also include some special mentions like &ldquo;hacking the art of exploitation, by Jon Erickson&rdquo;,
+&ldquo;black hat python, by justin Seitz&rdquo; or &ldquo;ghost in the wires, by kevin mitnick&rdquo; (mostly for inspiration)&hellip;</p>
+<p>But all those books are anyway easy to find online nowadays (just Google them dammit!)</p>
+<p>You might find github repositories <a href="https://github.com/tanc7/hacking-books/tree/master">like this one</a> with some collections</p>
+<p>In my most honest opinion, hacking is more about getting around the intended way of things, and you might not develop that critical thinking just reading. But as you cannot just break down things without knowing how they work, books (or any learning material you prefer) for the theorical part are still necessary.</p>
+]]></content>
+        </item>
         
         <item>
             <title>Scripting</title>
@@ -243,7 +284,7 @@ On a single thing&hellip;I wanted to learn and know &ldquo;everything&rdquo;. we
 <ul>
 <li><a href="https://www.offensive-security.com/pwk-oscp/">Offensive-security</a> (the G.O.A.T)</li>
 <li><a href="https://portswigger.net/web-security/dashboard">Portswigger</a> (they made burp)</li>
-<li><a href="https://codered.eccouncil.org/">EC-council</a> (<a href="https://codered.eccouncil.org/certificate/3dba20b9-805a-4902-a235-57c4d7fc4bb0?logged=true">EHE</a>, <a href="https://codered.eccouncil.org/certificate/34d83454-2adb-43b7-bb3f-23f486918966?logged=true">NDE</a>)</li>
+<li><a href="https://codered.eccouncil.org/">EC-council</a></li>
 <li><a href="https://letsdefend.io/">Letsdefend</a></li>
 <li><a href="https://www.hacksplaining.com/">Hacksplaining</a></li>
 <li><a href="https://rootinjail.com/">rootinjail ??</a></li>

@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 23 Oct 2022 23:00:10 +0100</lastBuildDate><atom:link href="https://nair0lf32.github.io/zer0ne/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Mar 2023 19:40:31 +0100</lastBuildDate><atom:link href="https://nair0lf32.github.io/zer0ne/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Theory in Hacking</title>
+      <link>https://nair0lf32.github.io/zer0ne/posts/2023/03/theory-in-hacking/</link>
+      <pubDate>Sat, 25 Mar 2023 19:40:31 +0100</pubDate>
+      
+      <guid>https://nair0lf32.github.io/zer0ne/posts/2023/03/theory-in-hacking/</guid>
+      <description>This article is also about learning &amp;ldquo;hacking&amp;rdquo;, but in a controversial way, using BOOKS! Yes fellow uncultured manatees, books are still a thing!
+I used to read a lot of books. Not necessarily IT or Computer science related books, but before the internet reached me, those were my only source of information (and my greatest hobby). I recently got in touch with a nice guy on twitter who said he was following this blog (honestly, thank you @5PMGHOST!</description>
+    </item>
+    
     <item>
       <title>Wonderland</title>
       <link>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/wonderland/wonderland/</link>
@@ -101,19 +111,6 @@ The story Day 1 - Save the gifts Hehe that was an easy warmup about IDOR.</descr
       <description>I like the concept of this machine alot. many ways to exploit
 Like sometimes it do be like that IRL
 Enumeration nmap PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.3 |_ftp-anon: Anonymous FTP login allowed (FTP code 230) | ftp-syst: | STAT: | FTP server status: | Connected to ::ffff:10.8.226.203 | Logged in as ftp | TYPE: ASCII | No session bandwidth limit | Session timeout in seconds is 300 | Control connection is plain text | Data connections will be plain text | At session startup, client count was 4 | vsFTPd 3.</description>
-    </item>
-    
-    <item>
-      <title>Atlas</title>
-      <link>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/atlas/atlas/</link>
-      <pubDate>Tue, 20 Sep 2022 16:00:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/atlas/atlas/</guid>
-      <description>they say its an easy windows room for beginners
-that is exactly what I am
-let&amp;rsquo;s speedrun this
-Quick note here&amp;hellip;for windows machines -Pn flag for nmap is useful for bypassing IMCP filters
-Enumeration Nmap PORT STATE SERVICE REASON 3389/tcp open ms-wbt-server syn-ack | ssl-cert: Subject: commonName=GAIA | Issuer: commonName=GAIA | Public Key type: rsa | Public Key bits: 2048 | Signature Algorithm: sha256WithRSAEncryption | Not valid before: 2021-08-29T20:56:26 | Not valid after: 2022-02-28T20:56:26 | MD5: 4f8e 1595 0ddf 896b f328 382c 74e1 4757 | SHA-1: 0487 ba8b 71a7 25e4 861d 29bd 0dba dde0 8f63 5038 | -----BEGIN CERTIFICATE----- | MIICzDCCAbSgAwIBAgIQUMxZ1WSDRaRHMk1jQH2EHzANBgkqhkiG9w0BAQsFADAP | MQ0wCwYDVQQDEwRHQUlBMB4XDTIxMDgyOTIwNTYyNloXDTIyMDIyODIwNTYyNlow | DzENMAsGA1UEAxMER0FJQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB | AMFiXWfKB/B0VcofnYBW/8XnUhE5Y659HIJia9Bk5nlG6g9otdGGSktBPGbP6RtX | TuvWYRdmcIMSgiN66yb6Ow62eVVkdSC2vTP6Lc7FzB/Knm7Liud7TBjsWI1y/I4l | WsdFnLiZo8yDP+q4WRpHivdrPVGOzuMpMNh7V1sj7k9WToOyHWVWPIhPERdsfHqn | 1fwAaqGhu0CF7XMhrutMBwJgSzNlTItuYnSPB6dlqBFabVSZpusPc0liTrDg4Q7n | O9p6ous1W008+zH1V9g+Tp6WDRhDVcLTMv90R2K6dvrLnhVkx5XZzf1AWqiLX7Fa | xahHm9cJ7WVwYBTV5OZAfGkCAwEAAaMkMCIwEwYDVR0lBAwwCgYIKwYBBQUHAwEw | CwYDVR0PBAQDAgQwMA0GCSqGSIb3DQEBCwUAA4IBAQBzm8kaotMsW9jzDEtKVVEE | JahZ+2m09iz6Gn139yz/+mCb62DbnWlGFg1+EbK4T2tvdQKpL+d7zBX9tjSwme8G | 4RvO+NrrqMuNCdZzgjRIEajgPK9pA+KdtiLW1IwuPHRCvXWPAJ3nTNvU24DaqpxQ | vF7UPvSiVtEXZ4hCY4GWr9Zb9YDRcjBeyNIMURVkfvOB6c2ty7PxSjxi1oEzXiq/ | IgHS+uYfrpGyB4eQm3DStUkYW3sbmWhEwC9inixHQBnxjmri8s9F+qsAFqpXFaRL | ycsKZ3Quxgdk8abypg1VmsLEasRHQww0c8JGQKcPCKK5duCC/SJsALa1c/kqrj34 |_-----END CERTIFICATE----- |_ssl-date: 2021-11-13T19:48:20+00:00; +2m31s from scanner time.</description>
     </item>
     
   </channel>
