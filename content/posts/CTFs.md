@@ -77,7 +77,7 @@ Other places I Learn or just play challenges (not actively writing writeups for 
 - [cyberwarrior](https://ctf.cyberwarrior.com/)
 - [Hellbound hackers](https://hbh.sh/user/nairolf32)
 - [Pentesterlab](https://pentesterlab.com)
-- [cyberseclabs](https://www.cyberseclabs.co.uk)
+- [cyberseclabs](https://www.cyberseclabs.co.uk) (sadly, this one is going down!)
 - [Cybertalents](https://cybertalents.com/members/nairolf32/profile)
 - [GoogleCTF](https://capturetheflag.withgoogle.com/team/nair0lf32)
 - [Hackerlab](https://qualif.hackerlab.africa/challenges)
