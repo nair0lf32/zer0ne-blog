@@ -2,20 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://nair0lf32.github.io/zer0ne/categories/</loc>
+    <lastmod>2023-05-13T23:00:31+01:00</lastmod>
+  </url><url>
+    <loc>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/steel-mountain/steel-mountain/</loc>
+    <lastmod>2023-05-13T23:00:31+01:00</lastmod>
+  </url><url>
+    <loc>https://nair0lf32.github.io/zer0ne/categories/tryhackme/</loc>
+    <lastmod>2023-05-13T23:00:31+01:00</lastmod>
+  </url><url>
+    <loc>https://nair0lf32.github.io/zer0ne/</loc>
+    <lastmod>2023-05-13T23:00:31+01:00</lastmod>
+  </url><url>
     <loc>https://nair0lf32.github.io/zer0ne/posts/</loc>
     <lastmod>2023-03-25T19:40:31+01:00</lastmod>
   </url><url>
     <loc>https://nair0lf32.github.io/zer0ne/posts/2023/03/theory-in-hacking/</loc>
     <lastmod>2023-03-25T19:40:31+01:00</lastmod>
-  </url><url>
-    <loc>https://nair0lf32.github.io/zer0ne/</loc>
-    <lastmod>2023-03-25T19:40:31+01:00</lastmod>
-  </url><url>
-    <loc>https://nair0lf32.github.io/zer0ne/categories/</loc>
-    <lastmod>2022-10-23T23:00:10+01:00</lastmod>
-  </url><url>
-    <loc>https://nair0lf32.github.io/zer0ne/categories/tryhackme/</loc>
-    <lastmod>2022-10-23T23:00:10+01:00</lastmod>
   </url><url>
     <loc>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/wonderland/wonderland/</loc>
     <lastmod>2022-10-23T23:00:10+01:00</lastmod>

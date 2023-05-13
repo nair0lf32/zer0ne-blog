@@ -9,6 +9,17 @@
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Sat, 17 Sep 2022 18:33:31 +0100</lastBuildDate><atom:link href="https://nair0lf32.github.io/zer0ne/writeups/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Steel mountain</title>
+      <link>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/steel-mountain/steel-mountain/</link>
+      <pubDate>Sat, 13 May 2023 23:00:31 +0100</pubDate>
+      
+      <guid>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/steel-mountain/steel-mountain/</guid>
+      <description>This one is a cool room!
+I have been very busy this year and could not play much but decided to give a shot to premium THM nonetheless. I was not disappointed!
+Enumeration nmap PORT STATE SERVICE REASON VERSION 80/tcp open http syn-ack Microsoft IIS httpd 8.5 |_http-title: Site doesn&amp;#39;t have a title (text/html). |_http-server-header: Microsoft-IIS/8.5 | http-methods: | Supported Methods: OPTIONS TRACE GET HEAD POST |_ Potentially risky methods: TRACE 135/tcp open msrpc syn-ack Microsoft Windows RPC 139/tcp open netbios-ssn syn-ack Microsoft Windows netbios-ssn 445/tcp open microsoft-ds syn-ack Microsoft Windows Server 2008 R2 - 2012 microsoft-ds 3389/tcp open ssl/ms-wbt-server?</description>
+    </item>
+    
+    <item>
       <title>Wonderland</title>
       <link>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/wonderland/wonderland/</link>
       <pubDate>Sun, 23 Oct 2022 23:00:10 +0100</pubDate>
@@ -110,15 +121,6 @@ strings3.exe_ The hardest to understand&amp;hellip;but ironically grabbing the f
       <guid>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/basic-pentesting/basic_pentesting/</guid>
       <description>It is a guided ctf. A basic introduction to classic pentesting (simplified)
 Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.4 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 db:45:cb:be:4a:8b:71:f8:e9:31:42:ae:ff:f8:45:e4 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDZXasCfWSXQ9lYiKbTNkPs0T+wFym2lZy229LllhY6iDLrjm7LIkhCcrlgnJQtLxl5NPhlHNVmwhlkcPPiAHwluhMVE5xKihQj3i+Ucx2IwiFvfmCz4AKsWlR6N8IZe55Ltw0lcH9ykuKZddg81X85EVsNbMacJNjjyxAtwQmJt1F5kB1B2ixgjLLOyNWafC5g1h6XbEgB2wiSRJ5UA8rOZaF28YcDVo0MQhsKpQG/5oPmQUsIeJTUA/XkoWCjvXZqHwv8XInQLQu3VXKgv735G+CJaKzplh7FZyXju8ViDSAY8gdhqpJommYxzqu9s1M31cmFg2fT5V1z9s4DP/vd | 256 09:b9:b9:1c:e0:bf:0e:1c:6f:7f:fe:8e:5f:20:1b:ce (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP0SXJpgwPf/e9AT9ri/dlAnkob4PqzMjl2Q9lZIVIXeEFJ9sfRkC+tgSjk9PwK0DUO3JU27pmtAkDL4Mtv9eZw= | 256 a5:68:2b:22:5f:98:4a:62:21:3d:a2:e2:c5:a9:f7:c2 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAzy8ZacWXbPGeqtuiJCnPP0LYZYZlMj5D1ZY9ldg1wU 80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu)) |_http-server-header: Apache/2.4.18 (Ubuntu) | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS |_http-title: Site doesn&amp;#39;t have a title (text/html).</description>
-    </item>
-    
-    <item>
-      <title>Blaster</title>
-      <link>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/blaster/blaster/</link>
-      <pubDate>Tue, 20 Sep 2022 16:00:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/blaster/blaster/</guid>
-      <description>Enumeration nmap PORT STATE SERVICE REASON VERSION 80/tcp open http syn-ack Microsoft IIS httpd 10.0 |_http-title: IIS Windows Server | http-methods: | Supported Methods: OPTIONS TRACE GET HEAD POST |_ Potentially risky methods: TRACE |_http-server-header: Microsoft-IIS/10.0 3389/tcp open ssl/ms-wbt-server? syn-ack | rdp-ntlm-info: | Target_Name: RETROWEB | NetBIOS_Domain_Name: RETROWEB | NetBIOS_Computer_Name: RETROWEB | DNS_Domain_Name: RetroWeb | DNS_Computer_Name: RetroWeb | Product_Version: 10.0.14393 |_ System_Time: 2021-11-25T11:34:32+00:00 |_ssl-date: 2021-11-25T11:34:40+00:00; +2m29s from scanner time. | ssl-cert: Subject: commonName=RetroWeb | Issuer: commonName=RetroWeb | Public Key type: rsa | Public Key bits: 2048 | Signature Algorithm: sha256WithRSAEncryption | Not valid before: 2021-11-24T11:29:28 | Not valid after: 2022-05-26T11:29:28 | MD5: 0151 0047 a3fc c5ce 222d 5b1c 06c4 22ca | SHA-1: bbe0 b822 09c4 19d6 f833 d955 ea5c 77b2 06a1 7655 | -----BEGIN CERTIFICATE----- | MIIC1DCCAbygAwIBAgIQT11vH87CQaZJ1GVx/+HWPTANBgkqhkiG9w0BAQsFADAT | MREwDwYDVQQDEwhSZXRyb1dlYjAeFw0yMTExMjQxMTI5MjhaFw0yMjA1MjYxMTI5 | MjhaMBMxETAPBgNVBAMTCFJldHJvV2ViMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A | MIIBCgKCAQEAs5imJsXtygtq3EAJStpMJMHJKHYninyGcaoS8QGtzrcPCnL8o2Eh | ukCUsIBQKbFymcXT+TEeLU+q9+R8xrmX+8fVwckX3XA2seKOa4CQkYolEBtZ3kq5 | bbR1Jzirf3KpwoO5el/TYlxFDvGJMKsDUZYftAfhkaTCS0L2tLbARHCHHmX9SKxH | D0G7CiBW708w3gAnqkSLLfD+n1DXig6vP1hOQz3k/+zWl9iHoKkl/TLl3umD1J0q | C5ympfGavD4dFwANWVf0ISmOZj4W3eYCWnaul6l3GQlKJN8cpIB0PRxwvpyfabn6 | JBPuWtosjHAD9U9DTQ/HqzzkRCtWUIGlBwIDAQABoyQwIjATBgNVHSUEDDAKBggr | BgEFBQcDATALBgNVHQ8EBAMCBDAwDQYJKoZIhvcNAQELBQADggEBAHY6p9ZxWpMU | Stj2A8gJpTchEWzSYaHhP62BNOxLrNUSN/NKbHVewgF5QmxWDLr6wb+DtT7Q9JmR | AhG72MzKkYf4BMuUbu37xkpxhlXDaQCYDpf8GzoTp9KnHy2w1CwYwaZ93lqzJqkt | B6i6IqNbolEZYi52gksnCAymGOtjXWtwwPK3HTYYXGWH5ImmUkoNEKJxQuVQdeMI | zWtXKhSkNwcfE7ct8ZmpPF9HX0ELRfAFNP2WQPl9R+CZHQWrH9R1Z7B5sb4gEBKL | KGBsZwID6qVW1cXW5Mq9jjHwK8UcBzI+7Wq72IzUf0Rge+Vwxo/lqJeog+mlgR4P | vhHE6Qv+uW8= |_-----END CERTIFICATE----- Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows Host script results: |_clock-skew: mean: 2m29s, deviation: 0s, median: 2m28s ffuf (using big.</description>
     </item>
     
   </channel>
