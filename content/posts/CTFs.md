@@ -86,6 +86,7 @@ Other places I Learn or just play challenges (not actively writing writeups for 
 - [flaws.cloud](http://flaws.cloud/)
 - [zenk security](https://www.zenk-security.com/profil?uid=20722)
 - [practicalpentestlabs](https://practicalpentestlabs.com/dashboard/)
+- [try2hack](https://www.try2hack.lt/en/)
 
 Also, [wherever I feel like getting the fun, knowledge](https://ctfsites.github.io/), [real-time events](https://ctftime.org/) [and even more...](https://zaratec.io/ctf-practice/)
 
@@ -98,6 +99,7 @@ Playing CTFs is cool and stuff but if you want to get real about cybersecurity y
 - [EC-council](https://codered.eccouncil.org/)
 - [Letsdefend](https://letsdefend.io/)
 - [Hacksplaining](https://www.hacksplaining.com/)
+- [hackxpert](https://labs.hackxpert.com/)
 
 
 ## Bug Bounties platforms
