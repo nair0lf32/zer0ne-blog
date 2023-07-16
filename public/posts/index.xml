@@ -680,6 +680,11 @@ Reconnaissance &amp;amp; Enumeration Scanning Footprint Discovery Nmap (good old
 <td><a href="https://github.com/zed-0xff/zsteg">Zsteg</a></td>
 <td></td>
 </tr>
+<tr>
+<td></td>
+<td><a href="https://aperisolve.com">aperisolve</a></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h2 id="malware-analysis">Malware Analysis</h2>
@@ -920,7 +925,7 @@ Reconnaissance &amp;amp; Enumeration Scanning Footprint Discovery Nmap (good old
 <td><a href="https://github.com/hfiref0x/UACME">UACME</a></td>
 </tr>
 <tr>
-<td></td>
+<td><a href="https://github.com/owerdogan/whoami-project">kali-whoami</a></td>
 <td><a href="https://lelinhtinh.github.io/de4js/">de4js</a></td>
 <td></td>
 </tr>

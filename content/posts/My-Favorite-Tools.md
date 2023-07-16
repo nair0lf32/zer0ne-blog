@@ -99,7 +99,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [plainsight](https://github.com/rw/plainsight)      | [Zbar-tools](http://zbar.sourceforge.net/)                                           |
 |                                                     | [fotoforensics](https://fotoforensics.com/)                                          |
 |                                                     | [Zsteg](https://github.com/zed-0xff/zsteg)                                           |
-
+|                                                     | [aperisolve](https://aperisolve.com)                            |
 
 ## Malware Analysis
 
@@ -183,10 +183,10 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 
 ## Anonimity
 
-| Cloaking                                    | (De)Obfuscation                              | Evasion/Bypass                             |
-| ------------------------------------------- | -------------------------------------------- | ------------------------------------------ |
-| [Anonsurf](https://linuxhint.com/anonsurf/) | [Obfuscator.io](https://obfuscator.io/)      | [UACME](https://github.com/hfiref0x/UACME) |
-|                                             | [de4js](https://lelinhtinh.github.io/de4js/) |
+| Cloaking                                                     | (De)Obfuscation                              | Evasion/Bypass                             |
+| -------------------------------------------                  | -------------------------------------------- | ------------------------------------------ |
+| [Anonsurf](https://linuxhint.com/anonsurf/)                  | [Obfuscator.io](https://obfuscator.io/)      | [UACME](https://github.com/hfiref0x/UACME) |
+| [kali-whoami](https://github.com/owerdogan/whoami-project)   | [de4js](https://lelinhtinh.github.io/de4js/) |                                            |
 
 ## Utilities
 
