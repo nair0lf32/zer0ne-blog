@@ -44,7 +44,9 @@ Same value as "Discord" challenge.
 In the details of their announcement video (on youtube) you can see some very obvious binary.
 
 ```
-00100001 00100001 00100001 00110010 00110011 00110110 00110001 00110001 00110010 00110110 00110010 00110111 01101001 01110100 00110000 01000111 00110001 01011111 01000110 01010100 01000011
+00100001 00100001 00100001 00110010 00110011 00110110 00110001 00110001 00110010 
+00110110 00110010 00110111 01101001 01110100 00110000 01000111 00110001 
+01011111 01000110 01010100 01000011
 ```
 Just go to the [kitchen](https://gchq.github.io/) again, but this time be careful, there is two sauces to use.
 
@@ -54,7 +56,8 @@ Just go to the [kitchen](https://gchq.github.io/) again, but this time be carefu
 - status = solved
 
 This one was fun, because the name itself is a big hint, but the challenge was actually finding the javascript to deobfuscate.
-Took me way to much more time than needed but remember to check all the files, even `awesome-fonts.js` (sometimes people hide things in css files too so...yeah).
+Took me way to much more time than needed but remember to check all the files, 
+even `awesome-fonts.js` (sometimes people hide things in css files too so...yeah).
 
 Use some google-fu to deobfuscate the jsfuck
 
@@ -103,16 +106,9 @@ Average Speed: 34373.2 w/s. Current Word: 'bluepoint'
 Average Speed: 34360.6 w/s. Current Word: 'protea'
 Average Speed: 34054.4 w/s. Current Word: 'alison1402'
 Average Speed: 34566.6 w/s. Current Word: 'willie331'
-Average Speed: 34861.3 w/s. Current Word: 'sweetrjp'
-Average Speed: 34526.7 w/s. Current Word: 'rtrytr'
-Average Speed: 34462.2 w/s. Current Word: 'palmeira54'
-Average Speed: 34523.0 w/s. Current Word: 'mine812'
-Average Speed: 34481.8 w/s. Current Word: 'lilianamz'
-Average Speed: 34700.2 w/s. Current Word: 'jordyn905'
-Average Speed: 34832.6 w/s. Current Word: 'hineabbie1989'
-Average Speed: 34826.4 w/s. Current Word: 'er&#@07'
-Average Speed: 34857.8 w/s. Current Word: 'comrie7706'
-Average Speed: 33856.3 w/s. Current Word: 'bezmezer'
+
+...[REDACTED]
+
 Average Speed: 32446.0 w/s. Current Word: 'aidenhornsby'
 found user-password: 'MyP@ssw0rd!'
 ```
@@ -132,7 +128,7 @@ I tried to bruteforce the [encrypted docx file](/hackerlab2022/secret.docx)
 ```
 └──╼ $python2 /usr/share/john/office2john.py secret.docx > secret.txt
 └──╼ $cat secret.txt
-secret.docx:$office$*2013*100000*256*16*744b3976099db961c0b732b3cf844f6b*316c99e8ab8e5b972714d9e8f289f808*09b4dcc218db1d0590a9609ffeb3d1e08bcc10dca254a958b40b018d07ac5670
+secret.docx:$office$*2013*100000*256*16*744b3976099...[REDACTED MAD LONG HASH]
 
 └──╼ $hashcat -a 0 -m 9600 secret.txt /usr/share/wordlists/rockyou.txt
 ...
@@ -145,13 +141,14 @@ Why didnt it work? format! hashcat doesnt recognize what john produced so remove
 
 ```
 └──╼ $cat secret.txt
-$office$*2013*100000*256*16*744b3976099db961c0b732b3cf844f6b*316c99e8ab8e5b972714d9e8f289f808*09b4dcc218db1d0590a9609ffeb3d1e08bcc10dca254a958b40b018d07ac5670
+$office$*2013*100000*256*16*744b3976099d...[REDACTED MAD LONG HASH]
 ```
 Started but took so damn long I started to think it wasn't about bruteforcing...
 
 Seems like I was wrong...It was! I Just needed to try harder! (or get a better computer)
 
-According to [those guys](https://github.com/TargetRoot/CTF) `└──╼ $hashcat -a 0 -m 9600 hash.txt /usr/share/wordlists/rockyou.txt` was supposed to give me the password `H4cK3r`
+According to [those guys](https://github.com/TargetRoot/CTF) 
+`└──╼ $hashcat -a 0 -m 9600 hash.txt /usr/share/wordlists/rockyou.txt` was supposed to give me the password `H4cK3r`
 
 And just like for the secret pdf challenge there were hidden characters so SELECT EVERYTHING!
 
@@ -170,7 +167,8 @@ Then simply decode it
 ```
 python3 -c "for i in 'DSAXC7D.86543Eur04&&': print(chr(ord(i)^7),end='')"
 ```
-But if you are not a clever scripter (no judging) just go to the [kitchen](https://gchq.github.io/) and Bruteforce that XOR. You get the flag anyway you want.
+But if you are not a clever scripter (no judging) just go to the 
+[kitchen](https://gchq.github.io/) and Bruteforce that XOR. You get the flag anyway you want.
 
 
 ### Amazone
@@ -251,7 +249,8 @@ and clean the junk out
 └──╼ $cat output.txt | sed 's/.hackerlab.africa//g' > clean_out.txt
 ```
 
-Or in one take: `tshark -r capture.pcap -T fields -e dns.qry.name -Y "dns.flags.response eq 0 && ip.dst==192.168.169.2" | sed 's/.hackerlab.africa//g' > output.txt `
+Or in one take: 
+`tshark -r capture.pcap -T fields -e dns.qry.name -Y "dns.flags.response eq 0 && ip.dst==192.168.169.2" | sed 's/.hackerlab.africa//g' > output.txt`
 
 Now go to the kitchen (cyberchef)
 
