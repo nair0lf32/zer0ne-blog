@@ -52,7 +52,7 @@ Image.fromarray(na).save("result.png")
 Basically this converts the ppm to a real png fixing the conspicuously modified image height
 which reveals colored pixels...
 
-{{< image src="/hackerlab2023/cut.bpm" alt="Hackerlab" position="left" >}}
+{{< image src="/hackerlab2023/cut.bmp" alt="Hackerlab" position="left" >}}
 
 The thing I needed to know at this very moment to solve this is `Hexahue alphabet`
 Damn this!
