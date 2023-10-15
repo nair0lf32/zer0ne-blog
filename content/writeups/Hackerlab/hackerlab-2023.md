@@ -9,7 +9,7 @@ categories:
 Once again I was part of the [hackerlab my country hosts yearly](https://qualif.hackerlab.bj)
 This year the competition was more intense than ever and my team `zer0ne` got placed 23rd on scoreboard and we made it to the finals (top 20 teams) on 18th position and I still don't understand how XD
 
-Sadly I am currently very busy so I am not sure I can participate in the finals...
+Unfortunately I am currently very busy so I could not participate in the final
 
 {{< image src="/hackerlab2023/zero.png" alt="Hackerlab" position="left" >}}
 
@@ -251,7 +251,7 @@ You needed to see it
 
 I am very proud of my efforts this year as I could qualify for finals (kek)
 
-I wish I had time to partake in finals...in october...maybe I will I don't know yet
+I wish I had time to partake in finals...but I could not
 
 That was an awesome experience and I had a lot of fun and still most importantly learnt alot!
 
@@ -260,4 +260,3 @@ Talented people still out there (shoutout to that monster guy [unblvr](https://t
 Still alot for me to learn, and that's once again what I am gonna do
 
 keep learning folks!
-
