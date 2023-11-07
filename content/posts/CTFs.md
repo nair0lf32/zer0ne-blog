@@ -87,6 +87,8 @@ Other places I Learn or just play challenges (not actively writing writeups for 
 - [zenk security](https://www.zenk-security.com/profil?uid=20722)
 - [practicalpentestlabs](https://practicalpentestlabs.com/dashboard/)
 - [try2hack](https://www.try2hack.lt/en/)
+- [hackinghub](https://app.hackinghub.io/)
+- [seela](https://hub.seela.io/)
 - [smashthestack](https://smashthestack.org/)
 - [microcorruption](https://microcorruption.com/)
 
