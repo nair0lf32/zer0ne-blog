@@ -47,11 +47,11 @@ My favorite Learning platform! yeah I did not say "ctf platform" because tryhack
 
 My first CTF platform and oh boy...what a mistake it was! You read all I said about tryhackme? well Hackthebox is kind of the opposite. They throw some starting point modules at your stupid face and kick you into the field like: "fly! b*tch"! No seriously, It's not for beginners! They now have an academy where you can learn but it costs way more than tryhackme, where I went right before coming back, a bit stronger. BUT hear me out: They have the best boxes! I am serious here...If you want hardcore challenges hackthebox is still unmatched in my opinion. Now if they say a box is easy don't listen to them! hackthebox have no easy box!
 
-## [Root-me](https://www.root-me.org/)
+## [Wechall](https://www.wechall.net/)
 
-{{< figure src="https://www.root-me.org/IMG/logo/siteon0.svg?1637496509" alt="nairol32-root-me" link="https://www.root-me.org/nairolf32" position="center" width=100 >}}
+{{< figure src="https://www.wechall.net/dbimg/logo/1?0" alt="nairol32-wechall" link="https://www.wechall.net/profile/nairolf32" position="center" width=100 >}}
 
-Amazing french platform. They have solid hardcore challenges and the platform is mostly ran by the community. This one is worth a shot
+Amazing place to keep track of your progress and find new challenges. They have lot of challenges from various platforms and you can link your accounts to keep track of your progress. They also have a ranking system and a forum. They basically do curating for you. I linked many of my favorite platforms (root-me, cryptohack, overthewire...). They also provide their own challenges which is pretty cool. They are still very active and I hope this will last.
 
 ## [Pico-Ctf](https://play.picoctf.org/)
 
@@ -63,14 +63,13 @@ This one is highly recommended for beginners too. They don't really teach you, b
 
 {{< figure src="https://echoctf.red/profile/9757045/badge" alt="nairol32-echoctf" link="https://echoctf.red/profile/9757045" position="center" width=500 >}}
 
-Still throughout my learning journey, my wandering led me to echoCTF. The platform seem a bit newer than others but it looks like a fun place.
+Still throughout my learning journey, my wandering led me to echoCTF. The platform seem a bit newer than others but it looks like a fun place. They are quite active (busiest discord server I have ever seen) and they add new challenges regularly. I am still exploring it but so far it's pretty nice.
 
 
 ### Miscellanous
 
 Other places I Learn or just play challenges (not actively writing writeups for those):
 
-- [Wechall](https://www.wechall.net/profile/nairolf32) (To manage some challenges sites)
 - [Ctflearn](https://ctflearn.com/user/nairolf32)
 - [Parrot CTFs](https://parrot-ctfs.com/)
 - [Attackdefense](https://attackdefense.com/)
