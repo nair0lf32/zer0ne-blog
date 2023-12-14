@@ -49,4 +49,6 @@ I found many platforms that teach crypto but none was purely theorical nor solel
 
 - [hackpack](https://hackpack.club/): ok this one is not just into theory but I thought it deserved to be here
 
+- [ctf resources](https://ctfs.github.io/resources/): more resources
+
 That's mostly what I got so far. I am still looking for more learning resources and I will add them here when I find more. You can contact me anytime if you have any interresting one to share. You can check my other articles to get more "practical" learning resources.
