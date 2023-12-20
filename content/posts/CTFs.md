@@ -65,7 +65,6 @@ This one is highly recommended for beginners too. They don't really teach you, b
 
 Still throughout my learning journey, my wandering led me to echoCTF. The platform seem a bit newer than others but it looks like a fun place. They are quite active (busiest discord server I have ever seen) and they add new challenges regularly. I am still exploring it but so far it's pretty nice.
 
-
 ### Miscellanous
 
 Other places I Learn or just play challenges (not actively writing writeups for those):
@@ -104,7 +103,6 @@ Playing CTFs is cool and stuff but if you want to get real about cybersecurity y
 - [Letsdefend](https://letsdefend.io/)
 - [hackxpert](https://labs.hackxpert.com/)
 
-
 ## Bug Bounties platforms
 
 If you think you are good enough, prefer a freelance style and enjoy competition then bug bounties (Google it) are for you
@@ -122,11 +120,10 @@ Note that I won't include those who give flags away (this is a fine selection si
 - [infosecwriteups](https://infosecwriteups.com/): many people post writeups there, but remember it is part of medium (not free)
 - [awesomectf](https://c4pr1c3.github.io/awesome-ctf/) they have writeups too. That and...well, everything about ctfs
 
-Also for anything CTF related (non-writeups) there are some resources I recommend: 
+Also for anything CTF related (non-writeups) there are some resources I recommend:
 
 - [Hacktricks](https://book.hacktricks.xyz/welcome/readme)
 - [Pentestbook](https://pentestbook.six2dez.com/)
-
 
 Now if you are ever interested, my writeups they are right [Here]({{< ref "/writeups" >}} "Writeups")
 
