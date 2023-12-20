@@ -41,6 +41,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [Revshells](https://www.revshells.com/) (shells of quality)    | [AttackerKB](https://attackerkb.com/) (information is power) |
 | [P.A.T.T](https://github.com/swisskyrepo/PayloadsAllTheThings) | [commix](https://www.kali.org/tools/commix/)                 |
 |                                                                | [Slowloris](https://github.com/gkbrk/slowloris) (Don't)      |
+
 ### Web (specials)
 
 | Proxies                                                                         | Frameworks and other scanners                                          |
@@ -53,7 +54,6 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 
 - [scoutsuite](https://github.com/nccgroup/ScoutSuite)
 
-
 ### Windows (specials)
 
 | Specific services                                      | Active Directory                                             | Post-exploit                                                  |
@@ -61,7 +61,6 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [Enum4linux](https://www.kali.org/tools/enum4linux/)   | [Kerbrute](https://github.com/ropnop/kerbrute)               | [Mimikatz](https://www.kali.org/tools/mimikatz/) (the looter) |
 | [Evilwinrm](https://github.com/Hackplayers/evil-winrm) | [Impacket tools](https://github.com/SecureAuthCorp/impacket) |
 |                                                        | [CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)  |
-
 
 ## Cryptography
 
@@ -215,6 +214,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 # My favorites ( kek )
 
 My most used tools, mostly defines my typical process
+
 - Utilities
   - Google (your best friend! I google alot)
   - [ngrok](https://ngrok.com/) (Because IRL network setup is painful)
@@ -222,7 +222,7 @@ My most used tools, mostly defines my typical process
   - [Rustscan](https://github.com/RustScan/RustScan) + [Nmap](https://nmap.org/) (Fast combo when configured correctly)
   - [Gobuster](https://github.com/OJ/gobuster) or [Ffuf](https://github.com/ffuf/ffuf) (both are fast! one fuzz faster! guess which one)
 - Access (exploitation):
-  - [Meta(fcking)sploit]((https://www.metasploit.com/) (expect it again)
+  - [Meta(fcking)sploit](<https://www.metasploit.com/>) (expect it again)
   - [Sqlmap](https://sqlmap.org/) (will sql injection be obsolete in the future?)
 - Post-Exploitation:
   - [GTFObins](https://gtfobins.github.io/) (useful hindsights)
@@ -232,7 +232,7 @@ For Other challenges:
 - Crypto: dcode, crackstation, rapidtables converter...
 - Forensics: volatility
 
-For when I am lazy: 
+For when I am lazy:
 
 All-in-one and frameworks/Auto-Exploiters:
 
