@@ -12,9 +12,9 @@ Basically I'd say it depends of your definition of a hacker. it's not a requirem
 
 "But coding is a vast domain that can take years to master and there are dozens of programming languages. How would I learn all that?"
 
-Then you better get started! 
+Then you better get started!
 
-I am actually not here to talk about how much coding you need to do some "hacking" or play a CTF. Instead I want to talk about how I do it! (yeah it's mostly about me here). I made a [post]({{< ref "/Hacking-methodology" >}} "Hacking-methodology") about my hacking methodology, where I explain how I basically google my way out of everything. well there is one kind of problems you cannot always solve by using google alone. You need a functional brain for those. Programming problems require logic and good syntax knowledge (this one can be Googled). So for some tasks you need to write some scripts. 
+I am actually not here to talk about how much coding you need to do some "hacking" or play a CTF. Instead I want to talk about how I do it! (yeah it's mostly about me here). I made a [post]({{< ref "/Hacking-methodology" >}} "Hacking-methodology") about my hacking methodology, where I explain how I basically google my way out of everything. well there is one kind of problems you cannot always solve by using google alone. You need a functional brain for those. Programming problems require logic and good syntax knowledge (this one can be Googled). So for some tasks you need to write some scripts.
 
 What are the Scripting languages I use? It's the whole point of this article
 
@@ -22,7 +22,7 @@ What are the Scripting languages I use? It's the whole point of this article
 
 Obviously I start with python! If there is one thing this language is known for is HOW FAST IT IS...(*dodges rotten tomatoes)...TO DEVELOP WITH. Python with its dozen of libraries makes the development process way easier and faster. People already solved that problem for you, why reimplement the wheel? just `import this` ...and face the problems of someone else. In hacking you have to be fast and quickly implement a Poc for your exploits so python fits perfectly. Here are my favorite libraries:
 
-- [requests](https://pypi.org/project/requests/). You expected this one! obviously it's for http requests, and it makes that way too simple. This one is very often used in coding challenges to scrape data from a given website, so you usually add [beautifulsoup](https://pypi.org/project/beautifulsoup4/) (or [scrapy](https://pypi.org/project/Scrapy/)). 
+- [requests](https://pypi.org/project/requests/). You expected this one! obviously it's for http requests, and it makes that way too simple. This one is very often used in coding challenges to scrape data from a given website, so you usually add [beautifulsoup](https://pypi.org/project/beautifulsoup4/) (or [scrapy](https://pypi.org/project/Scrapy/)).
 
 - [cryptography](https://pypi.org/project/cryptography/) does what it says. It's a cryptography swiss-knife. Just like [pycryptodome](https://pypi.org/project/pycryptodome/), you can make those work with other modules like [hashlib](https://docs.python.org/3/library/hashlib.html), [base64](https://docs.python.org/3/library/base64.html)...
 
@@ -37,7 +37,6 @@ There are many other libraries and even implementations of full-fledged hacking 
 ## [bash](https://www.gnu.org/software/bash/)
 
 I do not write a lot of `bash` scripts yet but I think it is a language you definitely need to automate your linux tasks. I mostly use quick one liners to perform quick actions, like filtering a wordlist with `awk` and `sed`, find things with `find` and `grep`... But we all know bash is more powerful than that and I definitely recommend you getting familiar with it.
-
 
 ## Others
 
