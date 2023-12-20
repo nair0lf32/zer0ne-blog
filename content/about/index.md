@@ -5,7 +5,7 @@ draft: false
 url: /about/
 ---
 
-## Hello friend,
+## Hello friend
 
 {{< image src="/pictures/dark_logo.png" alt="nairolf32" position="center" style="width: 400px; border-radius: 50%" >}}
 
@@ -18,4 +18,3 @@ Here I share the best things I learnt throughout my learning journey
 Feel free to check the [Blog]({{< ref "/posts" >}} "CTFs") to read my shitty articles
 
 If you are interrested in my CTF writeups a good place to start is [Here]({{< ref "/posts/CTFs" >}} "CTFs")
-
