@@ -14,7 +14,7 @@ The writeups are from many platforms. My favorites ones are Tryhackme and Hackth
 
 You can click [here](https://nair0lf32.github.io/zer0ne/about/) to learn more about it!
 
-## Usage:
+## Usage
 
 This repository is not really open for external contributions but feel free to open an issue for anything you want to share
 
