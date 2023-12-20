@@ -90,6 +90,7 @@ Other places I Learn or just play challenges (not actively writing writeups for 
 - [smashthestack](https://smashthestack.org/)
 - [microcorruption](https://microcorruption.com/)
 - [pwnable.xyz](https://pwnable.xyz/user/19566/)
+- [freehackquest](https://freehackquest.com/)
 
 Also, [wherever I feel like getting the fun, knowledge](https://ctfsites.github.io/), [real-time events](https://ctftime.org/) [and even more...](https://zaratec.io/ctf-practice/)
 
