@@ -18,7 +18,7 @@ From what I noticed, most cybersec platforms tend to try and teach you "everythi
 
 - the network legend: that guy takes the OSI model very seriously and can convert ip addresses to binary mentally. wireshark is constantly running in the background of his machine and scappy is his favorite python library.
 
-You got the point...most people are decent at everything but tend to be stronger somewhere specific. You rarely meet someone equally strong at everything, but note that the depth of understanding those various fields is also never the same for everybody. 
+You got the point...most people are decent at everything but tend to be stronger somewhere specific. You rarely meet someone equally strong at everything, but note that the depth of understanding those various fields is also never the same for everybody.
 
 The learning resources I share here are focused on specific topics. I will therefore order them by classic CTF skills domains as I could not follow what I consider to be the ideal "hacker roadmap". I think you have to create that one yourself
 
@@ -26,19 +26,18 @@ The learning resources I share here are focused on specific topics. I will there
 
 You wanna be a hacker? well... how much do you know about computers?
 
-- [linuxjourney](https://linuxjourney.com/): I like this one alot as they support multiple languages. You can learn linux basics from A to Z in your native language. 
-
+- [linuxjourney](https://linuxjourney.com/): I like this one alot as they support multiple languages. You can learn linux basics from A to Z in your native language.
+- [ctf101](https://ctf101.org/): this one is self explanatory
 
 ## Web
 
-Most CTF platforms are focused on this one already    so not many platforms specifically do theory about web hacking
+Most CTF platforms are focused on this one already so not many platforms specifically do theory about web hacking
 
 - [Hacksplaining](https://www.hacksplaining.com/): common web vulnerabilities explained
 
 ## Pwn and Reverse engineering
 
 - [0xinfection](https://0xinfection.github.io/reversing/): this guy uses the same theme as me for his blog. This is enough reasons to take him seriously
-
 - [liveoverflow](https://liveoverflow.com/): the one and only
 
 ## Crypto
@@ -48,7 +47,6 @@ I found many platforms that teach crypto but none was purely theorical nor solel
 ## Extra
 
 - [hackpack](https://hackpack.club/): ok this one is not just into theory but I thought it deserved to be here
-
 - [ctf resources](https://ctfs.github.io/resources/): more resources
 
 That's mostly what I got so far. I am still looking for more learning resources and I will add them here when I find more. You can contact me anytime if you have any interresting one to share. You can check my other articles to get more "practical" learning resources.
