@@ -104,6 +104,7 @@ Playing CTFs is cool and stuff but if you want to get real about cybersecurity y
 - [EC-council](https://codered.eccouncil.org/)
 - [Letsdefend](https://letsdefend.io/)
 - [hackxpert](https://labs.hackxpert.com/)
+- [cisco skillsforall](https://skillsforall.com/)
 
 ## Bug Bounties platforms
 
