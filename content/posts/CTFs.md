@@ -92,8 +92,9 @@ Other places I Learn or just play challenges (not actively writing writeups for 
 - [pwnable.xyz](https://pwnable.xyz/user/19566/)
 - [freehackquest](https://freehackquest.com/)
 - [hackropole](https://hackropole.fr)
+- [websec](https://websec.fr)
 
-Also, [wherever I feel like getting the fun, knowledge](https://ctfsites.github.io/), [real-time events](https://ctftime.org/) [and even more...](https://zaratec.io/ctf-practice/)
+Also [ctftime](https://ctftime.org/team/182186) for real-time events
 
 ## Cybersecurity learning
 
