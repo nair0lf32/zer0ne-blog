@@ -6,7 +6,7 @@ categories:
   - HackTheBox
 ---
 
-Simple [pwn challenge](/htb/racecar/racecar) they said
+Simple [pwn challenge](https://github.com/nair0lf32/CTF-Scripts/blob/master/Hackthebox/racecar/racecar) they said
 
 ```
 └──╼ $file racecar
@@ -57,7 +57,7 @@ Dump of assembler code for function main:
 ```
 There is a format string vulnerability in `printf()` in the `race_menu` function
 
-the flag is right in the stack so [use this](/htb/racecar/exploit.py)
+the flag is right in the stack so [use this](https://github.com/nair0lf32/CTF-Scripts/blob/master/Hackthebox/racecar/exploit.py)
 
 ```
 └──╼ $python exploit.py
@@ -81,7 +81,7 @@ The Man, the Myth, the Legend! The grand winner of the race wants the whole worl
 [*] Got EOF while reading in interactive
 $  
 ```
-Now [decode](/htb/racecar/decode.py)
+Now [decode](https://github.com/nair0lf32/CTF-Scripts/blob/master/Hackthebox/racecar/decode.py)
 
 ```
 └──╼ $python decode.py
