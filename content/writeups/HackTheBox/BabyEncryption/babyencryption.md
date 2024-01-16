@@ -8,19 +8,19 @@ categories:
 
 aka encryption for babies
 
-basically reverse engineer the [chall.py](/htb/babyencryption/chall.py)
+basically reverse engineer the [chall.py](https://github.com/nair0lf32/CTF-Scripts/blob/master/Hackthebox/babyencryption/chall.py)
 
 It takes an empty list, and appends to that list a complex combination of characters
 
 ```
-(123 * char + 18) % 256)
+((123 * char + 18) % 256)
 ```
 
-Then returns the bytes (ascii) of that list and write it as hex in [msg.enc](/htb/babyencryption/msg.enc)
+Then returns the bytes (ascii) of that list and write it as hex in [msg.enc](https://github.com/nair0lf32/CTF-Scripts/blob/master/Hackthebox/babyencryption/msg.enc)
 
-what [decode.py](/htb/babyencryption/decode.py) script does:
+what [decode.py](https://github.com/nair0lf32/CTF-Scripts/blob/master/Hackthebox/babyencryption/decode.py) script does:
 
-- open the [msg.enc](/htb/babyencryption/msg.enc) file and read the ascii from the hex code
+- open the [msg.enc](https://github.com/nair0lf32/CTF-Scripts/blob/master/Hackthebox/babyencryption/msg.enc) file and read the ascii from the hex code
 - reverse the mathematical operation (hardest part ngl)
 - return the ascii characters
 
@@ -33,7 +33,6 @@ Do some research!
 use whatever you want to get the flag...
 
 But try to reverse the operation first for the maximum fun!
-
 
 ```
 └──╼ $python decode.py
