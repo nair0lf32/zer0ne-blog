@@ -6,11 +6,11 @@ categories:
   - TryHackMe
 ---
 
-<img src="steel-mountain.jpeg" alt="steel-mountain">
+![steel-mountain](/thm/Steel%20Mountain/steel-mountain.jpeg)
 
-This one is a cool room! 
+This one is a cool room!
 
-I have been very busy this year and could not play much but decided to give a shot to premium THM nonetheless. I was not disappointed! 
+I have been very busy this year and could not play much but decided to give a shot to premium THM nonetheless. I was not disappointed!
 
 ## Enumeration
 
@@ -129,12 +129,11 @@ Then the real stuff...
 
 `rejetto http file server 2.3` looking so vulnerable right now...
 
-Google for the CVE details. Big hint: It's a RCE! 
+Google for the CVE details. Big hint: It's a RCE!
 
 (If you are playing on THM too be careful submitting the answer, remove CVE and just submit the number)
 
 Steel mountain looks more like rubble mountain now
-
 
 ## Exploitation
 
