@@ -115,6 +115,9 @@ If you think you are good enough, prefer a freelance style and enjoy competition
 - [Hackerone](https://hackerone.com/nairolf?type=user) with [hacker101](https://ctf.hacker101.com/) as their playground for starters
 - [Bugcrowd](https://bugcrowd.com/nairolf32)
 - [Intigriti](https://www.intigriti.com/)
+- [hackenproof](https://hackenproof.com/hackers/nairolf32)
+- [yeswehack](https://yeswehack.com/)
+- [safehats](https://app.safehats.com/)
 
 And as I like linking and sharing stuff (curation is my passion lol) here is similar projects (other people making great writeups)
 
