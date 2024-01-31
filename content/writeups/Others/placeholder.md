@@ -6,4 +6,4 @@ categories:
   - Others
 ---
 
-This is a placeholder draft article for the Others category. It will be deleted once I have at least one writeup in this category.
+This is a placeholder draft article for the Others category. It will be deleted once I have at least one writeup in this category...
