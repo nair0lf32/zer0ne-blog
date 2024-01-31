@@ -10,7 +10,7 @@ Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenS
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://nair0lf32.github.io/zer0ne/writeups/cyberseclabs/office/office/" />
+<link rel="canonical" href="https://dev.nairolf32.com/zer0ne/writeups/cyberseclabs/office/office/" />
 
 
     <title>
@@ -26,16 +26,16 @@ Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenS
 
 
 
-<link rel="stylesheet" href="https://nair0lf32.github.io/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+<link rel="stylesheet" href="https://dev.nairolf32.com/zer0ne/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
 
 
 
-    <link rel="apple-touch-icon" sizes="180x180" href="https://nair0lf32.github.io/zer0ne/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://nair0lf32.github.io/zer0ne/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://nair0lf32.github.io/zer0ne/favicon-16x16.png">
-    <link rel="manifest" href="https://nair0lf32.github.io/zer0ne/site.webmanifest">
-    <link rel="mask-icon" href="https://nair0lf32.github.io/zer0ne/safari-pinned-tab.svg" color="">
-    <link rel="shortcut icon" href="https://nair0lf32.github.io/zer0ne/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://dev.nairolf32.com/zer0ne/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://dev.nairolf32.com/zer0ne/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://dev.nairolf32.com/zer0ne/favicon-16x16.png">
+    <link rel="manifest" href="https://dev.nairolf32.com/zer0ne/site.webmanifest">
+    <link rel="mask-icon" href="https://dev.nairolf32.com/zer0ne/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://dev.nairolf32.com/zer0ne/favicon.ico">
     <meta name="msapplication-TileColor" content="">
 
 
@@ -43,12 +43,10 @@ Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenS
 <meta itemprop="description" content="Quick note: I have been way too generous in this writeup but hey&hellip;it&rsquo;s on me! I gave so many credentials (but no flags) making it easier than it should be. But it&rsquo;s okay. If you really wanna learn you will learn. Now let&rsquo;s get started
 Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 e2:3f:6c:4e:6d:8b:dc:59:b7:cb:66:64:27:f9:22:86 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC&#43;gFggQqxPisakN8dYc6fbiOED&#43;I&#43;HD7Le9lgYUcrpjdKozChagwV9s3ZKTGkgmkOpMVz9Ifhv3LnoXcNACuKDWU7d6HCX0Ab&#43;cJMwGX/D68AZBNlaFNyrJgUg52omwRs0aktor1TSxkjugyTaXY5LG1fl9/ZNm7OJaX3T8CCADnqDtsKAXPOEku90jUcnf1fkTr/rW2gkQbmfh/QwRO2jPHDtfdnObmwCslGdWDi1pg8IcMsw86enF5sZOjzAqJADbmY9H7gg77nPZCH9GMh5wv4Cb/y/c3o923EJ4h1MimpGj60aa2S1UKmjKs/e7pzoHGZYbadapvwne/94S2Xl | 256 ee:be:37:f3:75:4e:38:2a:a9:99:e0:18:1a:b8:d1:41 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPmYME2CvT8Wufq97CVcM38cok&#43;baDhxKCQ7dkt2/5uvS/ILT&#43;&#43;6C/0CFsmj1/oZv9JWBDu4uVnnaxLdn1o7mKY= | 256 7f:72:a7:29:be:30:9e:5e:aa:b9:fc:be:09:d2:8b:3a (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPlt&#43;7kyv4MWbk8UhliuRGa5/T&#43;3QiGgzj9XgWcHb&#43;AQ 80/tcp open http syn-ack Apache httpd 2."><meta itemprop="datePublished" content="2022-09-16T18:33:31+01:00" />
 <meta itemprop="dateModified" content="2022-09-16T18:33:31+01:00" />
-<meta itemprop="wordCount" content="2038"><meta itemprop="image" content="https://nair0lf32.github.io/zer0ne"/>
+<meta itemprop="wordCount" content="2038"><meta itemprop="image" content="https://dev.nairolf32.com/zer0ne" />
 <meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://nair0lf32.github.io/zer0ne"/>
-
-<meta name="twitter:title" content="Office"/>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://dev.nairolf32.com/zer0ne" /><meta name="twitter:title" content="Office"/>
 <meta name="twitter:description" content="Quick note: I have been way too generous in this writeup but hey&hellip;it&rsquo;s on me! I gave so many credentials (but no flags) making it easier than it should be. But it&rsquo;s okay. If you really wanna learn you will learn. Now let&rsquo;s get started
 Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 e2:3f:6c:4e:6d:8b:dc:59:b7:cb:66:64:27:f9:22:86 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC&#43;gFggQqxPisakN8dYc6fbiOED&#43;I&#43;HD7Le9lgYUcrpjdKozChagwV9s3ZKTGkgmkOpMVz9Ifhv3LnoXcNACuKDWU7d6HCX0Ab&#43;cJMwGX/D68AZBNlaFNyrJgUg52omwRs0aktor1TSxkjugyTaXY5LG1fl9/ZNm7OJaX3T8CCADnqDtsKAXPOEku90jUcnf1fkTr/rW2gkQbmfh/QwRO2jPHDtfdnObmwCslGdWDi1pg8IcMsw86enF5sZOjzAqJADbmY9H7gg77nPZCH9GMh5wv4Cb/y/c3o923EJ4h1MimpGj60aa2S1UKmjKs/e7pzoHGZYbadapvwne/94S2Xl | 256 ee:be:37:f3:75:4e:38:2a:a9:99:e0:18:1a:b8:d1:41 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPmYME2CvT8Wufq97CVcM38cok&#43;baDhxKCQ7dkt2/5uvS/ILT&#43;&#43;6C/0CFsmj1/oZv9JWBDu4uVnnaxLdn1o7mKY= | 256 7f:72:a7:29:be:30:9e:5e:aa:b9:fc:be:09:d2:8b:3a (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPlt&#43;7kyv4MWbk8UhliuRGa5/T&#43;3QiGgzj9XgWcHb&#43;AQ 80/tcp open http syn-ack Apache httpd 2."/>
 
@@ -58,9 +56,10 @@ Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenS
 <meta property="og:description" content="Quick note: I have been way too generous in this writeup but hey&hellip;it&rsquo;s on me! I gave so many credentials (but no flags) making it easier than it should be. But it&rsquo;s okay. If you really wanna learn you will learn. Now let&rsquo;s get started
 Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 e2:3f:6c:4e:6d:8b:dc:59:b7:cb:66:64:27:f9:22:86 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC&#43;gFggQqxPisakN8dYc6fbiOED&#43;I&#43;HD7Le9lgYUcrpjdKozChagwV9s3ZKTGkgmkOpMVz9Ifhv3LnoXcNACuKDWU7d6HCX0Ab&#43;cJMwGX/D68AZBNlaFNyrJgUg52omwRs0aktor1TSxkjugyTaXY5LG1fl9/ZNm7OJaX3T8CCADnqDtsKAXPOEku90jUcnf1fkTr/rW2gkQbmfh/QwRO2jPHDtfdnObmwCslGdWDi1pg8IcMsw86enF5sZOjzAqJADbmY9H7gg77nPZCH9GMh5wv4Cb/y/c3o923EJ4h1MimpGj60aa2S1UKmjKs/e7pzoHGZYbadapvwne/94S2Xl | 256 ee:be:37:f3:75:4e:38:2a:a9:99:e0:18:1a:b8:d1:41 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPmYME2CvT8Wufq97CVcM38cok&#43;baDhxKCQ7dkt2/5uvS/ILT&#43;&#43;6C/0CFsmj1/oZv9JWBDu4uVnnaxLdn1o7mKY= | 256 7f:72:a7:29:be:30:9e:5e:aa:b9:fc:be:09:d2:8b:3a (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPlt&#43;7kyv4MWbk8UhliuRGa5/T&#43;3QiGgzj9XgWcHb&#43;AQ 80/tcp open http syn-ack Apache httpd 2." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nair0lf32.github.io/zer0ne/writeups/cyberseclabs/office/office/" /><meta property="og:image" content="https://nair0lf32.github.io/zer0ne"/><meta property="article:section" content="writeups" />
+<meta property="og:url" content="https://dev.nairolf32.com/zer0ne/writeups/cyberseclabs/office/office/" /><meta property="og:image" content="https://dev.nairolf32.com/zer0ne" /><meta property="article:section" content="writeups" />
 <meta property="article:published_time" content="2022-09-16T18:33:31+01:00" />
-<meta property="article:modified_time" content="2022-09-16T18:33:31+01:00" /><meta property="og:site_name" content="Zer0ne" />
+<meta property="article:modified_time" content="2022-09-16T18:33:31+01:00" />
+
 
 
 
@@ -89,7 +88,7 @@ Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenS
         <div class="container">
             <header class="header">
     <span class="header__inner">
-        <a href="https://nair0lf32.github.io/zer0ne/" style="text-decoration: none;">
+        <a href="https://dev.nairolf32.com/zer0ne/" style="text-decoration: none;">
     <div class="logo">
         
             <span class="logo__mark">&gt;</span>
@@ -107,7 +106,7 @@ Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenS
         <span class="header__right">
             
                 <nav class="menu">
-    <ul class="menu__inner"><li><a href="https://nair0lf32.github.io/zer0ne/about">About</a></li><li><a href="https://nair0lf32.github.io/zer0ne/posts">Blog</a></li><li><a href="https://nair0lf32.github.io/zer0ne/writeups">Writeups</a></li>
+    <ul class="menu__inner"><li><a href="https://dev.nairolf32.com/zer0ne/about">About</a></li><li><a href="https://dev.nairolf32.com/zer0ne/posts">Blog</a></li><li><a href="https://dev.nairolf32.com/zer0ne/writeups">Writeups</a></li>
     </ul>
 </nav>
 
@@ -138,7 +137,7 @@ Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenS
         </div>
 
         <article>
-            <h2 class="post-title"><a href="https://nair0lf32.github.io/zer0ne/writeups/cyberseclabs/office/office/">Office</a></h2>
+            <h2 class="post-title"><a href="https://dev.nairolf32.com/zer0ne/writeups/cyberseclabs/office/office/">Office</a></h2>
 
             
             
@@ -276,8 +275,8 @@ forum                   [Status: 200, Size: 8773, Words: 1999, Lines: 298]
 <p><code>http://forum.office.csl/chatlogs/chatlogs.php?file=chatlog.txt</code></p>
 <p>Found it yet? yes LFI it is!!</p>
 <p>reading <code>/etc/passwd</code> we get 2 users (except root of course)</p>
-<pre tabindex="0"><code>ryan❌1000:1000:ryan:/home/ryan:/bin/bash
-dwight❌1001:1001:Dwight Schrute,,,:/home/dwight:/bin/bash
+<pre tabindex="0"><code>ryan:x:1000:1000:ryan:/home/ryan:/bin/bash
+dwight:x:1001:1001:Dwight Schrute,,,:/home/dwight:/bin/bash
 </code></pre><p>As it is a wordpress installation maybe we can read <code>wp-config.php</code></p>
 <p>Or we can use <code>wpscan</code> to enumerate it faster</p>
 <p>the ssl certificate in nmap got <code>dwight email</code> as <code>dwight@office.csl</code> it may be valid for wordpress&hellip;now we need his password</p>
@@ -382,7 +381,7 @@ require_once ABSPATH . &#39;wp-settings.php&#39;;
 <p>and we get <code>dwight : cowboys1</code></p>
 <p>we use <code>dwight@office.csl</code> with that password to get to the wordpress dashboard</p>
 <h2 id="exploitation">Exploitation</h2>
-<p>Upload a <a href="https://nair0lf32.github.io/zer0ne/csl/office/shell.php">PHP shell</a> in the WP file manager and get access on a netcat listenner</p>
+<p>Upload a <a href="https://dev.nairolf32.com/zer0ne/csl/office/shell.php">PHP shell</a> in the WP file manager and get access on a netcat listenner</p>
 <p>(maybe we could use the plugins too but we would have to format our php file as a wp plugin and zip it&hellip;tedious)</p>
 <p>Visit <code>http://office.csl/shell.php</code> to get inside&hellip;&ldquo;the office&rdquo;</p>
 <pre tabindex="0"><code>$ cd /home/dwight
@@ -443,7 +442,7 @@ cat id_rsa.pub
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDPgHai3fDZqwsaQmTnVZcYGEkyQ3HqauRoDw83519IcId1kQxb+dtzC4ADYtXSLIzyc8H53dwW9aTIzX7j/lddQDfuqD4j7iJi8qMNMGtNQyrRdLRlxJPEo3M3Or0+qbaPMXfNVXfNnCFIeInzJhzLPKpZS5eYh7IJryhjEWwMHhm+mE+0xCd+z7FswoyKRSRIeR8hdeKhRuJ+UJTTD4GHI/6fOExMftoQwdfMUUon303/V6zwaky4s0d6R5OTesq/bcn2VE1CiDG/r29wSc5y44tHjyvfh80DkyaE8Yvr6j4PRxgAvRn7CP3CIBA67cHkXaHMV7i1rEJ8OEX/AEot dwight@office
 dwight@office:~/.ssh$ echo &#34;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDPgHai3fDZqwsaQmTnVZcYGEkyQ3HqauRoDw83519IcId1kQxb+dtzC4ADYtXSLIzyc8H53dwW9aTIzX7j/lddQDfuqD4j7iJi8qMNMGtNQyrRdLRlxJPEo3M3Or0+qbaPMXfNVXfNnCFIeInzJhzLPKpZS5eYh7IJryhjEWwMHhm+mE+0xCd+z7FswoyKRSRIeR8hdeKhRuJ+UJTTD4GHI/6fOExMftoQwdfMUUon303/V6zwaky4s0d6R5OTesq/bcn2VE1CiDG/r29wSc5y44tHjyvfh80DkyaE8Yvr6j4PRxgAvRn7CP3CIBA67cHkXaHMV7i1rEJ8OEX/AEot dwight@office&#34; &gt; authorized_keys
 &lt;HMV7i1rEJ8OEX/AEot dwight@office&#34; &gt; authorized_keys
-</code></pre><p>Grab the <a href="https://nair0lf32.github.io/zer0ne/csl/office/id_rsa"><code>private key</code></a> and you got ssh access as dwight</p>
+</code></pre><p>Grab the <a href="https://dev.nairolf32.com/zer0ne/csl/office/id_rsa"><code>private key</code></a> and you got ssh access as dwight</p>
 <p>Don&rsquo;t forget to fix the ssh key permissions</p>
 <pre tabindex="0"><code>└──╼ $chmod 600 id_rsa
 
@@ -547,7 +546,7 @@ system_flag_here
     <p>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
 
-        <span class="tag"><a href="https://nair0lf32.github.io/zer0ne/categories/cyberseclabs/">Cyberseclabs</a></span>
+        <span class="tag"><a href="https://dev.nairolf32.com/zer0ne/categories/cyberseclabs/">Cyberseclabs</a></span>
         
     </p>
 
@@ -561,10 +560,10 @@ system_flag_here
     
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
-            <span><a href="https://nair0lf32.github.io/zer0ne">nair0lf32</a></span>
+            <span>&copy; 2024</span>
+            <span><a href="https://dev.nairolf32.com/zer0ne">nair0lf32</a></span>
             <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
-            <span><a href="https://nair0lf32.github.io/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            <span><a href="https://dev.nairolf32.com/zer0ne/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
             
         </div>
     </div>
@@ -585,7 +584,7 @@ system_flag_here
 
 
 
-<script type="text/javascript" src="https://nair0lf32.github.io/zer0ne/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+<script type="text/javascript" src="https://dev.nairolf32.com/zer0ne/bundle.min.b1dc444a7108174ae3d2294f982be5e99e844ae2b8d58eeea19d929bde0338be4d12ed8a4dfc67194dcc6726fa6a82705119c0d7e4edd4de9294be6535ea7b7f.js" integrity="sha512-sdxESnEIF0rj0ilPmCvl6Z6ESuK41Y7uoZ2Sm94DOL5NEu2KTfxnGU3MZyb6aoJwURnA1&#43;Tt1N6SlL5lNep7fw=="></script>
 
 
 
