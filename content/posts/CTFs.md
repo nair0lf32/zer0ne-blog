@@ -93,6 +93,7 @@ Other places I Learn or just play challenges (not actively writing writeups for 
 - [freehackquest](https://freehackquest.com/)
 - [hackropole](https://hackropole.fr)
 - [websec](https://websec.fr)
+- [hacktoria](https://hacktoria.com/) (for OSINT and more)
 
 Also [ctftime](https://ctftime.org/team/182186) for real-time events
 
