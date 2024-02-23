@@ -239,6 +239,8 @@ All-in-one and frameworks/Auto-Exploiters:
 - [fsociety](https://github.com/Manisso/fsociety) (to feel like mr robot)
 - [monkey](https://github.com/guardicore/monkey)
 - Vulnnr (DEAD?)
+- [sn1per](https://github.com/1N3/Sn1per)
+- [jok3r](https://github.com/koutto/jok3r)
 
 # More tools (Moarrrr!)
 
