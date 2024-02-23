@@ -87,7 +87,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [John](https://www.kali.org/tools/john/) (the ripper)            | [Hashcat](https://hashcat.net/hashcat/) (a cat)           | [Dcode](https://www.dcode.fr/)                 |
 | [Hydra](https://www.kali.org/tools/hydra/) (the legacy)          | [crackstation](https://crackstation.net/)                 | [Cyberchef](https://gchq.github.io/CyberChef/) |
 | [sshtrix](https://nullsecurity.net/tools/cracker.html) (for ssh) | [Hashcrack](https://hashcrack.com/)                       | [jwt](https://jwt.io/)                         |
-| [ciphey](https://github.com/Ciphey/Ciphey)                                                                  | [Hashes.com](https://hashes.com/en/decrypt/hash)          | [Boxentriq](https://www.boxentriq.com/)        |
+| [ciphey](https://github.com/Ciphey/Ciphey) and [Ares](https://github.com/bee-san/Ares)                                                                  | [Hashes.com](https://hashes.com/en/decrypt/hash)          | [Boxentriq](https://www.boxentriq.com/)        |
 |                                                                  | [Hash analyzer](https://www.tunnelsup.com/hash-analyzer/) | |
 |                                                                  | [md5hashing](https://md5hashing.net/)                     | |
 
