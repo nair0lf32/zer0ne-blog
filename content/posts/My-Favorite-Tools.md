@@ -15,21 +15,21 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [NmapAutomator](https://github.com/21y4d/nmapAutomator)   | [Cmseek](https://github.com/Tuhinshubhra/CMSeeK)               | [Sublist3r](https://github.com/aboul3la/Sublist3r)         |
 | [angryIP](https://github.com/angryip/ipscan) (angry scan) | [Eyewitness](https://github.com/FortyNorthSecurity/EyeWitness) | [VhostScan](https://github.com/codingo/VHostScan/)         |
 | [Massscan](https://www.kali.org/tools/masscan/)           | [Recon](https://github.com/dirsoooo/Recon) (All in one)        | [Subfinder](https://github.com/projectdiscovery/subfinder) |
-|                                                           | [shodan](https://www.shodan.io/dashboard) (the iot scanner)    |
-|                                                           | [wpscan](https://wpscan.com/) (Wordpress favorite)             |
-|                                                           | [Dnsdumpster](https://dnsdumpster.com/) (dig on steroids!)     |
-|                                                           | [ahmia](https://ahmia.fi/)  (dark web search)                  |
-|                                                           | [WHOIS](https://who.is/) (nothing beat basics)                 |
-|                                                           | [viewdns](https://viewdns.info/) (whois++)                     |
+|                                                           | [shodan](https://www.shodan.io/dashboard) (the iot scanner)    |                                                              |
+|                                                           | [wpscan](https://wpscan.com/) (Wordpress favorite)             |                                                              |
+|                                                           | [Dnsdumpster](https://dnsdumpster.com/) (dig on steroids!)     |                                                              |
+|                                                           | [ahmia](https://ahmia.fi/)  (dark web search)                  |                                                              |
+|                                                           | [WHOIS](https://who.is/) (nothing beat basics)                 |                                                              |
+|                                                           | [viewdns](https://viewdns.info/) (whois++)                     |                                                              |
 
-### Vulnerabilty scanners ( For either professionals, lazy people, or both)
+## Vulnerabilty scanners ( For either professionals, lazy people, or both)
 
 | Free (for you and me)                                         | Paid (If you got money)                                                       |
 | ------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | [Nikto](https://github.com/sullo/nikto) (technically correct) | [Acunetix](https://www.acunetix.com/)                                         |
 | [Rapidscan](https://github.com/skavngr/rapidscan) (Try it!)   | [Nessus](https://www.tenable.com/products/nessus) (technically it's not free) |
 | [OpenVas](https://www.openvas.org/)                           | [Nexpose](https://www.rapid7.com/products/nexpose/) (free trial)              |
-| [Vega](https://subgraph.com/vega/)                            |
+| [Vega](https://subgraph.com/vega/) |  |
 
 ## Exploitation
 
@@ -50,17 +50,35 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [Owasp ZAP](https://www.zaproxy.org/) (It's from OWASP)                         | [Golismero](https://github.com/golismero/golismero)                    |
 | [dnstwist](https://github.com/elceef/dnstwist)                                  | [Leviathan](https://github.com/utkusen/leviathan) ( sadly DEPRECATED ) |
 
-### cloud (specials)
+## Cloud (specials)
 
 - [scoutsuite](https://github.com/nccgroup/ScoutSuite)
+- [cloudmapper](https://github.com/duo-labs/cloudmapper)
 
 ### Windows (specials)
 
 | Specific services                                      | Active Directory                                             | Post-exploit                                                  |
 | ------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------- |
 | [Enum4linux](https://www.kali.org/tools/enum4linux/)   | [Kerbrute](https://github.com/ropnop/kerbrute)               | [Mimikatz](https://www.kali.org/tools/mimikatz/) (the looter) |
-| [Evilwinrm](https://github.com/Hackplayers/evil-winrm) | [Impacket tools](https://github.com/SecureAuthCorp/impacket) |
-|                                                        | [CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)  |
+| [Evilwinrm](https://github.com/Hackplayers/evil-winrm) | [Impacket tools](https://github.com/SecureAuthCorp/impacket) | |
+| | [CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec) | |
+| | [Bloodhound](https://www.kali.org/tools/bloodhound/) | |
+
+## Android (specials)
+
+| Analysis                                                                                    | Attacks                                                                       |
+| ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| [Mobsf](https://github.com/MobSF/Mobile-Security-Framework-MobSF)                           | [SARA](https://github.com/termuxhackers-id/SARA) (careful with this one)      |
+| [Apktool](https://ibotpeaches.github.io/Apktool/)  (uses jadx)                              | [backdoor-apk](https://github.com/dana-at-cp/backdoor-apk)                    |
+| [Adb](https://developer.android.com/studio/command-line/adb)                                | [TheFatRat](https://github.com/Screetsec/TheFatRat) (obese rodent)            |
+| [anbox](https://docs.anbox.io/userguide/install.html) (or any emulator for dynamic testing) | [Msfvenom](https://www.offensive-security.com/metasploit-unleashed/msfvenom/) |
+| [Zimperium tools](https://www.zimperium.com/) (yeah...kinda) | |
+| [Apkleaks](https://github.com/dwisiswant0/apkleaks) | |
+| [MARA](https://github.com/xtiankisutsa/MARA_Framework) | |
+| [Drozer](https://github.com/FSecureLABS/drozer) | |
+| [Inspeckage](https://github.com/ac-pm/Inspeckage) | |
+| [Quark](https://github.com/quark-engine/quark-engine) | |
+| [Deguard](http://apk-deguard.com/) | |
 
 ## Cryptography
 
@@ -69,9 +87,9 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [John](https://www.kali.org/tools/john/) (the ripper)            | [Hashcat](https://hashcat.net/hashcat/) (a cat)           | [Dcode](https://www.dcode.fr/)                 |
 | [Hydra](https://www.kali.org/tools/hydra/) (the legacy)          | [crackstation](https://crackstation.net/)                 | [Cyberchef](https://gchq.github.io/CyberChef/) |
 | [sshtrix](https://nullsecurity.net/tools/cracker.html) (for ssh) | [Hashcrack](https://hashcrack.com/)                       | [jwt](https://jwt.io/)                         |
-|                                                                  | [Hashes.com](https://hashes.com/en/decrypt/hash)          | [Boxentriq](https://www.boxentriq.com/)        |
-|                                                                  | [Hash analyzer](https://www.tunnelsup.com/hash-analyzer/) |
-|                                                                  | [md5hashing](https://md5hashing.net/)                     |
+| [ciphey](https://github.com/Ciphey/Ciphey) and [Ares](https://github.com/bee-san/Ares)                                                                  | [Hashes.com](https://hashes.com/en/decrypt/hash)          | [Boxentriq](https://www.boxentriq.com/)        |
+|                                                                  | [Hash analyzer](https://www.tunnelsup.com/hash-analyzer/) | |
+|                                                                  | [md5hashing](https://md5hashing.net/)                     | |
 
 ## wordlist generators
 
@@ -83,10 +101,10 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 
 | Disassembler Frameworks                                      | Debuggers and Decompilers                                         |
 | ------------------------------------------------------------ | ----------------------------------------------------------------- |
-| [IDA Pro](https://hex-rays.com/ida-pro/) (industry standard) | [GDB](https://www.sourceware.org/gdb/) (check PwnGdb and ollygdb) |
+| [IDA Pro](https://hex-rays.com/ida-pro/) (industry standard) | [GDB](https://www.sourceware.org/gdb/) (check [Pwndbg](https://github.com/pwndbg/pwndbg), [PEDA](https://github.com/longld/peda), [gef](https://github.com/hugsy/gef) and [ollydbg](http://www.ollydbg.de/)) |
 | [Ghidra](https://ghidra-sre.org/) (pride of the NSA)         | [Cutter](https://cutter.re/)                                      |
 | [Radare2](https://github.com/radareorg/radare2)              | [pwntools](https://pypi.org/project/pwntools/) (technically...)   |
-| [dogbolt](https://dogbolt.org/)                              |
+| [dogbolt](https://dogbolt.org/) |                              |
 
 ## Steganography
 
@@ -95,50 +113,23 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [steghide](http://steghide.sourceforge.net/)        | [Stegsolve](https://en.kali.tools/all/?tool=1762)                                    | [Sonic vizualizer](https://www.sonicvisualiser.org/) |
 | [stegseek](https://github.com/RickdeJager/stegseek) | [Stegosuite](https://installlion.com/kali/kali/main/s/stegosuite/install/index.html) | [Audacity](https://www.audacityteam.org/)            |
 | [exiftool](https://exiftool.org/) (might work)      | [Gimp](https://www.gimp.org/)  (photoshop or whatever)                               | [Morse decoder](https://morsecode.world/)            |
-| [plainsight](https://github.com/rw/plainsight)      | [Zbar-tools](http://zbar.sourceforge.net/)                                           |
-|                                                     | [fotoforensics](https://fotoforensics.com/)                                          |
-|                                                     | [Zsteg](https://github.com/zed-0xff/zsteg)                                           |
-|                                                     | [aperisolve](https://aperisolve.com)                            |
-
-## Malware Analysis
-
-| Online
-| -------
-| [virustotal](https://www.virustotal.com/gui/) (too famous)
-| [Pithus](https://beta.pithus.org/) (for android)
-| [VxUnderround](https://vx-underground.org/) (what is the password?)
-
-### Android (specials)
-
-| Analysis                                                                                    | Attacks                                                                       |
-| ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| [Mobsf](https://github.com/MobSF/Mobile-Security-Framework-MobSF)                           | [SARA](https://github.com/termuxhackers-id/SARA) (careful with this one)      |
-| [Apktool](https://ibotpeaches.github.io/Apktool/)  (uses jadx)                              | [backdoor-apk](https://github.com/dana-at-cp/backdoor-apk)                    |
-| [Adb](https://developer.android.com/studio/command-line/adb)                                | [TheFatRat](https://github.com/Screetsec/TheFatRat) (obese rodent)            |
-| [anbox](https://docs.anbox.io/userguide/install.html) (or any emulator for dynamic testing) | [Msfvenom](https://www.offensive-security.com/metasploit-unleashed/msfvenom/) |
-| [Zimperium tools](https://www.zimperium.com/) (yeah...kinda)                                |
-| [Apkleaks](https://github.com/dwisiswant0/apkleaks)                                         |
-| [MARA](https://github.com/xtiankisutsa/MARA_Framework)                                      |
-| [Drozer](https://github.com/FSecureLABS/drozer)                                             |
-| [Inspeckage](https://github.com/ac-pm/Inspeckage)                                           |
-| [Quark](https://github.com/quark-engine/quark-engine)                                       |
-| [Deguard](http://apk-deguard.com/)                                                          |
+| [plainsight](https://github.com/rw/plainsight)      | [Zbar-tools](http://zbar.sourceforge.net/)                                           | |
+|                                                     | [fotoforensics](https://fotoforensics.com/)                                          | |
+|                                                     | [Zsteg](https://github.com/zed-0xff/zsteg)                                           | |
+|                                                     | [aperisolve](https://aperisolve.com)                            | |
 
 ## Wifi
 
-| Audit tools
-| -----------
-| [wifite 2](https://github.com/derv82/wifite2)
-| [kismet](https://www.kismetwireless.net/)
-| [aircrack suite](https://www.aircrack-ng.org/) (the OG)
+- [wifite 2](https://github.com/derv82/wifite2)
+- [kismet](https://www.kismetwireless.net/)
+- [aircrack suite](https://www.aircrack-ng.org/) (the OG)
 
 ## Privilege escalation
 
-| Scripts                                                | References                                             |
-| ------------------------------------------------------ | ------------------------------------------------------ |
-| [Linenum](https://github.com/rebootuser/LinEnum)       | [GTFObins](https://gtfobins.github.io/) (the ultimate) |
-| [PEASS tools](https://github.com/carlospolop/PEASS-ng) |
-| [JAWS](https://github.com/411Hall/JAWS)                |
+- [Linenum](https://github.com/rebootuser/LinEnum)
+- [GTFObins](https://gtfobins.github.io/) (the ultimate)
+- [PEASS tools](https://github.com/carlospolop/PEASS-ng)
+- [JAWS](https://github.com/411Hall/JAWS)
 
 ## Post-exploitation
 
@@ -146,30 +137,18 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | ----------------------------------------------------------------------------------- | ----------------------------------------------- |
 | [Cobalt strike](https://cobalt-strike.github.io/community_kit/) (industry standard) | [Reptile](https://github.com/f0rb1dd3n/Reptile) |
 | [pwncat](https://github.com/calebstewart/pwncat) (another cat)                      | [chisel](https://github.com/jpillora/chisel)    |
-| [Empire](https://www.powershellempire.com/) ([deprecated] check Starkiller)         |
-| [Metasploit](https://www.metasploit.com/) (yes, again!)                             |
-| [Covenant](https://github.com/cobbr/Covenant/)                                      |
-
-## Forensics
-
-| Frameworks/suites
-| ----------
-| [Volatility](https://www.volatilityfoundation.org/)
-| [Binwalk](https://github.com/ReFirmLabs/binwalk) or [Foremost](https://www.kali.org/tools/foremost/)
-|
+| [Empire](https://www.powershellempire.com/) ([deprecated] check Starkiller) | |
+| [Metasploit](https://www.metasploit.com/) (yes, again!) | |
+| [Covenant](https://github.com/cobbr/Covenant/) | |
 
 ## Social Engineering
 
-| Frameworks and tools
-| ----------
-| [SET](https://www.trustedsec.com/tools/the-social-engineer-toolkit-set/) (number one)
-| [thispersondoesnotexist](https://thispersondoesnotexist.com/) (don't misuse this one)
-| [namefake](https://namefake.com/) (do not misuse it!)
+- [SET](https://www.trustedsec.com/tools/the-social-engineer-toolkit-set/) (number one)
+- [thispersondoesnotexist](https://thispersondoesnotexist.com/) (don't misuse this one)
+- [namefake](https://namefake.com/) (do not misuse it!)
 
 ## OSINT
 
-| Frameworks/suites
-| ----------
 | [Osint Framework](https://osintframework.com/) (its a framework)
 | [Osint techniques](https://www.osinttechniques.com/osint-tools.html)
 | [wigle](https://wigle.net/) (google maps for networks)
@@ -183,33 +162,49 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 
 ## Anonimity
 
-| Cloaking                                                     | (De)Obfuscation                              | Evasion/Bypass                             |
-| -------------------------------------------                  | -------------------------------------------- | ------------------------------------------ |
-| [Anonsurf](https://linuxhint.com/anonsurf/)                  | [Obfuscator.io](https://obfuscator.io/)      | [UACME](https://github.com/hfiref0x/UACME) |
-| [kali-whoami](https://github.com/owerdogan/whoami-project)   | [de4js](https://lelinhtinh.github.io/de4js/) |                                            |
+- [Anonsurf](https://linuxhint.com/anonsurf/)
+- [Obfuscator.io](https://obfuscator.io/)
+- [UACME](https://github.com/hfiref0x/UACME)
+- [kali-whoami](https://github.com/owerdogan/whoami-project)
+- [de4js](https://lelinhtinh.github.io/de4js/) |                                            |
 
-## Utilities
+## Forensics
 
-| Browser extensions                                                                                 | Others                                                                |
-| -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Foxyproxy](https://addons.mozilla.org/fr/firefox/addon/foxyproxy-standard/) (you know this one)   | [Onecompiler](https://onecompiler.com/) (underrated online compiler)  |
-| [Hack-tools](https://addons.mozilla.org/fr/firefox/addon/hacktools/) (this one is cool)            | [coding tools](https://coding.tools/)                                 |
-| [ua-switcher](https://addons.mozilla.org/fr/firefox/addon/user-agent-string-switcher/) (custom ua) | [code beautify](https://codebeautify.org/) (does alot more than that) |
-| [search by image](https://addons.mozilla.org/fr/firefox/addon/search_by_image/)                    | [busybox](https://busybox.net/) (unix binaries for everyone)          |
-|                                                                                                    | [lolbas](https://lolbas-project.github.io/#)                          |
-|                                                                                                    | [nirsoft](http://www.nirsoft.net/) (don't ruin it's reputation)       |
-|                                                                                                    | [freeformatter](https://www.freeformatter.com/)                       |
-|                                                                                                    | [whatportis](https://github.com/ncrocfer/whatportis)                  |
-|                                                                                                    | [gittools](https://github.com/internetwache/GitTools)                 |
+- [Volatility](https://www.volatilityfoundation.org/)
+- [Binwalk](https://github.com/ReFirmLabs/binwalk)
+- [Foremost](https://www.kali.org/tools/foremost/)
+- [Autopsy](https://www.sleuthkit.org/autopsy/)
+
+## Malware Analysis
+
+- [virustotal](https://www.virustotal.com/gui/) (too famous)
+- [Pithus](https://beta.pithus.org/) (for android)
+- [VxUnderround](https://vx-underground.org/) (what is the password?)
+
+## Utilities (Browser extensions and such )
+
+- [Foxyproxy](https://addons.mozilla.org/fr/firefox/addon/foxyproxy-standard/) (you know this one)
+- [Onecompiler](https://onecompiler.com/) (underrated online compiler)  |
+- [Hack-tools](https://addons.mozilla.org/fr/firefox/addon/hacktools/) (this one is cool)
+- [coding tools](https://coding.tools/)                                 |
+- [ua-switcher](https://addons.mozilla.org/fr/firefox/addon/user-agent-string-switcher/) (custom ua)
+- [code beautify](https://codebeautify.org/) (does alot more than that) |
+- [search by image](https://addons.mozilla.org/fr/firefox/addon/search_by_image/)                    |
+- [busybox](https://busybox.net/) (unix binaries for everyone)          |
+- [lolbas](https://lolbas-project.github.io/#)                          |
+- [nirsoft](http://www.nirsoft.net/) (don't ruin it's reputation)       |
+- [freeformatter](https://www.freeformatter.com/)                       |
+- [whatportis](https://github.com/ncrocfer/whatportis)                  |
+- [gittools](https://github.com/internetwache/GitTools)                 |
 
 ## Threat detection, network monitoring and remediation
 
-| Frameworks/suites/network tools                                                            | Information/Utilities                                       |
-| ------------------------------------------------------------------------------------------ | ----------------------------------------------------------- |
-| [Splunk](https://www.splunk.com/) (If you understand it)                                   | [MITRE ATT&CK](https://attack.mitre.org/)                   |
-| [Wireshark](https://www.wireshark.org/download.html) (the shark)                           | [Greynoise](https://viz.greynoise.io/)                      |
-| [sysinternals](https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite) | [AttackerKB](https://attackerkb.com/contributors/nair0lf32) |
-|                                                                                            |
+- [Splunk](https://www.splunk.com/) (If you understand it)
+- [MITRE ATT&CK](https://attack.mitre.org/)                   |
+- [Wireshark](https://www.wireshark.org/download.html) (the shark)
+- [Greynoise](https://viz.greynoise.io/)
+- [sysinternals](https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite)
+- [AttackerKB](https://attackerkb.com/contributors/nair0lf32) |
 
 # My favorites ( kek )
 
@@ -244,6 +239,8 @@ All-in-one and frameworks/Auto-Exploiters:
 - [fsociety](https://github.com/Manisso/fsociety) (to feel like mr robot)
 - [monkey](https://github.com/guardicore/monkey)
 - Vulnnr (DEAD?)
+- [sn1per](https://github.com/1N3/Sn1per)
+- [jok3r](https://github.com/koutto/jok3r)
 
 # More tools (Moarrrr!)
 

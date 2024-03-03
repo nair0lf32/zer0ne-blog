@@ -29,7 +29,7 @@ You wanna be a hacker? well... how much do you know about computers?
 - [linuxjourney](https://linuxjourney.com/): I like this one alot as they support multiple languages. You can learn linux basics from A to Z in your native language.
 - [ctf101](https://ctf101.org/): this one is self explanatory
 - [hoppers roppers](https://www.roppers.org): the most academic way of introducing you to CTfs
-  
+
 ## Web
 
 Most CTF platforms are focused on this one already so not many platforms specifically do theory about web hacking
@@ -40,6 +40,7 @@ Most CTF platforms are focused on this one already so not many platforms specifi
 
 - [0xinfection](https://0xinfection.github.io/reversing/): this guy uses the same theme as me for his blog. This is enough reasons to take him seriously
 - [liveoverflow](https://liveoverflow.com/): the one and only
+- [nightmare](https://guyinatuxedo.github.io/)
 
 ## Crypto
 
