@@ -14,7 +14,7 @@ categories:
 
 [here is the audio](/thm/cicada-3301/audio.wav)
 
-With visual-analyser add a spectrogram layer and get thiss qr code
+With visual-analyser add a spectrogram layer and get this qr code
 
 ![qr](/thm/cicada-3301/qr.png)
 
@@ -60,4 +60,4 @@ use some good old pen and paper to get ANOTHER link (not pastebin this time)
 
 The satisfaction of solving this room is perfectly described by this song. This room is very cool
 
-Remmeber, cicadas don't cry
+Remember, cicadas don't cry
