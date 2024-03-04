@@ -252,6 +252,7 @@ Here is a list of places to find more tools:
 - [kali tools](https://en.kali.tools/all/?category)
 - [random medium article](https://shamsher-khan-404.medium.com/100-most-vulnerable-apps-systems-platforms-to-practice-penetration-testing-2021-e76ca7235e74)
 - [linux security](https://linuxsecurity.expert/security-tools/)
+- [rawsec tools](https://inventory.raw.pm/tools.html)
 - Also Google
 
 There are also some shady places (mostly onion links) with mad awesome tools, but we are not going there. Also if for any reason you want to do pentesting from a windows machine (for whatever reason) you should look into [pentestbox](https://pentestbox.org/) instead of downloading tools separately. But this is a bit old (2016) and tools are not updated regularly.
