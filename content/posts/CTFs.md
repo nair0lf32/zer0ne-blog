@@ -98,7 +98,6 @@ Other places I Learn or just play challenges (not actively writing writeups for 
 - [MLC](https://training.majorleaguecyber.org/challenges)
 - [atenea](https://atenea.ccn-cert.cni.es/challenges)
 - [ESET challenges](https://pentest.join.eset.com/)
-- [Mod-x](https://www.mod-x.co.uk/)
 
 Also [ctftime](https://ctftime.org/team/182186) for real-time events
 
