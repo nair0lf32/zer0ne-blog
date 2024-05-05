@@ -45,11 +45,13 @@ I got access to a machine using metasploit. Here are the properties that are imp
 - Your own IP `LHOST`: That's the tricky part. if like me you used a TCP tunnel you might get a domain name.
   You put that there! If you care about persistence you can use a dynamic DNS service like [no-ip](https://www.noip.com/) to get a domain name that will always point to your public IP address.
 - The port `LPORT` that you used to listen for incoming connections: you have to use the port provided by the tunneling service.
-- If you used metasploit you need to set `ReverseBindAddress` to your local IP address. By default it binds to
-  your loopback interface so you might never need to change it. But if you are using a tunneling service you need to set `ReverseBindPort` to your destination port.
+- If you used metasploit you need to set `ReverseListenerBindAddress` to your local IP address. By default it binds to
+  your loopback interface so you might never need to change it. But if you are using a tunneling service you need to set `ReverseListenerBindPort` to your destination port.
 
 You are all set! But what if you are not using metasploit? well, you just need multiple terminals. One for your tunnel (ngrok much), one to listen for incoming connections (netcat, socat, ncat, etc)...You just use the same properties as above for your payload and your listener. I let you figure out what would logically go where.
 Also test multiple times...experiment and learn.
+
+It's important to precise that those settings are mostly relevant if you use a reverse shell payload. If you use a bind shell payload, you  just need to make sure that the target machine can reach your local machine on the port you specified.
 
 This is the end of my rant. I hope you learned something. This might be a terrible summary of what I learned but
 RCE is a complex topic and you need a bit of creativity and ingenuity to achieve it. Understanding how your network
