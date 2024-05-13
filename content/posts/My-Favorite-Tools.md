@@ -232,6 +232,7 @@ For when I am lazy:
 
 All-in-one and frameworks/Auto-Exploiters:
 
+- [pentest-tools](https://app.pentest-tools.com/)
 - [Rapidscan](https://github.com/skavngr/rapidscan)
 - [VulnX](https://github.com/anouarbensaad/VulnX)
 - [Hackingtool](https://github.com/Z4nzu/hackingtool) (this thing is a big bundle)
