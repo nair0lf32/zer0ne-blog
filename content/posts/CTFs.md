@@ -98,6 +98,7 @@ Other places I Learn or just play challenges (not actively writing writeups for 
 - [MLC](https://training.majorleaguecyber.org/challenges)
 - [atenea](https://atenea.ccn-cert.cni.es/challenges)
 - [ESET challenges](https://pentest.join.eset.com/)
+- [cyberdefenders](https://cyberdefenders.org/p/nairolf32)
 
 Also [ctftime](https://ctftime.org/team/182186) for real-time events
 
@@ -111,6 +112,7 @@ Playing CTFs is cool and stuff but if you want to get real about cybersecurity y
 - [Letsdefend](https://letsdefend.io/)
 - [hackxpert](https://labs.hackxpert.com/)
 - [cisco skillsforall](https://skillsforall.com/)
+- [attackIQ](https://www.academy.attackiq.com/dashboard)
 
 ## Bug Bounties platforms
 
