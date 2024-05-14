@@ -72,7 +72,7 @@ Other places I Learn or just play challenges (not actively writing writeups for 
 - [Ctflearn](https://ctflearn.com/user/nairolf32)
 - [Parrot CTFs](https://parrot-ctfs.com/)
 - [Attackdefense](https://attackdefense.com/)
-- [cyberwarrior](https://ctf.cyberwarrior.com/)
+- [cyberwarrior](https://ctf.cyberwarrior.com/game)
 - [Hellbound hackers](https://hbh.sh/user/nairolf32)
 - [Pentesterlab](https://pentesterlab.com)
 - [cyberseclabs](https://www.cyberseclabs.co.uk) (sadly, this one is going down!)
@@ -99,6 +99,9 @@ Other places I Learn or just play challenges (not actively writing writeups for 
 - [atenea](https://atenea.ccn-cert.cni.es/challenges)
 - [ESET challenges](https://pentest.join.eset.com/)
 - [cyberdefenders](https://cyberdefenders.org/p/nairolf32)
+- [blueteamlabs](https://blueteamlabs.online/home/user/096da5ad317ed64c8f340c)
+- [for kids](https://ctf.hackchallengesforkids.com/challenges)
+- [cyberedu](https://app.cyber-edu.co/user/9c09310c-3032-4ba1-a1d2-b63a1cecb339?tenant=cyberedu)
 
 Also [ctftime](https://ctftime.org/team/182186) for real-time events
 
