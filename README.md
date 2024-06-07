@@ -1,8 +1,6 @@
 # Zer0ne Blog
 
-<img src="static/pictures/dark_logo.png" alt="logo" width="200" height="200">
-
-*credits: this logo is inspired from Genegoldstein's work for izzy deluxe in the living tombstone's hunter song*
+![logo](static/pictures/dark_logo.png "credits: this logo is inspired from Genegoldstein's work for izzy deluxe in the living tombstone's hunter song")
 
 Hello friend 🤖,
 
@@ -16,7 +14,8 @@ This repository is not really open for external contributions but feel free to o
 
 Most importantly, as I use a submodule theme you need to get it locally too using `git submodule init`then `git submodule update`. This is deployed with `github pages + actions`. To test it run below commands:
 
-- `hugo server` for local development
-- `hugo -D` for building
+- `hugo server` for local development (you might need to override the baseURL in the config file
+using the `--baseURL=http://localhost:1313` flag)
+- `hugo -D` for building the website
 
 Check [hugo website](https://gohugo.io/) for more information about this great static site generator

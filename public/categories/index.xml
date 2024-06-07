@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Zer0ne</title>
-    <link>https://nair0lf32.github.io/zer0ne/categories/</link>
-    <description>Recent content in Categories on Zer0ne</description>
+    <title>Categories on Zer0ne blog</title>
+    <link>http://localhost:1313/categories/</link>
+    <description>Recent content in Categories on Zer0ne blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 13 May 2023 23:00:31 +0100</lastBuildDate><atom:link href="https://nair0lf32.github.io/zer0ne/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Mar 2024 09:40:47 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TryHackMe</title>
-      <link>https://nair0lf32.github.io/zer0ne/categories/tryhackme/</link>
-      <pubDate>Sat, 13 May 2023 23:00:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/categories/tryhackme/</guid>
+      <link>http://localhost:1313/categories/tryhackme/</link>
+      <pubDate>Sun, 03 Mar 2024 16:48:00 +0100</pubDate>
+      <guid>http://localhost:1313/categories/tryhackme/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>HackTheBox</title>
-      <link>https://nair0lf32.github.io/zer0ne/categories/hackthebox/</link>
-      <pubDate>Tue, 20 Sep 2022 15:03:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/categories/hackthebox/</guid>
+      <title>Others</title>
+      <link>http://localhost:1313/categories/others/</link>
+      <pubDate>Wed, 20 Dec 2023 13:00:31 +0100</pubDate>
+      <guid>http://localhost:1313/categories/others/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>Cyberseclabs</title>
-      <link>https://nair0lf32.github.io/zer0ne/categories/cyberseclabs/</link>
-      <pubDate>Sun, 18 Sep 2022 18:33:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/categories/cyberseclabs/</guid>
-      <description></description>
-    </item>
-    
     <item>
       <title>Hackerlab</title>
-      <link>https://nair0lf32.github.io/zer0ne/categories/hackerlab/</link>
-      <pubDate>Fri, 16 Sep 2022 18:33:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/categories/hackerlab/</guid>
+      <link>http://localhost:1313/categories/hackerlab/</link>
+      <pubDate>Sun, 03 Sep 2023 13:33:31 +0100</pubDate>
+      <guid>http://localhost:1313/categories/hackerlab/</guid>
       <description></description>
     </item>
-    
+    <item>
+      <title>HackTheBox</title>
+      <link>http://localhost:1313/categories/hackthebox/</link>
+      <pubDate>Tue, 20 Sep 2022 15:03:31 +0100</pubDate>
+      <guid>http://localhost:1313/categories/hackthebox/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cyberseclabs</title>
+      <link>http://localhost:1313/categories/cyberseclabs/</link>
+      <pubDate>Sun, 18 Sep 2022 18:33:31 +0100</pubDate>
+      <guid>http://localhost:1313/categories/cyberseclabs/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

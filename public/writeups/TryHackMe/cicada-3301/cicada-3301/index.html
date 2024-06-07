@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Ananlyse the audio here is the audio
+With visual-analyser add a spectrogram layer and get this qr code
+It gives you a link to a pastebin. Answer to question 1
+Decode the passphrase from the pastebin you get a passhprase and a key, both in base64
+Then use the key to decode the new passphrase. I let you guess this one it&amp;rsquo;s funnier&amp;hellip;
+Or just use the hints
+Gather Metadata use steghide with the passphrase to get the invitation." />
+<meta name="keywords" content="hacking, cybersecurity, ctf, nair0lf32, zerone, zer0ne" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="http://localhost:1313/writeups/tryhackme/cicada-3301/cicada-3301/" />
+
+
+    <title>
+        
+            Cicada 3301 :: Zer0ne blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="http://localhost:1313/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+    <link rel="manifest" href="http://localhost:1313/site.webmanifest">
+    <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="http://localhost:1313/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Cicada 3301">
+<meta itemprop="description" content="Ananlyse the audio here is the audio
+With visual-analyser add a spectrogram layer and get this qr code
+It gives you a link to a pastebin. Answer to question 1
+Decode the passphrase from the pastebin you get a passhprase and a key, both in base64
+Then use the key to decode the new passphrase. I let you guess this one it&rsquo;s funnier&hellip;
+Or just use the hints
+Gather Metadata use steghide with the passphrase to get the invitation."><meta itemprop="datePublished" content="2024-03-03T16:48:00+01:00" />
+<meta itemprop="dateModified" content="2024-03-04T09:40:47+01:00" />
+<meta itemprop="wordCount" content="233"><meta itemprop="image" content="http://localhost:1313/" />
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/" /><meta name="twitter:title" content="Cicada 3301"/>
+<meta name="twitter:description" content="Ananlyse the audio here is the audio
+With visual-analyser add a spectrogram layer and get this qr code
+It gives you a link to a pastebin. Answer to question 1
+Decode the passphrase from the pastebin you get a passhprase and a key, both in base64
+Then use the key to decode the new passphrase. I let you guess this one it&rsquo;s funnier&hellip;
+Or just use the hints
+Gather Metadata use steghide with the passphrase to get the invitation."/>
+
+
+
+    <meta property="og:title" content="Cicada 3301" />
+<meta property="og:description" content="Ananlyse the audio here is the audio
+With visual-analyser add a spectrogram layer and get this qr code
+It gives you a link to a pastebin. Answer to question 1
+Decode the passphrase from the pastebin you get a passhprase and a key, both in base64
+Then use the key to decode the new passphrase. I let you guess this one it&rsquo;s funnier&hellip;
+Or just use the hints
+Gather Metadata use steghide with the passphrase to get the invitation." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/writeups/tryhackme/cicada-3301/cicada-3301/" /><meta property="og:image" content="http://localhost:1313/" /><meta property="article:section" content="writeups" />
+<meta property="article:published_time" content="2024-03-03T16:48:00+01:00" />
+<meta property="article:modified_time" content="2024-03-04T09:40:47+01:00" />
+
+
+
+
+
+    <meta property="article:section" content="TryHackMe" />
+
+
+
+    <meta property="article:published_time" content="2024-03-03 16:48:00 &#43;0100 WAT" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="http://localhost:1313/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">#&gt;</span>
+            <span class="logo__text">0/1</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="http://localhost:1313/about">About</a></li><li><a href="http://localhost:1313/posts">Blog</a></li><li><a href="http://localhost:1313/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="http://localhost:1313/writeups/tryhackme/cicada-3301/cicada-3301/">Cicada 3301</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <p><img src="http://localhost:1313/thm/cicada-3301/cicada.jpeg" alt="cicada"></p>
+<p><img src="http://localhost:1313/thm/cicada-3301/welcome.jpg" alt="welcome"></p>
+<h2 id="ananlyse-the-audio">Ananlyse the audio</h2>
+<p><a href="http://localhost:1313/thm/cicada-3301/audio.wav">here is the audio</a></p>
+<p>With visual-analyser add a spectrogram layer and get this qr code</p>
+<p><img src="http://localhost:1313/thm/cicada-3301/qr.png" alt="qr"></p>
+<p>It gives you a link to a pastebin. Answer to question 1</p>
+<h2 id="decode-the-passphrase">Decode the passphrase</h2>
+<p>from the pastebin you get a passhprase and a key, both in base64</p>
+<p>Then use  the key to decode the new passphrase. I let you guess this one it&rsquo;s funnier&hellip;</p>
+<p>Or just use the hints</p>
+<h2 id="gather-metadata">Gather Metadata</h2>
+<p>use <code>steghide</code> with the passphrase to get the <code>invitation.txt</code> which contains a link to an imgur image</p>
+<p><img src="http://localhost:1313/thm/cicada-3301/undefined.jpg" alt="qr"></p>
+<p>Looks like the first image right? Not the same! use <code>outguess</code> to extract the next challenge</p>
+<p>Note: Make  sure to download the image correctly from imgur and not just &ldquo;save as&rdquo; image</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>└─<span style="color:#f92672">(</span>01:53:12 on master ✭<span style="color:#f92672">)</span>──&gt; outguess -r  undefined.jpg  out.txt                                                                                                         <span style="color:#ae81ff">1</span> ↵ ──<span style="color:#f92672">(</span>lun.,mars04<span style="color:#f92672">)</span>─┘
+</span></span><span style="display:flex;"><span>Reading undefined.jpg....
+</span></span><span style="display:flex;"><span>Extracting usable bits:   <span style="color:#ae81ff">29035</span> bits
+</span></span><span style="display:flex;"><span>Steg retrieve: seed: 38, len: <span style="color:#ae81ff">1351</span>
+</span></span></code></pre></div><h2 id="book-cypher">Book cypher</h2>
+<p>In the text we just extracted there is a hash. Use <a href="https://md5hashing.net/hash/">this</a> to get it cracked</p>
+<p>yes it&rsquo;s another pastebin link&hellip;</p>
+<p>From that you get a book&hellip;and now the rest of the challenge makes sense&hellip;You use the pattern provided in the extracted text
+to read something from the book&hellip;</p>
+<p>use some good old pen and paper to get ANOTHER link (not pastebin this time)</p>
+<h2 id="the-final-song">The final song</h2>
+<p>The satisfaction of solving this room is perfectly described by this song. This room is very cool</p>
+<p>Remember, cicadas don&rsquo;t cry</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="http://localhost:1313/categories/tryhackme/">TryHackMe</a></span>
+        
+    </p>
+
+			    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="https://github.com/nair0lf32/zer0ne-blog50aee16b1174733002381a7536c4b33c22a500a6" target="_blank" rel="noopener">50aee16</a> @ 2024-03-04</p>
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2024</span>
+            <span><a href="http://localhost:1313/">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="http://localhost:1313/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="http://localhost:1313/bundle.min.b1dc444a7108174ae3d2294f982be5e99e844ae2b8d58eeea19d929bde0338be4d12ed8a4dfc67194dcc6726fa6a82705119c0d7e4edd4de9294be6535ea7b7f.js" integrity="sha512-sdxESnEIF0rj0ilPmCvl6Z6ESuK41Y7uoZ2Sm94DOL5NEu2KTfxnGU3MZyb6aoJwURnA1&#43;Tt1N6SlL5lNep7fw=="></script>
+
+
+
+    </body>
+</html>

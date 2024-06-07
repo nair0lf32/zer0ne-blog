@@ -1,127 +1,83 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>TryHackMe on Zer0ne</title>
-    <link>https://nair0lf32.github.io/zer0ne/categories/tryhackme/</link>
-    <description>Recent content in TryHackMe on Zer0ne</description>
+    <title>TryHackMe on Zer0ne blog</title>
+    <link>http://localhost:1313/categories/tryhackme/</link>
+    <description>Recent content in TryHackMe on Zer0ne blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 13 May 2023 23:00:31 +0100</lastBuildDate><atom:link href="https://nair0lf32.github.io/zer0ne/categories/tryhackme/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Mar 2024 09:40:47 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/tryhackme/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cicada 3301</title>
+      <link>http://localhost:1313/writeups/tryhackme/cicada-3301/cicada-3301/</link>
+      <pubDate>Sun, 03 Mar 2024 16:48:00 +0100</pubDate>
+      <guid>http://localhost:1313/writeups/tryhackme/cicada-3301/cicada-3301/</guid>
+      <description>Ananlyse the audio here is the audio&#xA;With visual-analyser add a spectrogram layer and get this qr code&#xA;It gives you a link to a pastebin. Answer to question 1&#xA;Decode the passphrase from the pastebin you get a passhprase and a key, both in base64&#xA;Then use the key to decode the new passphrase. I let you guess this one it&amp;rsquo;s funnier&amp;hellip;&#xA;Or just use the hints&#xA;Gather Metadata use steghide with the passphrase to get the invitation.</description>
+    </item>
+    <item>
+      <title>Pokemon</title>
+      <link>http://localhost:1313/writeups/tryhackme/pokemon/pokemon/</link>
+      <pubDate>Sun, 03 Mar 2024 11:51:00 +0100</pubDate>
+      <guid>http://localhost:1313/writeups/tryhackme/pokemon/pokemon/</guid>
+      <description>Gotta catch &amp;rsquo;em all I wanna be the very best&amp;hellip;LIKE NO ONE EVER WAS!&#xA;PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 58:14:75:69:1e:a9:59:5f:b2:3a:69:1c:6c:78:5c:27 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5csEY9HQAEkHk16FMvfJVYh4YzdcIRCQpv2IOon6FHy3la/DkwscWsUIp7hXmMeW35Oa7OfI08LvyokxDX8bKgKUpU/dP05LNyDzv17MKB6rt3SkPbDv3XVMlu101/wkIMIOdJ38TW0+vVlU89cjQ5XiSDep4kKm/+6fEl2zM5x60DKexOOYTQ3t8SRkBV4TnWmr9wDQCDH/Kc8Pl2W9GM7hgAhVB9uUhN/EBCUbwZ8xE0ToOQz+QIkCTEuwD/AhDoURmRzv7EGut0TBrUPvFCK19v2Crw/BVQc07taDkei4N0/MwpXvI4CnJ6jpGOgxTMePk/nZusz/XbnUtnIqD | 256 23:f5:fb:e7:57:c2:a5:3e:c2:26:29:0e:74:db:37:c2 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP9bcehMnrIADUJHvNw7/zastIegVYRSXcF40Pky1Yllzx872e/LUM6UdTNaC4gffBnEpKcmwE9wjR+J6lfR8Yk= | 256 f1:9b:b5:8a:b9:29:aa:b6:aa:a2:52:4a:6e:65:95:c5 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICabmX4EeiR66bXPzMHbCZpkcUu+GSkDJP1nZ2+30Vm+ 80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu)) |_http-title: Can You Find Them All? |_http-server-header: Apache/2.4.18 (Ubuntu) | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Grass type Pokemon The website source code shows this interesting javascript</description>
+    </item>
+    <item>
+      <title>One Piece</title>
+      <link>http://localhost:1313/writeups/tryhackme/one-piece/one-piece/</link>
+      <pubDate>Wed, 17 Jan 2024 22:30:00 +0100</pubDate>
+      <guid>http://localhost:1313/writeups/tryhackme/one-piece/one-piece/</guid>
+      <description>It&amp;rsquo;s been a while I didn&amp;rsquo;t play a CTF on TryHackMe. While searching for a fun room I found one named &amp;ldquo;One Piece&amp;rdquo;. I was like&amp;hellip;wait, why is this not already done? Who would not want to do a CTF on One Piece? c&amp;rsquo;mon! let&amp;rsquo;s set sail!&#xA;Enumeration PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.3 | ftp-syst: | STAT: | FTP server status: | Connected to ::ffff:10.</description>
+    </item>
     <item>
       <title>Steel mountain</title>
-      <link>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/steel-mountain/steel-mountain/</link>
+      <link>http://localhost:1313/writeups/tryhackme/steel-mountain/steel-mountain/</link>
       <pubDate>Sat, 13 May 2023 23:00:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/steel-mountain/steel-mountain/</guid>
-      <description>This one is a cool room!
-I have been very busy this year and could not play much but decided to give a shot to premium THM nonetheless. I was not disappointed!
-Enumeration nmap PORT STATE SERVICE REASON VERSION 80/tcp open http syn-ack Microsoft IIS httpd 8.5 |_http-title: Site doesn&amp;#39;t have a title (text/html). |_http-server-header: Microsoft-IIS/8.5 | http-methods: | Supported Methods: OPTIONS TRACE GET HEAD POST |_ Potentially risky methods: TRACE 135/tcp open msrpc syn-ack Microsoft Windows RPC 139/tcp open netbios-ssn syn-ack Microsoft Windows netbios-ssn 445/tcp open microsoft-ds syn-ack Microsoft Windows Server 2008 R2 - 2012 microsoft-ds 3389/tcp open ssl/ms-wbt-server?</description>
+      <guid>http://localhost:1313/writeups/tryhackme/steel-mountain/steel-mountain/</guid>
+      <description>This one is a cool room!&#xA;I have been very busy this year and could not play much but decided to give a shot to premium THM nonetheless. I was not disappointed!&#xA;Enumeration nmap PORT STATE SERVICE REASON VERSION&#xD;80/tcp open http syn-ack Microsoft IIS httpd 8.5&#xD;|_http-title: Site doesn&amp;#39;t have a title (text/html).&#xD;|_http-server-header: Microsoft-IIS/8.5&#xD;| http-methods: | Supported Methods: OPTIONS TRACE GET HEAD POST&#xD;|_ Potentially risky methods: TRACE&#xD;135/tcp open msrpc syn-ack Microsoft Windows RPC&#xD;139/tcp open netbios-ssn syn-ack Microsoft Windows netbios-ssn&#xD;445/tcp open microsoft-ds syn-ack Microsoft Windows Server 2008 R2 - 2012 microsoft-ds&#xD;3389/tcp open ssl/ms-wbt-server?</description>
     </item>
-    
     <item>
       <title>Wonderland</title>
-      <link>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/wonderland/wonderland/</link>
+      <link>http://localhost:1313/writeups/tryhackme/wonderland/wonderland/</link>
       <pubDate>Sun, 23 Oct 2022 23:00:10 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/wonderland/wonderland/</guid>
-      <description>Alice in wonderland&amp;hellip;weirdest book I ever read as a kid and even more as an adult
-Let&amp;rsquo;s follow the rabbit
-Enumeration rustscan + nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 8e:ee:fb:96:ce:ad:70:dd:05:a9:3b:0d:b0:71:b8:63 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDe20sKMgKSMTnyRTmZhXPxn+xLggGUemXZLJDkaGAkZSMgwM3taNTc8OaEku7BvbOkqoIya4ZI8vLuNdMnESFfB22kMWfkoB0zKCSWzaiOjvdMBw559UkLCZ3bgwDY2RudNYq5YEwtqQMFgeRCC1/rO4h4Hl0YjLJufYOoIbK0EPaClcDPYjp+E1xpbn3kqKMhyWDvfZ2ltU1Et2MkhmtJ6TH2HA+eFdyMEQ5SqX6aASSXM7OoUHwJJmptyr2aNeUXiytv7uwWHkIqk3vVrZBXsyjW4ebxC3v0/Oqd73UWd5epuNbYbBNls06YZDVI8wyZ0eYGKwjtogg5+h82rnWN | 256 7a:92:79:44:16:4f:20:43:50:a9:a8:47:e2:c2:be:84 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHH2gIouNdIhId0iND9UFQByJZcff2CXQ5Esgx1L96L50cYaArAW3A3YP3VDg4tePrpavcPJC2IDonroSEeGj6M= | 256 00:0b:80:44:e6:3d:4b:69:47:92:2c:55:14:7e:2a:c9 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAsWAdr9g04J7Q8aeiWYg03WjPqGVS6aNf/LF+/hMyKh 80/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API) |_http-title: Follow the white rabbit.</description>
+      <guid>http://localhost:1313/writeups/tryhackme/wonderland/wonderland/</guid>
+      <description>Alice in wonderland&amp;hellip;weirdest book I ever read as a kid and even more as an adult&#xA;Let&amp;rsquo;s follow the rabbit&#xA;Enumeration rustscan + nmap PORT STATE SERVICE REASON VERSION&#xD;22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)&#xD;| ssh-hostkey: | 2048 8e:ee:fb:96:ce:ad:70:dd:05:a9:3b:0d:b0:71:b8:63 (RSA)&#xD;| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDe20sKMgKSMTnyRTmZhXPxn+xLggGUemXZLJDkaGAkZSMgwM3taNTc8OaEku7BvbOkqoIya4ZI8vLuNdMnESFfB22kMWfkoB0zKCSWzaiOjvdMBw559UkLCZ3bgwDY2RudNYq5YEwtqQMFgeRCC1/rO4h4Hl0YjLJufYOoIbK0EPaClcDPYjp+E1xpbn3kqKMhyWDvfZ2ltU1Et2MkhmtJ6TH2HA+eFdyMEQ5SqX6aASSXM7OoUHwJJmptyr2aNeUXiytv7uwWHkIqk3vVrZBXsyjW4ebxC3v0/Oqd73UWd5epuNbYbBNls06YZDVI8wyZ0eYGKwjtogg5+h82rnWN&#xD;| 256 7a:92:79:44:16:4f:20:43:50:a9:a8:47:e2:c2:be:84 (ECDSA)&#xD;| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHH2gIouNdIhId0iND9UFQByJZcff2CXQ5Esgx1L96L50cYaArAW3A3YP3VDg4tePrpavcPJC2IDonroSEeGj6M=&#xD;| 256 00:0b:80:44:e6:3d:4b:69:47:92:2c:55:14:7e:2a:c9 (ED25519)&#xD;|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAsWAdr9g04J7Q8aeiWYg03WjPqGVS6aNf/LF+/hMyKh&#xD;80/tcp open http syn-ack Golang net/http server (Go-IPFS json-rpc or InfluxDB API)&#xD;|_http-title: Follow the white rabbit.</description>
     </item>
-    
     <item>
       <title>0 day</title>
-      <link>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/0day/0day/</link>
+      <link>http://localhost:1313/writeups/tryhackme/0day/0day/</link>
       <pubDate>Thu, 22 Sep 2022 16:00:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/0day/0day/</guid>
-      <description>&amp;ldquo;Exploit Ubuntu, like a Turtle in a Hurricane&amp;rdquo;
-Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.13 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 1024 57:20:82:3c:62:aa:8f:42:23:c0:b8:93:99:6f:49:9c (DSA) | ssh-dss AAAAB3NzaC1kc3MAAACBAPcMQIfRe52VJuHcnjPyvMcVKYWsaPnADsmH+FR4OyR5lMSURXSzS15nxjcXEd3i9jk14amEDTZr1zsapV1Ke2Of/n6V5KYoB7p7w0HnFuMriUSWStmwRZCjkO/LQJkMgrlz1zVjrDEANm3fwjg0I7Ht1/gOeZYEtIl9DRqRzc1ZAAAAFQChwhLtInglVHlWwgAYbni33wUAfwAAAIAcFv6QZL7T2NzBsBuq0RtlFux0SAPYY2l+PwHZQMtRYko94NUv/XUaSN9dPrVKdbDk4ZeTHWO5H6P0t8LruN/18iPqvz0OKHQCgc50zE0pTDTS+GdO4kp3CBSumqsYc4nZsK+lyuUmeEPGKmcU6zlT03oARnYA6wozFZggJCUG4QAAAIBQKMkRtPhl3pXLhXzzlSJsbmwY6bNRTbJebGBx6VNSV3imwPXLR8VYEmw3O2Zpdei6qQlt6f2S3GaSSUBXe78h000/JdckRk6A73LFUxSYdXl1wCiz0TltSogHGYV9CxHDUHAvfIs5QwRAYVkmMe2H+HSBc3tKeHJEECNkqM2Qiw== | 2048 4c:40:db:32:64:0d:11:0c:ef:4f:b8:5b:73:9b:c7:6b (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwY8CfRqdJ+C17QnSu2hTDhmFODmq1UTBu3ctj47tH/uBpRBCTvput1+++BhyvexQbNZ6zKL1MeDq0bVAGlWZrHdw73LCSA1e6GrGieXnbLbuRm3bfdBWc4CGPItmRHzw5dc2MwO492ps0B7vdxz3N38aUbbvcNOmNJjEWsS86E25LIvCqY3txD+Qrv8+W+Hqi9ysbeitb5MNwd/4iy21qwtagdi1DMjuo0dckzvcYqZCT7DaToBTT77Jlxj23mlbDAcSrb4uVCE538BGyiQ2wgXYhXpGKdtpnJEhSYISd7dqm6pnEkJXSwoDnSbUiMCT+ya7yhcNYW3SKYxUTQzIV | 256 f7:6f:78:d5:83:52:a6:4d:da:21:3c:55:47:b7:2d:6d (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKF5YbiHxYqQ7XbHoh600yn8M69wYPnLVAb4lEASOGH6l7+irKU5qraViqgVR06I8kRznLAOw6bqO2EqB8EBx+E= | 256 a5:b4:f0:84:b6:a7:8d:eb:0a:9d:3e:74:37:33:65:16 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIItaO2Q/3nOu5T16taNBbx5NqcWNAbOkTZHD2TB1FcVg 80/tcp open http syn-ack Apache httpd 2.4.7 ((Ubuntu)) |_http-server-header: Apache/2.4.7 (Ubuntu) |_http-title: 0day | http-methods: |_ Supported Methods: POST OPTIONS GET HEAD Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Gobuster /.</description>
+      <guid>http://localhost:1313/writeups/tryhackme/0day/0day/</guid>
+      <description>&amp;ldquo;Exploit Ubuntu, like a Turtle in a Hurricane&amp;rdquo;&#xA;Enumeration nmap PORT STATE SERVICE REASON VERSION&#xD;22/tcp open ssh syn-ack OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.13 (Ubuntu Linux; protocol 2.0)&#xD;| ssh-hostkey: | 1024 57:20:82:3c:62:aa:8f:42:23:c0:b8:93:99:6f:49:9c (DSA)&#xD;| ssh-dss AAAAB3NzaC1kc3MAAACBAPcMQIfRe52VJuHcnjPyvMcVKYWsaPnADsmH+FR4OyR5lMSURXSzS15nxjcXEd3i9jk14amEDTZr1zsapV1Ke2Of/n6V5KYoB7p7w0HnFuMriUSWStmwRZCjkO/LQJkMgrlz1zVjrDEANm3fwjg0I7Ht1/gOeZYEtIl9DRqRzc1ZAAAAFQChwhLtInglVHlWwgAYbni33wUAfwAAAIAcFv6QZL7T2NzBsBuq0RtlFux0SAPYY2l+PwHZQMtRYko94NUv/XUaSN9dPrVKdbDk4ZeTHWO5H6P0t8LruN/18iPqvz0OKHQCgc50zE0pTDTS+GdO4kp3CBSumqsYc4nZsK+lyuUmeEPGKmcU6zlT03oARnYA6wozFZggJCUG4QAAAIBQKMkRtPhl3pXLhXzzlSJsbmwY6bNRTbJebGBx6VNSV3imwPXLR8VYEmw3O2Zpdei6qQlt6f2S3GaSSUBXe78h000/JdckRk6A73LFUxSYdXl1wCiz0TltSogHGYV9CxHDUHAvfIs5QwRAYVkmMe2H+HSBc3tKeHJEECNkqM2Qiw==&#xD;| 2048 4c:40:db:32:64:0d:11:0c:ef:4f:b8:5b:73:9b:c7:6b (RSA)&#xD;| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwY8CfRqdJ+C17QnSu2hTDhmFODmq1UTBu3ctj47tH/uBpRBCTvput1+++BhyvexQbNZ6zKL1MeDq0bVAGlWZrHdw73LCSA1e6GrGieXnbLbuRm3bfdBWc4CGPItmRHzw5dc2MwO492ps0B7vdxz3N38aUbbvcNOmNJjEWsS86E25LIvCqY3txD+Qrv8+W+Hqi9ysbeitb5MNwd/4iy21qwtagdi1DMjuo0dckzvcYqZCT7DaToBTT77Jlxj23mlbDAcSrb4uVCE538BGyiQ2wgXYhXpGKdtpnJEhSYISd7dqm6pnEkJXSwoDnSbUiMCT+ya7yhcNYW3SKYxUTQzIV&#xD;| 256 f7:6f:78:d5:83:52:a6:4d:da:21:3c:55:47:b7:2d:6d (ECDSA)&#xD;| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKF5YbiHxYqQ7XbHoh600yn8M69wYPnLVAb4lEASOGH6l7+irKU5qraViqgVR06I8kRznLAOw6bqO2EqB8EBx+E=&#xD;| 256 a5:b4:f0:84:b6:a7:8d:eb:0a:9d:3e:74:37:33:65:16 (ED25519)&#xD;|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIItaO2Q/3nOu5T16taNBbx5NqcWNAbOkTZHD2TB1FcVg&#xD;80/tcp open http syn-ack Apache httpd 2.4.7 ((Ubuntu))&#xD;|_http-server-header: Apache/2.4.7 (Ubuntu)&#xD;|_http-title: 0day&#xD;| http-methods: |_ Supported Methods: POST OPTIONS GET HEAD&#xD;Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Gobuster /.</description>
     </item>
-    
     <item>
       <title>Advent of cyber 3 (2021)</title>
-      <link>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/advent-of-cyber/3-2021/advent-of-cyber-3/</link>
+      <link>http://localhost:1313/writeups/tryhackme/advent-of-cyber/3-2021/advent-of-cyber-3/</link>
       <pubDate>Tue, 20 Sep 2022 16:00:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/advent-of-cyber/3-2021/advent-of-cyber-3/</guid>
-      <description>Advent of cyber 3 (2021) Oh boy it&amp;rsquo;s christmas soon and tryhackme is bein awesome again!
-it&amp;rsquo;s my first advent of cyber and I could not be more hyped
-I wanted to do it for the christmas vibes and i discovered I could also win some stuff
-I wish i could get the big prizes&amp;hellip;but hey as long as we have fun
-The story Day 1 - Save the gifts Hehe that was an easy warmup about IDOR.</description>
+      <guid>http://localhost:1313/writeups/tryhackme/advent-of-cyber/3-2021/advent-of-cyber-3/</guid>
+      <description>Advent of cyber 3 (2021) Oh boy it&amp;rsquo;s christmas soon and tryhackme is bein awesome again!&#xA;it&amp;rsquo;s my first advent of cyber and I could not be more hyped&#xA;I wanted to do it for the christmas vibes and i discovered I could also win some stuff&#xA;I wish i could get the big prizes&amp;hellip;but hey as long as we have fun&#xA;The story Day 1 - Save the gifts Hehe that was an easy warmup about IDOR.</description>
     </item>
-    
     <item>
       <title>Agent sudo</title>
-      <link>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/agent-sudo/agent-sudo/</link>
+      <link>http://localhost:1313/writeups/tryhackme/agent-sudo/agent-sudo/</link>
       <pubDate>Tue, 20 Sep 2022 16:00:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/agent-sudo/agent-sudo/</guid>
-      <description>Enumeration nmap PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.3 22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 ef:1f:5d:04:d4:77:95:06:60:72:ec:f0:58:f2:cc:07 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5hdrxDB30IcSGobuBxhwKJ8g+DJcUO5xzoaZP/vJBtWoSf4nWDqaqlJdEF0Vu7Sw7i0R3aHRKGc5mKmjRuhSEtuKKjKdZqzL3xNTI2cItmyKsMgZz+lbMnc3DouIHqlh748nQknD/28+RXREsNtQZtd0VmBZcY1TD0U4XJXPiwleilnsbwWA7pg26cAv9B7CcaqvMgldjSTdkT1QNgrx51g4IFxtMIFGeJDh2oJkfPcX6KDcYo6c9W1l+SCSivAQsJ1dXgA2bLFkG/wPaJaBgCzb8IOZOfxQjnIqBdUNFQPlwshX/nq26BMhNGKMENXJUpvUTshoJ/rFGgZ9Nj31r | 256 5e:02:d1:9a:c4:e7:43:06:62:c1:9e:25:84:8a:e7:ea (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHdSVnnzMMv6VBLmga/Wpb94C9M2nOXyu36FCwzHtLB4S4lGXa2LzB5jqnAQa0ihI6IDtQUimgvooZCLNl6ob68= | 256 2d:00:5c:b9:fd:a8:c8:d8:80:e3:92:4f:8b:4f:18:e2 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOL3wRjJ5kmGs/hI4aXEwEndh81Pm/fvo8EvcpDHR5nt 80/tcp open http syn-ack Apache httpd 2.4.29 ((Ubuntu)) |_http-server-header: Apache/2.4.29 (Ubuntu) | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS |_http-title: Annoucement 18101/tcp filtered unknown no-response 50001/tcp filtered unknown no-response Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel On the website :</description>
+      <guid>http://localhost:1313/writeups/tryhackme/agent-sudo/agent-sudo/</guid>
+      <description>Enumeration nmap PORT STATE SERVICE REASON VERSION&#xD;21/tcp open ftp syn-ack vsftpd 3.0.3&#xD;22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)&#xD;| ssh-hostkey:&#xD;| 2048 ef:1f:5d:04:d4:77:95:06:60:72:ec:f0:58:f2:cc:07 (RSA)&#xD;| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5hdrxDB30IcSGobuBxhwKJ8g+DJcUO5xzoaZP/vJBtWoSf4nWDqaqlJdEF0Vu7Sw7i0R3aHRKGc5mKmjRuhSEtuKKjKdZqzL3xNTI2cItmyKsMgZz+lbMnc3DouIHqlh748nQknD/28+RXREsNtQZtd0VmBZcY1TD0U4XJXPiwleilnsbwWA7pg26cAv9B7CcaqvMgldjSTdkT1QNgrx51g4IFxtMIFGeJDh2oJkfPcX6KDcYo6c9W1l+SCSivAQsJ1dXgA2bLFkG/wPaJaBgCzb8IOZOfxQjnIqBdUNFQPlwshX/nq26BMhNGKMENXJUpvUTshoJ/rFGgZ9Nj31r&#xD;| 256 5e:02:d1:9a:c4:e7:43:06:62:c1:9e:25:84:8a:e7:ea (ECDSA)&#xD;| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHdSVnnzMMv6VBLmga/Wpb94C9M2nOXyu36FCwzHtLB4S4lGXa2LzB5jqnAQa0ihI6IDtQUimgvooZCLNl6ob68=&#xD;| 256 2d:00:5c:b9:fd:a8:c8:d8:80:e3:92:4f:8b:4f:18:e2 (ED25519)&#xD;|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOL3wRjJ5kmGs/hI4aXEwEndh81Pm/fvo8EvcpDHR5nt&#xD;80/tcp open http syn-ack Apache httpd 2.4.29 ((Ubuntu))&#xD;|_http-server-header: Apache/2.4.29 (Ubuntu)&#xD;| http-methods:&#xD;|_ Supported Methods: GET HEAD POST OPTIONS&#xD;|_http-title: Annoucement&#xD;18101/tcp filtered unknown no-response&#xD;50001/tcp filtered unknown no-response&#xD;Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel On the website :</description>
     </item>
-    
     <item>
       <title>All in one</title>
-      <link>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/all-in-one/all-in-one/</link>
+      <link>http://localhost:1313/writeups/tryhackme/all-in-one/all-in-one/</link>
       <pubDate>Tue, 20 Sep 2022 16:00:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/all-in-one/all-in-one/</guid>
-      <description>I like the concept of this machine alot. many ways to exploit
-Like sometimes it do be like that IRL
-Enumeration nmap PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.3 |_ftp-anon: Anonymous FTP login allowed (FTP code 230) | ftp-syst: | STAT: | FTP server status: | Connected to ::ffff:10.8.226.203 | Logged in as ftp | TYPE: ASCII | No session bandwidth limit | Session timeout in seconds is 300 | Control connection is plain text | Data connections will be plain text | At session startup, client count was 4 | vsFTPd 3.</description>
+      <guid>http://localhost:1313/writeups/tryhackme/all-in-one/all-in-one/</guid>
+      <description>I like the concept of this machine alot. many ways to exploit&#xA;Like sometimes it do be like that IRL&#xA;Enumeration nmap PORT STATE SERVICE REASON VERSION&#xD;21/tcp open ftp syn-ack vsftpd 3.0.3&#xD;|_ftp-anon: Anonymous FTP login allowed (FTP code 230)&#xD;| ftp-syst: | STAT: | FTP server status:&#xD;| Connected to ::ffff:10.8.226.203&#xD;| Logged in as ftp&#xD;| TYPE: ASCII&#xD;| No session bandwidth limit&#xD;| Session timeout in seconds is 300&#xD;| Control connection is plain text&#xD;| Data connections will be plain text&#xD;| At session startup, client count was 4&#xD;| vsFTPd 3.</description>
     </item>
-    
     <item>
       <title>Atlas</title>
-      <link>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/atlas/atlas/</link>
+      <link>http://localhost:1313/writeups/tryhackme/atlas/atlas/</link>
       <pubDate>Tue, 20 Sep 2022 16:00:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/atlas/atlas/</guid>
-      <description>they say its an easy windows room for beginners
-that is exactly what I am
-let&amp;rsquo;s speedrun this
-Quick note here&amp;hellip;for windows machines -Pn flag for nmap is useful for bypassing IMCP filters
-Enumeration Nmap PORT STATE SERVICE REASON 3389/tcp open ms-wbt-server syn-ack | ssl-cert: Subject: commonName=GAIA | Issuer: commonName=GAIA | Public Key type: rsa | Public Key bits: 2048 | Signature Algorithm: sha256WithRSAEncryption | Not valid before: 2021-08-29T20:56:26 | Not valid after: 2022-02-28T20:56:26 | MD5: 4f8e 1595 0ddf 896b f328 382c 74e1 4757 | SHA-1: 0487 ba8b 71a7 25e4 861d 29bd 0dba dde0 8f63 5038 | -----BEGIN CERTIFICATE----- | MIICzDCCAbSgAwIBAgIQUMxZ1WSDRaRHMk1jQH2EHzANBgkqhkiG9w0BAQsFADAP | MQ0wCwYDVQQDEwRHQUlBMB4XDTIxMDgyOTIwNTYyNloXDTIyMDIyODIwNTYyNlow | DzENMAsGA1UEAxMER0FJQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB | AMFiXWfKB/B0VcofnYBW/8XnUhE5Y659HIJia9Bk5nlG6g9otdGGSktBPGbP6RtX | TuvWYRdmcIMSgiN66yb6Ow62eVVkdSC2vTP6Lc7FzB/Knm7Liud7TBjsWI1y/I4l | WsdFnLiZo8yDP+q4WRpHivdrPVGOzuMpMNh7V1sj7k9WToOyHWVWPIhPERdsfHqn | 1fwAaqGhu0CF7XMhrutMBwJgSzNlTItuYnSPB6dlqBFabVSZpusPc0liTrDg4Q7n | O9p6ous1W008+zH1V9g+Tp6WDRhDVcLTMv90R2K6dvrLnhVkx5XZzf1AWqiLX7Fa | xahHm9cJ7WVwYBTV5OZAfGkCAwEAAaMkMCIwEwYDVR0lBAwwCgYIKwYBBQUHAwEw | CwYDVR0PBAQDAgQwMA0GCSqGSIb3DQEBCwUAA4IBAQBzm8kaotMsW9jzDEtKVVEE | JahZ+2m09iz6Gn139yz/+mCb62DbnWlGFg1+EbK4T2tvdQKpL+d7zBX9tjSwme8G | 4RvO+NrrqMuNCdZzgjRIEajgPK9pA+KdtiLW1IwuPHRCvXWPAJ3nTNvU24DaqpxQ | vF7UPvSiVtEXZ4hCY4GWr9Zb9YDRcjBeyNIMURVkfvOB6c2ty7PxSjxi1oEzXiq/ | IgHS+uYfrpGyB4eQm3DStUkYW3sbmWhEwC9inixHQBnxjmri8s9F+qsAFqpXFaRL | ycsKZ3Quxgdk8abypg1VmsLEasRHQww0c8JGQKcPCKK5duCC/SJsALa1c/kqrj34 |_-----END CERTIFICATE----- |_ssl-date: 2021-11-13T19:48:20+00:00; +2m31s from scanner time.</description>
+      <guid>http://localhost:1313/writeups/tryhackme/atlas/atlas/</guid>
+      <description>they say its an easy windows room for beginners&#xA;that is exactly what I am&#xA;let&amp;rsquo;s speedrun this&#xA;Quick note here&amp;hellip;for windows machines -Pn flag for nmap is useful for bypassing IMCP filters&#xA;Enumeration Nmap PORT STATE SERVICE REASON&#xD;3389/tcp open ms-wbt-server syn-ack&#xD;| ssl-cert: Subject: commonName=GAIA&#xD;| Issuer: commonName=GAIA&#xD;| Public Key type: rsa&#xD;| Public Key bits: 2048&#xD;| Signature Algorithm: sha256WithRSAEncryption&#xD;| Not valid before: 2021-08-29T20:56:26&#xD;| Not valid after: 2022-02-28T20:56:26&#xD;| MD5: 4f8e 1595 0ddf 896b f328 382c 74e1 4757&#xD;| SHA-1: 0487 ba8b 71a7 25e4 861d 29bd 0dba dde0 8f63 5038&#xD;| -----BEGIN CERTIFICATE-----&#xD;| MIICzDCCAbSgAwIBAgIQUMxZ1WSDRaRHMk1jQH2EHzANBgkqhkiG9w0BAQsFADAP&#xD;| MQ0wCwYDVQQDEwRHQUlBMB4XDTIxMDgyOTIwNTYyNloXDTIyMDIyODIwNTYyNlow&#xD;| DzENMAsGA1UEAxMER0FJQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB&#xD;| AMFiXWfKB/B0VcofnYBW/8XnUhE5Y659HIJia9Bk5nlG6g9otdGGSktBPGbP6RtX&#xD;| TuvWYRdmcIMSgiN66yb6Ow62eVVkdSC2vTP6Lc7FzB/Knm7Liud7TBjsWI1y/I4l&#xD;| WsdFnLiZo8yDP+q4WRpHivdrPVGOzuMpMNh7V1sj7k9WToOyHWVWPIhPERdsfHqn&#xD;| 1fwAaqGhu0CF7XMhrutMBwJgSzNlTItuYnSPB6dlqBFabVSZpusPc0liTrDg4Q7n&#xD;| O9p6ous1W008+zH1V9g+Tp6WDRhDVcLTMv90R2K6dvrLnhVkx5XZzf1AWqiLX7Fa&#xD;| xahHm9cJ7WVwYBTV5OZAfGkCAwEAAaMkMCIwEwYDVR0lBAwwCgYIKwYBBQUHAwEw&#xD;| CwYDVR0PBAQDAgQwMA0GCSqGSIb3DQEBCwUAA4IBAQBzm8kaotMsW9jzDEtKVVEE&#xD;| JahZ+2m09iz6Gn139yz/+mCb62DbnWlGFg1+EbK4T2tvdQKpL+d7zBX9tjSwme8G&#xD;| 4RvO+NrrqMuNCdZzgjRIEajgPK9pA+KdtiLW1IwuPHRCvXWPAJ3nTNvU24DaqpxQ&#xD;| vF7UPvSiVtEXZ4hCY4GWr9Zb9YDRcjBeyNIMURVkfvOB6c2ty7PxSjxi1oEzXiq/&#xD;| IgHS+uYfrpGyB4eQm3DStUkYW3sbmWhEwC9inixHQBnxjmri8s9F+qsAFqpXFaRL&#xD;| ycsKZ3Quxgdk8abypg1VmsLEasRHQww0c8JGQKcPCKK5duCC/SJsALa1c/kqrj34&#xD;|_-----END CERTIFICATE-----&#xD;|_ssl-date: 2021-11-13T19:48:20+00:00; +2m31s from scanner time.</description>
     </item>
-    
-    <item>
-      <title>Badbyte</title>
-      <link>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/badbyte/badbyte/</link>
-      <pubDate>Tue, 20 Sep 2022 16:00:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/badbyte/badbyte/</guid>
-      <description>Look at this cool logo
-Enumeration nmap ORT STATE SERVICE REASON VERSION 11/tcp closed systat conn-refused 22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 f3:a2:ed:93:4b:9c:bf:bb:33:4d:48:0d:fe:a4:de:96 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9/A7kkuN5E+SS1C6w1NfeY196Rj4Y1Yx7njNCwNaCgIv8m+V+7MTHsRn3txLXRTHXErMqW3ypCmmjuY3O40kAragZSgA/XhdesGxGVa0szHK7H4fB28uQiyZgkOfIt/12kGaHB3iGwOeex2Hdg6ct4FdxTWKgDvuKZSLVoPXG66R8SOHql2cXfUtzyUMNJTTqoUED69soEJVG2ctfPKXi4BfFqM3OK2HgKzbmcSPXlLUTNhlcvjPuTa0kMRqiNTMVdP0PjSFdoaMviXHiznW7Fn6NHe3R/vIQt8Ac05Mdvim21QjRpJ4pm7v5+q1wXCJxGG6Ov71yThKP6yZ4ByMl | 256 22:72:00:36:eb:37:12:9f:5a:cc:c2:73:e0:4f:f1:4e (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBM9QUKykbzCSI7+PgoVzHNKOVIWf+zm0LN/f4n0VJc/P0J9TzLImkYHIOCnRFpNUPtiWGXbHXi67FQxEpgZMReo= | 256 78:1d:79:dc:8d:41:f6:77:60:65:f5:74:b6:cc:8b:6d (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKrvf1zJBhqU1RxUCYuTgoIy+7NzCqZeFWV67bt8+APV 80/tcp closed http conn-refused 30024/tcp open ftp syn-ack vsftpd 3.0.3 | ftp-anon: Anonymous FTP login allowed (FTP code 230) | -rw-r--r-- 1 ftp ftp 1743 Mar 23 2021 id_rsa |_-rw-r--r-- 1 ftp ftp 78 Mar 23 2021 note.</description>
-    </item>
-    
-    <item>
-      <title>Basic Malware RE</title>
-      <link>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/basic-malware-re/basic-malware-re/</link>
-      <pubDate>Tue, 20 Sep 2022 16:00:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/basic-malware-re/basic-malware-re/</guid>
-      <description>Passwords for archives: MalwareTech
-using ghidra:
-strings1.exe_ Just check the entry function
-strings2.exe_ This one is a bit more challenging
-Check the entry function again, and get multiple variables declarations
-first the char variable is assigned &amp;lsquo;F&amp;rsquo; (like in FLAG)
-then the undefined variables are added one by one later after the pointer declaration
-probably the others characters of the flag. I used cyberchef to decode the hex
-strings3.exe_ The hardest to understand&amp;hellip;but ironically grabbing the flag is easy</description>
-    </item>
-    
-    <item>
-      <title>Basic pentesting</title>
-      <link>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/basic-pentesting/basic_pentesting/</link>
-      <pubDate>Tue, 20 Sep 2022 16:00:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/writeups/tryhackme/basic-pentesting/basic_pentesting/</guid>
-      <description>It is a guided ctf. A basic introduction to classic pentesting (simplified)
-Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.4 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 db:45:cb:be:4a:8b:71:f8:e9:31:42:ae:ff:f8:45:e4 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDZXasCfWSXQ9lYiKbTNkPs0T+wFym2lZy229LllhY6iDLrjm7LIkhCcrlgnJQtLxl5NPhlHNVmwhlkcPPiAHwluhMVE5xKihQj3i+Ucx2IwiFvfmCz4AKsWlR6N8IZe55Ltw0lcH9ykuKZddg81X85EVsNbMacJNjjyxAtwQmJt1F5kB1B2ixgjLLOyNWafC5g1h6XbEgB2wiSRJ5UA8rOZaF28YcDVo0MQhsKpQG/5oPmQUsIeJTUA/XkoWCjvXZqHwv8XInQLQu3VXKgv735G+CJaKzplh7FZyXju8ViDSAY8gdhqpJommYxzqu9s1M31cmFg2fT5V1z9s4DP/vd | 256 09:b9:b9:1c:e0:bf:0e:1c:6f:7f:fe:8e:5f:20:1b:ce (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP0SXJpgwPf/e9AT9ri/dlAnkob4PqzMjl2Q9lZIVIXeEFJ9sfRkC+tgSjk9PwK0DUO3JU27pmtAkDL4Mtv9eZw= | 256 a5:68:2b:22:5f:98:4a:62:21:3d:a2:e2:c5:a9:f7:c2 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAzy8ZacWXbPGeqtuiJCnPP0LYZYZlMj5D1ZY9ldg1wU 80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu)) |_http-server-header: Apache/2.4.18 (Ubuntu) | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS |_http-title: Site doesn&amp;#39;t have a title (text/html).</description>
-    </item>
-    
   </channel>
 </rss>

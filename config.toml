@@ -1,10 +1,13 @@
-baseURL = 'https://dev.nairolf32.com/zer0ne-blog'
+baseURL = "https://dev.nairolf32.com/zer0ne-blog"
 languageCode = 'en-us'
-title = 'Zer0ne'
+title = 'Zer0ne blog'
+subtitle = "Welcome, friend"
+keywords = "zer0ne, nair0lf32, hacking, cybersecurity, ctf"
+copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+readOtherPosts = "Read more posts"
 theme = "hello-friend-ng"
 paginate = 10
 rssLimit = 10
-copyright = ""
 
 archetypeDir = "archetypes"
 contentDir = "content"
@@ -16,9 +19,8 @@ buildDrafts = true
 buildFuture = false
 buildExpired = false
 canonifyURLs = true
-
 enableRobotsTXT = true
-enableGitInfo = false
+enableGitInfo = true
 enableEmoji = true
 enableMissingTranslationPlaceholders = false
 disableRSS = false
@@ -29,9 +31,6 @@ disableHugoGeneratorInject = false
 [permalinks]
 posts = "/posts/:year/:month/:title/"
 
-[author]
-name = "nair0lf32"
-
 [blackfriday]
 hrefTargetBlank = true
 
@@ -39,6 +38,9 @@ hrefTargetBlank = true
 tag = "tags"
 category = "categories"
 series = "series"
+
+[author]
+name = "nair0lf32"
 
 [params]
 dateform = "Jan 2, 2006"
@@ -50,7 +52,7 @@ keywords = "hacking, cybersecurity, ctf, nair0lf32, zerone, zer0ne"
 images = [""]
 homeSubtitle = "Another cybersecurity blog"
 # backgroundImage = "assets/images/background.jpg"
-# gitUrl = ""
+gitUrl = "https://github.com/nair0lf32/zer0ne-blog"
 disableReadOtherPosts = false
 enableThemeToggle = true
 enableSharingButtons = true
@@ -74,11 +76,11 @@ bottomText = [
 ]
 
 [params.logo]
-logoMark = ">"
-logoText = "$ cd /home/"
+logoMark = "#>"
+logoText = "0/1"
 logoHomeLink = "/"
 logoCursorDisabled = false
-logoCursorColor = "#FEEEDD"
+logoCursorColor = "#0FF00D"
 logoCursorAnimate = "2s"
 
 # Colors for favicons
@@ -87,7 +89,6 @@ mask = "#1b1c1d"
 msapplication = "#1b1c1d"
 theme = "#1b1c1d"
 
-
 # Commento is more than just a comments widget you can embed —
 # it’s a return to the roots of the internet.
 # An internet without the tracking and invasions of privacy.
@@ -95,7 +96,6 @@ theme = "#1b1c1d"
 # An internet that is focused on interesting discussions, not ads.
 # A better internet.
 # Uncomment this to enable Commento.
-#
 # [params.commento]
 #   url = ""
 
@@ -125,27 +125,15 @@ url = "https://www.linkedin.com/in/florian-edemessi/"
 name = "stackoverflow"
 url = "https://www.stackoverflow.com/users/14132197/florian-edemessi"
 
-[languages]
-[languages.en]
-title = "Zer0ne"
-subtitle = "welcome friend"
-keywords = ""
-copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
-readOtherPosts = "Read other posts"
-
-[languages.en.params.logo]
-logoMark = ">"
-logoText = "Zer0ne #"
-logoHomeLink = "/"
-logoCursorDisabled = false
-logoCursorColor = "#0FF00D"
-logoCursorAnimate = "2s"
+#[languages]
+#[languages.en]
+#language specific configuration for translation
 
 # or
 # path = "/img/your-example-logo.svg"
 # alt = "Your example logo alt text"
 
-# And you can even create generic menu
+# Menu settings
 [[menu.main]]
 identifier = "about"
 name = "About"

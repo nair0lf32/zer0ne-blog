@@ -1,65 +1,48 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cyberseclabs on Zer0ne</title>
-    <link>https://nair0lf32.github.io/zer0ne/categories/cyberseclabs/</link>
-    <description>Recent content in Cyberseclabs on Zer0ne</description>
+    <title>Cyberseclabs on Zer0ne blog</title>
+    <link>http://localhost:1313/categories/cyberseclabs/</link>
+    <description>Recent content in Cyberseclabs on Zer0ne blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 18 Sep 2022 18:33:31 +0100</lastBuildDate><atom:link href="https://nair0lf32.github.io/zer0ne/categories/cyberseclabs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 31 Jan 2024 11:24:29 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/cyberseclabs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hackerman</title>
-      <link>https://nair0lf32.github.io/zer0ne/writeups/cyberseclabs/hackerman/hackerman/</link>
+      <link>http://localhost:1313/writeups/cyberseclabs/hackerman/hackerman/</link>
       <pubDate>Sun, 18 Sep 2022 18:33:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/writeups/cyberseclabs/hackerman/hackerman/</guid>
-      <description>└──╼ $exif hackerman.jpg Données corrompues Les données fournies ne respectent pas les spécifications. ExifLoader: Les données fournies ne semblent pas contenir de données EXIF. └──╼ $steghide --info hackerman.jpg &amp;#34;hackerman.jpg&amp;#34;: format: jpeg capacit�: 7,0 KB Essayer d&amp;#39;obtenir des informations � propos des donn�es incorpor�es ? (o/n) o Entrez la passphrase: steghide: impossible d&amp;#39;extraire des donn�es avec cette passphrase! passphrase? so cracking involved&amp;hellip;
-friendship with stegcracker is over now stegseek is my best friend</description>
+      <guid>http://localhost:1313/writeups/cyberseclabs/hackerman/hackerman/</guid>
+      <description>└──╼ $exif hackerman.jpg&#xD;Données corrompues&#xD;Les données fournies ne respectent pas les spécifications.&#xD;ExifLoader: Les données fournies ne semblent pas contenir de données EXIF.&#xD;└──╼ $steghide --info hackerman.jpg&#xD;&amp;#34;hackerman.jpg&amp;#34;:&#xD;format: jpeg&#xD;capacit�: 7,0 KB&#xD;Essayer d&amp;#39;obtenir des informations � propos des donn�es incorpor�es ? (o/n) o&#xD;Entrez la passphrase: steghide: impossible d&amp;#39;extraire des donn�es avec cette passphrase! passphrase? so cracking involved&amp;hellip;&#xA;friendship with stegcracker is over now stegseek is my best friend</description>
     </item>
-    
     <item>
       <title>Plastic Preservation</title>
-      <link>https://nair0lf32.github.io/zer0ne/writeups/cyberseclabs/plastic-preservation/plastic-preservation/</link>
+      <link>http://localhost:1313/writeups/cyberseclabs/plastic-preservation/plastic-preservation/</link>
       <pubDate>Sun, 18 Sep 2022 18:33:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/writeups/cyberseclabs/plastic-preservation/plastic-preservation/</guid>
-      <description>Here is the challenge script
-This one, &amp;ldquo;dey hard&amp;rdquo;! I was stuck on this for days so I just went for the solution writeup
-Found it here
-I then proceed to &amp;ldquo;fully&amp;rdquo; understand what the decrypter.py script does
-I did not beat that challenge tbh&amp;hellip;but I have to keep learning :(
-Basically the encrypted script was obfuscated so first put some clarity in it
-The decrypter function should look like this:</description>
+      <guid>http://localhost:1313/writeups/cyberseclabs/plastic-preservation/plastic-preservation/</guid>
+      <description>Here is the challenge script&#xA;This one, &amp;ldquo;dey hard&amp;rdquo;! I was stuck on this for days so I just went for the solution writeup&#xA;Found it here&#xA;I then proceed to &amp;ldquo;fully&amp;rdquo; understand what the decrypter.py script does&#xA;I did not beat that challenge tbh&amp;hellip;but I have to keep learning :(&#xA;Basically the encrypted script was obfuscated so first put some clarity in it&#xA;The decrypter function should look like this:</description>
     </item>
-    
     <item>
       <title>Office</title>
-      <link>https://nair0lf32.github.io/zer0ne/writeups/cyberseclabs/office/office/</link>
+      <link>http://localhost:1313/writeups/cyberseclabs/office/office/</link>
       <pubDate>Fri, 16 Sep 2022 18:33:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/writeups/cyberseclabs/office/office/</guid>
-      <description>Quick note: I have been way too generous in this writeup but hey&amp;hellip;it&amp;rsquo;s on me! I gave so many credentials (but no flags) making it easier than it should be. But it&amp;rsquo;s okay. If you really wanna learn you will learn. Now let&amp;rsquo;s get started
-Enumeration nmap PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 e2:3f:6c:4e:6d:8b:dc:59:b7:cb:66:64:27:f9:22:86 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+gFggQqxPisakN8dYc6fbiOED+I+HD7Le9lgYUcrpjdKozChagwV9s3ZKTGkgmkOpMVz9Ifhv3LnoXcNACuKDWU7d6HCX0Ab+cJMwGX/D68AZBNlaFNyrJgUg52omwRs0aktor1TSxkjugyTaXY5LG1fl9/ZNm7OJaX3T8CCADnqDtsKAXPOEku90jUcnf1fkTr/rW2gkQbmfh/QwRO2jPHDtfdnObmwCslGdWDi1pg8IcMsw86enF5sZOjzAqJADbmY9H7gg77nPZCH9GMh5wv4Cb/y/c3o923EJ4h1MimpGj60aa2S1UKmjKs/e7pzoHGZYbadapvwne/94S2Xl | 256 ee:be:37:f3:75:4e:38:2a:a9:99:e0:18:1a:b8:d1:41 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPmYME2CvT8Wufq97CVcM38cok+baDhxKCQ7dkt2/5uvS/ILT++6C/0CFsmj1/oZv9JWBDu4uVnnaxLdn1o7mKY= | 256 7f:72:a7:29:be:30:9e:5e:aa:b9:fc:be:09:d2:8b:3a (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPlt+7kyv4MWbk8UhliuRGa5/T+3QiGgzj9XgWcHb+AQ 80/tcp open http syn-ack Apache httpd 2.</description>
+      <guid>http://localhost:1313/writeups/cyberseclabs/office/office/</guid>
+      <description>Quick note: I have been way too generous in this writeup but hey&amp;hellip;it&amp;rsquo;s on me! I gave so many credentials (but no flags) making it easier than it should be. But it&amp;rsquo;s okay. If you really wanna learn you will learn. Now let&amp;rsquo;s get started&#xA;Enumeration nmap PORT STATE SERVICE REASON VERSION&#xD;22/tcp open ssh syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)&#xD;| ssh-hostkey: | 2048 e2:3f:6c:4e:6d:8b:dc:59:b7:cb:66:64:27:f9:22:86 (RSA)&#xD;| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+gFggQqxPisakN8dYc6fbiOED+I+HD7Le9lgYUcrpjdKozChagwV9s3ZKTGkgmkOpMVz9Ifhv3LnoXcNACuKDWU7d6HCX0Ab+cJMwGX/D68AZBNlaFNyrJgUg52omwRs0aktor1TSxkjugyTaXY5LG1fl9/ZNm7OJaX3T8CCADnqDtsKAXPOEku90jUcnf1fkTr/rW2gkQbmfh/QwRO2jPHDtfdnObmwCslGdWDi1pg8IcMsw86enF5sZOjzAqJADbmY9H7gg77nPZCH9GMh5wv4Cb/y/c3o923EJ4h1MimpGj60aa2S1UKmjKs/e7pzoHGZYbadapvwne/94S2Xl&#xD;| 256 ee:be:37:f3:75:4e:38:2a:a9:99:e0:18:1a:b8:d1:41 (ECDSA)&#xD;| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPmYME2CvT8Wufq97CVcM38cok+baDhxKCQ7dkt2/5uvS/ILT++6C/0CFsmj1/oZv9JWBDu4uVnnaxLdn1o7mKY=&#xD;| 256 7f:72:a7:29:be:30:9e:5e:aa:b9:fc:be:09:d2:8b:3a (ED25519)&#xD;|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPlt+7kyv4MWbk8UhliuRGa5/T+3QiGgzj9XgWcHb+AQ&#xD;80/tcp open http syn-ack Apache httpd 2.</description>
     </item>
-    
     <item>
       <title>Shares</title>
-      <link>https://nair0lf32.github.io/zer0ne/writeups/cyberseclabs/shares/shares/</link>
+      <link>http://localhost:1313/writeups/cyberseclabs/shares/shares/</link>
       <pubDate>Fri, 16 Sep 2022 18:33:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/writeups/cyberseclabs/shares/shares/</guid>
-      <description>Enumeration nmap: PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.0.3 80/tcp open http syn-ack Apache httpd 2.4.29 ((Ubuntu)) |_http-title: Pet Shop | http-methods: |_ Supported Methods: OPTIONS HEAD GET POST |_http-server-header: Apache/2.4.29 (Ubuntu) 111/tcp open rpcbind syn-ack 2-4 (RPC #100000) | rpcinfo: | program version port/proto service | 100000 2,3,4 111/tcp rpcbind | 100000 2,3,4 111/udp rpcbind | 100000 3,4 111/tcp6 rpcbind | 100000 3,4 111/udp6 rpcbind | 100003 3 2049/udp nfs | 100003 3 2049/udp6 nfs | 100003 3,4 2049/tcp nfs | 100003 3,4 2049/tcp6 nfs | 100005 1,2,3 33317/tcp6 mountd | 100005 1,2,3 47026/udp mountd | 100005 1,2,3 52045/tcp mountd | 100005 1,2,3 56412/udp6 mountd | 100021 1,3,4 33401/tcp nlockmgr | 100021 1,3,4 41275/tcp6 nlockmgr | 100021 1,3,4 44254/udp nlockmgr | 100021 1,3,4 60886/udp6 nlockmgr | 100227 3 2049/tcp nfs_acl | 100227 3 2049/tcp6 nfs_acl | 100227 3 2049/udp nfs_acl |_ 100227 3 2049/udp6 nfs_acl 2049/tcp open nfs_acl syn-ack 3 (RPC #100227) Service Info: OS: Unix 27853/tcp open ssh syn-ack OpenSSH 7.</description>
+      <guid>http://localhost:1313/writeups/cyberseclabs/shares/shares/</guid>
+      <description>Enumeration nmap: PORT STATE SERVICE REASON VERSION&#xD;21/tcp open ftp syn-ack vsftpd 3.0.3&#xD;80/tcp open http syn-ack Apache httpd 2.4.29 ((Ubuntu))&#xD;|_http-title: Pet Shop&#xD;| http-methods:&#xD;|_ Supported Methods: OPTIONS HEAD GET POST&#xD;|_http-server-header: Apache/2.4.29 (Ubuntu)&#xD;111/tcp open rpcbind syn-ack 2-4 (RPC #100000)&#xD;| rpcinfo:&#xD;| program version port/proto service&#xD;| 100000 2,3,4 111/tcp rpcbind&#xD;| 100000 2,3,4 111/udp rpcbind&#xD;| 100000 3,4 111/tcp6 rpcbind&#xD;| 100000 3,4 111/udp6 rpcbind&#xD;| 100003 3 2049/udp nfs&#xD;| 100003 3 2049/udp6 nfs&#xD;| 100003 3,4 2049/tcp nfs&#xD;| 100003 3,4 2049/tcp6 nfs&#xD;| 100005 1,2,3 33317/tcp6 mountd&#xD;| 100005 1,2,3 47026/udp mountd&#xD;| 100005 1,2,3 52045/tcp mountd&#xD;| 100005 1,2,3 56412/udp6 mountd&#xD;| 100021 1,3,4 33401/tcp nlockmgr&#xD;| 100021 1,3,4 41275/tcp6 nlockmgr&#xD;| 100021 1,3,4 44254/udp nlockmgr&#xD;| 100021 1,3,4 60886/udp6 nlockmgr&#xD;| 100227 3 2049/tcp nfs_acl&#xD;| 100227 3 2049/tcp6 nfs_acl&#xD;| 100227 3 2049/udp nfs_acl&#xD;|_ 100227 3 2049/udp6 nfs_acl&#xD;2049/tcp open nfs_acl syn-ack 3 (RPC #100227)&#xD;Service Info: OS: Unix&#xD;27853/tcp open ssh syn-ack OpenSSH 7.</description>
     </item>
-    
     <item>
       <title>Zero</title>
-      <link>https://nair0lf32.github.io/zer0ne/writeups/cyberseclabs/zero/zero/</link>
+      <link>http://localhost:1313/writeups/cyberseclabs/zero/zero/</link>
       <pubDate>Fri, 16 Sep 2022 18:33:31 +0100</pubDate>
-      
-      <guid>https://nair0lf32.github.io/zer0ne/writeups/cyberseclabs/zero/zero/</guid>
-      <description>Enumeration nmap: PORT STATE SERVICE REASON VERSION 53/tcp open domain syn-ack Simple DNS Plus 88/tcp open kerberos-sec syn-ack Microsoft Windows Kerberos (server time: 2021-11-18 19:29:38Z) 135/tcp open msrpc syn-ack Microsoft Windows RPC 139/tcp open netbios-ssn syn-ack Microsoft Windows netbios-ssn 389/tcp open ldap syn-ack 445/tcp open microsoft-ds? syn-ack 464/tcp open kpasswd5? syn-ack 593/tcp open ncacn_http syn-ack Microsoft Windows RPC over HTTP 1.0 636/tcp open tcpwrapped syn-ack 3268/tcp open ldap syn-ack 3269/tcp open tcpwrapped syn-ack 3389/tcp open ms-wbt-server syn-ack Microsoft Terminal Services | rdp-ntlm-info: | Target_Name: ZERO | NetBIOS_Domain_Name: ZERO | NetBIOS_Computer_Name: ZERO-DC | DNS_Domain_Name: Zero.</description>
+      <guid>http://localhost:1313/writeups/cyberseclabs/zero/zero/</guid>
+      <description>Enumeration nmap: PORT STATE SERVICE REASON VERSION&#xD;53/tcp open domain syn-ack Simple DNS Plus&#xD;88/tcp open kerberos-sec syn-ack Microsoft Windows Kerberos (server time: 2021-11-18 19:29:38Z)&#xD;135/tcp open msrpc syn-ack Microsoft Windows RPC&#xD;139/tcp open netbios-ssn syn-ack Microsoft Windows netbios-ssn&#xD;389/tcp open ldap syn-ack&#xD;445/tcp open microsoft-ds? syn-ack&#xD;464/tcp open kpasswd5? syn-ack&#xD;593/tcp open ncacn_http syn-ack Microsoft Windows RPC over HTTP 1.0&#xD;636/tcp open tcpwrapped syn-ack&#xD;3268/tcp open ldap syn-ack&#xD;3269/tcp open tcpwrapped syn-ack&#xD;3389/tcp open ms-wbt-server syn-ack Microsoft Terminal Services&#xD;| rdp-ntlm-info:&#xD;| Target_Name: ZERO&#xD;| NetBIOS_Domain_Name: ZERO&#xD;| NetBIOS_Computer_Name: ZERO-DC&#xD;| DNS_Domain_Name: Zero.</description>
     </item>
-    
   </channel>
 </rss>

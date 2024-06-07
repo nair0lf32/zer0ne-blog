@@ -49,6 +49,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 | [burpsuite](https://portswigger.net/burp/communitydownload) (community edition) | [Arachni](https://github.com/Arachni/arachni)                          |
 | [Owasp ZAP](https://www.zaproxy.org/) (It's from OWASP)                         | [Golismero](https://github.com/golismero/golismero)                    |
 | [dnstwist](https://github.com/elceef/dnstwist)                                  | [Leviathan](https://github.com/utkusen/leviathan) ( sadly DEPRECATED ) |
+| [caido.io](https://caido.io/)         |                                         |
 
 ## Cloud (specials)
 

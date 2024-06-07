@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Hello hackers! It&amp;rsquo;s been a while and today I wanna talk about a thing we all love: RCE. For the sake of the normies that might stumble upon this article (google indexing works in mysterious ways), RCE stands for Remote Code Execution. It&amp;rsquo;s a vulnerability that allows an attacker to execute arbitrary code on a target machine. It&amp;rsquo;s the holy grail of hacking, the ultimate goal of every pentester and the worst nightmare of every sysadmin, it&amp;rsquo;s often worth a lot of money in bug bounty programs and it&amp;rsquo;s what those hollywood hackers achieve when they say &amp;ldquo;I&amp;rsquo;m in&amp;rdquo;." />
+<meta name="keywords" content="hacking, cybersecurity, ctf, nair0lf32, zerone, zer0ne" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="http://localhost:1313/posts/2024/04/rce/" />
+
+
+    <title>
+        
+            RCE :: Zer0ne blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="http://localhost:1313/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+    <link rel="manifest" href="http://localhost:1313/site.webmanifest">
+    <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="http://localhost:1313/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="RCE">
+<meta itemprop="description" content="Hello hackers! It&rsquo;s been a while and today I wanna talk about a thing we all love: RCE. For the sake of the normies that might stumble upon this article (google indexing works in mysterious ways), RCE stands for Remote Code Execution. It&rsquo;s a vulnerability that allows an attacker to execute arbitrary code on a target machine. It&rsquo;s the holy grail of hacking, the ultimate goal of every pentester and the worst nightmare of every sysadmin, it&rsquo;s often worth a lot of money in bug bounty programs and it&rsquo;s what those hollywood hackers achieve when they say &ldquo;I&rsquo;m in&rdquo;."><meta itemprop="datePublished" content="2024-04-13T03:03:31+01:00" />
+<meta itemprop="dateModified" content="2024-05-05T16:12:38+01:00" />
+<meta itemprop="wordCount" content="1250"><meta itemprop="image" content="http://localhost:1313/" />
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/" /><meta name="twitter:title" content="RCE"/>
+<meta name="twitter:description" content="Hello hackers! It&rsquo;s been a while and today I wanna talk about a thing we all love: RCE. For the sake of the normies that might stumble upon this article (google indexing works in mysterious ways), RCE stands for Remote Code Execution. It&rsquo;s a vulnerability that allows an attacker to execute arbitrary code on a target machine. It&rsquo;s the holy grail of hacking, the ultimate goal of every pentester and the worst nightmare of every sysadmin, it&rsquo;s often worth a lot of money in bug bounty programs and it&rsquo;s what those hollywood hackers achieve when they say &ldquo;I&rsquo;m in&rdquo;."/>
+
+
+
+    <meta property="og:title" content="RCE" />
+<meta property="og:description" content="Hello hackers! It&rsquo;s been a while and today I wanna talk about a thing we all love: RCE. For the sake of the normies that might stumble upon this article (google indexing works in mysterious ways), RCE stands for Remote Code Execution. It&rsquo;s a vulnerability that allows an attacker to execute arbitrary code on a target machine. It&rsquo;s the holy grail of hacking, the ultimate goal of every pentester and the worst nightmare of every sysadmin, it&rsquo;s often worth a lot of money in bug bounty programs and it&rsquo;s what those hollywood hackers achieve when they say &ldquo;I&rsquo;m in&rdquo;." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/2024/04/rce/" /><meta property="og:image" content="http://localhost:1313/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-04-13T03:03:31+01:00" />
+<meta property="article:modified_time" content="2024-05-05T16:12:38+01:00" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2024-04-13 03:03:31 &#43;0100 WAT" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="http://localhost:1313/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">#&gt;</span>
+            <span class="logo__text">0/1</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="http://localhost:1313/about">About</a></li><li><a href="http://localhost:1313/posts">Blog</a></li><li><a href="http://localhost:1313/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        6 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="http://localhost:1313/posts/2024/04/rce/">RCE</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>Hello hackers! It&rsquo;s been a while and today I wanna talk about a thing we all love: RCE.
+For the sake of the normies that might stumble upon this article (google indexing works in mysterious ways),
+RCE stands for Remote Code Execution. It&rsquo;s a vulnerability that allows an attacker to execute arbitrary code on a target machine. It&rsquo;s the holy grail of hacking, the ultimate goal of every pentester and the worst nightmare of every sysadmin, it&rsquo;s often worth a lot of money in bug bounty programs and it&rsquo;s what those hollywood hackers achieve
+when they say &ldquo;I&rsquo;m in&rdquo;. But what aspect of it make someone write an article at 3am? well&hellip; let&rsquo;s find out.</p>
+<p>If you have been playing CTFs on sandboxed platforms like &ldquo;tryhackme&rdquo; or &ldquo;hackthebox&rdquo; you might have encountered a few RCE challenges and when you submitted that flag your heart was filled with joy and pride, but someday you decided to move on to new platforms like &ldquo;root me&rdquo; or found a critical RCE IRL you try to get that RCE like you used to do&hellip;it&rsquo;s a vulnerability you exploited on Tryhackme before, so it should work right? well&hellip; not really.
+And then you realise RCE is not that simple IRL. That&rsquo;s what I wanna talk about today, the intricacies of RCE in real life.</p>
+<p>I was much frustrated by this upon my learning journey so I need to do some ranting. When people told you that
+you needed solid networking knowledge to be a hacker they were not kidding. I won&rsquo;t teach networking to you all here, or how to get RCE (that would be disrespectful) so if you stumble on some words please use GOOGLE.</p>
+<p>In Sandboxed platforms like tryhackme or Hackthebox (for elitists) they provide you a VPN connection to the target machine. They basically put you in the same network as the target machine. This is why you can easily exploit RCE vulnerabilities in these platforms. You can just run your exploit and it will work because you are in the same LAN as the target machine. The tun0 interface provides you a confortable private IP address that you can use to communicate with the target machine.</p>
+<p>But in real life, you are probably not in the same network as the target machine. You are over WAN, on the internet, that big cluster of LANs. You can&rsquo;t just communicate with any machine on internet because well, there are basic security measures or else anyone would be a hacker (lol). I will proceed now by talking about my Own setup and how I exploited RCE vulnerabilities over internet.</p>
+<p>I have a <a href="https://www.virtualbox.org/">virtualbox</a> VM running either Kali or parrot OS on a windows host (yeah I know, I am a heretic).
+I either use bridged or NAT network mode with port forward (bridged preferred). Therefore my VM communicate
+with it&rsquo;s host machine over LAN. That is the easy part. Now the problem comes when you want to tell your target to
+reach you on your local machine. You can&rsquo;t just give them your private IP address because it&rsquo;s not routable over internet. On internet we communicate using public IP addresses and domain names.</p>
+<p>But why can&rsquo;t you just use your public IP address? well, because you are probably behind a NAT. NAT stands for Network Address Translation. It&rsquo;s a technique that allows multiple devices to share a single public IP address. This is what your router does. It assigns a private IP address to each device on your network and then translates the private IP address to the public IP address when the device communicates with the internet. This is why you can&rsquo;t just use your public IP address to communicate with your local machine. Your router doesn&rsquo;t know which device to send the packets to.</p>
+<p>Depending on your ISP, you might have a static public IP address or a dynamic public IP address. If you have a static public IP address, good for you, But if you have a dynamic public IP address, your public IP address changes every time you restart your router, which adds another layer of complexity. You might also be behind a CGNAT (Carrier Grade NAT) which is a type of NAT that is used by ISPs to share a single public IP address among multiple customers. This makes it even harder to communicate with your local machine.</p>
+<p>So you need to make your local machine accessible over internet, and make it act like a server.
+Multiple options are available to do this, you can use a VPS but that cost money&hellip;it&rsquo;s basically a server that you rent on the internet.</p>
+<p>You can also either use a VPN like <a href="https://openvpn.net/">openvpn</a> (free) or <a href="https://www.wireguard.com/">wireguard</a> that support port forwarding. This way, the target machine can communicate with your local machine over the VPN. This is a good option if you want to keep your local machine hidden from the internet,</p>
+<p>Third option is similar to a VPN but is called a reverse ssh tunnel
+like <a href="https://ngrok.com/">ngrok</a> or <a href="https://app.tunnelin.com/">tunnelin</a>. They basically route the traffic from the target machine to your local machine through their servers, and
+usually provide you a subdomain that you can use to communicate with your local machine. The downfall is that most
+are temporary solutions that refresh the subdomain every time you restart the tunnel (your address changes).</p>
+<p>Now back to my personal experience. I faced this issue first on rootme, then while playing the hackerlab CTF. I wrote a writeup <a href="http://localhost:1313/writeups/hackerlab/hackerlab-2022/" title="Hackerlab 2022">here</a> about it. More recently
+I got access to a machine using metasploit. Here are the properties that are important to know:</p>
+<ul>
+<li>The target machine IP <code>RHOSTS</code> if using metasploit: usually a public IP address (or a domain name)</li>
+<li>Your own IP <code>LHOST</code>: That&rsquo;s the tricky part. if like me you used a TCP tunnel you might get a domain name.
+You put that there! If you care about persistence you can use a dynamic DNS service like <a href="https://www.noip.com/">no-ip</a> to get a domain name that will always point to your public IP address.</li>
+<li>The port <code>LPORT</code> that you used to listen for incoming connections: you have to use the port provided by the tunneling service.</li>
+<li>If you used metasploit you need to set <code>ReverseListenerBindAddress</code> to your local IP address. By default it binds to
+your loopback interface so you might never need to change it. But if you are using a tunneling service you need to set <code>ReverseListenerBindPort</code> to your destination port.</li>
+</ul>
+<p>You are all set! But what if you are not using metasploit? well, you just need multiple terminals. One for your tunnel (ngrok much), one to listen for incoming connections (netcat, socat, ncat, etc)&hellip;You just use the same properties as above for your payload and your listener. I let you figure out what would logically go where.
+Also test multiple times&hellip;experiment and learn.</p>
+<p>It&rsquo;s important to precise that those settings are mostly relevant if you use a reverse shell payload. If you use a bind shell payload, you  just need to make sure that the target machine can reach your local machine on the port you specified.</p>
+<p>This is the end of my rant. I hope you learned something. This might be a terrible summary of what I learned but
+RCE is a complex topic and you need a bit of creativity and ingenuity to achieve it. Understanding how your network
+setup works is the ultimate key to success. After smashing my keyboard for hours I can gladly say to you people
+that &ldquo;I&rsquo;m in&rdquo;.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1250 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2024-04-13 03:03
+        
+
+         
+          
+            
+              (Last updated: 2024-05-05 16:12)
+            
+          
+        
+      </p>
+        <p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit">
+            <circle cx="12" cy="12" r="4"></circle>
+            <line x1="1.05" y1="12" x2="7" y2="12"></line>
+            <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
+          </svg>
+
+          <a href="https://github.com/nair0lf32/zer0ne-blog4363be2395eb07d9c119bcf86812d31284855713" target="_blank" rel="noopener">4363be2</a>
+          @ 2024-05-05
+        </p>
+    </div>
+      <hr />
+      <div class="sharing-buttons">
+        
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f04%2frce%2f" target="_blank" rel="noopener" aria-label="" title="Share on facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f04%2frce%2f" target="_blank" rel="noopener" aria-label="" title="Share on twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+      <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=RCE&amp;caption=RCE&amp;canonicalUrl=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f04%2frce%2f" target="_blank" rel="noopener" aria-label="" title="Share on tumblr">
+  <div class="resp-sharing-button resp-sharing-button--tumblr resp-sharing-button--small">
+    <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.371 2.207 2.371h.09c.631-.02 1.486-.205 1.936-.419l1.156 3.425c-.436.636-2.4 1.374-4.156 1.404h-.178l.011.002z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="mailto:?subject=RCE&amp;body=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f04%2frce%2f" target="_self" rel="noopener" aria-label="" title="Share via email">
+  <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f04%2frce%2f&amp;media=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f04%2frce%2f;description=RCE" target="_blank" rel="noopener" aria-label="" title="Share on pinterest">
+  <div class="resp-sharing-button resp-sharing-button--pinterest resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f04%2frce%2f&amp;title=RCE&amp;summary=RCE&amp;source=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f04%2frce%2f" target="_blank" rel="noopener" aria-label="" title="Share on linkedin">
+  <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f04%2frce%2f&amp;resubmit=true&amp;title=RCE" target="_blank" rel="noopener" aria-label="" title="Share on reddit">
+  <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.xing.com/app/user?op=share;url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f04%2frce%2f;title=RCE" target="_blank" rel="noopener" aria-label="" title="Share on xing">
+  <div class="resp-sharing-button resp-sharing-button--xing resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="whatsapp://send?text=RCE%20http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f04%2frce%2f" target="_blank" rel="noopener" aria-label="" title="Share on whatsapp">
+  <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f04%2frce%2f&amp;t=RCE" target="_blank" rel="noopener" aria-label="" title="Share on hacker news">
+  <div class="resp-sharing-button resp-sharing-button--hackernews resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M0 24V0h24v24H0zM6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=RCE&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f04%2frce%2f" target="_blank" rel="noopener" aria-label="" title="Share on telegram">
+  <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    </div>
+  </div>
+</a>
+
+      </div>
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+
+            
+            <span class="button next">
+                <a href="http://localhost:1313/posts/2023/06/learning-resources/">
+                    <span class="button__text">Learning Resources</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2024</span>
+            <span><a href="http://localhost:1313/">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="http://localhost:1313/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="http://localhost:1313/bundle.min.b1dc444a7108174ae3d2294f982be5e99e844ae2b8d58eeea19d929bde0338be4d12ed8a4dfc67194dcc6726fa6a82705119c0d7e4edd4de9294be6535ea7b7f.js" integrity="sha512-sdxESnEIF0rj0ilPmCvl6Z6ESuK41Y7uoZ2Sm94DOL5NEu2KTfxnGU3MZyb6aoJwURnA1&#43;Tt1N6SlL5lNep7fw=="></script>
+
+
+
+    </body>
+</html>

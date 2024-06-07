@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="nair0lf32 ">
+<meta name="description" content="Gotta catch &amp;rsquo;em all I wanna be the very best&amp;hellip;LIKE NO ONE EVER WAS!
+PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 58:14:75:69:1e:a9:59:5f:b2:3a:69:1c:6c:78:5c:27 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5csEY9HQAEkHk16FMvfJVYh4YzdcIRCQpv2IOon6FHy3la/DkwscWsUIp7hXmMeW35Oa7OfI08LvyokxDX8bKgKUpU/dP05LNyDzv17MKB6rt3SkPbDv3XVMlu101/wkIMIOdJ38TW0&#43;vVlU89cjQ5XiSDep4kKm/&#43;6fEl2zM5x60DKexOOYTQ3t8SRkBV4TnWmr9wDQCDH/Kc8Pl2W9GM7hgAhVB9uUhN/EBCUbwZ8xE0ToOQz&#43;QIkCTEuwD/AhDoURmRzv7EGut0TBrUPvFCK19v2Crw/BVQc07taDkei4N0/MwpXvI4CnJ6jpGOgxTMePk/nZusz/XbnUtnIqD | 256 23:f5:fb:e7:57:c2:a5:3e:c2:26:29:0e:74:db:37:c2 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP9bcehMnrIADUJHvNw7/zastIegVYRSXcF40Pky1Yllzx872e/LUM6UdTNaC4gffBnEpKcmwE9wjR&#43;J6lfR8Yk= | 256 f1:9b:b5:8a:b9:29:aa:b6:aa:a2:52:4a:6e:65:95:c5 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICabmX4EeiR66bXPzMHbCZpkcUu&#43;GSkDJP1nZ2&#43;30Vm&#43; 80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu)) |_http-title: Can You Find Them All? |_http-server-header: Apache/2.4.18 (Ubuntu) | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Grass type Pokemon The website source code shows this interesting javascript" />
+<meta name="keywords" content="hacking, cybersecurity, ctf, nair0lf32, zerone, zer0ne" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="http://localhost:1313/writeups/tryhackme/pokemon/pokemon/" />
+
+
+    <title>
+        
+            Pokemon :: Zer0ne blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="http://localhost:1313/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+    <link rel="manifest" href="http://localhost:1313/site.webmanifest">
+    <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="http://localhost:1313/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Pokemon">
+<meta itemprop="description" content="Gotta catch &rsquo;em all I wanna be the very best&hellip;LIKE NO ONE EVER WAS!
+PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 58:14:75:69:1e:a9:59:5f:b2:3a:69:1c:6c:78:5c:27 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5csEY9HQAEkHk16FMvfJVYh4YzdcIRCQpv2IOon6FHy3la/DkwscWsUIp7hXmMeW35Oa7OfI08LvyokxDX8bKgKUpU/dP05LNyDzv17MKB6rt3SkPbDv3XVMlu101/wkIMIOdJ38TW0&#43;vVlU89cjQ5XiSDep4kKm/&#43;6fEl2zM5x60DKexOOYTQ3t8SRkBV4TnWmr9wDQCDH/Kc8Pl2W9GM7hgAhVB9uUhN/EBCUbwZ8xE0ToOQz&#43;QIkCTEuwD/AhDoURmRzv7EGut0TBrUPvFCK19v2Crw/BVQc07taDkei4N0/MwpXvI4CnJ6jpGOgxTMePk/nZusz/XbnUtnIqD | 256 23:f5:fb:e7:57:c2:a5:3e:c2:26:29:0e:74:db:37:c2 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP9bcehMnrIADUJHvNw7/zastIegVYRSXcF40Pky1Yllzx872e/LUM6UdTNaC4gffBnEpKcmwE9wjR&#43;J6lfR8Yk= | 256 f1:9b:b5:8a:b9:29:aa:b6:aa:a2:52:4a:6e:65:95:c5 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICabmX4EeiR66bXPzMHbCZpkcUu&#43;GSkDJP1nZ2&#43;30Vm&#43; 80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu)) |_http-title: Can You Find Them All? |_http-server-header: Apache/2.4.18 (Ubuntu) | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Grass type Pokemon The website source code shows this interesting javascript"><meta itemprop="datePublished" content="2024-03-03T11:51:00+01:00" />
+<meta itemprop="dateModified" content="2024-03-03T14:29:08+01:00" />
+<meta itemprop="wordCount" content="349"><meta itemprop="image" content="http://localhost:1313/" />
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/" /><meta name="twitter:title" content="Pokemon"/>
+<meta name="twitter:description" content="Gotta catch &rsquo;em all I wanna be the very best&hellip;LIKE NO ONE EVER WAS!
+PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 58:14:75:69:1e:a9:59:5f:b2:3a:69:1c:6c:78:5c:27 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5csEY9HQAEkHk16FMvfJVYh4YzdcIRCQpv2IOon6FHy3la/DkwscWsUIp7hXmMeW35Oa7OfI08LvyokxDX8bKgKUpU/dP05LNyDzv17MKB6rt3SkPbDv3XVMlu101/wkIMIOdJ38TW0&#43;vVlU89cjQ5XiSDep4kKm/&#43;6fEl2zM5x60DKexOOYTQ3t8SRkBV4TnWmr9wDQCDH/Kc8Pl2W9GM7hgAhVB9uUhN/EBCUbwZ8xE0ToOQz&#43;QIkCTEuwD/AhDoURmRzv7EGut0TBrUPvFCK19v2Crw/BVQc07taDkei4N0/MwpXvI4CnJ6jpGOgxTMePk/nZusz/XbnUtnIqD | 256 23:f5:fb:e7:57:c2:a5:3e:c2:26:29:0e:74:db:37:c2 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP9bcehMnrIADUJHvNw7/zastIegVYRSXcF40Pky1Yllzx872e/LUM6UdTNaC4gffBnEpKcmwE9wjR&#43;J6lfR8Yk= | 256 f1:9b:b5:8a:b9:29:aa:b6:aa:a2:52:4a:6e:65:95:c5 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICabmX4EeiR66bXPzMHbCZpkcUu&#43;GSkDJP1nZ2&#43;30Vm&#43; 80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu)) |_http-title: Can You Find Them All? |_http-server-header: Apache/2.4.18 (Ubuntu) | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Grass type Pokemon The website source code shows this interesting javascript"/>
+
+
+
+    <meta property="og:title" content="Pokemon" />
+<meta property="og:description" content="Gotta catch &rsquo;em all I wanna be the very best&hellip;LIKE NO ONE EVER WAS!
+PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 58:14:75:69:1e:a9:59:5f:b2:3a:69:1c:6c:78:5c:27 (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5csEY9HQAEkHk16FMvfJVYh4YzdcIRCQpv2IOon6FHy3la/DkwscWsUIp7hXmMeW35Oa7OfI08LvyokxDX8bKgKUpU/dP05LNyDzv17MKB6rt3SkPbDv3XVMlu101/wkIMIOdJ38TW0&#43;vVlU89cjQ5XiSDep4kKm/&#43;6fEl2zM5x60DKexOOYTQ3t8SRkBV4TnWmr9wDQCDH/Kc8Pl2W9GM7hgAhVB9uUhN/EBCUbwZ8xE0ToOQz&#43;QIkCTEuwD/AhDoURmRzv7EGut0TBrUPvFCK19v2Crw/BVQc07taDkei4N0/MwpXvI4CnJ6jpGOgxTMePk/nZusz/XbnUtnIqD | 256 23:f5:fb:e7:57:c2:a5:3e:c2:26:29:0e:74:db:37:c2 (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP9bcehMnrIADUJHvNw7/zastIegVYRSXcF40Pky1Yllzx872e/LUM6UdTNaC4gffBnEpKcmwE9wjR&#43;J6lfR8Yk= | 256 f1:9b:b5:8a:b9:29:aa:b6:aa:a2:52:4a:6e:65:95:c5 (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICabmX4EeiR66bXPzMHbCZpkcUu&#43;GSkDJP1nZ2&#43;30Vm&#43; 80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu)) |_http-title: Can You Find Them All? |_http-server-header: Apache/2.4.18 (Ubuntu) | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Grass type Pokemon The website source code shows this interesting javascript" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/writeups/tryhackme/pokemon/pokemon/" /><meta property="og:image" content="http://localhost:1313/" /><meta property="article:section" content="writeups" />
+<meta property="article:published_time" content="2024-03-03T11:51:00+01:00" />
+<meta property="article:modified_time" content="2024-03-03T14:29:08+01:00" />
+
+
+
+
+
+    <meta property="article:section" content="TryHackMe" />
+
+
+
+    <meta property="article:published_time" content="2024-03-03 11:51:00 &#43;0100 WAT" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="http://localhost:1313/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">#&gt;</span>
+            <span class="logo__text">0/1</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#0FF00D;
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="http://localhost:1313/about">About</a></li><li><a href="http://localhost:1313/posts">Blog</a></li><li><a href="http://localhost:1313/writeups">Writeups</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="http://localhost:1313/writeups/tryhackme/pokemon/pokemon/">Pokemon</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <p><img src="http://localhost:1313/thm/pokemon/pokemon.png" alt="pokemon"></p>
+<h2 id="gotta-catch-em-all">Gotta catch &rsquo;em all</h2>
+<p>I wanna be the very best&hellip;LIKE NO ONE EVER WAS!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PORT   STATE SERVICE REASON  VERSION
+</span></span><span style="display:flex;"><span>22/tcp open  ssh     syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 <span style="color:#f92672">(</span>Ubuntu Linux; protocol 2.0<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>| ssh-hostkey:
+</span></span><span style="display:flex;"><span>|   <span style="color:#ae81ff">2048</span> 58:14:75:69:1e:a9:59:5f:b2:3a:69:1c:6c:78:5c:27 <span style="color:#f92672">(</span>RSA<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5csEY9HQAEkHk16FMvfJVYh4YzdcIRCQpv2IOon6FHy3la/DkwscWsUIp7hXmMeW35Oa7OfI08LvyokxDX8bKgKUpU/dP05LNyDzv17MKB6rt3SkPbDv3XVMlu101/wkIMIOdJ38TW0+vVlU89cjQ5XiSDep4kKm/+6fEl2zM5x60DKexOOYTQ3t8SRkBV4TnWmr9wDQCDH/Kc8Pl2W9GM7hgAhVB9uUhN/EBCUbwZ8xE0ToOQz+QIkCTEuwD/AhDoURmRzv7EGut0TBrUPvFCK19v2Crw/BVQc07taDkei4N0/MwpXvI4CnJ6jpGOgxTMePk/nZusz/XbnUtnIqD
+</span></span><span style="display:flex;"><span>|   <span style="color:#ae81ff">256</span> 23:f5:fb:e7:57:c2:a5:3e:c2:26:29:0e:74:db:37:c2 <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP9bcehMnrIADUJHvNw7/zastIegVYRSXcF40Pky1Yllzx872e/LUM6UdTNaC4gffBnEpKcmwE9wjR+J6lfR8Yk<span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>|   <span style="color:#ae81ff">256</span> f1:9b:b5:8a:b9:29:aa:b6:aa:a2:52:4a:6e:65:95:c5 <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICabmX4EeiR66bXPzMHbCZpkcUu+GSkDJP1nZ2+30Vm+
+</span></span><span style="display:flex;"><span>80/tcp open  http    syn-ack Apache httpd 2.4.18 <span style="color:#f92672">((</span>Ubuntu<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>|_http-title: Can You Find Them All?
+</span></span><span style="display:flex;"><span>|_http-server-header: Apache/2.4.18 <span style="color:#f92672">(</span>Ubuntu<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>| http-methods:
+</span></span><span style="display:flex;"><span>|_  Supported Methods: GET HEAD POST OPTIONS
+</span></span><span style="display:flex;"><span>Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</span></span></code></pre></div><h2 id="grass-type-pokemon">Grass type Pokemon</h2>
+<p>The website source code shows this interesting javascript</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>     <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">randomPokemon</span> <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;Bulbasaur&#39;</span>, <span style="color:#e6db74">&#39;Charmander&#39;</span>, <span style="color:#e6db74">&#39;Squirtle&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;Snorlax&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;Zapdos&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;Mew&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;Charizard&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;Grimer&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;Metapod&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;Magikarp&#39;</span>
+</span></span><span style="display:flex;"><span>     ];
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">original</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">randomPokemon</span>.<span style="color:#a6e22e">sort</span>((<span style="color:#a6e22e">pokemonName</span>) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">aLast</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">pokemonName</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;, &#39;</span>);
+</span></span><span style="display:flex;"><span>     });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">original</span>);
+</span></span></code></pre></div><p>Also this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>        &lt;<span style="color:#f92672">pokemon</span>&gt;:&lt;<span style="color:#f92672">hack_the_pokemon</span>&gt;
+</span></span><span style="display:flex;"><span>         <span style="color:#75715e">&lt;!--(Check console for extra surprise!)--&gt;</span>
+</span></span></code></pre></div><p>Hmmmm&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>─<span style="color:#f92672">(</span>13:10:05<span style="color:#f92672">)</span>──&gt; ssh pokemon@10.10.126.68                                                                                                                                <span style="color:#ae81ff">1</span> ↵ ──<span style="color:#f92672">(</span>dim.,mars03<span style="color:#f92672">)</span>─┘
+</span></span><span style="display:flex;"><span>pokemon@10.10.126.68<span style="color:#960050;background-color:#1e0010">&#39;</span>s password:
+</span></span><span style="display:flex;"><span>Welcome to Ubuntu 16.04.6 LTS <span style="color:#f92672">(</span>GNU/Linux 4.15.0-112-generic x86_64<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>pokemon@root:~$
+</span></span></code></pre></div><p>That was quick&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pokemon@root:~$ ls Desktop
+</span></span><span style="display:flex;"><span>P0kEmOn.zip
+</span></span><span style="display:flex;"><span>pokemon@root:~$ unzip Desktop/P0kEmOn.zip
+</span></span><span style="display:flex;"><span>Archive:  Desktop/P0kEmOn.zip
+</span></span><span style="display:flex;"><span>   creating: P0kEmOn/
+</span></span><span style="display:flex;"><span>  inflating: P0kEmOn/grass-type.txt
+</span></span></code></pre></div><p>Just decode the hex for first answer</p>
+<h2 id="water-type-pokemon">Water type Pokemon</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pokemon@root:/var/www/html$ ls
+</span></span><span style="display:flex;"><span>index.html  water-type.txt
+</span></span><span style="display:flex;"><span>pokemon@root:/var/www/html$ cat water-type.txt
+</span></span></code></pre></div><p>Just decode the ROT for second answer</p>
+<h2 id="fire-type-pokemon">Fire type Pokemon</h2>
+<p>There was no hint for this one but if we follow the same file naming logic////</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pokemon@root:/etc/why_am_i_here?$ find / -type f -name fire-type.txt
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>find: <span style="color:#e6db74">&#39;/etc/polkit-1/localauthority&#39;</span>: Permission denied
+</span></span><span style="display:flex;"><span>/etc/why_am_i_here?/fire-type.txt
+</span></span><span style="display:flex;"><span>find: <span style="color:#e6db74">&#39;/etc/cups/ssl&#39;</span>: Permission denied
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>This one is base64</p>
+<h2 id="privilige-escalation">Privilige Escalation</h2>
+<p>Ok this one was a bit guessy and needed a lot of searching around</p>
+<p>In your user folder, go to &ldquo;Videos&rdquo; folder and keep digging</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pokemon@root:~/Videos/Gotta/Catch/Them/ALL!$ cat Could_this_be_what_Im_looking_for?.cplusplus
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># include &lt;iostream&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>int main<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span> std::cout &lt;&lt; <span style="color:#e6db74">&#34;ash : EDITED-PASSWORD&#34;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">return</span> 0;
+</span></span></code></pre></div><p>now with the credentials we can bocome ash</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pokemon@root:~/Videos/Gotta/Catch/Them/ALL!$ su ash
+</span></span><span style="display:flex;"><span>Password:
+</span></span><span style="display:flex;"><span>To run a command as administrator <span style="color:#f92672">(</span>user <span style="color:#e6db74">&#34;root&#34;</span><span style="color:#f92672">)</span>, use <span style="color:#e6db74">&#34;sudo &lt;command&gt;&#34;</span>.
+</span></span><span style="display:flex;"><span>See <span style="color:#e6db74">&#34;man sudo_root&#34;</span> <span style="color:#66d9ef">for</span> details.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bash: /home/ash/.bashrc: Permission denied
+</span></span><span style="display:flex;"><span>ash@root:/home/pokemon/Videos/Gotta/Catch/Them/ALL!$ sudo su root
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>sudo<span style="color:#f92672">]</span> password <span style="color:#66d9ef">for</span> ash:
+</span></span><span style="display:flex;"><span>root@root:/home/pokemon/Videos/Gotta/Catch/Them/ALL!# whoami
+</span></span><span style="display:flex;"><span>root
+</span></span></code></pre></div><p>Lol that was unexpectedly easy, but rather fun. Root&rsquo;s favorite pokemon can be found in &ldquo;home&rdquo;
+and honestly Ii was expecting it to be that one.</p>
+<p>Off to the Victory road!!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="http://localhost:1313/categories/tryhackme/">TryHackMe</a></span>
+        
+    </p>
+
+			    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="https://github.com/nair0lf32/zer0ne-blogbecfebf1c2c839dfd333ba6be211ce0980f23e46" target="_blank" rel="noopener">becfebf</a> @ 2024-03-03</p>
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2024</span>
+            <span><a href="http://localhost:1313/">nair0lf32</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="http://localhost:1313/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="http://localhost:1313/bundle.min.b1dc444a7108174ae3d2294f982be5e99e844ae2b8d58eeea19d929bde0338be4d12ed8a4dfc67194dcc6726fa6a82705119c0d7e4edd4de9294be6535ea7b7f.js" integrity="sha512-sdxESnEIF0rj0ilPmCvl6Z6ESuK41Y7uoZ2Sm94DOL5NEu2KTfxnGU3MZyb6aoJwURnA1&#43;Tt1N6SlL5lNep7fw=="></script>
+
+
+
+    </body>
+</html>
