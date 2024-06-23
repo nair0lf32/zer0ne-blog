@@ -102,6 +102,7 @@ Other places I Learn or just play challenges (not actively writing writeups for 
 - [blueteamlabs](https://blueteamlabs.online/home/user/096da5ad317ed64c8f340c)
 - [for kids](https://ctf.hackchallengesforkids.com/challenges)
 - [cyberedu](https://app.cyber-edu.co/user/9c09310c-3032-4ba1-a1d2-b63a1cecb339?tenant=cyberedu)
+- [pwnx](https://play.pwnx.io/#/user/42a9316f-e484-43f3-8986-e3e457c38cdf)
 
 Also [ctftime](https://ctftime.org/team/182186) for real-time events
 
@@ -109,7 +110,8 @@ Also [ctftime](https://ctftime.org/team/182186) for real-time events
 
 Playing CTFs is cool and stuff but if you want to get real about cybersecurity you need more! The platforms below are not for playing CTFs but mostly teach you what you need to know and let you practice in CTF-like environments (labs). Some offer certificates but remember, It ain't cheap!
 
-- [Offensive-security](https://www.offensive-security.com/pwk-oscp/) (the G.O.A.T)
+- [Offensive-security](https://www.offensive-security.com/pwk-oscp/) (the G.O.A.T, they
+  have [proving grounds](https://portal.offsec.com/dashboard))
 - [Portswigger](https://portswigger.net/web-security/dashboard) (they made burp)
 - [EC-council](https://codered.eccouncil.org/)
 - [Letsdefend](https://letsdefend.io/)
