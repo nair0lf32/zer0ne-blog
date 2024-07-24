@@ -109,6 +109,9 @@ Other places I Learn or just play challenges (not actively writing writeups for 
 - [cyberEdu](https://app.cyber-edu.co/user/9c09310c-3032-4ba1-a1d2-b63a1cecb339?tenant=cyberedu)
 - [pwnX](https://play.pwnx.io/#/user/42a9316f-e484-43f3-8986-e3e457c38cdf)
 - [FlagYard](https://flagyard.com/profile/nairolf32)
+- [dreamHack.io](https://dreamhack.io/users/62478)
+- [cPAW](https://ctf.cpaw.site/)
+- [the archive](https://archive.ooo/u/nairolf32)
 
 ## Cybersecurity learning
 
