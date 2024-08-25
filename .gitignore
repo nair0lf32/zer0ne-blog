@@ -1,1 +1,31 @@
-**/thumbs.db
+# Hugo Files
+/public/
+/resources/
+/hugo_stats.json
+/config.toml.toml.lock
+/node_modules/
+/.cache/
+
+# Backup files
+*.bak
+*.swp
+*.swo
+*~
+
+# Hugo Output
+*.html
+*.xml
+*.json
+*.toml.lock
+
+# OS Specific
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Optional Hugo Modules
+.hugo_build.lock
