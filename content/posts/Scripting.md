@@ -24,19 +24,19 @@ Obviously I start with python! If there is one thing this language is known for 
 
 - [requests](https://pypi.org/project/requests/). You expected this one! obviously it's for http requests, and it makes that way too simple. This one is very often used in coding challenges to scrape data from a given website, so you usually add [beautifulsoup](https://pypi.org/project/beautifulsoup4/) (or [scrapy](https://pypi.org/project/Scrapy/)).
 
-- [cryptography](https://pypi.org/project/cryptography/) does what it says. It's a cryptography swiss-knife. Just like [pycryptodome](https://pypi.org/project/pycryptodome/), you can make those work with other modules like [hashlib](https://docs.python.org/3/library/hashlib.html), [base64](https://docs.python.org/3/library/base64.html)...
+- [cryptography](https://pypi.org/project/cryptography/) does what it says. It's a cryptography Swiss-knife. Just like [pycryptodome](https://pypi.org/project/pycryptodome/), you can make those work with other modules like [hashlib](https://docs.python.org/3/library/hashlib.html), [base64](https://docs.python.org/3/library/base64.html)...
 
-- [pwntools](https://pypi.org/project/pwntools/) describe itself as a CTF framework for exploit development. Do I need to add anything else? I just love how it makes remote socket connections easier than the [socket](https://docs.python.org/3/library/socket.html?highlight=socket#module-socket) module itself. But I had to use the latter for an IRC challenge so it still rocks.
+- [PwnTools](https://pypi.org/project/pwntools/) describe itself as a CTF framework for exploit development. Do I need to add anything else? I just love how it makes remote socket connections easier than the [socket](https://docs.python.org/3/library/socket.html?highlight=socket#module-socket) module itself. But I had to use the latter for an IRC challenge so it still rocks.
 
-- [Impacket](https://pypi.org/project/impacket/) is another famous name in CTFs, for anything network-related. It allows easy connection using many protocols. I used it mostly against windows, for SMB connections. Also check [RawSocketpy](https://pypi.org/project/rawsocketpy/) for connections relying mostly on MAC addresses (WIFI/ETHERNET).
+- [Impacket](https://pypi.org/project/impacket/) is another famous name in CTFs, for anything network-related. It allows easy connection using many protocols. I used it mostly against windows, for SMB connections. Also check [RawSocketPy](https://pypi.org/project/rawsocketpy/) for connections relying mostly on MAC addresses (WIFI/ETHERNET).
 
-- [scapy](https://pypi.org/project/scapy/) Is for network packets analysis. Its power is a bit underrated IMO. For packet injection you might as well look at [Pylibnet](https://pylibnet.sourceforge.net/). No need to install this one it comes with your python 3 installation.
+- [Scapy](https://pypi.org/project/scapy/) Is for network packets analysis. Its power is a bit underrated IMO. For packet injection you might as well look at [Pylibnet](https://pylibnet.sourceforge.net/). No need to install this one it comes with your python 3 installation.
 
 There are many other libraries and even implementations of full-fledged hacking frameworks or tools in python, but those are the ones mostly used to quickly come up with a working solution. The tool used is not the most important thing. It's how you solve the problem (fast? efficient? re-usable?) that matters.
 
 ## [bash](https://www.gnu.org/software/bash/)
 
-I do not write a lot of `bash` scripts yet but I think it is a language you definitely need to automate your linux tasks. I mostly use quick one liners to perform quick actions, like filtering a wordlist with `awk` and `sed`, find things with `find` and `grep`... But we all know bash is more powerful than that and I definitely recommend you getting familiar with it.
+I do not write a lot of `bash` scripts yet but I think it is a language you definitely need to automate your Linux tasks. I mostly use quick one liners to perform quick actions, like filtering a wordlist with `awk` and `sed`, find things with `find` and `grep`... But we all know bash is more powerful than that and I definitely recommend you getting familiar with it.
 
 ## Others
 
