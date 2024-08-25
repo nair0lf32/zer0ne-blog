@@ -198,6 +198,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 - [freeformatter](https://www.freeformatter.com/)                       |
 - [whatportis](https://github.com/ncrocfer/whatportis)                  |
 - [gittools](https://github.com/internetwache/GitTools)                 |
+- [extendsclass](https://extendsclass.com/)                             |
 
 ## Threat detection, network monitoring and remediation
 
