@@ -112,6 +112,7 @@ Other places I Learn or just play challenges (not actively writing writeups for 
 - [dreamHack.io](https://dreamhack.io/users/62478)
 - [cPAW](https://ctf.cpaw.site/)
 - [the archive](https://archive.ooo/u/nairolf32)
+- [flag4jobs](https://app.flag4jobs.com/challenges) (if only it was this simple)
 
 ## Cybersecurity learning
 
