@@ -138,6 +138,9 @@ If you think you are good enough, prefer a freelance style and enjoy competition
 - [hackenProof](https://hackenproof.com/hackers/nairolf32)
 - [yesWeHack](https://yeswehack.com/)
 - [safeHats](https://app.safehats.com/)
+- [synack](https://www.synack.com/) (this one is a bit different)
+- [huntr](https://huntr.com/users/nair0lf32)
+- [bugbounter](https://app.bugbounter.com/)
 
 And as I like linking and sharing stuff (curation is my passion lol) here is similar projects (other people making great writeups)
 
@@ -157,3 +160,4 @@ And [this guy](https://github.com/zardus/wargame-nexus) who also made a very com
 Now if you are ever interested, my writeups they are right [Here]({{< ref "/writeups" >}} "Writeups")
 
 Good luck and Have fun!
+
