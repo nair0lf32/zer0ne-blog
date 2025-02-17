@@ -64,6 +64,7 @@ This one is highly recommended for beginners too. They don't really teach you, b
 {{< figure src="https://echoctf.red/profile/9757045/badge" alt="nairolf32-echoCtf" link="https://echoctf.red/profile/9757045" position="center" width=500 >}}
 
 Still throughout my learning journey, my wandering led me to echoCTF. The platform seem a bit newer than others but it looks like a fun place. They are quite active (busiest discord server I have ever seen) and they add new challenges regularly. I am still exploring it but so far it's pretty nice.
+I recently discovered an African platform mimicking this one a lot (like a lot...it's almost blatant plagiarism at this point XD) and it's called [afrihackbox](https://app.afrihackbox.com/). I like it tho.
 
 Apart from those main platforms that host CTFs and cybersecurity challenges 24/7 there are many time-limited events, like the famous [GoogleCTF](https://capturetheflag.withgoogle.com/team/nair0lf32).
 Those are the real "CTFs" where you can compete with other players in real-time, most often for prizes. The greatest curator os such events is [ctfTime](https://ctftime.org/). They keep track of CTF events and platforms where you can participate with your team. I am currently looking for a team or alternatively creating one (my desired name is taken). You can check my [profile here](https://ctftime.org/user/182186).
