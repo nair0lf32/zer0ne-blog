@@ -21,6 +21,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 |                                                           | [Ahmia](https://ahmia.fi/)  (dark web search)                  |                                                            |
 |                                                           | [WHOIS](https://who.is/) (nothing beat basics)                 |                                                            |
 |                                                           | [viewDns](https://viewdns.info/) (whois++)                     |                                                            |
+|                                                           | [webcheck](https://web-check.xyz/) (vibe check)                |                                                            |
 
 ## Vulnerability scanners ( For either professionals, lazy people, or both)
 
