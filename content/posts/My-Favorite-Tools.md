@@ -152,6 +152,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 ## OSINT
 
 - [OSINT Framework](https://osintframework.com/) (its a framework)
+- [OSINT Fr](https://osintfr.com/outils)
 - [OSINT techniques](https://www.osinttechniques.com/osint-tools.html)
 - [wigle](https://wigle.net/) (google maps for networks)
 - [Maltego](https://www.maltego.com/) (Feel like a Professional)
