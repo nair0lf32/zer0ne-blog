@@ -114,6 +114,7 @@ Other places I Learn or just play challenges (not actively writing writeups for 
 - [cPAW](https://ctf.cpaw.site/)
 - [the archive](https://archive.ooo/u/nairolf32)
 - [flag4jobs](https://app.flag4jobs.com/challenges) (if only it was this simple)
+- [First CTF](https://ctf.first.org/) (for newcomers and students)
 
 ## Cybersecurity learning
 
@@ -142,6 +143,7 @@ If you think you are good enough, prefer a freelance style and enjoy competition
 - [synack](https://www.synack.com/) (this one is a bit different)
 - [huntr](https://huntr.com/users/nair0lf32)
 - [bugbounter](https://app.bugbounter.com/)
+- [bugbase](https://bugbase.io/)
 
 And as I like linking and sharing stuff (curation is my passion lol) here is similar projects (other people making great writeups)
 
