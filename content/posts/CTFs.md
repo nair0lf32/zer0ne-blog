@@ -131,9 +131,8 @@ Playing CTFs is cool and stuff but if you want to get real about cybersecurity y
 
 ## Bug Bounties platforms
 
-If you think you are good enough, prefer a freelance style and enjoy competition then bug bounties (Google it) are for you
+If you think you are good enough, prefer a freelance style and enjoy competition then bug bounties (Google it) are for you. Here are some platforms where you can find bug bountie, ranked by popularity and my personal preference (mostly eligibilty for payments and ease of use)
 
-- [bugBountyHunter](https://www.bugbountyhunter.com/training/)
 - [HackerOne](https://hackerone.com/nairolf?type=user) with [hacker101](https://ctf.hacker101.com/) as their playground for starters
 - [BugCrowd](https://bugcrowd.com/nairolf32)
 - [Intigriti](https://www.intigriti.com/)
@@ -143,7 +142,8 @@ If you think you are good enough, prefer a freelance style and enjoy competition
 - [synack](https://www.synack.com/) (this one is a bit different)
 - [huntr](https://huntr.com/users/nair0lf32)
 - [bugbounter](https://app.bugbounter.com/)
-- [bugbase](https://bugbase.io/)
+- [bugBountyHunter](https://www.bugbountyhunter.com/training/)
+- [bugbase](https://bugbase.ai/)
 
 And as I like linking and sharing stuff (curation is my passion lol) here is similar projects (other people making great writeups)
 
