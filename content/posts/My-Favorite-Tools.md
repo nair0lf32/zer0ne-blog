@@ -253,6 +253,7 @@ All-in-one and frameworks/Auto-Exploiters:
 Here is a list of places to find more tools:
 
 - [Github](https://github.com) ( a lot in here! ) also check [this repository](https://github.com/Hack-with-Github/Awesome-Hacking), [this one](https://github.com/apsdehal/awesome-ctf) and [this guy](https://github.com/mgeeky)
+- [CTF-tools](https://s0v1x.github.io/CTF-tools/)
 - [Kitploit](https://www.kitploit.com/)
 - [BlackArch tools](https://blackarch.org/tools.html) (Or any Pentest Linux distro tools)
 - [kali tools](https://en.kali.tools/all/?category)
