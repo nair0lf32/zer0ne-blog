@@ -29,3 +29,6 @@ npm-debug.log*
 
 # Optional Hugo Modules
 .hugo_build.lock
+
+# IDEs and Editors
+/.vscode

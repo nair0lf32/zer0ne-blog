@@ -14,7 +14,7 @@ Basically I'd say it depends of your definition of a hacker. it's not a requirem
 
 Then you better get started!
 
-I am actually not here to talk about how much coding you need to do some "hacking" or play a CTF. Instead I want to talk about how I do it! (yeah it's mostly about me here). I made a [post]({{< ref "/Hacking-methodology" >}} "Hacking-methodology") about my hacking methodology, where I explain how I basically google my way out of everything. well there is one kind of problems you cannot always solve by using google alone. You need a functional brain for those. Programming problems require logic and good syntax knowledge (this one can be Googled). So for some tasks you need to write some scripts.
+I am actually not here to talk about how much coding you need to do some "hacking" or play a CTF. Instead I want to talk about how I do it! (yeah it's mostly about me here). I made a [post](posts/Hacking-methodology.md) about my hacking methodology, where I explain how I basically google my way out of everything. well there is one kind of problems you cannot always solve by using google alone. You need a functional brain for those. Programming problems require logic and good syntax knowledge (this one can be Googled). So for some tasks you need to write some scripts.
 
 What are the Scripting languages I use? It's the whole point of this article
 

@@ -1,4 +1,4 @@
-baseURL = "http://zer0ne-hub.github.io/zer0ne-blog/"
+baseURL = "https://zer0ne-hub.github.io/zer0ne-blog/"
 languageCode = 'en-us'
 title = 'Zer0ne blog'
 subtitle = "Welcome, friend"
@@ -6,7 +6,6 @@ keywords = "zer0ne, nair0lf32, hacking, cybersecurity, ctf"
 copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
 readOtherPosts = "Read more posts"
 theme = "hello-friend-ng"
-paginate = 10
 rssLimit = 10
 
 archetypeDir = "archetypes"
@@ -28,6 +27,9 @@ disableSitemap = false
 disable404 = false
 disableHugoGeneratorInject = false
 
+[pagination]
+pagerSize = 10
+
 [permalinks]
 posts = "/posts/:year/:month/:title/"
 
@@ -39,9 +41,6 @@ tag = "tags"
 category = "categories"
 series = "series"
 
-[author]
-name = "nair0lf32"
-
 [params]
 dateform = "Jan 2, 2006"
 dateformShort = "Jan 2"
@@ -52,7 +51,7 @@ keywords = "hacking, cybersecurity, ctf, nair0lf32, zerone, zer0ne"
 images = [""]
 homeSubtitle = "Another cybersecurity blog"
 # backgroundImage = "assets/images/background.jpg"
-gitUrl = "https://github.com/nair0lf32/zer0ne-blog"
+gitUrl = "http://zer0ne-hub.github.io/zer0ne-blog"
 disableReadOtherPosts = false
 enableThemeToggle = true
 enableSharingButtons = true
@@ -62,6 +61,9 @@ enableGlobalLanguageMenu = false
 # customCSS = []
 # customJS  = []
 justifyContent = false # Set "text-align: justify" to .post-content.
+
+[params.author]
+name = "nair0lf32"
 
 [params.footer]
 trademark = true

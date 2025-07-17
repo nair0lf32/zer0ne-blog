@@ -6,7 +6,7 @@ Hello friend 🤖,
 
 I am *nairolf32*, A cybersecurity enthusiast slowly getting stronger. I Play CTFs and challenges on various websites and decided to keep a track of what I already know/did/learnt by writing it down. Here is a good place for that. This repository used to simply host my ctf writeups but I turnt it into my cybersec blog and here I share the best things I learnt throughout my learning journey. The writeups are from many platforms. My favorites ones are Tryhackme and Hackthebox. The writeups are mostly from those platforms.
 
-You can click [here](https://nair0lf32.github.io/zer0ne/about/) to learn more about this blog!
+You can click [here](http://zer0ne-hub.github.io/zer0ne-blog/about/) to learn more about this blog!
 
 ## Usage
 
