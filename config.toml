@@ -17,7 +17,7 @@ publishDir = "public"
 buildDrafts = true
 buildFuture = false
 buildExpired = false
-canonifyURLs = true
+canonifyURLs = false
 enableRobotsTXT = true
 enableGitInfo = true
 enableEmoji = true
@@ -60,7 +60,7 @@ enableGlobalLanguageMenu = false
 # linking local files with their path relative to the static folder, e.g. "css/styles.css"
 # customCSS = []
 # customJS  = []
-justifyContent = false # Set "text-align: justify" to .post-content.
+justifyContent = true # Set "text-align: justify" to .post-content.
 
 [params.author]
 name = "nair0lf32"
