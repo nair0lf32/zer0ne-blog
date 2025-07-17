@@ -148,3 +148,8 @@ url = "/posts"
 identifier = "writeups"
 name = "Writeups"
 url = "/writeups"
+
+
+[caches]
+[caches.images]
+dir = ':cacheDir/images'
