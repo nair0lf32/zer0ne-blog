@@ -5,7 +5,10 @@ draft: false
 url: /about/
 ---
 
-{{< image src="pictures/dark_logo.png" alt="nairolf32" position="center" style="width: 400px; border-radius: 50%" >}}
+
+![My logo](/pictures/dark_logo.png)
+
+{{< image src="/pictures/dark_logo.png" alt="nairolf32" position="center" style="width: 400px; border-radius: 50%" >}}
 
 ## Hello friend
 
