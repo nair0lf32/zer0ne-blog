@@ -1,4 +1,4 @@
-baseURL = "http://zer0ne-hub.github.io/zer0ne-blog/"
+baseURL = "zer0ne-blog/"
 languageCode = 'en-us'
 title = 'Zer0ne blog'
 subtitle = "Welcome, friend"
