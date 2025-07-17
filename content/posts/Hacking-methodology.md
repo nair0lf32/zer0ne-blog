@@ -38,7 +38,7 @@ Basically, that's what I do! mostly Google! I have no shame!
 
 Be it a challenge, a lab, a machine...If I don't know it I Google it! Obviously it doesn't always work (Google-fu is an art)
 
-Now you already noticed I said this first step was about "Reconnaissance"...The mainstream thing to know is how to get `information` about your target. But as not every kind of information is on Google you still need your brain + automated tools. Brain first because you have to know what tool to use. I talk about my tools in [another post](posts/My-Favorite-Tools.md)
+Now you already noticed I said this first step was about "Reconnaissance"...The mainstream thing to know is how to get `information` about your target. But as not every kind of information is on Google you still need your brain + automated tools. Brain first because you have to know what tool to use. I talk about my tools in [another post]({{< ref "My-Favorite-Tools.md" >}})
 Also I won't teach enumeration or reconnaissance here (it's a huge subject). But how do I do it when Google isn't enough?
 
 Every machine starts with a `nmap` scan (or `rustscan` if you are not that patient). But once the scan is over and you see the open ports and available services that's where your "analysis" should kick in! The next steps is the funniest one

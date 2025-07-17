@@ -44,7 +44,7 @@ Most CTF platforms are focused on this one already so not many platforms specifi
 
 ## Crypto
 
-I found many platforms that teach crypto but none was purely theoretical nor solely focused on crypto. I already share them in my [CTF](posts/CTFs.md) article
+I found many platforms that teach crypto but none was purely theoretical nor solely focused on crypto. I already share them in my [CTF]({{< ref "CTFs.md" >}}) article
 
 ## Extra
 
