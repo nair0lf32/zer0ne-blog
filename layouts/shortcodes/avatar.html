@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+{{ $src := .Get "src" | relURL }}
+{{ $alt := .Get "alt" | default "avatar" }}
+{{ $style := .Get "style" | default "width: 200px; border-radius: 50%;" }}
+
+<div style="text-align: center; margin: 1em 0;">
+    <img src="{{ $src }}" alt="{{ $alt }}" style="{{ $style }}">
+</div>

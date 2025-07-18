@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+{{ $src := .Destination | relURL }}
+{{ $alt := .Text | safeHTML }}
+<figure style="margin: 2em 0; text-align: center;">
+    <img src="{{ $src }}" alt="{{ $alt }}" loading="lazy" decoding="async"
+        style="max-width: 100%; height: auto; border-radius: 5%;">
+    {{ if $alt }}
+    <figcaption style="font-size: 0.9em; color: #777; margin-top: 0.5em;">{{ $alt }}</figcaption>
+    {{ end }}
+</figure>

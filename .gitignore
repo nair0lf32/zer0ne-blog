@@ -1,22 +1,17 @@
 # Hugo Files
-/public/
+/public/**
 /resources/
 /hugo_stats.json
 /config.toml.toml.lock
 /node_modules/
 /.cache/
+*.toml.lock
 
 # Backup files
 *.bak
 *.swp
 *.swo
 *~
-
-# Hugo Output
-*.html
-*.xml
-*.json
-*.toml.lock
 
 # OS Specific
 .DS_Store
