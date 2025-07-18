@@ -102,9 +102,9 @@ theme = "#1b1c1d"
 #   url = ""
 
 [params.portrait]
-path = "/pictures/dark_logo.png"
-alt = "Portrait"
-maxWidth = "200px"
+path = "pictures/dark_logo.png"
+alt = "zer0ne logo"
+maxWidth = "250px"
 
 # Social icons
 [[params.social]]
