@@ -17,7 +17,7 @@ publishDir = "public"
 buildDrafts = true
 buildFuture = false
 buildExpired = false
-canonifyURLs = true
+canonifyURLs = false
 enableRobotsTXT = true
 enableGitInfo = true
 enableEmoji = true
@@ -78,9 +78,9 @@ bottomText = [
 ]
 
 [params.logo]
-logoMark = "$>"
-logoText = "0/1"
-logoHomeLink = "/"
+logoMark = "$ cd"
+logoText = "/home"
+logoHomeLink = ""
 logoCursorDisabled = false
 logoCursorColor = "#0FF00D"
 logoCursorAnimate = "2s"
