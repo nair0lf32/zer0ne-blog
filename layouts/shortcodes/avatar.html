@@ -1,8 +1,23 @@
 <!DOCTYPE html>
 {{ $src := .Get "src" | relURL }}
 {{ $alt := .Get "alt" | default "avatar" }}
-{{ $style := .Get "style" | default "width: 200px; border-radius: 50%;" }}
+{{ $width := .Get "width" | default "200px" }}
+{{ $radius := .Get "radius" | default "50%" }}
 
-<div style="text-align: center; margin: 1em 0;">
-    <img src="{{ $src }}" alt="{{ $alt }}" style="{{ $style }}">
+<div class="avatar-container">
+    <img src="{{ $src }}" alt="{{ $alt }}" class="avatar-image"
+        style="width: {{ $width }}; border-radius: {{ $radius }};">
 </div>
+
+<style>
+    .avatar-container {
+        text-align: center;
+        margin: 1em 0;
+    }
+
+    .avatar-image {
+        display: block;
+        margin: 0 auto;
+        object-fit: cover;
+    }
+</style>

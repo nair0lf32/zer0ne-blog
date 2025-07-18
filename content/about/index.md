@@ -5,10 +5,7 @@ draft: false
 url: /about/
 ---
 
-{{< avatar src="pictures/dark_logo.png" alt="nair0lf32" style="border-radius: 50%; !important" >}}
-
-
-![My logo](pictures/dark_logo.png)
+{{< avatar src="pictures/dark_logo.png" alt="nair0lf32" >}}
 
 ## Hello friend
 
