@@ -8,7 +8,7 @@ url: /about/
 {{< avatar src="pictures/dark_logo.png" alt="nair0lf32" style="border-radius: 50%; !important" >}}
 
 
-![My logo](/pictures/dark_logo.png)
+![My logo](pictures/dark_logo.png)
 
 ## Hello friend
 
