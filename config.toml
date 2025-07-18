@@ -1,4 +1,4 @@
-baseURL = "https://zer0ne-hub.github.io/zer0ne-blog/"
+baseURL = "https://zer0ne-hub.github.io/"
 languageCode = 'en-us'
 title = 'Zer0ne blog'
 subtitle = "Welcome, friend"
@@ -153,3 +153,11 @@ url = "/writeups"
 [caches]
 [caches.images]
 dir = ':cacheDir/images'
+
+[[module.mounts]]
+source = 'assets'
+target = 'assets'
+
+[[module.mounts]]
+source = 'static'
+target = 'assets'
