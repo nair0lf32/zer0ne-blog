@@ -5,10 +5,10 @@ draft: false
 url: /about/
 ---
 
+{{< avatar src="pictures/dark_logo.png" alt="nair0lf32" style="border-radius: 50%; !important" >}}
+
 
 ![My logo](/pictures/dark_logo.png)
-
-{{< image src="/pictures/dark_logo.png" alt="nairolf32" position="center" style="width: 400px; border-radius: 50%" >}}
 
 ## Hello friend
 
@@ -17,4 +17,4 @@ url: /about/
 Welcome friend, I am nairolf32, A cybersecurity enthusiast (yeah yeah I want to be a haxxor). I Play CTFs and challenges on various websites to practice and I decided to keep a track of what I already know, did or what I learnt by writing it down. Here is a good place to do that. This repository used to simply host my CTF writeups but I turnt it into a blog. Here I share the best things I learnt throughout my learning journey and also all my CTF writeups.
 
 - Feel free to check the [Blog]({{< ref "/posts" >}} "CTFs") to read my shitty articles
-- If you are interested in my CTF writeups a good place to start is [Here]({{< ref "/posts/CTFs" >}} "CTFs")
+- If you are interested in my CTF writeups a good place to start is [Here]({{< ref "/posts/CTFs/CTFs" >}} "CTFs")

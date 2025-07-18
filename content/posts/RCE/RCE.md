@@ -33,7 +33,7 @@ Third option is similar to a VPN but is called a reverse ssh tunnel
 like [ngrok](https://ngrok.com/) or [tunnelin](https://app.tunnelin.com/). They basically route the traffic from the target machine to your local machine through their servers, and
 usually provide you a subdomain that you can use to communicate with your local machine. The downfall is that most are temporary solutions that refresh the subdomain every time you restart the tunnel (your address changes).
 
-Now back to my personal experience. I faced this issue first on RootMe, then while playing the Hackerlab CTF. I wrote a writeup [here]({{< ref "/writeups/hackerlab/hackerlab-2022" >}} "Hackerlab 2022") about it. More recently I got access to a machine using Metasploit. Here are the properties that are important to know:
+Now back to my personal experience. I faced this issue first on RootMe, then while playing the Hackerlab CTF. I wrote a writeup [here]({{< ref "/writeups/hackerlab/hackerlab-2022/hackerlab-2022" >}} "Hackerlab 2022") about it. More recently I got access to a machine using Metasploit. Here are the properties that are important to know:
 
 - The target machine IP `RHOSTS` if using Metasploit: usually a public IP address (or a domain name)
 - Your own IP `LHOST`: That's the tricky part. if like me you used a TCP tunnel you might get a domain name. You put that there! If you care about persistence you can use a dynamic DNS service like [no-ip](https://www.noip.com/) to get a domain name that will always point to your public IP address.
