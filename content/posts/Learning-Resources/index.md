@@ -4,6 +4,7 @@ date: 2023-06-19T18:47:31+01:00
 draft: false
 ---
 
+{{< post-img src="defcon.png" alt="Defcon" style="width:200px" >}}
 We are at this point where I talk more about my endless learning journey (again). Every living blogger in the tech field once felt the urge to share and talk about his favorite learning places (undeniably). Today I wanna talk about some cool places on internet to learn hacking related skills.
 
 From what I noticed, most cybersec platforms tend to try and teach you "everything" but cannot really go deep in a particular field. This leave you with a general idea of things and most people also tend to specialize in specific domains. By example when playing CTFs you will always meet those kind of people:

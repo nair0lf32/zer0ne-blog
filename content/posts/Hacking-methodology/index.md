@@ -4,17 +4,22 @@ date: 2022-10-01T20:10:31+01:00
 draft: false
 ---
 
-It's not about the general methodology (you can easily get this one on google) but it's about mine (quick reminder: I own this place!). In simpler words I will just talk about how I do my things, aka how I tackle CTFs challenges (and problems in general). I will also talk about my favorite categories of challenges so "buckle up buckaroos!"
+{{< post-img src="linux.png" alt="Linux" style="width:200px" >}}
+
+It's not about the general methodology (you can easily get this one on google) but it's about mine
+(quick reminder: I own this place!).
+
+In simpler words I will just talk about how I do my things, aka how I tackle CTFs challenges (and problems in general). I will also talk about my favorite categories of challenges so "buckle up buckaroos!"
 
 ## My Methodology
 
-Took me time to define my own hacking methodology and it might still change (improvements plz). I was very confused as a beginner on my first CTF. Hacking communities are know to be very welcoming nowadays but for the sake of effort no one will just serve you flags, answers or even hints sometimes. Don't get me wrong that's a very good thing because that's exactly what it's about so you know what to expect. They will instead point you toward general concepts or learning material. Got it already? First thing you need in the cyber is `curiosity`. Seriously, wanna "hack" anything you do not understand yourself? You better learn to `Google` real quick
+Took me time to define my own **hacking methodology** and it might still change (improvements plz). I was very confused as a beginner on my first CTF. Hacking communities are known to be very welcoming nowadays but for the sake of effort no one will just serve you flags, answers or even hints sometimes. Don't get me wrong that's a very good thing because that's exactly what it's about so you know what to expect. They will instead point you toward general concepts or learning material. Got it already? First thing you need in the cyber is `curiosity`. Seriously, wanna "hack" anything you do not understand yourself? You better learn to `Google` real quick
 
 I won't tell you the generic things like "you need to know this and that..." to get into cybersecurity or play CTFs but there is a general methodology to know.
 
 What? you want me to give it to you? You better love to google things real real quick!
 
-Personally I follow three big steps and one general rule.
+Personally I follow *three big steps and one general rule*.
 
 ## Step 1: Reconnaissance
 
@@ -25,14 +30,14 @@ If you googled already you expected me to start here! You also already know it's
 But before you get there the second type of person would be like:
 
 "Hmm! a cryptography challenge. I notice every letter is a shift of an alphabet letter" That guy would probably grab a pen and paper and furiously manually decode it. That's analysis for you.
-
 But let's be honest such scenario is not very common. Now there is me:
 
 "what the f*ck is that?"
 
-*Copy pastes the encoded ROT13 on Google, reads some results, add cryptography to the search query and learn about ROT13
+*Copy pastes the encoded ROT13 on Google, reads some results, add cryptography to the search query
+and learn about ROT13
 
-"Oh okay" *Decodes it with the online tool I just found and added to my collection
+"Oh okay" *Decodes it with the online tool I just found and added to my [favorite tools collection]({{< ref "My-Favorite-Tools" >}} "My favorite tools").
 
 Basically, that's what I do! mostly Google! I have no shame!
 
@@ -49,15 +54,15 @@ Here again I basically Google everything! It's the part where you take advantage
 
 - Machines/Systems: So far I know about Linux and Windows. Those usually need the most enumeration. These types of challenges are usually to showcase a common vulnerability (`exploitdb` and `github` got your back) or you get access through a server (web,ssh,rdp...). Once again Google will save you
 - Cryptography: Oh I love those! they go from "`cyberchef`,`boxentriq` or `dcode` will do" to "you have to reverse engineer the whole Cypher or encoding method to decode this one" (you might need some `scripting` skills for the reverse engineering part...just...just learn `python`)
-- OSINT: This one would go into reconnaissance but it takes more critical thinking than you think so add it to a LOT of Google searches
-- Steganography: You need hints to even think about this one! sometimes the context helps...sometimes the author is just like "f*ck you! here is a picture" (with obviously no exif data). If they were nice you have to `stegseek` the `steghide` passphrase, else you have to deduce it from "context". And if it's not a picture, well you know what to do!
-- Pwn/Binary exploitation: input mad long characters sequences, Learn `C`, Learn some `Assembly`, cry a little, then just run any `decompiler`, `debugger` or `disassembler` you know and hope for the best
+- OSINT: This one would go into reconnaissance but it takes more critical thinking than you think so add it to A LOT of Google searches
+- Steganography: You need hints to even think about this one! sometimes the context helps...sometimes the author is just like "f*ck you! here is a picture" (with obviously no exif data). If they were nice you have to `stegseek` the `steghide` passphrase, else you have to deduce it from "context". And if it's not a picture, well you know what to do! sometimes you won't even know what the file is (lmao).
+- Pwn/Binary exploitation: input mad long characters sequences, Learn `C`, Learn some `Assembly`, **cry a little**, then just run any `decompiler`, `debugger` or `disassembler` you know and hope for the best
 - Android: Install `android studio` first, Learn to decompile `apk` and get familiar with `proxies`
 - Web: Memorize `The OWASP top 10` vulnerabilities and how to exploit them, Fire up `BurpSuite` or your favorite proxy on every input field you ever see
 
-Now to those who expected step 3 to be about `privilege escalation`, SIKE! I put privilege escalation here in step 2 because it's my methodology steps and not my hacking steps!
+Now to those who expected step 3 to be about `privilege escalation`, SIKE! I put privilege escalation here in step 2 because it's "my methodology steps" and not "my hacking steps!"
 
-I consider privesc a form of exploitation (just local). You mostly have to learn about this one, because the common vectors are already known. Or use noisy scripts like `linpeas` or `winpeas` to win some time.
+I consider privesc to be a form of exploitation (just local). You mostly have to learn about this one, because the common vectors are already known. Or use noisy scripts like `linpeas` or `winpeas` to win some time.
 
 ## Step 3: Writeups
 

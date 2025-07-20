@@ -4,7 +4,9 @@ date: 2023-03-25T19:40:31+01:00
 draft: false
 ---
 
-This article is also about learning "hacking", but in a controversial way, using BOOKS!
+{{< post-img src="book.png" alt="Book" style="width:200px" >}}
+
+This article is also about learning "hacking", but in a controversial way, using *BOOKS!*
 Yes fellow uncultured manatees, books are still a thing!
 
 I used to read a lot of books. Not necessarily IT or Computer science related books, but before the internet reached me, those were my only source of information (and my greatest hobby). I recently got in touch with a nice guy on twitter who said he was following this blog (honestly, thank you [@5PMGHOST](https://twitter.com/5PMGHOST)!). He was a newcomer making his entry in the cybersecurity world and wanted some tips, and mostly books recommendations. At this very moment I realized...damn it's been a while I read a book about cybersecurity.
@@ -25,7 +27,7 @@ This one seems to be a top renown hacking book for beginners. It's from [OccupyT
 
 {{< image src="https://static.wixstatic.com/media/6a4a49_b67673b0b7fb4bbbb9915efd7a1ec16c~mv2.png/v1/fill/w_204,h_264,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/linux4hackers.png" alt="becoming-master-hacker" style="width: 300px;" >}}
 
-From the same author as the previous one, a great introduction to Linux for beginners. It teaches you everything you need to know to get confortable with the most incontournable OS for hackers. Covering everything from the importance of Linux and installation steps to bash scripting. I definitely recommend this one.
+From the same author as the previous one, a great introduction to Linux for beginners. It teaches you everything you need to know to get comfortable with the most incontournable OS for hackers. Covering everything from the importance of Linux and installation steps to bash scripting. I definitely recommend this one.
 
 ## [The hacker's playbook - peter kim](https://www.amazon.com/Hacker-Playbook-Practical-Penetration-Testing/dp/1980901759)
 

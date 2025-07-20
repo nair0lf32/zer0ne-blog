@@ -4,6 +4,8 @@ date: 2022-09-17T18:33:31+01:00
 draft: false
 ---
 
+{{< post-img src="tools.png" alt="Tools" style="width:200px" >}}
+
 Just a list of cool cybersec tools! The ones I use the most ( or not ) and the one I discovered during my journey. Ordered by categories (kinda)
 
 ## Reconnaissance & Enumeration
@@ -135,7 +137,7 @@ Just a list of cool cybersec tools! The ones I use the most ( or not ) and the o
 
 ## Post-exploitation
 
-| Command and control (C2)                                                            | Persistance (Rootkits +++) pivot and more       |
+| Command and control (C2)                                                            | Persistence (Rootkits +++) pivot and more       |
 | ----------------------------------------------------------------------------------- | ----------------------------------------------- |
 | [Cobalt strike](https://cobalt-strike.github.io/community_kit/) (industry standard) | [Reptile](https://github.com/f0rb1dd3n/Reptile) |
 | [PwnCat](https://github.com/calebstewart/pwncat) (another cat)                      | [chisel](https://github.com/jpillora/chisel)    |

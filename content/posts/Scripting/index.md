@@ -4,6 +4,8 @@ date: 2022-10-09T22:03:31+01:00
 draft: false
 ---
 
+{{< post-img src="script.png" alt="Script" style="width:200px" >}}
+
 When it comes to hacking, people usually imagine a dangerous criminal lurking in his basement (black hoodie is a bonus), furiously smacking a keyboard, typing incomprehensible code directly in a terminal with green on black font. Well...if media didn't make a fool of you...It's not even close to reality. Ok maybe a little bit. A hacker is usually talented at coding. Not necessarily a criminal, but it is a person talented with computers. He knows so much about how they work he can spot malfunctions and well...abuse those malfunctions if he is the said criminal or fix them if he is a good guy. For the coding part, well...I said "usually". Some so-called hackers can get into a system without typing a single line of code.
 
 So the usual question is "Do I need to learn coding before being a hacker?"
