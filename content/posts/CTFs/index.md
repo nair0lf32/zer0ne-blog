@@ -4,9 +4,13 @@ date: 2022-09-22T18:33:31+01:00
 draft: false
 ---
 
+{{< post-img src="flag.png" alt="CTF" style="width:200px" >}}
+
 Hello friend, (you should get used to that greeting real quick)
 
-I am a CTF player. "what is that you ask"? [Here](https://en.wikipedia.org/wiki/Capture_the_flag_(cybersecurity)).[you](https://ctftime.org/ctf-wtf/).[go](https://dev.to/atan/what-is-ctf-and-how-to-get-started-3f04) (You should google more)
+I am a CTF player. "what is that you ask"? [Here](https://en.wikipedia.org/wiki/Capture_the_flag_(cybersecurity)).[you](https://ctftime.org/ctf-wtf/).[go](https://dev.to/atan/what-is-ctf-and-how-to-get-started-3f04)
+
+(You should google more)
 
 Now "why do I play those"? well...Let's just say I think It's a great way to practice in the cybersecurity field. Don't get me wrong you need way more than CTFs to be a cybersecurity professional, but you won't go far without CTF either. May you wanna be a penetration tester or an incident responder you might mostly find yourself in situations CTFs can perfect emulate and prepare you for. You might even "play" a CTF without realizing it!
 

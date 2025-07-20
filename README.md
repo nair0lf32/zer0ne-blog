@@ -11,13 +11,13 @@ You can click [here](http://zer0ne-hub.github.io/zer0ne-blog/about/) to learn mo
 ## Usage
 
 This repository is not really open for external contributions but feel free to open an issue for anything you want to share. For further usage simply clone the repo with `git clone` and run `hugo` (it manages everything for you)
-Most importantly, as I use a submodule theme you need to get it locally too using `git submodule init`then `git submodule update`. To test it run below commands:
+Most importantly, as I use a submodule theme you need to get it locally too using `git submodule init` then `git submodule update`. To test it run below commands:
 
 - `hugo server`
 - for local development you might need to override the baseURL in the config file
 using the `--baseURL=http://localhost:1313` flag with the command above
 - `hugo -D` for building the website
 - Deploying on GitHub Pages using GitHub Actions using the `./github/workflows/pages.yml` file
-- some theme layout modifications are done in the `layouts` folder
+- some minor theme layout modifications are done in the `layouts` folder
 
 Check [hugo website](https://gohugo.io/) for more information about this great static site generator

