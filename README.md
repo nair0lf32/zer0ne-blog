@@ -14,10 +14,13 @@ This repository is not really open for external contributions but feel free to o
 Most importantly, as I use a submodule theme you need to get it locally too using `git submodule init` then `git submodule update`. To test it run below commands:
 
 - `hugo server`
-- for local development you might need to override the baseURL in the config file
-using the `--baseURL=http://localhost:1313` flag with the command above
+- For local development you might need to override the baseURL in the config file
+using the `--baseURL=http://localhost:1313` flag with the command above.
+- The structure is quite simple, the `content` folder contains all the posts using hugo pages bundles, the `static` folder contains the rest of global static files (images, css, js, etc.), and the `themes` folder contains the theme submodule used for the website. You should not modify the theme files directly, but you can override them in the `layouts` folder (If really needed).
 - `hugo -D` for building the website
 - Deploying on GitHub Pages using GitHub Actions using the `./github/workflows/pages.yml` file
-- some minor theme layout modifications are done in the `layouts` folder
+- Some minor theme layout modifications are done in the `layouts` folder (image render-hooks and shortcodes)
+- Added a fuzzy search feature using [Pagefind](https://pagefind.app/). You can install it locally with npm or yarn or download the binary from the [releases page](https://github.com/CloudCannon/pagefind/releases). The latest is
+used in the GitHub Actions workflow file. The search feature is implemented using the `pagefind` shortcode in the `layouts/shortcodes/pagefind.html` file and used in the `content/search/index.md` file. The indexing command is `pagefind --site public` to index the website content and generate the search files in the `public` folder. Remember to run this command after building the website with `hugo -D` to update the search index locally.
 
 Check [hugo website](https://gohugo.io/) for more information about this great static site generator

@@ -148,7 +148,10 @@ url = "/posts"
 identifier = "writeups"
 name = "Writeups"
 url = "/writeups"
-
+[[menu.main]]
+identifier = "search"
+name = "Search"
+url = "/search"
 
 [caches]
 [caches.images]
@@ -161,3 +164,18 @@ target = 'assets'
 [[module.mounts]]
 source = 'static'
 target = 'assets'
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
+[outputFormats.JSON]
+mediaType = "application/json"
+baseName = "index"
+isPlainText = true
+notAlternative = true
+
+
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = false
