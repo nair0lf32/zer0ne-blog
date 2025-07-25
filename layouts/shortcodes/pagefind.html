@@ -1,7 +1,8 @@
-<!-- layouts/shortcodes/pagefind.html -->
-<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<!DOCTYPE html>
+
+<link href="{{ "pagefind/pagefind-ui.css" | absURL }}" rel="stylesheet" />
 <div id="search"></div>
-<script src="/pagefind/pagefind-ui.js"></script>
+<script src="{{ "pagefind/pagefind-ui.js" | absURL }}"></script>
 <script>
     window.addEventListener('DOMContentLoaded', () => {
         new PagefindUI({

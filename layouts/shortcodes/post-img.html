@@ -1,11 +1,17 @@
-{{ $src := .Get "src" }}
-{{ $alt := .Get "alt" | default "image" }}
-{{ $style := .Get "style" | default "max-width: 100%; height: auto;" }}
-{{ $class := .Get "class" }}
+<!DOCTYPE html>
 
-{{ $image := .Page.Resources.GetMatch $src }}
-{{ if $image }}
-<img src="{{ $image.RelPermalink }}" alt="{{ $alt }}" style="{{ $style }}" class="{{ $class }}">
+{{ $src := .Get "src" }} {{ $alt := .Get "alt" | default "image" }} {{ $style :=
+.Get "style" | default "max-width: 100%; height: auto;" }} {{ $class := .Get
+"class" }} {{ $image := .Page.Resources.GetMatch $src }} {{ if $image }}
+<img
+  src="{{ $image.RelPermalink }}"
+  alt="{{ $alt }}"
+  style="{{ $style }}"
+  class="{{ $class }}" />
 {{ else }}
-<img src="{{ $src | relURL }}" alt="{{ $alt }}" style="{{ $style }}" class="{{ $class }}">
+<img
+  src="{{ $src | relURL }}"
+  alt="{{ $alt }}"
+  style="{{ $style }}"
+  class="{{ $class }}" />
 {{ end }}
