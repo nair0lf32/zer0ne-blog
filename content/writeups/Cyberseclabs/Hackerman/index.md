@@ -20,7 +20,7 @@ ExifLoader: Les données fournies ne semblent pas contenir de données EXIF.
   format: jpeg
   capacit�: 7,0 KB
 Essayer d'obtenir des informations � propos des donn�es incorpor�es ? (o/n) o
-Entrez la passphrase: 
+Entrez la passphrase:
 steghide: impossible d'extraire des donn�es avec cette passphrase!
 ```
 passphrase? so cracking involved...
@@ -31,7 +31,7 @@ friendship with `stegcracker` is over now `stegseek` is my best friend
 └──╼ $stegseek  hackerman.jpg /usr/share/wordlists/rockyou.txt
 StegSeek 0.6 - https://github.com/RickdeJager/StegSeek
 
-[i] Progress: 99.98% (133.4 MB)           
+[i] Progress: 99.98% (133.4 MB)
 [!] error: Could not find a valid passphrase.
 ```
 
@@ -40,7 +40,7 @@ Actually no cracking was needed I am a bit stupid, because the passphrase was in
 ```
 
 └──╼ $steghide --extract -sf hackerman.jpg
-Entrez la passphrase: 
+Entrez la passphrase:
 �criture des donn�es extraites dans "secret.txt".
 ```
 The `secret.txt` file introduce us to `Jake Bellagot`
@@ -57,7 +57,7 @@ Reading the qr code take us to `https://jakeyboybellagot.github.io/ubiquitous-wa
 
 When trying to contact him using the button you notice the link is encoded in base64
 
-`Q1NMezk0YTA0OTBhZDZjMjcxNWFmMTI0OTA1NWE5YTVkYzI3fQ==` wich decodes to
+`Q1NMezk0YTA0OTBhZDZjMjcxNWFmMTI0OTA1NWE5YTVkYzI3fQ==` which decodes to
 
 `CSL{the_flag_goes_here}`
 
