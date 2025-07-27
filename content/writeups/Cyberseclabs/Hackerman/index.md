@@ -6,9 +6,10 @@ categories:
   - Cyberseclabs
 ---
 
-{{< image src="/csl/hackerman.jpg" alt="hackerman" position="center" style="width: 400px;" >}}
+{{< post-img src="hackerman.jpg" alt="hackerman" style="width:200px" >}}
 
-```
+
+```bash
 └──╼ $exif hackerman.jpg
 Données corrompues
 Les données fournies ne respectent pas les spécifications.
@@ -27,7 +28,7 @@ passphrase? so cracking involved...
 
 friendship with `stegcracker` is over now `stegseek` is my best friend
 
-```
+```bash
 └──╼ $stegseek  hackerman.jpg /usr/share/wordlists/rockyou.txt
 StegSeek 0.6 - https://github.com/RickdeJager/StegSeek
 
@@ -37,8 +38,7 @@ StegSeek 0.6 - https://github.com/RickdeJager/StegSeek
 
 Actually no cracking was needed I am a bit stupid, because the passphrase was in plain sight all this time: `HACKERMAN`
 
-```
-
+```bash
 └──╼ $steghide --extract -sf hackerman.jpg
 Entrez la passphrase:
 �criture des donn�es extraites dans "secret.txt".
@@ -51,7 +51,7 @@ we got a twitter account
 
 `@JBellagot` talks about `NoobCon2020` and that picture with a QR code
 
-{{< image src="/csl/EWda8qmXgAMdaR7.jpeg" alt="JBQR" position="center" >}}
+{{< post-img src="EWda8qmXgAMdaR7.jpeg" alt="JBQR" style="width:200px" >}}
 
 Reading the qr code take us to `https://jakeyboybellagot.github.io/ubiquitous-waffle/`
 

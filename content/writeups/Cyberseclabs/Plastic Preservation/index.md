@@ -5,21 +5,22 @@ draft: false
 categories:
   - Cyberseclabs
 ---
-Here is the [challenge](/csl/plastic_preservation/password_encrypter.py) script
 
-This one, "dey hard"! I was stuck on this for days so I just went for the solution writeup
+Here is the [challenge](password_encrypter.py) script
+
+This one, *"dey hard"!* I was stuck on this for days so I just went for the solution writeup
 
 Found it [here](https://plasticuproject.com/posts/plastic-preservation-write-up/)
 
-I then proceed to "fully" understand what the [decrypter.py](/csl/plastic_preservation/decrypter.py) script does
+I then proceed to "fully" understand what the [decrypter.py](decrypter.py) script does
 
 I did not beat that challenge tbh...but I have to keep learning :(
 
-Basically the encrypted script was obfuscated so first [put some clarity in it](/csl/plastic_preservation/deobuscated.py)
+Basically the encrypted script was obfuscated so first [put some clarity in it](deobuscated.py)
 
 The decrypter function should look like this:
 
-```
+```python
 def decrypt(passwd, debugs):
     solve = []
     b = 14695981039346656037

