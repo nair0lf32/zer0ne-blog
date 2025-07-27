@@ -14,15 +14,15 @@ it runs node js and listens on port 1337
 
 I didnt find anything helpful first
 
-Tried to look for classics, XSS, Sqli, command injecton on the website... 
+Tried to look for classics, XSS, Sqli, command injecton on the website...
 
 But that didnt help
 
-looked at the dependancies in `packages.json` and their known vulnerabilities
+looked at the dependencies in `packages.json` and their known vulnerabilities
 
 - express : RCE? (version)
 
-- pug :  AST injection, prototype pollution 
+- pug :  AST injection, prototype pollution
 
 - flat : prototpe pollution
 
@@ -30,9 +30,9 @@ Google `"prototype pollution"`
 
 the submit endpoint in `index.js` route uses `"unflatten"`
 
-Its definitelly that!
+Its definitely that!
 
-```
+```js
 router.post('/api/submit', (req, res) => {
     const { artist } = unflatten(req.body);
 
@@ -55,9 +55,9 @@ Found many articles explaining it and my first Poc was from [here!](https://blog
 
 But blindly modifying it wont help you...you have to know what you are doing
 
-Actually many articles explain `AST injection` and `Prototype pollution` 
+Actually many articles explain `AST injection` and `Prototype pollution`
 
-This one by example focus on the "unflatten" usage vuln from `flat` dependancy
+This one by example focus on the "unflatten" usage vuln from `flat` dependency
 
 This vulneraility also exist in `pug` with usage of `pug.compile()`
 
@@ -65,9 +65,9 @@ And that is what itt's about here! The author modified the challenge to make it 
 
 And it works! If you used an old writeup blindly you would be confused as the old exploit wonn't work as it is
 
-I made my "exploit.py" using this article [here](https://www.linkedin.com/pulse/ast-injection-prototype-pollution-joshua-berben)! 
+I made my "exploit.py" using this article [here](https://www.linkedin.com/pulse/ast-injection-prototype-pollution-joshua-berben)!
 
-```
+```bash
 └──╼ $python exploit.py
 {"response":"<span>Hello guestndefine, thank you for letting us know!</span>"}
 flagLWO4w
@@ -85,7 +85,7 @@ After enumerating the directory with `ls` we modify the script again
 
 Now that we know the flag name we just read it with `cat`
 
-```
+```bash
 └──╼ $python exploit.py
 {"response":"<span>Hello guestndefine, thank you for letting us know!</span>"}
 HTB{f1gh7ing_4ga1nst_p0llut1on!}
@@ -93,7 +93,6 @@ HTB{f1gh7ing_4ga1nst_p0llut1on!}
 ```
 
 Ah yes the "very easy" challenges of hackthebox
-
 Very nice machine but I personally rated this as medium
-
-** added the source code as a zip file for github security reasons. you know the password already: hackthebox **
+** added the source code as a zip file for github security reasons.
+you know the password already: **hackthebox**

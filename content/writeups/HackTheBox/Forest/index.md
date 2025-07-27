@@ -8,12 +8,11 @@ categories:
 
 Look at this beautiful piece of art
 
-<img src="forest.jpg" alt="forest" width=400>
+{{< post-img src="forest.jpg" alt="forest" style="width:400px" >}}
 
 yup. It's a stegano challenge
 
 there is obviously no exif data...and looks like no file is embedded
-
 time to play with with the image colors
 
 I used `stegsolve` and in many color maps I could see a vertical text
@@ -25,14 +24,13 @@ It was not...maybe its a passphrase:
 `IsJuS1Af0r3sTbR0`
 
 
-```
+```bash
 └──╼ $steghide --extract -sf forest.jpg
-Entrez la passphrase: 
+Entrez la passphrase:
 �criture des donn�es extraites dans "nothinghere.txt".
 ```
 
 Indeed!
 
 read the extracted file for flag! (this one is on me)
-
 

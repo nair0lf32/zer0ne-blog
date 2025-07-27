@@ -34,7 +34,7 @@ use whatever you want to get the flag...
 
 But try to reverse the operation first for the maximum fun!
 
-```
+```bash
 └──╼ $python decode.py
 b'Th3 nucl34r w1ll 4rr1v3 0n fr1d4y.\nHTB{flag_for_modular_operations_experts}'
 ```

