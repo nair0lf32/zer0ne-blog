@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 
-{{ $src := .Get "src" | relURL }} {{ $alt := .Get "alt" | default "avatar" }} {{
-$width := .Get "width" | default "200px" }} {{ $radius := .Get "radius" |
-default "50%" }}
+{{ $src := .Get "src" | relURL }} {{ $alt := .Get "alt" | default "User avatar"
+}} {{ $width := .Get "width" | default "200" }} {{ $height := .Get "height" |
+default "200" }} {{ $radius := .Get "radius" | default "50%" }}
 
 <div class="avatar-container">
   <img
     src="{{ $src }}"
     alt="{{ $alt }}"
+    width="{{ $width }}"
+    height="{{ $height }}"
+    loading="lazy"
+    decoding="async"
     class="avatar-image"
-    style="width: {{ $width }}; border-radius: {{ $radius }};" />
+    style="--avatar-radius: {{ $radius }};" />
 </div>
 
 <style>
@@ -21,6 +25,8 @@ default "50%" }}
   .avatar-image {
     display: block;
     margin: 0 auto;
+    border-radius: var(--avatar-radius, 50%);
     object-fit: cover;
+    aspect-ratio: 1 / 1;
   }
 </style>
