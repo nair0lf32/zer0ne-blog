@@ -6,8 +6,6 @@ categories:
   - TryHackMe
 ---
 
-# Advent of cyber 3 (2021)
-
 {{< post-img src="aoc3.png" alt="aoc3" style="width:200px" >}}
 
 Oh boy it's christmas soon and tryhackme is bein awesome again!
@@ -124,8 +122,6 @@ dump hashes with mimikatz and crack them (classic post-exploitation)
 thank you tryhackme!
 
 # Merry 🎅 🎄christmas!
-
-<img src="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-VJTIS3AQJY.png" alt="my_certificate" width=500/>
 
 ![my_certificate](https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-VJTIS3AQJY.png)
 

