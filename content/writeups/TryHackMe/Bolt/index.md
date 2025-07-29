@@ -7,12 +7,11 @@ categories:
 ---
 
 <img src="bolt.png" alt="bolt" width=200 height=200/>
+{{< post-img src="bolt.png" alt="bolt" style="width: 200px;" >}}
 
 ## Enumeration
 
-### nmap
-
-```
+```bash
 PORT     STATE SERVICE REASON  VERSION
 22/tcp   open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey:
@@ -127,9 +126,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ```
 
-### ffuf
-
-```
+```bash
 .htaccess               [Status: 200, Size: 2956, Words: 411, Lines: 85]
 entries                 [Status: 200, Size: 6660, Words: 1963, Lines: 174]
 index.php               [Status: 200, Size: 0, Words: 1, Lines: 1]
@@ -143,7 +140,7 @@ Classic! the sitweb is built with bolt (who wold know?)
 
 and the admin is jake
 
-```
+```text
 Hello Everyone,
 
 Welcome to this site, myself Jake and my username is bolt .I am still new to this CMS so it can take awhile for me to get used to this CMS but believe me i have some great content coming up for you all!
@@ -155,7 +152,7 @@ Jake (Admin)
 
 Fiddling around in page `sub1` we find this
 
-```
+```text
 
 
 Hey guys,
@@ -169,7 +166,7 @@ Jake (Admin)
 
 Reading the documentation a bit get us the directory of login page
 
-```
+```text
 Finally, open the new installation in a browser. If you've used one of the commands above, you'll find the frontpage at http://127.0.0.1:8000/
 
 The Bolt admin panel can be found at http://127.0.0.1:8000/bolt
@@ -189,7 +186,7 @@ We fire metasploit up and set all options
 
 And we are directl root bro
 
-```
+```bash
 id
 uid=0(root) gid=0(root) groups=0(root)
 ```

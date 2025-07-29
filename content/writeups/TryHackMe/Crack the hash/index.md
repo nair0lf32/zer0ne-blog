@@ -5,11 +5,16 @@ draft: false
 categories:
   - TryHackMe
 ---
-<img src="cth.jpeg" width=200 height=200 alt="cth">
 
-Anoher challenges room
+{{< post-img src="cth.jpeg" alt="cth" style="width: 200px;" >}}
+
+Another challenge room
 
 Just hashes to crack
+
+>The solutions are exceptionally provided here. This room is an easy semi-guided
+challenge anyway so if you are here I expect you have "tried harder" already, but
+if not stop reading and go crack those hashes
 
 `md5: 48bb6e862e54f2a795ffc4e541caed4d` : easy
 
@@ -19,7 +24,7 @@ Just hashes to crack
 
 here comes trouble
 
-```
+```bash
 hashcat -a 0 -m 3200 '$2y$12$Dwt1BZj6pcyc3Dy1FWZ5ieeUznr71EeNkJkUlypTsgbX1H68wsRom' /usr/share/wordlists/rockyou.txt
 ```
 
@@ -29,7 +34,7 @@ As we know the answer is 4-characters long, we can filter rockyou to create a sm
 
 `awk 'length == 4' rockyou.txt >four.txt`
 
-```
+```bash
 hashcat -a 0 -m 3200 '$2y$12$Dwt1BZj6pcyc3Dy1FWZ5ieeUznr71EeNkJkUlypTsgbX1H68wsRom' '/home/myusername/Crack the hash/four.txt'
 ```
 
@@ -45,7 +50,7 @@ if they say this one is hard it is HARD: (`salt = aReallyHardSalt`)
 
 we filter rockyou again and hashcat this thing
 
-```
+```bash
 $hashcat -m 1800 -a 0 '$6$aReallyHardSalt$6WKUTqzq.UQQmrm0p/T7MPpMbGNnzXPMAXi4bJMl9be.cfi3/qxIf.hsGpS41BqMhSrHVXgMpdjS6xeKZAs02.' '/home/da_username/Desktop/Crack the hash/six.txt'
 ```
 
@@ -53,10 +58,10 @@ $hashcat -m 1800 -a 0 '$6$aReallyHardSalt$6WKUTqzq.UQQmrm0p/T7MPpMbGNnzXPMAXi4bJ
 
 this one is special HMAC-SHA1 that takes a "key" as salt (`salt = tryhackme`)
 
-```
+```bash
 hashcat -m 160 -a 0 'e5d8870e5bdd26602cab8dbe07a942c8669e56d6:tryhackme' '/home/itsyaboynairolf/Crack the hash/rockyou.txt'
 ```
 
 `HMAC-SHA1: e5d8870e5bdd26602cab8dbe07a942c8669e56d6:tryhackme` : 481616481616
 
-Hashes cracked!
+Hashes cracked! :D

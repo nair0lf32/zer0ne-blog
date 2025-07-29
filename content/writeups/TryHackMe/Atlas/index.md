@@ -6,7 +6,7 @@ categories:
   - TryHackMe
 ---
 
-{{< post-img src="atlas.jpg" alt="atlas" >}}
+{{< post-img src="atlas.jpg" alt="atlas">}}
 
 they say its an easy windows room for beginners
 

