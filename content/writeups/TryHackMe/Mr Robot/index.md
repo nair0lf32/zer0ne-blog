@@ -10,7 +10,7 @@ categories:
 
 difficulty: Medium
 
-{{ <post-img src="robot.jpeg" alt="robot" style="width: 200px;" > }}
+{{< post-img src="robot.jpeg" alt="robot" style="width: 200px;" >}}
 
 Hello friend!
 

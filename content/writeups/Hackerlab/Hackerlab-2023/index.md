@@ -16,7 +16,7 @@ Unfortunately I am currently very busy so I could not participate in the final
 Here is a quick recapitulative writeup
 
 
-## Basics
+# Basics
 
 # Ghezo (unsolved: 50pts)
 
