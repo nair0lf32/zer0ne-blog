@@ -6,7 +6,7 @@ categories:
   - TryHackMe
 ---
 
-<img src="holida.png" width=200 height=200 alt="holida">
+{{< post-img src="holida.png" alt="holida" style="width: 200px;" >}}
 
 ## what does the base said?
 
@@ -14,9 +14,9 @@ Yeah this one is just base 64, please do not make a fool of yourself and just de
 
 ## Meta meta
 
-<img src="Findme.jpg" alt="meta" width=400/>
+{{< post-img src="Findme.jpg" alt="Findme" style="width: 200px;" >}}
 
-```
+```bash
 └──╼ $exif Findme.jpg
 Marqueurs EXIF dans « Findme.jpg » (ordre des octets « Motorola ») :
 --------------------+----------------------------------------------------------
@@ -36,9 +36,9 @@ Espace des couleurs |Non calibré
 
 ## Mon, are we going to be okay?
 
-<img src="Extinction.jpg" alt="extinct" width=400/>
+{{< post-img src="Extinction.jpg" alt="extinct" style="width: 200px;" >}}
 
-```
+```bash
 └──╼ $steghide --info Extinction.jpg
 "Extinction.jpg":
   format: jpeg
@@ -65,19 +65,20 @@ haha I have seen this one before...white font on white background
 
 Always inspect code folks
 
-```
+```html
 <span style="background-color:rgb(255, 255, 255);">THM{caucasian_flag}</span>
 ```
 
 ## QRrrrr
 
-<img src="QR.png" alt="qr" width=200/>
+{{< post-img src="QR.png" alt="qr" style="width: 200px;" >}}
+
 
 I used zbar-tools (apt install)
 
 but you can use any qr decoder online too
 
-```
+```bash
 └──╼ $zbarimg -d QR.png
 QR-Code:THM{qr_code_can_hide_stuff}
 scanned 1 barcode symbols from 1 images in 0,03 seconds
@@ -87,7 +88,7 @@ scanned 1 barcode symbols from 1 images in 0,03 seconds
 
 I will just read it thanks
 
-```
+```bash
 └──╼ $strings hello.hello
 /lib64/ld-linux-x86-64.so.2
 libc.so.6
@@ -113,13 +114,11 @@ crtstuff.c
 ## Another decoding stuff
 
 Its base 58. you can use online identifiers or the hint and decoders
-
 Or if you are a crypto expert...anyway just decode it
 
 ## Left or Right?
 
-The author is right its not ROT 13 but its still ceasar
-
+The author is right its not ROT 13 but its still caesar
 More like 19 rotations...he said the flags would always be in THM{flag} format
 
 well...decode it
@@ -128,7 +127,7 @@ well...decode it
 
 Always check he code folks
 
-```
+```html
             <div class="room-task-desc-data"> <p>No downloadable file, no ciphered or encoded text. Huh .......<br></p>
 <p style="display:none;"> THM{always_check_the_code} </p></div>
         </div>
@@ -136,7 +135,7 @@ Always check he code folks
 
 ## Can you fix it?
 
-```
+```bash
 └──╼ $file spoil.png
 spoil.png: data
 
@@ -165,25 +164,19 @@ IEND
 what is this? well...I googled about all this and this is close to RE but for png files
 
 I used `bless` hexeditor (apt install) to open the file (nano can do it to apparently)
-
 or use any hexeditor you like
-
-there was an error in the header hex `23 33 44 5F` wich translate in ascii to `#3D_`
-
+there was an error in the header hex `23 33 44 5F` which translate in ascii to `#3D_`
 its supposed to say `89 50 4E 47` or `.PNG`
+I replaced those and fixed the png which shows the flag
+I wont bother blurring this one so have a free flag (I seriously recommend doing the challenge though)
 
-I replaced those and fixed the png wich shows the flag
-
-I wont bother blurring this one so have a free flag (I seriously recommand doing the challenge though)
-
-<img src="spoil.png" alt="spoil" width=200/>
+{{< post-img src="spoil.png" alt="spoil" style="width: 200px;" >}}
 
 ## Read it
 
 Haha Reddit
 
 I could provide the link here to help the normies but its about OSINT bro
-
 that would kill the fun of using google
 
 ## Spin my head
@@ -193,18 +186,12 @@ AAHHH brainf\*ck!! quick decode it!
 ## An exclusive!
 
 Either you write a script (bash or python mostly) like a real man
-
 Or you use an online tool like a baby
+Or again the third alternative, you steal the code online (I have zero shame)
 
-Or again the third alternative, you steal the code online like I do sometimes
+As long as you "understand" it...
 
-I don't know what that make me
-
-As long as you understand it...
-
-hexstrings.py
-
-```
+```python
 s1 = "44585d6b2368737c65252166234f20626d"
 s2 = "1010101010101010101010101010101010"
 
@@ -212,16 +199,16 @@ a = hex(int(s1, 16) ^ int(s2, 16))[2:]
 print(bytes.fromhex(a).decode('utf-8'))
 ```
 
-```
+```bash
 └──╼ $python hexstrings.py
 THM{excluded_inclusion}
 ```
 
 ## Binary walk
 
-<img src="hell.jpg" alt="hell" width=300/>
+{{< post-img src="hell.jpg" alt="hell" style="width: 200px;" >}}
 
-```
+```bash
 └──╼ $binwalk -e hell.jpg
 
 DECIMAL       HEXADECIMAL     DESCRIPTION
@@ -232,16 +219,17 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 266099        0x40F73         End of Zip archive, footer length: 22
 
 ```
+General kenobi (*wink)
 
 just check the extracted folder
 
 ## Darkness
 
-<img src="dark.png" alt="dark" width=300/>
+{{< post-img src="dark.png" alt="dark" style="width: 200px;" >}}
 
 grab stegsolve from a google search (github)
 
-```
+```bash
 #!/bin/bash -ex
 
 wget http://www.caesum.com/handbook/Stegsolve.jar -O stegsolve.jar
@@ -251,9 +239,7 @@ mv stegsolve.jar bin/
 ```
 
 move in created bin folder and do `java -jar stegsolve.jar`
-
 then its a java GUI tool you have to fiddle with
-
 just look around a bit and use the arrows at the bottom
 
 `Blue plane 1` is where you want to go
@@ -262,28 +248,26 @@ typing the flag by hand is where i felt pain
 
 ## A soundng QR
 
-<img src="QRCTF.png" alt="sound_qr" width=200/>
+{{< post-img src="QRCTF.png" alt="sound_qr" style="width: 200px;" >}}
 
 zbar-tools didnt work this time so I just used an online QR scanner
-
 We get a soundclound link
 
 `https://soundcloud.com/user-86667759/thm-ctf-vol1`
 
-Now its about listenning...the speech bot is not on your side
-
+Now its about listening...
+The speech bot is not on your side
 to help you...the letters actually form 2 words sticked together
 
 listen carrefully and just get each letter...then try to make a sense out of the words
 
-just paste that in capitals letters with no space or anythin else, between THM curly braces
+just paste that in capitals letters with no space or anything else, between THM curly braces
 
 ## Dig up the past
 
 the wayback machine [web.archive](https://web.archive.org/)
 
 if dinosaurs had websites they would be there
-
 Just use the search bar for the website and use date pickers to visit the right snapshot
 
 ## Uncrackable!
@@ -291,14 +275,13 @@ Just use the search bar for the website and use date pickers to visit the right 
 If they say so...let's give up then lol
 
 First we know its vigenere but we need the key
-
 the sudden change of flag format was suspicious so I tried `tryhackme` as key
 
 `THMTHMTHM{YEI_RVEWY_BHU_YQF}`
 
 hmm now let's try `thmthmthm` as key
 
-yup! it worked! it was all aout finding the key!
+yup! it worked! it was all about finding the key!
 
 ## Small bases
 
@@ -311,14 +294,11 @@ just do that
 ## Read the packet
 
 Oh packet analysis...pro stuff
-
 Dont try to read the strings you will regret that
-
 open it with `wireshark`...its where it belongs
-
 filter by http and you find an http request to GET flag.txt
 
-```
+```bash
 Frame 1825: 506 bytes on wire (4048 bits), 506 bytes captured (4048 bits) on interface eth0, id 0
 Ethernet II, Src: VMware_2d:ec:c9 (00:0c:29:2d:ec:c9), Dst: VMware_fb:30:11 (00:0c:29:fb:30:11)
 Internet Protocol Version 4, Src: 192.168.247.130, Dst: 192.168.247.140

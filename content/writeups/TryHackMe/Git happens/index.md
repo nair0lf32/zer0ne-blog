@@ -6,13 +6,11 @@ categories:
   - TryHackMe
 ---
 
-<img src="git.png" width=200 height=200 alt="git">
+{{< post-img src="git.png" alt="git" style="width: 200px;" >}}
 
 ## Enumeration
 
-### nmap
-
-```
+```bash
 PORT   STATE SERVICE REASON  VERSION
 80/tcp open  http    syn-ack nginx 1.14.0 (Ubuntu)
 | http-git:
@@ -26,19 +24,14 @@ PORT   STATE SERVICE REASON  VERSION
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-### ffuf
-
-```
-
+```bash
 .git/HEAD               [Status: 200, Size: 23, Words: 2, Lines: 2]
 css                     [Status: 301, Size: 194, Words: 7, Lines: 8]
 index.html              [Status: 200, Size: 6890, Words: 541, Lines: 61]
 ```
 
 http-git? .git/HEAD? Its a git repository!
-
 we can visit /.git/ directory for more information
-
 we can dump the repo using `git tools` (dumper)
 
 `./gitdumper.sh 10.10.106.206/.git/ /home/User/Desktop/Git happens/Git/.git`
@@ -47,7 +40,7 @@ Now we check logs
 
 `git log`
 
-```
+```bash
 commit d0b3578a628889f38c0affb1b75457146a4678e5 (HEAD -> master, tag: v1.0)
 Author: Adam Bertrand <hydragyrum@gmail.com>
 commit d0b3578a628889f38c0affb1b75457146a4678e5 (HEAD -> master, tag: v1.0)
@@ -135,7 +128,7 @@ Now from commits hashes we can see modified files with git show
 
 `git show d954a99b96ff11c37a558a5d93ce52d0f3702a7d`
 
-```
+```bash
 ...
 username === 'admin' &&
 
@@ -144,9 +137,9 @@ username === 'admin' &&
   ...
 ```
 
-we get a hashed pasword for admin I thought about cracking it first but checking the initial commit already shows creds in plain text
+we get a hashed password for admin I thought about cracking it first but checking the initial commit already shows creds in plain text
 
-```
+```javascript
 - <script>
 -      function login() {
   -        let form = document.getElementById("login-form");
@@ -172,7 +165,6 @@ login creds are:
 `admin : Git_happens_flag!`
 
 the login page doesnt even work...the password you find is already the flag
-
 so obviously don't trust mine
 
-I deleted my Git folder content before uploading here..git repo in git repo is not a simple thing to handle
+trust no one

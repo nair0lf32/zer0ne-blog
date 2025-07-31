@@ -6,7 +6,7 @@ categories:
   - TryHackMe
 ---
 
-![One Piece](/thm/One%20Piece/luffy.jpeg)
+{{ <post-img src="luffy.jpeg" alt="Luffy" style="width: 200px;" >}}
 
 It's been a while I didn't play a CTF on TryHackMe. While searching for a fun room I found one named "One Piece".
 I was like...wait, why is this not already done? Who would not want to do a CTF on One Piece? c'mon! let's set sail!
@@ -17,8 +17,8 @@ I was like...wait, why is this not already done? Who would not want to do a CTF 
 
 PORT   STATE SERVICE REASON  VERSION
 21/tcp open  ftp     syn-ack vsftpd 3.0.3
-| ftp-syst: 
-|   STAT: 
+| ftp-syst:
+|   STAT:
 | FTP server status:
 |      Connected to ::ffff:10.8.4.19
 |      Logged in as ftp
@@ -31,7 +31,7 @@ PORT   STATE SERVICE REASON  VERSION
 |      vsFTPd 3.0.3 - secure, fast, stable
 |_End of status
 22/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 011818f9b78ac36c7f922d939055a129 (RSA)
 | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC45MSZ6fV/xyKjd0Vlj750dJSO5TPl1lrNfd+t+qc4LIKnaMoUsyIuxlnTOSQ0yHhGCxRYaDheybyGr1JqQrFazro9bL5cr3o0LQYLgTWbTcVAgkByqDvblrqUj1c6O4R0Z3BoppqzBgXIsUJFw96HAiYzVJCh9RN2rGnAHmqy8lIS/Z56pFlmiEOc3/W1ccnA/ABAIWkX25Kpxz+QE1eMEWEswLG57qmG8nt0qkOT6hQ9sskVW/ADnUmY3rO/dsP7TXh/IvI1slb6HALUlQXXfGUp/2CwOS7SfIthom8HJ3s7STVVOiAQM6xw6USA9QFLObcUSV0qHpXzJnyQtqtl
 |   256 cc0218a9b52b49e45b77f96ec2dbc90d (ECDSA)
@@ -41,7 +41,7 @@ PORT   STATE SERVICE REASON  VERSION
 80/tcp open  http    syn-ack Apache httpd 2.4.29 ((Ubuntu))
 |_http-server-header: Apache/2.4.29 (Ubuntu)
 |_http-favicon: Unknown favicon MD5: C31581B251EA41386CB903FC27B37692
-| http-methods: 
+| http-methods:
 |_  Supported Methods: OPTIONS HEAD GET POST
 |_http-title: New World
 Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
@@ -56,7 +56,7 @@ Connected to 10.10.194.115.
 220 (vsFTPd 3.0.3)
 Name (10.10.194.115:nairolf32): anonymous
 331 Please specify the password.
-Password: 
+Password:
 230 Login successful.
 Remote system type is UNIX.
 Using binary mode to transfer files.
@@ -110,16 +110,14 @@ Anyways, we got a `road_poneglyph.jpeg` and a `secret_room.txt` from `the whale`
 └─(13:24:39 on master ✭)──> file .road_poneglyph.jpeg                                                                                ──(mar.,janv.16)─┘
 .road_poneglyph.jpeg: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, baseline, precision 8, 270x187, components 3
 └─(13:25:52 on master ✭)──> steghide --extract -sf .road_poneglyph.jpeg                                                              ──(mar.,janv.16)─┘
-Entrez la passphrase: 
+Entrez la passphrase:
 �criture des donn�es extraites dans "road_poneglyphe1.txt".
 ```
 
 Got `road_poneglyphe1.txt` But wait...there is more! Back to the kitchen with the contents we use a special sauce mixing
 
 base32, morse, Binary, hex...then??? `3HTXi9i2T2` .... I don't know what to do with that...
-
 Let's keep it for later. Maybe we need to assemble them (anime vibes 101)
-
 More exploration!
 
 On the website we get a beautiful picture of the crew with the merry go
@@ -129,9 +127,7 @@ The source code reveals this:
 <!--J5VEKNCJKZEXEUSDJZEE2MC2M5KFGWJTJMYFMV2PNE2UMWLJGFBEUVKWNFGFKRJQKJLUS5SZJBBEOS2FON3U4U3TFNLVO2ZRJVJXARCUGFHEOS2YKVWUWVKON5HEOQLVKEZGI3S2GJFEOSKTPBRFAMCGKVJEIODQKJUWQ3KMIMYUCY3LNBGUWMCFO5IGYQTWKJ4VMRK2KRJEKWTMGRUVCMCKONQTGTJ5-->
 
 We run to the kitchen (cyberchef) and we got something about nami being a silly navigator:
-
 "Nami ensures there are precisely 3472 possible places where she could have lost it."
-
 And gentlemen this is where we got stuck! The hint at first made no sense to me: "Only Sea, I'ts Not Terrible"...ooohhh...OSINT!
 
 That's terrible! Who would have thought of that? We do some "searching" but damn it's so guessy...I usually like OSINT but damn...why here?
@@ -141,23 +137,21 @@ We get this [github link](https://github.com/1FreyR/LogPose/blob/master/LogPose.
 We use it with gobuster to find our next destination. Don't worry I won't edit the directory name...it's on me...No one deserve this suffering
 
 ```bash
-└─(14:27:51 on master ✭)──> gobuster dir -w LogPose.txt -u http://10.10.135.84 -x html,php,txt    
+└─(14:27:51 on master ✭)──> gobuster dir -w LogPose.txt -u http://10.10.135.84 -x html,php,txt
 
 /dr3ssr0s4.html       (Status: 200) [Size: 3985]
-
 ```
 
 Lol When I saw "dressrosa" I knew It would be `Donquixote Doflamingo`. There are multiple div elemeents overlaying an image named "rabbit_hole.png". I know it's tempting but when the author himself says it's a rabbit hole...it's a rabbit hole!
 
 We got stuck again...for a while.  We ended up exploring the css of the page (who even do that???) and unlocked the gear fourth
 
-![king kong gun](/thm/One%20Piece/king_kong_gun.jpg)
+{{ < post-img src="king_kong_gun.jpg" alt="king kong gun" style="width: 200px;" > }}
 
-```strings
+```bash
 └─(14:44:36 on master ✭)──> strings king_kong_gun.jpg                                                                                ──(mar.,janv.16)─┘
 JFIF
 Doflamingo is /ko.jpg
-
 ```
 
 Use `strings` again and find our next destination. it's `whole cake` if you wonder. We get input field and a button. I immediately fire burp suite and intercept the request. Funny how it's a `cookie` we have to tamper with. I had a terrible experience with those encoded texts (mostly rabbit holes...so many rabbit holes)
@@ -172,15 +166,14 @@ I was stuck again but once again I got a little help about steganography on the 
 └─(15:16:50 on master ✭)──> stegseek -wl /usr/share/wordlists/rockyou.txt -sf kaido.jpeg                                             ──(mar.,janv.16)─┘
 StegSeek 0.6 - https://github.com/RickdeJager/StegSeek
 
-[i] Found passphrase: "imabeast"       
+[i] Found passphrase: "imabeast"
 [i] Original filename: "kaido_login.txt".
 [i] Extracting to "kaido.jpeg.out".
-
 ```
 
 ## Exploitation
 
-![kaido](/thm/One%20Piece/kaido.jpeg)
+{{ < post-img src="kaido.jpeg" alt="kaido" style="width: 200px;" > }}
 
 Cool. The username to use is known we need the password now...maybe...bruteforce?
 
@@ -220,7 +213,7 @@ The authenticity of host '10.10.80.106 (10.10.80.106)' can't be established.
 ECDSA key fingerprint is SHA256:zOHT7dbvRJlqSe19yomTmKvQHVgvwDLd7X8gGWScz84.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added '10.10.80.106' (ECDSA) to the list of known hosts.
-M0nk3y_D_7uffy@10.10.80.106's password: 
+M0nk3y_D_7uffy@10.10.80.106's password:
 Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-041500-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -265,10 +258,10 @@ We try the classics...`sudo -l` didnt work but the SUID binaries are interesting
 ...
 
 M0nk3y_D_7uffy@Laugh-Tale:~$ gomugomunooo_king_kobraaa
-Python 3.6.9 (default, Jul 17 2020, 12:50:27) 
+Python 3.6.9 (default, Jul 17 2020, 12:50:27)
 [GCC 8.4.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
->>> 
+>>>
 
 ```
 
@@ -322,15 +315,15 @@ Now we can try privesc basics again...I highly suspect sudo to work this time
 
 ```bash
 $ su 7uffy_vs_T3@ch
-Password: 
+Password:
 7uffy_vs_T3@ch@Laugh-Tale:~$ sudo -l
-[sudo] password for 7uffy_vs_T3@ch: 
+[sudo] password for 7uffy_vs_T3@ch:
 Matching Defaults entries for 7uffy_vs_T3@ch on Laugh-Tale:
     env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
 
 User 7uffy_vs_T3@ch may run the following commands on Laugh-Tale:
     (ALL) /usr/local/bin/less
-7uffy_vs_T3@ch@Laugh-Tale:~$ 
+7uffy_vs_T3@ch@Laugh-Tale:~$
 ```
 
 less? really? now we can read stuff?
@@ -403,6 +396,6 @@ One Piece: Od@_wOnt_l3t_yOu_kn0w
 
 ```
 
-![boat](/thm/One%20Piece/boat.png)
+{{ <post-img src="boat.png" alt="boat" >}}
 
 finally we found it, the **One Piece**!!

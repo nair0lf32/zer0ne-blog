@@ -6,7 +6,7 @@ categories:
   - TryHackMe
 ---
 
-<img src="elf.png" alt="elf" width=200>
+{{< post-img src="elf.png" alt="elf" style="width:200px" >}}
 
 ## crackme1
 
@@ -26,7 +26,7 @@ I chose radare2 (IDA is good too)
 
 we start with the basics
 
-```
+```bash
 └──╼ $r2 -d ./crackme4
 Process with PID 10508 started...
 = attach 10508 10508
@@ -67,7 +67,7 @@ asm.bits 64
 ```
 The main function calls `sym.compare_pwd` to check the password so I check that one too
 
-```
+```bash
 [0x00400716]> s 0x0040067a
 [0x0040067a]> pdf
 ; CALL XREF from main @ 0x400754
@@ -117,20 +117,15 @@ The main function calls `sym.compare_pwd` to check the password so I check that 
 │       │   0x0040070f      e8dcfdffff     call sym.imp.__stack_chk_fail ; void __stack_chk_fail(void)
 │       └─> 0x00400714      c9             leave
 └           0x00400715      c3             ret
-
 ```
 
-the call to `strcmp` is at address `0x004006d5` 
-
+the call to `strcmp` is at address `0x004006d5`
 We need to get the value stored in the `rdi` register
-
 I tried to debug with a breakpoint just before the call but I could not make it work
-
 Alternatively I used `ltrace`
-
 it captures calls made to libraries like `strcmp` (similar to strace for system calls)
 
-```
+```bash
 └──╼ $ltrace ./crackme4 test
 __libc_start_main(0x400716, 2, 0x7ffcbb73c618, 0x400760 <unfinished ...>
 strcmp("n0_3asY_pa5sw0rd", "test")                                                                                                              = -7
@@ -142,12 +137,10 @@ There is also the good ol' `gdb` method (even better IMO)
 
 ## crackme5
 
-
 This is very similar to `crackme4` challenge
-
 instead of using an argument it takes input and still uses `strcmp`
 
-```
+```bash
 │           0x00400801      bf54094000     mov edi, str.Enter_your_input: ; 0x400954 ; "Enter your input:"
 │           0x00400806      e865fdffff     call sym.imp.puts           ; int puts(const char *s)
 │           0x0040080b      488d45b0       lea rax, [var_50h]
@@ -175,7 +168,7 @@ same process, but note how the variables declared in the main function also give
 
 I just used `ltrace` again with a random input
 
-```
+```bash
 └──╼ $ltrace ./crackme5
 __libc_start_main(0x400773, 1, 0x7ffdf90329d8, 0x4008d0 <unfinished ...>
 puts("Enter your input:"Enter your input:
@@ -193,16 +186,15 @@ strncmp("tester", "answer_would_be_here", 28)                                   
 puts("Always dig deeper"Always dig deeper
 )                                                                                                                         = 18
 +++ exited (status 0) +++
-
 ```
 
 ## crackme6
 
 Back to password as argument
 
-main calls `sym.compare_pwd` wich calls `sym.my_secure_test`
+main calls `sym.compare_pwd` which calls `sym.my_secure_test`
 
-```
+```bash
 [0x7f6fdbd79090]> pdf @sym.my_secure_test
 ; CALL XREF from sym.compare_pwd @ 0x4006e4
 ┌ 340: sym.my_secure_test (int64_t arg1);
@@ -313,20 +305,16 @@ main calls `sym.compare_pwd` wich calls `sym.my_secure_test`
 │ │││││││   0x004006c3      b8ffffffff     mov eax, 0xffffffff         ; -1
 │ ────────< 0x004006c8      eb05           jmp 0x4006cf
 │ ────────> 0x004006ca      b800000000     mov eax, 0
-│ │││││││   ; XREFS: CODE 0x004005a0  CODE 0x004005c8  CODE 0x004005f0  CODE 0x00400618  CODE 0x00400640  CODE 0x00400668  
-│ │││││││   ; XREFS: CODE 0x0040068d  CODE 0x004006b2  CODE 0x004006c8  
+│ │││││││   ; XREFS: CODE 0x004005a0  CODE 0x004005c8  CODE 0x004005f0  CODE 0x00400618  CODE 0x00400640  CODE 0x00400668
+│ │││││││   ; XREFS: CODE 0x0040068d  CODE 0x004006b2  CODE 0x004006c8
 │ └└└└└└└─> 0x004006cf      5d             pop rbp
 └           0x004006d0      c3             ret
 
 ```
 well that's alot...I used the visual (vvv) to analyze it better
-
 basically it compares (`cmp al, <value>`) every character of our argument in `rax` register with a hex value
-
 from top to bottom you get : 0x31,0x33,0x33,0x37,0x5f,0x70,0x77,0x64
-
 Decode it from hex/to ascii (I used cyberchef)
-
 And that guy said it was an easy password lol
 
 ## crackme7
@@ -335,33 +323,30 @@ analysing the `main` function
 
 We can see it does another comparison:
 
-```
+```bash
 │ ││││ │    0x08048665      3d697a0000     cmp eax, 0x7a69
 ```
 
 Then gives you the flag
 
-```
+```bash
 │ ││││ ││   0x0804866f      68bc880408     push str.Wow_such_h4x0r_    ; 0x80488bc ; "Wow such h4x0r!"
 │ ││││ ││   0x08048674      e8f7fcffff     call sym.imp.puts           ; int puts(const char *s)
 │ ││││ ││   0x08048679      83c410         add esp, 0x10
 │ ││││ ││   0x0804867c      e825000000     call sym.giveFlag
 ```
-interresting part is the comparison of `eax` register with the hex value
-
+interesting part is the comparison of `eax` register with the hex value
 I decode it and try it as input for the menu!
-
 It works but remember the menu takes numbers so decode from hex to decimal (base 16 to base 10)
-
 nice flag lol (I didnt even use IDA)
 
 ## crackme8
 
 Final one! must be the hardest!!!
 
-interresting part of `main` function
+interesting part of `main` function
 
-```
+```bash
 │    0x080484db      50             push eax
 │      │    0x080484dc      e89ffeffff     call sym.imp.atoi           ; int atoi(const char *str)
 │      │    0x080484e1      83c410         add esp, 0x10
@@ -382,17 +367,11 @@ interresting part of `main` function
 ```
 
 `atoi` converts a string to an integer
-
 and you know what this does already: `cmp eax, 0xcafef00d`
-
 So I converted the hex to decimal again and tried it but got denied
-
 the result was a bit long for an integer anyway...
-
 I got stuck here a bit and went for help...I got this suggestion:
-
 "trying to convert the hex to binary, you may notice the decimal number is actually negative"
-
 that's how I learnt about signed 2's complement
 
 I used [rapidtables](https://www.rapidtables.com/convert/number/hex-to-decimal.html) to decode the hex and used the negative value
@@ -402,21 +381,6 @@ It worked!
 Alternatively you could use a breakpoint at the comparison, change eax to the hex value and continue to get the flag
 
 This one feels like a more "hacky" workaround...so cool!
-
-Anyway! fun room! RE is hard but I am slowly getting better at it! 
-
+Anyway! fun room! RE is hard but I am slowly getting better at it!
 I could do this room faster with `ghidra` but I chose pain and spent hours!
-
-I think even IDA would be faster than r2. 
-
-
-
-
-
-
-
-
-
-
-
-
+I think even IDA would be faster than r2.
