@@ -364,4 +364,4 @@ Btw If you remember the nmap scan shows a website on port 80
 there is nothing there...
 Except that super cool image of THAT epic fight with anakin
 
-{{ <post-img src="image.jpg" alt="sw_avsk" style="width: 200px;" > }}
+{{< post-img src="image.jpg" alt="sw_avsk" style="width: 200px;" >}}

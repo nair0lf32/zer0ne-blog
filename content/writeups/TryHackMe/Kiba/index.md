@@ -6,7 +6,7 @@ categories:
   - TryHackMe
 ---
 
-{{ <post-img src="kiba.png" alt="kiba" style="width: 200px;" > }}
+{{< post-img src="kiba.png" alt="kiba" style="width: 200px;" >}}
 
 ## Enumeration
 

@@ -6,7 +6,6 @@ categories:
   - TryHackMe
 ---
 
-<img src="bolt.png" alt="bolt" width=200 height=200/>
 {{< post-img src="bolt.png" alt="bolt" style="width: 200px;" >}}
 
 ## Enumeration

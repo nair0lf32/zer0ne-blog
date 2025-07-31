@@ -6,7 +6,7 @@ categories:
   - TryHackMe
 ---
 
-{{ <post-img src="luffy.jpeg" alt="Luffy" style="width: 200px;" >}}
+{{< post-img src="luffy.jpeg" alt="Luffy" style="width: 200px;" >}}
 
 It's been a while I didn't play a CTF on TryHackMe. While searching for a fun room I found one named "One Piece".
 I was like...wait, why is this not already done? Who would not want to do a CTF on One Piece? c'mon! let's set sail!
@@ -45,7 +45,6 @@ PORT   STATE SERVICE REASON  VERSION
 |_  Supported Methods: OPTIONS HEAD GET POST
 |_http-title: New World
 Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
-
 ```
 
 First the ftp service. We can login anonymously so let's get 'em
@@ -173,7 +172,7 @@ StegSeek 0.6 - https://github.com/RickdeJager/StegSeek
 
 ## Exploitation
 
-{{ < post-img src="kaido.jpeg" alt="kaido" style="width: 200px;" > }}
+{{< post-img src="kaido.jpeg" alt="kaido" style="width: 200px;" >}}
 
 Cool. The username to use is known we need the password now...maybe...bruteforce?
 
@@ -393,9 +392,8 @@ find / -name "*.txt" -user root
 root@Laugh-Tale:~# cat /usr/share/mysterious/on3_p1ec3.txt
 cat /usr/share/mysterious/on3_p1ec3.txt
 One Piece: Od@_wOnt_l3t_yOu_kn0w
-
 ```
 
-{{ <post-img src="boat.png" alt="boat" >}}
+{{< post-img src="boat.png" alt="boat" >}}
 
 finally we found it, the **One Piece**!!
